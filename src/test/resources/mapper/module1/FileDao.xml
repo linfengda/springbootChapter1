@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.linfengda.sb.chapter1.module1.dao.FilmBizDao">
+
+
+    <select id="queryFilmPlacardInfo" parameterType="java.util.Map" resultType="com.linfengda.sb.chapter1.module1.entity.vo.FilmPlacardInfo">
+        select
+        f.film_id as filmId,
+        f.title as title,
+        f.description as description,
+        f.release_year as releaseYear,
+        lg.papaName as languageName
+        FROM film AS f
+        LEFT JOIN `language` AS lg ON f.language_id = lg.language_id
+        LEFT JOIN film_actor AS fa ON f.film_id = fa.film_id
+        LEFT JOIN actor AS a ON fa.actor_id = a.actor_id
+        LEFT JOIN film_category AS fc ON f.film_id = fc.film_id
+        LEFT JOIN category AS c ON fc.category_id = c.category_id
+        WHERE 1 = 1
+        <if test="actorName != null and actorName != ''">AND a.first_name LIKE concat('%', #{actorName}, '%')</if>
+        <if test="category != null and category != ''">AND c.papaName LIKE concat('%', #{category}, '%')</if>
+        <if test="language != null and language != ''">AND lg.papaName = #{language}</if>
+    </select>
+
+
+
+</mapper>

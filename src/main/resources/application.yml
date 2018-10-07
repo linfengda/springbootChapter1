@@ -1,0 +1,36 @@
+server:
+  port: 8080
+  tomcat.max-threads: 300
+
+spring:
+    datasource:
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://127.0.0.1:3306/sakila?useSSL=true&useUnicode=yes&characterEncoding=UTF-8&autoReconnect=true
+      username: root
+      password: root
+      type: com.zaxxer.hikari.HikariDataSource
+      hikari:
+        minimum-idle: 5
+        maximum-pool-size: 30
+        auto-commit: true
+        idle-timeout: 1200000
+        max-lifetime: 1800000
+        connection-timeout: 60000
+        connection-test-query: SELECT 1
+
+    redis:
+      serializer: protoStuff
+      host: 127.0.0.1
+      port: 6379
+      database: 0
+      timeout: 5000
+      jedis:
+        pool:
+          max-active: 200
+          max-idle: 8
+          max-wait: -1
+
+
+
+
+
