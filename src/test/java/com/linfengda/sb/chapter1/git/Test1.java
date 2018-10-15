@@ -10,6 +10,6 @@ public class Test1 {
 
     private String name;
 
-    private String age;
+    private String isMarried;
 
 }
