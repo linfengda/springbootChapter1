@@ -12,4 +12,6 @@ public class Test1 {
 
     private String address;
 
+    private String age;
+
 }
