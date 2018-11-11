@@ -258,10 +258,10 @@ public class Chapter1ApplicationTests {
             mySon.setKindPigs(kindPigs);
             mySon.setPapaName("papa");
 
-            log.info("===================================redis序列化");
+            log.info("===================================protoStuff redis序列化");
             byte[] bytes = ProtoStuffUtil.serialize(mySon);
 
-            log.info("===================================redis反序列化");
+            log.info("===================================protoStuff redis反序列化");
             MySecondSon mySecondSon = ProtoStuffUtil.deserialize(bytes, MySecondSon.class);
             log.info("内容[" + mySecondSon.toString() + "]");
 
