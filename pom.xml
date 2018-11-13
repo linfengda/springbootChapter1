@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.linfengda.sb</groupId>
 	<artifactId>chapter1</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1-${myActivateFile}</version>
 	<packaging>jar</packaging>
 
 	<name>chapter1</name>
@@ -171,31 +171,44 @@
         <!-- end -->
 	</dependencies>
 
-    <!-- build标签：声明编译信息，使用的插件 -->
+
+
+    <!-- build标签：声明编译信息 -->
 	<build>
+
+        <!-- 默认构建行为 -->
+        <defaultGoal>package</defaultGoal>
+        <!-- 构建结果所在的路径 -->
+        <directory>${basedir}/target</directory>
+        <!-- 构建结果的名字 -->
+        <finalName>${artifactId}-${version}</finalName>
 
         <!-- resources标签：声明资源文件 -->
         <resources>
             <resource>
+                <!-- 构建过程中是否对资源进行过滤 -->
                 <filtering>true</filtering>
+                <!-- 资源文件的路径 -->
                 <directory>${basedir}/src/main/resources</directory>
+                <!-- 包含哪些文件 -->
                 <includes>
-                    <include>**/application*.yml</include>
-                    <include>**/application*.yaml</include>
-                    <include>**/application*.properties</include>
+                    <include>**/mapper/**/*.xml</include>
+                    <include>**/application.yml</include>
+                    <include>**/application.yaml</include>
+                    <include>**/application.properties</include>
+
+                    <include>**/application-${myActivateFile}.yml</include>
+                    <include>**/application-${myActivateFile}.yaml</include>
+                    <include>**/application-${myActivateFile}.properties</include>
                 </includes>
+                <!-- 不包含哪些文件 -->
+                <excludes>
+                    <exclude>**/fileUnWanted.properties</exclude>
+                </excludes>
             </resource>
-            <!--<resource>-->
-                <!--<directory>${basedir}/src/main/resources</directory>-->
-                <!--<filtering>true</filtering>-->
-                <!--<includes>-->
-                    <!--<include>**/application-${activatedProperties}.yml</include>-->
-                    <!--<include>**/application-${activatedProperties}.yaml</include>-->
-                    <!--<include>**/application-${activatedProperties}.properties</include>-->
-                <!--</includes>-->
-            <!--</resource>-->
         </resources>
 
+        <!-- 声明一个maven打包插件 -->
 		<plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -211,31 +224,31 @@
 		</plugins>
 	</build>
 
-    <!-- maven打包时指定配置文件，使用mvn package -Pdev来激活对应的配置文件 -->
+    <!-- maven打包时指定配置文件，使用mvn -U clean package -Plocal来显式激活对应的配置文件 -->
     <profiles>
+        <!-- 本地开发环境 -->
         <profile>
-            <!-- 本地开发环境 -->
             <id>dev</id>
             <properties>
-                <profiles.active>dev</profiles.active>
+                <myActivateFile>local</myActivateFile>
             </properties>
             <activation>
-                <!-- 开启本地开发环境 -->
+                <!-- 默认开启本地开发环境 -->
                 <activeByDefault>true</activeByDefault>
             </activation>
         </profile>
+        <!-- 测试环境 -->
         <profile>
-            <!-- 测试环境 -->
             <id>test</id>
             <properties>
-                <profiles.active>test</profiles.active>
+                <myActivateFile>test</myActivateFile>
             </properties>
         </profile>
+        <!-- 生产环境 -->
         <profile>
-            <!-- 生产环境 -->
             <id>pro</id>
             <properties>
-                <profiles.active>pro</profiles.active>
+                <myActivateFile>prod</myActivateFile>
             </properties>
         </profile>
     </profiles>

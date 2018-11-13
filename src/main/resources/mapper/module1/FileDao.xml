@@ -9,7 +9,7 @@
         f.title as title,
         f.description as description,
         f.release_year as releaseYear,
-        lg.papaName as languageName
+        lg.name as languageName
         FROM film AS f
         LEFT JOIN `language` AS lg ON f.language_id = lg.language_id
         LEFT JOIN film_actor AS fa ON f.film_id = fa.film_id
@@ -18,8 +18,8 @@
         LEFT JOIN category AS c ON fc.category_id = c.category_id
         WHERE 1 = 1
         <if test="actorName != null and actorName != ''">AND a.first_name LIKE concat('%', #{actorName}, '%')</if>
-        <if test="category != null and category != ''">AND c.papaName LIKE concat('%', #{category}, '%')</if>
-        <if test="language != null and language != ''">AND lg.papaName = #{language}</if>
+        <if test="category != null and category != ''">AND c.name LIKE concat('%', #{category}, '%')</if>
+        <if test="language != null and language != ''">AND lg.name = #{language}</if>
     </select>
 
 

@@ -3,11 +3,10 @@ server:
   tomcat.max-threads: 300
 
 spring:
+    profiles:
+      active: @activatedProperties@
     datasource:
       driver-class-name: com.mysql.jdbc.Driver
-      url: jdbc:mysql://127.0.0.1:3306/sakila?useSSL=true&useUnicode=yes&characterEncoding=UTF-8&autoReconnect=true
-      username: root
-      password: root
       type: com.zaxxer.hikari.HikariDataSource
       hikari:
         minimum-idle: 5
@@ -29,8 +28,3 @@ spring:
           max-active: 200
           max-idle: 8
           max-wait: -1
-
-
-
-
-

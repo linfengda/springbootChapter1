@@ -106,14 +106,6 @@ public class CheckUtil {
         return null == cell || cell.getCellType() == Cell.CELL_TYPE_BLANK;
     }
 
-    private static double getNumericCellValue(Cell cell) {
-        if (isEmptyCell(cell)) {
-            return 0;
-        }
-        cell.setCellType(CellType.NUMERIC);
-        return cell.getNumericCellValue();
-    }
-
     private static String getStringCellValue(Cell cell) {
         if (isEmptyCell(cell)) {
             return null;
