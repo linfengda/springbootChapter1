@@ -14,6 +14,7 @@ import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
+import org.springframework.util.Assert;
 
 /**
  * 描述: Redis配置
@@ -26,9 +27,6 @@ public class RedisConfig {
     @Value("${spring.redis.serializer}")
     private String serializer;
 
-    private SimpleRedisTemplate DEFAULT_REDIS_TEMPLATE = new SimpleRedisTemplate4PS();
-    private RedisSerializer DEFAULT_REDIS_SERIALIZER = new ProtoStuffSerializer();
-
     /**
      * 序列化类型
      */
@@ -40,7 +38,7 @@ public class RedisConfig {
                     return s;
                 }
             }
-            return null;
+            return jackson;
         }
     }
 
@@ -55,13 +53,15 @@ public class RedisConfig {
     public SimpleRedisTemplate simpleRedisTemplate(RedisConnectionFactory connectionFactory) {
 
         Serializer serializer = Serializer.getType(this.serializer);
+        Assert.notNull(serializer, "序列化方式不能为空！");
         SimpleRedisTemplate simpleRedisTemplate = getRedisTemplate(serializer);
+        RedisSerializer redisSerializer = getRedisSerializer(serializer);
         simpleRedisTemplate.setConnectionFactory(connectionFactory);
         // 配置序列化和反序列化方式
         simpleRedisTemplate.setKeySerializer(new StringRedisSerializer());
         simpleRedisTemplate.setHashKeySerializer(new StringRedisSerializer());
-        simpleRedisTemplate.setValueSerializer(getRedisSerializer(serializer));
-        simpleRedisTemplate.setHashValueSerializer(getRedisSerializer(serializer));
+        simpleRedisTemplate.setValueSerializer(redisSerializer);
+        simpleRedisTemplate.setHashValueSerializer(redisSerializer);
         simpleRedisTemplate.afterPropertiesSet();
         return simpleRedisTemplate;
     }
@@ -73,7 +73,7 @@ public class RedisConfig {
             case jackson:
                 return new SimpleRedisTemplate4JS();
             default:
-                return DEFAULT_REDIS_TEMPLATE;
+                return null;
         }
     }
 
@@ -90,7 +90,7 @@ public class RedisConfig {
                 jackson2JsonRedisSerializer.setObjectMapper(om);
                 return jackson2JsonRedisSerializer;
             default:
-                return DEFAULT_REDIS_SERIALIZER;
+                return null;
         }
     }
 

@@ -203,7 +203,7 @@
                 </includes>
                 <!-- 不包含哪些文件 -->
                 <excludes>
-                    <exclude>**/fileUnWanted.properties</exclude>
+                    <exclude>**/aaabbb.properties</exclude>
                 </excludes>
             </resource>
         </resources>
