@@ -34,6 +34,10 @@ public class ProtoStuffUtil {
 
     public static <T> T deserialize(byte[] data, Class<T> clazz) {
         try {
+            // 对于String类型快捷处理
+            if (String.class == clazz) {
+                return (T) new String(data, "UTF-8");
+            }
             Objenesis objenesis = new ObjenesisStd();
             T message = objenesis.newInstance(clazz);
             Schema<T> schema = getSchema(clazz);

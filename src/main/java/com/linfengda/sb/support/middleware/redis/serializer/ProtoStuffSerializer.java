@@ -21,6 +21,7 @@ public class ProtoStuffSerializer implements RedisSerializer<Object> {
         if (o == null){
             return null;
         }
+        // 对于String类型快捷处理
         if (o instanceof String){
             try {
                 return o.toString().getBytes("UTF-8");
@@ -43,7 +44,15 @@ public class ProtoStuffSerializer implements RedisSerializer<Object> {
     public Object deserialize(@Nullable byte[] bytes, Class clazz) throws SerializationException {
         if (null == bytes) {
             return null;
-        } else {
+        }
+        if (clazz == String.class){
+            try {
+                return new String(bytes, "UTF-8");
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }else {
             return ProtoStuffUtil.deserialize(bytes, clazz);
         }
     }
