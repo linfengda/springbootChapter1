@@ -1,4 +1,4 @@
-package com.linfengda.sb.chapter1.entity.vo;
+package com.linfengda.sb.chapter1.serializeTest.entity.vo;
 
 import lombok.Data;
 

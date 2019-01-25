@@ -1,7 +1,6 @@
-package com.linfengda.sb.chapter1;
+package com.linfengda.sb.chapter1.serializeTest;
 
-import com.linfengda.sb.chapter1.entity.vo.DoubleClazz;
-import com.linfengda.sb.chapter1.entity.vo.StringClazz;
+import com.linfengda.sb.chapter1.serializeTest.entity.vo.StringClazz;
 import com.linfengda.sb.support.middleware.redis.serializer.ProtoStuffSerializer;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
@@ -13,7 +12,7 @@ import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
  * @create 2018-09-13 17:26
  */
 @Slf4j
-public class SerializerTest {
+public class SerializerPerformanceTest {
 
     public static void main(String[] args) {
         try {

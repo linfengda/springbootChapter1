@@ -1,4 +1,4 @@
-package com.linfengda.sb.chapter1.git;
+package com.linfengda.sb.chapter1.gitTest;
 
 /**
  * 描述:

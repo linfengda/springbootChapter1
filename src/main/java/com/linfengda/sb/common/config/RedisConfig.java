@@ -10,11 +10,18 @@ import com.linfengda.sb.support.middleware.redis.serializer.ProtoStuffSerializer
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.context.annotation.Bean;
-import org.springframework.data.redis.connection.RedisConnectionFactory;
+import org.springframework.data.redis.connection.RedisClusterConfiguration;
+import org.springframework.data.redis.connection.RedisNode;
+import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
+import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.util.Assert;
+import redis.clients.jedis.JedisPoolConfig;
+
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * 描述: Redis配置
@@ -26,34 +33,76 @@ import org.springframework.util.Assert;
 public class RedisConfig {
     @Value("${spring.redis.serializer}")
     private String serializer;
+    @Value("${spring.redis.cluster.max-redirects}")
+    private int maxRedirects;
+    @Value("${spring.redis.cluster.nodes}")
+    private String clusterNodes;
+    @Value("${spring.redis.timeout}")
+    private int timeout;
+    @Value("${spring.redis.commandTimeout}")
+    private int commandTimeout;
+    @Value("${spring.redis.jedis.pool.max-active}")
+    private int maxActive;
+    @Value("${spring.redis.jedis.pool.min-idle}")
+    private int minIdle;
+    @Value("${spring.redis.jedis.pool.max-idle}")
+    private int maxIdle;
+    @Value("${spring.redis.jedis.pool.max-wait}")
+    private long maxWait;
+
 
     /**
-     * 序列化类型
+     * Jedis客户端
+     * @return
      */
-    public enum Serializer {
-        protoStuff, jackson;
-        public static Serializer getType(String serializer) {
-            for (Serializer s : values()) {
-                if (s.name().equals(serializer)) {
-                    return s;
-                }
-            }
-            return jackson;
-        }
+    //@Bean
+    public JedisConnectionFactory jedisConnectionFactory() {
+
+        RedisClusterConfiguration clusterConfig = new RedisClusterConfiguration();
+        clusterConfig.setClusterNodes(getClusterNodes(clusterNodes));
+        clusterConfig.setMaxRedirects(maxRedirects);
+
+        JedisPoolConfig jedisPoolConfig = new JedisPoolConfig();
+        jedisPoolConfig.setMaxIdle(maxIdle);
+        jedisPoolConfig.setMinIdle(minIdle);
+        jedisPoolConfig.setMaxWaitMillis(maxWait);
+        JedisConnectionFactory jedisConnectionFactory = new JedisConnectionFactory(clusterConfig, jedisPoolConfig);
+        return jedisConnectionFactory;
     }
 
-
     /**
-     * 注入包含redis常见操作的模板
-     *
-     * @param connectionFactory
+     * lettuce客户端
      * @return
      */
     @Bean
-    public SimpleRedisTemplate simpleRedisTemplate(RedisConnectionFactory connectionFactory) {
+    public LettuceConnectionFactory lettuceConnectionFactory() {
 
+        RedisClusterConfiguration redisClusterConfiguration = new RedisClusterConfiguration();
+        redisClusterConfiguration.setClusterNodes(getClusterNodes(clusterNodes));
+        redisClusterConfiguration.setMaxRedirects(maxRedirects);
+        LettuceConnectionFactory lettuceConnectionFactory = new LettuceConnectionFactory(redisClusterConfiguration);
+        return lettuceConnectionFactory;
+    }
+
+    private Set<RedisNode> getClusterNodes(String clusterNodes) {
+        String[] cNodes = clusterNodes.split(",");
+        Set<RedisNode> nodes = new HashSet<>();
+        for (String node : cNodes) {
+            String[] hp = node.split(":");
+            nodes.add(new RedisNode(hp[0], Integer.parseInt(hp[1])));
+        }
+        return nodes;
+    }
+
+    /**
+     * 注入包含redis常见操作的模板
+     * @return
+     */
+    @Bean
+    public SimpleRedisTemplate simpleRedisTemplate(LettuceConnectionFactory connectionFactory) {
         Serializer serializer = Serializer.getType(this.serializer);
         Assert.notNull(serializer, "序列化方式不能为空！");
+
         SimpleRedisTemplate simpleRedisTemplate = getRedisTemplate(serializer);
         RedisSerializer redisSerializer = getRedisSerializer(serializer);
         simpleRedisTemplate.setConnectionFactory(connectionFactory);
@@ -94,4 +143,18 @@ public class RedisConfig {
         }
     }
 
+    /**
+     * 序列化类型
+     */
+    public enum Serializer {
+        protoStuff, jackson;
+        public static Serializer getType(String serializer) {
+            for (Serializer v : values()) {
+                if (v.name().equals(serializer)) {
+                    return v;
+                }
+            }
+            return jackson;
+        }
+    }
 }

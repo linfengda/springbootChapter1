@@ -26,10 +26,10 @@ public class DistributeRedisLock {
             map.put(key, getCurrentThreadId());
         }
         Boolean result = simpleRedisTemplate.opsForValue().multiSetIfAbsent(map);
-        for (String key : keys) {
-            simpleRedisTemplate.expire(key, DEFAULT_LOCK_EXPIRE_TIME, TimeUnit.SECONDS);
-        }
         if (result) {
+            for (String key : keys) {
+                simpleRedisTemplate.expire(key, DEFAULT_LOCK_EXPIRE_TIME, TimeUnit.SECONDS);
+            }
             log.info("Thread[id=" +getCurrentThreadId()+ "]" + "lock success");
         }
         return result;
@@ -37,8 +37,8 @@ public class DistributeRedisLock {
 
     protected boolean tryLock(String key) throws Exception {
         Boolean result = simpleRedisTemplate.opsForValue().setIfAbsent(key, getCurrentThreadId());
-        simpleRedisTemplate.expire(key, DEFAULT_LOCK_EXPIRE_TIME, TimeUnit.SECONDS);
         if (result) {
+            simpleRedisTemplate.expire(key, DEFAULT_LOCK_EXPIRE_TIME, TimeUnit.SECONDS);
             log.info("Thread[id=" +getCurrentThreadId()+ "]" + "lock success");
         }
         return result;

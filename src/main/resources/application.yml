@@ -1,4 +1,3 @@
-
 spring:
   profiles:
     active: @myActivateFile@
@@ -15,9 +14,19 @@ spring:
       connection-test-query: SELECT 1
 
   redis:
+    serializer: jackson
     timeout: 5000
+    commandTimeout: 5000
     jedis:
       pool:
         max-active: 200
+        min-idle: 0
         max-idle: 8
         max-wait: -1
+
+thread:
+  pool:
+    corePoolSize: 50
+    maxPoolSize: 100
+    queueSize: 30
+    keepAlive: 5

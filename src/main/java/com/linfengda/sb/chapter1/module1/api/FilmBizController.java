@@ -1,7 +1,6 @@
 package com.linfengda.sb.chapter1.module1.api;
 
 import com.github.pagehelper.Page;
-import com.github.pagehelper.PageHelper;
 import com.linfengda.sb.chapter1.module1.entity.vo.FilmPlacardInfo;
 import com.linfengda.sb.chapter1.module1.service.FilmBizService;
 import com.linfengda.sb.support.api.BaseController;
@@ -38,5 +37,10 @@ public class FilmBizController extends BaseController {
         return new Result(filmPlacardInfoPage);
     }
 
+    @PostMapping("/film/testRedisConnection")
+    public Result testRedisConnection() throws Exception {
 
+        filmBizService.testRedisConnection();
+        return SUCCESS_RESULT;
+    }
 }
