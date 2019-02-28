@@ -1,8 +1,5 @@
 package com.linfengda.sb.support.lettuce.test.multi;
 
-import com.linfengda.sb.support.lettuce.config.ClientType;
-import com.linfengda.sb.support.lettuce.test.operation.JedisTestService;
-import com.linfengda.sb.support.lettuce.test.operation.LettuceTestService;
 import com.linfengda.sb.support.lettuce.test.operation.TestService;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
