@@ -10,7 +10,6 @@ import com.linfengda.sb.support.api.entity.RequestParam;
 import com.linfengda.sb.support.middleware.redis.SimpleRedisTemplate;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Async;
-import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -37,22 +36,31 @@ public class FilmBizServiceImpl implements FilmBizService {
     }
 
     @Override
-    public void testRedisConnection() throws BusinessException {
-        int count = 100;
-        for (int i=0; i<count; i++) {
-            doTestRedis();
-        }
-        log.info("{}个测试线程启动完毕", count);
+    public void testRedisConnection(RequestParam params) throws BusinessException {
+        Long count = params.getLong("count");
+        log.info("测试{}次redis请求", count);
+        testStringCommand(count);
     }
 
-    @Async("myExecutorPool")
-    public void doTestRedis() {
-        long t1 = System.currentTimeMillis();
-        simpleRedisTemplate.mapPut("a", "b", "123");
-        long t2 = System.currentTimeMillis();
-        log.info("------------------------------------------------setTime={}", t2-t1);
-        System.out.println("------------------------------------------------" + simpleRedisTemplate.mapGet("a", "b", String.class));
-        long t3 = System.currentTimeMillis();
-        log.info("------------------------------------------------getTime={}", t3-t2);
+    //@Async("myExecutorPool")
+    public void testStringCommand(Long count) {
+        long setTime = 0;
+        long getTime = 0;
+        long delTime = 0;
+        for (int i = 0; i < count; i++) {
+            long t0 = System.currentTimeMillis();
+            simpleRedisTemplate.setObject("key", "value");
+            long t1 = System.currentTimeMillis();
+            simpleRedisTemplate.getObject("key", String.class);
+            long t2 = System.currentTimeMillis();
+            simpleRedisTemplate.deleteObject("key");
+            long t3 = System.currentTimeMillis();
+            setTime += t1-t0;
+            getTime += t2-t1;
+            delTime += t3-t2;
+        }
+        log.info("------------------------------------------------<string command> set operation average time={}ms", setTime/count);
+        log.info("------------------------------------------------<string command> get operation average time={}ms", getTime/count);
+        log.info("------------------------------------------------<string command> del operation average time={}ms", delTime/count);
     }
 }

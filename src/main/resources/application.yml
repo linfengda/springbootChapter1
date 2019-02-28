@@ -29,4 +29,4 @@ thread:
     corePoolSize: 50
     maxPoolSize: 100
     queueSize: 30
-    keepAlive: 5
+    keepAlive: 60

@@ -55,7 +55,7 @@ public class RedisConfig {
      * Jedis客户端
      * @return
      */
-    //@Bean
+    @Bean
     public JedisConnectionFactory jedisConnectionFactory() {
 
         RedisClusterConfiguration clusterConfig = new RedisClusterConfiguration();
@@ -74,7 +74,7 @@ public class RedisConfig {
      * lettuce客户端
      * @return
      */
-    @Bean
+    /*@Bean
     public LettuceConnectionFactory lettuceConnectionFactory() {
 
         RedisClusterConfiguration redisClusterConfiguration = new RedisClusterConfiguration();
@@ -82,7 +82,7 @@ public class RedisConfig {
         redisClusterConfiguration.setMaxRedirects(maxRedirects);
         LettuceConnectionFactory lettuceConnectionFactory = new LettuceConnectionFactory(redisClusterConfiguration);
         return lettuceConnectionFactory;
-    }
+    }*/
 
     private Set<RedisNode> getClusterNodes(String clusterNodes) {
         String[] cNodes = clusterNodes.split(",");
@@ -94,12 +94,8 @@ public class RedisConfig {
         return nodes;
     }
 
-    /**
-     * 注入包含redis常见操作的模板
-     * @return
-     */
     @Bean
-    public SimpleRedisTemplate simpleRedisTemplate(LettuceConnectionFactory connectionFactory) {
+    public SimpleRedisTemplate simpleRedisTemplate(JedisConnectionFactory connectionFactory) {
         Serializer serializer = Serializer.getType(this.serializer);
         Assert.notNull(serializer, "序列化方式不能为空！");
 
@@ -111,7 +107,7 @@ public class RedisConfig {
         simpleRedisTemplate.setHashKeySerializer(new StringRedisSerializer());
         simpleRedisTemplate.setValueSerializer(redisSerializer);
         simpleRedisTemplate.setHashValueSerializer(redisSerializer);
-        simpleRedisTemplate.afterPropertiesSet();
+        //simpleRedisTemplate.afterPropertiesSet();
         return simpleRedisTemplate;
     }
 

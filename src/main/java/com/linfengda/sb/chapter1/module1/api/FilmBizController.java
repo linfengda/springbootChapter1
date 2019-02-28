@@ -26,9 +26,8 @@ public class FilmBizController extends BaseController {
 
     @PostMapping("/film/queryFilmList")
     public Result queryFilmList() throws Exception {
-
         // 从context中获取封装的请求参数
-         RequestParam params = getParams();
+        RequestParam params = getParams();
         // 使用spring提供的断言
         Assert.notNull(params.getInteger("pageNo"), "分页页码必须为数字且不能为空");
         Assert.notNull(params.getInteger("pageSize"), "分页大小必须为数字且不能为空");
@@ -39,8 +38,8 @@ public class FilmBizController extends BaseController {
 
     @PostMapping("/film/testRedisConnection")
     public Result testRedisConnection() throws Exception {
-
-        filmBizService.testRedisConnection();
+        RequestParam params = getParams();
+        filmBizService.testRedisConnection(params);
         return SUCCESS_RESULT;
     }
 }
