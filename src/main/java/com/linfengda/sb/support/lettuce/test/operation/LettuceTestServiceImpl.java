@@ -13,7 +13,7 @@ import lombok.extern.slf4j.Slf4j;
  * @create 2019-02-19 23:31
  */
 @Slf4j
-public class LettuceTestService implements TestService {
+public class LettuceTestServiceImpl implements TestService {
     private static LettuceTemplate<String, Object> lettuceTemplate = LettuceTemplateHelper.getTemplate();
 
     @Override
@@ -39,13 +39,18 @@ public class LettuceTestService implements TestService {
     }
 
     @Override
-    public void StringSetOperation() throws Exception {
+    public void stringSetOperation() throws Exception {
+        lettuceTemplate.set("key:" + Thread.currentThread().getId(), "value");
+    }
+
+    @Override
+    public void stringSetGetOperation() throws Exception {
         lettuceTemplate.set("key:" + Thread.currentThread().getId(), "value");
         lettuceTemplate.get("key:" + Thread.currentThread().getId());
     }
 
     @Override
-    public void ListSetOperation() throws Exception {
+    public void simpleListOperation() throws Exception {
         lettuceTemplate.set("key", "i am the boss");
         String str = (String) lettuceTemplate.get("key");
         log.info(str);
@@ -60,8 +65,17 @@ public class LettuceTestService implements TestService {
         filmPlacardInfo.setReleaseYear("2019");
         filmPlacardInfo.setLanguageName("chinese");
         row = lettuceTemplate.leftPush("myList", filmPlacardInfo);
-        log.info("leftPush affect row: {}" + row);
+        log.info("row length after leftPush: {}", row);
         filmPlacardInfo = (FilmPlacardInfo) lettuceTemplate.rightPop("myList");
         log.info("rightPop object: ", JSONObject.toJSONString(filmPlacardInfo));
+    }
+
+    public static void main(String[] args) {
+        try {
+            LettuceTestServiceImpl testService = new LettuceTestServiceImpl();
+            testService.simpleListOperation();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -4,7 +4,9 @@ public interface TestService {
 
     void simpleStringOperation(int count) throws Exception;
 
-    void StringSetOperation() throws Exception;
+    void stringSetOperation() throws Exception;
 
-    void ListSetOperation() throws Exception;
+    void stringSetGetOperation() throws Exception;
+
+    void simpleListOperation() throws Exception;
 }
