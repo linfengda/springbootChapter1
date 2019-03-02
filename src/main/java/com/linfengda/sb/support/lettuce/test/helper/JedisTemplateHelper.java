@@ -34,24 +34,23 @@ public class JedisTemplateHelper {
 
     public static void init() {
         // 获取集群机器配置
-        RedisClusterConfiguration clusterConfig = new RedisClusterConfiguration();
+        /*RedisClusterConfiguration clusterConfig = new RedisClusterConfiguration();
         clusterConfig.setClusterNodes(getClusterNodes("47.106.79.8:7001,47.106.79.8:7002,47.106.79.8:7003,119.23.181.11:7004,119.23.181.11:7005,119.23.181.11:7006"));
-
         JedisPoolConfig jedisPoolConfig = new JedisPoolConfig();
         jedisPoolConfig.setMaxTotal(200);
         jedisPoolConfig.setMaxIdle(10);
         jedisPoolConfig.setMinIdle(0);
         jedisPoolConfig.setMaxWaitMillis(-1);
         // 获取连接管理工厂
-        JedisConnectionFactory jedisConnectionFactory = new JedisConnectionFactory(clusterConfig, jedisPoolConfig);
+        JedisConnectionFactory jedisConnectionFactory = new JedisConnectionFactory(clusterConfig, jedisPoolConfig);*/
 
 
-        /*RedisStandaloneConfiguration standaloneConfiguration = new RedisStandaloneConfiguration();
+        RedisStandaloneConfiguration standaloneConfiguration = new RedisStandaloneConfiguration();
         standaloneConfiguration.setHostName("47.106.79.8");
         standaloneConfiguration.setPort(7001);
         standaloneConfiguration.setDatabase(0);
         // 获取连接管理工厂
-        JedisConnectionFactory jedisConnectionFactory = new JedisConnectionFactory(standaloneConfiguration);*/
+        JedisConnectionFactory jedisConnectionFactory = new JedisConnectionFactory(standaloneConfiguration);
         jedisConnectionFactory.afterPropertiesSet();
         // 获取序列化器
         Jackson2JsonRedisSerializer jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer(Object.class);

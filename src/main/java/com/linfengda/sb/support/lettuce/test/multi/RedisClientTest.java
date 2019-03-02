@@ -50,11 +50,11 @@ public class RedisClientTest {
 
 
 
-
     public static void main(String[] args) {
         //lettuceTest();
         //jedisTest();
-        redisQpsTest();
+        //redisQpsTest();
+        redisDistributeLockTest();
     }
 
     private static void lettuceTest() {
@@ -146,4 +146,26 @@ public class RedisClientTest {
             startCountDown.countDown();
         }
     }
+
+    private static void redisDistributeLockTest() {
+        try {
+            String lockKey = "myLockKey";
+            DistributeLockTestTask lockTestTask1 = new DistributeLockTestTask();
+            lockTestTask1.setTaskId(1);
+            lockTestTask1.setLockKey(lockKey);
+            lockTestTask1.setIsTry(false);
+            DistributeLockTestTask lockTestTask2 = new DistributeLockTestTask();
+            lockTestTask2.setTaskId(2);
+            lockTestTask2.setLockKey(lockKey);
+            lockTestTask2.setIsTry(true);
+
+            executor.execute(lockTestTask1);
+            Thread.sleep(3000);
+            executor.execute(lockTestTask2);
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

@@ -1,6 +1,7 @@
 package com.linfengda.sb.support.middleware.redis;
 
 import com.linfengda.sb.common.util.ServerRunTimeUtil;
+import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
@@ -30,7 +31,7 @@ public class DistributeRedisLock {
             for (String key : keys) {
                 simpleRedisTemplate.expire(key, DEFAULT_LOCK_EXPIRE_TIME, TimeUnit.SECONDS);
             }
-            log.info("Thread[id=" +getCurrentThreadId()+ "]" + "lock success");
+            log.info("Thread id={} lock success", getCurrentThreadId());
         }
         return result;
     }
@@ -39,7 +40,7 @@ public class DistributeRedisLock {
         Boolean result = simpleRedisTemplate.opsForValue().setIfAbsent(key, getCurrentThreadId());
         if (result) {
             simpleRedisTemplate.expire(key, DEFAULT_LOCK_EXPIRE_TIME, TimeUnit.SECONDS);
-            log.info("Thread[id=" +getCurrentThreadId()+ "]" + "lock success");
+            log.info("Thread id={} lock success", getCurrentThreadId());
         }
         return result;
     }
@@ -57,7 +58,7 @@ public class DistributeRedisLock {
         if (null == threadId) {return true;}
         if (threadId.equals(currentThreadId)) {
             simpleRedisTemplate.delete(key);
-            log.info("Thread[id=" +currentThreadId+ "]" + "unlock success");
+            log.info("Thread id={}" + "unlock success", currentThreadId);
             return true;
         }
         return false;
