@@ -12,6 +12,7 @@ import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.redis.connection.RedisClusterConfiguration;
 import org.springframework.data.redis.connection.RedisNode;
+import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
@@ -33,22 +34,12 @@ import java.util.Set;
 public class RedisConfig {
     @Value("${spring.redis.serializer}")
     private String serializer;
-    @Value("${spring.redis.cluster.max-redirects}")
-    private int maxRedirects;
-    @Value("${spring.redis.cluster.nodes}")
-    private String clusterNodes;
-    @Value("${spring.redis.timeout}")
-    private int timeout;
-    @Value("${spring.redis.commandTimeout}")
-    private int commandTimeout;
-    @Value("${spring.redis.jedis.pool.max-active}")
-    private int maxActive;
-    @Value("${spring.redis.jedis.pool.min-idle}")
-    private int minIdle;
-    @Value("${spring.redis.jedis.pool.max-idle}")
-    private int maxIdle;
-    @Value("${spring.redis.jedis.pool.max-wait}")
-    private long maxWait;
+    @Value("${spring.redis.host}")
+    private String host;
+    @Value("${spring.redis.port}")
+    private int port;
+    @Value("${spring.redis.database}")
+    private int database;
 
 
     /**
@@ -58,40 +49,13 @@ public class RedisConfig {
     @Bean
     public JedisConnectionFactory jedisConnectionFactory() {
 
-        RedisClusterConfiguration clusterConfig = new RedisClusterConfiguration();
-        clusterConfig.setClusterNodes(getClusterNodes(clusterNodes));
-        clusterConfig.setMaxRedirects(maxRedirects);
-
-        JedisPoolConfig jedisPoolConfig = new JedisPoolConfig();
-        jedisPoolConfig.setMaxIdle(maxIdle);
-        jedisPoolConfig.setMinIdle(minIdle);
-        jedisPoolConfig.setMaxWaitMillis(maxWait);
-        JedisConnectionFactory jedisConnectionFactory = new JedisConnectionFactory(clusterConfig, jedisPoolConfig);
+        RedisStandaloneConfiguration standaloneConfiguration = new RedisStandaloneConfiguration();
+        standaloneConfiguration.setHostName(host);
+        standaloneConfiguration.setPort(port);
+        standaloneConfiguration.setDatabase(database);
+        // 获取连接管理工厂
+        JedisConnectionFactory jedisConnectionFactory = new JedisConnectionFactory(standaloneConfiguration);
         return jedisConnectionFactory;
-    }
-
-    /**
-     * lettuce客户端
-     * @return
-     */
-    /*@Bean
-    public LettuceConnectionFactory lettuceConnectionFactory() {
-
-        RedisClusterConfiguration redisClusterConfiguration = new RedisClusterConfiguration();
-        redisClusterConfiguration.setClusterNodes(getClusterNodes(clusterNodes));
-        redisClusterConfiguration.setMaxRedirects(maxRedirects);
-        LettuceConnectionFactory lettuceConnectionFactory = new LettuceConnectionFactory(redisClusterConfiguration);
-        return lettuceConnectionFactory;
-    }*/
-
-    private Set<RedisNode> getClusterNodes(String clusterNodes) {
-        String[] cNodes = clusterNodes.split(",");
-        Set<RedisNode> nodes = new HashSet<>();
-        for (String node : cNodes) {
-            String[] hp = node.split(":");
-            nodes.add(new RedisNode(hp[0], Integer.parseInt(hp[1])));
-        }
-        return nodes;
     }
 
     @Bean
