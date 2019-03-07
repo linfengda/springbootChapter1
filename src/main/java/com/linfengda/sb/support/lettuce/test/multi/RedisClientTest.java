@@ -1,9 +1,9 @@
 package com.linfengda.sb.support.lettuce.test.multi;
 
 import com.linfengda.sb.support.lettuce.test.helper.ThreadPoolHelper;
-import com.linfengda.sb.support.lettuce.test.operation.JedisTestServiceImpl;
-import com.linfengda.sb.support.lettuce.test.operation.LettuceTestServiceImpl;
-import com.linfengda.sb.support.lettuce.test.operation.TestService;
+import com.linfengda.sb.support.lettuce.test.service.JedisTestServiceImpl;
+import com.linfengda.sb.support.lettuce.test.service.LettuceTestServiceImpl;
+import com.linfengda.sb.support.lettuce.test.service.TestService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 

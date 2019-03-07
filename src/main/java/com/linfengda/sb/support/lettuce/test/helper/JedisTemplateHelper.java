@@ -44,11 +44,16 @@ public class JedisTemplateHelper {
         // 获取连接管理工厂
         JedisConnectionFactory jedisConnectionFactory = new JedisConnectionFactory(clusterConfig, jedisPoolConfig);*/
 
-
         RedisStandaloneConfiguration standaloneConfiguration = new RedisStandaloneConfiguration();
+        standaloneConfiguration.setHostName("127.0.0.1");
+        standaloneConfiguration.setPort(6379);
+        standaloneConfiguration.setDatabase(0);
+
+        /*RedisStandaloneConfiguration standaloneConfiguration = new RedisStandaloneConfiguration();
         standaloneConfiguration.setHostName("47.106.79.8");
         standaloneConfiguration.setPort(7001);
-        standaloneConfiguration.setDatabase(0);
+        standaloneConfiguration.setDatabase(0);*/
+
         // 获取连接管理工厂
         JedisConnectionFactory jedisConnectionFactory = new JedisConnectionFactory(standaloneConfiguration);
         jedisConnectionFactory.afterPropertiesSet();

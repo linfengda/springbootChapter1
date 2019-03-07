@@ -1,4 +1,4 @@
-package com.linfengda.sb.support.lettuce.test.operation;
+package com.linfengda.sb.support.lettuce.test.service;
 
 import com.linfengda.sb.support.lettuce.test.helper.BytePackageHelper;
 import com.linfengda.sb.support.lettuce.test.helper.JedisTemplateHelper;
@@ -32,9 +32,9 @@ public class JedisTestServiceImpl implements TestService {
             getTime += t2-t1;
             delTime += t3-t2;
         }
-        log.info("------------------------------------------------<string command> set operation average time={}ms", setTime/count);
-        log.info("------------------------------------------------<string command> get operation average time={}ms", getTime/count);
-        log.info("------------------------------------------------<string command> del operation average time={}ms", delTime/count);
+        log.info("------------------------------------------------<string command> set service average time={}ms", setTime/count);
+        log.info("------------------------------------------------<string command> get service average time={}ms", getTime/count);
+        log.info("------------------------------------------------<string command> del service average time={}ms", delTime/count);
     }
 
     @Override

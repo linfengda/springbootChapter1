@@ -1,6 +1,6 @@
 package com.linfengda.sb.support.lettuce.test.multi;
 
-import com.linfengda.sb.support.lettuce.test.operation.TestService;
+import com.linfengda.sb.support.lettuce.test.service.TestService;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 
@@ -48,7 +48,7 @@ public class MultiTestTask implements Runnable {
         long t0 = System.currentTimeMillis();
         testService.stringSetGetOperation();
         long t1 = System.currentTimeMillis()-t0;
-        log.info("------------------------------------------------<string command> operation use time={}ms", t1);
+        log.info("------------------------------------------------<string command> service use time={}ms", t1);
         if (t1 > slowMillSeconds) {
             return true;
         }
