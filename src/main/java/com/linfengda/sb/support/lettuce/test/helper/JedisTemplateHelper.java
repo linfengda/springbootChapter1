@@ -33,8 +33,16 @@ public class JedisTemplateHelper {
     }
 
     public static void init() {
+
+        /*RedisStandaloneConfiguration standaloneConfiguration = new RedisStandaloneConfiguration();
+        standaloneConfiguration.setHostName("127.0.0.1");
+        standaloneConfiguration.setPort(6379);
+        standaloneConfiguration.setDatabase(0);
+        // 获取连接管理工厂
+        JedisConnectionFactory jedisConnectionFactory = new JedisConnectionFactory(standaloneConfiguration);*/
+
         // 获取集群机器配置
-        /*RedisClusterConfiguration clusterConfig = new RedisClusterConfiguration();
+        RedisClusterConfiguration clusterConfig = new RedisClusterConfiguration();
         clusterConfig.setClusterNodes(getClusterNodes("47.106.79.8:7001,47.106.79.8:7002,47.106.79.8:7003,119.23.181.11:7004,119.23.181.11:7005,119.23.181.11:7006"));
         JedisPoolConfig jedisPoolConfig = new JedisPoolConfig();
         jedisPoolConfig.setMaxTotal(200);
@@ -42,20 +50,7 @@ public class JedisTemplateHelper {
         jedisPoolConfig.setMinIdle(0);
         jedisPoolConfig.setMaxWaitMillis(-1);
         // 获取连接管理工厂
-        JedisConnectionFactory jedisConnectionFactory = new JedisConnectionFactory(clusterConfig, jedisPoolConfig);*/
-
-        RedisStandaloneConfiguration standaloneConfiguration = new RedisStandaloneConfiguration();
-        standaloneConfiguration.setHostName("127.0.0.1");
-        standaloneConfiguration.setPort(6379);
-        standaloneConfiguration.setDatabase(0);
-
-        /*RedisStandaloneConfiguration standaloneConfiguration = new RedisStandaloneConfiguration();
-        standaloneConfiguration.setHostName("47.106.79.8");
-        standaloneConfiguration.setPort(7001);
-        standaloneConfiguration.setDatabase(0);*/
-
-        // 获取连接管理工厂
-        JedisConnectionFactory jedisConnectionFactory = new JedisConnectionFactory(standaloneConfiguration);
+        JedisConnectionFactory jedisConnectionFactory = new JedisConnectionFactory(clusterConfig, jedisPoolConfig);
         jedisConnectionFactory.afterPropertiesSet();
         // 获取序列化器
         Jackson2JsonRedisSerializer jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer(Object.class);
@@ -76,16 +71,6 @@ public class JedisTemplateHelper {
 
     private static Set<RedisNode> getClusterNodes(String clusterNodes) {
         String[] hostAndPorts = clusterNodes.split(",");
-        Set<RedisNode> nodes = new HashSet<>();
-        for (String node : hostAndPorts) {
-            String[] hp = node.split(":");
-            nodes.add(new RedisNode(hp[0], Integer.parseInt(hp[1])));
-        }
-        return nodes;
-    }
-
-    private static Set<RedisNode> getSentinelNodes(String sentinelNodes) {
-        String[] hostAndPorts = sentinelNodes.split(",");
         Set<RedisNode> nodes = new HashSet<>();
         for (String node : hostAndPorts) {
             String[] hp = node.split(":");

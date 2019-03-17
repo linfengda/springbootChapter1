@@ -1,4 +1,4 @@
-package com.linfengda.sb.support.lettuce.config;
+package com.linfengda.sb.support.lettuce;
 
 import io.lettuce.core.RedisURI;
 import io.lettuce.core.codec.RedisCodec;

@@ -1,13 +1,8 @@
 package com.linfengda.sb.support.lettuce;
 
-import com.linfengda.sb.support.lettuce.config.LettuceClusterConfig;
-import io.lettuce.core.RedisURI;
 import io.lettuce.core.cluster.RedisClusterClient;
 import io.lettuce.core.cluster.api.StatefulRedisClusterConnection;
-import io.lettuce.core.codec.RedisCodec;
 import lombok.Data;
-
-import java.util.List;
 
 /**
  * 描述: Lettuce连接管理

@@ -5,9 +5,8 @@ import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.linfengda.sb.support.lettuce.LettuceConnectionFactory;
 import com.linfengda.sb.support.lettuce.LettuceTemplate;
-import com.linfengda.sb.support.lettuce.config.LettuceClusterConfig;
+import com.linfengda.sb.support.lettuce.LettuceClusterConfig;
 import io.lettuce.core.codec.ByteArrayCodec;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
