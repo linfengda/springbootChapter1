@@ -1,47 +1,27 @@
 package com.linfengda.sb.support.dao.exception;
 
 
-import com.linfengda.sb.common.entity.ErrorCode;
+import com.linfengda.sb.chapter1.common.entity.ErrorCode;
+import lombok.Getter;
 
 /**
- * 描述: persistent exception
+ * 描述: 持久化异常
  *
  * @author linfengda
  * @create 2018-08-17 16:40
  */
 public class DataAccessException extends RuntimeException {
 
-    private static final long serialVersionUID = 1L;
+    public DataAccessException(String msg) {
+        this.msg = msg;
+    }
 
     public DataAccessException(int code, String msg) {
-        super(msg);
         this.code = code;
         this.msg = msg;
     }
 
-    public DataAccessException(String msg) {
-        super(msg);
-        this.msg = msg;
-    }
+    @Getter private int code = ErrorCode.COMMON_DAO_ERROR_CODE;
 
-    private int code = ErrorCode.COMMON_ERROR_CODE;
-
-    private String msg;
-
-    public int getCode() {
-        return code;
-    }
-
-    public void setCode(int code) {
-        this.code = code;
-    }
-
-    public String getMsg() {
-        return msg;
-    }
-
-    public void setMsg(String msg) {
-        this.msg = msg;
-    }
-
+    @Getter private String msg;
 }

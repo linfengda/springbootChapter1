@@ -35,11 +35,4 @@ public class FilmBizController extends BaseController {
         Page<FilmPlacardInfo> filmPlacardInfoPage = filmBizService.queryFilmPlacardInfo(params);
         return new Result(filmPlacardInfoPage);
     }
-
-    @PostMapping("/film/testRedisConnection")
-    public Result testRedisConnection() throws Exception {
-        RequestParam params = getParams();
-        filmBizService.testRedisConnection(params);
-        return SUCCESS_RESULT;
-    }
 }

@@ -1,6 +1,6 @@
 package com.linfengda.sb.support.api.entity;
 
-import com.linfengda.sb.common.entity.ErrorCode;
+import com.linfengda.sb.chapter1.common.entity.ErrorCode;
 import lombok.Data;
 
 /**
@@ -13,7 +13,6 @@ import lombok.Data;
 public class Result {
     private int code = ErrorCode.SUCCESS;
     private String msg = "success";
-    //返回的数据
     private Object info;
 
     public Result() {
@@ -29,4 +28,9 @@ public class Result {
         this.msg = msg;
     }
 
+    public Result(int code, String msg, Object info) {
+        this.code = code;
+        this.msg = msg;
+        this.info = info;
+    }
 }

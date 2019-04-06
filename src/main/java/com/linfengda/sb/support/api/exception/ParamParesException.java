@@ -1,6 +1,6 @@
 package com.linfengda.sb.support.api.exception;
 
-import com.linfengda.sb.common.entity.ErrorCode;
+import com.linfengda.sb.chapter1.common.entity.ErrorCode;
 
 /**
  * 描述: paramPares exception

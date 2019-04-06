@@ -1,7 +1,6 @@
 package com.linfengda.sb.support.middleware.redis;
 
-import com.linfengda.sb.common.util.ServerRunTimeUtil;
-import lombok.Data;
+import com.linfengda.sb.chapter1.common.util.ServerRunTimeUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 

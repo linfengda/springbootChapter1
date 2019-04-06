@@ -32,7 +32,7 @@ public class SerializerPerformanceTest {
     }
 
     private static void doTest(Object obj, int x) throws Exception {
-        log.info("test start--------------------------------------------------------------------------------------");
+        log.info("task start--------------------------------------------------------------------------------------");
 
         // 测试序列化效率
         doProtoStuffSerialize(obj, x);
@@ -41,7 +41,7 @@ public class SerializerPerformanceTest {
         // 测试反序列化效率
         doProtoStuffDeserialize(obj, x);
         doJacksonDeserialize(obj, x);
-        log.info("test end--------------------------------------------------------------------------------------");
+        log.info("task end--------------------------------------------------------------------------------------");
     }
 
     private static void doProtoStuffSerialize(Object obj, int x) throws Exception {

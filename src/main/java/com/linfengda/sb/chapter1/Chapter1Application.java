@@ -4,7 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
-@ComponentScan(basePackages = {"com.linfengda.sb.chapter1","com.linfengda.sb.common","com.linfengda.sb.support"})
+@ComponentScan(basePackages = {"com.linfengda.sb.chapter1", "com.linfengda.sb.support"})
 @SpringBootApplication
 public class Chapter1Application {
 
