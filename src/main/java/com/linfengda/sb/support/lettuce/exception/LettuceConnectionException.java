@@ -1,4 +1,4 @@
-package com.linfengda.sb.support.lettuce.Exception;
+package com.linfengda.sb.support.lettuce.exception;
 
 import io.lettuce.core.RedisException;
 import lombok.extern.slf4j.Slf4j;

@@ -40,4 +40,17 @@ public class MyExecutorPoolConfig {
         executor.initialize();
         return executor;
     }
+
+    @Bean("myCallerRunsPool")
+    public Executor myCallerRunsPool() {
+        ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
+        executor.setCorePoolSize(corePoolSize);
+        executor.setMaxPoolSize(maxPoolSize);
+        executor.setQueueCapacity(queueSize);
+        executor.setKeepAliveSeconds(keepAlive);
+        executor.setRejectedExecutionHandler(new ThreadPoolExecutor.CallerRunsPolicy());
+        executor.setThreadNamePrefix("my-caller-runs-thread");
+        executor.initialize();
+        return executor;
+    }
 }

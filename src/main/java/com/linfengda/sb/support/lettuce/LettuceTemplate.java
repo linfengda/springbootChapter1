@@ -1,17 +1,10 @@
 package com.linfengda.sb.support.lettuce;
 
-import com.github.pagehelper.Page;
-import com.linfengda.sb.support.lettuce.Exception.LettuceConnectionException;
-import io.lettuce.core.RedisException;
+import com.linfengda.sb.support.lettuce.exception.LettuceConnectionException;
 import io.lettuce.core.cluster.api.StatefulRedisClusterConnection;
 import io.lettuce.core.cluster.api.sync.RedisClusterCommands;
-import io.lettuce.core.codec.RedisCodec;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
-import org.apache.poi.ss.formula.functions.T;
 import org.springframework.data.redis.serializer.RedisSerializer;
-import org.springframework.lang.Nullable;
 import org.springframework.util.Assert;
 
 /**

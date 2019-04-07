@@ -11,12 +11,20 @@ import lombok.Getter;
  */
 public class BusinessException extends RuntimeException {
 
-    public void BusinessException(Integer code, String msg) {
+    public BusinessException() {
+
+    }
+
+    public BusinessException(String msg) {
+        this.msg = msg;
+    }
+
+    public BusinessException(Integer code, String msg) {
         this.code = code;
         this.msg = msg;
     }
 
-    public void BusinessException(Integer code, String msg, String detailMsg) {
+    public BusinessException(Integer code, String msg, String detailMsg) {
         this.code = code;
         this.msg = msg;
         this.detailMsg = detailMsg;
