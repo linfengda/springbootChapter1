@@ -1,6 +1,10 @@
+server:
+  port: 9000
+  tomcat.max-threads: 300
+
 spring:
   profiles:
-    active: @myActivateFile@
+    active: @myActivateFile@,redis-@myActivateFile@
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     type: com.zaxxer.hikari.HikariDataSource
@@ -12,7 +16,6 @@ spring:
       max-lifetime: 1800000
       connection-timeout: 60000
       connection-test-query: SELECT 1
-
   redis:
     serializer: jackson
     timeout: 5000

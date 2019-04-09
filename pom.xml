@@ -231,10 +231,8 @@
                     <include>**/application.properties</include>
 
                     <include>**/application-${myActivateFile}.yml</include>
-                    <include>**/application-${myActivateFile}.yaml</include>
-                    <include>**/application-${myActivateFile}.properties</include>
-
-                    <include>**/application-${myActivateRedisFile}.yml</include>
+                    <include>**/application-redis-${myActivateFile}.yml</include>
+                    <include>**/application-mq-${myActivateFile}.yml</include>
                 </includes>
                 <!-- 不包含哪些文件 -->
                 <excludes>
@@ -263,10 +261,9 @@
     <profiles>
         <!-- 本地开发环境 -->
         <profile>
-            <id>dev</id>
+            <id>local</id>
             <properties>
                 <myActivateFile>local</myActivateFile>
-                <myActivateRedisFile>redis-local</myActivateRedisFile>
             </properties>
             <activation>
                 <!-- 默认开启本地开发环境 -->
