@@ -4,7 +4,7 @@ import com.linfengda.sb.chapter1.common.entity.ErrorCode;
 import com.linfengda.sb.chapter1.common.exception.BusinessException;
 import com.linfengda.sb.chapter1.common.exception.DistributedLockException;
 import com.linfengda.sb.support.api.entity.Result;
-import com.linfengda.sb.support.dao.exception.DataAccessException;
+//import com.linfengda.sb.support.dao.exception.DataAccessException;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
@@ -27,11 +27,11 @@ public class MyGlobalExceptionHandler {
     @ResponseBody
     public Result defaultErrorHandler(Exception e) {
         Result result;
-        if (e instanceof DataAccessException) {
+        /*if (e instanceof DataAccessException) {
             DataAccessException dataAccessException = (DataAccessException) e;
             result = new Result(dataAccessException.getCode(), dataAccessException.getMsg());
             log.warn(dataAccessException.getMsg());
-        } else if (e instanceof DistributedLockException) {
+        } else*/ if (e instanceof DistributedLockException) {
             DistributedLockException distributedLockException = (DistributedLockException) e;
             result = new Result(distributedLockException.getCode(), distributedLockException.getMsg());
             log.warn(distributedLockException.getMsg());

@@ -13,18 +13,13 @@ public class MyCallBack {
     private String mySelf;
     private String mySon;
 
-    boolean call() throws Exception {
-        System.out.println("---------------------------------callback method");
-        return true;
-    }
-
     boolean callMyself() throws Exception {
-        System.out.println("---------------------------------callback method: " + mySelf);
+        System.out.println("---------------------------------call " + mySelf);
         return true;
     }
 
     boolean callMyson() throws Exception {
-        System.out.println("---------------------------------callback method: " + mySon);
+        System.out.println("---------------------------------call " + mySon);
         return true;
     }
 

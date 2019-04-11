@@ -28,7 +28,6 @@ public class TestLambda {
     public void doTest() throws Exception {
         TestLambda testLambda = new TestLambda();
         // lambda表达式方法体其实就是函数式接口的实现
-        testLambda.doSomeAction(callBack -> callBack.call());
         testLambda.doSomeAction(callBack -> callBack.callMyself());
         testLambda.doSomeAction(callBack -> callBack.callMyson());
     }
