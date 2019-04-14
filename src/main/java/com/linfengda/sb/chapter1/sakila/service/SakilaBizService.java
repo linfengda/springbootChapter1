@@ -1,11 +1,11 @@
-package com.linfengda.sb.chapter1.module1.service;
+package com.linfengda.sb.chapter1.sakila.service;
 
 import com.github.pagehelper.Page;
 import com.linfengda.sb.chapter1.common.exception.BusinessException;
-import com.linfengda.sb.chapter1.module1.entity.vo.FilmPlacardInfo;
+import com.linfengda.sb.chapter1.sakila.entity.vo.FilmPlacardInfo;
 import com.linfengda.sb.support.api.entity.RequestParam;
 
-public interface FilmBizService {
+public interface SakilaBizService {
 
     /**
      * 测试mysql

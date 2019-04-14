@@ -1,8 +1,8 @@
-package com.linfengda.sb.chapter1.module1.api;
+package com.linfengda.sb.chapter1.sakila.api;
 
 import com.github.pagehelper.Page;
-import com.linfengda.sb.chapter1.module1.entity.vo.FilmPlacardInfo;
-import com.linfengda.sb.chapter1.module1.service.FilmBizService;
+import com.linfengda.sb.chapter1.sakila.entity.vo.FilmPlacardInfo;
+import com.linfengda.sb.chapter1.sakila.service.SakilaBizService;
 import com.linfengda.sb.support.api.BaseController;
 import com.linfengda.sb.support.api.entity.RequestParam;
 import com.linfengda.sb.support.api.entity.Result;
@@ -19,10 +19,10 @@ import javax.annotation.Resource;
  * @create 2018-08-16 10:29
  */
 @RestController
-public class FilmBizController extends BaseController {
+public class SakilaBizController extends BaseController {
 
     @Resource
-    private FilmBizService filmBizService;
+    private SakilaBizService sakilaBizService;
 
     @PostMapping("/film/queryFilmList")
     public Result queryFilmList() throws Exception {
@@ -32,7 +32,7 @@ public class FilmBizController extends BaseController {
         Assert.notNull(params.getInteger("pageNo"), "分页页码必须为数字且不能为空");
         Assert.notNull(params.getInteger("pageSize"), "分页大小必须为数字且不能为空");
 
-        Page<FilmPlacardInfo> filmPlacardInfoPage = filmBizService.queryFilmPlacardInfo(params);
+        Page<FilmPlacardInfo> filmPlacardInfoPage = sakilaBizService.queryFilmPlacardInfo(params);
         return new Result(filmPlacardInfoPage);
     }
 }

@@ -1,9 +1,8 @@
-package com.linfengda.sb.chapter1.module1.entity.po;
+package com.linfengda.sb.chapter1.sakila.entity.po;
 
 import lombok.Data;
 
 import java.sql.Timestamp;
-import java.time.Year;
 
 /**
  * 描述: 电影

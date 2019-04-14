@@ -1,7 +1,7 @@
 package com.linfengda.sb.support.lettuce.service;
 
 import com.alibaba.fastjson.JSONObject;
-import com.linfengda.sb.chapter1.module1.entity.vo.FilmPlacardInfo;
+import com.linfengda.sb.chapter1.sakila.entity.vo.FilmPlacardInfo;
 import com.linfengda.sb.support.lettuce.LettuceTemplate;
 import com.linfengda.sb.support.lettuce.helper.LettuceTemplateHelper;
 import lombok.extern.slf4j.Slf4j;

@@ -1,6 +1,8 @@
 package com.linfengda.sb.chapter1.common.config;
 
 import com.github.pagehelper.PageInterceptor;
+import com.linfengda.sb.support.dao.entity.DefaultFieldSetter;
+import com.linfengda.sb.support.dao.entity.SimpleDefaultFieldSetter;
 import org.apache.ibatis.plugin.Interceptor;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
@@ -46,5 +48,10 @@ public class SqlSessionFactoryBeanConfiguration {
 		interceptors[0] = pageInterceptor;
 		sqlSessionFactoryBean.setPlugins(interceptors);
 		return sqlSessionFactoryBean.getObject();
+	}
+
+	@Bean
+	public DefaultFieldSetter defaultFieldSetter() throws Exception {
+		return new SimpleDefaultFieldSetter();
 	}
 }

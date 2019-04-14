@@ -222,6 +222,6 @@
 
     <logger name="com.linfengda.sb.support" level="${mybatis.sql.log.level}">
     </logger>
-    <logger name="com.linfengda.sb.chapter1.module1.dao" level="${mybatis.sql.log.level}">
+    <logger name="com.linfengda.sb.chapter1.sakila.dao" level="${mybatis.sql.log.level}">
     </logger>
 </configuration>

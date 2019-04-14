@@ -208,14 +208,12 @@
 
     <!-- build标签：声明编译信息 -->
 	<build>
-
         <!-- 默认构建行为 -->
         <defaultGoal>package</defaultGoal>
         <!-- 构建结果所在的路径 -->
         <directory>${basedir}/target</directory>
         <!-- 构建结果的名字 -->
         <finalName>${artifactId}-${version}</finalName>
-
         <!-- resources标签：声明资源文件 -->
         <resources>
             <resource>
@@ -227,9 +225,6 @@
                 <includes>
                     <include>**/mapper/**/*.xml</include>
                     <include>**/application.yml</include>
-                    <include>**/application.yaml</include>
-                    <include>**/application.properties</include>
-
                     <include>**/application-${myActivateFile}.yml</include>
                     <include>**/application-redis-${myActivateFile}.yml</include>
                     <include>**/application-mq-${myActivateFile}.yml</include>
@@ -257,7 +252,7 @@
 		</plugins>
 	</build>
 
-    <!-- maven打包时指定配置文件，使用mvn -U clean package -Plocal来显式激活对应的配置文件 -->
+    <!-- maven打包时指定配置文件 -->
     <profiles>
         <!-- 本地开发环境 -->
         <profile>

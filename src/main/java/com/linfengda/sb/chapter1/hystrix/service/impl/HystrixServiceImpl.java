@@ -82,7 +82,7 @@ public class HystrixServiceImpl implements HystrixService {
                     ignoreExceptions = NullPointerException.class,
                     threadPoolKey = "myThreadPool",
                     threadPoolProperties = {
-                    @HystrixProperty(name = "coreSize", value = "10"),
+                    @HystrixProperty(name = "coreSize", value = "100"),
                     @HystrixProperty(name = "maxQueueSize", value = "100")},
                     commandProperties = {
                     // 超时不熔断
