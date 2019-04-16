@@ -55,27 +55,23 @@ public class LettuceTemplate<K, V> {
     public Long leftPush(K key, V value) {
         byte[] rawKey = rawKey(key);
         byte[] rawValue = rawValue(value);
-        Long r = execute(commands -> commands.lpush(rawKey, rawValue));
-        return r;
+        return execute(commands -> commands.lpush(rawKey, rawValue));
     }
 
     public Long rightPush(K key, V value) {
         byte[] rawKey = rawKey(key);
         byte[] rawValue = rawValue(value);
-        Long r = execute(commands -> commands.rpush(rawKey, rawValue));
-        return r;
+        return execute(commands -> commands.rpush(rawKey, rawValue));
     }
 
     public V leftPop(K key) {
         byte[] rawKey = rawKey(key);
-        V v = (V) execute(commands -> commands.lpop(rawKey));
-        return v;
+        return execute(commands -> commands.lpop(rawKey));
     }
 
     public V rightPop(K key) {
         byte[] rawKey = rawKey(key);
-        V v = (V) execute(commands -> commands.rpop(rawKey));
-        return v;
+        return execute(commands -> commands.rpop(rawKey));
     }
 
     /*******************************************   List操作   *********************************************/
