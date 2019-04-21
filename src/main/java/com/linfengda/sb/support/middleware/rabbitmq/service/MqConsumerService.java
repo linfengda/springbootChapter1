@@ -1,10 +1,12 @@
 package com.linfengda.sb.support.middleware.rabbitmq.service;
 
 import com.linfengda.sb.support.middleware.rabbitmq.helper.ConnectionHelper;
-import com.rabbitmq.client.*;
+import com.rabbitmq.client.Channel;
+import com.rabbitmq.client.Connection;
+import com.rabbitmq.client.DeliverCallback;
 import lombok.extern.slf4j.Slf4j;
 
-import java.io.IOException;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -66,11 +68,6 @@ public class MqConsumerService {
         connection.close();
     }
 
-
-
-
-
-
     private void doWork(String consumer, String message) {
         try {
             log.info("{}开始处理{}", consumer, message);
@@ -81,4 +78,23 @@ public class MqConsumerService {
             log.info("{}处理完成{}", consumer, message);
         }
     }
+
+    public void consumeFanoutMsg(List<String> queues) throws Exception {
+        Connection connection = ConnectionHelper.getConnection();
+        Channel channel = connection.createChannel();
+        // 多个queue接收fanout消息
+        for (String queue : queues) {
+            DeliverCallback deliverCallback = (consumerTag, delivery) -> {
+                String message = new String(delivery.getBody());
+                log.info("{}接收mq公告：{}", queue, message);
+                channel.basicAck(delivery.getEnvelope().getDeliveryTag(), false);
+            };
+            channel.basicConsume(queue, false, deliverCallback, consumerTag -> { });
+        }
+        TimeUnit.SECONDS.sleep(30);
+        channel.close();
+        connection.close();
+    }
+
+
 }

@@ -21,19 +21,18 @@ public class RabbitmqTest {
     private static ThreadPoolTaskExecutor executor = ThreadPoolHelper.initThreadPool(10, 50);
 
     public static void main(String[] argv) throws Exception {
-        testSimpleMode();
+        //testSimpleMode();
         //testWorkerMode();
-
+        testFanoutMode();
 
     }
 
     /**
-     * 测试简单的发送接收
+     * 测试一收一发
      * @throws Exception
      */
     private static void testSimpleMode() throws Exception {
-        final String DEMO_QUEUE = "demo_queue";
-        // 消费消息
+        String DEMO_QUEUE = "demo_queue";
         executor.execute(() -> {
             try {
                 new MqConsumerService().consumeSimpleMsg(DEMO_QUEUE);
@@ -42,31 +41,47 @@ public class RabbitmqTest {
                 throw new BusinessException("mq消费出错：" + e);
             }
         });
-        // 发送消息
         new MqProducerService().sendSimpleMsg(DEMO_QUEUE);
     }
 
     /**
-     * 测试worker模式
+     * 测试多个worker均匀的处理任务
      * @throws Exception
      */
     private static void testWorkerMode() throws Exception {
-        final String TASK_QUEUE_NAME = "task_queue";
-        // 消费消息
+        String TASK_QUEUE_NAME = "task_queue";
         for (int i = 0; i < 3; i++) {
             String consumer = "consumer" + i;
             executor.execute(() -> {
                 try {
                     new MqConsumerService().consumeWorkerMsg(TASK_QUEUE_NAME, consumer);
                 } catch (Exception e) {
-                    log.error("consumer1消费出错：", e);
-                    throw new BusinessException("consumer1消费出错：" + e);
+                    log.error("mq消费出错：", e);
+                    throw new BusinessException("mq消费出错：" + e);
                 }
             });
         }
-        // 发送消息
         new MqProducerService().sendWorkerMsg(TASK_QUEUE_NAME);
     }
 
-
+    /**
+     * 测试所有绑定到exchange的queue都可以接收消息
+     * @throws Exception
+     */
+    private static void testFanoutMode() throws Exception {
+        String FANOUT_EXCHANGE_NAME = "fanoutEx";
+        List<String> queues = new ArrayList<>(3);
+        queues.add("fanoutQueue1");
+        queues.add("fanoutQueue2");
+        queues.add("fanoutQueue3");
+        executor.execute(() -> {
+            try {
+                new MqConsumerService().consumeFanoutMsg(queues);
+            } catch (Exception e) {
+                log.error("mq消费出错：", e);
+                throw new BusinessException("mq消费出错：" + e);
+            }
+        });
+        new MqProducerService().sendFanoutMsg(FANOUT_EXCHANGE_NAME, queues);
+    }
 }
