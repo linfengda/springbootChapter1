@@ -9,21 +9,21 @@ package com.linfengda.sb.chapter1.hystrix.service;
 public interface HystrixService {
 
     /**
-     * 测试Hystrix超出最大线程数量
+     * 测试超出最大线程数量
      * @param threadId
      * @throws Exception
      */
     void hysOverThread(Integer threadId) throws Exception;
 
     /**
-     * 测试Hystrix拥有独立线程池
+     * 测试单独线程池
      * @param threadId
      * @throws Exception
      */
     void hysWithThreadPoolKey(Integer threadId) throws Exception;
 
     /**
-     * 测试Hystrix超时熔断
+     * 测试超时熔断
      * @throws Exception
      */
     void hysTimeOut() throws Exception;

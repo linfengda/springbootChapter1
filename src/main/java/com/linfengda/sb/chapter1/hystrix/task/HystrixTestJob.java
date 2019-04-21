@@ -26,6 +26,7 @@ public class HystrixTestJob {
     /*public void test1() throws Exception {
         long t1 = System.currentTimeMillis();
         for (int i = 0; i < 11; i++) {
+            // 测试超出最大线程数量
             hystrixService.hysOverThread(i);
         }
         log.info("定时任务执行成功！耗时：{}ms", (System.currentTimeMillis() - t1));
@@ -35,6 +36,7 @@ public class HystrixTestJob {
     /*public void test2() throws Exception {
         long t1 = System.currentTimeMillis();
         for (int i = 0; i < 10; i++) {
+            // 测试单独线程池
             hystrixService.hysOverThread(i);
             hystrixService.hysWithThreadPoolKey(i);
         }
@@ -44,6 +46,7 @@ public class HystrixTestJob {
     //@Scheduled(cron = "*/10 * * * * ?")
     /*public void test3() throws Exception {
         long t1 = System.currentTimeMillis();
+        // 测试超时熔断
         hystrixService.hysTimeOut();
         log.info("定时任务执行成功！耗时：{}ms", (System.currentTimeMillis() - t1));
     }*/
