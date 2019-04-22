@@ -21,21 +21,22 @@ public class RabbitmqTest {
     private static ThreadPoolTaskExecutor executor = ThreadPoolHelper.initThreadPool(10, 50);
 
     public static void main(String[] argv) throws Exception {
-        //testSimpleMode();
-        //testWorkerMode();
-        testFanoutMode();
+        //testOneConsumer();
+        //testMultiConsumer();
+        //testFanoutMode();
+        testDirectMode();
 
     }
 
     /**
-     * 测试一收一发
+     * 测试单个消费者
      * @throws Exception
      */
-    private static void testSimpleMode() throws Exception {
+    private static void testOneConsumer() throws Exception {
         String DEMO_QUEUE = "demo_queue";
         executor.execute(() -> {
             try {
-                new MqConsumerService().consumeSimpleMsg(DEMO_QUEUE);
+                new MqConsumerService().consumeMsgOne(DEMO_QUEUE);
             } catch (Exception e) {
                 log.error("mq消费出错：", e);
                 throw new BusinessException("mq消费出错：" + e);
@@ -45,16 +46,19 @@ public class RabbitmqTest {
     }
 
     /**
-     * 测试多个worker均匀的处理任务
+     * 测试多个消费者均匀消费
      * @throws Exception
      */
-    private static void testWorkerMode() throws Exception {
+    private static void testMultiConsumer() throws Exception {
         String TASK_QUEUE_NAME = "task_queue";
-        for (int i = 0; i < 3; i++) {
-            String consumer = "consumer" + i;
+        List<String> consumers = new ArrayList<>(3);
+        consumers.add("consumer1");
+        consumers.add("consumer2");
+        consumers.add("consumer3");
+        for (String consumer : consumers) {
             executor.execute(() -> {
                 try {
-                    new MqConsumerService().consumeWorkerMsg(TASK_QUEUE_NAME, consumer);
+                    new MqConsumerService().consumeMsgMulti(TASK_QUEUE_NAME, consumer);
                 } catch (Exception e) {
                     log.error("mq消费出错：", e);
                     throw new BusinessException("mq消费出错：" + e);
@@ -65,7 +69,7 @@ public class RabbitmqTest {
     }
 
     /**
-     * 测试所有绑定到exchange的queue都可以接收消息
+     * 测试所有queue都可以接收的fanout消息
      * @throws Exception
      */
     private static void testFanoutMode() throws Exception {
@@ -74,14 +78,42 @@ public class RabbitmqTest {
         queues.add("fanoutQueue1");
         queues.add("fanoutQueue2");
         queues.add("fanoutQueue3");
-        executor.execute(() -> {
-            try {
-                new MqConsumerService().consumeFanoutMsg(queues);
-            } catch (Exception e) {
-                log.error("mq消费出错：", e);
-                throw new BusinessException("mq消费出错：" + e);
-            }
-        });
+        for (String queue : queues) {
+            executor.execute(() -> {
+                try {
+                    new MqConsumerService().consumeFanoutMsg(queue);
+                } catch (Exception e) {
+                    log.error("mq消费出错：", e);
+                    throw new BusinessException("mq消费出错：" + e);
+                }
+            });
+        }
         new MqProducerService().sendFanoutMsg(FANOUT_EXCHANGE_NAME, queues);
+    }
+
+    /**
+     * 测试指定queue才可以接收的direct消息
+     * @throws Exception
+     */
+    private static void testDirectMode() throws Exception {
+        String DIRECT_EXCHANGE_NAME = "directEx";
+        List<QueueVo> queueVos = new ArrayList<>(3);
+        QueueVo queueVo1 = new QueueVo("directQueue1", "routingKey1", "我不是渣，我只是想给每个女孩子一个家。");
+        QueueVo queueVo2 = new QueueVo("directQueue2", "routingKey2", "我从没有绿过任何人，我只是忘记了说分手。");
+        QueueVo queueVo3 = new QueueVo("directQueue3", "routingKey3", "你的多情出卖我的爱情。");
+        queueVos.add(queueVo1);
+        queueVos.add(queueVo2);
+        queueVos.add(queueVo3);
+        for (QueueVo queueVo : queueVos) {
+            executor.execute(() -> {
+                try {
+                    new MqConsumerService().consumeDirectMsg(queueVo);
+                } catch (Exception e) {
+                    log.error("mq消费出错：", e);
+                    throw new BusinessException("mq消费出错：" + e);
+                }
+            });
+        }
+        new MqProducerService().sendDirectMsg(DIRECT_EXCHANGE_NAME, queueVos);
     }
 }
