@@ -73,17 +73,37 @@ public class MqProducerService {
         connection.close();
     }
 
-    public void sendDirectMsg(String exchange, List<QueueVo> queueVos) throws Exception {
+    public void sendDirectMsg(String exchange, List<QueueVo> sendQueues) throws Exception {
         Connection connection = ConnectionHelper.getConnection();
         Channel channel = connection.createChannel();
         // 定义direct类型exchange，该exchange会将消息发送到指定的queue
         channel.exchangeDeclare(exchange, BuiltinExchangeType.DIRECT.getType(), true, false, null);
         // 定义多个queue
-        for (QueueVo queueVo : queueVos) {
-            channel.queueDeclare(queueVo.getQueue(), true, false, false, null);
-            channel.queueBind(queueVo.getQueue(), exchange, queueVo.getRoutingKey());
-            channel.basicPublish(exchange, queueVo.getRoutingKey(), MessageProperties.PERSISTENT_TEXT_PLAIN, queueVo.getMessage().getBytes());
-            log.info("向[{}]发送mq消息：{}", queueVo.getQueue(), queueVo.getMessage());
+        for (QueueVo sendQueue : sendQueues) {
+            channel.queueDeclare(sendQueue.getQueue(), true, false, false, null);
+            channel.queueBind(sendQueue.getQueue(), exchange, sendQueue.getRoutingKey());
+            channel.basicPublish(exchange, sendQueue.getRoutingKey(), MessageProperties.PERSISTENT_TEXT_PLAIN, sendQueue.getMessage().getBytes());
+            // 这条消息不会发送
+            channel.basicPublish(exchange, sendQueue.getRoutingKey() + ".wrongKey", MessageProperties.PERSISTENT_TEXT_PLAIN, (sendQueue.getMessage() + ".message from wrongKey").getBytes());
+            log.info("向[{}]发送mq消息：{}", sendQueue.getQueue(), sendQueue.getMessage());
+        }
+        channel.close();
+        connection.close();
+    }
+
+    public void sendTopicMsg(String exchange, List<QueueVo> sendQueues) throws Exception {
+        Connection connection = ConnectionHelper.getConnection();
+        Channel channel = connection.createChannel();
+        // 定义topic类型exchange，该exchange会将消息发送到匹配的queue
+        channel.exchangeDeclare(exchange, BuiltinExchangeType.TOPIC.getType(), true, false, null);
+        // 定义多个queue
+        for (QueueVo sendQueue : sendQueues) {
+            channel.queueDeclare(sendQueue.getQueue(), true, false, false, null);
+            channel.queueBind(sendQueue.getQueue(), exchange, sendQueue.getRoutingKey());
+            channel.basicPublish(exchange, sendQueue.getRoutingKey() + "hello", MessageProperties.PERSISTENT_TEXT_PLAIN, sendQueue.getMessage().getBytes());
+            // 这条消息会发送
+            channel.basicPublish(exchange, sendQueue.getRoutingKey() + "loveWords", MessageProperties.PERSISTENT_TEXT_PLAIN, new String("么么么么么么么么么么哒。").getBytes());
+            log.info("向[{}]发送mq消息：{}", sendQueue.getQueue(), sendQueue.getMessage());
         }
         channel.close();
         connection.close();

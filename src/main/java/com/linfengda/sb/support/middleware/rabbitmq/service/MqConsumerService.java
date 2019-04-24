@@ -2,9 +2,7 @@ package com.linfengda.sb.support.middleware.rabbitmq.service;
 
 import com.linfengda.sb.support.middleware.rabbitmq.QueueVo;
 import com.linfengda.sb.support.middleware.rabbitmq.helper.ConnectionHelper;
-import com.rabbitmq.client.Channel;
-import com.rabbitmq.client.Connection;
-import com.rabbitmq.client.DeliverCallback;
+import com.rabbitmq.client.*;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
@@ -108,4 +106,20 @@ public class MqConsumerService {
         connection.close();
     }
 
+    public void consumeTopicMsg(String exchange, String queue, String matchKey) throws Exception {
+        Connection connection = ConnectionHelper.getConnection();
+        Channel channel = connection.createChannel();
+        channel.exchangeDeclare(exchange, BuiltinExchangeType.TOPIC.getType(), true, false, null);
+        channel.queueDeclare(queue, true, false, false, null);
+        channel.queueBind(queue, exchange, matchKey);
+        DeliverCallback deliverCallback = (consumerTag, delivery) -> {
+            String message = new String(delivery.getBody());
+            log.info("[{}]接收mq消息：{}", queue, message);
+            channel.basicAck(delivery.getEnvelope().getDeliveryTag(), false);
+        };
+        channel.basicConsume(queue, false, deliverCallback, consumerTag -> { });
+        TimeUnit.SECONDS.sleep(30);
+        channel.close();
+        connection.close();
+    }
 }

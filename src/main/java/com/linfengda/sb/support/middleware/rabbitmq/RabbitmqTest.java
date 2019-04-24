@@ -24,7 +24,8 @@ public class RabbitmqTest {
         //testOneConsumer();
         //testMultiConsumer();
         //testFanoutMode();
-        testDirectMode();
+        //testDirectMode();
+        testTopicMode();
 
     }
 
@@ -92,7 +93,7 @@ public class RabbitmqTest {
     }
 
     /**
-     * 测试指定queue才可以接收的direct消息
+     * 测试指定的queue才可以接收的direct消息
      * @throws Exception
      */
     private static void testDirectMode() throws Exception {
@@ -115,5 +116,37 @@ public class RabbitmqTest {
             });
         }
         new MqProducerService().sendDirectMsg(DIRECT_EXCHANGE_NAME, queueVos);
+    }
+
+    /**
+     * 测试匹配的queue才可以接收的direct消息
+     * @throws Exception
+     */
+    private static void testTopicMode() throws Exception {
+        String TOPIC_EXCHANGE_NAME = "topicEx";
+        List<String> matchKeys = new ArrayList<>(3);
+        matchKeys.add("topic.to.lucy.*");
+        matchKeys.add("topic.to.jean.*");
+        matchKeys.add("topic.to.kali.*");
+        List<QueueVo> sendQueues = new ArrayList<>(3);
+        QueueVo queueVo1 = new QueueVo("topicQueue1", "topic.to.lucy.", "你好呀。");
+        QueueVo queueVo2 = new QueueVo("topicQueue2", "topic.to.jean.", "你好呀。");
+        QueueVo queueVo3 = new QueueVo("topicQueue3", "topic.to.kali.", "你好呀。");
+        sendQueues.add(queueVo1);
+        sendQueues.add(queueVo2);
+        sendQueues.add(queueVo3);
+        for (int i = 0; i < sendQueues.size(); i++) {
+            QueueVo queueVo = sendQueues.get(i);
+            String matchKey = matchKeys.get(i);
+            executor.execute(() -> {
+                try {
+                    new MqConsumerService().consumeTopicMsg(TOPIC_EXCHANGE_NAME, queueVo.getQueue(), matchKey);
+                } catch (Exception e) {
+                    log.error("mq消费出错：", e);
+                    throw new BusinessException("mq消费出错：" + e);
+                }
+            });
+        }
+        new MqProducerService().sendTopicMsg(TOPIC_EXCHANGE_NAME, sendQueues);
     }
 }
