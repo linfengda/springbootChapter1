@@ -129,9 +129,9 @@ public class RabbitmqTest {
         matchKeys.add("topic.to.jean.*");
         matchKeys.add("topic.to.kali.*");
         List<QueueVo> sendQueues = new ArrayList<>(3);
-        QueueVo queueVo1 = new QueueVo("topicQueue1", "topic.to.lucy.", "你好呀。");
-        QueueVo queueVo2 = new QueueVo("topicQueue2", "topic.to.jean.", "你好呀。");
-        QueueVo queueVo3 = new QueueVo("topicQueue3", "topic.to.kali.", "你好呀。");
+        QueueVo queueVo1 = new QueueVo("topicQueue1", "topic.to.lucy", "你好呀。");
+        QueueVo queueVo2 = new QueueVo("topicQueue2", "topic.to.jean", "你好呀。");
+        QueueVo queueVo3 = new QueueVo("topicQueue3", "topic.to.kali", "你好呀。");
         sendQueues.add(queueVo1);
         sendQueues.add(queueVo2);
         sendQueues.add(queueVo3);

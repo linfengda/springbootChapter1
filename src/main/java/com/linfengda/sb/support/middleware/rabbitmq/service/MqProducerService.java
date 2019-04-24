@@ -100,9 +100,9 @@ public class MqProducerService {
         for (QueueVo sendQueue : sendQueues) {
             channel.queueDeclare(sendQueue.getQueue(), true, false, false, null);
             channel.queueBind(sendQueue.getQueue(), exchange, sendQueue.getRoutingKey());
-            channel.basicPublish(exchange, sendQueue.getRoutingKey() + "hello", MessageProperties.PERSISTENT_TEXT_PLAIN, sendQueue.getMessage().getBytes());
+            channel.basicPublish(exchange, sendQueue.getRoutingKey() + ".hello", MessageProperties.PERSISTENT_TEXT_PLAIN, sendQueue.getMessage().getBytes());
             // 这条消息会发送
-            channel.basicPublish(exchange, sendQueue.getRoutingKey() + "loveWords", MessageProperties.PERSISTENT_TEXT_PLAIN, new String("么么么么么么么么么么哒。").getBytes());
+            channel.basicPublish(exchange, sendQueue.getRoutingKey() + ".loveWords", MessageProperties.PERSISTENT_TEXT_PLAIN, new String("么么么么么么么么么么哒。").getBytes());
             log.info("向[{}]发送mq消息：{}", sendQueue.getQueue(), sendQueue.getMessage());
         }
         channel.close();
