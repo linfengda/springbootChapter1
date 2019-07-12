@@ -14,4 +14,18 @@ public interface SakilaBizService {
      * @throws BusinessException
      */
     Page<FilmPlacardInfo> queryFilmPlacardInfo(RequestParam params) throws BusinessException;
+
+    /**
+     * 上架电影
+     * @param params
+     * @throws Exception
+     */
+    void addFilm(RequestParam params) throws Exception;
+
+    /**
+     * 下架电影
+     * @param params
+     * @throws Exception
+     */
+    void delFilm(RequestParam params) throws Exception;
 }

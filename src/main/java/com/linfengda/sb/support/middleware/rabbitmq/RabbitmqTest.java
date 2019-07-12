@@ -119,7 +119,7 @@ public class RabbitmqTest {
     }
 
     /**
-     * 测试匹配的queue才可以接收的direct消息
+     * 测试匹配的queue才可以接收的topic消息
      * @throws Exception
      */
     private static void testTopicMode() throws Exception {

@@ -26,13 +26,18 @@ public class SakilaBizController extends BaseController {
 
     @PostMapping("/film/queryFilmList")
     public Result queryFilmList() throws Exception {
-        // 从context中获取封装的请求参数
         RequestParam params = getParams();
-        // 使用spring提供的断言
         Assert.notNull(params.getInteger("pageNo"), "分页页码必须为数字且不能为空");
         Assert.notNull(params.getInteger("pageSize"), "分页大小必须为数字且不能为空");
 
         Page<FilmPlacardInfo> filmPlacardInfoPage = sakilaBizService.queryFilmPlacardInfo(params);
         return new Result(filmPlacardInfoPage);
+    }
+
+    @PostMapping("/film/addFilm")
+    public Result addFilm() throws Exception {
+        RequestParam params = getParams();
+        sakilaBizService.addFilm(params);
+        return SUCCESS_RESULT;
     }
 }
