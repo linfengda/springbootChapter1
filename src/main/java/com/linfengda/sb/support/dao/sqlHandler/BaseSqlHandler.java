@@ -25,9 +25,10 @@ public class BaseSqlHandler {
     }
 
     private void setParams(List<AttributeValue> params, PreparedStatement preStatement) throws SQLException {
-        for (int index = 1; index <= params.size(); index++) {
-            AttributeValue attributeValue = params.get(index);
-            preStatement.setObject(index, attributeValue.getValue());
+        int index = 1;
+        for (AttributeValue param : params) {
+            preStatement.setObject(index, param.getValue());
+            index++;
         }
     }
 }

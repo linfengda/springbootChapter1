@@ -97,8 +97,8 @@ public class HystrixTestJob {
         }
     }*/
 
-    @Scheduled(cron = "*/60 * * * * ?")
-    public void test6() throws Exception {
+    //@Scheduled(cron = "*/60 * * * * ?")
+    /*public void test6() throws Exception {
         long t0 = System.currentTimeMillis();
         long metricsRollingStatisticalWindowInMilliseconds = 10000;
         RequestVo requestVo = new RequestVo();
@@ -123,7 +123,7 @@ public class HystrixTestJob {
         while (true) {
             doRequest(requestVo, false);
         }
-    }
+    }*/
 
     private void doRequest(RequestVo requestVo, Boolean isError) throws Exception {
         hystrixService.hysOverVolumeThreshold(requestVo.getRequestId(), isError);

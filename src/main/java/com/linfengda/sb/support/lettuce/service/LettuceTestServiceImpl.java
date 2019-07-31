@@ -1,7 +1,7 @@
 package com.linfengda.sb.support.lettuce.service;
 
 import com.alibaba.fastjson.JSONObject;
-import com.linfengda.sb.chapter1.sakila.entity.vo.FilmPlacardInfo;
+import com.linfengda.sb.chapter1.film.entity.vo.FilmPlacardVO;
 import com.linfengda.sb.support.lettuce.LettuceTemplate;
 import com.linfengda.sb.support.lettuce.helper.LettuceTemplateHelper;
 import lombok.extern.slf4j.Slf4j;
@@ -58,16 +58,16 @@ public class LettuceTestServiceImpl implements TestService {
         log.info("delete affect row: {}", row);
 
 
-        FilmPlacardInfo filmPlacardInfo = new FilmPlacardInfo();
-        filmPlacardInfo.setFilmId(1);
-        filmPlacardInfo.setTitle("流浪地球");
-        filmPlacardInfo.setDescription("这是一部吴京导演的科幻片");
-        filmPlacardInfo.setReleaseYear("2019");
-        filmPlacardInfo.setLanguageName("chinese");
-        row = lettuceTemplate.leftPush("myList", filmPlacardInfo);
+        FilmPlacardVO filmPlacardVO = new FilmPlacardVO();
+        filmPlacardVO.setFilmId(1);
+        filmPlacardVO.setTitle("流浪地球");
+        filmPlacardVO.setDescription("这是一部吴京导演的科幻片");
+        filmPlacardVO.setReleaseYear("2019");
+        filmPlacardVO.setLanguage("chinese");
+        row = lettuceTemplate.leftPush("myList", filmPlacardVO);
         log.info("row length after leftPush: {}", row);
-        filmPlacardInfo = (FilmPlacardInfo) lettuceTemplate.rightPop("myList");
-        log.info("rightPop object: ", JSONObject.toJSONString(filmPlacardInfo));
+        filmPlacardVO = (FilmPlacardVO) lettuceTemplate.rightPop("myList");
+        log.info("rightPop object: ", JSONObject.toJSONString(filmPlacardVO));
     }
 
     public static void main(String[] args) {

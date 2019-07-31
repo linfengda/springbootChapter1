@@ -4,7 +4,7 @@ server:
 
 spring:
   profiles:
-    active: @myActivateFile@,redis-@myActivateFile@
+    active: @myActivateFile@,common-@myActivateFile@,mq-@myActivateFile@,redis-@myActivateFile@
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     type: com.zaxxer.hikari.HikariDataSource

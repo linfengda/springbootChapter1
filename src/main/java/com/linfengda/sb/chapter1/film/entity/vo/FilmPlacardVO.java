@@ -1,4 +1,4 @@
-package com.linfengda.sb.chapter1.sakila.entity.vo;
+package com.linfengda.sb.chapter1.film.entity.vo;
 
 import lombok.Data;
 
@@ -9,11 +9,10 @@ import lombok.Data;
  * @create 2018-08-13 22:06
  */
 @Data
-public class FilmPlacardInfo {
-
+public class FilmPlacardVO {
     private Integer filmId;
     private String title;
     private String description;
     private String releaseYear;
-    private String languageName;
+    private String language;
 }

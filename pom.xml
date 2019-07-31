@@ -208,20 +208,20 @@
 
     <!-- build标签：声明编译信息 -->
 	<build>
-        <!-- 默认构建行为 -->
+        <!-- 默认打包行为 -->
         <defaultGoal>package</defaultGoal>
-        <!-- 构建结果所在的路径 -->
+        <!-- 打包结果所在的路径 -->
         <directory>${basedir}/target</directory>
-        <!-- 构建结果的名字 -->
+        <!-- 打包结果的名字 -->
         <finalName>${artifactId}-${version}</finalName>
         <!-- resources标签：声明资源文件 -->
         <resources>
             <resource>
-                <!-- 构建过程中是否对资源进行过滤 -->
+                <!-- 打包过程中是否对资源进行过滤 -->
                 <filtering>true</filtering>
-                <!-- 资源文件的路径 -->
+                <!-- 打包资源文件的路径 -->
                 <directory>${basedir}/src/main/resources</directory>
-                <!-- 包含哪些文件 -->
+                <!-- 打包包含哪些文件 -->
                 <includes>
                     <include>**/mapper/**/*.xml</include>
                     <include>**/application.yml</include>
