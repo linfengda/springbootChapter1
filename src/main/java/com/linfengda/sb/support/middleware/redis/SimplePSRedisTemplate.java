@@ -8,7 +8,7 @@ import java.util.*;
  * @author linfengda
  * @create 2018-10-03 20:02
  */
-public class SimpleRedisTemplate4PS extends SimpleRedisTemplate {
+public class SimplePSRedisTemplate extends SimpleRedisTemplate {
 
     @Override
     public void setObject(String key, Object value) {

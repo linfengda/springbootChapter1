@@ -10,7 +10,7 @@ import java.util.Set;
  * @author linfengda
  * @create 2018-09-12 13:40
  */
-public class SimpleRedisTemplate4JS extends SimpleRedisTemplate {
+public class SimpleJacksonRedisTemplate extends SimpleRedisTemplate {
 
     @Override
     public void setObject(String key, Object value) {

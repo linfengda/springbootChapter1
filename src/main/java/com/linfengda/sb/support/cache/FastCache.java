@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.ss.formula.functions.T;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -16,6 +17,7 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 @Component
 public class FastCache {
+    @Resource
     private SimpleRedisTemplate simpleRedisTemplate;
 
     /**
@@ -24,8 +26,12 @@ public class FastCache {
      * @param value
      */
     public void cache(String key, Object value, long timeOut, TimeUnit timeUnit) {
-        simpleRedisTemplate.setObject(key, value);
-        simpleRedisTemplate.expire(key, timeOut, timeUnit);
+        try {
+            simpleRedisTemplate.setObject(key, value);
+            simpleRedisTemplate.expire(key, timeOut, timeUnit);
+        }catch (Exception e) {
+            log.info("快速缓存cache()出错：", e);
+        }
     }
 
     /**
@@ -35,6 +41,11 @@ public class FastCache {
      * @return
      */
     public Object getCache(String key, Class<T> clz) {
-        return simpleRedisTemplate.getObject(key, clz);
+        try {
+            return simpleRedisTemplate.getObject(key, clz);
+        }catch (Exception e) {
+            log.info("快速缓存getCache()出错：", e);
+            return null;
+        }
     }
 }

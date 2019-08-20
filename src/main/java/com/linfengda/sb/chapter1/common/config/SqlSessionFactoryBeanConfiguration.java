@@ -3,6 +3,7 @@ package com.linfengda.sb.chapter1.common.config;
 import com.github.pagehelper.PageInterceptor;
 import com.linfengda.sb.support.dao.entity.DefaultFieldSetter;
 import com.linfengda.sb.support.dao.entity.SimpleDefaultFieldSetter;
+import com.linfengda.sb.support.interceptor.PermissionInterceptor;
 import org.apache.ibatis.plugin.Interceptor;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
@@ -37,7 +38,7 @@ public class SqlSessionFactoryBeanConfiguration {
         sqlSessionFactoryBean.setMapperLocations(resolver.getResources("classpath:mapper/**/*.xml"));
 
         //指定拦截器
-		Interceptor[] interceptors = new Interceptor[1];
+		Interceptor[] interceptors = new Interceptor[2];
 		PageInterceptor pageInterceptor = new PageInterceptor();
 		Properties properties = new Properties();
 		properties.setProperty("helperDialect", "mysql");
@@ -46,6 +47,7 @@ public class SqlSessionFactoryBeanConfiguration {
 		properties.setProperty("params", "count=countSql");
 		pageInterceptor.setProperties(properties);
 		interceptors[0] = pageInterceptor;
+		interceptors[1] = new PermissionInterceptor();
 		sqlSessionFactoryBean.setPlugins(interceptors);
 		return sqlSessionFactoryBean.getObject();
 	}
