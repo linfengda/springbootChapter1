@@ -2,13 +2,15 @@ package com.linfengda.sb.chapter1.system.service.impl;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.linfengda.sb.chapter1.common.exception.BusinessException;
 import com.linfengda.sb.chapter1.system.dao.SystemDao;
+import com.linfengda.sb.chapter1.system.entity.po.SysUserPO;
 import com.linfengda.sb.chapter1.system.entity.vo.UserListVO;
 import com.linfengda.sb.chapter1.system.service.SystemService;
-import com.linfengda.sb.chapter1.system.service.TestService;
 import com.linfengda.sb.support.api.entity.RequestParam;
 import com.linfengda.sb.support.cache.annotation.Cache;
 import com.linfengda.sb.support.dao.BaseService;
+import com.linfengda.sb.support.dao.entity.SetValue;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,8 +29,6 @@ import java.util.concurrent.TimeUnit;
 public class SystemServiceImpl extends BaseService implements SystemService {
     @Resource
     private SystemDao systemDao;
-    @Resource
-    private TestService testService;
 
 
     @Override
@@ -47,13 +47,9 @@ public class SystemServiceImpl extends BaseService implements SystemService {
     @Transactional(rollbackFor=Exception.class)
     @Override
     public void updateUser(Long userId, String userName) throws Exception {
-        try {
-            /*SetValue setValue = new SetValue();
-            setValue.add("description", description);
-            updateByPrimaryKey(FilmPO.class, setValue, userId);*/
-            testService.test();
-        }catch (Exception e) {
-            log.warn("出错啦----------------------------------");
-        }
+        /*SetValue setValue = new SetValue();
+        setValue.add("userName", userName);
+        updateByPrimaryKey(SysUserPO.class, setValue, userId);*/
+        throw new BusinessException("子事务抛出异常！");
     }
 }
