@@ -3,9 +3,10 @@ package com.linfengda.sb.chapter1.common.config;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.linfengda.sb.chapter1.common.exception.BusinessException;
 import com.linfengda.sb.support.middleware.redis.SimpleRedisTemplate;
-import com.linfengda.sb.support.middleware.redis.SimpleRedisTemplate4JS;
-import com.linfengda.sb.support.middleware.redis.SimpleRedisTemplate4PS;
+import com.linfengda.sb.support.middleware.redis.SimpleJacksonRedisTemplate;
+import com.linfengda.sb.support.middleware.redis.SimplePSRedisTemplate;
 import com.linfengda.sb.support.middleware.redis.serializer.ProtoStuffSerializer;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringBootConfiguration;
@@ -13,7 +14,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
-import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.util.Assert;
 
@@ -41,7 +41,6 @@ public class RedisConfig {
      */
     @Bean
     public JedisConnectionFactory jedisConnectionFactory() {
-
         RedisStandaloneConfiguration standaloneConfiguration = new RedisStandaloneConfiguration();
         standaloneConfiguration.setHostName(host);
         standaloneConfiguration.setPort(port);
@@ -57,13 +56,7 @@ public class RedisConfig {
         Assert.notNull(serializer, "序列化方式不能为空！");
 
         SimpleRedisTemplate simpleRedisTemplate = getRedisTemplate(serializer);
-        RedisSerializer redisSerializer = getRedisSerializer(serializer);
         simpleRedisTemplate.setConnectionFactory(connectionFactory);
-        // 配置序列化和反序列化方式
-        simpleRedisTemplate.setKeySerializer(new StringRedisSerializer());
-        simpleRedisTemplate.setHashKeySerializer(new StringRedisSerializer());
-        simpleRedisTemplate.setValueSerializer(redisSerializer);
-        simpleRedisTemplate.setHashValueSerializer(redisSerializer);
         //simpleRedisTemplate.afterPropertiesSet();
         return simpleRedisTemplate;
     }
@@ -71,28 +64,27 @@ public class RedisConfig {
     private SimpleRedisTemplate getRedisTemplate(Serializer serializer) {
         switch (serializer) {
             case protoStuff:
-                return new SimpleRedisTemplate4PS();
-            case jackson:
-                return new SimpleRedisTemplate4JS();
-            default:
-                return null;
-        }
-    }
-
-    private RedisSerializer getRedisSerializer(Serializer serializer) {
-        switch (serializer) {
-            case protoStuff:
+                SimpleRedisTemplate psRedisTemplate = new SimplePSRedisTemplate();
                 ProtoStuffSerializer protoStuffSerializer = new ProtoStuffSerializer();
-                return protoStuffSerializer;
+                psRedisTemplate.setKeySerializer(new StringRedisSerializer());
+                psRedisTemplate.setHashKeySerializer(new StringRedisSerializer());
+                psRedisTemplate.setValueSerializer(protoStuffSerializer);
+                psRedisTemplate.setHashValueSerializer(protoStuffSerializer);
+                return psRedisTemplate;
             case jackson:
+                SimpleRedisTemplate jacksonRedisTemplate = new SimpleJacksonRedisTemplate();
                 Jackson2JsonRedisSerializer jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer(Object.class);
                 ObjectMapper om = new ObjectMapper();
                 om.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
                 om.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);
                 jackson2JsonRedisSerializer.setObjectMapper(om);
-                return jackson2JsonRedisSerializer;
+                jacksonRedisTemplate.setKeySerializer(new StringRedisSerializer());
+                jacksonRedisTemplate.setHashKeySerializer(new StringRedisSerializer());
+                jacksonRedisTemplate.setValueSerializer(jackson2JsonRedisSerializer);
+                jacksonRedisTemplate.setHashValueSerializer(jackson2JsonRedisSerializer);
+                return jacksonRedisTemplate;
             default:
-                return null;
+                throw new BusinessException("不支持的序列化方式");
         }
     }
 
