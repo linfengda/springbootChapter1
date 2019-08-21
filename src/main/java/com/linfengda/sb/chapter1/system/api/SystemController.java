@@ -5,7 +5,7 @@ import com.github.pagehelper.Page;
 import com.linfengda.sb.chapter1.system.entity.dto.UserDTO;
 import com.linfengda.sb.chapter1.system.entity.vo.UserListVO;
 import com.linfengda.sb.chapter1.system.service.SystemService;
-import com.linfengda.sb.chapter1.system.service.TransactionalTestService;
+import com.linfengda.sb.chapter1.system.service.TransactionalService;
 import com.linfengda.sb.support.api.BaseController;
 import com.linfengda.sb.support.api.entity.RequestParam;
 import com.linfengda.sb.support.api.entity.Result;
@@ -24,7 +24,7 @@ import javax.annotation.Resource;
 @RestController
 public class SystemController extends BaseController {
     @Resource
-    private TransactionalTestService transactionalTestService;
+    private TransactionalService transactionalService;
     @Resource
     private SystemService systemService;
 
@@ -48,7 +48,7 @@ public class SystemController extends BaseController {
     public Result updateUser() throws Exception {
         RequestParam params = getParams();
         UserDTO userDTO = JSON.toJavaObject(params, UserDTO.class);
-        transactionalTestService.testTransaction1(userDTO);
+        systemService.updateUser(userDTO.getUserId(), userDTO.getUserName());
         return SUCCESS_RESULT;
     }
 }
