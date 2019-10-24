@@ -1,4 +1,4 @@
-package com.linfengda.sb.chapter1.lettuce.helper;
+package com.linfengda.sb.chapter1.redis.helper;
 
 import java.nio.charset.Charset;
 

@@ -1,6 +1,5 @@
-package com.linfengda.sb.chapter1.lettuce;
+package com.linfengda.sb.chapter1.redis.lettuce;
 
-import com.linfengda.sb.chapter1.lettuce.exception.LettuceConnectionException;
 import io.lettuce.core.cluster.api.StatefulRedisClusterConnection;
 import io.lettuce.core.cluster.api.sync.RedisClusterCommands;
 import lombok.Data;

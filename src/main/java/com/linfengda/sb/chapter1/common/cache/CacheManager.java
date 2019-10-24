@@ -1,4 +1,4 @@
-package com.linfengda.sb.chapter1.cache;
+package com.linfengda.sb.chapter1.common.cache;
 
 import lombok.Data;
 

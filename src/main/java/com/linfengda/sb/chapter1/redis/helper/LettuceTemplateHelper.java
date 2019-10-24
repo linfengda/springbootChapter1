@@ -1,11 +1,11 @@
-package com.linfengda.sb.chapter1.lettuce.helper;
+package com.linfengda.sb.chapter1.redis.helper;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.linfengda.sb.chapter1.lettuce.LettuceConnectionFactory;
-import com.linfengda.sb.chapter1.lettuce.LettuceTemplate;
-import com.linfengda.sb.chapter1.lettuce.LettuceClusterConfig;
+import com.linfengda.sb.chapter1.redis.lettuce.LettuceConnectionFactory;
+import com.linfengda.sb.chapter1.redis.lettuce.LettuceTemplate;
+import com.linfengda.sb.chapter1.redis.lettuce.LettuceClusterConfig;
 import io.lettuce.core.codec.ByteArrayCodec;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;

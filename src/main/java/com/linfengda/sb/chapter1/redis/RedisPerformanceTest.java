@@ -1,12 +1,12 @@
-package com.linfengda.sb.chapter1.lettuce;
+package com.linfengda.sb.chapter1.redis;
 
-import com.linfengda.sb.chapter1.lettuce.helper.ThreadPoolHelper;
-import com.linfengda.sb.chapter1.lettuce.service.JedisTestServiceImpl;
-import com.linfengda.sb.chapter1.lettuce.service.LettuceTestServiceImpl;
-import com.linfengda.sb.chapter1.lettuce.service.TestService;
-import com.linfengda.sb.chapter1.lettuce.task.DistributeLockTestTask;
-import com.linfengda.sb.chapter1.lettuce.task.MultiTestTask;
-import com.linfengda.sb.chapter1.lettuce.task.QpsTestTask;
+import com.linfengda.sb.chapter1.common.helper.ThreadPoolHelper;
+import com.linfengda.sb.chapter1.redis.service.JedisTestServiceImpl;
+import com.linfengda.sb.chapter1.redis.service.LettuceTestServiceImpl;
+import com.linfengda.sb.chapter1.redis.service.TestService;
+import com.linfengda.sb.chapter1.redis.task.DistributeLockTestTask;
+import com.linfengda.sb.chapter1.redis.task.MultiTestTask;
+import com.linfengda.sb.chapter1.redis.task.QpsTestTask;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
@@ -68,10 +68,10 @@ public class RedisPerformanceTest {
             AtomicLong count = new AtomicLong(0);
             AtomicLong delayCount = new AtomicLong(0);
             newMultiTestTask(lettuceTestService, startCountDown, finishCountDown, delayCount, count);
-            log.info("lettuce client multi-thread task task ready, number of threads: {}", THREAD_NUM);
+            log.info("redis client multi-thread task task ready, number of threads: {}", THREAD_NUM);
             startCountDown.countDown();
             finishCountDown.await();
-            log.info("lettuce client multi-thread task task finish, delay percentage: {}%", 100*Double.valueOf(delayCount.longValue())/Double.valueOf(count.longValue()));
+            log.info("redis client multi-thread task task finish, delay percentage: {}%", 100*Double.valueOf(delayCount.longValue())/Double.valueOf(count.longValue()));
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

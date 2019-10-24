@@ -1,4 +1,4 @@
-package com.linfengda.sb.chapter1.lettuce;
+package com.linfengda.sb.chapter1.redis.lettuce;
 
 import io.lettuce.core.cluster.api.sync.RedisClusterCommands;
 

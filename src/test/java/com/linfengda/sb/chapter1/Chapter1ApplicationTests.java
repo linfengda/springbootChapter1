@@ -115,28 +115,28 @@ public class Chapter1ApplicationTests {
         ///////////////////////////////// Propagation: NESTED /////////////////////////////////
         /**
          * 父方法---Propagation: REQUIRED---Action: none
-         * 子方法---Propagation: REQUIRED---Action: throw exception
+         * 子方法---Propagation: NESTED---Action: throw exception
          * 事务结果---父方法有事务，子方法在嵌套事务内执行，子方法抛出异常=事务回滚
          */
         //transactionalService.insertUser31();
 
         /**
          * 父方法---Propagation: REQUIRED---Action: throw exception
-         * 子方法---Propagation: REQUIRED---Action: none
+         * 子方法---Propagation: NESTED---Action: none
          * 事务结果---父方法有事务，子方法在嵌套事务内执行，父方法抛出异常=事务回滚
          */
         //transactionalService.insertUser32();
 
         /**
          * 父方法---Propagation: REQUIRED---Action: tryCatch exception
-         * 子方法---Propagation: REQUIRED---Action: throw exception
+         * 子方法---Propagation: NESTED---Action: throw exception
          * 事务结果---父方法有事务，子方法在嵌套事务内执行，子方法抛出异常并回滚，因此父事务可以tryCatch子事务异常并正常提交
          */
         //transactionalService.insertUser33();
 
         /**
          * 父方法---Propagation: REQUIRED---Action: sleep 1000ms after invoke subMethod
-         * 子方法---Propagation: REQUIRED---Action: none
+         * 子方法---Propagation: NESTED---Action: none
          * 事务结果---父方法有事务，子方法在嵌套事务内执行，父方法在调用完子方法后休眠1000ms再提交，但子事务的lastUpdateTime=父事务的lastUpdateTime，可知嵌套事务是跟着父事务一块提交的
          */
         //transactionalService.insertUser34();

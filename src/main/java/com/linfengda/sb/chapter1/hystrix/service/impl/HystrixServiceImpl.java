@@ -9,7 +9,7 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 /**
- * 描述:
+ * 描述: 熔断测试服务
  *
  * @author linfengda
  * @create 2019-04-04 16:38

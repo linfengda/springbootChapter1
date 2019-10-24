@@ -1,4 +1,4 @@
-package com.linfengda.sb.chapter1.lettuce.service;
+package com.linfengda.sb.chapter1.redis.service;
 
 public interface TestService {
 

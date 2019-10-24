@@ -1,7 +1,7 @@
-package com.linfengda.sb.chapter1.lettuce.task;
+package com.linfengda.sb.chapter1.redis.task;
 
 import com.linfengda.sb.chapter1.common.util.ServerRunTimeUtil;
-import com.linfengda.sb.chapter1.lettuce.helper.JedisTemplateHelper;
+import com.linfengda.sb.chapter1.redis.helper.JedisTemplateHelper;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.RedisTemplate;

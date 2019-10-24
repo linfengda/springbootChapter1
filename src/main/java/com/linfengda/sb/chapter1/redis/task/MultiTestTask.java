@@ -1,6 +1,6 @@
-package com.linfengda.sb.chapter1.lettuce.task;
+package com.linfengda.sb.chapter1.redis.task;
 
-import com.linfengda.sb.chapter1.lettuce.service.TestService;
+import com.linfengda.sb.chapter1.redis.service.TestService;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 
