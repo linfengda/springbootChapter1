@@ -3,8 +3,8 @@ package com.linfengda.sb.chapter1.common.config;
 import com.linfengda.sb.chapter1.common.exception.handler.MyAsyncUncaughtExceptionHandler;
 import com.linfengda.sb.chapter1.common.exception.handler.MySchedulingExceptionHandler;
 import org.springframework.aop.interceptor.AsyncUncaughtExceptionHandler;
+import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.AsyncConfigurer;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.SchedulingConfigurer;
@@ -19,7 +19,7 @@ import java.util.concurrent.Executor;
  * @author linfengda
  * @create 2018-11-20 10:18
  */
-@Configuration
+@SpringBootConfiguration
 @EnableAsync
 public class MySchedulingConfig implements SchedulingConfigurer, AsyncConfigurer {
 

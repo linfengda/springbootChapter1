@@ -1,14 +1,12 @@
 package com.linfengda.sb.chapter1.system.service.impl;
 
 import com.linfengda.sb.chapter1.common.exception.BusinessException;
-import com.linfengda.sb.chapter1.system.dao.SystemDao;
 import com.linfengda.sb.chapter1.system.entity.po.SysUserPO;
 import com.linfengda.sb.chapter1.system.service.TransactionalOtherService;
 import com.linfengda.sb.chapter1.system.service.TransactionalService;
 import com.linfengda.sb.support.dao.BaseService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
@@ -22,8 +20,6 @@ import javax.annotation.Resource;
 @Service
 @Slf4j
 public class TransactionalServiceImpl extends BaseService implements TransactionalService {
-    @Resource
-    private SystemDao systemDao;
     @Resource
     private TransactionalOtherService transactionalOtherService;
 
@@ -195,10 +191,9 @@ public class TransactionalServiceImpl extends BaseService implements Transaction
     private void insert() throws Exception {
         SysUserPO sysUserPO = new SysUserPO();
         sysUserPO.setUserId(123L);
-        sysUserPO.setUserCode("U123");
         sysUserPO.setUserName("用户123");
         sysUserPO.setPhone("123");
         sysUserPO.setPassword("123");
-        systemDao.insertSysUserPO(sysUserPO);
+        save(sysUserPO);
     }
 }

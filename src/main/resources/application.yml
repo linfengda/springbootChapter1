@@ -6,16 +6,17 @@ spring:
   profiles:
     active: @myActivateFile@,common-@myActivateFile@,mq-@myActivateFile@,redis-@myActivateFile@
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
-    type: com.zaxxer.hikari.HikariDataSource
-    hikari:
-      minimum-idle: 5
-      maximum-pool-size: 30
-      auto-commit: true
-      idle-timeout: 1200000
-      max-lifetime: 1800000
-      connection-timeout: 60000
-      connection-test-query: SELECT 1
+    driverClassName: com.mysql.jdbc.Driver
+    idleTimeout: 260000
+    maxLifetime: 275000
+    connectionTimeout: 60000
+    minIdle: 20
+    maximumPoolSize: 100
+    connectionTestQuery: SELECT 1
+    poolName: HikariPool
+    cachePrepStmts: true
+    prepStmtCacheSize: 300
+    prepStmtCacheSqlLimit: 2048
   redis:
     serializer: jackson
     timeout: 5000

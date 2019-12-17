@@ -1,6 +1,7 @@
 package com.linfengda.sb.support.dao.entity;
 
 import com.alibaba.fastjson.annotation.JSONField;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
 
@@ -32,15 +33,13 @@ public class BasePO {
 	/**
 	 * 删除字段枚举
 	 */
+	@AllArgsConstructor
+	@Getter
 	public enum Delete {
-		NORMAL(0, "正常"), DELETED(1, "删除");
-		@Getter private final Integer code;
-		@Getter private final String name;
-
-		Delete(Integer code, String name) {
-			this.code = code;
-			this.name = name;
-		}
+		NORMAL(0, "正常"),
+		DELETED(1, "删除");
+		private final Integer code;
+		private final String name;
 
 		public static Delete getType(Integer state) {
 			for (Delete delete : values()) {

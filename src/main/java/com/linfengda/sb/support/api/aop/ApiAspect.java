@@ -29,15 +29,12 @@ public class ApiAspect extends ApplicationObjectSupport {
 
     @Around("authPoint()")
     public Object doAround(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
-
-        RequestParam requestParam = null;
-        Object result = null;
         try {
-            requestParam = HttpServletUtil.getParams();
+            RequestParam requestParam = HttpServletUtil.getParams();
             RequestParamContext.setParam(requestParam);
 
             Object[] args = proceedingJoinPoint.getArgs();
-            result = proceedingJoinPoint.proceed(args);
+            Object result = proceedingJoinPoint.proceed(args);
             return result;
         } finally {
             releaseSource();

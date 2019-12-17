@@ -6,7 +6,7 @@ import com.linfengda.sb.chapter1.system.entity.vo.UserListVO;
 import com.linfengda.sb.support.api.entity.RequestParam;
 
 /**
- * 描述: 电影服务
+ * 描述: 系统服务
  *
  * @author linfengda
  * @create 2019-07-28 15:07

@@ -1,10 +1,8 @@
 package com.linfengda.sb.chapter1.common.config;
 
-import com.netflix.hystrix.HystrixCommandProperties;
-import com.netflix.hystrix.HystrixThreadPoolProperties;
 import com.netflix.hystrix.contrib.javanica.aop.aspectj.HystrixCommandAspect;
+import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
 /**
  * 描述: 熔断器配置
@@ -12,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
  * @author linfengda
  * @create 2019-04-04 14:41
  */
-@Configuration
+@SpringBootConfiguration
 public class HystrixConfig {
 
     /**

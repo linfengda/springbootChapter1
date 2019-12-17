@@ -2,7 +2,6 @@ package com.linfengda.sb.chapter1.system.service.impl;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
-import com.linfengda.sb.chapter1.common.exception.BusinessException;
 import com.linfengda.sb.chapter1.system.dao.SystemDao;
 import com.linfengda.sb.chapter1.system.entity.po.SysUserPO;
 import com.linfengda.sb.chapter1.system.entity.vo.UserListVO;
@@ -19,7 +18,7 @@ import javax.annotation.Resource;
 import java.util.concurrent.TimeUnit;
 
 /**
- * 描述: 电影服务
+ * 描述: 系统服务
  *
  * @author linfengda
  * @create 2019-07-28 15:08
@@ -47,9 +46,8 @@ public class SystemServiceImpl extends BaseService implements SystemService {
     @Transactional(rollbackFor=Exception.class)
     @Override
     public void updateUser(Long userId, String userName) throws Exception {
-        /*SetValue setValue = new SetValue();
+        SetValue setValue = new SetValue();
         setValue.add("userName", userName);
-        updateByPrimaryKey(SysUserPO.class, setValue, userId);*/
-        throw new BusinessException("子事务抛出异常！");
+        updateByPrimaryKey(SysUserPO.class, setValue, userId);
     }
 }

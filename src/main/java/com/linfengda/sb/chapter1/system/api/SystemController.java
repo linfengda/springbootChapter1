@@ -24,8 +24,6 @@ import javax.annotation.Resource;
 @RestController
 public class SystemController extends BaseController {
     @Resource
-    private TransactionalService transactionalService;
-    @Resource
     private SystemService systemService;
 
     @PostMapping("/sys/pageUserList")

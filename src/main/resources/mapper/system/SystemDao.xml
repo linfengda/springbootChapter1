@@ -11,23 +11,4 @@
         su.is_delete=0
     </select>
 
-    <insert id="insertSysUserPO" parameterType="com.linfengda.sb.chapter1.system.entity.po.SysUserPO">
-        insert into sys_user
-        (
-        user_id,
-        user_code,
-        user_name,
-        phone,
-        password
-        )
-        VALUES
-        (
-        #{po.userId},
-        #{po.userCode},
-        #{po.userName},
-        #{po.phone},
-        #{po.password}
-        )
-    </insert>
-
 </mapper>

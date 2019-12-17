@@ -3,7 +3,9 @@ package com.linfengda.sb.chapter1.system.entity.po;
 import com.linfengda.sb.support.dao.entity.BasePO;
 import com.linfengda.sb.support.dao.tableAnnontation.Id;
 import com.linfengda.sb.support.dao.tableAnnontation.Table;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 
 /**
  * 描述: 系统用户
@@ -20,10 +22,6 @@ public class SysUserPO extends BasePO {
     @Id
     private Long userId;
     /**
-     * 用户编码
-     */
-    private String userCode;
-    /**
      * 用户名称
      */
     private String userName;
@@ -35,4 +33,29 @@ public class SysUserPO extends BasePO {
      * 用户密码
      */
     private String password;
+    /**
+     * 用户状态
+     */
+    private Integer status;
+
+    /**
+     * 状态字段枚举
+     */
+    @AllArgsConstructor
+    @Getter
+    public enum Status {
+        YES(0, "启用"),
+        NO(1, "停用");
+        private final Integer code;
+        private final String name;
+
+        public static Status getType(Integer state) {
+            for (Status value : values()) {
+                if (value.getCode().equals(state)) {
+                    return value;
+                }
+            }
+            return null;
+        }
+    }
 }

@@ -1,8 +1,8 @@
 package com.linfengda.sb.chapter1.common.config;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
@@ -15,7 +15,7 @@ import java.util.concurrent.ThreadPoolExecutor;
  * @author linfengda
  * @create 2019-01-10 17:00
  */
-@Configuration
+@SpringBootConfiguration
 @EnableAsync
 public class MyExecutorPoolConfig {
 
