@@ -2,18 +2,20 @@ package com.linfengda.sb.chapter1.system.api;
 
 import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.Page;
+import com.linfengda.sb.chapter1.common.api.BaseController;
+import com.linfengda.sb.chapter1.common.api.entity.RequestParam;
+import com.linfengda.sb.chapter1.common.api.entity.Result;
 import com.linfengda.sb.chapter1.system.entity.dto.UserDTO;
+import com.linfengda.sb.chapter1.system.entity.dto.UserPageQueryDTO;
 import com.linfengda.sb.chapter1.system.entity.vo.UserListVO;
 import com.linfengda.sb.chapter1.system.service.SystemService;
-import com.linfengda.sb.chapter1.system.service.TransactionalService;
-import com.linfengda.sb.support.api.BaseController;
-import com.linfengda.sb.support.api.entity.RequestParam;
-import com.linfengda.sb.support.api.entity.Result;
-import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import java.util.List;
 
 /**
  * 描述: 测试MVC
@@ -27,19 +29,21 @@ public class SystemController extends BaseController {
     private SystemService systemService;
 
     @PostMapping("/sys/pageUserList")
-    public Result pageUserList() throws Exception {
-        RequestParam params = getParams();
-        Assert.notNull(params.getInteger("pageNo"), "分页页码必须为数字且不能为空");
-        Assert.notNull(params.getInteger("pageSize"), "分页大小必须为数字且不能为空");
-        Page<UserListVO> userListVOPage = systemService.pageUserList(params);
+    public Result pageUserList(@Valid UserPageQueryDTO userPageQueryDTO) throws Exception {
+        Page<UserListVO> userListVOPage = systemService.pageUserList(userPageQueryDTO);
         return new Result(userListVOPage);
     }
 
+    @PostMapping("/sys/test")
+    public Result test(@Valid List<String> userNameList, @NotNull(message = "用户状态不能为空") Integer status) throws Exception {
+        System.out.println(userNameList);
+        System.out.println(status);
+        return SUCCESS_RESULT;
+    }
+
     @PostMapping("/sys/getUserInfo")
-    public Result getUserInfo() throws Exception {
-        RequestParam params = getParams();
-        Assert.notNull(params.getLong("userId"), "用户ID不能为空");
-        return new Result(systemService.getUserInfo(params.getLong("userId")));
+    public Result getUserInfo(Long userId) throws Exception {
+        return new Result(systemService.getUserInfo(userId));
     }
 
     @PostMapping("/sys/updateUser")

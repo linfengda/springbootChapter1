@@ -2,8 +2,8 @@ package com.linfengda.sb.chapter1.system.service;
 
 import com.github.pagehelper.Page;
 import com.linfengda.sb.chapter1.common.exception.BusinessException;
+import com.linfengda.sb.chapter1.system.entity.dto.UserPageQueryDTO;
 import com.linfengda.sb.chapter1.system.entity.vo.UserListVO;
-import com.linfengda.sb.support.api.entity.RequestParam;
 
 /**
  * 描述: 系统服务
@@ -15,11 +15,11 @@ public interface SystemService {
 
     /**
      * 分页查询
-     * @param params
+     * @param userPageQueryDTO
      * @return
      * @throws BusinessException
      */
-    Page<UserListVO> pageUserList(RequestParam params) throws BusinessException;
+    Page<UserListVO> pageUserList(UserPageQueryDTO userPageQueryDTO) throws BusinessException;
 
     /**
      * 查询用户全部信息

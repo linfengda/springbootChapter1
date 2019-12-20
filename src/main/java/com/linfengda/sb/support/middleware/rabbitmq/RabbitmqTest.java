@@ -1,7 +1,7 @@
 package com.linfengda.sb.support.middleware.rabbitmq;
 
 import com.linfengda.sb.chapter1.common.exception.BusinessException;
-import com.linfengda.sb.chapter1.common.helper.ThreadPoolHelper;
+import com.linfengda.sb.chapter1.common.thread.ThreadPoolHelper;
 import com.linfengda.sb.support.middleware.rabbitmq.service.MqConsumerService;
 import com.linfengda.sb.support.middleware.rabbitmq.service.MqProducerService;
 import lombok.extern.slf4j.Slf4j;

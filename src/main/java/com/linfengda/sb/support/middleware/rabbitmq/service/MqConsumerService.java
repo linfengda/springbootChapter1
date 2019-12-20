@@ -2,10 +2,12 @@ package com.linfengda.sb.support.middleware.rabbitmq.service;
 
 import com.linfengda.sb.support.middleware.rabbitmq.QueueVo;
 import com.linfengda.sb.support.middleware.rabbitmq.helper.ConnectionHelper;
-import com.rabbitmq.client.*;
+import com.rabbitmq.client.BuiltinExchangeType;
+import com.rabbitmq.client.Channel;
+import com.rabbitmq.client.Connection;
+import com.rabbitmq.client.DeliverCallback;
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**

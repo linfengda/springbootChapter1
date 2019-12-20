@@ -1,5 +1,6 @@
 package com.linfengda.sb.chapter1.common.config;
 
+import com.linfengda.sb.chapter1.common.thread.ThreadPoolManager;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.context.annotation.Bean;
@@ -7,7 +8,6 @@ import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 import java.util.concurrent.Executor;
-import java.util.concurrent.ThreadPoolExecutor;
 
 /**
  * 描述: 线程池配置
@@ -35,8 +35,8 @@ public class MyExecutorPoolConfig {
         executor.setMaxPoolSize(maxPoolSize);
         executor.setQueueCapacity(queueSize);
         executor.setKeepAliveSeconds(keepAlive);
-        executor.setRejectedExecutionHandler(new ThreadPoolExecutor.DiscardPolicy());
-        executor.setThreadNamePrefix("my-task-thread");
+        executor.setRejectedExecutionHandler(ThreadPoolManager.MY_EXECUTOR_POOL.getPolicy());
+        executor.setThreadNamePrefix(ThreadPoolManager.MY_EXECUTOR_POOL.getPrefix());
         executor.initialize();
         return executor;
     }
@@ -48,8 +48,8 @@ public class MyExecutorPoolConfig {
         executor.setMaxPoolSize(maxPoolSize);
         executor.setQueueCapacity(queueSize);
         executor.setKeepAliveSeconds(keepAlive);
-        executor.setRejectedExecutionHandler(new ThreadPoolExecutor.CallerRunsPolicy());
-        executor.setThreadNamePrefix("my-caller-runs-thread");
+        executor.setRejectedExecutionHandler(ThreadPoolManager.MY_DISTRIBUTE_TASK_POOL.getPolicy());
+        executor.setThreadNamePrefix(ThreadPoolManager.MY_DISTRIBUTE_TASK_POOL.getPrefix());
         executor.initialize();
         return executor;
     }

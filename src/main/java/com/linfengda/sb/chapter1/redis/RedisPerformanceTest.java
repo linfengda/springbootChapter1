@@ -1,6 +1,6 @@
 package com.linfengda.sb.chapter1.redis;
 
-import com.linfengda.sb.chapter1.common.helper.ThreadPoolHelper;
+import com.linfengda.sb.chapter1.common.thread.ThreadPoolHelper;
 import com.linfengda.sb.chapter1.redis.service.JedisTestServiceImpl;
 import com.linfengda.sb.chapter1.redis.service.LettuceTestServiceImpl;
 import com.linfengda.sb.chapter1.redis.service.TestService;

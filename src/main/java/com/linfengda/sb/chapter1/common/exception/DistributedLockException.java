@@ -9,6 +9,7 @@ import lombok.Getter;
  * @author linfengda
  * @create 2018-11-20 10:40
  */
+@Getter
 public class DistributedLockException extends RuntimeException {
 
     public DistributedLockException(String msg) {
@@ -20,7 +21,7 @@ public class DistributedLockException extends RuntimeException {
         this.msg = msg;
     }
 
-    @Getter private int code = ErrorCode.COMMON_LOCK_ERROR_CODE;
+    private int code = ErrorCode.COMMON_LOCK_ERROR_CODE;
 
-    @Getter private String msg;
+    private String msg;
 }

@@ -1,9 +1,10 @@
 package com.linfengda.sb.chapter1.common.exception.handler;
 
+import com.linfengda.sb.chapter1.common.api.entity.Result;
+import com.linfengda.sb.chapter1.common.api.exception.ParamParesException;
 import com.linfengda.sb.chapter1.common.entity.ErrorCode;
 import com.linfengda.sb.chapter1.common.exception.BusinessException;
 import com.linfengda.sb.chapter1.common.exception.DistributedLockException;
-import com.linfengda.sb.support.api.entity.Result;
 import com.linfengda.sb.support.dao.exception.DataAccessException;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -35,6 +36,10 @@ public class MyGlobalExceptionHandler {
             DistributedLockException distributedLockException = (DistributedLockException) e;
             result = new Result(distributedLockException.getCode(), distributedLockException.getMsg());
             log.warn(distributedLockException.getMsg());
+        } else if (e instanceof ParamParesException) {
+            ParamParesException paramParesException = (ParamParesException) e;
+            result = new Result(paramParesException.getCode(), paramParesException.getMsg());
+            log.warn(paramParesException.getMsg());
         } else if (e instanceof HttpRequestMethodNotSupportedException) {
             log.warn("404找不到URL:未知请求与方法", e);
             return RESULT_404;
