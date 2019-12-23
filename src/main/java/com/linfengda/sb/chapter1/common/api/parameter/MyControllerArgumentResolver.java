@@ -17,6 +17,7 @@ import org.springframework.web.method.support.ModelAndViewContainer;
 import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.lang.reflect.WildcardType;
 import java.util.List;
 import java.util.Map;
 
@@ -48,19 +49,27 @@ public class MyControllerArgumentResolver implements HandlerMethodArgumentResolv
             throw new BusinessException(ErrorCode.COMMON_PARAM_ERROR_CODE, "API参数大小限制为" +MAX_CONTROLLER_PARAMETER_SIZE+ "个");
         }
         RequestParam requestParam = getRequestParam(nativeWebRequest);
-        // 转换请求参数为控制器方法参数，如果为DTO则直接转换
-        if (BaseType.isBaseDataType(methodParameter.getParameterType().getName())) {
+        // 如果参数为null，直接返回
+        if (null == requestParam.get(methodParameter.getParameterName())) {
+            return null;
+        }
+        // 转换请求参数为控制器方法参数
+        if (BaseType.isBaseType(methodParameter.getParameterType().getName())) {
             return requestParam.getObject(methodParameter.getParameterName(), methodParameter.getParameterType());
         }else if (java.util.List.class.equals(methodParameter.getParameterType())) {
-            Class<?> genericClz = null;
+            Class<?> genericClz = Object.class;
             Type genericParameterType = methodParameter.getGenericParameterType();
             if (genericParameterType instanceof ParameterizedType) {
                 ParameterizedType parameterizedType = (ParameterizedType) genericParameterType;
                 Type[] actualTypeArguments = parameterizedType.getActualTypeArguments();
                 if (null != actualTypeArguments && actualTypeArguments.length > 0) {
-                    genericClz = (Class<?>) actualTypeArguments[0];
+                    if (actualTypeArguments[0] instanceof WildcardType) {
+                        genericClz = Object.class;
+                    }else {
+                        genericClz = (Class<?>) actualTypeArguments[0];
+                    }
                 }
-             }
+            }
             List<?> list = requestParam.getJSONArray(methodParameter.getParameterName()).toJavaList(genericClz);
             return list;
         }else {

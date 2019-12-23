@@ -1,8 +1,11 @@
 package com.linfengda.sb.chapter1.common.api.aop;
 
 import com.linfengda.sb.chapter1.common.api.context.RequestParamContext;
-import com.linfengda.sb.chapter1.common.api.entity.BaseType;
-import com.linfengda.sb.chapter1.common.api.parameter.MesValidateUtils;
+import com.linfengda.sb.chapter1.common.api.parameter.MyValidateUtils;
+import com.linfengda.sb.chapter1.common.api.parameter.validate.BaseValidateParameterType;
+import com.linfengda.sb.chapter1.common.api.parameter.validate.BeanValidateAnnotationType;
+import com.linfengda.sb.chapter1.common.api.parameter.validate.FieldValidateAnnotationType;
+import com.linfengda.sb.chapter1.common.api.parameter.validate.NotValidateParameterType;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;
@@ -13,7 +16,6 @@ import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.context.support.ApplicationObjectSupport;
 import org.springframework.stereotype.Component;
 
-import javax.validation.Valid;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
@@ -50,40 +52,68 @@ public class ApiAspect extends ApplicationObjectSupport {
      * @return
      */
     private Object[] checkControllerMethodParameter(ProceedingJoinPoint proceedingJoinPoint) {
-        // TODO 校验基本数据类型
-        Parameter[] parameters = getMethodParameters(proceedingJoinPoint);
         Object [] args = proceedingJoinPoint.getArgs();
-        if (args != null && args.length > 0){
-            for (int i=0; i <args.length; i++){
-                Parameter parameter = parameters[i];
-                if (BaseType.isBaseDataType(parameter.getType().getName())) {
+        if (args == null || args.length == 0) {
+            return args;
+        }
 
-                    MesValidateUtils.validate(args[i]);
-
-
-                }else {
-                    Annotation[] annotations = parameter.getAnnotations();
-                    if (annotations != null && annotations.length > 0) {
-                        // 判断是否有需要校验的自定义注解
-                        for (Annotation annotation : annotations) {
-                            if (annotation instanceof Valid) {
-                                MesValidateUtils.validate(args[i]);
-                            }
-                        }
-                    }
+        boolean needValidateBaseType = false;
+        Method targetMethod = getMethodParameters(proceedingJoinPoint);
+        Parameter[] parameters = targetMethod.getParameters();
+        for (int i=0; i <parameters.length; i++){
+            Parameter parameter = parameters[i];
+            if (NotValidateParameterType.isNotValidateParameterType(parameter.getType().getName())) {
+                continue;
+            }
+            if (BaseValidateParameterType.isBaseValidateParameterType(parameter.getType().getName())) {
+                // 校验基本数据类型
+                Annotation[] annotations = parameter.getAnnotations();
+                if (isFieldValidateAnnotationType(annotations)) {
+                    needValidateBaseType = true;
+                    continue;
+                }
+            }else {
+                // 校验Bean
+                Annotation[] annotations = parameter.getAnnotations();
+                if (isBeanValidateAnnotationType(annotations)) {
+                    MyValidateUtils.validate(args[i]);
                 }
             }
+        }
+        if (needValidateBaseType) {
+            MyValidateUtils.validateParameters(proceedingJoinPoint.getTarget(), targetMethod, args);
         }
         return args;
     }
 
-    private Parameter[] getMethodParameters(ProceedingJoinPoint proceedingJoinPoint) {
+    private boolean isFieldValidateAnnotationType(Annotation[] annotations) {
+        if (annotations != null && annotations.length > 0) {
+            for (Annotation annotation : annotations) {
+                if (FieldValidateAnnotationType.isValidateAnnotation(annotation.annotationType().getName())) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    private boolean isBeanValidateAnnotationType(Annotation[] annotations) {
+        if (annotations != null && annotations.length > 0) {
+            for (Annotation annotation : annotations) {
+                if (BeanValidateAnnotationType.isValidateAnnotation(annotation.annotationType().getName())) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    private Method getMethodParameters(ProceedingJoinPoint proceedingJoinPoint) {
         Signature signature = proceedingJoinPoint.getSignature();
         if (signature instanceof MethodSignature) {
             MethodSignature methodSignature = (MethodSignature) signature;
             Method targetMethod = methodSignature.getMethod();
-            Parameter[] parameters = targetMethod.getParameters();
-            return parameters;
+            return targetMethod;
         }
         return null;
     }

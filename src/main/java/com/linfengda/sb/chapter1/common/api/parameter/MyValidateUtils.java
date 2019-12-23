@@ -8,6 +8,8 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
+import javax.validation.executable.ExecutableValidator;
+import java.lang.reflect.Method;
 import java.util.Set;
 
 /**
@@ -17,8 +19,8 @@ import java.util.Set;
  * @see org.hibernate.validator.constraints
  * @see javax.validation.constraints
  */
-public class MesValidateUtils {
-    private MesValidateUtils(){}
+public class MyValidateUtils {
+    private MyValidateUtils(){}
 
     private static Validator validator;
 
@@ -31,7 +33,6 @@ public class MesValidateUtils {
         validator = validatorFactory.getValidator();
     }
 
-
     /**
      * 参数校验方法
      * @param t 需要校验的对象
@@ -42,9 +43,9 @@ public class MesValidateUtils {
         if (t == null){
             throw new ParamParesException("参数异常");
         }
-        Set<ConstraintViolation<T>> validate = validator.validate(t);
-        if(CollectionUtils.isNotEmpty(validate)){
-            ConstraintViolation<T> firstViolation = validate.stream().findFirst().get();
+        Set<ConstraintViolation<T>> result = validator.validate(t);
+        if(CollectionUtils.isNotEmpty(result)){
+            ConstraintViolation<T> firstViolation = result.stream().findFirst().get();
             String firstErrorMsg = firstViolation.getMessage();
             throw new ParamParesException(firstErrorMsg);
         }
@@ -56,10 +57,28 @@ public class MesValidateUtils {
      * @param <T>
      * @throws ParamParesException
      */
-    public static <T> void validate(T t, Class<?>... groupClazz){
-        Set<ConstraintViolation<T>> validate = validator.validate(t,groupClazz);
-        if(CollectionUtils.isNotEmpty(validate)){
-            ConstraintViolation<T> firstViolation = validate.stream().findFirst().get();
+    public static <T> void validate(T t, Class<?>... groupClazz) {
+        Set<ConstraintViolation<T>> result = validator.validate(t,groupClazz);
+        if(CollectionUtils.isNotEmpty(result)){
+            ConstraintViolation<T> firstViolation = result.stream().findFirst().get();
+            String firstErrorMsg = firstViolation.getMessage();
+            throw new ParamParesException(firstErrorMsg);
+        }
+    }
+
+    /**
+     * 参数校验方法
+     * @param object
+     * @param method
+     * @param parameterValues
+     * @param groups
+     * @param <T>
+     */
+    public static <T> void validateParameters(T object, Method method, Object[] parameterValues, Class<?>... groups) {
+        ExecutableValidator execVal = validator.forExecutables();
+        Set<ConstraintViolation<T>> result = execVal.validateParameters(object, method, parameterValues, groups);
+        if(CollectionUtils.isNotEmpty(result)){
+            ConstraintViolation<T> firstViolation = result.stream().findFirst().get();
             String firstErrorMsg = firstViolation.getMessage();
             throw new ParamParesException(firstErrorMsg);
         }

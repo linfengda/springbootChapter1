@@ -9,11 +9,11 @@ import com.linfengda.sb.chapter1.system.entity.dto.UserDTO;
 import com.linfengda.sb.chapter1.system.entity.dto.UserPageQueryDTO;
 import com.linfengda.sb.chapter1.system.entity.vo.UserListVO;
 import com.linfengda.sb.chapter1.system.service.SystemService;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
-import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
@@ -29,13 +29,13 @@ public class SystemController extends BaseController {
     private SystemService systemService;
 
     @PostMapping("/sys/pageUserList")
-    public Result pageUserList(@Valid UserPageQueryDTO userPageQueryDTO) throws Exception {
+    public Result pageUserList(@Validated UserPageQueryDTO userPageQueryDTO) throws Exception {
         Page<UserListVO> userListVOPage = systemService.pageUserList(userPageQueryDTO);
         return new Result(userListVOPage);
     }
 
     @PostMapping("/sys/test")
-    public Result test(@Valid List<String> userNameList, @NotNull(message = "用户状态不能为空") Integer status) throws Exception {
+    public Result test(@NotNull(message = "用户名列表不能为空") List userNameList, @NotNull(message = "用户状态不能为空") Integer status) throws Exception {
         System.out.println(userNameList);
         System.out.println(status);
         return SUCCESS_RESULT;
