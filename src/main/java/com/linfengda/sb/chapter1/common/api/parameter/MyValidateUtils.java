@@ -68,10 +68,10 @@ public class MyValidateUtils {
 
     /**
      * 参数校验方法
-     * @param object
-     * @param method
-     * @param parameterValues
-     * @param groups
+     * @param object    需要校验的对象
+     * @param method    需要校验的对象方法
+     * @param parameterValues   校验的对象方法参数
+     * @param groups    分组
      * @param <T>
      */
     public static <T> void validateParameters(T object, Method method, Object[] parameterValues, Class<?>... groups) {

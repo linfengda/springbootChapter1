@@ -3,6 +3,7 @@ package com.linfengda.sb.chapter1.common.api.util;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.linfengda.sb.chapter1.common.api.entity.HttpMethod;
+import com.linfengda.sb.chapter1.common.api.entity.RequestInfoBO;
 import com.linfengda.sb.chapter1.common.api.entity.RequestParam;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.IOUtils;
@@ -12,6 +13,7 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Map;
 
@@ -23,17 +25,49 @@ import java.util.Map;
  */
 @Slf4j
 public class HttpServletUtil {
+    /**
+     * Attribute属性名（解决POST请求HttpServletRequest流只能读取一次问题）
+     */
+    private static final String JSON_REQUEST_BODY = "JSON_REQUEST_BODY";
 
     private static final String CHAR_CODE_SET = "UTF-8";
 
     private static final String INTERNATIONAL_CODE = "ISO8859-1";
+
+
+    public static RequestInfoBO getRequestInfoBO() throws Exception {
+        HttpServletRequest servletRequest = getHttpServletRequest();
+        RequestInfoBO requestInfoBO = new RequestInfoBO();
+        requestInfoBO.setIp(IpUtil.getIp(servletRequest));
+        requestInfoBO.setUrl(servletRequest.getRequestURI());
+        requestInfoBO.setRequestParam(getRequestParam(servletRequest));
+        return requestInfoBO;
+    }
+
+    public static RequestParam getRequestParam(HttpServletRequest servletRequest) throws Exception {
+        RequestParam requestParam = new RequestParam();
+        String jsonBody = (String) servletRequest.getAttribute(JSON_REQUEST_BODY);
+        if (jsonBody == null) {
+            requestParam = readRequestParam(servletRequest);
+            servletRequest.setAttribute(JSON_REQUEST_BODY, requestParam.toJSONString());
+        }else {
+            JSONObject json = JSON.parseObject(jsonBody);
+            if (json == null) {
+                return requestParam;
+            }
+            for (Map.Entry<String, Object> value : json.entrySet()) {
+                requestParam.put(value.getKey(), value.getValue());
+            }
+        }
+        return requestParam;
+    }
 
     /**
      * 获取http request
      *
      * @return
      */
-    public static HttpServletRequest getHttpServletRequest() {
+    private static HttpServletRequest getHttpServletRequest() {
         RequestAttributes reqAttrs = RequestContextHolder.getRequestAttributes();
         if (reqAttrs != null && reqAttrs instanceof ServletRequestAttributes) {
             return ((ServletRequestAttributes) reqAttrs).getRequest();
@@ -43,12 +77,22 @@ public class HttpServletUtil {
         }
     }
 
-    public static RequestParam getRequestParam() throws Exception {
-        HttpServletRequest request = getHttpServletRequest();
-        return getRequestParam(request);
+    /**
+     * 获取http response
+     *
+     * @return
+     */
+    private static HttpServletResponse getHttpServletResponse() {
+        RequestAttributes reqAttrs = RequestContextHolder.getRequestAttributes();
+        if (reqAttrs != null && reqAttrs instanceof ServletRequestAttributes) {
+            return ((ServletRequestAttributes) reqAttrs).getResponse();
+        } else {
+            log.warn("无法获取HttpServletResponse");
+            return null;
+        }
     }
 
-    public static RequestParam getRequestParam(HttpServletRequest request) throws IOException {
+    private static RequestParam readRequestParam(HttpServletRequest request) throws IOException {
         String method = request.getMethod();
         HttpMethod httpMethod = HttpMethod.getHttpMethod(method.toLowerCase());
 
@@ -87,6 +131,4 @@ public class HttpServletUtil {
         }
         return requestParam;
     }
-
-
 }

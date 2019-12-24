@@ -11,10 +11,13 @@ import com.linfengda.sb.chapter1.system.entity.vo.UserListVO;
 import com.linfengda.sb.chapter1.system.service.SystemService;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 /**
@@ -23,7 +26,8 @@ import java.util.List;
  * @author linfengda
  * @create 2018-08-16 10:29
  */
-@RestController
+@RestController()
+@RequestMapping("/pc")
 public class SystemController extends BaseController {
     @Resource
     private SystemService systemService;
@@ -35,21 +39,19 @@ public class SystemController extends BaseController {
     }
 
     @PostMapping("/sys/test")
-    public Result test(@NotNull(message = "用户名列表不能为空") List userNameList, @NotNull(message = "用户状态不能为空") Integer status) throws Exception {
+    public Result test(@NotNull(message = "数组不能为空") @Size(message = "数组大小不能小于3", min = 3) List userNameList, @NotNull(message = "value不能为空") @Max(message = "value最大值为100", value = 100) Integer value) throws Exception {
         System.out.println(userNameList);
-        System.out.println(status);
+        System.out.println(value);
         return SUCCESS_RESULT;
     }
 
     @PostMapping("/sys/getUserInfo")
-    public Result getUserInfo(Long userId) throws Exception {
+    public Result getUserInfo(@NotNull(message = "用户ID不能为空") Long userId) throws Exception {
         return new Result(systemService.getUserInfo(userId));
     }
 
     @PostMapping("/sys/updateUser")
-    public Result updateUser() throws Exception {
-        RequestParam params = getParams();
-        UserDTO userDTO = JSON.toJavaObject(params, UserDTO.class);
+    public Result updateUser(@Validated UserDTO userDTO) throws Exception {
         systemService.updateUser(userDTO.getUserId(), userDTO.getUserName());
         return SUCCESS_RESULT;
     }

@@ -1,7 +1,5 @@
 package com.linfengda.sb.chapter1.common.api;
 
-import com.linfengda.sb.chapter1.common.api.context.RequestParamContext;
-import com.linfengda.sb.chapter1.common.api.entity.RequestParam;
 import com.linfengda.sb.chapter1.common.api.entity.Result;
 
 /**
@@ -14,14 +12,5 @@ public class BaseController {
 
     /** 默认成功的result **/
     public static final Result SUCCESS_RESULT = new Result();
-
-    /**
-     * 获取传入参数
-     * @return
-     * @throws Exception
-     */
-    protected RequestParam getParams(){
-        return RequestParamContext.getParams();
-    }
 
 }
