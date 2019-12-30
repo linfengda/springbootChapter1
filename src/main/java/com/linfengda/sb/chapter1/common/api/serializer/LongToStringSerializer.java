@@ -1,4 +1,4 @@
-package com.linfengda.sb.chapter1.common.serializer;
+package com.linfengda.sb.chapter1.common.api.serializer;
 
 import com.alibaba.fastjson.serializer.JSONSerializer;
 import com.alibaba.fastjson.serializer.ObjectSerializer;

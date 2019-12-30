@@ -1,4 +1,4 @@
-package com.linfengda.sb.chapter1.common.entity;
+package com.linfengda.sb.chapter1.common.exception.entity;
 
 public interface ErrorCode {
     public static final String SYSTEM_ERROR_MSG = "喔哦~系统可能出故障了，请帮忙联系实施人员解救下系统吧！";

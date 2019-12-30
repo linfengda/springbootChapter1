@@ -1,7 +1,7 @@
 package com.linfengda.sb.chapter1.system.entity.vo;
 
 import com.alibaba.fastjson.annotation.JSONField;
-import com.linfengda.sb.chapter1.common.serializer.LongToStringSerializer;
+import com.linfengda.sb.chapter1.common.api.serializer.LongToStringSerializer;
 import lombok.Data;
 
 /**

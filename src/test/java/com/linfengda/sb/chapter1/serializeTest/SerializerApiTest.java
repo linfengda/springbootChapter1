@@ -32,7 +32,7 @@ public class SerializerApiTest {
     @Test
     public void runTest() {
         try {
-            //JavaBeanSerializeTest();
+            JavaBeanSerializeTest();
             //ListSerializeTest();
             //SetSerializeTest();
             //HashSerializeTest();
@@ -60,6 +60,8 @@ public class SerializerApiTest {
         mySon.setF13(new char[]{'a', 'b', 'c'});
         mySon.setF14(new boolean[]{false, false, true});
         mySon.setF15(new String[]{"Peggy", "Wilson", "George"});
+        //mySon.setUpperHeadField("xxx");
+        //mySon.setLowerHeadField("yyy");
         Pig pig = new Pig();
         pig.setId(1);
         pig.setCode("Z001");

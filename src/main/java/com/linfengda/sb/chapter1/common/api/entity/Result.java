@@ -1,6 +1,6 @@
 package com.linfengda.sb.chapter1.common.api.entity;
 
-import com.linfengda.sb.chapter1.common.entity.ErrorCode;
+import com.linfengda.sb.chapter1.common.exception.entity.ErrorCode;
 import lombok.Data;
 
 /**

@@ -30,6 +30,8 @@ public class MySon extends YourPapa {
     private char[] f13;
     private boolean[] f14;
     private String[] f15;
+    //private String UpperHeadField;
+    //private String lowerHeadField;
     private Pig pig;
     private List<Pig> childPigs;
     private Map<String, Pig> kindPigs;

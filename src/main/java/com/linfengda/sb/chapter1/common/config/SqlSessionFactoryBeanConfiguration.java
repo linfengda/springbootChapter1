@@ -1,8 +1,7 @@
 package com.linfengda.sb.chapter1.common.config;
 
 import com.github.pagehelper.PageInterceptor;
-import com.linfengda.sb.support.dao.entity.DefaultFieldSetter;
-import com.linfengda.sb.support.dao.entity.SimpleDefaultFieldSetter;
+import com.linfengda.sb.support.dao.OrmTemplate;
 import com.linfengda.sb.support.interceptor.PermissionInterceptor;
 import org.apache.ibatis.plugin.Interceptor;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -26,6 +25,11 @@ public class SqlSessionFactoryBeanConfiguration {
     @Resource
     private DataSource dataSource;
 
+	/**
+	 * mybatis SqlSessionFactory配置
+	 * @return
+	 * @throws Exception
+	 */
 	@Bean
 	public SqlSessionFactory sqlSessionFactory() throws Exception {
 		SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
@@ -52,8 +56,15 @@ public class SqlSessionFactoryBeanConfiguration {
 		return sqlSessionFactoryBean.getObject();
 	}
 
+	/**
+	 * ORM框架支持类
+	 * @return
+	 * @throws Exception
+	 */
 	@Bean
-	public DefaultFieldSetter defaultFieldSetter() throws Exception {
-		return new SimpleDefaultFieldSetter();
+	public OrmTemplate ormTemplate() throws Exception {
+		OrmTemplate ormTemplate = new OrmTemplate();
+		ormTemplate.setDataSource(dataSource);
+		return ormTemplate;
 	}
 }

@@ -2,7 +2,7 @@ package com.linfengda.sb.chapter1.common.exception.handler;
 
 import com.linfengda.sb.chapter1.common.api.entity.Result;
 import com.linfengda.sb.chapter1.common.api.exception.ParamParesException;
-import com.linfengda.sb.chapter1.common.entity.ErrorCode;
+import com.linfengda.sb.chapter1.common.exception.entity.ErrorCode;
 import com.linfengda.sb.chapter1.common.exception.BusinessException;
 import com.linfengda.sb.chapter1.common.exception.DistributedLockException;
 import com.linfengda.sb.support.dao.exception.DataAccessException;
