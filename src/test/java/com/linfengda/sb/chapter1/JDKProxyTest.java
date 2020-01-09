@@ -21,7 +21,7 @@ import java.io.IOException;
 @Slf4j
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class Test {
+public class JDKProxyTest {
 
     /**
      * JDK动态代理使我们可以在运行期动态的创建代理类。动态代理是在运行期间通过接口生成代理类的，与静态代理相比更加灵活，但是也有一定的限制，

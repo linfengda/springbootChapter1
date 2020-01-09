@@ -4,7 +4,8 @@
 ``` com.linfengda.sb.chapter1.common.api.aop.ApiAspect ```
 #### 3.进行接口路由
 ``` com.linfengda.sb.chapter1.common.api.router.RequestRouter ```
-#### 4.进行入参校验
-``` com.linfengda.sb.chapter1.common.api.parameter.MyValidateUtils ```
-#### 5.进行权限检查
+#### 4.进行权限检查
 ``` com.linfengda.sb.chapter1.common.api.url.WhiteUrlList ```
+#### 5.进行入参校验
+``` com.linfengda.sb.chapter1.common.api.parameter.MyValidateUtils ```
+
