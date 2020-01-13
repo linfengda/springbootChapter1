@@ -1,0 +1,1121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="1ac92d16-a2f3-4d49-8fdb-b5b56f35641b" name="Default" comment="feat: 提交springBoot单元测试" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/chapter1$Chapter1ApplicationTests_runTest.coverage" NAME="Chapter1ApplicationTests.runTest Coverage Results" MODIFIED="1566195295731" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.linfengda.sb.chapter1.*</FILTER>
+    </SUITE>
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="chapter1" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="package-info" />
+        <option value="FxmlFile" />
+        <option value="Enum" />
+        <option value="Interface" />
+        <option value="Class" />
+        <option value="AnnotationType" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="C:/Program Files (x86)/apache-maven-3.5.4" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+        <option name="vmOptionsForImporter" value="-Xmx768m" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1UsBHBOQBvrUrlsyyK4oNqgSqYY" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ExpandSpringBootJavaOptionsPanel" value="true" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelOrder2" value="2" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RequestMappingsPanelWidth2" value="75" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="extract.method.default.visibility" value="private" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../mes-02/mes-1.0" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="Errors" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.linfengda.sb.chapter1" />
+      <recent name="com.linfengda.sb" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.linfengda.sb.support.dao.type" />
+      <recent name="com.linfengda.sb.chapter1.common.api.parameter" />
+      <recent name="com.linfengda.sb.chapter1.common.api.entity" />
+      <recent name="com.linfengda.sb.chapter1.common.thread" />
+      <recent name="com.linfengda.sb.chapter1.common.config" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\IdeaProjects\springboot\chapter1\src\main\java\com\linfengda\sb\chapter1\common\cache" />
+      <recent name="D:\IdeaProjects\springboot\chapter1\src\test\java\com\linfengda\sb\chapter1" />
+      <recent name="D:\IdeaProjects\springboot\chapter1\src\test\resources" />
+      <recent name="D:\IdeaProjects\springboot\chapter1\src\main\resources" />
+      <recent name="D:\IdeaProjects\springboot\chapter1\src\test\java\com\linfengda\sb\chapter1\pims" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.MySpringbootTest.controllerTest">
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <module />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MySpringbootTest.controllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="chapter1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.linfengda.sb.chapter1.transactionalTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.linfengda.sb.chapter1" />
+      <option name="MAIN_CLASS_NAME" value="com.linfengda.sb.chapter1.MySpringbootTest" />
+      <option name="METHOD_NAME" value="controllerTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MySpringbootTest.daoTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="chapter1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.linfengda.sb.chapter1.transactionalTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.linfengda.sb.chapter1" />
+      <option name="MAIN_CLASS_NAME" value="com.linfengda.sb.chapter1.MySpringbootTest" />
+      <option name="METHOD_NAME" value="daoTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MySpringbootTest.getWhenExists" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="chapter1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.linfengda.sb.chapter1.transactionalTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.linfengda.sb.chapter1" />
+      <option name="MAIN_CLASS_NAME" value="com.linfengda.sb.chapter1.MySpringbootTest" />
+      <option name="METHOD_NAME" value="getWhenExists" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MySpringbootTest.serviceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="chapter1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.linfengda.sb.chapter1.transactionalTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.linfengda.sb.chapter1" />
+      <option name="MAIN_CLASS_NAME" value="com.linfengda.sb.chapter1.MySpringbootTest" />
+      <option name="METHOD_NAME" value="serviceTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Chapter1Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="chapter1" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.linfengda.sb.chapter1.Chapter1Application" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Chapter1TestApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="chapter1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.linfengda.sb.chapter1.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.linfengda.sb.chapter1.Chapter1TestApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="TestNG">
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <predefined_log_file enabled="true" id="idea.log" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Spring Boot.Chapter1Application" />
+      <item itemvalue="JUnit.MySpringbootTest.getWhenExists" />
+      <item itemvalue="JUnit.MySpringbootTest.serviceTest" />
+      <item itemvalue="JUnit.MySpringbootTest.controllerTest" />
+      <item itemvalue="JUnit.MySpringbootTest.daoTest" />
+      <item itemvalue="Spring Boot.Chapter1TestApplication" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.MySpringbootTest.controllerTest" />
+        <item itemvalue="Spring Boot.Chapter1TestApplication" />
+        <item itemvalue="JUnit.MySpringbootTest.daoTest" />
+        <item itemvalue="JUnit.MySpringbootTest.serviceTest" />
+        <item itemvalue="JUnit.MySpringbootTest.getWhenExists" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1ac92d16-a2f3-4d49-8fdb-b5b56f35641b" name="Default" comment="" />
+      <created>1533826387342</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1533826387342</updated>
+      <workItem from="1533826388677" duration="2586000" />
+      <workItem from="1533863046382" duration="1617000" />
+      <workItem from="1533878505261" duration="7397000" />
+      <workItem from="1533886619654" duration="766000" />
+      <workItem from="1534085538782" duration="4158000" />
+      <workItem from="1534166398549" duration="3811000" />
+      <workItem from="1534233077933" duration="1540000" />
+      <workItem from="1534382225928" duration="5348000" />
+      <workItem from="1534484356803" duration="609000" />
+      <workItem from="1534488880754" duration="6854000" />
+      <workItem from="1534688908749" duration="3854000" />
+      <workItem from="1534692891456" duration="548000" />
+      <workItem from="1534727425024" duration="1007000" />
+      <workItem from="1534743732050" duration="12133000" />
+      <workItem from="1534847963930" duration="89000" />
+      <workItem from="1535079813432" duration="73000" />
+      <workItem from="1535079945857" duration="875000" />
+      <workItem from="1535534359294" duration="1215000" />
+      <workItem from="1535535618455" duration="27000" />
+      <workItem from="1536563240851" duration="5125000" />
+      <workItem from="1536570528272" duration="459000" />
+      <workItem from="1536630424377" duration="3043000" />
+      <workItem from="1536716241751" duration="21523000" />
+      <workItem from="1536801619040" duration="8314000" />
+      <workItem from="1536887355092" duration="6139000" />
+      <workItem from="1536902661166" duration="35000" />
+      <workItem from="1537152184767" duration="15182000" />
+      <workItem from="1537178464230" duration="101000" />
+      <workItem from="1537232594387" duration="27786000" />
+      <workItem from="1537319607873" duration="6384000" />
+      <workItem from="1537415222835" duration="391000" />
+      <workItem from="1538362217043" duration="5976000" />
+      <workItem from="1538442865324" duration="14399000" />
+      <workItem from="1538532014883" duration="28037000" />
+      <workItem from="1538626855807" duration="7566000" />
+      <workItem from="1538735683236" duration="7999000" />
+      <workItem from="1538820597339" duration="301000" />
+      <workItem from="1538827849389" duration="7390000" />
+      <workItem from="1538902888217" duration="604000" />
+      <workItem from="1538916099957" duration="2366000" />
+      <workItem from="1538927128553" duration="7000" />
+      <workItem from="1538927182173" duration="1128000" />
+      <workItem from="1538962125269" duration="353000" />
+      <workItem from="1539068560836" duration="870000" />
+      <workItem from="1539076832363" duration="1454000" />
+      <workItem from="1539079413018" duration="314000" />
+      <workItem from="1539611867556" duration="2443000" />
+      <workItem from="1539652034676" duration="37000" />
+      <workItem from="1539757986332" duration="684000" />
+      <workItem from="1540433295068" duration="3620000" />
+      <workItem from="1541121318798" duration="1827000" />
+      <workItem from="1541940992108" duration="832000" />
+      <workItem from="1541992591475" duration="20641000" />
+      <workItem from="1542072502640" duration="4965000" />
+      <workItem from="1542268585676" duration="6115000" />
+      <workItem from="1542345820371" duration="2704000" />
+      <workItem from="1542352730279" duration="606000" />
+      <workItem from="1545357105691" duration="74000" />
+      <workItem from="1546069423858" duration="1220000" />
+      <workItem from="1546392681760" duration="175000" />
+      <workItem from="1546854270141" duration="105000" />
+      <workItem from="1548037650303" duration="7775000" />
+      <workItem from="1548120136978" duration="2699000" />
+      <workItem from="1548220732104" duration="3200000" />
+      <workItem from="1548225214014" duration="3991000" />
+      <workItem from="1548229296779" duration="8321000" />
+      <workItem from="1548292812235" duration="29157000" />
+      <workItem from="1548378909585" duration="7517000" />
+      <workItem from="1548389191462" duration="10041000" />
+      <workItem from="1548733022697" duration="604000" />
+      <workItem from="1548759326359" duration="599000" />
+      <workItem from="1548839733506" duration="6782000" />
+      <workItem from="1548896276262" duration="102000" />
+      <workItem from="1548944025381" duration="2280000" />
+      <workItem from="1549638581762" duration="1148000" />
+      <workItem from="1549677564099" duration="591000" />
+      <workItem from="1549713200805" duration="651000" />
+      <workItem from="1549725048333" duration="2797000" />
+      <workItem from="1549763930678" duration="4059000" />
+      <workItem from="1549851509802" duration="12474000" />
+      <workItem from="1550035238572" duration="5816000" />
+      <workItem from="1550049812835" duration="6813000" />
+      <workItem from="1550107432535" duration="1369000" />
+      <workItem from="1550114029212" duration="17951000" />
+      <workItem from="1550140266125" duration="967000" />
+      <workItem from="1550194422485" duration="6303000" />
+      <workItem from="1550242455145" duration="2612000" />
+      <workItem from="1550406084322" duration="35000" />
+      <workItem from="1550454792696" duration="20832000" />
+      <workItem from="1550492077827" duration="8459000" />
+      <workItem from="1550501849631" duration="315000" />
+      <workItem from="1550539265041" duration="11151000" />
+      <workItem from="1550566808497" duration="5392000" />
+      <workItem from="1550583227175" duration="8121000" />
+      <workItem from="1550632445109" duration="49000" />
+      <workItem from="1550637650976" duration="6524000" />
+      <workItem from="1550736358445" duration="4575000" />
+      <workItem from="1550798726694" duration="4092000" />
+      <workItem from="1551325389075" duration="18513000" />
+      <workItem from="1551402835361" duration="611000" />
+      <workItem from="1551407184381" duration="24468000" />
+      <workItem from="1551515392560" duration="2715000" />
+      <workItem from="1551521301883" duration="599000" />
+      <workItem from="1551537573981" duration="25000" />
+      <workItem from="1551682845363" duration="5455000" />
+      <workItem from="1551749030586" duration="179000" />
+      <workItem from="1551762817303" duration="5056000" />
+      <workItem from="1551836458739" duration="649000" />
+      <workItem from="1551924036151" duration="7226000" />
+      <workItem from="1551954270072" duration="2148000" />
+      <workItem from="1552008480760" duration="2814000" />
+      <workItem from="1552825644434" duration="2317000" />
+      <workItem from="1552872188990" duration="25000" />
+      <workItem from="1554096880236" duration="636000" />
+      <workItem from="1554355692001" duration="13102000" />
+      <workItem from="1554444116675" duration="132000" />
+      <workItem from="1554559209415" duration="3663000" />
+      <workItem from="1554598865400" duration="7039000" />
+      <workItem from="1554618950606" duration="13773000" />
+      <workItem from="1554641544273" duration="2203000" />
+      <workItem from="1554686618713" duration="321000" />
+      <workItem from="1554772605706" duration="2183000" />
+      <workItem from="1554779068754" duration="112000" />
+      <workItem from="1554795361688" duration="567000" />
+      <workItem from="1554988825035" duration="2000" />
+      <workItem from="1554988835328" duration="442000" />
+      <workItem from="1554989635232" duration="120000" />
+      <workItem from="1555030260436" duration="5783000" />
+      <workItem from="1555068895528" duration="2322000" />
+      <workItem from="1555166490009" duration="3570000" />
+      <workItem from="1555170084411" duration="228000" />
+      <workItem from="1555209857283" duration="2920000" />
+      <workItem from="1555221109808" duration="117000" />
+      <workItem from="1555221262936" duration="18000" />
+      <workItem from="1555222443580" duration="5700000" />
+      <workItem from="1555229868691" duration="25000" />
+      <workItem from="1555289593012" duration="2063000" />
+      <workItem from="1555296581069" duration="26000" />
+      <workItem from="1555393532789" duration="7891000" />
+      <workItem from="1555462782817" duration="618000" />
+      <workItem from="1555499503855" duration="2401000" />
+      <workItem from="1555548738021" duration="27027000" />
+      <workItem from="1555592864775" duration="594000" />
+      <workItem from="1555740672116" duration="51000" />
+      <workItem from="1555812269350" duration="161000" />
+      <workItem from="1555812464856" duration="2368000" />
+      <workItem from="1555818639052" duration="10039000" />
+      <workItem from="1555840758417" duration="1899000" />
+      <workItem from="1555842719221" duration="148000" />
+      <workItem from="1555846567660" duration="2539000" />
+      <workItem from="1555849375002" duration="2287000" />
+      <workItem from="1555894182301" duration="144000" />
+      <workItem from="1555895413608" duration="641000" />
+      <workItem from="1555918304707" duration="2025000" />
+      <workItem from="1555982338313" duration="2402000" />
+      <workItem from="1555988491395" duration="39000" />
+      <workItem from="1556006231243" duration="628000" />
+      <workItem from="1556017182399" duration="4758000" />
+      <workItem from="1556067830086" duration="1247000" />
+      <workItem from="1556074328361" duration="446000" />
+      <workItem from="1556091843451" duration="2091000" />
+      <workItem from="1558401718009" duration="1711000" />
+      <workItem from="1559054761000" duration="2109000" />
+      <workItem from="1559094742926" duration="913000" />
+      <workItem from="1560216499425" duration="525000" />
+      <workItem from="1560217231599" duration="1153000" />
+      <workItem from="1562078306306" duration="316000" />
+      <workItem from="1562078675568" duration="104000" />
+      <workItem from="1562725157136" duration="151000" />
+      <workItem from="1562910891262" duration="602000" />
+      <workItem from="1562984455910" duration="660000" />
+      <workItem from="1564297484561" duration="4737000" />
+      <workItem from="1564362598416" duration="24000" />
+      <workItem from="1564540481637" duration="2281000" />
+      <workItem from="1565777392318" duration="671000" />
+      <workItem from="1565784513241" duration="38000" />
+      <workItem from="1565839761296" duration="6030000" />
+      <workItem from="1566184384143" duration="326000" />
+      <workItem from="1566184885684" duration="119000" />
+      <workItem from="1566185107797" duration="102000" />
+      <workItem from="1566185944943" duration="2000" />
+      <workItem from="1566195158580" duration="345000" />
+      <workItem from="1566284811254" duration="9161000" />
+      <workItem from="1566349130451" duration="5272000" />
+      <workItem from="1566354459820" duration="165000" />
+      <workItem from="1566443862940" duration="15697000" />
+      <workItem from="1566522228341" duration="46000" />
+      <workItem from="1566524127365" duration="30000" />
+      <workItem from="1566876480278" duration="49000" />
+      <workItem from="1566957131124" duration="29000" />
+      <workItem from="1567392513292" duration="35000" />
+      <workItem from="1567393998145" duration="120000" />
+      <workItem from="1567394745695" duration="704000" />
+      <workItem from="1568266730294" duration="1325000" />
+      <workItem from="1571880891831" duration="3345000" />
+      <workItem from="1571986210503" duration="625000" />
+      <workItem from="1572243747710" duration="184000" />
+      <workItem from="1572243938052" duration="597000" />
+      <workItem from="1572422193744" duration="3336000" />
+      <workItem from="1573434578598" duration="1821000" />
+      <workItem from="1573801100496" duration="790000" />
+      <workItem from="1576055413645" duration="2795000" />
+      <workItem from="1576120722320" duration="4961000" />
+      <workItem from="1576135342582" duration="1706000" />
+      <workItem from="1576458466601" duration="585000" />
+      <workItem from="1576462620900" duration="1915000" />
+      <workItem from="1576478734333" duration="11000" />
+      <workItem from="1576545253686" duration="11016000" />
+      <workItem from="1576571587221" duration="9792000" />
+      <workItem from="1576631112479" duration="3026000" />
+      <workItem from="1576655438363" duration="6470000" />
+      <workItem from="1576663679293" duration="590000" />
+      <workItem from="1576717874937" duration="10255000" />
+      <workItem from="1576804201695" duration="21206000" />
+      <workItem from="1577063522694" duration="111000" />
+      <workItem from="1577070648336" duration="19856000" />
+      <workItem from="1577150032826" duration="184000" />
+      <workItem from="1577150260684" duration="564000" />
+      <workItem from="1577151468742" duration="11000" />
+      <workItem from="1577153112445" duration="20022000" />
+      <workItem from="1577430575850" duration="3766000" />
+      <workItem from="1577668888078" duration="12580000" />
+      <workItem from="1577754548749" duration="6133000" />
+      <workItem from="1577763197166" duration="10865000" />
+      <workItem from="1577928743876" duration="2812000" />
+      <workItem from="1577951160689" duration="1354000" />
+      <workItem from="1578012018674" duration="6109000" />
+      <workItem from="1578276500030" duration="363000" />
+      <workItem from="1578278554453" duration="1204000" />
+      <workItem from="1578299573988" duration="2316000" />
+      <workItem from="1578304496470" duration="1350000" />
+      <workItem from="1578359385348" duration="5083000" />
+      <workItem from="1578378091584" duration="1052000" />
+      <workItem from="1578446677302" duration="1956000" />
+      <workItem from="1578449009930" duration="5086000" />
+      <workItem from="1578532416991" duration="14834000" />
+      <workItem from="1578620018900" duration="10991000" />
+      <workItem from="1578877083462" duration="24909000" />
+    </task>
+    <task id="LOCAL-00018" summary="配置文件根据环境分离">
+      <created>1542274318036</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1542274318036</updated>
+    </task>
+    <task id="LOCAL-00019" summary="修改protoStuff反序列化bug">
+      <created>1542348051403</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1542348051403</updated>
+    </task>
+    <task id="LOCAL-00020" summary="提交lettuce客户端连接">
+      <created>1548409073679</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1548409073679</updated>
+    </task>
+    <task id="LOCAL-00021" summary="提交客户端并发性能测试">
+      <created>1551337166857</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1551337166858</updated>
+    </task>
+    <task id="LOCAL-00022" summary="提交客户端并发性能测试">
+      <created>1551337220682</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1551337220682</updated>
+    </task>
+    <task id="LOCAL-00023" summary="提交客户端并发性能测试">
+      <created>1551337256879</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1551337256879</updated>
+    </task>
+    <task id="LOCAL-00024" summary="提交客户端qps性能测试">
+      <created>1551443323419</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1551443323419</updated>
+    </task>
+    <task id="LOCAL-00025" summary="提交客户端qps性能测试">
+      <created>1551443377443</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1551443377443</updated>
+    </task>
+    <task id="LOCAL-00026" summary="提交分布式锁测试">
+      <created>1551515416054</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1551515416054</updated>
+    </task>
+    <task id="LOCAL-00027" summary="增加配置文件">
+      <created>1551521227402</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1551521227402</updated>
+    </task>
+    <task id="LOCAL-00028" summary="增加分布式锁测试">
+      <created>1551924199507</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1551924199507</updated>
+    </task>
+    <task id="LOCAL-00029" summary="增加异步测试">
+      <created>1551942793483</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1551942793483</updated>
+    </task>
+    <task id="LOCAL-00030" summary="增加异步测试">
+      <created>1551954285344</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1551954285344</updated>
+    </task>
+    <task id="LOCAL-00031" summary="测试redis cluster获取锁">
+      <created>1552828734231</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1552828734231</updated>
+    </task>
+    <task id="LOCAL-00032" summary="增加熔断，增加异步线程池">
+      <created>1554562844302</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1554562844302</updated>
+    </task>
+    <task id="LOCAL-00033" summary="熔断测试">
+      <created>1554643726007</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1554643726007</updated>
+    </task>
+    <task id="LOCAL-00034" summary="熔断测试">
+      <created>1554643755813</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1554643755813</updated>
+    </task>
+    <task id="LOCAL-00035" summary="中间件配置分离">
+      <created>1554774573177</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1554774573177</updated>
+    </task>
+    <task id="LOCAL-00036" summary="中间件配置分离">
+      <created>1554989093855</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1554989093855</updated>
+    </task>
+    <task id="LOCAL-00037" summary="提交修改">
+      <created>1555224245412</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1555224245412</updated>
+    </task>
+    <task id="LOCAL-00038" summary="提交修改">
+      <created>1555395882939</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1555395882939</updated>
+    </task>
+    <task id="LOCAL-00039" summary="提交hystrix注释修改">
+      <created>1555842771117</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1555842771117</updated>
+    </task>
+    <task id="LOCAL-00040" summary="提交rabbitmq的5种模式">
+      <created>1555842852139</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1555842852139</updated>
+    </task>
+    <task id="LOCAL-00041" summary="提交rabbitmq的5种模式">
+      <created>1555849122594</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1555849122594</updated>
+    </task>
+    <task id="LOCAL-00042" summary="提交rabbitmq的5种模式">
+      <created>1555894232618</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1555894232618</updated>
+    </task>
+    <task id="LOCAL-00043" summary="提交rabbitmq topic模式">
+      <created>1556069971430</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1556069971430</updated>
+    </task>
+    <task id="LOCAL-00044" summary="提交rabbitmq topic模式">
+      <created>1556074760752</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1556074760752</updated>
+    </task>
+    <task id="LOCAL-00045" summary="提交mq配置文件分离">
+      <created>1559054927473</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1559054927473</updated>
+    </task>
+    <task id="LOCAL-00046" summary="提交配置文件分离">
+      <created>1559055168287</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1559055168287</updated>
+    </task>
+    <task id="LOCAL-00047" summary="提交代码">
+      <created>1562910962188</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1562910962188</updated>
+    </task>
+    <task id="LOCAL-00048" summary="提交代码">
+      <created>1564546688639</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1564546688639</updated>
+    </task>
+    <task id="LOCAL-00049" summary="增加aop拦截自定义注解">
+      <created>1565849522320</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1565849522320</updated>
+    </task>
+    <task id="LOCAL-00050" summary="增加aop拦截自定义注解">
+      <created>1565849550979</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1565849550980</updated>
+    </task>
+    <task id="LOCAL-00051" summary="优化redisTemplate获取方式">
+      <created>1566285805924</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1566285805925</updated>
+    </task>
+    <task id="LOCAL-00052" summary="增加mybatis自定义插件">
+      <created>1566286944739</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1566286944739</updated>
+    </task>
+    <task id="LOCAL-00053" summary="提交事务测试类">
+      <created>1566287975551</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1566287975551</updated>
+    </task>
+    <task id="LOCAL-00054" summary="提交mybatis拦截器">
+      <created>1566288551914</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1566288551914</updated>
+    </task>
+    <task id="LOCAL-00055" summary="提交事务传播机制测试">
+      <created>1566354605987</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1566354605988</updated>
+    </task>
+    <task id="LOCAL-00056" summary="提交事务传播机制测试">
+      <created>1566465201727</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1566465201727</updated>
+    </task>
+    <task id="LOCAL-00057" summary="提交代码结构重构">
+      <created>1571882408347</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1571882408347</updated>
+    </task>
+    <task id="LOCAL-00058" summary="feat: 提交HikariDataSourceConfig">
+      <created>1576575483361</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1576575483361</updated>
+    </task>
+    <task id="LOCAL-00059" summary="feat: 提交DTO参数校验">
+      <created>1576824527379</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1576824527379</updated>
+    </task>
+    <task id="LOCAL-00060" summary="feat: 提交git ignore">
+      <created>1576825855990</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1576825855990</updated>
+    </task>
+    <task id="LOCAL-00061" summary="feat: 提交参数校验逻辑完善">
+      <created>1577096479159</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1577096479160</updated>
+    </task>
+    <task id="LOCAL-00062" summary="feat: 提交接口路由逻辑">
+      <created>1577167310201</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1577167310203</updated>
+    </task>
+    <task id="LOCAL-00063" summary="refactor: common包调整">
+      <created>1577689131653</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1577689131653</updated>
+    </task>
+    <task id="LOCAL-00064" summary="refactor: 提交springboot测试代码">
+      <created>1578532480767</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1578532480768</updated>
+    </task>
+    <task id="LOCAL-00065" summary="refactor: 修改端口号">
+      <created>1578532500215</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1578532500215</updated>
+    </task>
+    <task id="LOCAL-00066" summary="feat: 提交springBoot单元测试">
+      <created>1578906416599</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1578906416600</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="1">
+          <value>
+            <State>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="structure">
+                    <value>
+                      <list>
+                        <option value="dir:D:/IdeaProjects/springboot/chapter1/src/main/java/com/linfengda/sb/chapter1/common/config" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="OPEN_TABS">
+      <set>
+        <option value="1" />
+      </set>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="熔断测试" />
+    <MESSAGE value="中间件配置分离" />
+    <MESSAGE value="提交修改" />
+    <MESSAGE value="提交hystrix注释修改" />
+    <MESSAGE value="提交rabbitmq的5种模式" />
+    <MESSAGE value="提交rabbitmq topic模式" />
+    <MESSAGE value="提交mq配置文件分离" />
+    <MESSAGE value="提交配置文件分离" />
+    <MESSAGE value="提交代码" />
+    <MESSAGE value="增加aop拦截自定义注解" />
+    <MESSAGE value="优化redisTemplate获取方式" />
+    <MESSAGE value="增加mybatis自定义插件" />
+    <MESSAGE value="提交事务测试类" />
+    <MESSAGE value="提交mybatis拦截器" />
+    <MESSAGE value="提交事务传播机制测试" />
+    <MESSAGE value="提交代码结构重构" />
+    <MESSAGE value="feat: 提交HikariDataSourceConfig" />
+    <MESSAGE value="feat: 提交DTO参数校验" />
+    <MESSAGE value="feat: 提交git ignore" />
+    <MESSAGE value="feat: 提交参数校验逻辑完善" />
+    <MESSAGE value="feat: 提交接口路由逻辑" />
+    <MESSAGE value="refactor: common包调整" />
+    <MESSAGE value="refactor: 提交springboot测试代码" />
+    <MESSAGE value="refactor: 修改端口号" />
+    <MESSAGE value="feat: 提交springBoot单元测试" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: 提交springBoot单元测试" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="2472" y="178" key="#Project_Structure" timestamp="1578465397542">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2472" y="178" key="#Project_Structure/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1578465397542" />
+    <state x="2334" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1578375272316">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2334" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1578375272316" />
+    <state x="2012" y="92" width="1736" height="856" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1578905823030">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2012" y="92" width="1736" height="856" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1578905823030" />
+    <state x="2685" y="229" key="#com.intellij.ide.util.MemberChooser" timestamp="1578532732511">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2685" y="229" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1578532732511" />
+    <state x="2609" y="302" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1576458592628">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2609" y="302" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1576458592628" />
+    <state x="2726" y="408" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1576458602346">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2726" y="408" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1576458602346" />
+    <state x="2481" y="444" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1577689633928">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2481" y="444" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1577689633928" />
+    <state x="2659" y="378" width="441" height="294" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1578898339352">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2659" y="378" width="441" height="294" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1578898339352" />
+    <state x="2659" y="399" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages" timestamp="1577689635376">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2659" y="399" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1577689635376" />
+    <state x="2478" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1578898000998">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2478" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1578898000998" />
+    <state x="2610" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1578903527739">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2610" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1578903527739" />
+    <state x="2304" y="114" key="CommitChangelistDialog2" timestamp="1578906414272">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2304" y="114" key="CommitChangelistDialog2/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1578906414272" />
+    <state width="515" height="466" key="DebuggerActiveHint" timestamp="1578898255338">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="515" height="466" key="DebuggerActiveHint/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1578898255338" />
+    <state x="2227" y="173" width="1228" height="688" key="DiffContextDialog" timestamp="1578634642957">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2227" y="173" width="1228" height="688" key="DiffContextDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1578634642957" />
+    <state x="2660" y="274" key="FileChooserDialogImpl" timestamp="1578904560662">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2660" y="274" key="FileChooserDialogImpl/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1578904560662" />
+    <state width="1877" height="881" key="GridCell.Tab.0.bottom" timestamp="1578906351130">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="881" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1578906351130" />
+    <state width="1493" height="666" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1578472471684" />
+    <state width="1877" height="881" key="GridCell.Tab.0.center" timestamp="1578906351129">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="881" key="GridCell.Tab.0.center/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1578906351129" />
+    <state width="1493" height="666" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1578472471684" />
+    <state width="1877" height="881" key="GridCell.Tab.0.left" timestamp="1578906351129">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="881" key="GridCell.Tab.0.left/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1578906351129" />
+    <state width="1493" height="666" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1578472471683" />
+    <state width="1877" height="881" key="GridCell.Tab.0.right" timestamp="1578906351129">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="881" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1578906351129" />
+    <state width="1493" height="666" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1578472471684" />
+    <state width="1877" height="881" key="GridCell.Tab.1.bottom" timestamp="1578906351130">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="881" key="GridCell.Tab.1.bottom/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1578906351130" />
+    <state width="1493" height="666" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1578472471685" />
+    <state width="1877" height="881" key="GridCell.Tab.1.center" timestamp="1578906351130">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="881" key="GridCell.Tab.1.center/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1578906351130" />
+    <state width="1493" height="666" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1578472471684" />
+    <state width="1877" height="881" key="GridCell.Tab.1.left" timestamp="1578906351130">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="881" key="GridCell.Tab.1.left/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1578906351130" />
+    <state width="1493" height="666" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1578472471684" />
+    <state width="1877" height="881" key="GridCell.Tab.1.right" timestamp="1578906351130">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="881" key="GridCell.Tab.1.right/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1578906351130" />
+    <state width="1493" height="666" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1578472471684" />
+    <state width="1877" height="882" key="GridCell.Tab.2.bottom" timestamp="1578906293739">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="882" key="GridCell.Tab.2.bottom/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1578906293739" />
+    <state width="1493" height="666" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1578472471685" />
+    <state width="1877" height="882" key="GridCell.Tab.2.center" timestamp="1578906293738">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="882" key="GridCell.Tab.2.center/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1578906293738" />
+    <state width="1493" height="666" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1578472471685" />
+    <state width="1877" height="882" key="GridCell.Tab.2.left" timestamp="1578906293738">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="882" key="GridCell.Tab.2.left/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1578906293738" />
+    <state width="1493" height="666" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1578472471685" />
+    <state width="1877" height="882" key="GridCell.Tab.2.right" timestamp="1578906293738">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="882" key="GridCell.Tab.2.right/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1578906293738" />
+    <state width="1493" height="666" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1578472471685" />
+    <state x="2659" y="230" key="RollbackChangesDialog" timestamp="1578895722577">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2659" y="230" key="RollbackChangesDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1578895722577" />
+    <state x="2381" y="161" key="SettingsEditor" timestamp="1578535042067">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2381" y="161" key="SettingsEditor/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1578535042067" />
+    <state x="2472" y="252" key="Vcs.Push.Dialog.v2" timestamp="1578906420320">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2472" y="252" key="Vcs.Push.Dialog.v2/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1578906420320" />
+    <state x="2610" y="273" key="extract.method.dialog" timestamp="1578549413989">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2610" y="273" key="extract.method.dialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1578549413989" />
+    <state x="2556" y="258" width="682" height="524" key="find.popup" timestamp="1578898493105">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2556" y="258" width="682" height="524" key="find.popup/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1578898493105" />
+    <state x="2536" y="240" key="run.anything.popup" timestamp="1577166197488">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2536" y="240" key="run.anything.popup/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1577166197488" />
+    <state x="2543" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1578895655064">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2543" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1578895655064" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-redis/2.0.5.RELEASE/spring-data-redis-2.0.5.RELEASE-sources.jar!/org/springframework/data/redis/connection/jedis/JedisClusterConnection.java</url>
+          <line>832</line>
+          <option name="timeStamp" value="264" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="SpringBootApplicationConfigurationType">
+        <watch expression="172.18.248.103" language="JAVA" />
+      </configuration>
+    </watches-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/chapter1$Chapter1Application.ic" NAME="Chapter1Application Coverage Results" MODIFIED="1578878739786" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/chapter1$ApplicationJunitTest_test01.ic" NAME="ApplicationJunitTest.test01 Coverage Results" MODIFIED="1578634562370" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.linfengda.sb.chapter1.*</FILTER>
+    </SUITE>
+  </component>
+</project>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.linfengda.sb.chapter1.system.dao.SystemDao">
+
+    <select id="pageUserList" parameterType="java.util.Map" resultType="com.linfengda.sb.chapter1.system.entity.vo.UserListVO">
+        select
+        user_id as userId,
+        user_name as userName
+        from sys_user as su
+        where
+        su.is_delete=0
+    </select>
+
+</mapper>
