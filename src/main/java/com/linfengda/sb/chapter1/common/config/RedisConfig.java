@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.linfengda.sb.chapter1.common.exception.BusinessException;
+import com.linfengda.sb.support.middleware.redis.DistributeRedisLock;
 import com.linfengda.sb.support.middleware.redis.SimpleJacksonRedisTemplate;
 import com.linfengda.sb.support.middleware.redis.SimplePSRedisTemplate;
 import com.linfengda.sb.support.middleware.redis.SimpleRedisTemplate;
@@ -59,6 +60,13 @@ public class RedisConfig {
         simpleRedisTemplate.setConnectionFactory(connectionFactory);
         //simpleRedisTemplate.afterPropertiesSet();
         return simpleRedisTemplate;
+    }
+
+    @Bean
+    public DistributeRedisLock distributeRedisLock(SimpleRedisTemplate simpleRedisTemplate) {
+        DistributeRedisLock distributeRedisLock = new DistributeRedisLock();
+        distributeRedisLock.setSimpleRedisTemplate(simpleRedisTemplate);
+        return distributeRedisLock;
     }
 
     private SimpleRedisTemplate getRedisTemplate(Serializer serializer) {

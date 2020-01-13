@@ -1,4 +1,4 @@
-package com.linfengda.sb.chapter1;
+package com.linfengda.sb.chapter1.proxyTest;
 
 import com.linfengda.sb.chapter1.proxy.ProxyHandler;
 import com.linfengda.sb.chapter1.proxy.RealSubject;

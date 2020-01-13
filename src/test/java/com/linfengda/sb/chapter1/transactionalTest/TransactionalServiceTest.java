@@ -1,4 +1,4 @@
-package com.linfengda.sb.chapter1;
+package com.linfengda.sb.chapter1.transactionalTest;
 
 import com.linfengda.sb.chapter1.system.service.TransactionalService;
 import lombok.extern.slf4j.Slf4j;
@@ -12,7 +12,7 @@ import javax.annotation.Resource;
 @Slf4j
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class Chapter1ApplicationTests {
+public class TransactionalServiceTest {
     @Resource
     private TransactionalService transactionalService;
 

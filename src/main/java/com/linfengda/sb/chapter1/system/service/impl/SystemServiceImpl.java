@@ -6,6 +6,7 @@ import com.linfengda.sb.chapter1.system.dao.SystemDao;
 import com.linfengda.sb.chapter1.system.entity.dto.UserPageQueryDTO;
 import com.linfengda.sb.chapter1.system.entity.po.SysUserPO;
 import com.linfengda.sb.chapter1.system.entity.vo.UserListVO;
+import com.linfengda.sb.chapter1.system.entity.vo.UserVO;
 import com.linfengda.sb.chapter1.system.service.SystemService;
 import com.linfengda.sb.support.dao.BaseService;
 import com.linfengda.sb.support.dao.entity.SetValue;
@@ -36,13 +37,20 @@ public class SystemServiceImpl extends BaseService implements SystemService {
     }
 
     @Override
-    public String getUserInfo(Long userId) throws Exception {
-        return "啊哈哈哈哈哈";
+    public UserVO getUserInfo(Integer userId) throws Exception {
+        SysUserPO sysUserPO = findByPrimaryKey(userId, SysUserPO.class);
+        UserVO userVO = new UserVO();
+        userVO.setUserId(sysUserPO.getUserId());
+        userVO.setUserName(sysUserPO.getUserName());
+        userVO.setPhone(sysUserPO.getPhone());
+        userVO.setPassword(sysUserPO.getPassword());
+        userVO.setStatus(sysUserPO.getStatus());
+        return userVO;
     }
 
     @Transactional(rollbackFor=Exception.class)
     @Override
-    public void updateUser(Long userId, String userName) throws Exception {
+    public void updateUser(Integer userId, String userName) throws Exception {
         SetValue setValue = new SetValue();
         setValue.add("userName", userName);
         updateByPrimaryKey(SysUserPO.class, setValue, userId);

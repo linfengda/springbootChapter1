@@ -1,8 +1,8 @@
 package com.linfengda.sb.support.middleware.redis;
 
 import com.linfengda.sb.chapter1.common.util.ServerRunTimeUtil;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 import java.util.HashMap;
@@ -10,13 +10,13 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 @Slf4j
-@Component
 public class DistributeRedisLock {
     /**
      * Redis分布式锁默认超时时间
      */
     private final int DEFAULT_LOCK_EXPIRE_TIME = 60;
 
+    @Setter
     @Resource
     private SimpleRedisTemplate simpleRedisTemplate;
 

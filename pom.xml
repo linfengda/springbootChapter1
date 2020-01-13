@@ -228,10 +228,11 @@
                     <include>**/application-common-${myActivateFile}.yml</include>
                     <include>**/application-mq-${myActivateFile}.yml</include>
                     <include>**/application-redis-${myActivateFile}.yml</include>
+                    <include>**/banner.txt</include>
                 </includes>
                 <!-- 不包含哪些文件 -->
                 <excludes>
-                    <exclude>**/aaabbb.properties</exclude>
+                    <exclude>**/excludeFile.properties</exclude>
                 </excludes>
             </resource>
         </resources>

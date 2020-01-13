@@ -117,7 +117,7 @@ public class TransactionalOtherServiceImpl extends BaseService implements Transa
 
     void insert() throws Exception {
         SysUserPO sysUserPO = new SysUserPO();
-        sysUserPO.setUserId(456L);
+        sysUserPO.setUserId(456);
         sysUserPO.setUserName("用户456");
         sysUserPO.setPhone("456");
         sysUserPO.setPassword("456");
@@ -126,7 +126,7 @@ public class TransactionalOtherServiceImpl extends BaseService implements Transa
 
     void insertAndThrow() throws Exception {
         SysUserPO sysUserPO = new SysUserPO();
-        sysUserPO.setUserId(456L);
+        sysUserPO.setUserId(456);
         sysUserPO.setUserName("用户456");
         sysUserPO.setPhone("456");
         sysUserPO.setPassword("456");

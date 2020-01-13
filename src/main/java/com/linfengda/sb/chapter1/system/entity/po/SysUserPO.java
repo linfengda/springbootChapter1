@@ -20,7 +20,7 @@ public class SysUserPO extends BasePO {
      * 主键ID
      */
     @Id
-    private Long userId;
+    private Integer userId;
     /**
      * 用户名称
      */

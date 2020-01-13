@@ -4,6 +4,7 @@ import com.github.pagehelper.Page;
 import com.linfengda.sb.chapter1.common.exception.BusinessException;
 import com.linfengda.sb.chapter1.system.entity.dto.UserPageQueryDTO;
 import com.linfengda.sb.chapter1.system.entity.vo.UserListVO;
+import com.linfengda.sb.chapter1.system.entity.vo.UserVO;
 
 /**
  * 描述: 系统服务
@@ -14,7 +15,7 @@ import com.linfengda.sb.chapter1.system.entity.vo.UserListVO;
 public interface SystemService {
 
     /**
-     * 分页查询
+     * 分页查询用户信息
      * @param userPageQueryDTO
      * @return
      * @throws BusinessException
@@ -22,11 +23,12 @@ public interface SystemService {
     Page<UserListVO> pageUserList(UserPageQueryDTO userPageQueryDTO) throws BusinessException;
 
     /**
-     * 查询用户全部信息
+     * 查询用户详情VO
      * @param userId
+     * @return
      * @throws Exception
      */
-    String getUserInfo(Long userId) throws Exception;
+    UserVO getUserInfo(Integer userId) throws Exception;
 
     /**
      * 更新用户
@@ -34,5 +36,5 @@ public interface SystemService {
      * @param userName
      * @throws Exception
      */
-    void updateUser(Long userId, String userName) throws Exception;
+    void updateUser(Integer userId, String userName) throws Exception;
 }

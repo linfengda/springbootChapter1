@@ -59,7 +59,7 @@ public class LettuceTestServiceImpl implements TestService {
 
 
         UserListVO userListVO = new UserListVO();
-        userListVO.setUserId(1L);
+        userListVO.setUserId(1);
         userListVO.setUserName("流浪地球");
         row = lettuceTemplate.leftPush("myList", userListVO);
         log.info("row length after leftPush: {}", row);

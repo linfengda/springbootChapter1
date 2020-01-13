@@ -190,7 +190,7 @@ public class TransactionalServiceImpl extends BaseService implements Transaction
 
     private void insert() throws Exception {
         SysUserPO sysUserPO = new SysUserPO();
-        sysUserPO.setUserId(123L);
+        sysUserPO.setUserId(123);
         sysUserPO.setUserName("用户123");
         sysUserPO.setPhone("123");
         sysUserPO.setPassword("123");

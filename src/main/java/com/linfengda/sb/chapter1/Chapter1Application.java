@@ -2,9 +2,8 @@ package com.linfengda.sb.chapter1;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
 
-@ComponentScan(basePackages = {"com.linfengda.sb.chapter1", "com.linfengda.sb.support"})
+@EnableApplicationStartup
 @SpringBootApplication
 public class Chapter1Application {
 
