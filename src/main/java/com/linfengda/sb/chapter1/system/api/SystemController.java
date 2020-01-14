@@ -6,7 +6,7 @@ import com.linfengda.sb.chapter1.common.api.entity.Result;
 import com.linfengda.sb.chapter1.system.entity.dto.UserDTO;
 import com.linfengda.sb.chapter1.system.entity.dto.UserPageQueryDTO;
 import com.linfengda.sb.chapter1.system.entity.vo.UserListVO;
-import com.linfengda.sb.chapter1.system.service.SystemService;
+import com.linfengda.sb.chapter1.system.service.SysUserService;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,11 +28,11 @@ import java.util.List;
 @RequestMapping("/pc/sys")
 public class SystemController extends BaseController {
     @Resource
-    private SystemService systemService;
+    private SysUserService sysUserService;
 
     @PostMapping("/pageUserList")
     public Result pageUserList(@Validated UserPageQueryDTO userPageQueryDTO) throws Exception {
-        Page<UserListVO> userListVOPage = systemService.pageUserList(userPageQueryDTO);
+        Page<UserListVO> userListVOPage = sysUserService.pageUserList(userPageQueryDTO);
         return new Result(userListVOPage);
     }
 
@@ -45,12 +45,12 @@ public class SystemController extends BaseController {
 
     @PostMapping("/getUserInfo")
     public Result getUserInfo(@NotNull(message = "用户ID不能为空") Integer userId) throws Exception {
-        return new Result(systemService.getUserInfo(userId));
+        return new Result(sysUserService.getUserInfo(userId));
     }
 
     @PostMapping("/updateUser")
     public Result updateUser(@Validated UserDTO userDTO) throws Exception {
-        systemService.updateUser(userDTO.getUserId(), userDTO.getUserName());
+        sysUserService.updateUser(userDTO.getUserId(), userDTO.getUserName());
         return SUCCESS_RESULT;
     }
 }

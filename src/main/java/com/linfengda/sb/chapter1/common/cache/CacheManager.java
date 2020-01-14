@@ -1,5 +1,6 @@
 package com.linfengda.sb.chapter1.common.cache;
 
+import com.linfengda.sb.chapter1.common.context.ApplicationContextHelper;
 import com.linfengda.sb.chapter1.common.exception.BusinessException;
 import com.linfengda.sb.chapter1.common.exception.entity.ErrorCode;
 import lombok.Getter;
@@ -14,9 +15,9 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public enum CacheManager {
     /**
-     * xxx缓存
+     * 组织关系缓存
      */
-    EXAMPLE_CACHE("xxx", "xxx", "a:b:c"),
+    ORGANIZE_CACHE("organizeCache", "组织关系缓存", "c:org"),
     ;
 
     @Getter
@@ -34,9 +35,15 @@ public enum CacheManager {
 
     public static void init(){
         try {
-            log.info("初始化应用程序缓存......");
-            for (CacheManager cacheManager :values()) {
-                //初始化应用程序缓存
+            log.info("初始化应用程序缓存中......");
+            for (CacheManager cache :values()) {
+                switch (cache) {
+                    case ORGANIZE_CACHE:
+                        OrganizeCache organizeCache = ApplicationContextHelper.getBean(OrganizeCache.class);
+                        organizeCache.clearCache();
+                    default:
+                        break;
+                }
             }
             log.info("初始化应用程序缓存成功!");
         } catch (Exception e) {

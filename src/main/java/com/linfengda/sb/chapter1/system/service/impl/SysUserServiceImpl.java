@@ -7,7 +7,7 @@ import com.linfengda.sb.chapter1.system.entity.dto.UserPageQueryDTO;
 import com.linfengda.sb.chapter1.system.entity.po.SysUserPO;
 import com.linfengda.sb.chapter1.system.entity.vo.UserListVO;
 import com.linfengda.sb.chapter1.system.entity.vo.UserVO;
-import com.linfengda.sb.chapter1.system.service.SystemService;
+import com.linfengda.sb.chapter1.system.service.SysUserService;
 import com.linfengda.sb.support.dao.BaseService;
 import com.linfengda.sb.support.dao.entity.SetValue;
 import lombok.extern.slf4j.Slf4j;
@@ -24,7 +24,7 @@ import javax.annotation.Resource;
  */
 @Service
 @Slf4j
-public class SystemServiceImpl extends BaseService implements SystemService {
+public class SysUserServiceImpl extends BaseService implements SysUserService {
     @Resource
     private SystemDao systemDao;
 
