@@ -207,7 +207,36 @@
 
 
     <!-- build标签：声明编译信息 -->
-	<build>
+    <profiles>
+        <!-- 本地开发环境 -->
+        <profile>
+            <id>local</id>
+            <properties>
+                <myActivateFile>local</myActivateFile>
+            </properties>
+            <activation>
+                <!-- 默认开启本地开发环境 -->
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <!-- 测试环境 -->
+        <profile>
+            <id>test</id>
+            <properties>
+                <myActivateFile>test</myActivateFile>
+            </properties>
+        </profile>
+        <!-- 生产环境 -->
+        <profile>
+            <id>pro</id>
+            <properties>
+                <myActivateFile>prod</myActivateFile>
+            </properties>
+        </profile>
+    </profiles>
+
+    <!-- maven打包时指定配置文件 -->
+    <build>
         <!-- 默认打包行为 -->
         <defaultGoal>package</defaultGoal>
         <!-- 打包结果所在的路径 -->
@@ -237,8 +266,8 @@
             </resource>
         </resources>
 
-        <!-- 声明一个maven打包插件 -->
-		<plugins>
+        <plugins>
+            <!-- 声明maven打包插件 -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
@@ -250,37 +279,16 @@
                     </execution>
                 </executions>
             </plugin>
-		</plugins>
-	</build>
-
-    <!-- maven打包时指定配置文件 -->
-    <profiles>
-        <!-- 本地开发环境 -->
-        <profile>
-            <id>local</id>
-            <properties>
-                <myActivateFile>local</myActivateFile>
-            </properties>
-            <activation>
-                <!-- 默认开启本地开发环境 -->
-                <activeByDefault>true</activeByDefault>
-            </activation>
-        </profile>
-        <!-- 测试环境 -->
-        <profile>
-            <id>test</id>
-            <properties>
-                <myActivateFile>test</myActivateFile>
-            </properties>
-        </profile>
-        <!-- 生产环境 -->
-        <profile>
-            <id>pro</id>
-            <properties>
-                <myActivateFile>prod</myActivateFile>
-            </properties>
-        </profile>
-    </profiles>
+            <!-- 声明maven打包跳过测试用例 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 
 </project>

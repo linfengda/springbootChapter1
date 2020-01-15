@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1ac92d16-a2f3-4d49-8fdb-b5b56f35641b" name="Default" comment="feat: 使用mock包装bean">
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/springBootTest/BaseMockMvcSpringBootTest.java" afterDir="false" />
+    <list default="true" id="1ac92d16-a2f3-4d49-8fdb-b5b56f35641b" name="Default" comment="feat: 提取公共代码">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/MySpringbootTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/springBootTest/MySpringbootTestMockMvc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/MySuiteTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/springBootTest/MySuiteTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/linfengda/sb/chapter1/MySpringbootTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/linfengda/sb/chapter1/MySuiteTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,7 +113,7 @@
       <recent name="D:\IdeaProjects\springboot\chapter1\src\test\java\com\linfengda\sb\chapter1\pims" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.MySpringbootTest.controllerTest">
+  <component name="RunManager" selected="Spring Boot.Chapter1Application">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HTML_USED" value="false" />
       <option name="WIDTH" value="400" />
@@ -523,14 +519,7 @@
       <workItem from="1578620018900" duration="10991000" />
       <workItem from="1578877083462" duration="25627000" />
       <workItem from="1578963831068" duration="11689000" />
-      <workItem from="1579051021298" duration="3702000" />
-    </task>
-    <task id="LOCAL-00020" summary="提交lettuce客户端连接">
-      <created>1548409073679</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1548409073679</updated>
+      <workItem from="1579051021298" duration="4504000" />
     </task>
     <task id="LOCAL-00021" summary="提交客户端并发性能测试">
       <created>1551337166857</created>
@@ -868,7 +857,14 @@
       <option name="project" value="LOCAL" />
       <updated>1578984203463</updated>
     </task>
-    <option name="localTasksCounter" value="69" />
+    <task id="LOCAL-00069" summary="feat: 提取公共代码">
+      <created>1579068757753</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1579068757753</updated>
+    </task>
+    <option name="localTasksCounter" value="70" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -928,7 +924,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="中间件配置分离" />
     <MESSAGE value="提交修改" />
     <MESSAGE value="提交hystrix注释修改" />
     <MESSAGE value="提交rabbitmq的5种模式" />
@@ -953,7 +948,8 @@
     <MESSAGE value="refactor: 修改端口号" />
     <MESSAGE value="feat: 提交springBoot单元测试" />
     <MESSAGE value="feat: 使用mock包装bean" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: 使用mock包装bean" />
+    <MESSAGE value="feat: 提取公共代码" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: 提取公共代码" />
   </component>
   <component name="WindowStateProjectService">
     <state x="2472" y="178" key="#Project_Structure" timestamp="1578465397542">
@@ -1000,18 +996,19 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2610" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1578903527739" />
-    <state x="2304" y="114" key="CommitChangelistDialog2" timestamp="1578984201362">
+    <state x="2304" y="114" key="CommitChangelistDialog2" timestamp="1579077287041">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2304" y="114" key="CommitChangelistDialog2/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1578984201362" />
+    <state x="2304" y="114" key="CommitChangelistDialog2/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1579077287041" />
+    <state x="307" y="10" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1579068756096" />
     <state width="515" height="466" key="DebuggerActiveHint" timestamp="1578983396220">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state width="515" height="466" key="DebuggerActiveHint/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1578983396220" />
-    <state x="2227" y="173" width="1228" height="688" key="DiffContextDialog" timestamp="1578981062555">
+    <state x="2227" y="173" width="1228" height="688" key="DiffContextDialog" timestamp="1579077285573">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2227" y="173" width="1228" height="688" key="DiffContextDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1578981062555" />
+    <state x="2227" y="173" width="1228" height="688" key="DiffContextDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1579077285573" />
     <state x="2660" y="274" key="FileChooserDialogImpl" timestamp="1579066185859">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
@@ -1084,10 +1081,11 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2381" y="161" key="SettingsEditor/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1578535042067" />
-    <state x="2472" y="252" key="Vcs.Push.Dialog.v2" timestamp="1578984221707">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state x="442" y="200" key="Vcs.Push.Dialog.v2" timestamp="1579068760857">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="2472" y="252" key="Vcs.Push.Dialog.v2/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1578984221707" />
+    <state x="442" y="200" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1579068760857" />
     <state x="2610" y="273" key="extract.method.dialog" timestamp="1578549413989">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
