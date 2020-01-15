@@ -1,4 +1,4 @@
-package com.linfengda.sb.chapter1;
+package com.linfengda.sb.chapter1.springBootTest;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;

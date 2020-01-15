@@ -1,6 +1,7 @@
-package com.linfengda.sb.chapter1;
+package com.linfengda.sb.chapter1.springBootTest;
 
 import com.alibaba.fastjson.JSON;
+import com.linfengda.sb.chapter1.Chapter1Application;
 import com.linfengda.sb.chapter1.common.cache.OrganizeCache;
 import com.linfengda.sb.chapter1.system.entity.po.SysUserPO;
 import com.linfengda.sb.chapter1.system.entity.vo.UserVO;
@@ -16,16 +17,8 @@ import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.web.context.WebApplicationContext;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -38,27 +31,22 @@ import static org.hamcrest.MatcherAssert.assertThat;
  */
 @Slf4j
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = Chapter1Application.class, webEnvironment = SpringBootTest.WebEnvironment.MOCK)
-public class MySpringbootTest {
-    private MockMvc mockMvc;
-    @Autowired
-    protected WebApplicationContext webApplicationContext;
+@SpringBootTest(classes = Chapter1Application.class, webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
+public class MySpringbootTest extends BaseMockMvcSpringBootTest {
     @Autowired
     private OrmTemplate ormTemplate;
-
     @Autowired
     private SysOrganizeService sysOrganizeService;
     //使用mock包装的bean，对bean调用的方法进行模拟
     @MockBean
     private OrganizeCache organizeCache;
-    //使用mock包装的bean，对bean调用的方法进行模拟
     @MockBean
     private SysUserService sysUserService;
 
 
     @Before
     public void setup() {
-        mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
+        super.initMockMvc();
     }
 
     @Test
@@ -92,11 +80,8 @@ public class MySpringbootTest {
         userVO.setStatus(SysUserPO.Status.YES.getCode());
         // 模拟service方法调用
         Mockito.doReturn(userVO).when(sysUserService).getUserInfo(1);
-        // 构建请求
-        String content="{\"userId\":\"1\"}";
         // 执行请求
-        MockHttpServletRequestBuilder builder = MockMvcRequestBuilders.post("/pc/sys/getUserInfo").contentType(MediaType.APPLICATION_JSON).content(content);
-        MockHttpServletResponse response = mockMvc.perform(builder).andDo(MockMvcResultHandlers.print()).andExpect(MockMvcResultMatchers.status().isOk()).andReturn().getResponse();
+        MockHttpServletResponse response = super.getMockHttpResponse("{\"userId\":\"1\"}", "/pc/sys/getUserInfo");
         log.info("response={}", response.getContentAsString());
         assertThat(response.getContentAsString(), CoreMatchers.containsString("林丰达"));
     }
