@@ -1,4 +1,4 @@
-package com.linfengda.sb.chapter1.springBootTest;
+package com.linfengda.sb.chapter1.springBootTest.base;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

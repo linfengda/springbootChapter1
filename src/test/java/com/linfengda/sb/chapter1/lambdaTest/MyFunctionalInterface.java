@@ -9,5 +9,5 @@ package com.linfengda.sb.chapter1.lambdaTest;
 @FunctionalInterface
 public interface MyFunctionalInterface<T> {
 
-    T doSomeThing(MyCallBack callBack) throws Exception;
+    T doAction(MyCallBack callBack) throws Exception;
 }

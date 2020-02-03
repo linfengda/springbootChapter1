@@ -1,9 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1ac92d16-a2f3-4d49-8fdb-b5b56f35641b" name="Default" comment="feat: 提取公共代码">
+    <list default="true" id="1ac92d16-a2f3-4d49-8fdb-b5b56f35641b" name="Default" comment="refactor: 跳过测试用例">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/entity/StringConstant.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/util/StringUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/system/service/DemoService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/system/service/DemoService2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/springBootTest/demo/CompleteApiSpringBootTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/springBootTest/demo/ORMFrameworkSpringBootTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/springBootTest/demo/OnlyServiceSpringBootTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/springBootTest/demo/SampleSpringBootTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/ApplicationStartup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/ApplicationStartup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/Chapter1Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/Chapter1Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/proxy/ProxyHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/proxy/ProxyHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/lambdaTest/MyFunctionalInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/lambdaTest/MyFunctionalInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/lambdaTest/TestLambda.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/lambdaTest/LambdaTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/proxyTest/JDKProxyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/proxyTest/JDKProxyTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/springBootTest/BaseMockMvcSpringBootTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/springBootTest/base/BaseMockMvcSpringBootTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/springBootTest/MySpringbootTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/springBootTest/MySuiteTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/ApplicationStartup.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/ApplicationStartup.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/Chapter1Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/Chapter1Application.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/proxy/ProxyHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/proxy/ProxyHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/linfengda/sb/chapter1/lambdaTest/MyFunctionalInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/linfengda/sb/chapter1/lambdaTest/MyFunctionalInterface.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/linfengda/sb/chapter1/lambdaTest/TestLambda.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,8 +59,8 @@
         <option value="package-info" />
         <option value="FxmlFile" />
         <option value="Enum" />
-        <option value="Interface" />
         <option value="AnnotationType" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -86,12 +107,12 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="extract.method.default.visibility" value="private" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../mes-02/mes-1.0" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../mes-01/mes-1.0" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="Errors" />
+    <property name="settings.editor.selected.configurable" value="preferences.editor" />
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -99,11 +120,11 @@
       <recent name="com.linfengda.sb" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.linfengda.sb.chapter1.springBootTest.demo" />
+      <recent name="com.linfengda.sb.chapter1.common.entity" />
+      <recent name="com.linfengda.sb.chapter1.common.util" />
       <recent name="com.linfengda.sb.support.dao.type" />
       <recent name="com.linfengda.sb.chapter1.common.api.parameter" />
-      <recent name="com.linfengda.sb.chapter1.common.api.entity" />
-      <recent name="com.linfengda.sb.chapter1.common.thread" />
-      <recent name="com.linfengda.sb.chapter1.common.config" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\IdeaProjects\springboot\chapter1\src\main\java\com\linfengda\sb\chapter1\common\cache" />
@@ -112,6 +133,13 @@
       <recent name="D:\IdeaProjects\springboot\chapter1\src\main\resources" />
       <recent name="D:\IdeaProjects\springboot\chapter1\src\test\java\com\linfengda\sb\chapter1\pims" />
     </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
   </component>
   <component name="RunManager" selected="Spring Boot.Chapter1Application">
     <configuration default="true" type="Applet" factoryName="Applet">
@@ -135,8 +163,8 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.linfengda.sb.chapter1.springBootTest" />
-      <option name="MAIN_CLASS_NAME" value="com.linfengda.sb.chapter1.springBootTest.MySpringbootTest" />
+      <option name="PACKAGE_NAME" value="com.linfengda.sb.chapter1.springBootTest.demo" />
+      <option name="MAIN_CLASS_NAME" value="com.linfengda.sb.chapter1.springBootTest.demo.MySpringbootTest" />
       <option name="METHOD_NAME" value="controllerTest" />
       <option name="TEST_OBJECT" value="method" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
@@ -152,8 +180,8 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.linfengda.sb.chapter1.springBootTest" />
-      <option name="MAIN_CLASS_NAME" value="com.linfengda.sb.chapter1.springBootTest.MySpringbootTest" />
+      <option name="PACKAGE_NAME" value="com.linfengda.sb.chapter1.springBootTest.demo" />
+      <option name="MAIN_CLASS_NAME" value="com.linfengda.sb.chapter1.springBootTest.demo.MySpringbootTest" />
       <option name="METHOD_NAME" value="daoTest" />
       <option name="TEST_OBJECT" value="method" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
@@ -169,8 +197,8 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.linfengda.sb.chapter1.springBootTest" />
-      <option name="MAIN_CLASS_NAME" value="com.linfengda.sb.chapter1.springBootTest.MySpringbootTest" />
+      <option name="PACKAGE_NAME" value="com.linfengda.sb.chapter1.springBootTest.demo" />
+      <option name="MAIN_CLASS_NAME" value="com.linfengda.sb.chapter1.springBootTest.demo.MySpringbootTest" />
       <option name="METHOD_NAME" value="getWhenExists" />
       <option name="TEST_OBJECT" value="method" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
@@ -186,8 +214,8 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.linfengda.sb.chapter1.springBootTest" />
-      <option name="MAIN_CLASS_NAME" value="com.linfengda.sb.chapter1.springBootTest.MySpringbootTest" />
+      <option name="PACKAGE_NAME" value="com.linfengda.sb.chapter1.springBootTest.demo" />
+      <option name="MAIN_CLASS_NAME" value="com.linfengda.sb.chapter1.springBootTest.demo.MySpringbootTest" />
       <option name="METHOD_NAME" value="serviceTest" />
       <option name="TEST_OBJECT" value="method" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
@@ -213,7 +241,7 @@
       <module name="chapter1" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.linfengda.sb.chapter1.springBootTest.*" />
+          <option name="PATTERN" value="com.linfengda.sb.chapter1.springBootTest.base.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -241,12 +269,12 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Spring Boot.Chapter1Application" />
-      <item itemvalue="Spring Boot.Chapter1TestApplication" />
       <item itemvalue="JUnit.MySpringbootTest.getWhenExists" />
       <item itemvalue="JUnit.MySpringbootTest.serviceTest" />
       <item itemvalue="JUnit.MySpringbootTest.controllerTest" />
       <item itemvalue="JUnit.MySpringbootTest.daoTest" />
+      <item itemvalue="Spring Boot.Chapter1Application" />
+      <item itemvalue="Spring Boot.Chapter1TestApplication" />
     </list>
     <recent_temporary>
       <list>
@@ -262,8 +290,19 @@
     <option name="viewStates">
       <list>
         <serviceView>
+          <option name="contentProportion" value="0.14275956" />
           <treeState>
-            <expand />
+            <expand>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="Spring Boot" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="Spring Boot" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="Failed" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+            </expand>
             <select />
           </treeState>
         </serviceView>
@@ -519,14 +558,20 @@
       <workItem from="1578620018900" duration="10991000" />
       <workItem from="1578877083462" duration="25627000" />
       <workItem from="1578963831068" duration="11689000" />
-      <workItem from="1579051021298" duration="4504000" />
-    </task>
-    <task id="LOCAL-00021" summary="提交客户端并发性能测试">
-      <created>1551337166857</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1551337166858</updated>
+      <workItem from="1579051021298" duration="5886000" />
+      <workItem from="1579137044135" duration="24797000" />
+      <workItem from="1579396229555" duration="18663000" />
+      <workItem from="1579483621811" duration="36000" />
+      <workItem from="1579511818064" duration="593000" />
+      <workItem from="1579595404822" duration="2235000" />
+      <workItem from="1579657884933" duration="15899000" />
+      <workItem from="1580039759869" duration="1773000" />
+      <workItem from="1580201293359" duration="4843000" />
+      <workItem from="1580292032559" duration="3518000" />
+      <workItem from="1580455727063" duration="5999000" />
+      <workItem from="1580610952755" duration="12175000" />
+      <workItem from="1580650721916" duration="3053000" />
+      <workItem from="1580690771384" duration="18069000" />
     </task>
     <task id="LOCAL-00022" summary="提交客户端并发性能测试">
       <created>1551337220682</created>
@@ -864,7 +909,14 @@
       <option name="project" value="LOCAL" />
       <updated>1579068757753</updated>
     </task>
-    <option name="localTasksCounter" value="70" />
+    <task id="LOCAL-00070" summary="refactor: 跳过测试用例">
+      <created>1579077308636</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1579077308636</updated>
+    </task>
+    <option name="localTasksCounter" value="71" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -924,7 +976,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="提交修改" />
     <MESSAGE value="提交hystrix注释修改" />
     <MESSAGE value="提交rabbitmq的5种模式" />
     <MESSAGE value="提交rabbitmq topic模式" />
@@ -949,17 +1000,18 @@
     <MESSAGE value="feat: 提交springBoot单元测试" />
     <MESSAGE value="feat: 使用mock包装bean" />
     <MESSAGE value="feat: 提取公共代码" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: 提取公共代码" />
+    <MESSAGE value="refactor: 跳过测试用例" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor: 跳过测试用例" />
   </component>
   <component name="WindowStateProjectService">
     <state x="2472" y="178" key="#Project_Structure" timestamp="1578465397542">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2472" y="178" key="#Project_Structure/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1578465397542" />
-    <state x="2334" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1578375272316">
+    <state x="2334" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1579079653236">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2334" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1578375272316" />
+    <state x="2334" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1579079653236" />
     <state x="2012" y="92" width="1736" height="856" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1579052522536">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
@@ -988,120 +1040,142 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2659" y="399" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1577689635376" />
-    <state x="2458" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1579051737825">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state x="430" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1580649062400">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="2458" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1579051737825" />
+    <state x="430" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824@0.0.1536.824" timestamp="1580649062400" />
     <state x="2610" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1578903527739">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2610" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1578903527739" />
-    <state x="2304" y="114" key="CommitChangelistDialog2" timestamp="1579077287041">
+    <state x="2304" y="114" key="CommitChangelistDialog2" timestamp="1579077306418">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2304" y="114" key="CommitChangelistDialog2/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1579077287041" />
+    <state x="2304" y="114" key="CommitChangelistDialog2/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1579077306418" />
     <state x="307" y="10" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1579068756096" />
-    <state width="515" height="466" key="DebuggerActiveHint" timestamp="1578983396220">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="506" height="370" key="DebuggerActiveHint" timestamp="1580724455803">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="515" height="466" key="DebuggerActiveHint/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1578983396220" />
-    <state x="2227" y="173" width="1228" height="688" key="DiffContextDialog" timestamp="1579077285573">
+    <state width="506" height="370" key="DebuggerActiveHint/0.0.1536.824@0.0.1536.824" timestamp="1580724455803" />
+    <state x="2227" y="173" width="1228" height="688" key="DiffContextDialog" timestamp="1579138059310">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2227" y="173" width="1228" height="688" key="DiffContextDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1579077285573" />
-    <state x="2660" y="274" key="FileChooserDialogImpl" timestamp="1579066185859">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state x="2227" y="173" width="1228" height="688" key="DiffContextDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1579138059310" />
+    <state x="592" y="217" key="FileChooserDialogImpl" timestamp="1580692030527">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="2660" y="274" key="FileChooserDialogImpl/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1579066185859" />
-    <state width="1877" height="498" key="GridCell.Tab.0.bottom" timestamp="1579052520833">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state x="2660" y="274" key="FileChooserDialogImpl/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1579483648525" />
+    <state x="592" y="217" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1580692030527" />
+    <state width="1254" height="420" key="GridCell.Tab.-1.bottom" timestamp="1580650651165">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1877" height="498" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1579052520833" />
-    <state width="1493" height="666" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1578472471684" />
-    <state width="1877" height="498" key="GridCell.Tab.0.center" timestamp="1579052520833">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1254" height="420" key="GridCell.Tab.-1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1580650651165" />
+    <state width="1254" height="420" key="GridCell.Tab.-1.center" timestamp="1580650651165">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1877" height="498" key="GridCell.Tab.0.center/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1579052520833" />
-    <state width="1493" height="666" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1578472471684" />
-    <state width="1877" height="498" key="GridCell.Tab.0.left" timestamp="1579052520833">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1254" height="420" key="GridCell.Tab.-1.center/0.0.1536.824@0.0.1536.824" timestamp="1580650651165" />
+    <state width="1254" height="420" key="GridCell.Tab.-1.left" timestamp="1580650651165">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1877" height="498" key="GridCell.Tab.0.left/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1579052520833" />
-    <state width="1493" height="666" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1578472471683" />
-    <state width="1877" height="498" key="GridCell.Tab.0.right" timestamp="1579052520833">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1254" height="420" key="GridCell.Tab.-1.left/0.0.1536.824@0.0.1536.824" timestamp="1580650651165" />
+    <state width="1254" height="420" key="GridCell.Tab.-1.right" timestamp="1580650651165">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1877" height="498" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1579052520833" />
-    <state width="1493" height="666" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1578472471684" />
-    <state width="1877" height="498" key="GridCell.Tab.1.bottom" timestamp="1579052520833">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1254" height="420" key="GridCell.Tab.-1.right/0.0.1536.824@0.0.1536.824" timestamp="1580650651165" />
+    <state width="1254" height="335" key="GridCell.Tab.0.bottom" timestamp="1580725676663">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1877" height="498" key="GridCell.Tab.1.bottom/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1579052520833" />
-    <state width="1493" height="666" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1578472471685" />
-    <state width="1877" height="498" key="GridCell.Tab.1.center" timestamp="1579052520833">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1877" height="498" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1579079662690" />
+    <state width="1254" height="335" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1580725676663" />
+    <state width="1254" height="335" key="GridCell.Tab.0.center" timestamp="1580725676663">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1877" height="498" key="GridCell.Tab.1.center/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1579052520833" />
-    <state width="1493" height="666" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1578472471684" />
-    <state width="1877" height="498" key="GridCell.Tab.1.left" timestamp="1579052520833">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1877" height="498" key="GridCell.Tab.0.center/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1579079662690" />
+    <state width="1254" height="335" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1580725676663" />
+    <state width="1254" height="335" key="GridCell.Tab.0.left" timestamp="1580725676663">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1877" height="498" key="GridCell.Tab.1.left/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1579052520833" />
-    <state width="1493" height="666" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1578472471684" />
-    <state width="1877" height="498" key="GridCell.Tab.1.right" timestamp="1579052520833">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1877" height="498" key="GridCell.Tab.0.left/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1579079662690" />
+    <state width="1254" height="335" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1580725676663" />
+    <state width="1254" height="335" key="GridCell.Tab.0.right" timestamp="1580725676663">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1877" height="498" key="GridCell.Tab.1.right/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1579052520833" />
-    <state width="1493" height="666" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1578472471684" />
-    <state width="1877" height="882" key="GridCell.Tab.2.bottom" timestamp="1578906293739">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1877" height="498" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1579079662690" />
+    <state width="1254" height="335" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1580725676663" />
+    <state width="1254" height="335" key="GridCell.Tab.1.bottom" timestamp="1580725676664">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1877" height="498" key="GridCell.Tab.1.bottom/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1579079662690" />
+    <state width="1254" height="335" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1580725676664" />
+    <state width="1254" height="335" key="GridCell.Tab.1.center" timestamp="1580725676664">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1877" height="498" key="GridCell.Tab.1.center/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1579079662690" />
+    <state width="1254" height="335" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1580725676664" />
+    <state width="1254" height="335" key="GridCell.Tab.1.left" timestamp="1580725676664">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1877" height="498" key="GridCell.Tab.1.left/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1579079662690" />
+    <state width="1254" height="335" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1580725676664" />
+    <state width="1254" height="335" key="GridCell.Tab.1.right" timestamp="1580725676664">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1877" height="498" key="GridCell.Tab.1.right/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1579079662690" />
+    <state width="1254" height="335" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1580725676664" />
+    <state width="1254" height="335" key="GridCell.Tab.2.bottom" timestamp="1580725676665">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1877" height="882" key="GridCell.Tab.2.bottom/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1578906293739" />
-    <state width="1493" height="666" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1578472471685" />
-    <state width="1877" height="882" key="GridCell.Tab.2.center" timestamp="1578906293738">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1254" height="335" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1580725676665" />
+    <state width="1254" height="335" key="GridCell.Tab.2.center" timestamp="1580725676665">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1877" height="882" key="GridCell.Tab.2.center/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1578906293738" />
-    <state width="1493" height="666" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1578472471685" />
-    <state width="1877" height="882" key="GridCell.Tab.2.left" timestamp="1578906293738">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1254" height="335" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1580725676665" />
+    <state width="1254" height="335" key="GridCell.Tab.2.left" timestamp="1580725676664">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1877" height="882" key="GridCell.Tab.2.left/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1578906293738" />
-    <state width="1493" height="666" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1578472471685" />
-    <state width="1877" height="882" key="GridCell.Tab.2.right" timestamp="1578906293738">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1254" height="335" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1580725676664" />
+    <state width="1254" height="335" key="GridCell.Tab.2.right" timestamp="1580725676665">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1877" height="882" key="GridCell.Tab.2.right/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1578906293738" />
-    <state width="1493" height="666" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1578472471685" />
+    <state width="1254" height="335" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1580725676665" />
     <state x="2659" y="230" key="RollbackChangesDialog" timestamp="1578981065767">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2659" y="230" key="RollbackChangesDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1578981065767" />
-    <state x="2381" y="161" key="SettingsEditor" timestamp="1578535042067">
-      <screen x="1920" y="0" width="1920" height="1040" />
-    </state>
-    <state x="2381" y="161" key="SettingsEditor/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1578535042067" />
-    <state x="442" y="200" key="Vcs.Push.Dialog.v2" timestamp="1579068760857">
+    <state x="369" y="108" key="SettingsEditor" timestamp="1580479429497">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="2472" y="252" key="Vcs.Push.Dialog.v2/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1578984221707" />
+    <state x="2381" y="161" key="SettingsEditor/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1578535042067" />
+    <state x="369" y="108" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1580479429497" />
+    <state x="2472" y="252" key="Vcs.Push.Dialog.v2" timestamp="1579077311766">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2472" y="252" key="Vcs.Push.Dialog.v2/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1579077311766" />
     <state x="442" y="200" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1579068760857" />
     <state x="2610" y="273" key="extract.method.dialog" timestamp="1578549413989">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2610" y="273" key="extract.method.dialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1578549413989" />
-    <state x="2556" y="258" width="682" height="524" key="find.popup" timestamp="1578898493105">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state x="509" y="204" width="642" height="524" key="find.popup" timestamp="1580460268280">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="2556" y="258" width="682" height="524" key="find.popup/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1578898493105" />
+    <state x="2556" y="258" width="682" height="524" key="find.popup/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1579405766829" />
+    <state x="509" y="204" width="642" height="524" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1580460268280" />
     <state x="2536" y="240" key="run.anything.popup" timestamp="1577166197488">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2536" y="240" key="run.anything.popup/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1577166197488" />
-    <state x="2543" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1579058995604">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state x="498" y="178" width="672" height="538" key="search.everywhere.popup" timestamp="1580715142470">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="2543" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1579058995604" />
+    <state x="2543" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1579682276841" />
+    <state x="498" y="178" width="672" height="538" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1580715142470" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1116,6 +1190,7 @@
     <watches-manager>
       <configuration name="SpringBootApplicationConfigurationType">
         <watch expression="172.18.248.103" language="JAVA" />
+        <watch expression="((DefaultTransactionStatus)txInfo.transactionStatus).savepoint" custom="org.springframework.transaction.support.DefaultTransactionStatus" />
       </configuration>
     </watches-manager>
   </component>

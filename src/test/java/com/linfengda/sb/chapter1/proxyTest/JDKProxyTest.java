@@ -43,7 +43,7 @@ public class JDKProxyTest {
     }
 
     /**
-     * 将动态生成的代理类打印出来（http://www.javadecompilers.com/result  反编译）
+     * 将动态生成的代理类打印出来（http://www.javadecompilers.com/result  可利用在线反编译查看代码）
      * @param path
      */
     private void printProxyClass(String path) {

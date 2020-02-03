@@ -15,21 +15,21 @@ import org.springframework.test.context.junit4.SpringRunner;
 @Slf4j
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class TestLambda {
+public class LambdaTest {
 
-    public void doSomeAction(MyFunctionalInterface<Object> action) throws Exception {
+    public void lambadaAction(MyFunctionalInterface<Object> action) throws Exception {
         MyCallBack myCallBack = new MyCallBack();
         myCallBack.setMySelf("Jack");
         myCallBack.setMySon("Jack son");
-        action.doSomeThing(myCallBack);
+        action.doAction(myCallBack);
     }
 
     @Test
     public void doTest() throws Exception {
-        TestLambda testLambda = new TestLambda();
+        LambdaTest lambdaTest = new LambdaTest();
         // lambda表达式方法体其实就是函数式接口的实现
-        testLambda.doSomeAction(callBack -> callBack.callMyself());
-        testLambda.doSomeAction(callBack -> callBack.callMyson());
+        lambdaTest.lambadaAction(callBack -> callBack.callMyself());
+        lambdaTest.lambadaAction(callBack -> callBack.callMyson());
     }
 
 }
