@@ -1,6 +1,6 @@
 package com.linfengda.sb.chapter1.common.cache;
 
-import com.linfengda.sb.support.middleware.redis.SimpleRedisTemplate;
+import com.linfengda.sb.support.middleware.redis.template.SimpleRedisTemplate;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.ss.formula.functions.T;
 import org.springframework.stereotype.Component;

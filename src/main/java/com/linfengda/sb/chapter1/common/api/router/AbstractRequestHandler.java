@@ -4,7 +4,7 @@ import com.linfengda.sb.chapter1.common.api.entity.RequestInfoBO;
 import lombok.Data;
 
 /**
- * 描述: Handler
+ * 描述: Request Handler
  *
  * @author linfengda
  * @create 2019-12-19 17:56

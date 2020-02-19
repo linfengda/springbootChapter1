@@ -1,6 +1,6 @@
 package com.linfengda.sb.support.middleware.redis.serializer;
 
-import com.linfengda.sb.support.middleware.redis.ProtoStuffUtil;
+import com.linfengda.sb.support.middleware.redis.util.ProtoStuffUtil;
 import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.data.redis.serializer.SerializationException;
 import org.springframework.lang.Nullable;
