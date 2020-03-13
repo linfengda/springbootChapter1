@@ -15,6 +15,7 @@ import java.util.List;
  */
 @SpringBootConfiguration
 public class MyWebMvcConfig implements WebMvcConfigurer {
+
     @Override
     public void addArgumentResolvers(List<HandlerMethodArgumentResolver> resolvers) {
         resolvers.add(new MyControllerArgumentResolver());

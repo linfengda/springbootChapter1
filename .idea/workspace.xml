@@ -1,62 +1,122 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1ac92d16-a2f3-4d49-8fdb-b5b56f35641b" name="Default" comment="feat: springBoot transaction 测试">
+    <list default="true" id="1ac92d16-a2f3-4d49-8fdb-b5b56f35641b" name="Default" comment="refactor: 调整包的位置">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/hystrix/readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/demo/entity/Dog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/demo/service/DemoService3.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/demo/readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/redis/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/Chapter1Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/Chapter1Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/router/AbstractRequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/router/AbstractRequestHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/cache/FastCache.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/cache/FastCache.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/cache/OrganizeCache.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/cache/OrganizeCache.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/config/RedisConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/config/RedisConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/proxy/ProxyHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/proxyTest/ProxyHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/proxy/RealSubject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/proxyTest/RealSubject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/proxy/Subject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/proxyTest/Subject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/redis/RedisPerformanceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/redisPerformanceTest/RedisPerformanceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/redis/helper/BytePackageHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/redisPerformanceTest/helper/BytePackageHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/redis/helper/JedisTemplateHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/redisPerformanceTest/helper/JedisTemplateHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/redis/helper/LettuceTemplateHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/redisPerformanceTest/helper/LettuceTemplateHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/redis/lettuce/LettuceClusterConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/middleware/redis/lettuce/LettuceClusterConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/redis/lettuce/LettuceCommandCallback.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/middleware/redis/lettuce/LettuceCommandCallback.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/redis/lettuce/LettuceConnectionException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/middleware/redis/lettuce/LettuceConnectionException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/redis/lettuce/LettuceConnectionFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/middleware/redis/lettuce/LettuceConnectionFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/redis/lettuce/LettuceTemplate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/middleware/redis/lettuce/LettuceTemplate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/redis/service/JedisTestServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/redisPerformanceTest/service/JedisRedisOperationServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/redis/service/LettuceTestServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/redisPerformanceTest/service/LettuceRedisOperationServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/redis/service/TestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/redisPerformanceTest/service/RedisOperationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/redis/task/DistributeLockTestTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/redisPerformanceTest/task/DistributeLockTestTask.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/redis/task/MultiTestTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/redisPerformanceTest/task/MultiTestTask.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/redis/task/QpsTestTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/redisPerformanceTest/task/QpsTestTask.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/system/service/DemoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/system/service/DemoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/system/service/DemoService2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/system/service/DemoService2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/middleware/redis/DistributeRedisLock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/middleware/redis/lock/DistributeRedisLock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/middleware/redis/ProtoStuffUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/middleware/redis/util/ProtoStuffUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/middleware/redis/SimpleJacksonRedisTemplate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/middleware/redis/template/SimpleJacksonRedisTemplate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/middleware/redis/SimplePSRedisTemplate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/middleware/redis/template/SimplePSRedisTemplate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/middleware/redis/SimpleRedisTemplate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/middleware/redis/template/SimpleRedisTemplate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/middleware/redis/serializer/ProtoStuffSerializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/middleware/redis/serializer/ProtoStuffSerializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/proxyTest/JDKProxyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/proxyTest/JDKProxyTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/serializeTest/SerializerApiTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/redisSerializeTest/SerializerStructureTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/serializeTest/SerializerPerformanceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/redisSerializeTest/SerializerPerformanceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/serializeTest/entity/MySecondSon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/redisSerializeTest/entity/MySecondSon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/serializeTest/entity/MySon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/redisSerializeTest/entity/MySon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/serializeTest/entity/Pig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/redisSerializeTest/entity/Pig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/serializeTest/entity/YourPapa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/redisSerializeTest/entity/YourPapa.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/serializeTest/entity/vo/DoubleClazz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/redisSerializeTest/entity/bo/DoubleClazz.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/serializeTest/entity/vo/IntClazz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/redisSerializeTest/entity/bo/IntClazz.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/serializeTest/entity/vo/StringClazz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/redisSerializeTest/entity/bo/StringClazz.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/springbootImport/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/springbootImportTest/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/springbootImport/ColorConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/springbootImportTest/ColorConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/springbootImport/EnableColor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/springbootImportTest/EnableColor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/springbootImport/color/Black.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/springbootImportTest/color/Black.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/springbootImport/color/Blue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/springbootImportTest/color/Blue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/springbootImport/color/Green.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/springbootImportTest/color/Green.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/springbootImport/color/Red.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/springbootImportTest/color/Red.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/springbootImport/color/Yellow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/springbootImportTest/color/Yellow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/springbootImport/target/ColorImportBeanDefinitionRegistrar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/springbootImportTest/target/ColorImportBeanDefinitionRegistrar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/springbootImport/target/ColorImportSelector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/springbootImportTest/target/ColorImportSelector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/springbootImport/target/ColorRegistrarConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/springbootImportTest/target/ColorRegistrarConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/transactionalTest/TransactionalServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/springTransactionalTest/TransactionalServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/Chapter1Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/Chapter1Application.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/ApplicationStartup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/ApplicationStartup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/config/MyWebMvcConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/config/MyWebMvcConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/hystrix/entity/RequestVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/hystrix/entity/RequestVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/hystrix/readme.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/hystrix/service/HystrixService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/hystrix/service/HystrixService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/hystrix/service/impl/HystrixServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/hystrix/service/impl/HystrixServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/hystrix/task/HystrixTestJob.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/hystrix/task/HystrixTestJob.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/system/service/DemoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/demo/service/DemoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/system/service/DemoService2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/demo/service/DemoService2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/lambdaTest/LambdaTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/demo/lambda/LambdaTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/lambdaTest/MyCallBack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/demo/lambda/MyCallBack.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/lambdaTest/MyFunctionalInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/demo/lambda/MyFunctionalInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/proxyTest/JDKProxyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/demo/proxy/JDKProxyTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/proxyTest/ProxyHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/demo/proxy/ProxyHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/proxyTest/RealSubject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/demo/proxy/RealSubject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/proxyTest/Subject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/demo/proxy/Subject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/redisPerformanceTest/RedisPerformanceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/redis/performance/RedisPerformanceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/redisPerformanceTest/helper/BytePackageHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/redis/performance/helper/BytePackageHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/redisPerformanceTest/helper/JedisTemplateHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/redis/performance/helper/JedisTemplateHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/redisPerformanceTest/helper/LettuceTemplateHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/redis/performance/helper/LettuceTemplateHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/redisPerformanceTest/service/JedisRedisOperationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/redis/performance/service/JedisRedisOperationServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/redisPerformanceTest/service/LettuceRedisOperationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/redis/performance/service/LettuceRedisOperationServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/redisPerformanceTest/service/RedisOperationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/redis/performance/service/RedisOperationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/redisPerformanceTest/task/DistributeLockTestTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/redis/performance/task/DistributeLockTestTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/redisPerformanceTest/task/MultiTestTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/redis/performance/task/MultiTestTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/redisPerformanceTest/task/QpsTestTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/redis/performance/task/QpsTestTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/redisSerializeTest/SerializerPerformanceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/redis/serialize/SerializerPerformanceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/redisSerializeTest/SerializerStructureTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/redis/serialize/SerializerStructureTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/redisSerializeTest/entity/MySecondSon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/redis/serialize/entity/MySecondSon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/redisSerializeTest/entity/MySon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/redis/serialize/entity/MySon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/redisSerializeTest/entity/Pig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/redis/serialize/entity/Pig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/redisSerializeTest/entity/YourPapa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/redis/serialize/entity/YourPapa.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/redisSerializeTest/entity/bo/DoubleClazz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/redis/serialize/entity/bo/DoubleClazz.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/redisSerializeTest/entity/bo/IntClazz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/redis/serialize/entity/bo/IntClazz.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/redisSerializeTest/entity/bo/StringClazz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/redis/serialize/entity/bo/StringClazz.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/springBootTest/base/BaseMockMvcSpringBootTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/demo/springboot/base/BaseMockMvcSpringBootTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/springBootTest/demo/CompleteApiSpringBootTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/demo/springboot/demo/CompleteApiSpringBootTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/springBootTest/demo/ORMFrameworkSpringBootTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/demo/springboot/demo/ORMFrameworkSpringBootTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/springBootTest/demo/OnlyServiceSpringBootTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/demo/springboot/demo/OnlyServiceSpringBootTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/springBootTest/demo/SampleSpringBootTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/demo/springboot/demo/SampleSpringBootTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/springTransactionalTest/TransactionalServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/demo/springTransactional/TransactionalServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/springbootImportTest/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/demo/springbootImport/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/springbootImportTest/ColorConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/demo/springbootImport/ColorConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/springbootImportTest/EnableColor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/demo/springbootImport/EnableColor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/springbootImportTest/color/Black.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/demo/springbootImport/color/Black.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/springbootImportTest/color/Blue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/demo/springbootImport/color/Blue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/springbootImportTest/color/Green.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/demo/springbootImport/color/Green.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/springbootImportTest/color/Red.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/demo/springbootImport/color/Red.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/springbootImportTest/color/Yellow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/demo/springbootImport/color/Yellow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/springbootImportTest/target/ColorImportBeanDefinitionRegistrar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/demo/springbootImport/target/ColorImportBeanDefinitionRegistrar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/springbootImportTest/target/ColorImportSelector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/demo/springbootImport/target/ColorImportSelector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/springbootImportTest/target/ColorRegistrarConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/demo/springbootImport/target/ColorRegistrarConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/ApplicationStartup.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/ApplicationStartup.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/common/cache/FastCache.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/common/cache/FastCache.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/common/config/MyWebMvcConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/common/config/MyWebMvcConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/common/config/RedisConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/common/config/RedisConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/hystrix/entity/RequestVo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/hystrix/service/HystrixService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/hystrix/service/impl/HystrixServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/hystrix/task/HystrixTestJob.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/proxy/ProxyHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/proxy/RealSubject.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/proxy/Subject.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/redis/RedisPerformanceTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/redis/helper/BytePackageHelper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/redis/helper/JedisTemplateHelper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/redis/helper/LettuceTemplateHelper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/redis/lettuce/LettuceClusterConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/redis/lettuce/LettuceCommandCallback.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/redis/lettuce/LettuceConnectionException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/redis/lettuce/LettuceConnectionFactory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/redis/lettuce/LettuceTemplate.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/redis/service/JedisTestServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/redis/service/LettuceTestServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/redis/service/TestService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/redis/task/DistributeLockTestTask.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/redis/task/MultiTestTask.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/redis/task/QpsTestTask.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/support/middleware/redis/DistributeRedisLock.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/support/middleware/redis/ProtoStuffUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/support/middleware/redis/SimpleJacksonRedisTemplate.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/support/middleware/redis/SimplePSRedisTemplate.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/support/middleware/redis/SimpleRedisTemplate.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/support/middleware/redis/serializer/ProtoStuffSerializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/linfengda/sb/support/middleware/redis/serializer/ProtoStuffSerializer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/linfengda/sb/chapter1/lambdaTest/MyCallBack.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/linfengda/sb/chapter1/lambdaTest/MyFunctionalInterface.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/linfengda/sb/chapter1/proxyTest/JDKProxyTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/linfengda/sb/chapter1/serializeTest/SerializerApiTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/linfengda/sb/chapter1/serializeTest/SerializerPerformanceTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/linfengda/sb/chapter1/serializeTest/entity/MySecondSon.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/linfengda/sb/chapter1/serializeTest/entity/MySon.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/linfengda/sb/chapter1/serializeTest/entity/Pig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/linfengda/sb/chapter1/serializeTest/entity/YourPapa.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/linfengda/sb/chapter1/serializeTest/entity/vo/DoubleClazz.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/linfengda/sb/chapter1/serializeTest/entity/vo/IntClazz.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/linfengda/sb/chapter1/serializeTest/entity/vo/StringClazz.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/linfengda/sb/chapter1/springbootImport/App.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/linfengda/sb/chapter1/springbootImport/ColorConfiguration.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/linfengda/sb/chapter1/springbootImport/EnableColor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/linfengda/sb/chapter1/springbootImport/color/Black.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/linfengda/sb/chapter1/springbootImport/color/Blue.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/linfengda/sb/chapter1/springbootImport/color/Green.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/linfengda/sb/chapter1/springbootImport/color/Red.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/linfengda/sb/chapter1/springbootImport/color/Yellow.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/linfengda/sb/chapter1/springbootImport/target/ColorImportBeanDefinitionRegistrar.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/linfengda/sb/chapter1/springbootImport/target/ColorImportSelector.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/linfengda/sb/chapter1/springbootImport/target/ColorRegistrarConfiguration.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/linfengda/sb/chapter1/transactionalTest/TransactionalServiceTest.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,15 +199,16 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="extract.method.default.visibility" value="private" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/demo" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.editor" />
+    <property name="settings.editor.selected.configurable" value="Errors" />
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.linfengda.sb.chapter1.demo" />
       <recent name="com.linfengda.sb.chapter1" />
       <recent name="com.linfengda.sb" />
     </key>
@@ -159,11 +220,11 @@
       <recent name="com.linfengda.sb.chapter1.common.api.parameter" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\IdeaProjects\springboot\chapter1\src\test\java\com\linfengda\sb\chapter1\demo" />
+      <recent name="D:\IdeaProjects\springboot\chapter1\src\main\java\com\linfengda\sb\chapter1\hystrix" />
       <recent name="D:\IdeaProjects\springboot\chapter1\src\main\java\com\linfengda\sb\chapter1\common\cache" />
       <recent name="D:\IdeaProjects\springboot\chapter1\src\test\java\com\linfengda\sb\chapter1" />
       <recent name="D:\IdeaProjects\springboot\chapter1\src\test\resources" />
-      <recent name="D:\IdeaProjects\springboot\chapter1\src\main\resources" />
-      <recent name="D:\IdeaProjects\springboot\chapter1\src\test\java\com\linfengda\sb\chapter1\pims" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -191,7 +252,7 @@
       <module name="chapter1" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.linfengda.sb.chapter1.springTransactionalTest.*" />
+          <option name="PATTERN" value="com.linfengda.sb.chapter1.demo.springTransactional.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -208,7 +269,7 @@
       <module name="chapter1" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.linfengda.sb.chapter1.springTransactionalTest.*" />
+          <option name="PATTERN" value="com.linfengda.sb.chapter1.demo.springTransactional.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -225,7 +286,7 @@
       <module name="chapter1" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.linfengda.sb.chapter1.springTransactionalTest.*" />
+          <option name="PATTERN" value="com.linfengda.sb.chapter1.demo.springTransactional.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -242,7 +303,7 @@
       <module name="chapter1" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.linfengda.sb.chapter1.springTransactionalTest.*" />
+          <option name="PATTERN" value="com.linfengda.sb.chapter1.demo.springTransactional.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -273,7 +334,7 @@
       <module name="chapter1" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.linfengda.sb.chapter1.springBootTest.base.*" />
+          <option name="PATTERN" value="com.linfengda.sb.chapter1.demo.springboot.base.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -310,10 +371,10 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Spring Boot.Chapter1TestApplication" />
         <item itemvalue="JUnit.MySpringbootTest.controllerTest" />
         <item itemvalue="JUnit.MySpringbootTest.serviceTest" />
         <item itemvalue="JUnit.MySpringbootTest.daoTest" />
-        <item itemvalue="Spring Boot.Chapter1TestApplication" />
         <item itemvalue="JUnit.MySpringbootTest.getWhenExists" />
       </list>
     </recent_temporary>
@@ -328,6 +389,11 @@
               <path>
                 <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
                 <item name="Spring Boot" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="Spring Boot" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="Running" type="7427dc5b:ServiceModel$ServiceGroupNode" />
               </path>
             </expand>
             <select />
@@ -613,14 +679,24 @@
       <workItem from="1581986396857" duration="2522000" />
       <workItem from="1582007740554" duration="631000" />
       <workItem from="1582016702767" duration="5878000" />
-      <workItem from="1582083776333" duration="2240000" />
-    </task>
-    <task id="LOCAL-00023" summary="提交客户端并发性能测试">
-      <created>1551337256879</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1551337256879</updated>
+      <workItem from="1582083776333" duration="19004000" />
+      <workItem from="1582186740620" duration="26000" />
+      <workItem from="1582293454042" duration="2997000" />
+      <workItem from="1582369110610" duration="11055000" />
+      <workItem from="1582425292575" duration="22000" />
+      <workItem from="1582600749543" duration="7091000" />
+      <workItem from="1582635795062" duration="746000" />
+      <workItem from="1582681276528" duration="3989000" />
+      <workItem from="1582873486331" duration="296000" />
+      <workItem from="1583040935482" duration="276000" />
+      <workItem from="1583225999678" duration="3710000" />
+      <workItem from="1583238210039" duration="51000" />
+      <workItem from="1583371745352" duration="9099000" />
+      <workItem from="1583920844091" duration="800000" />
+      <workItem from="1583927609455" duration="134000" />
+      <workItem from="1583996184274" duration="11301000" />
+      <workItem from="1584020926600" duration="3825000" />
+      <workItem from="1584062272274" duration="15370000" />
     </task>
     <task id="LOCAL-00024" summary="提交客户端qps性能测试">
       <created>1551443323419</created>
@@ -958,7 +1034,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580732224564</updated>
     </task>
-    <option name="localTasksCounter" value="72" />
+    <task id="LOCAL-00072" summary="refactor: 调整包的位置">
+      <created>1582097305402</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1582097305402</updated>
+    </task>
+    <option name="localTasksCounter" value="73" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1018,7 +1101,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="提交rabbitmq的5种模式" />
     <MESSAGE value="提交rabbitmq topic模式" />
     <MESSAGE value="提交mq配置文件分离" />
     <MESSAGE value="提交配置文件分离" />
@@ -1043,7 +1125,8 @@
     <MESSAGE value="feat: 提取公共代码" />
     <MESSAGE value="refactor: 跳过测试用例" />
     <MESSAGE value="feat: springBoot transaction 测试" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: springBoot transaction 测试" />
+    <MESSAGE value="refactor: 调整包的位置" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor: 调整包的位置" />
   </component>
   <component name="WindowStateProjectService">
     <state x="2472" y="178" key="#Project_Structure" timestamp="1578465397542">
@@ -1058,10 +1141,11 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2012" y="92" width="1736" height="856" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1579052522536" />
-    <state x="2685" y="229" key="#com.intellij.ide.util.MemberChooser" timestamp="1578982269207">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state x="612" y="181" key="#com.intellij.ide.util.MemberChooser" timestamp="1582296108862">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="2685" y="229" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1578982269207" />
+    <state x="612" y="181" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1582296108862" />
     <state x="2609" y="302" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1576458592628">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
@@ -1070,19 +1154,20 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2726" y="408" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1576458602346" />
-    <state x="449" y="352" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1582097079718">
+    <state x="449" y="352" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1584022209946">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="2481" y="444" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1577689633928" />
-    <state x="449" y="352" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1536.824@0.0.1536.824" timestamp="1582097079718" />
+    <state x="449" y="352" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1536.824@0.0.1536.824" timestamp="1584022209946" />
     <state x="2659" y="378" width="441" height="294" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1578898339352">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2659" y="378" width="441" height="294" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1578898339352" />
-    <state x="2659" y="399" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages" timestamp="1577689635376">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state x="591" y="316" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages" timestamp="1584022212732">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="2659" y="399" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1577689635376" />
+    <state x="591" y="316" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages/0.0.1536.824@0.0.1536.824" timestamp="1584022212732" />
     <state x="430" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1582096585757">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -1092,25 +1177,26 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2610" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1578903527739" />
-    <state x="307" y="10" key="CommitChangelistDialog2" timestamp="1580732221642">
+    <state x="136" y="10" key="CommitChangelistDialog2" timestamp="1582097301784">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="2304" y="114" key="CommitChangelistDialog2/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1579077306418" />
-    <state x="307" y="10" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1580732221642" />
-    <state width="529" height="370" key="DebuggerActiveHint" timestamp="1581933029704">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="515" height="466" key="DebuggerActiveHint/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1578983396220" />
-    <state width="529" height="370" key="DebuggerActiveHint/0.0.1536.824@0.0.1536.824" timestamp="1581933029704" />
-    <state x="2227" y="173" width="1228" height="688" key="DiffContextDialog" timestamp="1579138059310">
+    <state x="136" y="10" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1582097301784" />
+    <state width="563" height="466" key="DebuggerActiveHint" timestamp="1584084385855">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2227" y="173" width="1228" height="688" key="DiffContextDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1579138059310" />
-    <state x="592" y="217" key="FileChooserDialogImpl" timestamp="1582077067650">
+    <state width="563" height="466" key="DebuggerActiveHint/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1584084385855" />
+    <state width="529" height="370" key="DebuggerActiveHint/0.0.1536.824@0.0.1536.824" timestamp="1584067953966" />
+    <state x="212" y="246" width="983" height="546" key="DiffContextDialog" timestamp="1582614169797">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="2660" y="274" key="FileChooserDialogImpl/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1579483648525" />
-    <state x="592" y="217" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1582077067650" />
+    <state x="2227" y="173" width="1228" height="688" key="DiffContextDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1579138059310" />
+    <state x="212" y="246" width="983" height="546" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1582614169797" />
+    <state x="2660" y="274" key="FileChooserDialogImpl" timestamp="1584008328207">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2660" y="274" key="FileChooserDialogImpl/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1584008328207" />
+    <state x="592" y="217" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1583927736542" />
     <state width="1254" height="420" key="GridCell.Tab.-1.bottom" timestamp="1580650651165">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -1127,81 +1213,81 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1254" height="420" key="GridCell.Tab.-1.right/0.0.1536.824@0.0.1536.824" timestamp="1580650651165" />
-    <state width="1254" height="335" key="GridCell.Tab.0.bottom" timestamp="1581949521468">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1583" height="487" key="GridCell.Tab.0.bottom" timestamp="1584085380497">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="498" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1579079662690" />
-    <state width="1254" height="335" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1581949521468" />
-    <state width="1254" height="335" key="GridCell.Tab.0.center" timestamp="1581949521468">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1583" height="487" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1584085380497" />
+    <state width="1254" height="284" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1584067962707" />
+    <state width="1583" height="487" key="GridCell.Tab.0.center" timestamp="1584085380496">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="498" key="GridCell.Tab.0.center/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1579079662690" />
-    <state width="1254" height="335" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1581949521468" />
-    <state width="1254" height="335" key="GridCell.Tab.0.left" timestamp="1581949521468">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1583" height="487" key="GridCell.Tab.0.center/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1584085380496" />
+    <state width="1254" height="284" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1584067962706" />
+    <state width="1583" height="487" key="GridCell.Tab.0.left" timestamp="1584085380496">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="498" key="GridCell.Tab.0.left/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1579079662690" />
-    <state width="1254" height="335" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1581949521468" />
-    <state width="1254" height="335" key="GridCell.Tab.0.right" timestamp="1581949521468">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1583" height="487" key="GridCell.Tab.0.left/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1584085380496" />
+    <state width="1254" height="284" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1584067962706" />
+    <state width="1583" height="487" key="GridCell.Tab.0.right" timestamp="1584085380497">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="498" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1579079662690" />
-    <state width="1254" height="335" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1581949521468" />
-    <state width="1254" height="335" key="GridCell.Tab.1.bottom" timestamp="1581949521468">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1583" height="487" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1584085380497" />
+    <state width="1254" height="284" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1584067962706" />
+    <state width="1583" height="487" key="GridCell.Tab.1.bottom" timestamp="1584085380497">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="498" key="GridCell.Tab.1.bottom/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1579079662690" />
-    <state width="1254" height="335" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1581949521468" />
-    <state width="1254" height="335" key="GridCell.Tab.1.center" timestamp="1581949521468">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1583" height="487" key="GridCell.Tab.1.bottom/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1584085380497" />
+    <state width="1254" height="284" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1584067962709" />
+    <state width="1583" height="487" key="GridCell.Tab.1.center" timestamp="1584085380497">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="498" key="GridCell.Tab.1.center/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1579079662690" />
-    <state width="1254" height="335" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1581949521468" />
-    <state width="1254" height="335" key="GridCell.Tab.1.left" timestamp="1581949521468">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1583" height="487" key="GridCell.Tab.1.center/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1584085380497" />
+    <state width="1254" height="284" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1584067962708" />
+    <state width="1583" height="487" key="GridCell.Tab.1.left" timestamp="1584085380497">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="498" key="GridCell.Tab.1.left/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1579079662690" />
-    <state width="1254" height="335" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1581949521468" />
-    <state width="1254" height="335" key="GridCell.Tab.1.right" timestamp="1581949521468">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1583" height="487" key="GridCell.Tab.1.left/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1584085380497" />
+    <state width="1254" height="284" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1584067962707" />
+    <state width="1583" height="487" key="GridCell.Tab.1.right" timestamp="1584085380497">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="498" key="GridCell.Tab.1.right/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1579079662690" />
-    <state width="1254" height="335" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1581949521468" />
-    <state width="1254" height="335" key="GridCell.Tab.2.bottom" timestamp="1581949521469">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1583" height="487" key="GridCell.Tab.1.right/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1584085380497" />
+    <state width="1254" height="284" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1584067962708" />
+    <state width="1583" height="487" key="GridCell.Tab.2.bottom" timestamp="1584085380498">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="882" key="GridCell.Tab.2.bottom/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1578906293739" />
-    <state width="1254" height="335" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1581949521469" />
-    <state width="1254" height="335" key="GridCell.Tab.2.center" timestamp="1581949521468">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1583" height="487" key="GridCell.Tab.2.bottom/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1584085380498" />
+    <state width="1254" height="284" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1584067962710" />
+    <state width="1583" height="487" key="GridCell.Tab.2.center" timestamp="1584085380498">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="882" key="GridCell.Tab.2.center/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1578906293738" />
-    <state width="1254" height="335" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1581949521468" />
-    <state width="1254" height="335" key="GridCell.Tab.2.left" timestamp="1581949521468">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1583" height="487" key="GridCell.Tab.2.center/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1584085380498" />
+    <state width="1254" height="284" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1584067962710" />
+    <state width="1583" height="487" key="GridCell.Tab.2.left" timestamp="1584085380497">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="882" key="GridCell.Tab.2.left/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1578906293738" />
-    <state width="1254" height="335" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1581949521468" />
-    <state width="1254" height="335" key="GridCell.Tab.2.right" timestamp="1581949521469">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1583" height="487" key="GridCell.Tab.2.left/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1584085380497" />
+    <state width="1254" height="284" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1584067962709" />
+    <state width="1583" height="487" key="GridCell.Tab.2.right" timestamp="1584085380498">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="882" key="GridCell.Tab.2.right/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1578906293738" />
-    <state width="1254" height="335" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1581949521468" />
+    <state width="1583" height="487" key="GridCell.Tab.2.right/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1584085380498" />
+    <state width="1254" height="284" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1584067962710" />
     <state x="591" y="182" key="RollbackChangesDialog" timestamp="1580782886451">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="2659" y="230" key="RollbackChangesDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1578981065767" />
     <state x="591" y="182" key="RollbackChangesDialog/0.0.1536.824@0.0.1536.824" timestamp="1580782886451" />
-    <state x="369" y="108" key="SettingsEditor" timestamp="1580479429497">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="2381" y="161" key="SettingsEditor" timestamp="1584082470791">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2381" y="161" key="SettingsEditor/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1578535042067" />
-    <state x="369" y="108" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1580479429497" />
-    <state x="442" y="200" key="Vcs.Push.Dialog.v2" timestamp="1580732226214">
+    <state x="2381" y="161" key="SettingsEditor/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1584082470791" />
+    <state x="369" y="108" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1582380643637" />
+    <state x="442" y="200" key="Vcs.Push.Dialog.v2" timestamp="1582097484709">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="2472" y="252" key="Vcs.Push.Dialog.v2/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1579077311766" />
-    <state x="442" y="200" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1580732226214" />
+    <state x="442" y="200" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1582097484709" />
     <state x="2610" y="273" key="extract.method.dialog" timestamp="1578549413989">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
@@ -1215,11 +1301,11 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2536" y="240" key="run.anything.popup/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1577166197488" />
-    <state x="498" y="178" width="672" height="538" key="search.everywhere.popup" timestamp="1582024186189">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="2543" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1584087256183">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2543" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1579682276841" />
-    <state x="498" y="178" width="672" height="538" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1582024186189" />
+    <state x="2543" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1584087256183" />
+    <state x="498" y="178" width="672" height="538" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1584066361590" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1228,26 +1314,6 @@
           <url>jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-redis/2.0.5.RELEASE/spring-data-redis-2.0.5.RELEASE-sources.jar!/org/springframework/data/redis/connection/jedis/JedisClusterConnection.java</url>
           <line>832</line>
           <option name="timeStamp" value="264" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>jar://$MAVEN_REPOSITORY$/org/springframework/spring-aop/5.0.4.RELEASE/spring-aop-5.0.4.RELEASE.jar!/org/springframework/aop/framework/autoproxy/AbstractAutoProxyCreator.class</url>
-          <line>235</line>
-          <option name="timeStamp" value="266" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>jar://$MAVEN_REPOSITORY$/org/springframework/spring-aop/5.0.4.RELEASE/spring-aop-5.0.4.RELEASE.jar!/org/springframework/aop/framework/autoproxy/AbstractAutoProxyCreator.class</url>
-          <line>119</line>
-          <option name="timeStamp" value="267" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>jar://$MAVEN_REPOSITORY$/org/springframework/spring-aop/5.0.4.RELEASE/spring-aop-5.0.4.RELEASE.jar!/org/springframework/aop/framework/autoproxy/AbstractAutoProxyCreator.class</url>
-          <line>178</line>
-          <option name="timeStamp" value="270" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>jar://$MAVEN_REPOSITORY$/org/springframework/spring-aop/5.0.4.RELEASE/spring-aop-5.0.4.RELEASE.jar!/org/springframework/aop/framework/autoproxy/AbstractAutoProxyCreator.class</url>
-          <line>159</line>
-          <option name="timeStamp" value="271" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
