@@ -1,4 +1,4 @@
-package com.linfengda.sb.chapter1.demo.springbootImport.color;
+package com.linfengda.sb.chapter1.demo.springbootimport.color;
 
 /**
  * 描述:

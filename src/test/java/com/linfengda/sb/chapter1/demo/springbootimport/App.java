@@ -1,4 +1,4 @@
-package com.linfengda.sb.chapter1.demo.springbootImport;
+package com.linfengda.sb.chapter1.demo.springbootimport;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 

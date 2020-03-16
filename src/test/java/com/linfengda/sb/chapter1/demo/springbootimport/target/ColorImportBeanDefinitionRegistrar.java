@@ -1,6 +1,6 @@
-package com.linfengda.sb.chapter1.demo.springbootImport.target;
+package com.linfengda.sb.chapter1.demo.springbootimport.target;
 
-import com.linfengda.sb.chapter1.demo.springbootImport.color.Black;
+import com.linfengda.sb.chapter1.demo.springbootimport.color.Black;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.beans.factory.support.RootBeanDefinition;
 import org.springframework.context.annotation.ImportBeanDefinitionRegistrar;

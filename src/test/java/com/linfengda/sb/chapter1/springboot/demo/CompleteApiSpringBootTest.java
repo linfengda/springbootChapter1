@@ -1,7 +1,7 @@
-package com.linfengda.sb.chapter1.demo.springboot.demo;
+package com.linfengda.sb.chapter1.springboot.demo;
 
 import com.linfengda.sb.chapter1.Chapter1Application;
-import com.linfengda.sb.chapter1.demo.springboot.base.BaseMockMvcSpringBootTest;
+import com.linfengda.sb.chapter1.springboot.base.BaseMockMvcSpringBootTest;
 import com.linfengda.sb.chapter1.system.entity.po.SysUserPO;
 import com.linfengda.sb.chapter1.system.entity.vo.UserVO;
 import com.linfengda.sb.chapter1.system.service.SysUserService;

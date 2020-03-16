@@ -1,9 +1,9 @@
-package com.linfengda.sb.chapter1.demo.springbootImport;
+package com.linfengda.sb.chapter1.demo.springbootimport;
 
-import com.linfengda.sb.chapter1.demo.springbootImport.color.Red;
-import com.linfengda.sb.chapter1.demo.springbootImport.target.ColorImportBeanDefinitionRegistrar;
-import com.linfengda.sb.chapter1.demo.springbootImport.target.ColorImportSelector;
-import com.linfengda.sb.chapter1.demo.springbootImport.target.ColorRegistrarConfiguration;
+import com.linfengda.sb.chapter1.demo.springbootimport.color.Red;
+import com.linfengda.sb.chapter1.demo.springbootimport.target.ColorImportBeanDefinitionRegistrar;
+import com.linfengda.sb.chapter1.demo.springbootimport.target.ColorImportSelector;
+import com.linfengda.sb.chapter1.demo.springbootimport.target.ColorRegistrarConfiguration;
 import org.springframework.context.annotation.Import;
 
 import java.lang.annotation.*;

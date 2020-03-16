@@ -1,4 +1,4 @@
-package com.linfengda.sb.chapter1.demo.springTransactional;
+package com.linfengda.sb.chapter1.demo.springtransactional;
 
 import com.linfengda.sb.chapter1.system.service.TransactionalService;
 import lombok.extern.slf4j.Slf4j;

@@ -1,4 +1,4 @@
-package com.linfengda.sb.chapter1.demo.springboot.demo;
+package com.linfengda.sb.chapter1.springboot.demo;
 
 import com.linfengda.sb.chapter1.Chapter1Application;
 import com.linfengda.sb.chapter1.common.cache.OrganizeCache;

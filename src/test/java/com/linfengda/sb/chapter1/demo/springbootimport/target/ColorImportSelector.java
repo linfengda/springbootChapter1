@@ -1,7 +1,7 @@
-package com.linfengda.sb.chapter1.demo.springbootImport.target;
+package com.linfengda.sb.chapter1.demo.springbootimport.target;
 
-import com.linfengda.sb.chapter1.demo.springbootImport.color.Blue;
-import com.linfengda.sb.chapter1.demo.springbootImport.color.Green;
+import com.linfengda.sb.chapter1.demo.springbootimport.color.Blue;
+import com.linfengda.sb.chapter1.demo.springbootimport.color.Green;
 import org.springframework.context.annotation.ImportSelector;
 import org.springframework.core.type.AnnotationMetadata;
 
