@@ -12,7 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class DemoService {
 
-    @Transactional(rollbackFor = Exception.class)
     public void test1() {
         System.out.println("test1 run...");
     }
