@@ -10,6 +10,12 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * 描述: Redis分布式锁
+ *
+ * @author linfengda
+ * @create 2020-03-23 17:33
+ */
 @Slf4j
 public class DistributeRedisLock {
     /**
@@ -21,7 +27,7 @@ public class DistributeRedisLock {
     @Resource
     private SimpleRedisTemplate simpleRedisTemplate;
 
-    protected boolean tryLock(String[] keys) throws Exception {
+    protected boolean tryLock(String[] keys) {
         Map map = new HashMap();
         for (String key : keys) {
             map.put(key, getCurrentThreadId());
@@ -36,7 +42,7 @@ public class DistributeRedisLock {
         return result;
     }
 
-    protected boolean tryLock(String key) throws Exception {
+    protected boolean tryLock(String key) {
         Boolean result = simpleRedisTemplate.opsForValue().setIfAbsent(key, getCurrentThreadId());
         if (result) {
             simpleRedisTemplate.expire(key, DEFAULT_LOCK_EXPIRE_TIME, TimeUnit.SECONDS);
@@ -45,14 +51,14 @@ public class DistributeRedisLock {
         return result;
     }
 
-    protected boolean unLock(String[] keys) throws Exception {
+    protected boolean unLock(String[] keys) {
         for (String key : keys) {
             unLock(key);
         }
         return true;
     }
 
-    protected boolean unLock(String key) throws Exception {
+    protected boolean unLock(String key) {
         String threadId = simpleRedisTemplate.getObject(key, String.class);
         String currentThreadId = getCurrentThreadId();
         if (null == threadId) {return true;}

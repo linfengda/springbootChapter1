@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * 描述: 当使用Jackson2JsonRedisSerializer时，需要使用这个模板。
+ * 描述: 实现使用Jackson2JsonRedisSerializer序列化的模板
  *
  * @author linfengda
  * @create 2018-09-12 13:40

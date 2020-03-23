@@ -11,7 +11,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * 描述: ProtoStuff序列化和反序列化
+ * 描述: ProtoStuff序列化和反序列化工具类
  *
  * @author linfengda
  * @create 2018-09-10 17:00

@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * 描述: 统一的数据结构的操作行为，使模板与序列化方式解耦。
+ * 描述: Redis操作模板，使用模板设计模式使得序列化方式和个性化操作对API调用者透明
  *
  * @author linfengda
  * @create 2018-10-03 20:04

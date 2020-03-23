@@ -5,7 +5,7 @@ import com.linfengda.sb.support.middleware.redis.util.ProtoStuffUtil;
 import java.util.*;
 
 /**
- * 描述: 当使用ProtoStuffSerializer时，需要使用这个模板。
+ * 描述: 实现使用ProtoStuffSerializer序列化的模板
  *
  * @author linfengda
  * @create 2018-10-03 20:02
