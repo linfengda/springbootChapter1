@@ -17,7 +17,7 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Import({MyCacheImportBeanDefinitionRegistrar.class})
-public @interface EnableMyCache {
+public @interface EnableCacheGlobally {
 
     boolean proxyTargetClass() default false;
 

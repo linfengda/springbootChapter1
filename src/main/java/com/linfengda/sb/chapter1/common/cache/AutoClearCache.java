@@ -1,4 +1,4 @@
-package com.linfengda.sb.support.middleware.redis.cache.entity;
+package com.linfengda.sb.chapter1.common.cache;
 
 /**
  * 描述: 缓存自动释放

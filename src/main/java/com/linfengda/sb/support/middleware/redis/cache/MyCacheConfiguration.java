@@ -1,4 +1,4 @@
-package com.linfengda.sb.chapter1.common.config;
+package com.linfengda.sb.support.middleware.redis.cache;
 
 import com.linfengda.sb.support.middleware.redis.cache.interceptor.MyCacheInterceptor;
 import com.linfengda.sb.support.middleware.redis.cache.interceptor.MyCacheMethodPointcutAdvisor;
