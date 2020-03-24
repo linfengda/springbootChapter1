@@ -8,7 +8,7 @@ import lombok.Data;
 import lombok.Getter;
 
 /**
- * 描述: 系统用户
+ * 描述: 系统用户PO
  *
  * @author linfengda
  * @create 2019-01-03 16:15

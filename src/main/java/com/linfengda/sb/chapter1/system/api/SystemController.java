@@ -7,19 +7,17 @@ import com.linfengda.sb.chapter1.system.entity.dto.UserDTO;
 import com.linfengda.sb.chapter1.system.entity.dto.UserPageQueryDTO;
 import com.linfengda.sb.chapter1.system.entity.vo.UserListVO;
 import com.linfengda.sb.chapter1.system.service.SysUserService;
+import com.linfengda.sb.support.middleware.redis.cache.annotation.CacheEnable;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
-import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-import java.util.List;
 
 /**
- * 描述: 测试MVC
+ * 描述: 系统管理controller
  *
  * @author linfengda
  * @create 2018-08-16 10:29
@@ -36,13 +34,7 @@ public class SystemController extends BaseController {
         return new Result(userListVOPage);
     }
 
-    @PostMapping("/test")
-    public Result test(@NotNull(message = "数组不能为空") @Size(message = "数组大小不能小于3", min = 3) List userNameList, @NotNull(message = "value不能为空") @Max(message = "value最大值为100", value = 100) Integer value) throws Exception {
-        System.out.println(userNameList);
-        System.out.println(value);
-        return SUCCESS_RESULT;
-    }
-
+    @CacheEnable(prefix = "getUserInfo", keys = {"userId"})
     @PostMapping("/getUserInfo")
     public Result getUserInfo(@NotNull(message = "用户ID不能为空") Integer userId) throws Exception {
         return new Result(sysUserService.getUserInfo(userId));

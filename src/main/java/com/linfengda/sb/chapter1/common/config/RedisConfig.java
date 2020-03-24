@@ -4,11 +4,11 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.linfengda.sb.chapter1.common.exception.BusinessException;
-import com.linfengda.sb.support.middleware.redis.lock.DistributeRedisLock;
+import com.linfengda.sb.support.middleware.redis.lock.RedisDistributedLock;
+import com.linfengda.sb.support.middleware.redis.serializer.ProtoStuffSerializer;
 import com.linfengda.sb.support.middleware.redis.template.SimpleJacksonRedisTemplate;
 import com.linfengda.sb.support.middleware.redis.template.SimplePSRedisTemplate;
 import com.linfengda.sb.support.middleware.redis.template.SimpleRedisTemplate;
-import com.linfengda.sb.support.middleware.redis.serializer.ProtoStuffSerializer;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.context.annotation.Bean;
@@ -63,10 +63,10 @@ public class RedisConfig {
     }
 
     @Bean
-    public DistributeRedisLock distributeRedisLock(SimpleRedisTemplate simpleRedisTemplate) {
-        DistributeRedisLock distributeRedisLock = new DistributeRedisLock();
-        distributeRedisLock.setSimpleRedisTemplate(simpleRedisTemplate);
-        return distributeRedisLock;
+    public RedisDistributedLock redisDistributedLock(SimpleRedisTemplate simpleRedisTemplate) {
+        RedisDistributedLock redisDistributedLock = new RedisDistributedLock();
+        redisDistributedLock.setSimpleRedisTemplate(simpleRedisTemplate);
+        return redisDistributedLock;
     }
 
     private SimpleRedisTemplate getRedisTemplate(Serializer serializer) {

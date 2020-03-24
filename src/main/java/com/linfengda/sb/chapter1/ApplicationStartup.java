@@ -1,6 +1,6 @@
 package com.linfengda.sb.chapter1;
 
-import com.linfengda.sb.chapter1.common.cache.CacheManager;
+import com.linfengda.sb.chapter1.common.cache.manager.CacheManager;
 import com.linfengda.sb.chapter1.common.context.ApplicationContextHelper;
 import com.linfengda.sb.chapter1.demo.service.DemoService2;
 import lombok.extern.slf4j.Slf4j;

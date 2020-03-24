@@ -1,5 +1,6 @@
 package com.linfengda.sb.chapter1.common.api.entity;
 
+import com.linfengda.sb.chapter1.common.entity.StringConstant;
 import lombok.Data;
 
 /**
@@ -22,4 +23,16 @@ public class RequestInfoBO {
      * 请求参数
      */
     private RequestParam requestParam;
+
+    public String getUriHead(){
+        StringBuilder sb = new StringBuilder();
+        for (int i = 1;i< 50;i++){
+            char t = url.charAt(i);
+            if (t == StringConstant.SLASH_CHAR){
+                break;
+            }
+            sb.append(t);
+        }
+        return sb.toString();
+    }
 }

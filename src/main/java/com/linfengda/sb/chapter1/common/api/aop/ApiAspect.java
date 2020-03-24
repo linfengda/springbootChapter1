@@ -10,7 +10,7 @@ import org.springframework.context.support.ApplicationObjectSupport;
 import org.springframework.stereotype.Component;
 
 /**
- * 描述: HTTP请求AOP
+ * 描述: API请求拦截AOP
  *
  * @author linfengda
  * @create 2018-08-19 23:10
