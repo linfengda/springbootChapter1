@@ -23,9 +23,9 @@ public class MyCacheConfiguration {
 
     @Bean
     @Role(BeanDefinition.ROLE_INFRASTRUCTURE)
-    public MyCacheMethodPointcutAdvisor myCacheMethodPointcutAdvisor() {
+    public MyCacheMethodPointcutAdvisor myCacheMethodPointcutAdvisor(MyCacheInterceptor myCacheInterceptor) {
         MyCacheMethodPointcutAdvisor myCacheMethodPointcutAdvisor = new MyCacheMethodPointcutAdvisor();
-        myCacheMethodPointcutAdvisor.setAdvice(myCacheInterceptor());
+        myCacheMethodPointcutAdvisor.setAdvice(myCacheInterceptor);
         return myCacheMethodPointcutAdvisor;
     }
 }
