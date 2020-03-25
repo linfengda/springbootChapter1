@@ -11,12 +11,11 @@ import org.aopalliance.intercept.MethodInvocation;
  * @create 2020-03-24 15:16
  */
 @Slf4j
-public class MyCacheInterceptor implements MethodInterceptor {
+public class BizQueryCacheInterceptor implements MethodInterceptor {
 
     @Override
     public Object invoke(MethodInvocation invocation) throws Throwable {
-        log.info("缓存方法执行，{}，参数：{}", invocation.getMethod().getName(), invocation.getArguments());
-
+        log.info("缓存的业务查询方法执行，{}，参数：{}", invocation.getMethod().getName(), invocation.getArguments());
         return invocation.proceed();
     }
 }

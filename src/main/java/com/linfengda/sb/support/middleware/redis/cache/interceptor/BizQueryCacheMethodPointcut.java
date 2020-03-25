@@ -1,8 +1,8 @@
 package com.linfengda.sb.support.middleware.redis.cache.interceptor;
 
-import com.linfengda.sb.support.middleware.redis.cache.annotation.CacheEnable;
-import com.linfengda.sb.support.middleware.redis.cache.annotation.CacheEvict;
-import com.linfengda.sb.support.middleware.redis.cache.annotation.CachePut;
+import com.linfengda.sb.support.middleware.redis.cache.annotation.BizCacheEnable;
+import com.linfengda.sb.support.middleware.redis.cache.annotation.BizCacheDel;
+import com.linfengda.sb.support.middleware.redis.cache.annotation.BizCachePut;
 import org.springframework.aop.support.StaticMethodMatcherPointcut;
 import org.springframework.core.annotation.AnnotationUtils;
 
@@ -15,11 +15,11 @@ import java.lang.reflect.Method;
  * @author linfengda
  * @create 2020-03-24 15:59
  */
-public class MyCacheMethodPointcut extends StaticMethodMatcherPointcut {
+public class BizQueryCacheMethodPointcut extends StaticMethodMatcherPointcut {
     /**
      * 缓存注解列表
      */
-    private static final Class<? extends Annotation>[] CACHE_ANNOTATION_CLASSES = new Class[] {CacheEnable.class, CachePut.class, CacheEvict.class};
+    private static final Class<? extends Annotation>[] CACHE_ANNOTATION_CLASSES = new Class[] {BizCacheEnable.class, BizCachePut.class, BizCacheDel.class};
 
 
     @Override

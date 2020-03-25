@@ -4,17 +4,16 @@ import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
-import java.util.concurrent.TimeUnit;
 
 /**
- * 描述: 缓存注解
+ * 描述: 删除缓存注解，适用于注解更新数据接口
  *
  * @author linfengda
- * @create 2019-07-12 17:14
+ * @create 2020-03-24 15:09
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface CacheEnable {
+public @interface BizCacheDel {
     /**
      * 缓存前缀，建议使用方法名
      * @return
@@ -26,13 +25,13 @@ public @interface CacheEnable {
      */
     String[] keys() default {""};
     /**
-     * 缓存失效时间
+     * 是否删除前缀的所有缓存
      * @return
      */
-    long timeOut() default 60L;
+    boolean allEntries() default false;
     /**
-     * 缓存失效时间单位
+     * 是否在方法执行前删除
      * @return
      */
-    TimeUnit timeUnit() default TimeUnit.SECONDS;
+    boolean beforeInvocation() default false;
 }

@@ -1,6 +1,6 @@
 package com.linfengda.sb.support.middleware.redis.cache.annotation;
 
-import com.linfengda.sb.support.middleware.redis.cache.MyCacheImportBeanDefinitionRegistrar;
+import com.linfengda.sb.support.middleware.redis.cache.BizQueryCacheImportBeanDefinitionSelector;
 import org.springframework.context.annotation.AdviceMode;
 import org.springframework.context.annotation.Import;
 import org.springframework.core.Ordered;
@@ -8,7 +8,7 @@ import org.springframework.core.Ordered;
 import java.lang.annotation.*;
 
 /**
- * 描述: 注解开启方法缓存
+ * 描述: 注解开启业务查询缓存
  *
  * @author linfengda
  * @create 2020-03-24 17:56
@@ -16,8 +16,8 @@ import java.lang.annotation.*;
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-@Import({MyCacheImportBeanDefinitionRegistrar.class})
-public @interface EnableCacheGlobally {
+@Import({BizQueryCacheImportBeanDefinitionSelector.class})
+public @interface EnableBizQueryCache {
 
     boolean proxyTargetClass() default false;
 

@@ -7,14 +7,14 @@ import java.lang.annotation.Target;
 import java.util.concurrent.TimeUnit;
 
 /**
- * 描述: 写缓存注解
+ * 描述: 缓存注解
  *
  * @author linfengda
- * @create 2020-03-24 15:08
+ * @create 2019-07-12 17:14
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface CachePut {
+public @interface BizCacheEnable {
     /**
      * 缓存前缀，建议使用方法名
      * @return
