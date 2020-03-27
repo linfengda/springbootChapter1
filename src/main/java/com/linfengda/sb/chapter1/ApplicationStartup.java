@@ -2,7 +2,6 @@ package com.linfengda.sb.chapter1;
 
 import com.linfengda.sb.chapter1.common.cache.manager.CacheManager;
 import com.linfengda.sb.chapter1.common.context.ApplicationContextHelper;
-import com.linfengda.sb.chapter1.demo.service.DemoService2;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.event.ContextRefreshedEvent;
@@ -24,9 +23,5 @@ public class ApplicationStartup {
         ApplicationContextHelper.setCtx(ctx);
         // 初始应用程序缓存
         CacheManager.init();
-
-        DemoService2 demoService2 = ctx.getBean(DemoService2.class);
-        log.info("DemoService2Name========================={}", demoService2.getClass().getName());
-        demoService2.test2();
     }
 }

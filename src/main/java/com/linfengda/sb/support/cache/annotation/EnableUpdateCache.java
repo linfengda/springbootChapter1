@@ -1,6 +1,6 @@
-package com.linfengda.sb.support.middleware.redis.cache.annotation;
+package com.linfengda.sb.support.cache.annotation;
 
-import com.linfengda.sb.support.middleware.redis.cache.BizQueryCacheImportBeanDefinitionSelector;
+import com.linfengda.sb.support.cache.config.UpdateCacheImportBeanDefinitionSelector;
 import org.springframework.context.annotation.AdviceMode;
 import org.springframework.context.annotation.Import;
 import org.springframework.core.Ordered;
@@ -8,16 +8,16 @@ import org.springframework.core.Ordered;
 import java.lang.annotation.*;
 
 /**
- * 描述: 注解开启业务查询缓存
+ * 描述: 开启更新缓存注解
  *
  * @author linfengda
- * @create 2020-03-24 17:56
+ * @create 2020-03-26 11:22
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-@Import({BizQueryCacheImportBeanDefinitionSelector.class})
-public @interface EnableBizQueryCache {
+@Import({UpdateCacheImportBeanDefinitionSelector.class})
+public @interface EnableUpdateCache {
 
     boolean proxyTargetClass() default false;
 

@@ -1,4 +1,4 @@
-package com.linfengda.sb.support.middleware.redis.cache.parser;
+package com.linfengda.sb.support.cache.parser;
 
 /**
  * 描述: 缓存注解解析

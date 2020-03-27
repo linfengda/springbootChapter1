@@ -7,7 +7,6 @@ import com.linfengda.sb.chapter1.system.entity.dto.UserDTO;
 import com.linfengda.sb.chapter1.system.entity.dto.UserPageQueryDTO;
 import com.linfengda.sb.chapter1.system.entity.vo.UserListVO;
 import com.linfengda.sb.chapter1.system.service.SysUserService;
-import com.linfengda.sb.support.middleware.redis.cache.annotation.BizCacheEnable;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,7 +33,6 @@ public class SystemController extends BaseController {
         return new Result(userListVOPage);
     }
 
-    @BizCacheEnable(prefix = "getUserInfo", keys = {"userId"})
     @PostMapping("/getUserInfo")
     public Result getUserInfo(@NotNull(message = "用户ID不能为空") Integer userId) throws Exception {
         return new Result(sysUserService.getUserInfo(userId));

@@ -1,4 +1,4 @@
-package com.linfengda.sb.support.middleware.redis.cache.annotation;
+package com.linfengda.sb.support.cache.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -7,24 +7,19 @@ import java.lang.annotation.Target;
 import java.util.concurrent.TimeUnit;
 
 /**
- * 描述: 缓存注解
+ * 描述: Map类型缓存注解
  *
  * @author linfengda
- * @create 2019-07-12 17:14
+ * @create 2020-03-26 10:34
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface BizCacheEnable {
+public @interface MapCache {
     /**
      * 缓存前缀，建议使用方法名
      * @return
      */
-    String prefix() default "";
-    /**
-     * 缓存key列表，对应方法参数名称
-     * @return
-     */
-    String[] keys() default {""};
+    String mapName() default "";
     /**
      * 缓存失效时间
      * @return
