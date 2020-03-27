@@ -8,6 +8,8 @@ import com.linfengda.sb.chapter1.system.entity.po.SysUserPO;
 import com.linfengda.sb.chapter1.system.entity.vo.UserListVO;
 import com.linfengda.sb.chapter1.system.entity.vo.UserVO;
 import com.linfengda.sb.chapter1.system.service.SysUserService;
+import com.linfengda.sb.support.cache.annotation.ObjCache;
+import com.linfengda.sb.support.cache.annotation.ObjCacheUpdate;
 import com.linfengda.sb.support.dao.BaseService;
 import com.linfengda.sb.support.dao.entity.SetValue;
 import lombok.extern.slf4j.Slf4j;
@@ -36,6 +38,8 @@ public class SysUserServiceImpl extends BaseService implements SysUserService {
         return page;
     }
 
+    @ObjCache
+    @ObjCacheUpdate
     @Override
     public UserVO getUserInfo(Integer userId) throws Exception {
         SysUserPO sysUserPO = findByPrimaryKey(userId, SysUserPO.class);
