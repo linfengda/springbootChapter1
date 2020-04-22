@@ -1,4 +1,4 @@
-package com.linfengda.sb.support.cache.annotation;
+package com.linfengda.sb.support.cache.config;
 
 import com.linfengda.sb.support.cache.config.QueryCacheImportBeanDefinitionSelector;
 import org.springframework.context.annotation.AdviceMode;

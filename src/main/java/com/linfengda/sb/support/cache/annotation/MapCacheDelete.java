@@ -24,9 +24,4 @@ public @interface MapCacheDelete {
      * @return
      */
     boolean allEntries() default false;
-    /**
-     * 是否在方法执行前删除
-     * @return
-     */
-    boolean beforeInvocation() default false;
 }

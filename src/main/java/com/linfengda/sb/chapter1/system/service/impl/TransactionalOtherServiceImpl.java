@@ -3,7 +3,7 @@ package com.linfengda.sb.chapter1.system.service.impl;
 import com.linfengda.sb.chapter1.common.exception.BusinessException;
 import com.linfengda.sb.chapter1.system.entity.po.SysUserPO;
 import com.linfengda.sb.chapter1.system.service.TransactionalOtherService;
-import com.linfengda.sb.support.dao.BaseService;
+import com.linfengda.sb.support.orm.BaseService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;

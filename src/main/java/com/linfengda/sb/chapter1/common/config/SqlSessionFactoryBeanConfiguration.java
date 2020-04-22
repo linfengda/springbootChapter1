@@ -1,7 +1,7 @@
 package com.linfengda.sb.chapter1.common.config;
 
 import com.github.pagehelper.PageInterceptor;
-import com.linfengda.sb.support.dao.OrmTemplate;
+import com.linfengda.sb.support.orm.OrmTemplate;
 import com.linfengda.sb.support.interceptor.PermissionInterceptor;
 import org.apache.ibatis.plugin.Interceptor;
 import org.apache.ibatis.session.SqlSessionFactory;

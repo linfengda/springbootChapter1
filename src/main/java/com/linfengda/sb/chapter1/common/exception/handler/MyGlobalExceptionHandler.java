@@ -5,7 +5,7 @@ import com.linfengda.sb.chapter1.common.api.exception.ParamParesException;
 import com.linfengda.sb.chapter1.common.exception.entity.ErrorCode;
 import com.linfengda.sb.chapter1.common.exception.BusinessException;
 import com.linfengda.sb.chapter1.common.exception.DistributedLockException;
-import com.linfengda.sb.support.dao.exception.DataAccessException;
+import com.linfengda.sb.support.orm.exception.DataAccessException;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.HttpRequestMethodNotSupportedException;

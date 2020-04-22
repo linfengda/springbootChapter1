@@ -1,6 +1,5 @@
 package com.linfengda.sb.support.cache.config;
 
-import com.linfengda.sb.support.cache.annotation.EnableUpdateCache;
 import org.springframework.context.annotation.AdviceMode;
 import org.springframework.context.annotation.AdviceModeImportSelector;
 

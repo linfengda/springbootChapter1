@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.linfengda.sb.chapter1.Chapter1Application;
 import com.linfengda.sb.chapter1.system.entity.po.SysUserPO;
 import com.linfengda.sb.chapter1.system.entity.vo.UserVO;
-import com.linfengda.sb.support.dao.OrmTemplate;
+import com.linfengda.sb.support.orm.OrmTemplate;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;
 import org.junit.FixMethodOrder;

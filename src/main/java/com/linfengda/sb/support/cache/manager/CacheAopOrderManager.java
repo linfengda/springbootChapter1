@@ -8,7 +8,7 @@ import org.springframework.core.Ordered;
  * @author linfengda
  * @create 2020-03-26 11:08
  */
-public interface AopOrderManager {
+public interface CacheAopOrderManager {
     /**
      * 查询缓存切面：第一
      */

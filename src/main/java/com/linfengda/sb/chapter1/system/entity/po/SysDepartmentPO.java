@@ -1,9 +1,7 @@
 package com.linfengda.sb.chapter1.system.entity.po;
 
-import com.linfengda.sb.support.dao.entity.BasePO;
+import com.linfengda.sb.support.orm.entity.BasePO;
 import lombok.Data;
-
-import java.util.Date;
 
 /**
  * 描述: 系统部门PO

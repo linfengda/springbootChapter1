@@ -28,14 +28,19 @@ public class JDKProxyTest {
      * 首先加载被代理类的接口的class，然后通过执行方法java.lang.reflect.Proxy.ProxyClassFactory#apply创建对应proxy class，
      * 其内部会调用ProxyGenerator.generateProxyClass()方法生成二进制class数据，
      * 然后执行java.lang.reflect.Proxy#defineClass0返回对应class实例，至此生成proxy class流程就完成了。
-     * @throws Exception
      */
     @Test
-    public void testJDKProxy() throws Exception {
-        ProxyHandler proxyHandler = new ProxyHandler();
-        Subject subject = (Subject) proxyHandler.bind(new RealSubject());
-        printProxyClass("C:\\Users\\SI-GZ-1134\\Desktop\\TestProxy.class");
+    public void testJDKProxy1() {
+        Subject subject = (Subject) ProxyHandlerProvider.newLogDynamicProxy(new RealSubject());
         subject.doSomething();
+        printProxyClass("C:\\Users\\SI-GZ-1134\\Desktop\\TestProxy.class");
+    }
+
+    @Test
+    public void testJDKProxy2() {
+        Subject subject = (Subject) ProxyHandlerProvider.newAuthCheckDynamicProxy(new RealSubject());
+        subject.doSomething();
+        printProxyClass("C:\\Users\\SI-GZ-1134\\Desktop\\TestProxy.class");
     }
 
     /**

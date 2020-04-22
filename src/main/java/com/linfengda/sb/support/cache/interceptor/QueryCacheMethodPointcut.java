@@ -1,7 +1,6 @@
 package com.linfengda.sb.support.cache.interceptor;
 
-import com.linfengda.sb.support.cache.annotation.MapCache;
-import com.linfengda.sb.support.cache.annotation.ObjCache;
+import com.linfengda.sb.support.cache.manager.CacheAnnotationManager;
 import org.springframework.aop.support.StaticMethodMatcherPointcut;
 import org.springframework.core.annotation.AnnotationUtils;
 
@@ -15,16 +14,11 @@ import java.lang.reflect.Method;
  * @create 2020-03-24 15:59
  */
 public class QueryCacheMethodPointcut extends StaticMethodMatcherPointcut {
-    /**
-     * 查询缓存注解列表
-     */
-    private static final Class<? extends Annotation>[] CACHE_ANNOTATION_CLASSES = new Class[] {ObjCache.class, MapCache.class};
-
 
     @Override
     public boolean matches(Method method, Class<?> aClass) {
-        for (Class<? extends Annotation> cacheAnnotationClass : CACHE_ANNOTATION_CLASSES) {
-            Annotation annotation = AnnotationUtils.findAnnotation(method, cacheAnnotationClass);
+        for (Class<? extends Annotation> annotationType : CacheAnnotationManager.QUERY_CACHE_ANNOTATIONS.getAnnotations()) {
+            Annotation annotation = AnnotationUtils.findAnnotation(method, annotationType);
             if (null != annotation) {
                 return true;
             }
