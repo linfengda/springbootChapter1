@@ -1,45 +1,120 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="1ac92d16-a2f3-4d49-8fdb-b5b56f35641b" name="Default" comment="feat: 提交cglib动态代理测试">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/annotation/CacheKey.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/entity/CacheMethodMeta.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/manager/CacheAnnotationManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/parser/CacheAnnotationParser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/remote/readme.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/common/proxy/jdk/AuthCheckDynamicProxy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/common/proxy/jdk/LogDynamicProxy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/common/proxy/jdk/ProxyHandlerProvider.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/common/proxy/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="1ac92d16-a2f3-4d49-8fdb-b5b56f35641b" name="Default" comment="feat: 提交代码">
+      <change afterPath="$PROJECT_DIR$/profiles.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/Chapter1Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/Chapter1Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/config/SqlSessionFactoryBeanConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/config/SqlSessionFactoryBeanConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/exception/entity/ErrorCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/exception/entity/ErrorCode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/exception/handler/MyGlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/exception/handler/MyGlobalExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/system/entity/po/SysDepartmentPO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/system/entity/po/SysDepartmentPO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/system/entity/po/SysUserPO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/system/entity/po/SysUserPO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/system/service/impl/SysOrganizeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/system/service/impl/SysOrganizeServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/system/service/impl/SysUserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/system/service/impl/SysUserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/system/service/impl/TransactionalOtherServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/system/service/impl/TransactionalOtherServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/system/service/impl/TransactionalServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/system/service/impl/TransactionalServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/annotation/EnableQueryCache.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/config/EnableQueryCache.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/annotation/EnableUpdateCache.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/config/EnableUpdateCache.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/annotation/MapCacheDelete.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/annotation/MapCacheDelete.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/annotation/ObjCacheDelete.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/annotation/ObjCacheDelete.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/config/QueryCacheImportBeanDefinitionSelector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/config/QueryCacheImportBeanDefinitionSelector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/config/UpdateCacheImportBeanDefinitionSelector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/config/UpdateCacheImportBeanDefinitionSelector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/entity/T.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/entity/CacheKeyMeta.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/interceptor/QueryCacheInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/interceptor/QueryCacheInterceptor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/interceptor/QueryCacheMethodPointcut.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/interceptor/QueryCacheMethodPointcut.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/interceptor/UpdateCacheMethodPointcut.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/interceptor/UpdateCacheMethodPointcut.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/manager/AopOrderManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/manager/CacheAopOrderManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/parser/MyCacheAnnotationParser.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/common/proxy/jdk/JDKProxyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/common/proxy/jdk/JDKProxyTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/common/proxy/jdk/ProxyHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/demo/service/ORMFrameworkSpringBootTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/demo/service/ORMFrameworkSpringBootTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/support/dao/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/support/orm/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application-common-local.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-common-local.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/chapter1.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application-common-local.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application-common-local.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/ApplicationStartup.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/Chapter1Application.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/EnableApplicationStartup.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/common/api/BaseController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/common/api/aop/ApiAspect.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/common/api/context/RequestContext.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/common/api/entity/BasePageDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/common/api/entity/BaseType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/common/api/entity/HttpMethod.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/common/api/entity/PageResult.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/common/api/entity/RequestInfoBO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/common/api/entity/RequestParam.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/common/api/entity/Result.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/common/api/exception/ParamParesException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/common/api/parameter/MyControllerArgumentResolver.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/common/api/parameter/MyValidateUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/common/api/router/AbstractRequestHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/common/api/router/RequestRouter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/common/api/router/impl/PCRequestHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/common/api/router/impl/WeChatRequestHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/common/api/serializer/LongToStringSerializer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/common/api/url/WhiteUrlList.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/common/api/util/HttpServletUtil$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/common/api/util/HttpServletUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/common/api/util/IpUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/common/config/HikariDataSourceConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/common/config/HystrixConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/common/config/MyExecutorPoolConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/common/config/MySchedulingConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/common/config/MyWebMvcConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/common/config/RedisConfig$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/common/config/RedisConfig$Serializer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/common/config/RedisConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/common/config/SqlSessionFactoryBeanConfiguration.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/common/exception/BusinessException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/common/exception/DistributedLockException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/common/exception/entity/ErrorCode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/common/exception/handler/MyAsyncUncaughtExceptionHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/common/exception/handler/MyGlobalExceptionHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/common/exception/handler/MySchedulingExceptionHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/common/thread/ThreadPoolHelper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/common/thread/ThreadPoolManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/common/util/CheckUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/common/util/ServerRunTimeUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/system/api/SystemController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/system/dao/SystemDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/system/entity/dto/UserDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/system/entity/dto/UserPageQueryDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/system/entity/po/SysUserPO$Status.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/system/entity/po/SysUserPO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/system/entity/vo/UserListVO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/system/entity/vo/UserVO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/system/service/TransactionalOtherService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/system/service/TransactionalService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/system/service/impl/TransactionalOtherServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/chapter1/system/service/impl/TransactionalServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/support/dao/BaseService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/support/dao/OrmTemplate.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/support/dao/entity/AttributeValue.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/support/dao/entity/BasePO$Delete.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/support/dao/entity/BasePO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/support/dao/entity/ConditionParam.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/support/dao/entity/DefaultField.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/support/dao/entity/DefaultFieldSetter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/support/dao/entity/SetValue.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/support/dao/exception/DataAccessException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/support/dao/sqlBuilder/PreStatementSqlBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/support/dao/sqlHandler/BaseSqlHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/support/dao/sqlHandler/PreStatementSql.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/support/dao/sqlHandler/PreStatementSqlHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/support/dao/tableAnnontation/Id.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/support/dao/tableAnnontation/Table.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/support/dao/type/BaseType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/support/dao/type/SortType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/support/dao/utils/ClassUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/support/dao/utils/ResultSetUtil$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/support/dao/utils/ResultSetUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/support/dao/utils/UserUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/support/interceptor/PermissionHelper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/support/interceptor/PermissionInterceptor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/support/interceptor/PermissionSql.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/support/middleware/rabbitmq/QueueVo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/support/middleware/rabbitmq/RabbitmqTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/support/middleware/rabbitmq/helper/ConnectionHelper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/support/middleware/rabbitmq/service/MqConsumerService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/support/middleware/rabbitmq/service/MqProducerService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/linfengda/sb/support/middleware/redis/serializer/ProtoStuffSerializer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/META-INF/chapter1.kotlin_module" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,39 +125,6 @@
     <SUITE FILE_PATH="coverage/chapter1$Chapter1ApplicationTests_runTest.coverage" NAME="Chapter1ApplicationTests.runTest Coverage Results" MODIFIED="1566195295731" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.linfengda.sb.chapter1.*</FILTER>
     </SUITE>
-  </component>
-  <component name="DatabaseView">
-    <option name="SHOW_INTERMEDIATE" value="true" />
-    <option name="GROUP_DATA_SOURCES" value="true" />
-    <option name="GROUP_SCHEMA" value="true" />
-    <option name="GROUP_CONTENTS" value="false" />
-    <option name="SORT_POSITIONED" value="false" />
-    <option name="SHOW_EMPTY_GROUPS" value="false" />
-    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
-    <option name="HIDDEN_KINDS">
-      <set />
-    </option>
-    <expand>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="MySQL for 5.1 - spring_boot_db@localhost" type="feb32156:DbDataSourceImpl" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="MySQL for 5.1 - spring_boot_db@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="MySQL for 5.1 - spring_boot_db@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="spring_boot_db: schema" type="76f4a085:MysqlImplModel$Schema" />
-      </path>
-    </expand>
-    <select />
-  </component>
-  <component name="FavoritesManager">
-    <favorites_list name="chapter1" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -107,12 +149,12 @@
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="mavenHome" value="C:/Program Files (x86)/apache-maven-3.5.4" />
+        <option name="mavenHome" value="$PROJECT_DIR$/../../../../Program Files/apache-maven-3.6.3" />
       </MavenGeneralSettings>
     </option>
     <option name="importingSettings">
       <MavenImportingSettings>
-        <option name="importAutomatically" value="true" />
+        <option name="jdkForImporter" value="#JAVA_HOME" />
         <option name="vmOptionsForImporter" value="-Xmx768m" />
       </MavenImportingSettings>
     </option>
@@ -123,7 +165,6 @@
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
@@ -136,16 +177,17 @@
     <property name="RequestMappingsPanelWidth0" value="75" />
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="RequestMappingsPanelWidth2" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="extract.method.default.visibility" value="private" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/remote" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Global Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="Errors" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -181,7 +223,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.JDKProxyTest.testJDKProxy2">
+  <component name="RunManager" selected="Spring Boot.Chapter1Application">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HTML_USED" value="false" />
       <option name="WIDTH" value="400" />
@@ -329,29 +371,6 @@
         <item itemvalue="JUnit.CglibProxyTest.test1" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
-      <list>
-        <serviceView>
-          <option name="contentProportion" value="0.14275956" />
-          <treeState>
-            <expand>
-              <path>
-                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="Spring Boot" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              </path>
-              <path>
-                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="Spring Boot" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-                <item name="Not Started" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              </path>
-            </expand>
-            <select />
-          </treeState>
-        </serviceView>
-      </list>
-    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -679,13 +698,19 @@
       <workItem from="1587434783397" duration="4532000" />
       <workItem from="1587479876010" duration="51000" />
       <workItem from="1587518252761" duration="7449000" />
-    </task>
-    <task id="LOCAL-00035" summary="中间件配置分离">
-      <created>1554774573177</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1554774573177</updated>
+      <workItem from="1588037701789" duration="1672000" />
+      <workItem from="1588050986037" duration="2481000" />
+      <workItem from="1588053477348" duration="3083000" />
+      <workItem from="1588056873408" duration="3754000" />
+      <workItem from="1588122953953" duration="283000" />
+      <workItem from="1588123411963" duration="382000" />
+      <workItem from="1588125475381" duration="516000" />
+      <workItem from="1588126040954" duration="255000" />
+      <workItem from="1588126486661" duration="568000" />
+      <workItem from="1588127397759" duration="35000" />
+      <workItem from="1588127468739" duration="598000" />
+      <workItem from="1588128237500" duration="558000" />
+      <workItem from="1588129038160" duration="1154000" />
     </task>
     <task id="LOCAL-00036" summary="中间件配置分离">
       <created>1554989093855</created>
@@ -1023,11 +1048,18 @@
       <option name="project" value="LOCAL" />
       <updated>1585289096573</updated>
     </task>
-    <option name="localTasksCounter" value="84" />
+    <task id="LOCAL-00084" summary="feat: 提交代码">
+      <created>1588130433422</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1588130433423</updated>
+    </task>
+    <option name="localTasksCounter" value="85" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="Vcs.Log.History.Properties">
     <option name="COLUMN_ORDER">
@@ -1106,17 +1138,16 @@
                   </entry>
                 </map>
               </option>
-              <option name="COLUMN_ORDER" />
             </State>
           </value>
         </entry>
       </map>
     </option>
-    <option name="OPEN_TABS">
-      <set>
-        <option value="1" />
-        <option value="2" />
-      </set>
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="1" value="TOOL_WINDOW" />
+        <entry key="2" value="TOOL_WINDOW" />
+      </map>
     </option>
     <option name="RECENT_FILTERS">
       <map>
@@ -1133,9 +1164,9 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="提交代码结构重构" />
     <MESSAGE value="feat: 提交HikariDataSourceConfig" />
     <MESSAGE value="feat: 提交DTO参数校验" />
     <MESSAGE value="feat: 提交git ignore" />
@@ -1160,21 +1191,28 @@
     <MESSAGE value="feat: 类名确认" />
     <MESSAGE value="feat: 分离查询缓存和更新缓存AOP" />
     <MESSAGE value="feat: 提交cglib动态代理测试" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: 提交cglib动态代理测试" />
+    <MESSAGE value="feat: 提交代码" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: 提交代码" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="2472" y="178" key="#Project_Structure" timestamp="1585288118782">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state x="414" y="216" key="#HTTP_Proxy" timestamp="1588128349155">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="414" y="216" key="#HTTP_Proxy/0.0.1536.824@0.0.1536.824" timestamp="1588128349155" />
+    <state x="651" y="274" key="#Notifications" timestamp="1588056887396">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="651" y="274" key="#Notifications/0.0.1536.824@0.0.1536.824" timestamp="1588056887396" />
+    <state x="442" y="0" key="#Project_Structure" timestamp="1588053575638">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="2472" y="178" key="#Project_Structure/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1585288118782" />
-    <state x="2215" y="239" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585013574241">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state x="442" y="0" key="#Project_Structure/0.0.1536.824@0.0.1536.824" timestamp="1588053575638" />
+    <state x="236" y="141" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1588129057244">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="2215" y="239" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1585013574241" />
-    <state x="2012" y="92" width="1736" height="856" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1579052522536">
-      <screen x="1920" y="0" width="1920" height="1040" />
-    </state>
-    <state x="2012" y="92" width="1736" height="856" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1579052522536" />
+    <state x="236" y="141" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1588129057244" />
     <state x="2685" y="229" key="#com.intellij.ide.util.MemberChooser" timestamp="1585557208795">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
@@ -1206,7 +1244,6 @@
     <state x="552" y="211" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1585295062857">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="2610" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1578903527739" />
     <state x="552" y="211" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1585295062857" />
     <state x="2277" y="114" key="CommitChangelistDialog2" timestamp="1587379605831">
       <screen x="1920" y="0" width="1920" height="1040" />
@@ -1218,17 +1255,17 @@
     </state>
     <state width="563" height="466" key="DebuggerActiveHint/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1585275086788" />
     <state width="575" height="370" key="DebuggerActiveHint/0.0.1536.824@0.0.1536.824" timestamp="1585279774453" />
-    <state x="2227" y="173" width="1228" height="688" key="DiffContextDialog" timestamp="1587379602381">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state x="212" y="246" width="983" height="546" key="DiffContextDialog" timestamp="1588130377311">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="2227" y="173" width="1228" height="688" key="DiffContextDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1587379602381" />
-    <state x="212" y="246" width="983" height="546" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1584633508414" />
-    <state x="2660" y="274" key="FileChooserDialogImpl" timestamp="1587519546800">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state x="212" y="246" width="983" height="546" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1588130377311" />
+    <state x="418" y="217" key="FileChooserDialogImpl" timestamp="1588128673120">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="592" y="217" key="FileChooserDialogImpl/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1584352920936" />
     <state x="2660" y="274" key="FileChooserDialogImpl/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1587519546800" />
-    <state x="592" y="217" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1584784383512" />
+    <state x="418" y="217" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1588128673120" />
     <state width="1254" height="420" key="GridCell.Tab.-1.bottom" timestamp="1580650651165">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -1245,26 +1282,26 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1254" height="420" key="GridCell.Tab.-1.right/0.0.1536.824@0.0.1536.824" timestamp="1580650651165" />
-    <state width="1877" height="498" key="GridCell.Tab.0.bottom" timestamp="1585557444662">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1588056865344">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1877" height="498" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1585557444662" />
-    <state width="1254" height="261" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1585280216807" />
-    <state width="1877" height="498" key="GridCell.Tab.0.center" timestamp="1585557444662">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1588056865344" />
+    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1588056865344">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1877" height="498" key="GridCell.Tab.0.center/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1585557444662" />
-    <state width="1254" height="261" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1585280216806" />
-    <state width="1877" height="498" key="GridCell.Tab.0.left" timestamp="1585557444662">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1588056865344" />
+    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1588056865343">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1877" height="498" key="GridCell.Tab.0.left/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1585557444662" />
-    <state width="1254" height="261" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1585280216805" />
-    <state width="1877" height="498" key="GridCell.Tab.0.right" timestamp="1585557444662">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1588056865343" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1588056865344">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1877" height="498" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1585557444662" />
-    <state width="1254" height="261" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1585280216806" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1588056865344" />
     <state width="1877" height="498" key="GridCell.Tab.1.bottom" timestamp="1585557444662">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
@@ -1310,16 +1347,16 @@
     </state>
     <state x="2659" y="230" key="RollbackChangesDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1585191117897" />
     <state x="591" y="182" key="RollbackChangesDialog/0.0.1536.824@0.0.1536.824" timestamp="1580782886451" />
-    <state x="2381" y="161" key="SettingsEditor" timestamp="1584082470791">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state x="369" y="0" key="SettingsEditor" timestamp="1588130665295">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="2381" y="161" key="SettingsEditor/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1584082470791" />
-    <state x="369" y="108" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1582380643637" />
-    <state x="2472" y="252" key="Vcs.Push.Dialog.v2" timestamp="1585289097978">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state x="369" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1588130665295" />
+    <state x="442" y="200" key="Vcs.Push.Dialog.v2" timestamp="1588130683113">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="2472" y="252" key="Vcs.Push.Dialog.v2/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1585289097978" />
-    <state x="442" y="200" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1584633569628" />
+    <state x="442" y="200" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1588130683113" />
     <state width="775" height="419" key="XDebugger.FullValuePopup" timestamp="1584282663248">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -1333,6 +1370,10 @@
     </state>
     <state x="2556" y="258" width="682" height="524" key="find.popup/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1585044581065" />
     <state x="509" y="204" width="642" height="524" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1584283115223" />
+    <state x="442" y="199" key="git4idea.merge.GitPullDialog" timestamp="1588038691472">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="442" y="199" key="git4idea.merge.GitPullDialog/0.0.1536.824@0.0.1536.824" timestamp="1588038691472" />
     <state x="2673" y="384" key="git4idea.rebase.GitRebaseDialog" timestamp="1585049437125">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
