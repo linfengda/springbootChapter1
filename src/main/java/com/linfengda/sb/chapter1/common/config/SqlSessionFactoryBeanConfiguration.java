@@ -26,8 +26,8 @@ public class SqlSessionFactoryBeanConfiguration {
     private DataSource dataSource;
 
 	/**
-	 * mybatis SqlSessionFactory配置
-	 * @return
+	 * 注入mybatis SqlSessionFactory实例
+	 * @return	mybatis SqlSessionFactory实例
 	 * @throws Exception
 	 */
 	@Bean
@@ -57,12 +57,11 @@ public class SqlSessionFactoryBeanConfiguration {
 	}
 
 	/**
-	 * ORM框架支持类
-	 * @return
-	 * @throws Exception
+	 * 注入ORM框架工具类实例
+	 * @return	ORM框架工具类实例
 	 */
 	@Bean
-	public OrmTemplate ormTemplate() throws Exception {
+	public OrmTemplate ormTemplate() {
 		OrmTemplate ormTemplate = new OrmTemplate();
 		ormTemplate.setDataSource(dataSource);
 		return ormTemplate;
