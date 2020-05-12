@@ -39,13 +39,20 @@ public class SysUserPO extends BasePO {
     private Integer status;
 
     /**
-     * 状态字段枚举
+     * 状态枚举
      */
     @AllArgsConstructor
     @Getter
     public enum Status {
+        /**
+         * 0：启用
+         */
         YES(0, "启用"),
+        /**
+         * 1：停用
+         */
         NO(1, "停用");
+
         private final Integer code;
         private final String name;
 
