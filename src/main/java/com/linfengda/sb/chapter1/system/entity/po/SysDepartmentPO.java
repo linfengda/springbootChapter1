@@ -59,8 +59,8 @@ public class SysDepartmentPO extends BasePO {
          */
         ADMINISTRATION(3, "行政");
 
-        private final Integer code;
-        private final String name;
+        private Integer code;
+        private String name;
 
         public static Type getType(Integer state) {
             for (Type value : values()) {
@@ -87,8 +87,8 @@ public class SysDepartmentPO extends BasePO {
          */
         NO(1, "停用");
 
-        private final Integer code;
-        private final String name;
+        private Integer code;
+        private String name;
 
         public static Status getType(Integer state) {
             for (Status value : values()) {

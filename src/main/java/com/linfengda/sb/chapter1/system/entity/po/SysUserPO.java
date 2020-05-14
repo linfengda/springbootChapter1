@@ -53,8 +53,8 @@ public class SysUserPO extends BasePO {
          */
         NO(1, "停用");
 
-        private final Integer code;
-        private final String name;
+        private Integer code;
+        private String name;
 
         public static Status getType(Integer state) {
             for (Status value : values()) {

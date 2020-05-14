@@ -9,6 +9,7 @@ import lombok.Getter;
  * @author linfengda
  * @create 2019-01-23 13:22
  */
+@Getter
 public class BusinessException extends RuntimeException {
 
     public BusinessException() {
@@ -30,9 +31,9 @@ public class BusinessException extends RuntimeException {
         this.detailMsg = detailMsg;
     }
 
-    @Getter private int code = ErrorCode.COMMON_DAO_ERROR_CODE;
+    private int code = ErrorCode.COMMON_DAO_ERROR_CODE;
 
-    @Getter private String msg;
+    private String msg;
 
-    @Getter private String detailMsg;
+    private String detailMsg;
 }
