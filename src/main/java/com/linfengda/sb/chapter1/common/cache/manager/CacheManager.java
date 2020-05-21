@@ -36,7 +36,7 @@ public enum CacheManager {
                 switch (cache) {
                     case ORGANIZE_CACHE:
                         OrganizeCache organizeCache = ApplicationContextHelper.getBean(OrganizeCache.class);
-                        organizeCache.clearCache();
+                        organizeCache.initCache();
                     default:
                         break;
                 }

@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * 描述: Redis操作模板，使用模板设计模式使得序列化方式和个性化操作对API调用者透明
+ * 描述: Redis操作模板，使用模板设计模式使得序列化方式对API调用者透明
  *
  * @author linfengda
  * @create 2018-10-03 20:04
