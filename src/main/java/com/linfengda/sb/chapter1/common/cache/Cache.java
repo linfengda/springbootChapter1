@@ -1,7 +1,7 @@
 package com.linfengda.sb.chapter1.common.cache;
 
 /**
- * 描述: 缓存自动释放
+ * 描述: 缓存接口
  *
  * @author linfengda
  * @create 2019-05-21 10:30
