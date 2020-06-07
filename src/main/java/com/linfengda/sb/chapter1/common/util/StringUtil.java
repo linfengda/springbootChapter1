@@ -89,18 +89,6 @@ public class StringUtil {
         return StringUtils.join(joinList,separator);
     }
 
-    public static String getUriHead(String uri){
-        StringBuilder sb = new StringBuilder();
-        for (int i = 1;i< 50;i++){
-            char t = uri.charAt(i);
-            if (t == StringConstant.SLASH_CHAR){
-                break;
-            }
-            sb.append(t);
-        }
-        return sb.toString();
-    }
-
     public static String getRandomStr(int len){
         Random random = new Random();
         StringBuilder sb = new StringBuilder();

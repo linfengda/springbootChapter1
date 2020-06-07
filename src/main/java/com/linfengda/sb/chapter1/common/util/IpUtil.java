@@ -1,4 +1,4 @@
-package com.linfengda.sb.chapter1.common.api.util;
+package com.linfengda.sb.chapter1.common.util;
 
 import javax.servlet.http.HttpServletRequest;
 

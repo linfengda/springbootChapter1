@@ -1,6 +1,6 @@
 package com.linfengda.sb.chapter1.common.api.parameter;
 
-import com.linfengda.sb.chapter1.common.api.exception.ParamParesException;
+import com.linfengda.sb.chapter1.common.exception.ParamParesException;
 import org.apache.commons.collections4.CollectionUtils;
 import org.hibernate.validator.HibernateValidator;
 

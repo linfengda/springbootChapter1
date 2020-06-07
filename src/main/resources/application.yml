@@ -1,22 +1,29 @@
 server:
-  port: 9001
-  tomcat.max-threads: 300
+  port: 9000
 
+hikaricp:
+  configurationFile: application.yml
 spring:
+  application:
+    name: springBootChapter1
   profiles:
     active: @myActivateFile@,common-@myActivateFile@,mq-@myActivateFile@,redis-@myActivateFile@
+
   datasource:
-    driverClassName: com.mysql.jdbc.Driver
-    idleTimeout: 260000
-    maxLifetime: 275000
-    connectionTimeout: 60000
-    minIdle: 20
-    maximumPoolSize: 100
-    connectionTestQuery: SELECT 1
-    poolName: HikariPool
-    cachePrepStmts: true
-    prepStmtCacheSize: 300
-    prepStmtCacheSqlLimit: 2048
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/spring_boot_db?useSSL=false&useUnicode=yes&characterEncoding=UTF-8&autoReconnect=true
+    username: root
+    password: 123456
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      pool-name: HikariCP
+      idle-timeout: 30000
+      max-lifetime: 30000
+      connection-timeout: 1800000
+      minimum-idle: 10
+      maximum-pool-size: 100
+      connection-test-query: SELECT 1
+
   redis:
     serializer: jackson
     timeout: 5000
@@ -34,3 +41,4 @@ thread:
     maxPoolSize: 100
     queueSize: 30
     keepAlive: 60
+

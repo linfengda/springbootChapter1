@@ -2,7 +2,7 @@ package com.linfengda.sb.chapter1.common.api.parameter;
 
 import com.linfengda.sb.chapter1.common.api.entity.BaseType;
 import com.linfengda.sb.chapter1.common.api.entity.RequestParam;
-import com.linfengda.sb.chapter1.common.api.util.HttpServletUtil;
+import com.linfengda.sb.chapter1.common.util.HttpServletUtil;
 import com.linfengda.sb.chapter1.common.exception.entity.ErrorCode;
 import com.linfengda.sb.chapter1.common.exception.BusinessException;
 import lombok.extern.slf4j.Slf4j;

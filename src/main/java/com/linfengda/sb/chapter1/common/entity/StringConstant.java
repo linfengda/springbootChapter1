@@ -22,7 +22,6 @@ public interface StringConstant {
     String TILDE = "~";
     String V = "V";
     String POINT = ".";
-    char SLASH_CHAR = '/';
     String DOUBLE_BACKSLASH = "-";
     String MINUS = "-";
     String DUN_HAO = "、";
@@ -30,7 +29,7 @@ public interface StringConstant {
     String COMMON_LOCK_VALUE = "c";
     String ASK_SIGN = "?";
     String JUST = "&";
-    String EQULE = "=";
+    String EQUAL = "=";
     String ZERO_TWO = "0.00";
     String INTO_KEY = "info";
     String CODE_KEY = "code";
@@ -48,4 +47,5 @@ public interface StringConstant {
     Character MASK_CHAR ='*';
     String MASK_CHAR_STR = "*";
     String DOLLAR = "$";
+    char SLASH_CHAR = '/';
 }
