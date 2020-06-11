@@ -1,7 +1,8 @@
 package com.linfengda.sb.chapter1.demo.service;
 
-import com.linfengda.sb.chapter1.common.entity.StringConstant;
+import com.linfengda.sb.chapter1.common.util.StringConstant;
 import com.linfengda.sb.chapter1.common.util.StringUtil;
+import com.linfengda.sb.chapter1.common.util.TimeUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.hamcrest.CoreMatchers;
 import org.junit.Before;
@@ -9,7 +10,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -39,5 +42,16 @@ public class SampleSpringBootTest {
 
         String str = StringUtil.join(StringConstant.COMMA, "a", "b", "c");
         assertThat(str, CoreMatchers.equalTo("a,b,c"));
+    }
+
+    @Test
+    public void test2() throws Exception {
+        assertThat(TimeUtil.isToday(System.currentTimeMillis()), CoreMatchers.equalTo(Boolean.TRUE));
+        assertThat(TimeUtil.isToday(new SimpleDateFormat("yyyy-MM-dd").parse("2020-06-08 12:00:00").getTime()), CoreMatchers.equalTo(Boolean.TRUE));
+    }
+
+    @Test
+    public void test3() throws Exception {
+        assertThat(TimeUtil.format(TimeUtil.parseToDate("2020-06-05 12:00:00", "yyyy-MM-dd HH:mm:ss"), "yyyy-MM-dd HH:mm:ss"), CoreMatchers.equalTo("2020-06-05 12:00:00"));
     }
 }

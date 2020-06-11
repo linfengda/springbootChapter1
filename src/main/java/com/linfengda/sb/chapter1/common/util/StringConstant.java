@@ -1,4 +1,4 @@
-package com.linfengda.sb.chapter1.common.entity;
+package com.linfengda.sb.chapter1.common.util;
 
 /**
  * 描述: 字符串常量
@@ -30,12 +30,7 @@ public interface StringConstant {
     String ASK_SIGN = "?";
     String JUST = "&";
     String EQUAL = "=";
-    String ZERO_TWO = "0.00";
-    String INTO_KEY = "info";
-    String CODE_KEY = "code";
-    String MESSAGE_KEY = "msg";
     String EMPTY_ARRAY = "[]";
-    String TOKEN = "token";
     String RISE = "↑";
     String REDUCE = "↓";
     String GREATER_THAN_OR_EQUAL = "≥";
@@ -48,4 +43,8 @@ public interface StringConstant {
     String MASK_CHAR_STR = "*";
     String DOLLAR = "$";
     char SLASH_CHAR = '/';
+
+
+
+
 }

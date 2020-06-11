@@ -1,6 +1,6 @@
 package com.linfengda.sb.chapter1.common.api.entity;
 
-import com.linfengda.sb.chapter1.common.entity.StringConstant;
+import com.linfengda.sb.chapter1.common.util.StringConstant;
 import lombok.Data;
 
 /**
