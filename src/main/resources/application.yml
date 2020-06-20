@@ -41,4 +41,5 @@ thread:
     maxPoolSize: 100
     queueSize: 30
     keepAlive: 60
-
+logging:
+  config: logback.xml
