@@ -8,16 +8,15 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 
 /**
- * 描述: 查询缓存注解静态切入点
- *
- * @author linfengda
- * @create 2020-03-24 15:59
+ * @description: 删除缓存注解静态切入点
+ * @author: linfengda
+ * @date: 2020-06-27 11:21
  */
-public class QueryCacheMethodPointcut extends StaticMethodMatcherPointcut {
+public class DeleteCacheMethodPointcut extends StaticMethodMatcherPointcut {
 
     @Override
     public boolean matches(Method method, Class<?> aClass) {
-        Annotation annotation = AnnotationUtils.findAnnotation(method, AnnotationType.QUERY.getAnnotation());
+        Annotation annotation = AnnotationUtils.findAnnotation(method, AnnotationType.DELETE.getAnnotation());
         if (null == annotation) {
             return false;
         }

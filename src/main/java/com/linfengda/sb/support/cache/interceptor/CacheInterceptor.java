@@ -1,6 +1,6 @@
 package com.linfengda.sb.support.cache.interceptor;
 
-import com.linfengda.sb.support.cache.entity.CacheMethodMeta;
+import com.linfengda.sb.support.cache.entity.meta.CacheMethodMeta;
 import com.linfengda.sb.support.cache.parser.CacheAnnotationParser;
 import lombok.extern.slf4j.Slf4j;
 import org.aopalliance.intercept.MethodInterceptor;
@@ -10,13 +10,13 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
 
 /**
- * 描述: 查询缓存注解拦截器
+ * 描述: 缓存注解拦截器
  *
  * @author linfengda
  * @create 2020-03-24 15:16
  */
 @Slf4j
-public class QueryCacheInterceptor implements MethodInterceptor {
+public class CacheInterceptor implements MethodInterceptor {
 
     @Override
     public Object invoke(MethodInvocation invocation) throws Throwable {

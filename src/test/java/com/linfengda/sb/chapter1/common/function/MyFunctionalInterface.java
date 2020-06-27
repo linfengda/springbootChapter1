@@ -1,4 +1,4 @@
-package com.linfengda.sb.chapter1.common.lambda;
+package com.linfengda.sb.chapter1.common.function;
 
 /**
  * 描述: 定义函数式接口
@@ -9,5 +9,5 @@ package com.linfengda.sb.chapter1.common.lambda;
 @FunctionalInterface
 public interface MyFunctionalInterface<T> {
 
-    T doAction(MyCallBack callBack) throws Exception;
+    T doAction(myCallBackService callBack) throws Exception;
 }

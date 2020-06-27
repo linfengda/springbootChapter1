@@ -1,5 +1,7 @@
 package com.linfengda.sb.support.cache.annotation;
 
+import com.linfengda.sb.support.cache.entity.type.DataType;
+
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -7,14 +9,14 @@ import java.lang.annotation.Target;
 import java.util.concurrent.TimeUnit;
 
 /**
- * 描述: 更新对象类型缓存注解
+ * 描述: 更新缓存注解
  *
  * @author linfengda
  * @create 2020-03-24 15:08
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface ObjCacheUpdate {
+public @interface UpdateCache {
     /**
      * 缓存前缀，建议使用方法名
      * @return
@@ -30,4 +32,8 @@ public @interface ObjCacheUpdate {
      * @return
      */
     TimeUnit timeUnit() default TimeUnit.SECONDS;
+    /**
+     * 缓存类型
+     */
+    DataType type() default DataType.OBJECT;
 }

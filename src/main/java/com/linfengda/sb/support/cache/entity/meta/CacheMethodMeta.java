@@ -1,9 +1,10 @@
-package com.linfengda.sb.support.cache.entity;
+package com.linfengda.sb.support.cache.entity.meta;
 
+import com.linfengda.sb.support.cache.entity.type.AnnotationType;
 import lombok.Data;
 
-import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
+import java.lang.reflect.Parameter;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -16,7 +17,7 @@ import java.util.concurrent.TimeUnit;
 @Data
 public class CacheMethodMeta {
     /**
-     * 原始方法
+     * 原始方法对象
      */
     private Method method;
     /**
@@ -27,6 +28,11 @@ public class CacheMethodMeta {
      * 方法返回类型
      */
     private Class<?> returnType;
+
+    /**
+     * 缓存操作类型
+     */
+    private AnnotationType annotationType;
     /**
      * 缓存前缀
      */
@@ -40,12 +46,13 @@ public class CacheMethodMeta {
      */
     TimeUnit timeUnit;
     /**
-     * 参数key列表
-     */
-    private List<CacheKeyMeta> keys;
-    /**
      * 是否删除前缀的所有缓存
      * @return
      */
     boolean allEntries;
+    /**
+     * 参数key列表
+     */
+    private List<CacheKeyMeta> keys;
+
 }

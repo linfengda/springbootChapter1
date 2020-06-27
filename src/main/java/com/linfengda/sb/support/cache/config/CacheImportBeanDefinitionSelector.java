@@ -4,15 +4,15 @@ import org.springframework.context.annotation.AdviceMode;
 import org.springframework.context.annotation.AdviceModeImportSelector;
 
 /**
- * 描述: 注册更新缓存配置
+ * 描述: 注册缓存selector
  *
  * @author linfengda
- * @create 2020-03-26 11:24
+ * @create 2020-03-24 18:03
  */
-public class UpdateCacheImportBeanDefinitionSelector extends AdviceModeImportSelector<EnableUpdateCache> {
+public class CacheImportBeanDefinitionSelector extends AdviceModeImportSelector<EnableCache> {
 
     @Override
     protected String[] selectImports(AdviceMode adviceMode) {
-        return new String[] {UpdateCacheConfiguration.class.getName()};
+        return new String[] {CacheConfiguration.class.getName()};
     }
 }

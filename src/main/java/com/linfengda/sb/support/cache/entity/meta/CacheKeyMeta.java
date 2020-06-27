@@ -1,4 +1,4 @@
-package com.linfengda.sb.support.cache.entity;
+package com.linfengda.sb.support.cache.entity.meta;
 
 import lombok.Data;
 
