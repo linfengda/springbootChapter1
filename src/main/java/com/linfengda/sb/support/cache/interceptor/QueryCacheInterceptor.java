@@ -10,13 +10,13 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
 
 /**
- * 描述: 缓存注解拦截器
+ * 描述: 查询缓存注解拦截器
  *
  * @author linfengda
  * @create 2020-03-24 15:16
  */
 @Slf4j
-public class CacheInterceptor implements MethodInterceptor {
+public class QueryCacheInterceptor implements MethodInterceptor {
 
     @Override
     public Object invoke(MethodInvocation invocation) throws Throwable {

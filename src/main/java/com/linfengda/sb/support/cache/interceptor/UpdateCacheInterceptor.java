@@ -1,0 +1,19 @@
+package com.linfengda.sb.support.cache.interceptor;
+
+import lombok.extern.slf4j.Slf4j;
+import org.aopalliance.intercept.MethodInterceptor;
+import org.aopalliance.intercept.MethodInvocation;
+
+/**
+ * @description: 更新缓存注解拦截器
+ * @author: linfengda
+ * @date: 2020-06-27 11:52
+ */
+@Slf4j
+public class UpdateCacheInterceptor implements MethodInterceptor {
+
+    @Override
+    public Object invoke(MethodInvocation invocation) throws Throwable {
+        return null;
+    }
+}

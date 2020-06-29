@@ -1,9 +1,6 @@
 package com.linfengda.sb.support.cache.config;
 
-import com.linfengda.sb.support.cache.interceptor.CacheInterceptor;
-import com.linfengda.sb.support.cache.interceptor.DeleteCacheMethodPointcutAdvisor;
-import com.linfengda.sb.support.cache.interceptor.QueryCacheMethodPointcutAdvisor;
-import com.linfengda.sb.support.cache.interceptor.UpdateCacheMethodPointcutAdvisor;
+import com.linfengda.sb.support.cache.interceptor.*;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Role;
@@ -18,28 +15,28 @@ public class CacheConfiguration {
 
     @Bean
     @Role(BeanDefinition.ROLE_INFRASTRUCTURE)
-    public CacheInterceptor queryCacheInterceptor() {
-        CacheInterceptor cacheInterceptor = new CacheInterceptor();
-        return cacheInterceptor;
+    public QueryCacheInterceptor queryCacheInterceptor() {
+        QueryCacheInterceptor queryCacheInterceptor = new QueryCacheInterceptor();
+        return queryCacheInterceptor;
     }
 
     @Bean
     @Role(BeanDefinition.ROLE_INFRASTRUCTURE)
-    public CacheInterceptor deleteCacheInterceptor() {
-        CacheInterceptor cacheInterceptor = new CacheInterceptor();
-        return cacheInterceptor;
+    public DeleteCacheInterceptor deleteCacheInterceptor() {
+        DeleteCacheInterceptor deleteCacheInterceptor = new DeleteCacheInterceptor();
+        return deleteCacheInterceptor;
     }
 
     @Bean
     @Role(BeanDefinition.ROLE_INFRASTRUCTURE)
-    public CacheInterceptor updateCacheInterceptor() {
-        CacheInterceptor cacheInterceptor = new CacheInterceptor();
-        return cacheInterceptor;
+    public UpdateCacheInterceptor updateCacheInterceptor() {
+        UpdateCacheInterceptor updateCacheInterceptor = new UpdateCacheInterceptor();
+        return updateCacheInterceptor;
     }
 
     @Bean
     @Role(BeanDefinition.ROLE_INFRASTRUCTURE)
-    public QueryCacheMethodPointcutAdvisor queryCacheMethodPointcutAdvisor(CacheInterceptor queryCacheInterceptor) {
+    public QueryCacheMethodPointcutAdvisor queryCacheMethodPointcutAdvisor(QueryCacheInterceptor queryCacheInterceptor) {
         QueryCacheMethodPointcutAdvisor queryCacheMethodPointcutAdvisor = new QueryCacheMethodPointcutAdvisor();
         queryCacheMethodPointcutAdvisor.setAdvice(queryCacheInterceptor);
         return queryCacheMethodPointcutAdvisor;
@@ -47,17 +44,17 @@ public class CacheConfiguration {
 
     @Bean
     @Role(BeanDefinition.ROLE_INFRASTRUCTURE)
-    public DeleteCacheMethodPointcutAdvisor deleteCacheMethodPointcutAdvisor(CacheInterceptor deleteCacheInterceptor) {
+    public DeleteCacheMethodPointcutAdvisor deleteCacheMethodPointcutAdvisor(DeleteCacheInterceptor deleteQueryCacheInterceptor) {
         DeleteCacheMethodPointcutAdvisor deleteCacheMethodPointcutAdvisor = new DeleteCacheMethodPointcutAdvisor();
-        deleteCacheMethodPointcutAdvisor.setAdvice(deleteCacheInterceptor);
+        deleteCacheMethodPointcutAdvisor.setAdvice(deleteQueryCacheInterceptor);
         return deleteCacheMethodPointcutAdvisor;
     }
 
     @Bean
     @Role(BeanDefinition.ROLE_INFRASTRUCTURE)
-    public UpdateCacheMethodPointcutAdvisor updateCacheMethodPointcutAdvisor(CacheInterceptor updateCacheInterceptor) {
+    public UpdateCacheMethodPointcutAdvisor updateCacheMethodPointcutAdvisor(UpdateCacheInterceptor updateQueryCacheInterceptor) {
         UpdateCacheMethodPointcutAdvisor updateCacheMethodPointcutAdvisor = new UpdateCacheMethodPointcutAdvisor();
-        updateCacheMethodPointcutAdvisor.setAdvice(updateCacheInterceptor);
+        updateCacheMethodPointcutAdvisor.setAdvice(updateQueryCacheInterceptor);
         return updateCacheMethodPointcutAdvisor;
     }
 }

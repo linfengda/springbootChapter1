@@ -14,7 +14,7 @@ com.linfengda.sb.support.cache.interceptor.UpdateCacheMethodPointcutAdvisor
 ```
 3. 拦截器
 ```
-com.linfengda.sb.support.cache.interceptor.CacheInterceptor
+com.linfengda.sb.support.cache.interceptor.QueryCacheInterceptor
 com.linfengda.sb.support.cache.interceptor.UpdateCacheInterceptor
 ```
 
