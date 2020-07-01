@@ -1,7 +1,7 @@
 package com.linfengda.sb.chapter1.common.exception.handler;
 
 import com.linfengda.sb.chapter1.common.api.entity.Result;
-import com.linfengda.sb.chapter1.common.api.exception.ParamParesException;
+import com.linfengda.sb.chapter1.common.exception.ParamParesException;
 import com.linfengda.sb.chapter1.common.exception.entity.ErrorCode;
 import com.linfengda.sb.chapter1.common.exception.BusinessException;
 import com.linfengda.sb.chapter1.common.exception.DistributedLockException;
@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Slf4j
 @ControllerAdvice
 public class MyGlobalExceptionHandler {
-    private static final Result RESULT_404 = new Result(ErrorCode.NOT_URL, "请求地址未找到.");
+    private static final Result RESULT_404 = new Result(404, "请求地址未找到.");
 
     @ExceptionHandler(value = Exception.class)
     @ResponseBody
@@ -52,7 +52,7 @@ public class MyGlobalExceptionHandler {
             }
         } else {
             log.error("error info:", e);
-            result = new Result(ErrorCode.SYSTEM_ERROR_CODE, ErrorCode.SYSTEM_ERROR_MSG);
+            result = new Result(ErrorCode.SYSTEM_ERROR_CODE, "系统故障，请稍后再试！");
         }
         return result;
     }

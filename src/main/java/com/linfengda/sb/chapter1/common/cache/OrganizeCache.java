@@ -15,9 +15,14 @@ import javax.annotation.Resource;
  */
 @Slf4j
 @Component
-public class OrganizeCache implements AutoClearCache {
+public class OrganizeCache implements Cache {
     @Resource
     private SimpleRedisTemplate simpleRedisTemplate;
+
+    @Override
+    public void initCache() {
+        log.warn("初始化组织关系缓存...");
+    }
 
     @Override
     public void clearCache() {

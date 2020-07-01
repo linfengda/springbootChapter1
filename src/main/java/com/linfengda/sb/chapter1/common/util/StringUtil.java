@@ -1,6 +1,5 @@
 package com.linfengda.sb.chapter1.common.util;
 
-import com.linfengda.sb.chapter1.common.entity.StringConstant;
 import com.linfengda.sb.chapter1.common.exception.BusinessException;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -28,6 +27,7 @@ public class StringUtil {
 
     public static final String EMPTY = "";
     public static final String EMPTY_SPACE = " ";
+    public static final String SLASH = "/";
 
     public static String join(String separator, Object... objects){
         if(objects == null || objects.length == 0){
@@ -50,7 +50,7 @@ public class StringUtil {
             return null;
         }
         if(StringUtils.isEmpty(separator)){
-            separator = StringConstant.SLASH;
+            separator = SLASH;
         }
         ArrayList joinList = new ArrayList<>();
         for (Object object :coll) {
@@ -70,7 +70,7 @@ public class StringUtil {
             return null;
         }
         if(StringUtils.isEmpty(separator)){
-            separator = StringConstant.SLASH;
+            separator = SLASH;
         }
         ArrayList joinList = new ArrayList<>();
         for (Object object :coll) {
@@ -87,18 +87,6 @@ public class StringUtil {
             }
         }
         return StringUtils.join(joinList,separator);
-    }
-
-    public static String getUriHead(String uri){
-        StringBuilder sb = new StringBuilder();
-        for (int i = 1;i< 50;i++){
-            char t = uri.charAt(i);
-            if (t == StringConstant.SLASH_CHAR){
-                break;
-            }
-            sb.append(t);
-        }
-        return sb.toString();
     }
 
     public static String getRandomStr(int len){
@@ -121,10 +109,10 @@ public class StringUtil {
 
     public static List<String> string2List(String str, String separatorChar) {
         if (StringUtils.isBlank(separatorChar)) {
-            throw new BusinessException("分割符不能为空！");
+            return null;
         }
         if (StringUtils.isBlank(str)) {
-            return Collections.emptyList();
+            return null;
         }
         String[] array = str.split(separatorChar);
         List<String> list = new ArrayList<>(array.length);
@@ -136,10 +124,10 @@ public class StringUtil {
 
     public static List<Integer> string2IntList(String str, String separatorChar) {
         if (StringUtils.isBlank(separatorChar)) {
-            throw new BusinessException("分割符不能为空！");
+            return null;
         }
         if (StringUtils.isBlank(str)) {
-            return Collections.emptyList();
+            return null;
         }
         String[] array = str.split(separatorChar);
         List<Integer> list = new ArrayList<>(array.length);

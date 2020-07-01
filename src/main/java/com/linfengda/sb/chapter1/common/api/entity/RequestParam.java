@@ -3,7 +3,7 @@ package com.linfengda.sb.chapter1.common.api.entity;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.util.TypeUtils;
-import com.linfengda.sb.chapter1.common.api.exception.ParamParesException;
+import com.linfengda.sb.chapter1.common.exception.ParamParesException;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;

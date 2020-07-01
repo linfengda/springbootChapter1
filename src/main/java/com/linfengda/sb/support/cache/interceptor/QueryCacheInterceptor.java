@@ -1,6 +1,6 @@
 package com.linfengda.sb.support.cache.interceptor;
 
-import com.linfengda.sb.support.cache.entity.CacheMethodMeta;
+import com.linfengda.sb.support.cache.entity.meta.CacheMethodMeta;
 import com.linfengda.sb.support.cache.parser.CacheAnnotationParser;
 import lombok.extern.slf4j.Slf4j;
 import org.aopalliance.intercept.MethodInterceptor;

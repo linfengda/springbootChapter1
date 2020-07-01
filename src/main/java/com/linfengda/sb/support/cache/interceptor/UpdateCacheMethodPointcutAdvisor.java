@@ -1,17 +1,13 @@
 package com.linfengda.sb.support.cache.interceptor;
 
-import com.linfengda.sb.support.cache.annotation.MapCacheDelete;
-import com.linfengda.sb.support.cache.annotation.MapCacheUpdate;
-import com.linfengda.sb.support.cache.annotation.ObjCacheDelete;
-import com.linfengda.sb.support.cache.annotation.ObjCacheUpdate;
 import org.springframework.aop.Pointcut;
 import org.springframework.aop.support.AbstractBeanFactoryPointcutAdvisor;
 
 /**
- * 描述: 拦截{@link ObjCacheUpdate}，{@link ObjCacheDelete}，{@link MapCacheUpdate}，{@link MapCacheDelete}注解的增强器
+ * @description: 拦截{@link com.linfengda.sb.support.cache.annotation.UpdateCache}注解的增强器
  *
- * @author linfengda
- * @create 2020-03-26 11:30
+ * @author: linfengda
+ * @date: 2020-06-27 11:23
  */
 public class UpdateCacheMethodPointcutAdvisor extends AbstractBeanFactoryPointcutAdvisor {
     /**

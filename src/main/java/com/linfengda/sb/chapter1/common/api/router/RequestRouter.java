@@ -3,7 +3,7 @@ package com.linfengda.sb.chapter1.common.api.router;
 import com.linfengda.sb.chapter1.common.api.context.RequestContext;
 import com.linfengda.sb.chapter1.common.api.entity.RequestInfoBO;
 import com.linfengda.sb.chapter1.common.api.parameter.MyParameterValidator;
-import com.linfengda.sb.chapter1.common.api.util.HttpServletUtil;
+import com.linfengda.sb.chapter1.common.util.HttpServletUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 

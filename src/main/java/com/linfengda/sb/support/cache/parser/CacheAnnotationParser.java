@@ -2,13 +2,20 @@ package com.linfengda.sb.support.cache.parser;
 
 import com.linfengda.sb.chapter1.common.exception.BusinessException;
 import com.linfengda.sb.chapter1.common.exception.entity.ErrorCode;
-import com.linfengda.sb.support.cache.annotation.*;
-import com.linfengda.sb.support.cache.entity.CacheMethodMeta;
-import com.linfengda.sb.support.cache.manager.CacheAnnotationManager;
+import com.linfengda.sb.support.cache.annotation.CacheKey;
+import com.linfengda.sb.support.cache.annotation.DeleteCache;
+import com.linfengda.sb.support.cache.annotation.QueryCache;
+import com.linfengda.sb.support.cache.annotation.UpdateCache;
+import com.linfengda.sb.support.cache.entity.meta.CacheKeyMeta;
+import com.linfengda.sb.support.cache.entity.meta.CacheMethodMeta;
+import com.linfengda.sb.support.cache.entity.type.AnnotationType;
 import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.lang.StringUtils;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
+import java.lang.reflect.Parameter;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -25,11 +32,11 @@ public class CacheAnnotationParser {
     /**
      * 方法是否有缓存注解
      */
-    private static final Map<Method, Boolean> CACHE_ANNOTATION_METHOD_FLAG_CACHE = new ConcurrentHashMap<>(512);
+    private static final Map<Method, Boolean> CACHE_METHOD_FLAG_CACHE = new ConcurrentHashMap<>(1024);
     /**
      * 缓存注解方法
      */
-    private static final Map<Method, Boolean> CACHE_ANNOTATION_METHOD_CACHE = new ConcurrentHashMap<>(256);
+    private static final Map<Method, CacheMethodMeta> CACHE_METHOD_CACHE = new ConcurrentHashMap<>(256);
 
 
     /**
@@ -38,16 +45,11 @@ public class CacheAnnotationParser {
      * @return          true：有缓存注解，false：无缓存注解
      */
     public static boolean hasCacheAnnotation(Method method) {
-        Boolean flag = CACHE_ANNOTATION_METHOD_FLAG_CACHE.get(method);
+        Boolean flag = CACHE_METHOD_FLAG_CACHE.get(method);
         if (null != flag) {
             return flag;
         }
-        Annotation[] annotations = method.getAnnotations();
-        if (null == annotations || annotations.length == 0) {
-            return false;
-        }
-        List<Annotation> annotationList = Arrays.asList(annotations);
-        List<Annotation> cacheAnnotationList = annotationList.stream().filter(an -> CacheAnnotationManager.ALL_CACHE_ANNOTATIONS.getAnnotations().contains(an)).collect(Collectors.toList());
+        List<Annotation> cacheAnnotationList = getMethodCacheAnnotations(method);
         if (CollectionUtils.isEmpty(cacheAnnotationList)) {
             return false;
         }
@@ -58,45 +60,112 @@ public class CacheAnnotationParser {
     }
 
     /**
-     * 初始化缓存注解信息
-     * @param method
-     * @param cacheMethodMeta
+     * 获取方法缓存注解
+     * @param method    方法
+     * @return          缓存注解列表
      */
-    public static void initAnnotationValue(Method method, CacheMethodMeta cacheMethodMeta) {
-        for (Class<? extends Annotation> annotationType : CacheAnnotationManager.ALL_CACHE_ANNOTATIONS.getAnnotations()) {
-            Annotation cacheAnnotation = method.getAnnotation(annotationType);
+    private static List<Annotation> getMethodCacheAnnotations(Method method) {
+        Annotation[] annotations = method.getAnnotations();
+        if (null == annotations || annotations.length == 0) {
+            return null;
+        }
+        List<Annotation> annotationList = Arrays.asList(annotations);
+        List<Annotation> cacheAnnotationList = annotationList.stream().filter(an -> AnnotationType.isCacheAnnotation(an.getClass())).collect(Collectors.toList());
+        return cacheAnnotationList;
+    }
+
+
+    /**
+     * 获取缓存注解信息
+     * @param method    方法参数
+     * @return          缓存方法信息
+     */
+    protected static CacheMethodMeta getCacheAnnotation(Method method) {
+        CacheMethodMeta cacheMethodMeta = CACHE_METHOD_CACHE.get(method);
+        if (null == cacheMethodMeta) {
+            cacheMethodMeta = loadCacheAnnotation(method);
+        }
+        return cacheMethodMeta;
+    }
+
+    /**
+     * 加载缓存注解信息
+     * @param method    方法参数
+     * @return          缓存方法信息
+     */
+    private static CacheMethodMeta loadCacheAnnotation(Method method) {
+        CacheMethodMeta cacheMethodMeta = parseCacheAnnotation(method);
+        CACHE_METHOD_CACHE.put(method, cacheMethodMeta);
+        return cacheMethodMeta;
+    }
+
+    /**
+     * 解析缓存注解信息
+     * @param method    方法参数
+     * @return          缓存方法信息
+     */
+    private static CacheMethodMeta parseCacheAnnotation(Method method) {
+        CacheMethodMeta cacheMethodMeta = new CacheMethodMeta();
+        cacheMethodMeta.setMethod(method);
+        cacheMethodMeta.setMethodName(method.getName());
+        cacheMethodMeta.setReturnType(method.getReturnType());
+
+        for (AnnotationType annotationType : AnnotationType.values()) {
+            Annotation cacheAnnotation = method.getAnnotation(annotationType.getAnnotation());
             if (null == cacheAnnotation) {
                 continue;
             }
-            if (annotationType.getGenericSuperclass().equals(ObjCache.class.getGenericSuperclass())) {
-                ObjCache objCache = (ObjCache) cacheAnnotation;
-                cacheMethodMeta.setPrefix(objCache.prefix());
-                cacheMethodMeta.setTimeOut(objCache.timeOut());
-                cacheMethodMeta.setTimeUnit(objCache.timeUnit());
-            }else if (annotationType.getGenericSuperclass().equals(ObjCacheUpdate.class.getGenericSuperclass())) {
-                ObjCacheUpdate objCacheUpdate = (ObjCacheUpdate) cacheAnnotation;
-                cacheMethodMeta.setPrefix(objCacheUpdate.prefix());
-                cacheMethodMeta.setTimeOut(objCacheUpdate.timeOut());
-                cacheMethodMeta.setTimeUnit(objCacheUpdate.timeUnit());
-            }else if (annotationType.getGenericSuperclass().equals(ObjCacheDelete.class.getGenericSuperclass())) {
-                ObjCacheDelete objCacheDelete = (ObjCacheDelete) cacheAnnotation;
-                cacheMethodMeta.setPrefix(objCacheDelete.prefix());
-                cacheMethodMeta.setAllEntries(objCacheDelete.allEntries());
-            }else if (annotationType.getGenericSuperclass().equals(MapCache.class.getGenericSuperclass())) {
-                MapCache mapCache = (MapCache) cacheAnnotation;
-                cacheMethodMeta.setPrefix(mapCache.mapName());
-                cacheMethodMeta.setTimeOut(mapCache.timeOut());
-                cacheMethodMeta.setTimeUnit(mapCache.timeUnit());
-            }else if (annotationType.getGenericSuperclass().equals(MapCacheUpdate.class.getGenericSuperclass())) {
-                ObjCacheDelete objCacheDelete = (ObjCacheDelete) cacheAnnotation;
-                cacheMethodMeta.setPrefix(objCacheDelete.prefix());
-                cacheMethodMeta.setAllEntries(objCacheDelete.allEntries());
-            }else if (annotationType.getGenericSuperclass().equals(ObjCacheDelete.class.getGenericSuperclass())) {
-                ObjCacheDelete objCacheDelete = (ObjCacheDelete) cacheAnnotation;
-                cacheMethodMeta.setPrefix(objCacheDelete.prefix());
-                cacheMethodMeta.setAllEntries(objCacheDelete.allEntries());
+            if (AnnotationType.QUERY == annotationType) {
+                QueryCache queryCache = (QueryCache) cacheAnnotation;
+                cacheMethodMeta.setAnnotationType(AnnotationType.QUERY);
+                cacheMethodMeta.setPrefix(StringUtils.isBlank(queryCache.prefix()) ? method.getName() : queryCache.prefix());
+                cacheMethodMeta.setTimeOut(queryCache.timeOut());
+                cacheMethodMeta.setTimeUnit(queryCache.timeUnit());
+                cacheMethodMeta.setKeys(getCacheKeys(method));
+                return cacheMethodMeta;
+            }else if (AnnotationType.UPDATE == annotationType) {
+                UpdateCache updateCache = (UpdateCache) cacheAnnotation;
+                cacheMethodMeta.setAnnotationType(AnnotationType.UPDATE);
+                cacheMethodMeta.setPrefix(StringUtils.isBlank(updateCache.prefix()) ? method.getName() : updateCache.prefix());
+                cacheMethodMeta.setTimeOut(updateCache.timeOut());
+                cacheMethodMeta.setTimeUnit(updateCache.timeUnit());
+                cacheMethodMeta.setKeys(getCacheKeys(method));
+                return cacheMethodMeta;
+            }else if (AnnotationType.UPDATE == annotationType) {
+                DeleteCache deleteCache = (DeleteCache) cacheAnnotation;
+                cacheMethodMeta.setAnnotationType(AnnotationType.DELETE);
+                cacheMethodMeta.setPrefix(StringUtils.isBlank(deleteCache.prefix()) ? method.getName() : deleteCache.prefix());
+                cacheMethodMeta.setKeys(getCacheKeys(method));
+                cacheMethodMeta.setAllEntries(deleteCache.allEntries());
+                return cacheMethodMeta;
             }
-            break;
         }
+        return null;
+    }
+
+    /**
+     * 获取缓存key列表
+     * @param method    方法
+     * @return          缓存key列表
+     */
+    private static List<CacheKeyMeta> getCacheKeys(Method method) {
+        List<CacheKeyMeta> cacheKeyMetas = new ArrayList<>();
+        Parameter[] parameters = method.getParameters();
+        if (null == parameters || 0 == parameters.length) {
+            return cacheKeyMetas;
+        }
+        for (Parameter parameter : parameters) {
+            CacheKey cacheKey = parameter.getAnnotation(CacheKey.class);
+            if (null == cacheKey) {
+                continue;
+            }
+            CacheKeyMeta cacheKeyMeta = new CacheKeyMeta();
+            cacheKeyMeta.setParameterIndex(cacheKeyMetas.size());
+            cacheKeyMeta.setParameterName(parameter.getName());
+            cacheKeyMeta.setNullable(cacheKey.nullable());
+            cacheKeyMeta.setNullKey(cacheKey.nullKey());
+            cacheKeyMetas.add(cacheKeyMeta);
+        }
+        return cacheKeyMetas;
     }
 }

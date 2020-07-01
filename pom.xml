@@ -90,6 +90,12 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <!-- spring test相关 -->
@@ -201,6 +207,12 @@
             <version>1.5.18</version>
         </dependency>
 
+        <!-- undertow -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-undertow</artifactId>
+        </dependency>
+
 	</dependencies>
 
 
@@ -208,9 +220,9 @@
     <profiles>
         <!-- 本地开发环境 -->
         <profile>
-            <id>local</id>
+            <id>dev</id>
             <properties>
-                <myActivateFile>local</myActivateFile>
+                <myActivateFile>dev</myActivateFile>
             </properties>
             <activation>
                 <!-- 默认开启本地开发环境 -->

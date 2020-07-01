@@ -1,7 +1,10 @@
 package com.linfengda.sb.chapter1.system.entity.po;
 
 import com.linfengda.sb.support.orm.entity.BasePO;
+import com.linfengda.sb.support.orm.tableAnnontation.Table;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 
 /**
  * 描述: 系统部门PO
@@ -9,6 +12,7 @@ import lombok.Data;
  * @author linfengda
  * @create 2020-03-23 18:07
  */
+@Table(name = "sys_department")
 @Data
 public class SysDepartmentPO extends BasePO {
     /**
@@ -27,12 +31,72 @@ public class SysDepartmentPO extends BasePO {
     private String departmentAliasName;
 
     /**
-     * 部门类型（1：技术；2：业务；3：行政）
+     * 部门类型，1：技术；2：业务；3：行政
      */
-    private Boolean type;
+    private Integer type;
 
     /**
      * 状态：0启用，1停用
      */
-    private Boolean status;
+    private Integer status;
+
+    /**
+     * 部门类型枚举
+     */
+    @AllArgsConstructor
+    @Getter
+    public enum Type {
+        /**
+         * 1：技术
+         */
+        TECH(1, "技术"),
+        /**
+         * 2：业务
+         */
+        BUSINESS(2, "业务"),
+        /**
+         * 3：行政
+         */
+        ADMINISTRATION(3, "行政");
+
+        private Integer code;
+        private String name;
+
+        public static Type getType(Integer state) {
+            for (Type value : values()) {
+                if (value.getCode().equals(state)) {
+                    return value;
+                }
+            }
+            return null;
+        }
+    }
+
+    /**
+     * 状态枚举
+     */
+    @AllArgsConstructor
+    @Getter
+    public enum Status {
+        /**
+         * 0：启用
+         */
+        YES(0, "启用"),
+        /**
+         * 1：停用
+         */
+        NO(1, "停用");
+
+        private Integer code;
+        private String name;
+
+        public static Status getType(Integer state) {
+            for (Status value : values()) {
+                if (value.getCode().equals(state)) {
+                    return value;
+                }
+            }
+            return null;
+        }
+    }
 }

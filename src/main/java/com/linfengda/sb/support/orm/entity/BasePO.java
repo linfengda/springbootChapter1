@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
 
-import java.util.Date;
+import java.sql.Timestamp;
 
 /**
  * 表实体基础类
@@ -17,36 +17,26 @@ public class BasePO {
 	 * 创建人
 	 */
 	private Long createUser;
-
 	/**
 	 * 创建时间
 	 */
-	private Date createTime;
-
+	private Timestamp createTime;
 	/**
 	 * 修改人
 	 */
 	private Long updateUser;
-
 	/**
 	 * 修改时间
 	 */
-	private Date updateTime;
-
+	private Timestamp updateTime;
 	/**
-	 * 是否删除(0：未删除，1：已删除)
+	 * 是否删除 {@link Delete}
 	 */
-	private Boolean isDelete;
-
+	private Integer isDelete;
 	/**
 	 * 版本号
 	 */
 	private Integer version;
-
-	/**
-	 * 最后更新时间，BI团队使用
-	 */
-	private Date lastUpdateTime;
 
 	/**
 	 * 删除字段枚举
@@ -54,7 +44,13 @@ public class BasePO {
 	@AllArgsConstructor
 	@Getter
 	public enum Delete {
+		/**
+		 * 0：正常
+		 */
 		NORMAL(0, "正常"),
+		/**
+		 * 1：删除
+		 */
 		DELETED(1, "删除");
 		private final Integer code;
 		private final String name;
@@ -68,4 +64,5 @@ public class BasePO {
 			return null;
 		}
 	}
+
 }
