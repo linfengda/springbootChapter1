@@ -1,7 +1,7 @@
 package com.linfengda.sb.chapter1.common.api.router;
 
 import com.linfengda.sb.chapter1.common.api.entity.RequestInfoBO;
-import com.linfengda.sb.chapter1.common.api.router.impl.PCRequestHandler;
+import com.linfengda.sb.chapter1.common.api.router.impl.PcRequestHandler;
 import com.linfengda.sb.chapter1.common.api.router.impl.WeChatRequestHandler;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -22,7 +22,7 @@ public enum BizModuleHandlerProvider {
     PC("pc", "pc端业务") {
         @Override
         public RequestHandler getHandler(RequestInfoBO requestInfoBO, ProceedingJoinPoint proceedingJoinPoint) {
-            return new PCRequestHandler(requestInfoBO, proceedingJoinPoint);
+            return new PcRequestHandler(requestInfoBO, proceedingJoinPoint);
         }
     },
     /**

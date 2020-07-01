@@ -12,9 +12,9 @@ import org.aspectj.lang.ProceedingJoinPoint;
  * @create 2019-12-19 17:55
  */
 @Slf4j
-public class PCRequestHandler extends AbstractRequestHandler {
+public class PcRequestHandler extends AbstractRequestHandler {
 
-    public PCRequestHandler(RequestInfoBO requestInfoBO, ProceedingJoinPoint proceedingJoinPoint) {
+    public PcRequestHandler(RequestInfoBO requestInfoBO, ProceedingJoinPoint proceedingJoinPoint) {
         super(requestInfoBO, proceedingJoinPoint);
     }
 

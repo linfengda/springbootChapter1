@@ -25,7 +25,4 @@ public abstract class AbstractRequestHandler implements RequestHandler {
         this.requestInfoBO = requestInfoBO;
         this.proceedingJoinPoint = proceedingJoinPoint;
     }
-
-    @Override
-    public abstract Object doHandler() throws Throwable;
 }

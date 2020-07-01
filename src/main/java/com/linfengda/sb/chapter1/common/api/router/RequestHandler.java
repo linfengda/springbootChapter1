@@ -11,7 +11,7 @@ public interface RequestHandler {
     /**
      * 处理请求
      * @return  请求处理结果
-     * @throws Exception
+     * @throws Throwable
      */
     Object doHandler() throws Throwable;
 }
