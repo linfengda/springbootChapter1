@@ -40,7 +40,7 @@ public class CacheMethodMeta {
     /**
      * 缓存失效时间
      */
-    private long timeOut;
+    private Long timeOut;
     /**
      * 缓存失效时间单位
      */
@@ -49,7 +49,7 @@ public class CacheMethodMeta {
      * 是否删除前缀的所有缓存
      * @return
      */
-    boolean allEntries;
+    Boolean allEntries;
     /**
      * 参数key列表
      */

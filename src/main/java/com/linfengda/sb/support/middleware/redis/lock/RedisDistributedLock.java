@@ -1,7 +1,7 @@
 package com.linfengda.sb.support.middleware.redis.lock;
 
 import com.linfengda.sb.chapter1.common.util.ServerRunTimeUtil;
-import com.linfengda.sb.support.middleware.redis.template.SimpleRedisTemplate;
+import com.linfengda.sb.support.middleware.redis.template.JacksonRedisTemplate;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
@@ -26,17 +26,17 @@ public class RedisDistributedLock {
 
     @Setter
     @Resource
-    private SimpleRedisTemplate simpleRedisTemplate;
+    private JacksonRedisTemplate jacksonRedisTemplate;
 
     public boolean tryLock(String[] keys) {
         Map map = new HashMap();
         for (String key : keys) {
             map.put(key, getCurrentThreadId());
         }
-        Boolean result = simpleRedisTemplate.opsForValue().multiSetIfAbsent(map);
+        Boolean result = jacksonRedisTemplate.opsForValue().multiSetIfAbsent(map);
         if (result) {
             for (String key : keys) {
-                simpleRedisTemplate.expire(key, DEFAULT_LOCK_EXPIRE_TIME, TimeUnit.SECONDS);
+                jacksonRedisTemplate.expire(key, DEFAULT_LOCK_EXPIRE_TIME, TimeUnit.SECONDS);
             }
             log.info("Thread id={} lock success", getCurrentThreadId());
         }
@@ -44,9 +44,9 @@ public class RedisDistributedLock {
     }
 
     public boolean tryLock(String key) {
-        Boolean result = simpleRedisTemplate.opsForValue().setIfAbsent(key, getCurrentThreadId());
+        Boolean result = jacksonRedisTemplate.opsForValue().setIfAbsent(key, getCurrentThreadId());
         if (result) {
-            simpleRedisTemplate.expire(key, DEFAULT_LOCK_EXPIRE_TIME, TimeUnit.SECONDS);
+            jacksonRedisTemplate.expire(key, DEFAULT_LOCK_EXPIRE_TIME, TimeUnit.SECONDS);
             log.info("Thread id={} lock success", getCurrentThreadId());
         }
         return result;
@@ -60,11 +60,11 @@ public class RedisDistributedLock {
     }
 
     public boolean unLock(String key) {
-        String threadId = simpleRedisTemplate.getObject(key, String.class);
+        String threadId = jacksonRedisTemplate.getObject(key, String.class);
         String currentThreadId = getCurrentThreadId();
         if (null == threadId) {return true;}
         if (threadId.equals(currentThreadId)) {
-            simpleRedisTemplate.delete(key);
+            jacksonRedisTemplate.delete(key);
             log.info("Thread id={}" + "unlock success", currentThreadId);
             return true;
         }

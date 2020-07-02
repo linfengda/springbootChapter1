@@ -19,22 +19,24 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1ac92d16-a2f3-4d49-8fdb-b5b56f35641b" name="Default" comment="docs: 提交gitignore">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/config/AbstractCacheConfiguration.java" afterDir="false" />
+    <list default="true" id="1ac92d16-a2f3-4d49-8fdb-b5b56f35641b" name="Default" comment="feat: 缓存框架，设置切面顺序">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/util/SpringUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/Chapter1Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/Chapter1Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/system/service/impl/SysUserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/system/service/impl/SysUserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/config/CacheConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/config/CacheConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/config/CacheImportBeanDefinitionSelector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/config/CacheConfigurationSelector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/config/EnableCache.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/config/EnableCache.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/interceptor/DeleteCacheInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/interceptor/DeleteCacheInterceptor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/interceptor/DeleteCacheMethodPointcut.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/interceptor/DeleteCacheMethodPointcut.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/interceptor/DeleteCacheMethodPointcutAdvisor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/interceptor/DeleteCacheMethodPointcutAdvisor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/cache/OrganizeCache.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/cache/OrganizeCache.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/config/RedisConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/config/RedisConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/annotation/CacheKey.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/annotation/CacheKey.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/entity/meta/CacheKeyMeta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/entity/meta/CacheKeyMeta.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/entity/meta/CacheMethodMeta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/entity/meta/CacheMethodMeta.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/entity/type/AnnotationType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/entity/type/AnnotationType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/interceptor/QueryCacheInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/interceptor/QueryCacheInterceptor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/interceptor/QueryCacheMethodPointcut.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/interceptor/QueryCacheMethodPointcut.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/interceptor/UpdateCacheInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/interceptor/UpdateCacheInterceptor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/interceptor/UpdateCacheMethodPointcut.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/interceptor/UpdateCacheMethodPointcut.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/interceptor/UpdateCacheMethodPointcutAdvisor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/interceptor/UpdateCacheMethodPointcutAdvisor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/parser/CacheAnnotationParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/parser/CacheAnnotationParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/middleware/redis/lock/RedisDistributedLock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/middleware/redis/lock/RedisDistributedLock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/middleware/redis/serializer/ProtoStuffSerializer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/middleware/redis/template/SimpleJacksonRedisTemplate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/middleware/redis/template/JacksonRedisTemplate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/middleware/redis/template/SimplePSRedisTemplate.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/middleware/redis/template/SimpleRedisTemplate.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/support/middleware/redis/serialize/SerializerStructureTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/support/middleware/redis/serialize/SerializerStructureTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -170,23 +172,23 @@
       <recent name="com.linfengda.sb.chapter1.demo.service" />
       <recent name="com.linfengda.sb.chapter1.demo" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\IdeaProjects\springboot\chapter1\src\test\java\com\linfengda\sb\chapter1" />
+      <recent name="D:\IdeaProjects\springboot\chapter1\src\test\java\com\linfengda\sb\chapter1\support\middleware\redis" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.linfengda.sb.chapter1.common.util" />
+      <recent name="com.linfengda.sb.chapter1.springBootTest.demo" />
+      <recent name="com.linfengda.sb.chapter1.common.entity" />
+      <recent name="com.linfengda.sb.support.dao.type" />
+      <recent name="com.linfengda.sb.chapter1.common.api.parameter" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Administrator\IdeaProjects\springbootChapter1\src\main\java\com\linfengda\sb\chapter1\common\auth" />
       <recent name="C:\Users\Administrator\IdeaProjects\springbootChapter1\src\main\java\com\linfengda\sb\support" />
       <recent name="D:\IdeaProjects\springboot\chapter1\src\main\java\com\linfengda\sb\support\remote" />
       <recent name="D:\IdeaProjects\springboot\chapter1\src\test\java\com\linfengda\sb\chapter1\common\proxy" />
       <recent name="D:\IdeaProjects\springboot\chapter1\src\test\java\com\linfengda\sb\support\middleware" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.linfengda.sb.chapter1.springBootTest.demo" />
-      <recent name="com.linfengda.sb.chapter1.common.entity" />
-      <recent name="com.linfengda.sb.chapter1.common.util" />
-      <recent name="com.linfengda.sb.support.dao.type" />
-      <recent name="com.linfengda.sb.chapter1.common.api.parameter" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\IdeaProjects\springboot\chapter1\src\test\java\com\linfengda\sb\chapter1" />
-      <recent name="D:\IdeaProjects\springboot\chapter1\src\test\java\com\linfengda\sb\chapter1\support\middleware\redis" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -720,14 +722,7 @@
       <workItem from="1593397888266" duration="1033000" />
       <workItem from="1593482652541" duration="1585000" />
       <workItem from="1593590142724" duration="641000" />
-      <workItem from="1593669520831" duration="6572000" />
-    </task>
-    <task id="LOCAL-00040" summary="提交rabbitmq的5种模式">
-      <created>1555842852139</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1555842852139</updated>
+      <workItem from="1593669520831" duration="11400000" />
     </task>
     <task id="LOCAL-00041" summary="提交rabbitmq的5种模式">
       <created>1555849122594</created>
@@ -1065,7 +1060,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588837080793</updated>
     </task>
-    <option name="localTasksCounter" value="89" />
+    <task id="LOCAL-00089" summary="feat: 缓存框架，设置切面顺序">
+      <created>1593678559512</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1593678559513</updated>
+    </task>
+    <option name="localTasksCounter" value="90" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1171,7 +1173,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="refactor: common包调整" />
     <MESSAGE value="refactor: 提交springboot测试代码" />
     <MESSAGE value="refactor: 修改端口号" />
     <MESSAGE value="feat: 提交springBoot单元测试" />
@@ -1196,7 +1197,8 @@
     <MESSAGE value="feat: 提交项目文档" />
     <MESSAGE value="docs: 提交注释修改" />
     <MESSAGE value="docs: 提交gitignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="docs: 提交gitignore" />
+    <MESSAGE value="feat: 缓存框架，设置切面顺序" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: 缓存框架，设置切面顺序" />
   </component>
   <component name="WindowStateProjectService">
     <state x="414" y="216" key="#HTTP_Proxy" timestamp="1588128349155">
@@ -1243,15 +1245,15 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2458" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1585557173535" />
-    <state x="552" y="211" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1585295062857">
+    <state x="552" y="211" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1593683523124">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="552" y="211" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1585295062857" />
-    <state x="286" y="11" key="CommitChangelistDialog2" timestamp="1588837079248">
+    <state x="552" y="211" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1593683523124" />
+    <state x="286" y="8" key="CommitChangelistDialog2" timestamp="1593678553670">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="2277" y="114" key="CommitChangelistDialog2/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1587379605831" />
-    <state x="286" y="11" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1588837079248" />
+    <state x="286" y="8" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1593678553670" />
     <state width="575" height="370" key="DebuggerActiveHint" timestamp="1585279774453">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -1335,11 +1337,11 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="369" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1593670260403" />
-    <state x="442" y="200" key="Vcs.Push.Dialog.v2" timestamp="1588837085266">
+    <state x="442" y="200" key="Vcs.Push.Dialog.v2" timestamp="1593678564475">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="2472" y="252" key="Vcs.Push.Dialog.v2/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1585289097978" />
-    <state x="442" y="200" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1588837085266" />
+    <state x="442" y="200" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1593678564475" />
     <state x="509" y="204" width="642" height="534" key="find.popup" timestamp="1593676707110">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -1357,15 +1359,16 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state width="600" height="424" key="javadoc.popup/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1585047914688" />
-    <state x="2536" y="240" key="run.anything.popup" timestamp="1585546121477">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state x="493" y="190" key="run.anything.popup" timestamp="1593683716859">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="2536" y="240" key="run.anything.popup/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1585546121477" />
-    <state x="849" y="182" width="672" height="538" key="search.everywhere.popup" timestamp="1593676618638">
+    <state x="493" y="190" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1593683716859" />
+    <state x="849" y="182" width="672" height="538" key="search.everywhere.popup" timestamp="1593683604192">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="2543" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1587377714992" />
-    <state x="849" y="182" width="672" height="538" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1593676618638" />
+    <state x="849" y="182" width="672" height="538" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1593683604192" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

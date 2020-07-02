@@ -3,7 +3,6 @@ package com.linfengda.sb.support.middleware.redis.serialize;
 import com.linfengda.sb.support.middleware.redis.serialize.entity.MySecondSon;
 import com.linfengda.sb.support.middleware.redis.serialize.entity.MySon;
 import com.linfengda.sb.support.middleware.redis.serialize.entity.Pig;
-import com.linfengda.sb.support.middleware.redis.template.SimpleRedisTemplate;
 import com.linfengda.sb.support.middleware.redis.util.ProtoStuffUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;

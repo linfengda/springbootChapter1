@@ -25,7 +25,6 @@ spring:
       connection-test-query: SELECT 1
 
   redis:
-    serializer: jackson
     timeout: 5000
     commandTimeout: 5000
     jedis:

@@ -13,11 +13,6 @@ import java.lang.annotation.*;
 @Target(ElementType.PARAMETER)
 public @interface CacheKey {
     /**
-     *
-     * @return
-     */
-    String paramName() default "";
-    /**
      * key是否允许为空
      * @return
      */

@@ -2,6 +2,8 @@ package com.linfengda.sb.support.cache.entity.meta;
 
 import lombok.Data;
 
+import java.lang.reflect.Parameter;
+
 /**
  * 描述: 缓存key元数据
  *
@@ -11,9 +13,9 @@ import lombok.Data;
 @Data
 public class CacheKeyMeta {
     /**
-     * 参数顺序
+     * 参数
      */
-    private int parameterIndex;
+    private Parameter parameter;
     /**
      * 参数名称
      */
@@ -21,7 +23,7 @@ public class CacheKeyMeta {
     /**
      * key是否允许为空
      */
-    boolean nullable;
+    Boolean nullable;
     /**
      * key为空时使用值
      */

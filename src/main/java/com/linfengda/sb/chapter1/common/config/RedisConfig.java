@@ -3,12 +3,8 @@ package com.linfengda.sb.chapter1.common.config;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.linfengda.sb.chapter1.common.exception.BusinessException;
 import com.linfengda.sb.support.middleware.redis.lock.RedisDistributedLock;
-import com.linfengda.sb.support.middleware.redis.serializer.ProtoStuffSerializer;
-import com.linfengda.sb.support.middleware.redis.template.SimpleJacksonRedisTemplate;
-import com.linfengda.sb.support.middleware.redis.template.SimplePSRedisTemplate;
-import com.linfengda.sb.support.middleware.redis.template.SimpleRedisTemplate;
+import com.linfengda.sb.support.middleware.redis.template.JacksonRedisTemplate;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.context.annotation.Bean;
@@ -16,7 +12,6 @@ import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
-import org.springframework.util.Assert;
 
 /**
  * 描述: Redis配置
@@ -26,8 +21,6 @@ import org.springframework.util.Assert;
  */
 @SpringBootConfiguration
 public class RedisConfig {
-    @Value("${spring.redis.serializer}")
-    private String serializer;
     @Value("${spring.redis.host}")
     private String host;
     @Value("${spring.redis.port}")
@@ -52,62 +45,24 @@ public class RedisConfig {
     }
 
     @Bean
-    public SimpleRedisTemplate simpleRedisTemplate(JedisConnectionFactory connectionFactory) {
-        Serializer serializer = Serializer.getType(this.serializer);
-        Assert.notNull(serializer, "序列化方式不能为空！");
-
-        SimpleRedisTemplate simpleRedisTemplate = getRedisTemplate(serializer);
-        simpleRedisTemplate.setConnectionFactory(connectionFactory);
-        //simpleRedisTemplate.afterPropertiesSet();
-        return simpleRedisTemplate;
+    public JacksonRedisTemplate jacksonRedisTemplate(JedisConnectionFactory jedisConnectionFactory) {
+        JacksonRedisTemplate jacksonRedisTemplate = new JacksonRedisTemplate();
+        Jackson2JsonRedisSerializer jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer(Object.class);
+        ObjectMapper om = new ObjectMapper();
+        om.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
+        om.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);
+        jackson2JsonRedisSerializer.setObjectMapper(om);
+        jacksonRedisTemplate.setKeySerializer(new StringRedisSerializer());
+        jacksonRedisTemplate.setHashKeySerializer(new StringRedisSerializer());
+        jacksonRedisTemplate.setValueSerializer(jackson2JsonRedisSerializer);
+        jacksonRedisTemplate.setHashValueSerializer(jackson2JsonRedisSerializer);
+        return jacksonRedisTemplate;
     }
 
     @Bean
-    public RedisDistributedLock redisDistributedLock(SimpleRedisTemplate simpleRedisTemplate) {
+    public RedisDistributedLock redisDistributedLock(JacksonRedisTemplate jacksonRedisTemplate) {
         RedisDistributedLock redisDistributedLock = new RedisDistributedLock();
-        redisDistributedLock.setSimpleRedisTemplate(simpleRedisTemplate);
+        redisDistributedLock.setJacksonRedisTemplate(jacksonRedisTemplate);
         return redisDistributedLock;
-    }
-
-    private SimpleRedisTemplate getRedisTemplate(Serializer serializer) {
-        switch (serializer) {
-            case protoStuff:
-                SimpleRedisTemplate psRedisTemplate = new SimplePSRedisTemplate();
-                ProtoStuffSerializer protoStuffSerializer = new ProtoStuffSerializer();
-                psRedisTemplate.setKeySerializer(new StringRedisSerializer());
-                psRedisTemplate.setHashKeySerializer(new StringRedisSerializer());
-                psRedisTemplate.setValueSerializer(protoStuffSerializer);
-                psRedisTemplate.setHashValueSerializer(protoStuffSerializer);
-                return psRedisTemplate;
-            case jackson:
-                SimpleRedisTemplate jacksonRedisTemplate = new SimpleJacksonRedisTemplate();
-                Jackson2JsonRedisSerializer jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer(Object.class);
-                ObjectMapper om = new ObjectMapper();
-                om.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
-                om.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);
-                jackson2JsonRedisSerializer.setObjectMapper(om);
-                jacksonRedisTemplate.setKeySerializer(new StringRedisSerializer());
-                jacksonRedisTemplate.setHashKeySerializer(new StringRedisSerializer());
-                jacksonRedisTemplate.setValueSerializer(jackson2JsonRedisSerializer);
-                jacksonRedisTemplate.setHashValueSerializer(jackson2JsonRedisSerializer);
-                return jacksonRedisTemplate;
-            default:
-                throw new BusinessException("不支持的序列化方式");
-        }
-    }
-
-    /**
-     * 序列化类型
-     */
-    public enum Serializer {
-        protoStuff, jackson;
-        public static Serializer getType(String serializer) {
-            for (Serializer v : values()) {
-                if (v.name().equals(serializer)) {
-                    return v;
-                }
-            }
-            return jackson;
-        }
     }
 }

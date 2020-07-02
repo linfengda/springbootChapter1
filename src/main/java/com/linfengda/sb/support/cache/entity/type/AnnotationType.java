@@ -3,6 +3,7 @@ package com.linfengda.sb.support.cache.entity.type;
 import com.linfengda.sb.support.cache.annotation.DeleteCache;
 import com.linfengda.sb.support.cache.annotation.QueryCache;
 import com.linfengda.sb.support.cache.annotation.UpdateCache;
+import com.linfengda.sb.support.cache.entity.meta.CacheMethodMeta;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -43,7 +44,6 @@ public enum AnnotationType {
      * 对应注解
      */
     private Class<? extends Annotation> annotation;
-
 
     /**
      * 是否缓存注解

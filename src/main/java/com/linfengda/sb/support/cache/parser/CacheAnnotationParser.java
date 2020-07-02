@@ -36,7 +36,7 @@ public class CacheAnnotationParser {
     /**
      * 缓存注解方法
      */
-    private static final Map<Method, CacheMethodMeta> CACHE_METHOD_CACHE = new ConcurrentHashMap<>(256);
+    private static final Map<Method, CacheMethodMeta> CACHE_METHOD_CACHE = new ConcurrentHashMap<>(512);
 
 
     /**
@@ -44,18 +44,29 @@ public class CacheAnnotationParser {
      * @param method    方法
      * @return          true：有缓存注解，false：无缓存注解
      */
-    public static boolean hasCacheAnnotation(Method method) {
+    protected boolean hasCacheAnnotation(Method method) {
         Boolean flag = CACHE_METHOD_FLAG_CACHE.get(method);
         if (null != flag) {
             return flag;
         }
+        return checkCacheAnnotation(method);
+    }
+
+    /**
+     * 判断方法是否有缓存注解（当方法有多个缓存注解时报错）
+     * @param method    方法
+     * @return          true：有缓存注解，false：无缓存注解
+     */
+    private static boolean checkCacheAnnotation(Method method) {
         List<Annotation> cacheAnnotationList = getMethodCacheAnnotations(method);
         if (CollectionUtils.isEmpty(cacheAnnotationList)) {
+            CACHE_METHOD_FLAG_CACHE.put(method, false);
             return false;
         }
         if (cacheAnnotationList.size() > 1) {
             throw new BusinessException(ErrorCode.COMMON_CACHE_ERROR_CODE, "方法["+ method.getName() +"]不能添加多个缓存注解！");
         }
+        CACHE_METHOD_FLAG_CACHE.put(method, true);
         return true;
     }
 
@@ -100,7 +111,7 @@ public class CacheAnnotationParser {
     }
 
     /**
-     * 解析缓存注解信息
+     * 解析缓存方法注解信息
      * @param method    方法参数
      * @return          缓存方法信息
      */
@@ -144,7 +155,7 @@ public class CacheAnnotationParser {
     }
 
     /**
-     * 获取缓存key列表
+     * 获取缓存方法key列表
      * @param method    方法
      * @return          缓存key列表
      */
@@ -160,7 +171,7 @@ public class CacheAnnotationParser {
                 continue;
             }
             CacheKeyMeta cacheKeyMeta = new CacheKeyMeta();
-            cacheKeyMeta.setParameterIndex(cacheKeyMetas.size());
+            cacheKeyMeta.setParameter(parameter);
             cacheKeyMeta.setParameterName(parameter.getName());
             cacheKeyMeta.setNullable(cacheKey.nullable());
             cacheKeyMeta.setNullKey(cacheKey.nullKey());
