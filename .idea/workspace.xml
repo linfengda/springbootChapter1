@@ -20,14 +20,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1ac92d16-a2f3-4d49-8fdb-b5b56f35641b" name="Default" comment="docs: 提交gitignore">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/config/AbstractCacheConfiguration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/router/AbstractRequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/router/AbstractRequestHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/router/BizModuleHandlerProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/router/BizModuleHandlerProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/router/RequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/router/RequestHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/router/impl/PCRequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/router/impl/PcRequestHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/serializer/LongToStringSerializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/serializer/LongToStringSerializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/auth/readme.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/exception/BusinessException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/exception/BusinessException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/Chapter1Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/Chapter1Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/system/service/impl/SysUserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/system/service/impl/SysUserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/config/CacheConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/config/CacheConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/config/CacheImportBeanDefinitionSelector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/config/CacheConfigurationSelector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/config/EnableCache.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/config/EnableCache.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/interceptor/DeleteCacheInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/interceptor/DeleteCacheInterceptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/interceptor/DeleteCacheMethodPointcut.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/interceptor/DeleteCacheMethodPointcut.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/interceptor/DeleteCacheMethodPointcutAdvisor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/interceptor/DeleteCacheMethodPointcutAdvisor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/interceptor/QueryCacheInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/interceptor/QueryCacheInterceptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/interceptor/QueryCacheMethodPointcut.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/interceptor/QueryCacheMethodPointcut.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/interceptor/UpdateCacheInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/interceptor/UpdateCacheInterceptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/interceptor/UpdateCacheMethodPointcut.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/interceptor/UpdateCacheMethodPointcut.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/interceptor/UpdateCacheMethodPointcutAdvisor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/interceptor/UpdateCacheMethodPointcutAdvisor.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,6 +83,36 @@
       </map>
     </option>
   </component>
+  <component name="IlluminatedCloudWorkspaceSettings">
+    <option name="projectWorkspaceSettings">
+      <ProjectWorkspaceSettings>
+        <option name="anonymousApexSettings">
+          <AnonymousApexSettings>
+            <option name="savedDocuments">
+              <list>
+                <AnonymousApexSavedDocument>
+                  <option name="name" value="Anonymous Apex 1" />
+                </AnonymousApexSavedDocument>
+              </list>
+            </option>
+            <option name="selectedSavedDocumentIndex" value="0" />
+          </AnonymousApexSettings>
+        </option>
+        <option name="soqlQuerySettings">
+          <SoqlQuerySettings>
+            <option name="savedDocuments">
+              <list>
+                <SoqlQuerySavedDocument>
+                  <option name="name" value="SOQL Query 1" />
+                </SoqlQuerySavedDocument>
+              </list>
+            </option>
+            <option name="selectedSavedDocumentIndex" value="0" />
+          </SoqlQuerySettings>
+        </option>
+      </ProjectWorkspaceSettings>
+    </option>
+  </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -112,12 +149,12 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="extract.method.default.visibility" value="private" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../bkbox_algo_handle" />
     <property name="project.structure.last.edited" value="Global Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="fileTemplates" />
   </component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
@@ -159,7 +196,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.Chapter1Application">
+  <component name="RunManager" selected="Spring Boot.Chapter1Application (1)">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HTML_USED" value="false" />
       <option name="WIDTH" value="400" />
@@ -169,23 +206,6 @@
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CglibProxyTest.test1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="chapter1" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.linfengda.sb.chapter1.common.proxy.cglib.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.linfengda.sb.chapter1.common.proxy.cglib" />
-      <option name="MAIN_CLASS_NAME" value="com.linfengda.sb.chapter1.common.proxy.cglib.CglibProxyTest" />
-      <option name="METHOD_NAME" value="test1" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -265,6 +285,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Chapter1Application (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="springbootChapter1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.linfengda.sb.chapter1.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.linfengda.sb.chapter1.Chapter1Application" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Chapter1Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="chapter1" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.linfengda.sb.chapter1.Chapter1Application" />
@@ -291,20 +324,20 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.CglibProxyTest.test1" />
       <item itemvalue="JUnit.CglibProxyTest.test2" />
       <item itemvalue="JUnit.CglibProxyTest.test3" />
       <item itemvalue="JUnit.JDKProxyTest.testJDKProxy1" />
       <item itemvalue="JUnit.JDKProxyTest.testJDKProxy2" />
       <item itemvalue="Spring Boot.Chapter1Application" />
+      <item itemvalue="Spring Boot.Chapter1Application (1)" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Spring Boot.Chapter1Application (1)" />
         <item itemvalue="JUnit.JDKProxyTest.testJDKProxy2" />
         <item itemvalue="JUnit.JDKProxyTest.testJDKProxy1" />
         <item itemvalue="JUnit.CglibProxyTest.test3" />
         <item itemvalue="JUnit.CglibProxyTest.test2" />
-        <item itemvalue="JUnit.CglibProxyTest.test1" />
       </list>
     </recent_temporary>
   </component>
@@ -312,6 +345,7 @@
     <option name="viewStates">
       <list>
         <serviceView>
+          <option name="contentProportion" value="0.2636612" />
           <treeState>
             <expand>
               <path>
@@ -686,6 +720,7 @@
       <workItem from="1593397888266" duration="1033000" />
       <workItem from="1593482652541" duration="1585000" />
       <workItem from="1593590142724" duration="641000" />
+      <workItem from="1593669520831" duration="6572000" />
     </task>
     <task id="LOCAL-00040" summary="提交rabbitmq的5种模式">
       <created>1555842852139</created>
@@ -1168,10 +1203,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="414" y="216" key="#HTTP_Proxy/0.0.1536.824@0.0.1536.824" timestamp="1588128349155" />
-    <state x="361" y="70" key="#Illuminated_Cloud" timestamp="1593590158568">
+    <state x="361" y="70" key="#Illuminated_Cloud" timestamp="1593669524196">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="70" key="#Illuminated_Cloud/0.0.1536.824@0.0.1536.824" timestamp="1593590158568" />
+    <state x="361" y="70" key="#Illuminated_Cloud/0.0.1536.824@0.0.1536.824" timestamp="1593669524196" />
     <state x="651" y="274" key="#Notifications" timestamp="1588056887396">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -1184,25 +1219,21 @@
     <state x="236" y="141" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1588129057244">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="2215" y="239" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1585013574241" />
     <state x="236" y="141" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1588129057244" />
-    <state x="2685" y="229" key="#com.intellij.ide.util.MemberChooser" timestamp="1585557208795">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state x="612" y="181" key="#com.intellij.ide.util.MemberChooser" timestamp="1593676353139">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="2685" y="229" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1585557208795" />
-    <state x="2610" y="295" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1585013804806">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state x="612" y="181" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1593676353139" />
+    <state x="614" y="301" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1593669559458">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="2610" y="295" key="#com.intellij.ide.util.PackageChooserDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1585013804806" />
+    <state x="614" y="301" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1536.824@0.0.1536.824" timestamp="1593669559458" />
     <state x="449" y="352" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1592197382773">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="2481" y="444" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1585288569535" />
     <state x="449" y="352" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1536.824@0.0.1536.824" timestamp="1592197382773" />
-    <state x="2659" y="378" width="558" height="294" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1584950508997">
-      <screen x="1920" y="0" width="1920" height="1040" />
-    </state>
-    <state x="2659" y="378" width="558" height="294" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1584950508997" />
     <state x="591" y="316" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages" timestamp="1592197384108">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -1231,92 +1262,89 @@
     </state>
     <state x="2227" y="173" width="1228" height="688" key="DiffContextDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1587379602381" />
     <state x="212" y="246" width="983" height="546" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1588912169355" />
-    <state x="418" y="217" key="FileChooserDialogImpl" timestamp="1592201861336">
+    <state x="418" y="217" key="FileChooserDialogImpl" timestamp="1593673978903">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="2660" y="274" key="FileChooserDialogImpl/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1587519546800" />
-    <state x="418" y="217" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1592201861336" />
-    <state width="1024" height="392" key="GridCell.Tab.0.bottom" timestamp="1588766130143">
+    <state x="418" y="217" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1593673978903" />
+    <state width="1077" height="240" key="GridCell.Tab.0.bottom" timestamp="1593678461286">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1877" height="498" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1585557444662" />
-    <state width="1024" height="392" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1588766130143" />
-    <state width="1024" height="392" key="GridCell.Tab.0.center" timestamp="1588766130143">
+    <state width="1077" height="240" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1593678461286" />
+    <state width="1077" height="240" key="GridCell.Tab.0.center" timestamp="1593678461286">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1877" height="498" key="GridCell.Tab.0.center/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1585557444662" />
-    <state width="1024" height="392" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1588766130143" />
-    <state width="1024" height="392" key="GridCell.Tab.0.left" timestamp="1588766130143">
+    <state width="1077" height="240" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1593678461286" />
+    <state width="1077" height="240" key="GridCell.Tab.0.left" timestamp="1593678461286">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1877" height="498" key="GridCell.Tab.0.left/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1585557444662" />
-    <state width="1024" height="392" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1588766130143" />
-    <state width="1024" height="392" key="GridCell.Tab.0.right" timestamp="1588766130143">
+    <state width="1077" height="240" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1593678461286" />
+    <state width="1077" height="240" key="GridCell.Tab.0.right" timestamp="1593678461286">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1877" height="498" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1585557444662" />
-    <state width="1024" height="392" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1588766130143" />
-    <state width="1024" height="392" key="GridCell.Tab.1.bottom" timestamp="1588766130143">
+    <state width="1077" height="240" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1593678461286" />
+    <state width="1077" height="240" key="GridCell.Tab.1.bottom" timestamp="1593678461286">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1877" height="498" key="GridCell.Tab.1.bottom/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1585557444662" />
-    <state width="1024" height="392" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1588766130143" />
-    <state width="1024" height="392" key="GridCell.Tab.1.center" timestamp="1588766130143">
+    <state width="1077" height="240" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1593678461286" />
+    <state width="1077" height="240" key="GridCell.Tab.1.center" timestamp="1593678461286">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1877" height="498" key="GridCell.Tab.1.center/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1585557444662" />
-    <state width="1024" height="392" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1588766130143" />
-    <state width="1024" height="392" key="GridCell.Tab.1.left" timestamp="1588766130143">
+    <state width="1077" height="240" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1593678461286" />
+    <state width="1077" height="240" key="GridCell.Tab.1.left" timestamp="1593678461286">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1877" height="498" key="GridCell.Tab.1.left/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1585557444662" />
-    <state width="1024" height="392" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1588766130143" />
-    <state width="1024" height="392" key="GridCell.Tab.1.right" timestamp="1588766130143">
+    <state width="1077" height="240" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1593678461286" />
+    <state width="1077" height="240" key="GridCell.Tab.1.right" timestamp="1593678461286">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1877" height="498" key="GridCell.Tab.1.right/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1585557444662" />
-    <state width="1024" height="392" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1588766130143" />
-    <state width="1024" height="392" key="GridCell.Tab.2.bottom" timestamp="1588766130144">
+    <state width="1077" height="240" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1593678461286" />
+    <state width="1077" height="240" key="GridCell.Tab.2.bottom" timestamp="1593678461287">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1583" height="552" key="GridCell.Tab.2.bottom/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1585534483139" />
-    <state width="1024" height="392" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1588766130144" />
-    <state width="1024" height="392" key="GridCell.Tab.2.center" timestamp="1588766130144">
+    <state width="1077" height="240" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1593678461287" />
+    <state width="1077" height="240" key="GridCell.Tab.2.center" timestamp="1593678461286">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1583" height="552" key="GridCell.Tab.2.center/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1585534483139" />
-    <state width="1024" height="392" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1588766130144" />
-    <state width="1024" height="392" key="GridCell.Tab.2.left" timestamp="1588766130144">
+    <state width="1077" height="240" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1593678461286" />
+    <state width="1077" height="240" key="GridCell.Tab.2.left" timestamp="1593678461286">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1583" height="552" key="GridCell.Tab.2.left/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1585534483139" />
-    <state width="1024" height="392" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1588766130144" />
-    <state width="1024" height="392" key="GridCell.Tab.2.right" timestamp="1588766130144">
+    <state width="1077" height="240" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1593678461286" />
+    <state width="1077" height="240" key="GridCell.Tab.2.right" timestamp="1593678461287">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1583" height="552" key="GridCell.Tab.2.right/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1585534483139" />
-    <state width="1024" height="392" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1588766130144" />
+    <state width="1077" height="240" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1593678461287" />
     <state x="2659" y="230" key="RollbackChangesDialog" timestamp="1585191117897">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2659" y="230" key="RollbackChangesDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1585191117897" />
-    <state x="369" y="0" key="SettingsEditor" timestamp="1588130665295">
+    <state x="369" y="0" key="SettingsEditor" timestamp="1593670260403">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="369" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1588130665295" />
+    <state x="369" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1593670260403" />
     <state x="442" y="200" key="Vcs.Push.Dialog.v2" timestamp="1588837085266">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="2472" y="252" key="Vcs.Push.Dialog.v2/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1585289097978" />
     <state x="442" y="200" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1588837085266" />
-    <state x="2736" y="258" key="com.intellij.database.view.ui.DbObjectDialog" timestamp="1584957986311">
-      <screen x="1920" y="0" width="1920" height="1040" />
-    </state>
-    <state x="2736" y="258" key="com.intellij.database.view.ui.DbObjectDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1584957986311" />
-    <state x="2556" y="258" width="682" height="524" key="find.popup" timestamp="1585044581065">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state x="509" y="204" width="642" height="534" key="find.popup" timestamp="1593676707110">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="2556" y="258" width="682" height="524" key="find.popup/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1585044581065" />
+    <state x="509" y="204" width="642" height="534" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1593676707110" />
     <state x="442" y="199" key="git4idea.merge.GitPullDialog" timestamp="1593590186616">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -1333,11 +1361,11 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2536" y="240" key="run.anything.popup/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1585546121477" />
-    <state x="849" y="182" width="672" height="538" key="search.everywhere.popup" timestamp="1593397906748">
+    <state x="849" y="182" width="672" height="538" key="search.everywhere.popup" timestamp="1593676618638">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="2543" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1587377714992" />
-    <state x="849" y="182" width="672" height="538" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1593397906748" />
+    <state x="849" y="182" width="672" height="538" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1593676618638" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

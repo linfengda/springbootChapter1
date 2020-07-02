@@ -15,7 +15,7 @@ import java.lang.reflect.Method;
 public class DeleteCacheMethodPointcut extends StaticMethodMatcherPointcut {
 
     @Override
-    public boolean matches(Method method, Class<?> aClass) {
+    public boolean matches(Method method, Class<?> clazz) {
         Annotation annotation = AnnotationUtils.findAnnotation(method, AnnotationType.DELETE.getAnnotation());
         if (null == annotation) {
             return false;

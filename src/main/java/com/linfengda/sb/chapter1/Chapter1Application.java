@@ -7,7 +7,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-@EnableCache(queryOrder = CacheAopOrderManager.QUERY_CACHE, deleteOrder = CacheAopOrderManager.DELETE_CACHE, updateOrder = CacheAopOrderManager.UPDATE_CACHE)
+/**
+ * 描述: 应用启动
+ *
+ * @author linfengda
+ * @create 2020-01-09 09:18
+ */
+@EnableCache()
 @EnableTransactionManagement(order = CacheAopOrderManager.SPRING_TRANSACTION)
 @EnableAspectJAutoProxy(exposeProxy = false, proxyTargetClass = false)
 @EnableApplicationStartup

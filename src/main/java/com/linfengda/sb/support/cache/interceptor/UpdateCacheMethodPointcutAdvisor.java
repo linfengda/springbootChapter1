@@ -4,7 +4,7 @@ import org.springframework.aop.Pointcut;
 import org.springframework.aop.support.AbstractBeanFactoryPointcutAdvisor;
 
 /**
- * @description: 拦截{@link com.linfengda.sb.support.cache.annotation.UpdateCache}注解的增强器
+ * 描述: 拦截{@link com.linfengda.sb.support.cache.annotation.UpdateCache}注解的增强器
  *
  * @author: linfengda
  * @date: 2020-06-27 11:23

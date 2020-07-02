@@ -48,7 +48,7 @@ public class QueryCacheInterceptor implements MethodInterceptor {
         for (Parameter parameter : parameters) {
             //invocation.getMethod().getAnnotation()
         }
-        log.info("查询缓存方法执行，{}，参数：{}", invocation.getMethod().getName(), invocation.getArguments());
+        log.info("查询缓存注解拦截，{}，参数：{}", invocation.getMethod().getName(), invocation.getArguments());
         return invocation.proceed();
     }
 

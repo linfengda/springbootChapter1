@@ -1,8 +1,8 @@
 package com.linfengda.sb.support.cache.config;
 
+import com.linfengda.sb.support.cache.manager.CacheAopOrderManager;
 import org.springframework.context.annotation.AdviceMode;
 import org.springframework.context.annotation.Import;
-import org.springframework.core.Ordered;
 
 import java.lang.annotation.*;
 
@@ -15,7 +15,7 @@ import java.lang.annotation.*;
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-@Import({CacheImportBeanDefinitionSelector.class, })
+@Import({CacheConfigurationSelector.class, })
 public @interface EnableCache {
     /**
      * true     目标对象实现了接口	使用CGLIB代理机制
@@ -34,15 +34,15 @@ public @interface EnableCache {
      * 查询注解aop优先级
      * @return
      */
-    int queryOrder() default Ordered.LOWEST_PRECEDENCE;
-    /**
-     * 更新注解aop优先级
-     * @return
-     */
-    int updateOrder() default Ordered.LOWEST_PRECEDENCE;
+    int queryOrder() default CacheAopOrderManager.QUERY_CACHE;
     /**
      * 删除注解aop优先级
      * @return
      */
-    int deleteOrder() default Ordered.LOWEST_PRECEDENCE;
+    int deleteOrder() default CacheAopOrderManager.DELETE_CACHE;
+    /**
+     * 更新注解aop优先级
+     * @return
+     */
+    int updateOrder() default CacheAopOrderManager.UPDATE_CACHE;
 }

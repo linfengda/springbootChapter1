@@ -16,7 +16,7 @@ import java.lang.reflect.Method;
 public class QueryCacheMethodPointcut extends StaticMethodMatcherPointcut {
 
     @Override
-    public boolean matches(Method method, Class<?> aClass) {
+    public boolean matches(Method method, Class<?> clazz) {
         Annotation annotation = AnnotationUtils.findAnnotation(method, AnnotationType.QUERY.getAnnotation());
         if (null == annotation) {
             return false;
