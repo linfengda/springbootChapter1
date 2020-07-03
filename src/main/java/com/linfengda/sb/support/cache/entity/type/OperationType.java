@@ -3,7 +3,6 @@ package com.linfengda.sb.support.cache.entity.type;
 import com.linfengda.sb.support.cache.annotation.DeleteCache;
 import com.linfengda.sb.support.cache.annotation.QueryCache;
 import com.linfengda.sb.support.cache.annotation.UpdateCache;
-import com.linfengda.sb.support.cache.entity.meta.CacheMethodMeta;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -16,7 +15,7 @@ import java.lang.annotation.Annotation;
  */
 @Getter
 @AllArgsConstructor
-public enum AnnotationType {
+public enum OperationType {
     /**
      * 查询
      */
@@ -51,7 +50,7 @@ public enum AnnotationType {
      * @return      true：是，false：否
      */
     public static boolean isCacheAnnotation(Class<? extends Annotation> clazz) {
-        for (AnnotationType value : values()) {
+        for (OperationType value : values()) {
             if (value.getAnnotation().getName().equals(clazz.getName())) {
                 return true;
             }

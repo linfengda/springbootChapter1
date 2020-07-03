@@ -1,6 +1,6 @@
 package com.linfengda.sb.support.cache.interceptor;
 
-import com.linfengda.sb.support.cache.entity.type.AnnotationType;
+import com.linfengda.sb.support.cache.entity.type.OperationType;
 import org.springframework.aop.support.StaticMethodMatcherPointcut;
 import org.springframework.core.annotation.AnnotationUtils;
 
@@ -16,7 +16,7 @@ public class DeleteCacheMethodPointcut extends StaticMethodMatcherPointcut {
 
     @Override
     public boolean matches(Method method, Class<?> clazz) {
-        Annotation annotation = AnnotationUtils.findAnnotation(method, AnnotationType.DELETE.getAnnotation());
+        Annotation annotation = AnnotationUtils.findAnnotation(method, OperationType.DELETE.getAnnotation());
         if (null == annotation) {
             return false;
         }

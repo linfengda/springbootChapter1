@@ -8,7 +8,7 @@ import com.linfengda.sb.support.cache.annotation.QueryCache;
 import com.linfengda.sb.support.cache.annotation.UpdateCache;
 import com.linfengda.sb.support.cache.entity.meta.CacheKeyMeta;
 import com.linfengda.sb.support.cache.entity.meta.CacheMethodMeta;
-import com.linfengda.sb.support.cache.entity.type.AnnotationType;
+import com.linfengda.sb.support.cache.entity.type.OperationType;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
 
@@ -81,7 +81,7 @@ public class CacheAnnotationParser {
             return null;
         }
         List<Annotation> annotationList = Arrays.asList(annotations);
-        List<Annotation> cacheAnnotationList = annotationList.stream().filter(an -> AnnotationType.isCacheAnnotation(an.getClass())).collect(Collectors.toList());
+        List<Annotation> cacheAnnotationList = annotationList.stream().filter(an -> OperationType.isCacheAnnotation(an.getClass())).collect(Collectors.toList());
         return cacheAnnotationList;
     }
 
@@ -121,30 +121,30 @@ public class CacheAnnotationParser {
         cacheMethodMeta.setMethodName(method.getName());
         cacheMethodMeta.setReturnType(method.getReturnType());
 
-        for (AnnotationType annotationType : AnnotationType.values()) {
-            Annotation cacheAnnotation = method.getAnnotation(annotationType.getAnnotation());
+        for (OperationType type : OperationType.values()) {
+            Annotation cacheAnnotation = method.getAnnotation(type.getAnnotation());
             if (null == cacheAnnotation) {
                 continue;
             }
-            if (AnnotationType.QUERY == annotationType) {
+            if (OperationType.QUERY == type) {
                 QueryCache queryCache = (QueryCache) cacheAnnotation;
-                cacheMethodMeta.setAnnotationType(AnnotationType.QUERY);
+                cacheMethodMeta.setAnnotationType(OperationType.QUERY);
                 cacheMethodMeta.setPrefix(StringUtils.isBlank(queryCache.prefix()) ? method.getName() : queryCache.prefix());
                 cacheMethodMeta.setTimeOut(queryCache.timeOut());
                 cacheMethodMeta.setTimeUnit(queryCache.timeUnit());
                 cacheMethodMeta.setKeys(getCacheKeys(method));
                 return cacheMethodMeta;
-            }else if (AnnotationType.UPDATE == annotationType) {
+            }else if (OperationType.UPDATE == type) {
                 UpdateCache updateCache = (UpdateCache) cacheAnnotation;
-                cacheMethodMeta.setAnnotationType(AnnotationType.UPDATE);
+                cacheMethodMeta.setAnnotationType(OperationType.UPDATE);
                 cacheMethodMeta.setPrefix(StringUtils.isBlank(updateCache.prefix()) ? method.getName() : updateCache.prefix());
                 cacheMethodMeta.setTimeOut(updateCache.timeOut());
                 cacheMethodMeta.setTimeUnit(updateCache.timeUnit());
                 cacheMethodMeta.setKeys(getCacheKeys(method));
                 return cacheMethodMeta;
-            }else if (AnnotationType.UPDATE == annotationType) {
+            }else if (OperationType.UPDATE == type) {
                 DeleteCache deleteCache = (DeleteCache) cacheAnnotation;
-                cacheMethodMeta.setAnnotationType(AnnotationType.DELETE);
+                cacheMethodMeta.setAnnotationType(OperationType.DELETE);
                 cacheMethodMeta.setPrefix(StringUtils.isBlank(deleteCache.prefix()) ? method.getName() : deleteCache.prefix());
                 cacheMethodMeta.setKeys(getCacheKeys(method));
                 cacheMethodMeta.setAllEntries(deleteCache.allEntries());

@@ -1,6 +1,7 @@
 package com.linfengda.sb.chapter1.common.cache;
 
 import com.linfengda.sb.chapter1.common.cache.manager.CacheManager;
+import com.linfengda.sb.support.middleware.redis.template.JacksonRedisTemplate;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
@@ -16,7 +17,7 @@ import javax.annotation.Resource;
 @Component
 public class OrganizeCache implements Cache {
     @Resource
-    private SimpleRedisTemplate simpleRedisTemplate;
+    private JacksonRedisTemplate jacksonRedisTemplate;
 
     @Override
     public void initCache() {
@@ -25,7 +26,7 @@ public class OrganizeCache implements Cache {
 
     @Override
     public void clearCache() {
-        simpleRedisTemplate.deleteObject(CacheManager.ORGANIZE_CACHE.getPrefix());
+        jacksonRedisTemplate.deleteObject(CacheManager.ORGANIZE_CACHE.getPrefix());
         log.warn("清除组织关系缓存...");
     }
 }

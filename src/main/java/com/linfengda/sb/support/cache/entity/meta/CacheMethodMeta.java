@@ -1,10 +1,9 @@
 package com.linfengda.sb.support.cache.entity.meta;
 
-import com.linfengda.sb.support.cache.entity.type.AnnotationType;
+import com.linfengda.sb.support.cache.entity.type.OperationType;
 import lombok.Data;
 
 import java.lang.reflect.Method;
-import java.lang.reflect.Parameter;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -32,7 +31,7 @@ public class CacheMethodMeta {
     /**
      * 缓存操作类型
      */
-    private AnnotationType annotationType;
+    private OperationType annotationType;
     /**
      * 缓存前缀
      */
