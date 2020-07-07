@@ -8,9 +8,6 @@ import com.linfengda.sb.chapter1.system.entity.po.SysUserPO;
 import com.linfengda.sb.chapter1.system.entity.vo.UserListVO;
 import com.linfengda.sb.chapter1.system.entity.vo.UserVO;
 import com.linfengda.sb.chapter1.system.service.SysUserService;
-import com.linfengda.sb.support.cache.annotation.DeleteCache;
-import com.linfengda.sb.support.cache.annotation.QueryCache;
-import com.linfengda.sb.support.cache.annotation.UpdateCache;
 import com.linfengda.sb.support.orm.BaseService;
 import com.linfengda.sb.support.orm.entity.SetValue;
 import lombok.extern.slf4j.Slf4j;
@@ -39,20 +36,16 @@ public class SysUserServiceImpl extends BaseService implements SysUserService {
         return page;
     }
 
-    @QueryCache
-    @DeleteCache
-    @UpdateCache
     @Override
     public UserVO getUserInfo(Integer userId) throws Exception {
-       /* SysUserPO sysUserPO = findByPrimaryKey(userId, SysUserPO.class);
+        SysUserPO sysUserPO = findByPrimaryKey(userId, SysUserPO.class);
         UserVO userVO = new UserVO();
         userVO.setUserId(sysUserPO.getUserId());
         userVO.setUserName(sysUserPO.getUserName());
         userVO.setPhone(sysUserPO.getPhone());
         userVO.setPassword(sysUserPO.getPassword());
         userVO.setStatus(sysUserPO.getStatus());
-        return userVO;*/
-       return null;
+        return userVO;
     }
 
     @Transactional(rollbackFor=Exception.class)

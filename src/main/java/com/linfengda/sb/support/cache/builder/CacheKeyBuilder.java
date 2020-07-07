@@ -37,7 +37,7 @@ public enum CacheKeyBuilder {
     /**
      * 获取hash类型缓存key
      * @param meta  缓存方法信息
-     * @return      缓存hashkey
+     * @return      缓存key
      */
     public HashKey buildHashKey(CacheMethodMeta meta) {
         HashKey hashKey = new HashKey();

@@ -26,6 +26,10 @@ public class SysUserPO extends BasePO {
      */
     private String userName;
     /**
+     * 隶属组织ID
+     */
+    private Integer organizeId;
+    /**
      * 用户手机
      */
     private String phone;

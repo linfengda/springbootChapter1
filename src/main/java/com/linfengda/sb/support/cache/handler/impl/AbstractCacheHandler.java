@@ -1,9 +1,7 @@
 package com.linfengda.sb.support.cache.handler.impl;
 
-import com.linfengda.sb.chapter1.common.util.SpringUtil;
 import com.linfengda.sb.support.cache.entity.dto.CacheDataDTO;
 import com.linfengda.sb.support.cache.handler.CacheHandler;
-import com.linfengda.sb.support.middleware.redis.template.JacksonRedisTemplate;
 import lombok.Data;
 
 /**
@@ -18,14 +16,5 @@ public abstract class AbstractCacheHandler implements CacheHandler {
 
     public AbstractCacheHandler(CacheDataDTO cacheDataDTO) {
         this.cacheDataDTO = cacheDataDTO;
-    }
-
-    /**
-     * 获取redisTemplate
-     * @return  redisTemplate
-     */
-    protected JacksonRedisTemplate getRedisTemplate() {
-        JacksonRedisTemplate jacksonRedisTemplate = SpringUtil.getBean(JacksonRedisTemplate.class);
-        return jacksonRedisTemplate;
     }
 }
