@@ -1,7 +1,8 @@
 package com.linfengda.sb.support.cache.entity.meta;
 
-import com.linfengda.sb.support.cache.entity.type.OperationType;
+import com.linfengda.sb.support.cache.entity.type.DataType;
 import lombok.Data;
+import org.aopalliance.intercept.MethodInvocation;
 
 import java.lang.reflect.Method;
 import java.util.List;
@@ -16,6 +17,10 @@ import java.util.concurrent.TimeUnit;
 @Data
 public class CacheMethodMeta {
     /**
+     * 方法代理
+     */
+    private MethodInvocation invocation;
+    /**
      * 原始方法对象
      */
     private Method method;
@@ -29,9 +34,9 @@ public class CacheMethodMeta {
     private Class<?> returnType;
 
     /**
-     * 缓存操作类型
+     * 数据类型
      */
-    private OperationType annotationType;
+    private DataType dataType;
     /**
      * 缓存前缀
      */
@@ -53,5 +58,4 @@ public class CacheMethodMeta {
      * 参数key列表
      */
     private List<CacheKeyMeta> keys;
-
 }

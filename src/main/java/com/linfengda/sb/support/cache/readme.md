@@ -24,7 +24,7 @@ com.linfengda.sb.support.cache.annotation.UpdateCache
 #### 三. 实现过程
 ```
 // 缓存信息解析
-com.linfengda.sb.support.cache.parser.CacheAnnotationParser
+com.linfengda.sb.support.cache.parser.CacheMethodParser
 // 委派handler进行缓存
 com.linfengda.sb.support.cache.interceptor.UpdateCacheInterceptor
 ```

@@ -21,6 +21,10 @@ public class CacheKeyMeta {
      */
     private String parameterName;
     /**
+     * 缓存key
+     */
+    private String cacheKey;
+    /**
      * key是否允许为空
      */
     Boolean nullable;
