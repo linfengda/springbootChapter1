@@ -19,30 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1ac92d16-a2f3-4d49-8fdb-b5b56f35641b" name="Default" comment="feat: 缓存框架，使用handler处理不同缓存注解">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/builder/CacheKeyBuilder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/builder/HashKey.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/config/Constant.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/entity/dto/CacheDataDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/entity/type/KeyBaseType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/exception/BusinessException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/handler/impl/AbstractCacheHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/handler/impl/DeleteCacheHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/handler/impl/UpdateCacheHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/manager/CacheHandlerManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/entity/meta/CacheKeyMeta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/entity/meta/CacheKeyMeta.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/entity/meta/CacheMethodMeta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/entity/meta/CacheMethodMeta.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/handler/DataMapperHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/handler/CacheHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/handler/MapperRouter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/handler/CacheRouter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/handler/impl/AbstractDataMapperHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/handler/impl/GantryPassDataMapperHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/handler/impl/QueryCacheHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/interceptor/DeleteCacheInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/interceptor/DeleteCacheInterceptor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/interceptor/QueryCacheInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/interceptor/QueryCacheInterceptor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/interceptor/UpdateCacheInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/interceptor/UpdateCacheInterceptor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/parser/CacheAnnotationParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/parser/CacheMethodParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/readme.md" afterDir="false" />
-    </list>
+    <list default="true" id="1ac92d16-a2f3-4d49-8fdb-b5b56f35641b" name="Default" comment="feat: 缓存框架，处理不同缓存数据类型" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -731,14 +708,7 @@
       <workItem from="1593741574329" duration="3909000" />
       <workItem from="1593755196103" duration="354000" />
       <workItem from="1593999675384" duration="16392000" />
-      <workItem from="1594085244317" duration="7191000" />
-    </task>
-    <task id="LOCAL-00043" summary="提交rabbitmq topic模式">
-      <created>1556069971430</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1556069971430</updated>
+      <workItem from="1594085244317" duration="7342000" />
     </task>
     <task id="LOCAL-00044" summary="提交rabbitmq topic模式">
       <created>1556074760752</created>
@@ -1076,7 +1046,14 @@
       <option name="project" value="LOCAL" />
       <updated>1593755505934</updated>
     </task>
-    <option name="localTasksCounter" value="92" />
+    <task id="LOCAL-00092" summary="feat: 缓存框架，处理不同缓存数据类型">
+      <created>1594092515192</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1594092515193</updated>
+    </task>
+    <option name="localTasksCounter" value="93" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1182,7 +1159,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: 提交springBoot单元测试" />
     <MESSAGE value="feat: 使用mock包装bean" />
     <MESSAGE value="feat: 提取公共代码" />
     <MESSAGE value="refactor: 跳过测试用例" />
@@ -1207,7 +1183,8 @@
     <MESSAGE value="feat: 缓存框架，设置切面顺序" />
     <MESSAGE value="feat: 缓存框架，初始化信息" />
     <MESSAGE value="feat: 缓存框架，使用handler处理不同缓存注解" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: 缓存框架，使用handler处理不同缓存注解" />
+    <MESSAGE value="feat: 缓存框架，处理不同缓存数据类型" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: 缓存框架，处理不同缓存数据类型" />
   </component>
   <component name="WindowStateProjectService">
     <state x="414" y="216" key="#HTTP_Proxy" timestamp="1588128349155">
@@ -1256,11 +1233,11 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="552" y="211" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1594016763080" />
-    <state x="286" y="8" key="CommitChangelistDialog2" timestamp="1593755498532">
+    <state x="286" y="8" key="CommitChangelistDialog2" timestamp="1594092510002">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="2277" y="114" key="CommitChangelistDialog2/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1587379605831" />
-    <state x="286" y="8" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1593755498532" />
+    <state x="286" y="8" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1594092510002" />
     <state x="212" y="246" width="983" height="546" key="DiffContextDialog" timestamp="1588912169355">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -1339,10 +1316,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="369" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1593670260403" />
-    <state x="442" y="200" key="Vcs.Push.Dialog.v2" timestamp="1593755517019">
+    <state x="442" y="200" key="Vcs.Push.Dialog.v2" timestamp="1594092522127">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="442" y="200" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1593755517019" />
+    <state x="442" y="200" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1594092522127" />
     <state x="499" y="165" width="538" height="501" key="extract.method.dialog" timestamp="1594091702628">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
