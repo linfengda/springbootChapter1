@@ -1,8 +1,8 @@
 package com.linfengda.sb.support.cache.handler.impl;
 
+import com.linfengda.sb.support.cache.builder.strategy.CacheStrategy;
 import com.linfengda.sb.support.cache.entity.dto.CacheDataDTO;
 import com.linfengda.sb.support.cache.entity.meta.CacheMethodMeta;
-import com.linfengda.sb.support.cache.entity.type.CacheDataStrategy;
 import com.linfengda.sb.support.cache.entity.type.DataType;
 import com.linfengda.sb.support.cache.exception.BusinessException;
 import lombok.extern.slf4j.Slf4j;
@@ -27,7 +27,7 @@ public class QueryCacheHandler extends AbstractCacheHandler {
         MethodInvocation invocation = cacheMethodMeta.getInvocation();
         DataType dataType = cacheMethodMeta.getDataType();
 
-        CacheDataStrategy strategy = CacheDataStrategy.getStrategy(dataType);
+        CacheStrategy strategy = dataType.getStrategy();
         if (null == strategy) {
             throw new BusinessException("不支持的缓存数据类型，支持的类型有：" + DataType.values());
         }
