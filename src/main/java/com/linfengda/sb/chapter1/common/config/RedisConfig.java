@@ -46,12 +46,13 @@ public class RedisConfig {
 
     @Bean
     public JacksonRedisTemplate jacksonRedisTemplate(JedisConnectionFactory jedisConnectionFactory) {
-        JacksonRedisTemplate jacksonRedisTemplate = new JacksonRedisTemplate();
         Jackson2JsonRedisSerializer jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer(Object.class);
         ObjectMapper om = new ObjectMapper();
         om.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
         om.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);
         jackson2JsonRedisSerializer.setObjectMapper(om);
+        JacksonRedisTemplate jacksonRedisTemplate = new JacksonRedisTemplate();
+        jacksonRedisTemplate.setConnectionFactory(jedisConnectionFactory);
         jacksonRedisTemplate.setKeySerializer(new StringRedisSerializer());
         jacksonRedisTemplate.setHashKeySerializer(new StringRedisSerializer());
         jacksonRedisTemplate.setValueSerializer(jackson2JsonRedisSerializer);

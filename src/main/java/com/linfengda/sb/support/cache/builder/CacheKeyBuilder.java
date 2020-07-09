@@ -41,7 +41,7 @@ public enum CacheKeyBuilder {
      */
     public HashKey buildHashKey(CacheMethodMeta meta) {
         HashKey hashKey = new HashKey();
-        hashKey.setMapName(meta.getPrefix());
+        hashKey.setKey(meta.getPrefix());
         if (CollectionUtils.isEmpty(meta.getKeys())) {
             return hashKey;
         }

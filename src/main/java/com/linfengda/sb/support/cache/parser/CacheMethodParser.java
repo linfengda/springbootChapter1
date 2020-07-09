@@ -68,12 +68,14 @@ public class CacheMethodParser {
      * @return          缓存注解列表
      */
     private static List<Annotation> getMethodCacheAnnotations(Method method) {
-        Annotation[] annotations = method.getAnnotations();
-        if (null == annotations || annotations.length == 0) {
-            return null;
+        List<Annotation> cacheAnnotationList = new ArrayList<>();
+        for (OperationType annotationType : OperationType.values()) {
+            Annotation annotation = method.getDeclaredAnnotation(annotationType.getAnnotation());
+            if (null == annotation) {
+                continue;
+            }
+            cacheAnnotationList.add(annotation);
         }
-        List<Annotation> annotationList = Arrays.asList(annotations);
-        List<Annotation> cacheAnnotationList = annotationList.stream().filter(an -> OperationType.isCacheAnnotation(an.getClass())).collect(Collectors.toList());
         return cacheAnnotationList;
     }
 

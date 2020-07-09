@@ -1,4 +1,4 @@
-package com.linfengda.sb.support.middleware.redis.serializer;
+package com.linfengda.sb.support.middleware.redis.lettuce.serializer;
 
 import com.linfengda.sb.support.middleware.redis.util.ProtoStuffUtil;
 import org.springframework.data.redis.serializer.RedisSerializer;

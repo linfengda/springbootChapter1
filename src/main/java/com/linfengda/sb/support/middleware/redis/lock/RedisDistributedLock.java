@@ -60,7 +60,7 @@ public class RedisDistributedLock {
     }
 
     public boolean unLock(String key) {
-        String threadId = jacksonRedisTemplate.getObject(key, String.class);
+        String threadId = jacksonRedisTemplate.getObject(key);
         String currentThreadId = getCurrentThreadId();
         if (null == threadId) {return true;}
         if (threadId.equals(currentThreadId)) {

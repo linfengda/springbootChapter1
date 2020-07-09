@@ -4,7 +4,9 @@ import org.springframework.data.redis.core.RedisTemplate;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 /**
  * 描述: 使用Jackson2JsonRedisSerializer序列化
@@ -18,32 +20,82 @@ public class JacksonRedisTemplate extends RedisTemplate<String, Object> {
         super.opsForValue().set(key, value);
     }
 
-    public <T> T getObject(String key, Class<T> clazz) {
-        T object = (T) super.opsForValue().get(key);
-        return object;
+    public void setObject(String key, Object value, Long timeOut, TimeUnit timeUnit) {
+        super.opsForValue().set(key, value, timeOut, timeUnit);
+    }
+
+    public <T> T getObject(String key) {
+        return (T) super.opsForValue().get(key);
     }
 
     public Boolean deleteObject(String key) {
         return super.delete(key);
     }
 
-    public void listAdd(String key, Object... values) {
-        super.opsForList().rightPushAll(key, values);
+    public void hashPut(String key, String hashKey, Object value) {
+        super.opsForHash().put(key, hashKey, value);
+    }
+
+    public void hashPut(String key, String hashKey, Object value, Long timeOut, TimeUnit timeUnit) {
+        super.opsForHash().put(key, hashKey, value);
+        super.expire(key, timeOut, timeUnit);
+    }
+
+    public void hashPutAll(String key, Map<String, Object> values) {
+        super.opsForHash().putAll(key, values);
+    }
+
+    public void hashPutAll(String key, Map<String, Object> values, Long timeOut, TimeUnit timeUnit) {
+        super.opsForHash().putAll(key, values);
+        super.expire(key, timeOut, timeUnit);
+    }
+
+    public <T> T hashGet(String key, String hashKey) {
+        return (T) super.opsForHash().get(key, hashKey);
+    }
+
+    public <T> Set<T> hashKeys(String key) {
+        return (Set<T>) super.opsForHash().keys(key);
+    }
+
+    public <T> List<T> hashValues(String key) {
+        return (List<T>) super.opsForHash().values(key);
+    }
+
+    public Long hashDel(String key, String... hashKeys) {
+        return super.opsForHash().delete(key, hashKeys);
+    }
+
+    public void listAdd(String key, Object value) {
+        super.opsForList().rightPushAll(key, value);
+    }
+
+    public void listAdd(String key, Object value, Long timeOut, TimeUnit timeUnit) {
+        super.opsForList().rightPushAll(key, value);
+        super.expire(key, timeOut, timeUnit);
     }
 
     public void listAddAll(String key, Collection values) {
-        for (Object value : values) {
-            super.opsForList().rightPushAll(key, value);
-        }
+        super.opsForList().rightPushAll(key, values);
     }
 
-    public <T> List<T> listGet(String key, Class<T> clazz) {
+    public void listAddAll(String key, Collection values, Long timeOut, TimeUnit timeUnit) {
+        super.opsForList().rightPushAll(key, values);
+        super.expire(key, timeOut, timeUnit);
+    }
+
+    public <T> List<T> listGet(String key) {
         List list = super.opsForList().range(key, 0, -1);
         return null == list ? null : (List<T>) list;
     }
 
-    public void setAdd(String key, Object... values) {
-        super.opsForSet().add(key, values);
+    public void setAdd(String key, Object value) {
+        super.opsForSet().add(key, value);
+    }
+
+    public void setAdd(String key, Object value, Long timeOut, TimeUnit timeUnit) {
+        super.opsForSet().add(key, value);
+        super.expire(key, timeOut, timeUnit);
     }
 
     public void setAddAll(String key, Collection values) {
@@ -52,24 +104,19 @@ public class JacksonRedisTemplate extends RedisTemplate<String, Object> {
         }
     }
 
-    public <T> Set<T> setGet(String key, Class<T> clazz) {
-        Set set =  super.opsForSet().members(key);
+    public void setAddAll(String key, Collection values, Long timeOut, TimeUnit timeUnit) {
+        for (Object value : values) {
+            super.opsForSet().add(key, value);
+        }
+        super.expire(key, timeOut, timeUnit);
+    }
+
+    public <T> Set<T> setGet(String key) {
+        Set set = super.opsForSet().members(key);
         return null == set ? null : (Set<T>) set;
     }
 
     public Long setDelete(String key, Object... values) {
         return super.opsForSet().remove(key, values);
-    }
-
-    public void mapPut(String key, String hashKey, Object value) {
-        super.opsForHash().put(key, hashKey, value);
-    }
-
-    public <T> T mapGet(String key, String hashKey, Class<T> clazz) {
-        return (T) super.opsForHash().get(key, hashKey);
-    }
-
-    public Long mapDelete(String key, String... hashKeys) {
-        return super.opsForHash().delete(key, hashKeys);
     }
 }

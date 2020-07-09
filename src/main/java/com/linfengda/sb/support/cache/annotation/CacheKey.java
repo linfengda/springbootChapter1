@@ -16,7 +16,7 @@ public @interface CacheKey {
      * key是否允许为空
      * @return
      */
-    boolean nullable() default true;
+    boolean nullable() default false;
     /**
      * key为空时使用值
      * @return

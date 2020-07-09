@@ -14,4 +14,8 @@ public interface Constant {
      * 冒号
      */
     String COLON = ":";
+    /**
+     * 默认缓存过期时间
+     */
+    Long NO_EXPIRE_TIME = -1L;
 }

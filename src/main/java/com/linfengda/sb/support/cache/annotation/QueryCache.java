@@ -1,5 +1,6 @@
 package com.linfengda.sb.support.cache.annotation;
 
+import com.linfengda.sb.support.cache.config.Constant;
 import com.linfengda.sb.support.cache.entity.type.DataType;
 
 import java.lang.annotation.ElementType;
@@ -24,11 +25,11 @@ public @interface QueryCache {
     /**
      * 缓存失效时间
      */
-    long timeOut() default 60L;
+    long timeOut() default -1L;
     /**
      * 缓存失效时间单位
      */
-    TimeUnit timeUnit() default TimeUnit.SECONDS;
+    TimeUnit timeUnit() default TimeUnit.HOURS;
     /**
      * 缓存类型
      */

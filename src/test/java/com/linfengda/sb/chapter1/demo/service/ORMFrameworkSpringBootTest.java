@@ -47,7 +47,7 @@ public class ORMFrameworkSpringBootTest {
     public void testQuery() throws Exception {
         SysUserPO sysUserPO = ormTemplate.findByPrimaryKey(1, SysUserPO.class);
         UserVO userVO = new UserVO();
-        userVO.setUserId(sysUserPO.getUserId());
+        userVO.setUserId(sysUserPO.getId());
         userVO.setUserName(sysUserPO.getUserName());
         userVO.setPhone(sysUserPO.getPhone());
         userVO.setPassword(sysUserPO.getPassword());

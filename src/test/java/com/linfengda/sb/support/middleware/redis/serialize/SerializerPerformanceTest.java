@@ -1,7 +1,7 @@
 package com.linfengda.sb.support.middleware.redis.serialize;
 
 import com.linfengda.sb.support.middleware.redis.serialize.entity.bo.StringClazz;
-import com.linfengda.sb.support.middleware.redis.serializer.ProtoStuffSerializer;
+import com.linfengda.sb.support.middleware.redis.lettuce.serializer.ProtoStuffSerializer;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 
