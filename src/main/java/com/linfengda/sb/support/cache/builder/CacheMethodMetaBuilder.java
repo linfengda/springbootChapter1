@@ -1,16 +1,13 @@
-package com.linfengda.sb.support.cache.parser;
+package com.linfengda.sb.support.cache.builder;
 
 import com.linfengda.sb.chapter1.common.exception.entity.ErrorCode;
 import com.linfengda.sb.support.cache.annotation.CacheKey;
 import com.linfengda.sb.support.cache.annotation.DeleteCache;
 import com.linfengda.sb.support.cache.annotation.QueryCache;
 import com.linfengda.sb.support.cache.annotation.UpdateCache;
-import com.linfengda.sb.support.cache.entity.meta.CacheKeyMeta;
 import com.linfengda.sb.support.cache.entity.meta.CacheMethodMeta;
-import com.linfengda.sb.support.cache.entity.type.KeyBaseType;
 import com.linfengda.sb.support.cache.entity.type.OperationType;
 import com.linfengda.sb.support.cache.exception.BusinessException;
-import org.aopalliance.intercept.MethodInvocation;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.util.CollectionUtils;
 
@@ -22,15 +19,14 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.stream.Collectors;
 
 /**
- * 描述: 缓存注解解析并缓存
+ * 描述: 缓存方法注解解析并缓存
  *
  * @author linfengda
  * @create 2020-03-24 15:14
  */
-public class CacheMethodParser {
+public class CacheMethodMetaBuilder {
     /**
      * 校验通过的缓存方法
      */
@@ -81,42 +77,15 @@ public class CacheMethodParser {
 
     /**
      *获取缓存信息
-     * @param method            方法
-     * @param arguments         参数列表
-     * @param invocation        方法代理
-     * @return
+     * @param method    方法
+     * @return          缓存方法元数据
      */
-    public static CacheMethodMeta getCacheMethodMeta(Method method, Object[] arguments, MethodInvocation invocation) {
+    public static CacheMethodMeta getCacheMethodMeta(Method method) {
         CacheMethodMeta cacheMethodMeta = CACHE_METHOD_CACHE.get(method);
         if (null == cacheMethodMeta) {
             cacheMethodMeta = loadCacheAnnotation(method);
         }
-        init(cacheMethodMeta, arguments, invocation);
         return cacheMethodMeta;
-    }
-
-    /**
-     * 初始化缓存key
-     * @param cacheMethodMeta   缓存信息
-     * @param arguments         参数列表
-     * @param invocation        方法代理
-     */
-    private static void init(CacheMethodMeta cacheMethodMeta, Object[] arguments, MethodInvocation invocation) {
-        List<CacheKeyMeta> keys = cacheMethodMeta.getKeys();
-        if (CollectionUtils.isEmpty(keys)) {
-            return;
-        }
-        if (null == arguments || 0 == arguments.length) {
-            return;
-        }
-        for (int i = 0; i < arguments.length; i++) {
-            Object argument = arguments[i];
-            if (!KeyBaseType.isBaseType(argument.getClass().getName())) {
-                throw new BusinessException("不支持的缓存key参数类型：" + argument.getClass().getName());
-            }
-            keys.get(i).setCacheKey(String.valueOf(argument));
-        }
-        cacheMethodMeta.setInvocation(invocation);
     }
 
     /**
@@ -139,8 +108,6 @@ public class CacheMethodParser {
         CacheMethodMeta cacheMethodMeta = new CacheMethodMeta();
         cacheMethodMeta.setMethod(method);
         cacheMethodMeta.setMethodName(method.getName());
-        cacheMethodMeta.setReturnType(method.getReturnType());
-
         for (OperationType type : OperationType.values()) {
             Annotation cacheAnnotation = method.getAnnotation(type.getAnnotation());
             if (null == cacheAnnotation) {
@@ -149,24 +116,28 @@ public class CacheMethodParser {
             if (OperationType.QUERY == type) {
                 QueryCache queryCache = (QueryCache) cacheAnnotation;
                 cacheMethodMeta.setDataType(queryCache.type());
-                cacheMethodMeta.setPrefix(StringUtils.isBlank(queryCache.prefix()) ? method.getName() : queryCache.prefix());
+                cacheMethodMeta.setPrefix(queryCache.prefix());
                 cacheMethodMeta.setTimeOut(queryCache.timeOut());
                 cacheMethodMeta.setTimeUnit(queryCache.timeUnit());
-                cacheMethodMeta.setKeys(getCacheKeys(method));
+                cacheMethodMeta.setPolicies(Arrays.asList(queryCache.policies()));
+                cacheMethodMeta.setMaxSize(queryCache.maxSize());
+                cacheMethodMeta.setKeyMetas(getKeyMetas(method));
                 return cacheMethodMeta;
             }else if (OperationType.UPDATE == type) {
                 UpdateCache updateCache = (UpdateCache) cacheAnnotation;
                 cacheMethodMeta.setDataType(updateCache.type());
-                cacheMethodMeta.setPrefix(StringUtils.isBlank(updateCache.prefix()) ? method.getName() : updateCache.prefix());
+                cacheMethodMeta.setPrefix(updateCache.prefix());
                 cacheMethodMeta.setTimeOut(updateCache.timeOut());
                 cacheMethodMeta.setTimeUnit(updateCache.timeUnit());
-                cacheMethodMeta.setKeys(getCacheKeys(method));
+                cacheMethodMeta.setPolicies(Arrays.asList(updateCache.policies()));
+                cacheMethodMeta.setMaxSize(updateCache.maxSize());
+                cacheMethodMeta.setKeyMetas(getKeyMetas(method));
                 return cacheMethodMeta;
             }else if (OperationType.UPDATE == type) {
                 DeleteCache deleteCache = (DeleteCache) cacheAnnotation;
                 cacheMethodMeta.setDataType(deleteCache.type());
                 cacheMethodMeta.setPrefix(StringUtils.isBlank(deleteCache.prefix()) ? method.getName() : deleteCache.prefix());
-                cacheMethodMeta.setKeys(getCacheKeys(method));
+                cacheMethodMeta.setKeyMetas(getKeyMetas(method));
                 cacheMethodMeta.setAllEntries(deleteCache.allEntries());
                 return cacheMethodMeta;
             }
@@ -179,24 +150,24 @@ public class CacheMethodParser {
      * @param method    方法
      * @return          缓存key列表
      */
-    private static List<CacheKeyMeta> getCacheKeys(Method method) {
-        List<CacheKeyMeta> cacheKeyMetas = new ArrayList<>();
+    private static List<CacheMethodMeta.CacheKeyMeta> getKeyMetas(Method method) {
+        List<CacheMethodMeta.CacheKeyMeta> keyMetas = new ArrayList<>();
         Parameter[] parameters = method.getParameters();
         if (null == parameters || 0 == parameters.length) {
-            return cacheKeyMetas;
+            return keyMetas;
         }
-        for (Parameter parameter : parameters) {
+        for (int i = 0; i < parameters.length; i++) {
+            Parameter parameter = parameters[i];
             CacheKey cacheKey = parameter.getAnnotation(CacheKey.class);
             if (null == cacheKey) {
                 continue;
             }
-            CacheKeyMeta cacheKeyMeta = new CacheKeyMeta();
+            CacheMethodMeta.CacheKeyMeta cacheKeyMeta = new CacheMethodMeta.CacheKeyMeta();
             cacheKeyMeta.setParameter(parameter);
-            cacheKeyMeta.setParameterName(parameter.getName());
-            cacheKeyMeta.setNullable(cacheKey.nullable());
+            cacheKeyMeta.setIndex(i);
             cacheKeyMeta.setNullKey(cacheKey.nullKey());
-            cacheKeyMetas.add(cacheKeyMeta);
+            keyMetas.add(cacheKeyMeta);
         }
-        return cacheKeyMetas;
+        return keyMetas;
     }
 }

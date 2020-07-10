@@ -1,10 +1,10 @@
 package com.linfengda.sb.support.cache.entity.type;
 
-import com.linfengda.sb.support.cache.builder.strategy.CacheStrategy;
-import com.linfengda.sb.support.cache.builder.strategy.impl.HashCacheStrategy;
-import com.linfengda.sb.support.cache.builder.strategy.impl.ListCacheStrategy;
-import com.linfengda.sb.support.cache.builder.strategy.impl.ObjCacheStrategy;
-import com.linfengda.sb.support.cache.builder.strategy.impl.SetCacheStrategy;
+import com.linfengda.sb.support.cache.handler.strategy.CacheStrategy;
+import com.linfengda.sb.support.cache.handler.strategy.impl.HashCacheStrategy;
+import com.linfengda.sb.support.cache.handler.strategy.impl.ListCacheStrategy;
+import com.linfengda.sb.support.cache.handler.strategy.impl.ObjCacheStrategy;
+import com.linfengda.sb.support.cache.handler.strategy.impl.SetCacheStrategy;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

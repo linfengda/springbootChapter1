@@ -42,7 +42,7 @@ public class SysUserServiceImpl extends BaseService implements SysUserService {
 
     @QueryCache(prefix = "sys:user", timeOut = 1, timeUnit = TimeUnit.DAYS, type = DataType.HASH)
     @Override
-    public UserVO getUserInfo(@CacheKey(nullable = true, nullKey = "null") Integer userId) throws Exception {
+    public UserVO getUserInfo(@CacheKey Integer userId) throws Exception {
         SysUserPO sysUserPO = findByPrimaryKey(userId, SysUserPO.class);
         UserVO userVO = new UserVO();
         userVO.setUserId(sysUserPO.getId());

@@ -1,10 +1,9 @@
 package com.linfengda.sb.support.cache.handler.impl;
 
-import com.linfengda.sb.support.cache.builder.strategy.CacheStrategy;
+import com.linfengda.sb.support.cache.handler.strategy.CacheStrategy;
 import com.linfengda.sb.support.cache.entity.dto.CacheDataDTO;
-import com.linfengda.sb.support.cache.entity.meta.CacheMethodMeta;
+import com.linfengda.sb.support.cache.entity.dto.CacheParamDTO;
 import com.linfengda.sb.support.cache.entity.type.DataType;
-import com.linfengda.sb.support.cache.exception.BusinessException;
 import lombok.extern.slf4j.Slf4j;
 import org.aopalliance.intercept.MethodInvocation;
 
@@ -22,21 +21,17 @@ public class QueryCacheHandler extends AbstractCacheHandler {
 
     @Override
     public Object doCache() throws Throwable {
-        log.debug("查询缓存注解处理 handler，dataType={}", getCacheDataDTO().getMeta().getDataType());
-        CacheMethodMeta cacheMethodMeta = getCacheDataDTO().getMeta();
-        MethodInvocation invocation = cacheMethodMeta.getInvocation();
-        DataType dataType = cacheMethodMeta.getDataType();
-
+        log.debug("查询缓存注解处理 handler，dataType={}", getCacheDataDTO().getParam().getDataType());
+        CacheParamDTO cacheParamDTO = getCacheDataDTO().getParam();
+        MethodInvocation invocation = cacheParamDTO.getInvocation();
+        DataType dataType = cacheParamDTO.getDataType();
         CacheStrategy strategy = dataType.getStrategy();
-        if (null == strategy) {
-            throw new BusinessException("不支持的缓存数据类型，支持的类型有：" + DataType.values());
-        }
-        Object value = strategy.getCache(cacheMethodMeta);
+        Object value = strategy.getCache(cacheParamDTO);
         if (null != value) {
             return value;
         }
         value = invocation.proceed();
-        strategy.setCache(cacheMethodMeta, value);
+        strategy.setCache(cacheParamDTO, value);
         return value;
     }
 }

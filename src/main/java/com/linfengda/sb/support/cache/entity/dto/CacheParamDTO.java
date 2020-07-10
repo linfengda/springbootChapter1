@@ -1,30 +1,25 @@
-package com.linfengda.sb.support.cache.entity.meta;
+package com.linfengda.sb.support.cache.entity.dto;
 
 import com.linfengda.sb.support.cache.entity.type.CachePolicy;
 import com.linfengda.sb.support.cache.entity.type.DataType;
 import lombok.Data;
+import org.aopalliance.intercept.MethodInvocation;
 
-import java.lang.reflect.Method;
-import java.lang.reflect.Parameter;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
- * 描述: 缓存方法元数据
+ * 描述: 缓存参数DTO
  *
- * @author linfengda
- * @create 2020-03-27 15:10
+ * @author: linfengda
+ * @date: 2020-07-10 14:34
  */
 @Data
-public class CacheMethodMeta {
+public class CacheParamDTO {
     /**
-     * 原始方法对象
+     * 方法代理
      */
-    private Method method;
-    /**
-     * 方法名称
-     */
-    private String methodName;
+    private MethodInvocation invocation;
     /**
      * 数据类型
      */
@@ -40,7 +35,7 @@ public class CacheMethodMeta {
     /**
      * 缓存失效时间单位
      */
-    private TimeUnit timeUnit;
+    TimeUnit timeUnit;
     /**
      * 指定缓存策略
      */
@@ -55,23 +50,7 @@ public class CacheMethodMeta {
      */
     private Boolean allEntries;
     /**
-     * 参数列表
+     * key列表
      */
-    private List<CacheKeyMeta> keyMetas;
-
-    @Data
-    public static class CacheKeyMeta {
-        /**
-         * 参数
-         */
-        private Parameter parameter;
-        /**
-         * 参数下标
-         */
-        private Integer index;
-        /**
-         * key为空时使用值
-         */
-        String nullKey;
-    }
+    private List<String> keys;
 }

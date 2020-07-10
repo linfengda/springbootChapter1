@@ -1,6 +1,7 @@
 package com.linfengda.sb.support.cache.annotation;
 
 import com.linfengda.sb.support.cache.config.Constant;
+import com.linfengda.sb.support.cache.entity.type.CachePolicy;
 import com.linfengda.sb.support.cache.entity.type.DataType;
 
 import java.lang.annotation.ElementType;
@@ -19,6 +20,10 @@ import java.util.concurrent.TimeUnit;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface UpdateCache {
     /**
+     * 缓存类型
+     */
+    DataType type() default DataType.OBJECT;
+    /**
      * 缓存前缀，建议使用方法名
      * @return
      */
@@ -32,7 +37,11 @@ public @interface UpdateCache {
      */
     TimeUnit timeUnit() default TimeUnit.HOURS;
     /**
-     * 缓存类型
+     * 指定缓存策略
      */
-    DataType type() default DataType.OBJECT;
+    CachePolicy[] policies() default {};
+    /**
+     * 最大缓存数量
+     */
+    long maxSize() default -1L;
 }

@@ -19,32 +19,29 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1ac92d16-a2f3-4d49-8fdb-b5b56f35641b" name="Default" comment="feat: 缓存框架，使用缓存策略">
+    <list default="true" id="1ac92d16-a2f3-4d49-8fdb-b5b56f35641b" name="Default" comment="feat: 缓存框架，测试哈希缓存">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/entity/dto/CacheParamDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/entity/type/CachePolicy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/handler/strategy/CacheStrategy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/ApplicationStartup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/ApplicationStartup.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/config/RedisConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/config/RedisConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/system/entity/po/SysUserPO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/system/entity/po/SysUserPO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/system/service/impl/SysUserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/system/service/impl/SysUserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/system/service/impl/TransactionalOtherServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/system/service/impl/TransactionalOtherServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/system/service/impl/TransactionalServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/system/service/impl/TransactionalServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/annotation/CacheKey.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/annotation/CacheKey.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/annotation/QueryCache.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/annotation/QueryCache.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/annotation/UpdateCache.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/annotation/UpdateCache.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/builder/CacheKeyBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/builder/CacheKeyBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/builder/HashKey.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/builder/HashKey.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/builder/strategy/impl/HashCacheStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/builder/strategy/impl/HashCacheStrategy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/builder/strategy/impl/ListCacheStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/builder/strategy/impl/ListCacheStrategy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/builder/strategy/impl/ObjCacheStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/builder/strategy/impl/ObjCacheStrategy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/builder/strategy/impl/SetCacheStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/builder/strategy/impl/SetCacheStrategy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/config/Constant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/config/Constant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/entity/type/OperationType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/entity/type/OperationType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/parser/CacheMethodParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/parser/CacheMethodParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/middleware/redis/lock/RedisDistributedLock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/middleware/redis/lock/RedisDistributedLock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/middleware/redis/serializer/ProtoStuffSerializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/middleware/redis/lettuce/serializer/ProtoStuffSerializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/middleware/redis/template/JacksonRedisTemplate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/middleware/redis/template/JacksonRedisTemplate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/demo/service/ORMFrameworkSpringBootTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/demo/service/ORMFrameworkSpringBootTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/support/middleware/redis/serialize/SerializerPerformanceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/support/middleware/redis/serialize/SerializerPerformanceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/support/middleware/redis/serialize/SerializerStructureTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/support/middleware/redis/serialize/SerializerStructureTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/builder/CacheKeyBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/builder/CacheParamBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/builder/strategy/CacheStrategy.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/builder/strategy/impl/HashCacheStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/handler/strategy/impl/HashCacheStrategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/builder/strategy/impl/ListCacheStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/handler/strategy/impl/ListCacheStrategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/builder/strategy/impl/ObjCacheStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/handler/strategy/impl/ObjCacheStrategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/builder/strategy/impl/SetCacheStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/handler/strategy/impl/SetCacheStrategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/entity/dto/CacheDataDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/entity/dto/CacheDataDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/entity/meta/CacheKeyMeta.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/entity/meta/CacheMethodMeta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/entity/meta/CacheMethodMeta.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/entity/type/DataType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/entity/type/DataType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/handler/CacheRouter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/handler/CacheRouter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/handler/impl/QueryCacheHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/handler/impl/QueryCacheHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/parser/CacheMethodParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/builder/CacheMethodMetaBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/cache/readme.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,9 +76,9 @@
         <option value="package-info" />
         <option value="FxmlFile" />
         <option value="Interface" />
+        <option value="Class" />
         <option value="AnnotationType" />
         <option value="Enum" />
-        <option value="Class" />
       </list>
     </option>
   </component>
@@ -206,7 +203,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.Chapter1Application (1)">
+  <component name="RunManager" selected="Application.CacheMethodMetaBuilder">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HTML_USED" value="false" />
       <option name="WIDTH" value="400" />
@@ -214,13 +211,13 @@
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <module />
     </configuration>
-    <configuration name="QueryCacheHandler" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.linfengda.sb.support.cache.handler.impl.QueryCacheHandler" />
+    <configuration name="CacheMethodMetaBuilder" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.linfengda.sb.support.cache.builder.CacheMethodMetaBuilder" />
       <module name="springbootChapter1" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.linfengda.sb.support.cache.handler.impl.*" />
+          <option name="PATTERN" value="com.linfengda.sb.support.cache.builder.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -327,20 +324,20 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.QueryCacheHandler" />
+      <item itemvalue="Application.SerializerPerformanceTest" />
+      <item itemvalue="JUnit.SerializerStructureTest" />
+      <item itemvalue="JUnit.SerializerStructureTest.runTest" />
       <item itemvalue="Spring Boot.Chapter1Application" />
       <item itemvalue="Spring Boot.Chapter1Application (1)" />
-      <item itemvalue="JUnit.SerializerStructureTest" />
-      <item itemvalue="Application.SerializerPerformanceTest" />
-      <item itemvalue="JUnit.SerializerStructureTest.runTest" />
+      <item itemvalue="Application.CacheMethodMetaBuilder" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.CacheMethodMetaBuilder" />
         <item itemvalue="Spring Boot.Chapter1Application (1)" />
         <item itemvalue="JUnit.SerializerStructureTest.runTest" />
         <item itemvalue="Application.SerializerPerformanceTest" />
         <item itemvalue="JUnit.SerializerStructureTest" />
-        <item itemvalue="Application.QueryCacheHandler" />
       </list>
     </recent_temporary>
   </component>
@@ -354,11 +351,6 @@
               <path>
                 <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
                 <item name="Spring Boot" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              </path>
-              <path>
-                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="Spring Boot" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-                <item name="Running" type="7427dc5b:ServiceModel$ServiceGroupNode" />
               </path>
             </expand>
             <select />
@@ -729,14 +721,8 @@
       <workItem from="1593999675384" duration="16392000" />
       <workItem from="1594085244317" duration="16035000" />
       <workItem from="1594172792449" duration="4750000" />
-      <workItem from="1594258604106" duration="7892000" />
-    </task>
-    <task id="LOCAL-00047" summary="提交代码">
-      <created>1562910962188</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1562910962188</updated>
+      <workItem from="1594258604106" duration="9359000" />
+      <workItem from="1594351016735" duration="17600000" />
     </task>
     <task id="LOCAL-00048" summary="提交代码">
       <created>1564546688639</created>
@@ -1074,7 +1060,14 @@
       <option name="project" value="LOCAL" />
       <updated>1594196789559</updated>
     </task>
-    <option name="localTasksCounter" value="96" />
+    <task id="LOCAL-00096" summary="feat: 缓存框架，测试哈希缓存">
+      <created>1594266587195</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1594266587197</updated>
+    </task>
+    <option name="localTasksCounter" value="97" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1185,7 +1178,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="refactor: 调整包的位置" />
     <MESSAGE value="refactor: 提交测试包重构调整" />
     <MESSAGE value="refactor: 提交包调整" />
     <MESSAGE value="refactor: 删除包" />
@@ -1210,17 +1202,18 @@
     <MESSAGE value="feat: 缓存框架，使用策略模式封装dataType" />
     <MESSAGE value="feat: 缓存框架，使用策略" />
     <MESSAGE value="feat: 缓存框架，使用缓存策略" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: 缓存框架，使用缓存策略" />
+    <MESSAGE value="feat: 缓存框架，测试哈希缓存" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: 缓存框架，测试哈希缓存" />
   </component>
   <component name="WindowStateProjectService">
     <state x="414" y="216" key="#HTTP_Proxy" timestamp="1588128349155">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="414" y="216" key="#HTTP_Proxy/0.0.1536.824@0.0.1536.824" timestamp="1588128349155" />
-    <state x="361" y="70" key="#Illuminated_Cloud" timestamp="1594258624598">
+    <state x="361" y="70" key="#Illuminated_Cloud" timestamp="1594351259633">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="70" key="#Illuminated_Cloud/0.0.1536.824@0.0.1536.824" timestamp="1594258624598" />
+    <state x="361" y="70" key="#Illuminated_Cloud/0.0.1536.824@0.0.1536.824" timestamp="1594351259633" />
     <state x="651" y="274" key="#Notifications" timestamp="1588056887396">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -1241,10 +1234,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="614" y="301" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1536.824@0.0.1536.824" timestamp="1593669559458" />
-    <state x="449" y="352" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1594259489000">
+    <state x="449" y="352" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1594367816941">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="449" y="352" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1536.824@0.0.1536.824" timestamp="1594259489000" />
+    <state x="449" y="352" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1536.824@0.0.1536.824" timestamp="1594367816941" />
     <state x="591" y="316" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages" timestamp="1592197384108">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -1253,15 +1246,15 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="430" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824@0.0.1536.824" timestamp="1594266478082" />
-    <state x="552" y="211" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1594196628070">
+    <state x="552" y="211" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1594363146367">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="552" y="211" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1594196628070" />
-    <state x="286" y="8" key="CommitChangelistDialog2" timestamp="1594201376404">
+    <state x="552" y="211" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1594363146367" />
+    <state x="0" y="8" key="CommitChangelistDialog2" timestamp="1594266581540">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="2277" y="114" key="CommitChangelistDialog2/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1587379605831" />
-    <state x="286" y="8" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1594201376404" />
+    <state x="0" y="8" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1594266581540" />
     <state width="502" height="466" key="DebuggerActiveHint" timestamp="1594265556254">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -1271,43 +1264,43 @@
     </state>
     <state x="2227" y="173" width="1228" height="688" key="DiffContextDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1587379602381" />
     <state x="212" y="246" width="983" height="546" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1594259956835" />
-    <state x="418" y="217" key="FileChooserDialogImpl" timestamp="1594264510476">
+    <state x="418" y="217" key="FileChooserDialogImpl" timestamp="1594374414562">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="2660" y="274" key="FileChooserDialogImpl/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1587519546800" />
-    <state x="418" y="217" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1594264510476" />
-    <state width="1493" height="378" key="GridCell.Tab.0.bottom" timestamp="1594266532294">
+    <state x="418" y="217" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1594374414562" />
+    <state width="1493" height="378" key="GridCell.Tab.0.bottom" timestamp="1594376508687">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="378" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1594266532294" />
-    <state width="1493" height="378" key="GridCell.Tab.0.center" timestamp="1594266532294">
+    <state width="1493" height="378" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1594376508687" />
+    <state width="1493" height="378" key="GridCell.Tab.0.center" timestamp="1594376508687">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="378" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1594266532294" />
-    <state width="1493" height="378" key="GridCell.Tab.0.left" timestamp="1594266532294">
+    <state width="1493" height="378" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1594376508687" />
+    <state width="1493" height="378" key="GridCell.Tab.0.left" timestamp="1594376508687">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="378" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1594266532294" />
-    <state width="1493" height="378" key="GridCell.Tab.0.right" timestamp="1594266532294">
+    <state width="1493" height="378" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1594376508687" />
+    <state width="1493" height="378" key="GridCell.Tab.0.right" timestamp="1594376508687">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="378" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1594266532294" />
-    <state width="1493" height="378" key="GridCell.Tab.1.bottom" timestamp="1594266532294">
+    <state width="1493" height="378" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1594376508687" />
+    <state width="1493" height="378" key="GridCell.Tab.1.bottom" timestamp="1594376508688">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="378" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1594266532294" />
-    <state width="1493" height="378" key="GridCell.Tab.1.center" timestamp="1594266532294">
+    <state width="1493" height="378" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1594376508688" />
+    <state width="1493" height="378" key="GridCell.Tab.1.center" timestamp="1594376508688">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="378" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1594266532294" />
-    <state width="1493" height="378" key="GridCell.Tab.1.left" timestamp="1594266532294">
+    <state width="1493" height="378" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1594376508688" />
+    <state width="1493" height="378" key="GridCell.Tab.1.left" timestamp="1594376508687">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="378" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1594266532294" />
-    <state width="1493" height="378" key="GridCell.Tab.1.right" timestamp="1594266532294">
+    <state width="1493" height="378" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1594376508687" />
+    <state width="1493" height="378" key="GridCell.Tab.1.right" timestamp="1594376508688">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="378" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1594266532294" />
+    <state width="1493" height="378" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1594376508688" />
     <state width="1077" height="328" key="GridCell.Tab.2.bottom" timestamp="1594266379830">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -1336,10 +1329,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="614" y="326" key="VCS.ChangelistChooser/0.0.1536.824@0.0.1536.824" timestamp="1594109853839" />
-    <state x="442" y="200" key="Vcs.Push.Dialog.v2" timestamp="1594196799695">
+    <state x="442" y="200" key="Vcs.Push.Dialog.v2" timestamp="1594266593443">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="442" y="200" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1594196799695" />
+    <state x="442" y="200" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1594266593443" />
     <state x="499" y="165" width="538" height="501" key="extract.method.dialog" timestamp="1594091702628">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

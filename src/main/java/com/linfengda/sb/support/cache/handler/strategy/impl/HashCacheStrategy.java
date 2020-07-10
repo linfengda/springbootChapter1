@@ -1,10 +1,10 @@
-package com.linfengda.sb.support.cache.builder.strategy.impl;
+package com.linfengda.sb.support.cache.handler.strategy.impl;
 
-import com.linfengda.sb.support.cache.builder.CacheKeyBuilder;
+import com.linfengda.sb.support.cache.builder.CacheParamBuilder;
 import com.linfengda.sb.support.cache.builder.HashKey;
-import com.linfengda.sb.support.cache.builder.strategy.CacheStrategy;
+import com.linfengda.sb.support.cache.handler.strategy.CacheStrategy;
 import com.linfengda.sb.support.cache.config.Constant;
-import com.linfengda.sb.support.cache.entity.meta.CacheMethodMeta;
+import com.linfengda.sb.support.cache.entity.dto.CacheParamDTO;
 import com.linfengda.sb.support.cache.manager.RedisTemplateHolder;
 import com.linfengda.sb.support.middleware.redis.template.JacksonRedisTemplate;
 
@@ -17,21 +17,21 @@ import com.linfengda.sb.support.middleware.redis.template.JacksonRedisTemplate;
 public class HashCacheStrategy implements CacheStrategy {
 
     @Override
-    public Object getCache(CacheMethodMeta cacheMethodMeta) {
+    public Object getCache(CacheParamDTO param) {
         JacksonRedisTemplate jacksonRedisTemplate = RedisTemplateHolder.getRedisTemplate();
-        HashKey hashKey = CacheKeyBuilder.INSTANCE.buildHashKey(cacheMethodMeta);
+        HashKey hashKey = CacheParamBuilder.INSTANCE.buildHashKey(param);
         Object value = jacksonRedisTemplate.hashGet(hashKey.getKey(), hashKey.getHashKey());
         return value;
     }
 
     @Override
-    public void setCache(CacheMethodMeta cacheMethodMeta, Object value) {
+    public void setCache(CacheParamDTO param, Object value) {
         JacksonRedisTemplate jacksonRedisTemplate = RedisTemplateHolder.getRedisTemplate();
-        HashKey hashKey = CacheKeyBuilder.INSTANCE.buildHashKey(cacheMethodMeta);
-        if (Constant.NO_EXPIRE_TIME.equals(cacheMethodMeta.getTimeOut())) {
+        HashKey hashKey = CacheParamBuilder.INSTANCE.buildHashKey(param);
+        if (Constant.NO_EXPIRE_TIME.equals(param.getTimeOut())) {
             jacksonRedisTemplate.hashPut(hashKey.getKey(), hashKey.getHashKey(), value);
         }else {
-            jacksonRedisTemplate.hashPut(hashKey.getKey(), hashKey.getHashKey(), value, cacheMethodMeta.getTimeOut(), cacheMethodMeta.getTimeUnit());
+            jacksonRedisTemplate.hashPut(hashKey.getKey(), hashKey.getHashKey(), value, param.getTimeOut(), param.getTimeUnit());
         }
     }
 }

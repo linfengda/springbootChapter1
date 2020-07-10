@@ -1,10 +1,11 @@
 package com.linfengda.sb.support.cache.handler;
 
+import com.linfengda.sb.support.cache.builder.CacheMethodMetaBuilder;
+import com.linfengda.sb.support.cache.builder.CacheParamBuilder;
 import com.linfengda.sb.support.cache.entity.dto.CacheDataDTO;
 import com.linfengda.sb.support.cache.entity.meta.CacheMethodMeta;
 import com.linfengda.sb.support.cache.entity.type.OperationType;
 import com.linfengda.sb.support.cache.manager.CacheHandlerManager;
-import com.linfengda.sb.support.cache.parser.CacheMethodParser;
 import lombok.extern.slf4j.Slf4j;
 import org.aopalliance.intercept.MethodInvocation;
 
@@ -25,15 +26,15 @@ public enum CacheRouter {
 
     public Object doCache(MethodInvocation invocation, OperationType operationType) throws Throwable {
         Method method = invocation.getMethod();
-        if (!CacheMethodParser.checkCacheAnnotation(method)) {
+        if (!CacheMethodMetaBuilder.checkCacheAnnotation(method)) {
             return invocation.proceed();
         }
         Object[] arguments = invocation.getArguments();
-        CacheMethodMeta cacheMethodMeta = CacheMethodParser.getCacheMethodMeta(method, arguments, invocation);
-        CacheDataDTO cacheDataDTO = new CacheDataDTO();
-        cacheDataDTO.setMeta(cacheMethodMeta);
-        cacheDataDTO.setType(operationType);
+        CacheMethodMeta cacheMethodMeta = CacheMethodMetaBuilder.getCacheMethodMeta(method);
 
+        CacheDataDTO cacheDataDTO = new CacheDataDTO();
+        cacheDataDTO.setParam(CacheParamBuilder.INSTANCE.initCacheParam(cacheMethodMeta, arguments, invocation));
+        cacheDataDTO.setType(operationType);
         CacheHandler handler = CacheHandlerManager.provide(cacheDataDTO);
         if (null == handler) {
             log.error("不支持的缓存操作！支持的操作为：{}", OperationType.values());

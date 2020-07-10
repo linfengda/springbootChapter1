@@ -13,11 +13,6 @@ import java.lang.annotation.*;
 @Target(ElementType.PARAMETER)
 public @interface CacheKey {
     /**
-     * key是否允许为空
-     * @return
-     */
-    boolean nullable() default false;
-    /**
      * key为空时使用值
      * @return
      */
