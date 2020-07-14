@@ -1,5 +1,7 @@
 package com.linfengda.sb.chapter1.common.util;
 
+import org.springframework.util.StringUtils;
+
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -17,8 +19,7 @@ public class IpUtil {
     private static final String TTP_X_FORWARDED_FOR = "TTP_X_FORWARDED_FOR";
 
     /**
-     * 获取请求IP地址
-     *
+     * 获取当前请求IP地址
      * @return
      */
     public static String getIp(HttpServletRequest request) {
@@ -26,31 +27,33 @@ public class IpUtil {
             return null;
         }
         String ip = request.getHeader(X_FORWARDED_FOR);
-        if (ip == null || ip.length() == 0 || UNKNOWN.equalsIgnoreCase(ip)) {
-            ip = request.getHeader(PROXY_CLIENT_IP);
-        }else {
+        if (isValidIp(ip)) {
             return ip;
         }
-        if (ip == null || ip.length() == 0 || UNKNOWN.equalsIgnoreCase(ip)) {
-            ip = request.getHeader(WL_PROXY_CLIENT_IP);
-        }else {
+        ip = request.getHeader(PROXY_CLIENT_IP);
+        if (isValidIp(ip)) {
             return ip;
         }
-        if (ip == null || ip.length() == 0 || UNKNOWN.equalsIgnoreCase(ip)) {
-            ip = request.getHeader(HTTP_CLIENT_IP);
-        }else {
+        ip = request.getHeader(WL_PROXY_CLIENT_IP);
+        if (isValidIp(ip)) {
             return ip;
         }
-        if (ip == null || ip.length() == 0 || UNKNOWN.equalsIgnoreCase(ip)) {
-            ip = request.getHeader(TTP_X_FORWARDED_FOR);
-        }else {
+        ip = request.getHeader(HTTP_CLIENT_IP);
+        if (isValidIp(ip)) {
             return ip;
         }
-        if (ip == null || ip.length() == 0 || UNKNOWN.equalsIgnoreCase(ip)) {
-            ip = request.getRemoteAddr();
-        }else {
+        ip = request.getHeader(TTP_X_FORWARDED_FOR);
+        if (isValidIp(ip)) {
             return ip;
         }
+        ip = request.getRemoteAddr();
         return ip;
+    }
+
+    private static boolean isValidIp(String ip) {
+        if (!StringUtils.isEmpty(ip) && !UNKNOWN.equalsIgnoreCase(ip)) {
+            return true;
+        }
+        return false;
     }
 }

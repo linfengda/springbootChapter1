@@ -1,7 +1,7 @@
 package com.linfengda.sb.chapter1.common.cache;
 
 import com.linfengda.sb.chapter1.common.cache.manager.CacheManager;
-import com.linfengda.sb.support.middleware.redis.template.JacksonRedisTemplate;
+import com.linfengda.sb.support.cache.redis.SimpleRedisTemplate;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
@@ -17,7 +17,7 @@ import javax.annotation.Resource;
 @Component
 public class OrganizeCache implements Cache {
     @Resource
-    private JacksonRedisTemplate jacksonRedisTemplate;
+    private SimpleRedisTemplate jacksonRedisTemplate;
 
     @Override
     public void initCache() {

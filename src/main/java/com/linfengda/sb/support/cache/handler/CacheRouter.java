@@ -29,17 +29,14 @@ public enum CacheRouter {
         if (!CacheMethodMetaBuilder.checkCacheAnnotation(method)) {
             return invocation.proceed();
         }
-        Object[] arguments = invocation.getArguments();
         CacheMethodMeta cacheMethodMeta = CacheMethodMetaBuilder.getCacheMethodMeta(method);
+        Object[] arguments = invocation.getArguments();
 
         CacheDataDTO cacheDataDTO = new CacheDataDTO();
-        cacheDataDTO.setParam(CacheParamBuilder.INSTANCE.initCacheParam(cacheMethodMeta, arguments, invocation));
+        cacheDataDTO.setInvocation(invocation);
         cacheDataDTO.setType(operationType);
+        cacheDataDTO.setParam(CacheParamBuilder.INSTANCE.initCacheParam(cacheMethodMeta, arguments));
         CacheHandler handler = CacheHandlerManager.provide(cacheDataDTO);
-        if (null == handler) {
-            log.error("不支持的缓存操作！支持的操作为：{}", OperationType.values());
-            return null;
-        }
         return handler.doCache();
     }
 }

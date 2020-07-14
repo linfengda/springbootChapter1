@@ -1,25 +1,20 @@
 package com.linfengda.sb.support.cache.entity.dto;
 
-import com.linfengda.sb.support.cache.entity.type.CachePolicy;
+import com.linfengda.sb.support.cache.entity.type.CacheStableStrategy;
 import com.linfengda.sb.support.cache.entity.type.DataType;
 import lombok.Data;
-import org.aopalliance.intercept.MethodInvocation;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
- * 描述: 缓存参数DTO
+ * 描述: 缓存查询参数DTO
  *
  * @author: linfengda
  * @date: 2020-07-10 14:34
  */
 @Data
 public class CacheParamDTO {
-    /**
-     * 方法代理
-     */
-    private MethodInvocation invocation;
     /**
      * 数据类型
      */
@@ -39,7 +34,7 @@ public class CacheParamDTO {
     /**
      * 指定缓存策略
      */
-    private List<CachePolicy> policies;
+    private List<CacheStableStrategy> strategies;
     /**
      * 最大缓存数量
      */

@@ -1,11 +1,11 @@
 package com.linfengda.sb.support.cache.handler.strategy.impl;
 
 import com.linfengda.sb.support.cache.builder.CacheParamBuilder;
-import com.linfengda.sb.support.cache.handler.strategy.CacheStrategy;
 import com.linfengda.sb.support.cache.config.Constant;
 import com.linfengda.sb.support.cache.entity.dto.CacheParamDTO;
-import com.linfengda.sb.support.cache.manager.RedisTemplateHolder;
-import com.linfengda.sb.support.middleware.redis.template.JacksonRedisTemplate;
+import com.linfengda.sb.support.cache.handler.strategy.CacheStrategy;
+import com.linfengda.sb.support.cache.redis.RedisSupportHolder;
+import com.linfengda.sb.support.cache.redis.SimpleRedisTemplate;
 
 import java.util.Collection;
 import java.util.List;
@@ -22,9 +22,9 @@ public class ListCacheStrategy implements CacheStrategy {
 
     @Override
     public Object getCache(CacheParamDTO param) {
-        JacksonRedisTemplate jacksonRedisTemplate = RedisTemplateHolder.getRedisTemplate();
+        SimpleRedisTemplate simpleRedisTemplate = RedisSupportHolder.getSimpleRedisTemplate();
         String key = CacheParamBuilder.INSTANCE.buildObjectKey(param);
-        Object value = jacksonRedisTemplate.listGet(key);
+        Object value = simpleRedisTemplate.listGet(key);
         return value;
     }
 
@@ -42,21 +42,33 @@ public class ListCacheStrategy implements CacheStrategy {
         }
     }
 
+    @Override
+    public Boolean hasKey(CacheParamDTO param) {
+        return null;
+    }
+
     private void setValues(String key, Collection values, Long timeOut, TimeUnit timeUnit) {
-        JacksonRedisTemplate jacksonRedisTemplate = RedisTemplateHolder.getRedisTemplate();
-        if (Constant.NO_EXPIRE_TIME.equals(timeOut)) {
-            jacksonRedisTemplate.listAddAll(key, values);
+        SimpleRedisTemplate simpleRedisTemplate = RedisSupportHolder.getSimpleRedisTemplate();
+        if (Constant.DEFAULT_NO_EXPIRE_TIME.equals(timeOut)) {
+            simpleRedisTemplate.listAddAll(key, values);
         }else {
-            jacksonRedisTemplate.listAddAll(key, values, timeOut, timeUnit);
+            simpleRedisTemplate.listAddAll(key, values, timeOut, timeUnit);
         }
     }
 
     private void setValue(String key, Object value, Long timeOut, TimeUnit timeUnit) {
-        JacksonRedisTemplate jacksonRedisTemplate = RedisTemplateHolder.getRedisTemplate();
-        if (Constant.NO_EXPIRE_TIME.equals(timeOut)) {
-            jacksonRedisTemplate.listAdd(key, value);
+        SimpleRedisTemplate simpleRedisTemplate = RedisSupportHolder.getSimpleRedisTemplate();
+        if (Constant.DEFAULT_NO_EXPIRE_TIME.equals(timeOut)) {
+            simpleRedisTemplate.listAdd(key, value);
         }else {
-            jacksonRedisTemplate.listAdd(key, value, timeOut, timeUnit);
+            simpleRedisTemplate.listAdd(key, value, timeOut, timeUnit);
         }
+    }
+
+    @Override
+    public Long getCurrentCacheSize(CacheParamDTO param) {
+        SimpleRedisTemplate simpleRedisTemplate = RedisSupportHolder.getSimpleRedisTemplate();
+        Long size = simpleRedisTemplate.opsForList().size(param.getPrefix());
+        return size;
     }
 }

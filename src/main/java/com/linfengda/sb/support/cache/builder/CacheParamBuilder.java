@@ -6,7 +6,6 @@ import com.linfengda.sb.support.cache.entity.dto.CacheParamDTO;
 import com.linfengda.sb.support.cache.entity.meta.CacheMethodMeta;
 import com.linfengda.sb.support.cache.entity.type.KeyBaseType;
 import com.linfengda.sb.support.cache.exception.BusinessException;
-import org.aopalliance.intercept.MethodInvocation;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 
@@ -27,19 +26,17 @@ public enum CacheParamBuilder {
 
     /**
      * 初始化缓存参数DTO
-     * @param cacheMethodMeta   缓存信息
-     * @param arguments         参数列表
-     * @param invocation        方法代理
+     * @param cacheMethodMeta   方法缓存信息
+     * @param arguments         方法参数列表
      */
-    public CacheParamDTO initCacheParam(CacheMethodMeta cacheMethodMeta, Object[] arguments, MethodInvocation invocation) {
+    public CacheParamDTO initCacheParam(CacheMethodMeta cacheMethodMeta, Object[] arguments) {
         // 初始化缓存前缀，过期策略
         CacheParamDTO cacheParamDTO = new CacheParamDTO();
-        cacheParamDTO.setInvocation(invocation);
         cacheParamDTO.setDataType(cacheMethodMeta.getDataType());
         cacheParamDTO.setPrefix(StringUtils.isEmpty(cacheMethodMeta.getPrefix()) ? cacheMethodMeta.getMethodName() : cacheMethodMeta.getPrefix());
         cacheParamDTO.setTimeOut(cacheMethodMeta.getTimeOut());
         cacheParamDTO.setTimeUnit(cacheMethodMeta.getTimeUnit());
-        cacheParamDTO.setPolicies(cacheMethodMeta.getPolicies());
+        cacheParamDTO.setStrategies(cacheMethodMeta.getStrategies());
         cacheParamDTO.setMaxSize(cacheMethodMeta.getMaxSize());
         cacheParamDTO.setAllEntries(cacheMethodMeta.getAllEntries());
         List<CacheMethodMeta.CacheKeyMeta> keyMetas = cacheMethodMeta.getKeyMetas();
@@ -62,6 +59,7 @@ public enum CacheParamBuilder {
             }
             keys.add(String.valueOf(argument));
         }
+        cacheParamDTO.setKeys(keys);
         return cacheParamDTO;
     }
 
@@ -76,7 +74,9 @@ public enum CacheParamBuilder {
         if (CollectionUtils.isEmpty(param.getKeys())) {
             return builder.toString();
         }
-        builder.append(getKey(param.getKeys()));
+        for (String key : param.getKeys()) {
+            builder.append(Constant.COLON + key);
+        }
         return builder.toString();
     }
 
@@ -91,15 +91,16 @@ public enum CacheParamBuilder {
         if (CollectionUtils.isEmpty(param.getKeys())) {
             return hashKey;
         }
-        hashKey.setHashKey(getKey(param.getKeys()));
-        return hashKey;
-    }
-
-    private String getKey(List<String> keys) {
         StringBuilder builder = new StringBuilder();
-        for (String key : keys) {
-            builder.append(Constant.COLON + key);
+        for (int i = 0; i < param.getKeys().size(); i++) {
+            String key = param.getKeys().get(i);
+            if (i == 0) {
+                builder.append(key);
+            }else {
+                builder.append(Constant.COLON + key);
+            }
         }
-        return builder.toString();
+        hashKey.setHashKey(builder.toString());
+        return hashKey;
     }
 }

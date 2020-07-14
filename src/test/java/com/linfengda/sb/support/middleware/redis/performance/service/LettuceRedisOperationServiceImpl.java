@@ -2,7 +2,7 @@ package com.linfengda.sb.support.middleware.redis.performance.service;
 
 import com.alibaba.fastjson.JSONObject;
 import com.linfengda.sb.support.middleware.redis.performance.helper.LettuceTemplateHelper;
-import com.linfengda.sb.support.middleware.redis.lettuce.LettuceTemplate;
+import com.linfengda.sb.support.cache.redis.lettuce.LettuceTemplate;
 import com.linfengda.sb.chapter1.system.entity.vo.UserListVO;
 import lombok.extern.slf4j.Slf4j;
 

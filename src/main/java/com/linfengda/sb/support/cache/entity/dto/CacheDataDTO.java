@@ -2,6 +2,7 @@ package com.linfengda.sb.support.cache.entity.dto;
 
 import com.linfengda.sb.support.cache.entity.type.OperationType;
 import lombok.Data;
+import org.aopalliance.intercept.MethodInvocation;
 
 /**
  * 描述: 缓存数据DTO
@@ -11,6 +12,10 @@ import lombok.Data;
  */
 @Data
 public class CacheDataDTO {
+    /**
+     * 方法代理
+     */
+    private MethodInvocation invocation;
     /**
      * 缓存参数信息
      */

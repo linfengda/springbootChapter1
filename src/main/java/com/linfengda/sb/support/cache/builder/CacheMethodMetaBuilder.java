@@ -119,7 +119,7 @@ public class CacheMethodMetaBuilder {
                 cacheMethodMeta.setPrefix(queryCache.prefix());
                 cacheMethodMeta.setTimeOut(queryCache.timeOut());
                 cacheMethodMeta.setTimeUnit(queryCache.timeUnit());
-                cacheMethodMeta.setPolicies(Arrays.asList(queryCache.policies()));
+                cacheMethodMeta.setStrategies(Arrays.asList(queryCache.strategies()));
                 cacheMethodMeta.setMaxSize(queryCache.maxSize());
                 cacheMethodMeta.setKeyMetas(getKeyMetas(method));
                 return cacheMethodMeta;
@@ -129,7 +129,7 @@ public class CacheMethodMetaBuilder {
                 cacheMethodMeta.setPrefix(updateCache.prefix());
                 cacheMethodMeta.setTimeOut(updateCache.timeOut());
                 cacheMethodMeta.setTimeUnit(updateCache.timeUnit());
-                cacheMethodMeta.setPolicies(Arrays.asList(updateCache.policies()));
+                cacheMethodMeta.setStrategies(Arrays.asList(updateCache.strategies()));
                 cacheMethodMeta.setMaxSize(updateCache.maxSize());
                 cacheMethodMeta.setKeyMetas(getKeyMetas(method));
                 return cacheMethodMeta;
@@ -162,11 +162,11 @@ public class CacheMethodMetaBuilder {
             if (null == cacheKey) {
                 continue;
             }
-            CacheMethodMeta.CacheKeyMeta cacheKeyMeta = new CacheMethodMeta.CacheKeyMeta();
-            cacheKeyMeta.setParameter(parameter);
-            cacheKeyMeta.setIndex(i);
-            cacheKeyMeta.setNullKey(cacheKey.nullKey());
-            keyMetas.add(cacheKeyMeta);
+            CacheMethodMeta.CacheKeyMeta keyMeta = new CacheMethodMeta.CacheKeyMeta();
+            keyMeta.setParameter(parameter);
+            keyMeta.setIndex(i);
+            keyMeta.setNullKey(cacheKey.nullKey());
+            keyMetas.add(keyMeta);
         }
         return keyMetas;
     }

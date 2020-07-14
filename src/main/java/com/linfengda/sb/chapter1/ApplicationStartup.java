@@ -23,5 +23,6 @@ public class ApplicationStartup {
         ApplicationContextHelper.setCtx(ctx);
         // 初始应用程序缓存
         CacheManager.init();
+        log.info("springboot应用程序初始化完成，当前版本{}", Constant.VERSION);
     }
 }

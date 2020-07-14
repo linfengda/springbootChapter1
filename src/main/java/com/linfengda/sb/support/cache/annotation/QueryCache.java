@@ -1,6 +1,6 @@
 package com.linfengda.sb.support.cache.annotation;
 
-import com.linfengda.sb.support.cache.entity.type.CachePolicy;
+import com.linfengda.sb.support.cache.entity.type.CacheStableStrategy;
 import com.linfengda.sb.support.cache.entity.type.DataType;
 
 import java.lang.annotation.ElementType;
@@ -37,7 +37,7 @@ public @interface QueryCache {
     /**
      * 指定缓存策略
      */
-    CachePolicy[] policies() default {};
+    CacheStableStrategy[] strategies() default {};
     /**
      * 最大缓存数量
      */
