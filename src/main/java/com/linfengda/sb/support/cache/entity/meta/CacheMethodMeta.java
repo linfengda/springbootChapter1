@@ -1,10 +1,11 @@
 package com.linfengda.sb.support.cache.entity.meta;
 
+import com.linfengda.sb.support.cache.entity.type.CacheExtraStrategy;
 import com.linfengda.sb.support.cache.entity.type.DataType;
 import lombok.Data;
-import org.aopalliance.intercept.MethodInvocation;
 
 import java.lang.reflect.Method;
+import java.lang.reflect.Parameter;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -17,10 +18,6 @@ import java.util.concurrent.TimeUnit;
 @Data
 public class CacheMethodMeta {
     /**
-     * 方法代理
-     */
-    private MethodInvocation invocation;
-    /**
      * 原始方法对象
      */
     private Method method;
@@ -28,11 +25,6 @@ public class CacheMethodMeta {
      * 方法名称
      */
     private String methodName;
-    /**
-     * 方法返回类型
-     */
-    private Class<?> returnType;
-
     /**
      * 数据类型
      */
@@ -48,14 +40,38 @@ public class CacheMethodMeta {
     /**
      * 缓存失效时间单位
      */
-    TimeUnit timeUnit;
+    private TimeUnit timeUnit;
+    /**
+     * 指定缓存策略
+     */
+    private List<CacheExtraStrategy> strategies;
+    /**
+     * 最大缓存数量
+     */
+    private Long maxSize;
     /**
      * 是否删除前缀的所有缓存
      * @return
      */
-    Boolean allEntries;
+    private Boolean allEntries;
     /**
-     * 参数key列表
+     * 参数列表
      */
-    private List<CacheKeyMeta> keys;
+    private List<CacheKeyMeta> keyMetas;
+
+    @Data
+    public static class CacheKeyMeta {
+        /**
+         * 参数
+         */
+        private Parameter parameter;
+        /**
+         * 参数下标
+         */
+        private Integer index;
+        /**
+         * key为空时使用值
+         */
+        String nullKey;
+    }
 }

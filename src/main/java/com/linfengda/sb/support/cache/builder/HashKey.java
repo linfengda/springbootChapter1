@@ -10,6 +10,6 @@ import lombok.Data;
  */
 @Data
 public class HashKey {
-    private String mapName;
+    private String key;
     private String hashKey;
 }

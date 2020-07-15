@@ -1,7 +1,7 @@
 package com.linfengda.sb.chapter1;
 
 import com.linfengda.sb.support.cache.config.EnableCache;
-import com.linfengda.sb.support.cache.manager.CacheAopOrderManager;
+import com.linfengda.sb.support.cache.manager.AopOrderManager;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  * @create 2020-01-09 09:18
  */
 @EnableCache()
-@EnableTransactionManagement(order = CacheAopOrderManager.SPRING_TRANSACTION)
+@EnableTransactionManagement(order = AopOrderManager.SPRING_TRANSACTION)
 @EnableAspectJAutoProxy(exposeProxy = false, proxyTargetClass = false)
 @EnableApplicationStartup
 @SpringBootApplication

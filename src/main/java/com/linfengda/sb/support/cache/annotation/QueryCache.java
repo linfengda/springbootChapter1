@@ -1,5 +1,6 @@
 package com.linfengda.sb.support.cache.annotation;
 
+import com.linfengda.sb.support.cache.entity.type.CacheExtraStrategy;
 import com.linfengda.sb.support.cache.entity.type.DataType;
 
 import java.lang.annotation.ElementType;
@@ -18,19 +19,27 @@ import java.util.concurrent.TimeUnit;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface QueryCache {
     /**
+     * 缓存类型
+     */
+    DataType type() default DataType.OBJECT;
+    /**
      * 缓存前缀，建议使用方法名
      */
     String prefix() default "";
     /**
      * 缓存失效时间
      */
-    long timeOut() default 60L;
+    long timeOut() default -1L;
     /**
      * 缓存失效时间单位
      */
-    TimeUnit timeUnit() default TimeUnit.SECONDS;
+    TimeUnit timeUnit() default TimeUnit.HOURS;
     /**
-     * 缓存类型
+     * 指定缓存策略
      */
-    DataType type() default DataType.OBJECT;
+    CacheExtraStrategy[] strategies() default {};
+    /**
+     * 最大缓存数量
+     */
+    long maxSize() default -1L;
 }

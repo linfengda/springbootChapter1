@@ -38,7 +38,7 @@ public class ORMFrameworkSpringBootTest {
 
     @Before
     public void setup() throws Exception {
-        log.info("注意：若不需要程序初始化，去掉cn.dotfashion.MesApplication类的@EnableApplicationStartup注解！");
+        log.info("注意：若不需要程序初始化，去掉@EnableApplicationStartup注解！");
     }
 
     @Test
@@ -47,7 +47,7 @@ public class ORMFrameworkSpringBootTest {
     public void testQuery() throws Exception {
         SysUserPO sysUserPO = ormTemplate.findByPrimaryKey(1, SysUserPO.class);
         UserVO userVO = new UserVO();
-        userVO.setUserId(sysUserPO.getUserId());
+        userVO.setUserId(sysUserPO.getId());
         userVO.setUserName(sysUserPO.getUserName());
         userVO.setPhone(sysUserPO.getPhone());
         userVO.setPassword(sysUserPO.getPassword());

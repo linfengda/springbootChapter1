@@ -1,11 +1,13 @@
 package com.linfengda.sb.chapter1.common.util;
 
+import java.lang.management.ManagementFactory;
+import java.lang.management.RuntimeMXBean;
+import java.net.Inet4Address;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
-import java.util.Map;
 
 /**
  * 描述: 获取服务器硬件（网卡、CPU...）、ip等信息
@@ -15,6 +17,34 @@ import java.util.Map;
  */
 public class ServerRunTimeUtil {
 
+    /**
+     * 获取jvm实例名称
+     * @return
+     */
+    public static String getIp() {
+        try {
+            InetAddress ip4 = Inet4Address.getLocalHost();
+            return ip4.getHostAddress();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
+
+
+    /**
+     * 获取jvm实例名称
+     * @return
+     */
+    public static String getJvmName() {
+        RuntimeMXBean mxb = ManagementFactory.getRuntimeMXBean();
+        return mxb.getName();
+    }
+
+    /**
+     * 获取mac地址
+     * @return
+     */
     public static String getMac(){
         List<String> macs = getMacIds();
         if (macs != null && macs.size() > 0){
@@ -23,7 +53,7 @@ public class ServerRunTimeUtil {
         return "";
     }
 
-    public static List<String> getMacIds() {
+    private static List<String> getMacIds() {
         InetAddress ip = null;
         NetworkInterface ni = null;
         List<String> macList = new ArrayList<>();
@@ -31,20 +61,16 @@ public class ServerRunTimeUtil {
             Enumeration<NetworkInterface> netInterfaces = NetworkInterface.getNetworkInterfaces();
             while (netInterfaces.hasMoreElements()) {
                 ni = netInterfaces.nextElement();
-                // --特定情况，可以考虑用ni.getName判断
                 Enumeration<InetAddress> ips = ni.getInetAddresses();
                 while (ips.hasMoreElements()) {
                     ip = ips.nextElement();
-                    if (!ip.isLoopbackAddress() // 非127.0.0.1
-                                && ip.getHostAddress().matches(
-                            "(\\d{1,3}\\.){3}\\d{1,3}")) {
+                    if (!ip.isLoopbackAddress() && ip.getHostAddress().matches("(\\d{1,3}\\.){3}\\d{1,3}")) {
                         macList.add(getMacFromBytes(ni.getHardwareAddress()));
                     }
                 }
             }
         } catch (Exception e) {
             e.printStackTrace();
-           // log.error("get mac error:{}",e);
         }
         return macList;
     }
@@ -64,10 +90,5 @@ public class ServerRunTimeUtil {
             first = true;
         }
         return mac.toString().toUpperCase();
-    }
-
-    public static String getServerMachineName(){
-        Map<String, String> map = System.getenv();
-        return map.get("COMPUTERNAME");
     }
 }

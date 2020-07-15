@@ -43,18 +43,4 @@ public enum OperationType {
      * 对应注解
      */
     private Class<? extends Annotation> annotation;
-
-    /**
-     * 是否缓存注解
-     * @param clazz 类型
-     * @return      true：是，false：否
-     */
-    public static boolean isCacheAnnotation(Class<? extends Annotation> clazz) {
-        for (OperationType value : values()) {
-            if (value.getAnnotation().getName().equals(clazz.getName())) {
-                return true;
-            }
-        }
-        return false;
-    }
 }
