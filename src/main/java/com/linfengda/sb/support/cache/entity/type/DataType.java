@@ -1,5 +1,6 @@
 package com.linfengda.sb.support.cache.entity.type;
 
+import com.linfengda.sb.support.cache.config.RedisSupportHolder;
 import com.linfengda.sb.support.cache.handler.strategy.CacheStrategy;
 import com.linfengda.sb.support.cache.handler.strategy.impl.HashCacheStrategy;
 import com.linfengda.sb.support.cache.handler.strategy.impl.ListCacheStrategy;
@@ -22,7 +23,9 @@ public enum DataType {
     OBJECT("object", "对象") {
         @Override
         public CacheStrategy getStrategy() {
-            return new ObjCacheStrategy();
+            ObjCacheStrategy objCacheStrategy = new ObjCacheStrategy();
+            objCacheStrategy.setSimpleRedisTemplate(RedisSupportHolder.getSimpleRedisTemplate());
+            return objCacheStrategy;
         }
     },
     /**
@@ -31,7 +34,9 @@ public enum DataType {
     HASH("hash", "哈希") {
         @Override
         public CacheStrategy getStrategy() {
-            return new HashCacheStrategy();
+            HashCacheStrategy hashCacheStrategy = new HashCacheStrategy();
+            hashCacheStrategy.setSimpleRedisTemplate(RedisSupportHolder.getSimpleRedisTemplate());
+            return hashCacheStrategy;
         }
     },
     /**
@@ -40,7 +45,9 @@ public enum DataType {
     LIST("list", "列表") {
         @Override
         public CacheStrategy getStrategy() {
-            return new ListCacheStrategy();
+            ListCacheStrategy listCacheStrategy = new ListCacheStrategy();
+            listCacheStrategy.setSimpleRedisTemplate(RedisSupportHolder.getSimpleRedisTemplate());
+            return listCacheStrategy;
         }
     },
     /**
@@ -49,7 +56,9 @@ public enum DataType {
     SET("set", "集合") {
         @Override
         public CacheStrategy getStrategy() {
-            return new SetCacheStrategy();
+            SetCacheStrategy setCacheStrategy = new SetCacheStrategy();
+            setCacheStrategy.setSimpleRedisTemplate(RedisSupportHolder.getSimpleRedisTemplate());
+            return setCacheStrategy;
         }
     },
     ;

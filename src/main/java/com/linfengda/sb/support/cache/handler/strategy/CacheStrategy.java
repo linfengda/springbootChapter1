@@ -2,6 +2,8 @@ package com.linfengda.sb.support.cache.handler.strategy;
 
 import com.linfengda.sb.support.cache.config.Constant;
 import com.linfengda.sb.support.cache.entity.dto.CacheParamDTO;
+import com.linfengda.sb.support.cache.entity.type.CacheExtraStrategy;
+import com.linfengda.sb.support.cache.entity.type.CacheSizeStrategy;
 
 /**
  * 描述: 不同数据类型缓存策略
@@ -26,27 +28,29 @@ public interface CacheStrategy {
     void setCache(CacheParamDTO param, Object value);
 
     /**
-     * 查询key是否存在缓存中
+     * 查询缓存中是否存在key
      * @param param 缓存参数
      * @return      true：存在，false：不存在
      */
     Boolean hasKey(CacheParamDTO param);
 
     /**
-     * 当前是否已经达到最大缓存
+     * 获取当前缓存最大数量策略类型
      * @param param 缓存参数
-     * @return      true：是，false：否
+     * @return      缓存最大数量策略类型 {@link CacheSizeStrategy}
      */
-    default Boolean isMaxCacheSize(CacheParamDTO param) {
+    default CacheSizeStrategy getCacheSizeStrategy(CacheParamDTO param) {
         Long maxSize = param.getMaxSize();
         if (Constant.DEFAULT_NO_SIZE_LIMIT.equals(maxSize)) {
-            return false;
+            return CacheSizeStrategy.NORMAL;
         }
-        Long size = getCurrentCacheSize(param);
-        if (maxSize > size) {
-            return false;
+        if (maxSize > getCurrentCacheSize(param)) {
+            return CacheSizeStrategy.NORMAL;
         }
-        return true;
+        if (param.getStrategies().contains(CacheExtraStrategy.MAX_SIZE_STRATEGY_LRU)) {
+            return CacheSizeStrategy.LRU;
+        }
+        return CacheSizeStrategy.ABANDON;
     }
 
     /**

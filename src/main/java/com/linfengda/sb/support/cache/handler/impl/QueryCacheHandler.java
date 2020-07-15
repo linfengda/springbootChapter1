@@ -3,10 +3,10 @@ package com.linfengda.sb.support.cache.handler.impl;
 import com.linfengda.sb.support.cache.builder.CacheParamBuilder;
 import com.linfengda.sb.support.cache.entity.dto.CacheDataDTO;
 import com.linfengda.sb.support.cache.entity.dto.CacheParamDTO;
-import com.linfengda.sb.support.cache.entity.type.CacheStableStrategy;
+import com.linfengda.sb.support.cache.entity.type.CacheExtraStrategy;
 import com.linfengda.sb.support.cache.handler.strategy.CacheStrategy;
 import com.linfengda.sb.support.cache.redis.lock.RedisDistributedLock;
-import com.linfengda.sb.support.cache.redis.RedisSupportHolder;
+import com.linfengda.sb.support.cache.config.RedisSupportHolder;
 import lombok.extern.slf4j.Slf4j;
 import org.aopalliance.intercept.MethodInvocation;
 
@@ -26,9 +26,8 @@ public class QueryCacheHandler extends AbstractCacheHandler {
     public Object doCache() throws Throwable {
         log.debug("查询缓存注解处理 handler，dataType={}", getCacheDataDTO().getParam().getDataType());
         CacheParamDTO param = getCacheDataDTO().getParam();
-        if (param.getStrategies().contains(CacheStableStrategy.NO_CACHE_HOT_KEY_MULTI_LOAD)) {
+        if (param.getStrategies().contains(CacheExtraStrategy.NO_CACHE_HOT_KEY_MULTI_LOAD)) {
             CacheStrategy strategy = param.getDataType().getStrategy();
-            strategy.setCache(param, null);
             Object value = strategy.getCache(param);
             if (null != value) {
                 return value;
@@ -37,14 +36,14 @@ public class QueryCacheHandler extends AbstractCacheHandler {
                 return null;
             }
             RedisDistributedLock distributedLock = RedisSupportHolder.getRedisDistributedLock();
-            String key = CacheParamBuilder.INSTANCE.buildObjectKey(param);
+            String lockKey = param.getLockKey();
             try {
-                if (distributedLock.lock(key)) {
+                if (distributedLock.lock(lockKey)) {
                     return doQuery(param);
                 }
                 log.warn("缓存查询超时，将会直接查询DB。");
             }finally {
-                distributedLock.unLock(key);
+                distributedLock.unLock(lockKey);
             }
         }
         return doQuery(param);

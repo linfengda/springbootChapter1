@@ -1,7 +1,7 @@
 package com.linfengda.sb.support.cache.redis.lock;
 
 import com.linfengda.sb.chapter1.common.util.ServerRunTimeUtil;
-import com.linfengda.sb.support.cache.redis.SimpleRedisTemplate;
+import com.linfengda.sb.support.cache.redis.template.SimpleRedisTemplate;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 

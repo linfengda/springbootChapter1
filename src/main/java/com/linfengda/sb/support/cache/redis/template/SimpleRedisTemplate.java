@@ -1,5 +1,6 @@
-package com.linfengda.sb.support.cache.redis;
+package com.linfengda.sb.support.cache.redis.template;
 
+import com.linfengda.sb.support.cache.config.Constant;
 import org.springframework.data.redis.core.RedisTemplate;
 
 import java.util.Collection;
@@ -21,6 +22,10 @@ public class SimpleRedisTemplate extends RedisTemplate<String, Object> {
     }
 
     public void setObject(String key, Object value, Long timeOut, TimeUnit timeUnit) {
+        if (Constant.DEFAULT_NO_EXPIRE_TIME.equals(timeOut)) {
+            setObject(key, value);
+            return;
+        }
         super.opsForValue().set(key, value, timeOut, timeUnit);
     }
 
@@ -37,6 +42,10 @@ public class SimpleRedisTemplate extends RedisTemplate<String, Object> {
     }
 
     public void hashPut(String key, String hashKey, Object value, Long timeOut, TimeUnit timeUnit) {
+        if (Constant.DEFAULT_NO_EXPIRE_TIME.equals(timeOut)) {
+            hashPut(key, hashKey, value);
+            return;
+        }
         super.opsForHash().put(key, hashKey, value);
         super.expire(key, timeOut, timeUnit);
     }
@@ -46,6 +55,10 @@ public class SimpleRedisTemplate extends RedisTemplate<String, Object> {
     }
 
     public void hashPutAll(String key, Map<String, Object> values, Long timeOut, TimeUnit timeUnit) {
+        if (Constant.DEFAULT_NO_EXPIRE_TIME.equals(timeOut)) {
+            hashPutAll(key, values);
+            return;
+        }
         super.opsForHash().putAll(key, values);
         super.expire(key, timeOut, timeUnit);
     }
@@ -62,12 +75,12 @@ public class SimpleRedisTemplate extends RedisTemplate<String, Object> {
         return (List<T>) super.opsForHash().values(key);
     }
 
-    public Long hashDel(String key, String... hashKeys) {
-        return super.opsForHash().delete(key, hashKeys);
-    }
-
     public Boolean hasHashKey(String key, String hashKey) {
         return super.opsForHash().hasKey(key, hashKey);
+    }
+
+    public Long hashDel(String key, String... hashKeys) {
+        return super.opsForHash().delete(key, hashKeys);
     }
 
     public void listAdd(String key, Object value) {
@@ -75,6 +88,10 @@ public class SimpleRedisTemplate extends RedisTemplate<String, Object> {
     }
 
     public void listAdd(String key, Object value, Long timeOut, TimeUnit timeUnit) {
+        if (Constant.DEFAULT_NO_EXPIRE_TIME.equals(timeOut)) {
+            listAdd(key, value);
+            return;
+        }
         super.opsForList().rightPushAll(key, value);
         super.expire(key, timeOut, timeUnit);
     }
@@ -84,11 +101,19 @@ public class SimpleRedisTemplate extends RedisTemplate<String, Object> {
     }
 
     public void listAddAll(String key, Collection values, Long timeOut, TimeUnit timeUnit) {
+        if (Constant.DEFAULT_NO_EXPIRE_TIME.equals(timeOut)) {
+            listAddAll(key, values);
+            return;
+        }
         super.opsForList().rightPushAll(key, values);
         super.expire(key, timeOut, timeUnit);
     }
 
-    public <T> List<T> listGet(String key) {
+    public <T> T listGet(String key) {
+        return (T) super.opsForList().leftPop(key);
+    }
+
+    public <T> List<T> listGetAll(String key) {
         List list = super.opsForList().range(key, 0, -1);
         return null == list ? null : (List<T>) list;
     }
@@ -98,6 +123,10 @@ public class SimpleRedisTemplate extends RedisTemplate<String, Object> {
     }
 
     public void setAdd(String key, Object value, Long timeOut, TimeUnit timeUnit) {
+        if (Constant.DEFAULT_NO_EXPIRE_TIME.equals(timeOut)) {
+            setAdd(key, value);
+            return;
+        }
         super.opsForSet().add(key, value);
         super.expire(key, timeOut, timeUnit);
     }
@@ -112,10 +141,16 @@ public class SimpleRedisTemplate extends RedisTemplate<String, Object> {
         for (Object value : values) {
             super.opsForSet().add(key, value);
         }
-        super.expire(key, timeOut, timeUnit);
+        if (!Constant.DEFAULT_NO_EXPIRE_TIME.equals(timeOut)) {
+            super.expire(key, timeOut, timeUnit);
+        }
     }
 
-    public <T> Set<T> setGet(String key) {
+    public <T> T setGet(String key) {
+        return (T) super.opsForSet().pop(key);
+    }
+
+    public <T> Set<T> setGetAll(String key) {
         Set set = super.opsForSet().members(key);
         return null == set ? null : (Set<T>) set;
     }

@@ -39,10 +39,9 @@ com.linfengda.sb.support.cache.handler.strategy.CacheStrategy
 4.通过互斥锁限制只有一个线程更新缓存，防止缓存击穿
 5.默认缓存空值，且内置布隆过滤器，防止缓存穿透
 6.通过指定缓存数量（maxSize），限制缓存规模：
-对于object类型缓存，maxSize为指定前缀下最大的缓存数量，
-对于hash类型缓存，maxSize为哈希表最大的缓存数量，
-对于list类型缓存，maxSize为列表最大的缓存数量，
-对于set类型缓存，maxSize为集合最大的缓存数量，
-9. 缓存粒度可拆分
-10. 关联加载和关联清除
+对于object类型缓存，maxSize为指定前缀的最大缓存数量，
+对于hash类型缓存，maxSize为哈希表的最大缓存数量，
+对于list类型缓存，maxSize为列表的最大缓存数量，
+对于set类型缓存，maxSize为集合的最大缓存数量，
+7. 关联加载和关联清除
 ```

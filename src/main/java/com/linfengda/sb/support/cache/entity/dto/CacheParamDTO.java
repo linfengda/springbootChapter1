@@ -1,6 +1,7 @@
 package com.linfengda.sb.support.cache.entity.dto;
 
-import com.linfengda.sb.support.cache.entity.type.CacheStableStrategy;
+import com.linfengda.sb.support.cache.builder.HashKey;
+import com.linfengda.sb.support.cache.entity.type.CacheExtraStrategy;
 import com.linfengda.sb.support.cache.entity.type.DataType;
 import lombok.Data;
 
@@ -24,6 +25,22 @@ public class CacheParamDTO {
      */
     private String prefix;
     /**
+     * key
+     */
+    private String key;
+    /**
+     * hashKey
+     */
+    private HashKey hashKey;
+    /**
+     * lru key
+     */
+    private String lruKey;
+    /**
+     * lock key
+     */
+    private String lockKey;
+    /**
      * 缓存失效时间
      */
     private Long timeOut;
@@ -34,7 +51,7 @@ public class CacheParamDTO {
     /**
      * 指定缓存策略
      */
-    private List<CacheStableStrategy> strategies;
+    private List<CacheExtraStrategy> strategies;
     /**
      * 最大缓存数量
      */
@@ -44,8 +61,4 @@ public class CacheParamDTO {
      * @return
      */
     private Boolean allEntries;
-    /**
-     * key列表
-     */
-    private List<String> keys;
 }

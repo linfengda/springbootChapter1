@@ -5,7 +5,9 @@ import com.linfengda.sb.support.cache.annotation.CacheKey;
 import com.linfengda.sb.support.cache.annotation.DeleteCache;
 import com.linfengda.sb.support.cache.annotation.QueryCache;
 import com.linfengda.sb.support.cache.annotation.UpdateCache;
+import com.linfengda.sb.support.cache.config.Constant;
 import com.linfengda.sb.support.cache.entity.meta.CacheMethodMeta;
+import com.linfengda.sb.support.cache.entity.type.CacheExtraStrategy;
 import com.linfengda.sb.support.cache.entity.type.OperationType;
 import com.linfengda.sb.support.cache.exception.BusinessException;
 import org.apache.commons.lang.StringUtils;
@@ -142,7 +144,21 @@ public class CacheMethodMetaBuilder {
                 return cacheMethodMeta;
             }
         }
+        checkCacheMethod(cacheMethodMeta);
         return null;
+    }
+
+    /**
+     * 检查缓存方法，将使用错误遏止在开发阶段
+     * @param cacheMethodMeta
+     */
+    private static void checkCacheMethod(CacheMethodMeta cacheMethodMeta) {
+        if (cacheMethodMeta.getStrategies().contains(CacheExtraStrategy.MAX_SIZE_STRATEGY_LRU) && Constant.DEFAULT_NO_EXPIRE_TIME.equals(cacheMethodMeta.getTimeOut())) {
+            throw new BusinessException("永久缓存无法启用LRU算法淘汰数据！");
+        }
+        if (0 == cacheMethodMeta.getMaxSize()) {
+            throw new BusinessException("缓存最大数量必须大于0！");
+        }
     }
 
     /**

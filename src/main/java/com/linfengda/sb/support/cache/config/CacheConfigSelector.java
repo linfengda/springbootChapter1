@@ -13,6 +13,6 @@ public class CacheConfigSelector extends AdviceModeImportSelector<EnableCache> {
 
     @Override
     protected String[] selectImports(AdviceMode adviceMode) {
-        return new String[] {CacheConfig.class.getName(), RedisConfig.class.getName()};
+        return new String[] {CacheConfig.class.getName(), RedisConfig.class.getName(), RedisSupportHolder.class.getName()};
     }
 }

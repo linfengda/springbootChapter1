@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.linfengda.sb.support.cache.redis.lock.RedisDistributedLock;
-import com.linfengda.sb.support.cache.redis.SimpleRedisTemplate;
+import com.linfengda.sb.support.cache.redis.template.SimpleRedisTemplate;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.context.annotation.Bean;

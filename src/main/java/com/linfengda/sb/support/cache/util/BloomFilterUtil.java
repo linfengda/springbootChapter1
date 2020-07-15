@@ -2,7 +2,7 @@ package com.linfengda.sb.support.cache.util;
 
 import com.google.common.hash.BloomFilter;
 import com.google.common.hash.Funnel;
-import com.linfengda.sb.support.cache.redis.RedisSupportHolder;
+import com.linfengda.sb.support.cache.config.RedisSupportHolder;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 
 /**

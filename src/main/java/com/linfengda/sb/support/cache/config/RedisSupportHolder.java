@@ -1,7 +1,9 @@
-package com.linfengda.sb.support.cache.redis;
+package com.linfengda.sb.support.cache.config;
 
 import com.linfengda.sb.support.cache.redis.lock.RedisDistributedLock;
+import com.linfengda.sb.support.cache.redis.template.SimpleRedisTemplate;
 import org.springframework.beans.BeansException;
+import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
@@ -12,6 +14,7 @@ import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
  * @author: linfengda
  * @date: 2020-07-14 16:24
  */
+@SpringBootConfiguration
 public class RedisSupportHolder implements ApplicationContextAware {
     private static ApplicationContext applicationContext = null;
 

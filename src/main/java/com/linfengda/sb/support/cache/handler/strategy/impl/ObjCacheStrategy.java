@@ -1,13 +1,12 @@
 package com.linfengda.sb.support.cache.handler.strategy.impl;
 
-import com.linfengda.sb.support.cache.builder.CacheParamBuilder;
 import com.linfengda.sb.support.cache.config.Constant;
 import com.linfengda.sb.support.cache.entity.dto.CacheParamDTO;
-import com.linfengda.sb.support.cache.entity.type.CacheStableStrategy;
-import com.linfengda.sb.support.cache.handler.strategy.CacheStrategy;
-import com.linfengda.sb.support.cache.redis.RedisSupportHolder;
-import com.linfengda.sb.support.cache.redis.SimpleRedisTemplate;
+import com.linfengda.sb.support.cache.entity.type.CacheExtraStrategy;
+import com.linfengda.sb.support.cache.entity.type.CacheSizeStrategy;
+import com.linfengda.sb.support.cache.handler.strategy.AbstractCacheStrategy;
 import com.linfengda.sb.support.cache.util.CacheUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.CollectionUtils;
 
 import java.util.Set;
@@ -19,49 +18,47 @@ import java.util.concurrent.TimeUnit;
  * @author: linfengda
  * @date: 2020-07-08 16:17
  */
-public class ObjCacheStrategy implements CacheStrategy {
+@Slf4j
+public class ObjCacheStrategy extends AbstractCacheStrategy {
 
     @Override
     public Object getCache(CacheParamDTO param) {
-        SimpleRedisTemplate simpleRedisTemplate = RedisSupportHolder.getSimpleRedisTemplate();
-        String key = CacheParamBuilder.INSTANCE.buildObjectKey(param);
-        Object value = simpleRedisTemplate.getObject(key);
+        String key = param.getKey();
+        Object value = getSimpleRedisTemplate().getObject(key);
         return value;
     }
 
     @Override
     public void setCache(CacheParamDTO param, Object value) {
-        if (isMaxCacheSize(param)) {
-            if (param.getStrategies().contains(CacheStableStrategy.MAX_SIZE_STRATEGY_ABANDON)) {
-
-            }
+        CacheSizeStrategy cacheSizeStrategy = getCacheSizeStrategy(param);
+        if (CacheSizeStrategy.ABANDON == cacheSizeStrategy) {
+            log.debug("当前缓存大小超过限制：{}，将不再缓存数据！", param.getMaxSize());
+            return;
         }
-        SimpleRedisTemplate simpleRedisTemplate = RedisSupportHolder.getSimpleRedisTemplate();
-        String key = CacheParamBuilder.INSTANCE.buildObjectKey(param);
+        while(CacheSizeStrategy.LRU == cacheSizeStrategy) {
+            deleteLRU(param);
+            cacheSizeStrategy = getCacheSizeStrategy(param);
+        }
         long timeOutMillis = param.getTimeUnit().toMillis(param.getTimeOut());
-        if (Constant.DEFAULT_NO_EXPIRE_TIME == timeOutMillis) {
-            simpleRedisTemplate.setObject(key, value);
-        }else {
-            if (param.getStrategies().contains(CacheStableStrategy.NO_CACHE_SNOW_SLIDE)) {
-                timeOutMillis = CacheUtil.getRandomTime(timeOutMillis);
-            }
-            simpleRedisTemplate.setObject(key, value, timeOutMillis, TimeUnit.MILLISECONDS);
+        if (param.getStrategies().contains(CacheExtraStrategy.NO_CACHE_SNOW_SLIDE)) {
+            timeOutMillis = CacheUtil.getRandomTime(timeOutMillis);
         }
+        getSimpleRedisTemplate().setObject(param.getKey(), value, timeOutMillis, TimeUnit.MILLISECONDS);
+        getSimpleRedisTemplate().opsForList().remove(param.getLruKey(), 1, param.getKey());
+        getSimpleRedisTemplate().listAdd(param.getLruKey(), param.getKey());
     }
 
     @Override
     public Boolean hasKey(CacheParamDTO param) {
-        SimpleRedisTemplate simpleRedisTemplate = RedisSupportHolder.getSimpleRedisTemplate();
-        String key = CacheParamBuilder.INSTANCE.buildObjectKey(param);
-        return simpleRedisTemplate.hasKey(key);
+        String key = param.getKey();
+        return getSimpleRedisTemplate().hasKey(key);
     }
 
     @Override
     public Long getCurrentCacheSize(CacheParamDTO param) {
         String prefix = param.getPrefix();
         String keyPattern = prefix + Constant.ASTERISK;
-        SimpleRedisTemplate simpleRedisTemplate = RedisSupportHolder.getSimpleRedisTemplate();
-        Set<String> set = simpleRedisTemplate.keys(keyPattern);
+        Set<String> set = getSimpleRedisTemplate().keys(keyPattern);
         if (CollectionUtils.isEmpty(set)) {
             return 0L;
         }

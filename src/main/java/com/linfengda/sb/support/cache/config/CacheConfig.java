@@ -2,6 +2,7 @@ package com.linfengda.sb.support.cache.config;
 
 import com.linfengda.sb.support.cache.interceptor.*;
 import org.springframework.beans.factory.config.BeanDefinition;
+import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Role;
@@ -12,7 +13,7 @@ import org.springframework.context.annotation.Role;
  * @author linfengda
  * @create 2020-03-24 18:38
  */
-@Configuration
+@SpringBootConfiguration
 public class CacheConfig extends AbstractCacheConfig {
 
     @Bean

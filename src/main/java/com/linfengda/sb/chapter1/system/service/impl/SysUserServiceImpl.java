@@ -10,7 +10,7 @@ import com.linfengda.sb.chapter1.system.entity.vo.UserVO;
 import com.linfengda.sb.chapter1.system.service.SysUserService;
 import com.linfengda.sb.support.cache.annotation.CacheKey;
 import com.linfengda.sb.support.cache.annotation.QueryCache;
-import com.linfengda.sb.support.cache.entity.type.CacheStableStrategy;
+import com.linfengda.sb.support.cache.entity.type.CacheExtraStrategy;
 import com.linfengda.sb.support.cache.entity.type.DataType;
 import com.linfengda.sb.support.orm.BaseService;
 import com.linfengda.sb.support.orm.entity.SetValue;
@@ -41,7 +41,7 @@ public class SysUserServiceImpl extends BaseService implements SysUserService {
         return page;
     }
 
-    @QueryCache(type = DataType.HASH, prefix = "sys:user", timeOut = 1, timeUnit = TimeUnit.DAYS, strategies = {CacheStableStrategy.NO_CACHE_SNOW_SLIDE, CacheStableStrategy.NO_CACHE_HOT_KEY_MULTI_LOAD})
+    @QueryCache(maxSize = 1, type = DataType.OBJECT, prefix = "sys:user", timeOut = 1, timeUnit = TimeUnit.DAYS, strategies = {CacheExtraStrategy.NO_CACHE_SNOW_SLIDE, CacheExtraStrategy.NO_CACHE_HOT_KEY_MULTI_LOAD, CacheExtraStrategy.MAX_SIZE_STRATEGY_LRU})
     @Override
     public UserVO getUserInfo(@CacheKey Integer userId) throws Exception {
         SysUserPO sysUserPO = findByPrimaryKey(userId, SysUserPO.class);

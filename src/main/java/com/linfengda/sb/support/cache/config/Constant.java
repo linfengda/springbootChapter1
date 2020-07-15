@@ -13,15 +13,27 @@ public interface Constant {
     /**
      * 星号
      */
-    String ASTERISK = ":";
+    String ASTERISK = "*";
     /**
-     * 默认缓存过期时间
+     * LRU记录前缀
+     */
+    String LRU_RECORD_PREFIX = "lru:record";
+    /**
+     * LOCK前缀
+     */
+    String LOCK_PREFIX = "lock";
+    /**
+     * 默认不设置缓存过期时间
      */
     Long DEFAULT_NO_EXPIRE_TIME = -1L;
     /**
-     * 默认最大缓存数量
+     * 默认不设置最大缓存数量
      */
     Long DEFAULT_NO_SIZE_LIMIT = -1L;
+    /**
+     * 默认LRU一次性淘汰数量
+     */
+    Integer DEFAULT_LRU_REMOVE_NUM = 10;
     /**
      * 防止缓存雪崩随机时间范围：1s
      */

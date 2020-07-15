@@ -3,7 +3,7 @@ package com.linfengda.sb.support.middleware.redis.performance.test;
 import com.linfengda.sb.chapter1.Chapter1Application;
 import com.linfengda.sb.support.middleware.redis.performance.entity.MySon;
 import com.linfengda.sb.support.middleware.redis.performance.entity.Pig;
-import com.linfengda.sb.support.cache.redis.SimpleRedisTemplate;
+import com.linfengda.sb.support.cache.redis.template.SimpleRedisTemplate;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -136,7 +136,7 @@ public class SerializerStructureTest {
 
         log.info("===================================redis list反序列化");
         // 返回列表中指定位置的元素（不会移除列表中元素）
-        List<Pig> pigs = jacksonRedisTemplate.listGet("pigFamily");
+        List<Pig> pigs = jacksonRedisTemplate.listGetAll("pigFamily");
         for (Pig pig : pigs) {
             log.info(pig.toString());
         }
@@ -185,7 +185,7 @@ public class SerializerStructureTest {
 
         log.info("===================================redis set反序列化");
         // 返回集合中的所有元素
-        Set<Pig> pigs = jacksonRedisTemplate.setGet("pigFamily");
+        Set<Pig> pigs = jacksonRedisTemplate.setGetAll("pigFamily");
         for (Pig pig : pigs) {
             log.info(pig.toString());
         }

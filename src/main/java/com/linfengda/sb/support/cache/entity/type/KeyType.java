@@ -11,7 +11,7 @@ import lombok.Getter;
  */
 @Getter
 @AllArgsConstructor
-public enum KeyBaseType {
+public enum KeyType {
     /**
      * java.lang.String
      */
@@ -61,7 +61,7 @@ public enum KeyBaseType {
     private String type;
 
     public static boolean isBaseType(String type){
-        for (KeyBaseType value : values()) {
+        for (KeyType value : values()) {
             if (value.getType().equals(type)) {
                 return true;
             }
