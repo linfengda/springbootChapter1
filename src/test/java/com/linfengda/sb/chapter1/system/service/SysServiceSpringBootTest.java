@@ -13,7 +13,6 @@ import org.junit.runners.MethodSorters;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.concurrent.CountDownLatch;
@@ -59,6 +58,18 @@ public class SysServiceSpringBootTest {
         }
         while(true) {
             Thread.sleep(60000);
+        }
+    }
+
+    /**
+     * 测试LRU缓存
+     * @throws Exception
+     */
+    @Test
+    public void testLruCache() throws Exception {
+        for (int i = 1; i <= 11; i++) {
+            UserVO userVO = sysUserService.getUserInfo(i);
+            log.info("{}", JSON.toJSONString(userVO));
         }
     }
 }

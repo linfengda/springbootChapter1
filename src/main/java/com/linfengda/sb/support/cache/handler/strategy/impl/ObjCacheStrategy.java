@@ -3,6 +3,7 @@ package com.linfengda.sb.support.cache.handler.strategy.impl;
 import com.linfengda.sb.support.cache.config.Constant;
 import com.linfengda.sb.support.cache.entity.dto.CacheParamDTO;
 import com.linfengda.sb.support.cache.entity.type.CacheExtraStrategy;
+import com.linfengda.sb.support.cache.entity.type.CacheMaxSizeStrategy;
 import com.linfengda.sb.support.cache.entity.type.CacheSizeStrategy;
 import com.linfengda.sb.support.cache.handler.strategy.AbstractCacheStrategy;
 import com.linfengda.sb.support.cache.util.CacheUtil;
@@ -23,29 +24,28 @@ public class ObjCacheStrategy extends AbstractCacheStrategy {
 
     @Override
     public Object getCache(CacheParamDTO param) {
-        String key = param.getKey();
-        Object value = getSimpleRedisTemplate().getObject(key);
+        Object value = getSimpleRedisTemplate().getObject(param.getKey());
+        if (CacheMaxSizeStrategy.MAX_SIZE_STRATEGY_LRU == param.getMaxSizeStrategy()) {
+            getSimpleRedisTemplate().opsForZSet().add(param.getLruKey(), param.getKey(), CacheUtil.getLruKeyScore());
+        }
         return value;
     }
 
     @Override
     public void setCache(CacheParamDTO param, Object value) {
-        CacheSizeStrategy cacheSizeStrategy = getCacheSizeStrategy(param);
-        if (CacheSizeStrategy.ABANDON == cacheSizeStrategy) {
+        CacheSizeStrategy cacheSizeStrategy = checkSize(param);
+        if (CacheSizeStrategy.OVER_SIZE == cacheSizeStrategy) {
             log.debug("当前缓存大小超过限制：{}，将不再缓存数据！", param.getMaxSize());
             return;
-        }
-        while(CacheSizeStrategy.LRU == cacheSizeStrategy) {
-            deleteLRU(param);
-            cacheSizeStrategy = getCacheSizeStrategy(param);
         }
         long timeOutMillis = param.getTimeUnit().toMillis(param.getTimeOut());
         if (param.getStrategies().contains(CacheExtraStrategy.NO_CACHE_SNOW_SLIDE)) {
             timeOutMillis = CacheUtil.getRandomTime(timeOutMillis);
         }
         getSimpleRedisTemplate().setObject(param.getKey(), value, timeOutMillis, TimeUnit.MILLISECONDS);
-        getSimpleRedisTemplate().opsForList().remove(param.getLruKey(), 1, param.getKey());
-        getSimpleRedisTemplate().listAdd(param.getLruKey(), param.getKey());
+        if (CacheMaxSizeStrategy.MAX_SIZE_STRATEGY_LRU == param.getMaxSizeStrategy()) {
+            getSimpleRedisTemplate().opsForZSet().add(param.getLruKey(), param.getKey(), CacheUtil.getLruKeyScore());
+        }
     }
 
     @Override

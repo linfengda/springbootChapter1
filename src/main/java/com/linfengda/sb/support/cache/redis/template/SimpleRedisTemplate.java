@@ -2,7 +2,6 @@ package com.linfengda.sb.support.cache.redis.template;
 
 import com.linfengda.sb.support.cache.config.Constant;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.util.CollectionUtils;
 
 import java.util.Collection;
 import java.util.List;
@@ -115,8 +114,7 @@ public class SimpleRedisTemplate extends RedisTemplate<String, Object> {
     }
 
     public <T> List<T> listGetAll(String key) {
-        List list = super.opsForList().range(key, 0, -1);
-        return null == list ? null : (List<T>) list;
+        return (List<T>) super.opsForList().range(key, 0, -1);
     }
 
     public void setAdd(String key, Object value) {
@@ -152,42 +150,10 @@ public class SimpleRedisTemplate extends RedisTemplate<String, Object> {
     }
 
     public <T> Set<T> setGetAll(String key) {
-        Set set = super.opsForSet().members(key);
-        return null == set ? null : (Set<T>) set;
+        return  (Set<T>) super.opsForSet().members(key);
     }
 
     public Long setDelete(String key, Object... values) {
         return super.opsForSet().remove(key, values);
-    }
-
-
-    public void zSetAdd(String key, Object value, Double score) {
-        super.opsForZSet().add(key, value, score);
-    }
-
-    public void zSetAdd(String key, Object value, Double score, Long timeOut, TimeUnit timeUnit) {
-        if (Constant.DEFAULT_NO_EXPIRE_TIME.equals(timeOut)) {
-            zSetAdd(key, value, score);
-            return;
-        }
-        super.opsForZSet().add(key, value, score);
-        super.expire(key, timeOut, timeUnit);
-    }
-
-    public <T> T zSetGet(String key) {
-        Set<T> set = (Set<T>) super.opsForZSet().range(key, 0, 1);
-        if (CollectionUtils.isEmpty(set)) {
-            return null;
-        }
-        return (T) set.toArray()[0];
-    }
-
-    public <T> Set<T> zSetGetAll(String key) {
-        Set<T> set = (Set<T>) super.opsForZSet().range(key, 0, -1);
-        return null == set ? null : set;
-    }
-
-    public Long zSetDelete(String key, Object... values) {
-        return super.opsForZSet().remove(key, values);
     }
 }

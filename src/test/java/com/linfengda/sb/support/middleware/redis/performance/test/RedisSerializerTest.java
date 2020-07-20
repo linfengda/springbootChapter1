@@ -1,29 +1,37 @@
 package com.linfengda.sb.support.middleware.redis.performance.test;
 
-import com.linfengda.sb.support.middleware.redis.performance.entity.bo.StringClazz;
 import com.linfengda.sb.support.cache.redis.lettuce.serializer.ProtoStuffSerializer;
+import com.linfengda.sb.support.middleware.redis.performance.entity.bo.StringClazz;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 
 /**
- * 描述: 序列化效率测试
+ * 描述: redis序列化效率测试
  *
  * @author linfengda
  * @create 2018-09-13 17:26
  */
 @Slf4j
-public class SerializerPerformanceTest {
+@RunWith(JUnit4.class)
+public class RedisSerializerTest {
 
-    public static void main(String[] args) {
+    @Test
+    public void redisSerializeTest() {
         try {
-
             StringClazz obj = new StringClazz();
             doTest(obj, (int) Math.pow(10, 2));
             log.info("clear any first load--------------------------------------------------------------------------------------");
 
+            // 序列化和反序列化1000次
             doTest(obj, (int) Math.pow(10, 3));
+            // 序列化和反序列化10000次
             doTest(obj, (int) Math.pow(10, 4));
+            // 序列化和反序列化100000次
             doTest(obj, (int) Math.pow(10, 5));
+            // 序列化和反序列化1000000次
             doTest(obj, (int) Math.pow(10, 6));
 
         } catch (Exception e) {
@@ -31,7 +39,7 @@ public class SerializerPerformanceTest {
         }
     }
 
-    private static void doTest(Object obj, int x) throws Exception {
+    private void doTest(Object obj, int x) throws Exception {
         log.info("task start--------------------------------------------------------------------------------------");
 
         // 测试序列化效率
@@ -44,7 +52,7 @@ public class SerializerPerformanceTest {
         log.info("task end--------------------------------------------------------------------------------------");
     }
 
-    private static void doProtoStuffSerialize(Object obj, int x) throws Exception {
+    private void doProtoStuffSerialize(Object obj, int x) throws Exception {
         ProtoStuffSerializer protoStuffSerializer = new ProtoStuffSerializer();
 
         long t1 = System.currentTimeMillis();
@@ -59,7 +67,7 @@ public class SerializerPerformanceTest {
         log.info("序列化时长["+ (t2-t1) +"]ms");
     }
 
-    private static void doJacksonSerialize(Object obj, int x) throws Exception {
+    private void doJacksonSerialize(Object obj, int x) throws Exception {
         Jackson2JsonRedisSerializer jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer(Object.class);
 
         long t1 = System.currentTimeMillis();
@@ -74,7 +82,7 @@ public class SerializerPerformanceTest {
         log.info("序列化时长["+ (t2-t1) +"]ms");
     }
 
-    private static void doProtoStuffDeserialize(Object obj, int x) throws Exception {
+    private void doProtoStuffDeserialize(Object obj, int x) throws Exception {
         ProtoStuffSerializer protoStuffSerializer = new ProtoStuffSerializer();
         byte[] bytes = protoStuffSerializer.serialize(obj);
         Class clazz = obj.getClass();
@@ -91,7 +99,7 @@ public class SerializerPerformanceTest {
         log.info("反序列化时长["+ (t2-t1) +"]ms");
     }
 
-    private static void doJacksonDeserialize(Object obj, int x) throws Exception {
+    private void doJacksonDeserialize(Object obj, int x) throws Exception {
         Jackson2JsonRedisSerializer jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer(Object.class);
         byte[] bytes = jackson2JsonRedisSerializer.serialize(obj);
 

@@ -1,9 +1,9 @@
 package com.linfengda.sb.support.middleware.redis.performance.test;
 
 import com.linfengda.sb.chapter1.Chapter1Application;
+import com.linfengda.sb.support.cache.redis.template.SimpleRedisTemplate;
 import com.linfengda.sb.support.middleware.redis.performance.entity.MySon;
 import com.linfengda.sb.support.middleware.redis.performance.entity.Pig;
-import com.linfengda.sb.support.cache.redis.template.SimpleRedisTemplate;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -26,24 +26,13 @@ import java.util.*;
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Chapter1Application.class, webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class SerializerStructureTest {
-
+public class SimpleRedisTemplateTest {
     @Resource
-    private SimpleRedisTemplate jacksonRedisTemplate;
+    private SimpleRedisTemplate simpleRedisTemplate;
+
 
     @Test
-    public void runTest() {
-        try {
-            //JavaBeanSerializeTest();
-            //ListSerializeTest();
-            //SetSerializeTest();
-            HashSerializeTest();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void JavaBeanSerializeTest() {
+    public void testBean() {
         MySon mySon = new MySon();
         mySon.setF1(11);
         mySon.setF2(111111l);
@@ -89,14 +78,15 @@ public class SerializerStructureTest {
         mySon.setPapaName("papa");
 
         log.info("===================================redis序列化");
-        jacksonRedisTemplate.setObject("mySon", mySon);
+        simpleRedisTemplate.setObject("mySon", mySon);
 
         log.info("===================================redis反序列化");
-        MySon son = jacksonRedisTemplate.getObject("mySon");
+        MySon son = simpleRedisTemplate.getObject("mySon");
         log.info("内容[" + son.toString() + "]");
     }
 
-    private void ListSerializeTest() {
+    @Test
+    public void testList() {
         Pig peggy = new Pig();
         peggy.setId(1);
         peggy.setCode("peggy");
@@ -130,19 +120,20 @@ public class SerializerStructureTest {
         pigFamily.add(wilson);
 
         log.info("===================================redis list序列化");
-        jacksonRedisTemplate.listAdd("pigFamily", peggy);
-        jacksonRedisTemplate.listAdd("pigFamily", george);
-        jacksonRedisTemplate.listAddAll("pigFamily", pigFamily);
+        simpleRedisTemplate.listAdd("pigFamily", peggy);
+        simpleRedisTemplate.listAdd("pigFamily", george);
+        simpleRedisTemplate.listAddAll("pigFamily", pigFamily);
 
         log.info("===================================redis list反序列化");
         // 返回列表中指定位置的元素（不会移除列表中元素）
-        List<Pig> pigs = jacksonRedisTemplate.listGetAll("pigFamily");
+        List<Pig> pigs = simpleRedisTemplate.listGetAll("pigFamily");
         for (Pig pig : pigs) {
             log.info(pig.toString());
         }
     }
 
-    private void SetSerializeTest() {
+    @Test
+    public void testSet() {
         Pig peggy = new Pig();
         peggy.setId(1);
         peggy.setCode("peggy");
@@ -177,21 +168,22 @@ public class SerializerStructureTest {
 
         log.info("===================================redis set序列化");
         // 向集合中添加元素
-        jacksonRedisTemplate.setAdd("pigFamily", peggy);
-        jacksonRedisTemplate.setAdd("pigFamily", george);
-        jacksonRedisTemplate.setAddAll("pigFamily", pigFamily);
+        simpleRedisTemplate.setAdd("pigFamily", peggy);
+        simpleRedisTemplate.setAdd("pigFamily", george);
+        simpleRedisTemplate.setAddAll("pigFamily", pigFamily);
         // 移除集合中一个或多个元素
-        jacksonRedisTemplate.setDelete("pigFamily", wilson);
+        simpleRedisTemplate.setDelete("pigFamily", wilson);
 
         log.info("===================================redis set反序列化");
         // 返回集合中的所有元素
-        Set<Pig> pigs = jacksonRedisTemplate.setGetAll("pigFamily");
+        Set<Pig> pigs = simpleRedisTemplate.setGetAll("pigFamily");
         for (Pig pig : pigs) {
             log.info(pig.toString());
         }
     }
 
-    private void HashSerializeTest() {
+    @Test
+    public void testHash() {
         Pig peggy = new Pig();
         peggy.setId(1);
         peggy.setCode("peggy");
@@ -222,16 +214,16 @@ public class SerializerStructureTest {
 
         log.info("===================================redis hash序列化");
         // 向哈希表中添加元素
-        jacksonRedisTemplate.hashPut("pigFamily", "peggy", peggy);
-        jacksonRedisTemplate.hashPut("pigFamily", "george", george);
-        jacksonRedisTemplate.hashPut("pigFamily", "tom", tom);
-        jacksonRedisTemplate.hashPut("pigFamily", "wilson", wilson);
+        simpleRedisTemplate.hashPut("pigFamily", "peggy", peggy);
+        simpleRedisTemplate.hashPut("pigFamily", "george", george);
+        simpleRedisTemplate.hashPut("pigFamily", "tom", tom);
+        simpleRedisTemplate.hashPut("pigFamily", "wilson", wilson);
         // 移除哈希表中一个或多个元素
-        jacksonRedisTemplate.hashDel("pigFamily", "wilson");
+        simpleRedisTemplate.hashDel("pigFamily", "wilson");
 
         log.info("===================================redis hash反序列化");
         // 获取哈希表中的元素
-        Pig peggyPig = jacksonRedisTemplate.hashGet("pigFamily", "peggy");
+        Pig peggyPig = simpleRedisTemplate.hashGet("pigFamily", "peggy");
         log.info(peggyPig.toString());
     }
 }

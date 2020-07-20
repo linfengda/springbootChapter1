@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /**
- * 描述: 缓存最大数量策略类型
+ * 描述: 缓存最大数量类型
  *
  * @author: linfengda
  * @date: 2020-07-15 16:08
@@ -13,17 +13,17 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum CacheSizeStrategy {
     /**
+     * 未限制缓存数量
+     */
+    UN_LIMIT("unLimit", "未限制缓存数量"),
+    /**
      * 正常缓存数量
      */
-    NORMAL("normal", "正常缓存数量"),
+    NORMAL_SIZE("normalSize", "正常缓存数量"),
     /**
-     * 达到缓存最大数量：抛弃
+     * 超出最大缓存数量
      */
-    ABANDON("abandon", "达到缓存最大数量：抛弃"),
-    /**
-     * 达到缓存最大数量：LRU淘汰
-     */
-    LRU("lru", "达到缓存最大数量：LRU淘汰"),
+    OVER_SIZE("overSize", "超出最大缓存数量"),
     ;
 
     /**

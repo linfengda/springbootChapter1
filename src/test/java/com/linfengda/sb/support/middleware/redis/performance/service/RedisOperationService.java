@@ -8,8 +8,6 @@ package com.linfengda.sb.support.middleware.redis.performance.service;
  */
 public interface RedisOperationService {
 
-    void simpleStringOperation(int count) throws Exception;
-
     void stringSetOperation() throws Exception;
 
     void stringSetGetOperation() throws Exception;

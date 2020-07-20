@@ -1,9 +1,9 @@
 package com.linfengda.sb.support.middleware.redis.performance.service;
 
 import com.alibaba.fastjson.JSONObject;
-import com.linfengda.sb.support.middleware.redis.performance.helper.LettuceTemplateHelper;
-import com.linfengda.sb.support.cache.redis.lettuce.LettuceTemplate;
 import com.linfengda.sb.chapter1.system.entity.vo.UserListVO;
+import com.linfengda.sb.support.cache.redis.lettuce.LettuceTemplate;
+import com.linfengda.sb.support.middleware.redis.performance.helper.LettuceTemplateHelper;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -15,28 +15,6 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class LettuceRedisOperationServiceImpl implements RedisOperationService {
     private static LettuceTemplate<String, Object> lettuceTemplate = LettuceTemplateHelper.getTemplate();
-
-    @Override
-    public void simpleStringOperation(int count) throws Exception {
-        long setTime = 0;
-        long getTime = 0;
-        long delTime = 0;
-        for (int i = 0; i < count; i++) {
-            long t0 = System.currentTimeMillis();
-            lettuceTemplate.set("key", "value");
-            long t1 = System.currentTimeMillis();
-            lettuceTemplate.get("key");
-            long t2 = System.currentTimeMillis();
-            lettuceTemplate.del("key");
-            long t3 = System.currentTimeMillis();
-            setTime += t1-t0;
-            getTime += t2-t1;
-            delTime += t3-t2;
-        }
-        log.info("------------------------------------------------<string command> set service average time={}ms", setTime/count);
-        log.info("------------------------------------------------<string command> get service average time={}ms", getTime/count);
-        log.info("------------------------------------------------<string command> del service average time={}ms", delTime/count);
-    }
 
     @Override
     public void stringSetOperation() throws Exception {

@@ -1,6 +1,7 @@
 package com.linfengda.sb.support.cache.annotation;
 
 import com.linfengda.sb.support.cache.entity.type.CacheExtraStrategy;
+import com.linfengda.sb.support.cache.entity.type.CacheMaxSizeStrategy;
 import com.linfengda.sb.support.cache.entity.type.DataType;
 
 import java.lang.annotation.ElementType;
@@ -36,9 +37,13 @@ public @interface UpdateCache {
      */
     TimeUnit timeUnit() default TimeUnit.HOURS;
     /**
-     * 指定缓存策略
+     * 缓存策略
      */
     CacheExtraStrategy[] strategies() default {};
+    /**
+     * 缓存最大数量淘汰策略
+     */
+    CacheMaxSizeStrategy maxSizeStrategy() default CacheMaxSizeStrategy.MAX_SIZE_STRATEGY_ABANDON;
     /**
      * 最大缓存数量
      */

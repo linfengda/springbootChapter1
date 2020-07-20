@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.data.redis.connection.RedisClusterConfiguration;
 import org.springframework.data.redis.connection.RedisNode;
+import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
@@ -31,15 +32,15 @@ public class JedisTemplateHelper {
 
     public static void init() {
 
-        /*RedisStandaloneConfiguration standaloneConfiguration = new RedisStandaloneConfiguration();
+        RedisStandaloneConfiguration standaloneConfiguration = new RedisStandaloneConfiguration();
         standaloneConfiguration.setHostName("127.0.0.1");
         standaloneConfiguration.setPort(6379);
-        standaloneConfiguration.setDatabase(0);
+        standaloneConfiguration.setDatabase(1);
         // 获取连接管理工厂
-        JedisConnectionFactory jedisConnectionFactory = new JedisConnectionFactory(standaloneConfiguration);*/
+        JedisConnectionFactory jedisConnectionFactory = new JedisConnectionFactory(standaloneConfiguration);
 
         // 获取集群机器配置
-        RedisClusterConfiguration clusterConfig = new RedisClusterConfiguration();
+        /*RedisClusterConfiguration clusterConfig = new RedisClusterConfiguration();
         clusterConfig.setClusterNodes(getClusterNodes("47.106.79.8:7001,47.106.79.8:7002,47.106.79.8:7003,119.23.181.11:7004,119.23.181.11:7005,119.23.181.11:7006"));
         JedisPoolConfig jedisPoolConfig = new JedisPoolConfig();
         jedisPoolConfig.setMaxTotal(200);
@@ -48,7 +49,7 @@ public class JedisTemplateHelper {
         jedisPoolConfig.setMaxWaitMillis(-1);
         // 获取连接管理工厂
         JedisConnectionFactory jedisConnectionFactory = new JedisConnectionFactory(clusterConfig, jedisPoolConfig);
-        jedisConnectionFactory.afterPropertiesSet();
+        jedisConnectionFactory.afterPropertiesSet();*/
         // 获取序列化器
         Jackson2JsonRedisSerializer jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer(Object.class);
         ObjectMapper om = new ObjectMapper();

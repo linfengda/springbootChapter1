@@ -38,6 +38,7 @@ public enum CacheParamBuilder {
         cacheParamDTO.setTimeOut(cacheMethodMeta.getTimeOut());
         cacheParamDTO.setTimeUnit(cacheMethodMeta.getTimeUnit());
         cacheParamDTO.setStrategies(cacheMethodMeta.getStrategies());
+        cacheParamDTO.setMaxSizeStrategy(cacheMethodMeta.getMaxSizeStrategy());
         cacheParamDTO.setMaxSize(cacheMethodMeta.getMaxSize());
         cacheParamDTO.setAllEntries(cacheMethodMeta.getAllEntries());
         // 初始化缓存key

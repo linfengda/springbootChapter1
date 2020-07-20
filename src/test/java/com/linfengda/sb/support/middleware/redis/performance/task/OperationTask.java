@@ -8,14 +8,14 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicLong;
 
 /**
- * 描述: 客户端并发性能测试单元
+ * 描述: 重复执行某个redis操作，并记录延迟次数
  *
  * @author linfengda
  * @create 2019-02-19 11:35
  */
 @Slf4j
 @Data
-public class MultiTestTask implements Runnable {
+public class OperationTask implements Runnable {
     private RedisOperationService redisOperationService;
     private CountDownLatch startCountDown;
     private CountDownLatch finishCountDown;
@@ -24,14 +24,18 @@ public class MultiTestTask implements Runnable {
     private long testNum;
     private long slowMillSeconds;
 
+
     @Override
     public void run() {
         try {
             startCountDown.await();
             long c = 0;
             while (c < testNum) {
-                boolean isDelay = test();
-                if (isDelay){
+                long t0 = System.currentTimeMillis();
+                redisOperationService.stringSetGetOperation();
+                long t1 = System.currentTimeMillis()-t0;
+                log.info("------------------------------------------------<string command> service use time={}ms", t1);
+                if (t1 > slowMillSeconds) {
                     delayCount.incrementAndGet();
                 }
                 count.incrementAndGet();
@@ -42,16 +46,5 @@ public class MultiTestTask implements Runnable {
         } finally {
             finishCountDown.countDown();
         }
-    }
-
-    private boolean test() throws Exception {
-        long t0 = System.currentTimeMillis();
-        redisOperationService.stringSetGetOperation();
-        long t1 = System.currentTimeMillis()-t0;
-        log.info("------------------------------------------------<string command> service use time={}ms", t1);
-        if (t1 > slowMillSeconds) {
-            return true;
-        }
-        return false;
     }
 }

@@ -28,4 +28,21 @@ public class CacheUtil {
         Integer randomTime = random.nextInt(Constant.DEFAULT_NO_CACHE_SNOW_SLIDE_RANDOM_MS);
         return timeOutMillis + randomTime;
     }
+
+    /**
+     * 获取lru键的过期时间
+     * @return  当前时间戳
+     */
+    public static double getLruKeyScore() {
+        return (double) System.currentTimeMillis();
+    }
+
+    /**
+     * 解析lru键的过期时间
+     * @param score 过期时间
+     * @return      过期时间
+     */
+    public static double parseLruKeyScore(double score) {
+        return (long) score;
+    }
 }

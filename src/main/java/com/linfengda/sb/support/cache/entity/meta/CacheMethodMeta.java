@@ -1,6 +1,7 @@
 package com.linfengda.sb.support.cache.entity.meta;
 
 import com.linfengda.sb.support.cache.entity.type.CacheExtraStrategy;
+import com.linfengda.sb.support.cache.entity.type.CacheMaxSizeStrategy;
 import com.linfengda.sb.support.cache.entity.type.DataType;
 import lombok.Data;
 
@@ -42,9 +43,13 @@ public class CacheMethodMeta {
      */
     private TimeUnit timeUnit;
     /**
-     * 指定缓存策略
+     * 缓存策略
      */
     private List<CacheExtraStrategy> strategies;
+    /**
+     * 缓存最大数量淘汰策略
+     */
+    private CacheMaxSizeStrategy maxSizeStrategy;
     /**
      * 最大缓存数量
      */

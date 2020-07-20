@@ -8,14 +8,14 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicLong;
 
 /**
- * 描述: qps测试单元
+ * 描述: 重复查询redis数据，并分别记录落在1ms，10ms，20ms内的查询数
  *
  * @author linfengda
  * @create 2019-02-28 16:31
  */
 @Slf4j
 @Data
-public class QpsTestTask implements Runnable {
+public class QpsTask implements Runnable {
     private RedisOperationService redisOperationService;
     private CountDownLatch startCountDown;
     private CountDownLatch finishCountDown;
