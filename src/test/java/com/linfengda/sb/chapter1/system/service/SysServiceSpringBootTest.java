@@ -37,12 +37,12 @@ public class SysServiceSpringBootTest {
     }
 
     /**
-     * 测试多线程查询缓存方法
+     * 测试多个线程同时更新缓存
      * @throws Exception
      */
     @Test
     public void testMultiQueryCacheMethod() throws Exception {
-        ThreadPoolTaskExecutor executor = ThreadPoolHelper.initThreadPool(10, 20);
+        ThreadPoolTaskExecutor executor = ThreadPoolHelper.initThreadPool(10, 20, "test-thread");
         CountDownLatch startCount = new CountDownLatch(10);
         for (int i = 0; i < 10; i++) {
             executor.submit(() -> {
@@ -62,7 +62,7 @@ public class SysServiceSpringBootTest {
     }
 
     /**
-     * 测试LRU缓存
+     * 测试LRU缓存的查询，删除
      * @throws Exception
      */
     @Test

@@ -146,7 +146,7 @@ public class CacheMethodMetaBuilder {
                 return cacheMethodMeta;
             }
         }
-        checkCacheMethod(cacheMethodMeta);
+        validateCacheMethod(cacheMethodMeta);
         return null;
     }
 
@@ -154,7 +154,7 @@ public class CacheMethodMetaBuilder {
      * 检查缓存方法，将使用错误遏止在开发阶段
      * @param cacheMethodMeta
      */
-    private static void checkCacheMethod(CacheMethodMeta cacheMethodMeta) {
+    private static void validateCacheMethod(CacheMethodMeta cacheMethodMeta) {
         if (cacheMethodMeta.getMaxSizeStrategy() == CacheMaxSizeStrategy.MAX_SIZE_STRATEGY_ABANDON || cacheMethodMeta.getMaxSizeStrategy() == CacheMaxSizeStrategy.MAX_SIZE_STRATEGY_LRU) {
             if (Constant.DEFAULT_NO_SIZE_LIMIT.equals(cacheMethodMeta.getMaxSize())) {
                 throw new BusinessException("未限制最大缓存数量，无法启用淘汰策略！");

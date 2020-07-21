@@ -18,7 +18,7 @@ import java.util.List;
  */
 @Slf4j
 public class RabbitmqTest {
-    private static ThreadPoolTaskExecutor executor = ThreadPoolHelper.initThreadPool(10, 50);
+    private static ThreadPoolTaskExecutor executor = ThreadPoolHelper.initThreadPool(10, 50, "test-thread");
 
     public static void main(String[] argv) throws Exception {
         //testOneConsumer();

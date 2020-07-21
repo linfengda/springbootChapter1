@@ -51,8 +51,7 @@ public class ListCacheStrategy extends AbstractCacheStrategy {
 
     @Override
     public Long getCurrentCacheSize(CacheParamDTO param) {
-        SimpleRedisTemplate simpleRedisTemplate = RedisSupportHolder.getSimpleRedisTemplate();
-        Long size = simpleRedisTemplate.opsForList().size(param.getPrefix());
+        Long size = getSimpleRedisTemplate().opsForList().size(param.getPrefix());
         return size;
     }
 }

@@ -25,6 +25,9 @@ public class ObjCacheStrategy extends AbstractCacheStrategy {
     @Override
     public Object getCache(CacheParamDTO param) {
         Object value = getSimpleRedisTemplate().getObject(param.getKey());
+        if (null == value) {
+            return null;
+        }
         if (CacheMaxSizeStrategy.MAX_SIZE_STRATEGY_LRU == param.getMaxSizeStrategy()) {
             getSimpleRedisTemplate().opsForZSet().add(param.getLruKey(), param.getKey(), CacheUtil.getLruKeyScore());
         }
@@ -33,6 +36,9 @@ public class ObjCacheStrategy extends AbstractCacheStrategy {
 
     @Override
     public void setCache(CacheParamDTO param, Object value) {
+        if (null == value) {
+            return;
+        }
         CacheSizeStrategy cacheSizeStrategy = checkSize(param);
         if (CacheSizeStrategy.OVER_SIZE == cacheSizeStrategy) {
             log.debug("当前缓存大小超过限制：{}，将不再缓存数据！", param.getMaxSize());
@@ -56,8 +62,7 @@ public class ObjCacheStrategy extends AbstractCacheStrategy {
 
     @Override
     public Long getCurrentCacheSize(CacheParamDTO param) {
-        String prefix = param.getPrefix();
-        String keyPattern = prefix + Constant.ASTERISK;
+        String keyPattern = param.getPrefix() + Constant.ASTERISK;
         Set<String> set = getSimpleRedisTemplate().keys(keyPattern);
         if (CollectionUtils.isEmpty(set)) {
             return 0L;

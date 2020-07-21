@@ -68,10 +68,15 @@ public abstract class AbstractCacheStrategy implements CacheStrategy {
         if (null == size || 0 == size) {
             return;
         }
-        Set<Object> delKeys = getSimpleRedisTemplate().opsForZSet().range(param.getLruKey(), 0, Constant.DEFAULT_LRU_REMOVE_NUM);
+        Set<Object> delKeys = getSimpleRedisTemplate().opsForZSet().range(param.getLruKey(), 0, Constant.DEFAULT_LRU_REMOVE_NUM-1);
+        // 删除LRU记录
+        getSimpleRedisTemplate().opsForZSet().removeRange(param.getLruKey(), 0, Constant.DEFAULT_LRU_REMOVE_NUM-1);
+        // 删除具体缓存key
         for (Object delKey : delKeys) {
-            String key = (String) delKey;
-            getSimpleRedisTemplate().deleteObject(key);
+            if (null == delKey) {
+                continue;
+            }
+            getSimpleRedisTemplate().deleteObject((String) delKey);
         }
         log.debug("当前缓存大小超过限制：{}，采取LRU算法淘汰{}条数据，lurKey={}，delKeys={}", param.getMaxSize(), Constant.DEFAULT_LRU_REMOVE_NUM, param.getLruKey(), JSON.toJSONString(delKeys));
     }

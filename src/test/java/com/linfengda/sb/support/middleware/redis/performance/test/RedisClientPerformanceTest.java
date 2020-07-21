@@ -53,7 +53,7 @@ public class RedisClientPerformanceTest {
     /**
      * 定义线程池
      */
-    private static ThreadPoolTaskExecutor executor = ThreadPoolHelper.initThreadPool(THREAD_NUM, THREAD_NUM);
+    private static ThreadPoolTaskExecutor executor = ThreadPoolHelper.initThreadPool(THREAD_NUM, THREAD_NUM, "test-thread");
 
 
 
