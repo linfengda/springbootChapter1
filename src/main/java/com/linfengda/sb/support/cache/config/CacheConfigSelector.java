@@ -1,5 +1,6 @@
 package com.linfengda.sb.support.cache.config;
 
+import com.linfengda.sb.support.cache.manager.CacheBackgroundManager;
 import org.springframework.context.annotation.AdviceMode;
 import org.springframework.context.annotation.AdviceModeImportSelector;
 
@@ -13,6 +14,6 @@ public class CacheConfigSelector extends AdviceModeImportSelector<EnableCache> {
 
     @Override
     protected String[] selectImports(AdviceMode adviceMode) {
-        return new String[] {CacheConfig.class.getName(), RedisConfig.class.getName(), RedisSupportHolder.class.getName()};
+        return new String[] {CacheConfig.class.getName(), RedisConfig.class.getName(), RedisSupportHolder.class.getName(), CacheBackgroundManager.class.getName()};
     }
 }

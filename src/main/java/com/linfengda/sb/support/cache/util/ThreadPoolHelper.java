@@ -1,4 +1,4 @@
-package com.linfengda.sb.chapter1.common.thread;
+package com.linfengda.sb.support.cache.util;
 
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 

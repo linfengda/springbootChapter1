@@ -1,6 +1,6 @@
 package com.linfengda.sb.support.cache.entity.cache;
 
-import com.linfengda.sb.support.cache.entity.dto.LRUCacheDTO;
+import com.linfengda.sb.support.cache.entity.dto.LruCacheDTO;
 import com.linfengda.sb.support.cache.exception.BusinessException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.StringUtils;
@@ -23,7 +23,7 @@ public abstract class AbstractLRUCache {
     /**
      * 二级缓存
      */
-    private ConcurrentHashMap<String, LRUCacheDTO> lruCache = new ConcurrentHashMap<>(512);
+    private ConcurrentHashMap<String, LruCacheDTO> lruCache = new ConcurrentHashMap<>(512);
     /**
      * 二级缓存LRU记录
      */
@@ -51,7 +51,7 @@ public abstract class AbstractLRUCache {
      * 向缓存增加元素
      * @param value 元素，允许NULL值
      */
-    protected void put(String key, LRUCacheDTO value) {
+    protected void put(String key, LruCacheDTO value) {
         if (StringUtils.isEmpty(key) || null == value) {
             return;
         }
@@ -83,8 +83,8 @@ public abstract class AbstractLRUCache {
      * @param key   key
      * @return      如果元素不存在则返回NULL
      */
-    protected LRUCacheDTO get(String key) {
-        LRUCacheDTO value = lruCache.get(key);
+    protected LruCacheDTO get(String key) {
+        LruCacheDTO value = lruCache.get(key);
         if (null == value) {
             return null;
         }

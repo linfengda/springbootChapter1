@@ -16,7 +16,7 @@ public class DeleteCacheInterceptor implements MethodInterceptor {
 
     @Override
     public Object invoke(MethodInvocation invocation) throws Throwable {
-        log.info("删除缓存注解拦截，{}，参数：{}", invocation.getMethod().getName(), invocation.getArguments());
+        log.debug("删除缓存注解拦截，{}，参数：{}", invocation.getMethod().getName(), invocation.getArguments());
         return CacheRouter.INSTANCE.doCache(invocation, OperationType.DELETE);
     }
 }

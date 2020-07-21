@@ -13,7 +13,6 @@ import org.junit.runners.MethodSorters;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.concurrent.CountDownLatch;
@@ -38,12 +37,12 @@ public class SysServiceSpringBootTest {
     }
 
     /**
-     * 测试多线程查询缓存方法
+     * 测试多个线程同时更新缓存
      * @throws Exception
      */
     @Test
     public void testMultiQueryCacheMethod() throws Exception {
-        ThreadPoolTaskExecutor executor = ThreadPoolHelper.initThreadPool(10, 20);
+        ThreadPoolTaskExecutor executor = ThreadPoolHelper.initThreadPool(10, 20, "test-thread");
         CountDownLatch startCount = new CountDownLatch(10);
         for (int i = 0; i < 10; i++) {
             executor.submit(() -> {
@@ -59,6 +58,18 @@ public class SysServiceSpringBootTest {
         }
         while(true) {
             Thread.sleep(60000);
+        }
+    }
+
+    /**
+     * 测试LRU缓存的查询，删除
+     * @throws Exception
+     */
+    @Test
+    public void testLruCache() throws Exception {
+        for (int i = 1; i <= 11; i++) {
+            UserVO userVO = sysUserService.getUserInfo(i);
+            log.info("{}", JSON.toJSONString(userVO));
         }
     }
 }

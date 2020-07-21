@@ -5,22 +5,26 @@ import com.linfengda.sb.support.middleware.redis.performance.service.JedisRedisO
 import com.linfengda.sb.support.middleware.redis.performance.service.LettuceRedisOperationServiceImpl;
 import com.linfengda.sb.support.middleware.redis.performance.service.RedisOperationService;
 import com.linfengda.sb.support.middleware.redis.performance.task.DistributeLockTestTask;
-import com.linfengda.sb.support.middleware.redis.performance.task.MultiTestTask;
-import com.linfengda.sb.support.middleware.redis.performance.task.QpsTestTask;
+import com.linfengda.sb.support.middleware.redis.performance.task.OperationTask;
+import com.linfengda.sb.support.middleware.redis.performance.task.QpsTask;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicLong;
 
 /**
- * 描述: redis性能测试
+ * 描述: 客户端并发性能测试
  *
  * @author linfengda
  * @create 2019-02-19 10:12
  */
 @Slf4j
-public class RedisPerformanceTest {
+@RunWith(JUnit4.class)
+public class RedisClientPerformanceTest {
     /**
      * 定义并发连接数
      */
@@ -49,42 +53,43 @@ public class RedisPerformanceTest {
     /**
      * 定义线程池
      */
-    private static ThreadPoolTaskExecutor executor = ThreadPoolHelper.initThreadPool(THREAD_NUM, THREAD_NUM);
+    private static ThreadPoolTaskExecutor executor = ThreadPoolHelper.initThreadPool(THREAD_NUM, THREAD_NUM, "test-thread");
 
 
 
-    public static void main(String[] args) {
-        //lettuceTest();
-        //jedisTest();
-        //redisQpsTest();
-        redisDistributeLockTest();
-    }
-
-    private static void lettuceTest() {
+    /**
+     * 测试lettuce客户端并发查询延迟率
+     */
+    @Test
+    public void lettuceDelayOperationTest() {
         try {
             LettuceRedisOperationServiceImpl lettuceTestService = new LettuceRedisOperationServiceImpl();
             CountDownLatch startCountDown = new CountDownLatch(THREAD_NUM + 1);
             CountDownLatch finishCountDown = new CountDownLatch(THREAD_NUM);
             AtomicLong count = new AtomicLong(0);
             AtomicLong delayCount = new AtomicLong(0);
-            newMultiTestTask(lettuceTestService, startCountDown, finishCountDown, delayCount, count);
-            log.info("redis client multi-thread task task ready, number of threads: {}", THREAD_NUM);
+            createOperationTask(lettuceTestService, startCountDown, finishCountDown, delayCount, count);
+            log.info("redis client multi-thread task ready, number of threads: {}", THREAD_NUM);
             startCountDown.countDown();
             finishCountDown.await();
-            log.info("redis client multi-thread task task finish, delay percentage: {}%", 100*Double.valueOf(delayCount.longValue())/Double.valueOf(count.longValue()));
+            log.info("redis client multi-thread task finish, delay percentage: {}%", 100*Double.valueOf(delayCount.longValue())/Double.valueOf(count.longValue()));
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
 
-    private static void jedisTest() {
+    /**
+     * 测试jedis客户端并发查询延迟率
+     */
+    @Test
+    public void jedisDelayOperationTest() {
         try {
             JedisRedisOperationServiceImpl jedisTestService = new JedisRedisOperationServiceImpl();
             CountDownLatch startCountDown = new CountDownLatch(THREAD_NUM + 1);
             CountDownLatch finishCountDown = new CountDownLatch(THREAD_NUM);
             AtomicLong count = new AtomicLong(0);
             AtomicLong delayCount = new AtomicLong(0);
-            newMultiTestTask(jedisTestService, startCountDown, finishCountDown, delayCount, count);
+            createOperationTask(jedisTestService, startCountDown, finishCountDown, delayCount, count);
             log.info("jedis client multi-thread task task ready, number of threads: {}", THREAD_NUM);
             startCountDown.countDown();
             finishCountDown.await();
@@ -94,22 +99,26 @@ public class RedisPerformanceTest {
         }
     }
 
-    private static void newMultiTestTask(RedisOperationService redisOperationService, CountDownLatch startCountDown, CountDownLatch finishCountDown, AtomicLong delayCount, AtomicLong count) {
+    private void createOperationTask(RedisOperationService redisOperationService, CountDownLatch startCountDown, CountDownLatch finishCountDown, AtomicLong delayCount, AtomicLong count) {
         for (int i = 0; i < THREAD_NUM; i++) {
-            MultiTestTask multiTestTask = new MultiTestTask();
-            multiTestTask.setRedisOperationService(redisOperationService);
-            multiTestTask.setStartCountDown(startCountDown);
-            multiTestTask.setFinishCountDown(finishCountDown);
-            multiTestTask.setCount(count);
-            multiTestTask.setDelayCount(delayCount);
-            multiTestTask.setTestNum(TEST_NUM);
-            multiTestTask.setSlowMillSeconds(SLOW_MILLISECONDS);
-            executor.execute(multiTestTask);
+            OperationTask operationTask = new OperationTask();
+            operationTask.setRedisOperationService(redisOperationService);
+            operationTask.setStartCountDown(startCountDown);
+            operationTask.setFinishCountDown(finishCountDown);
+            operationTask.setCount(count);
+            operationTask.setDelayCount(delayCount);
+            operationTask.setTestNum(TEST_NUM);
+            operationTask.setSlowMillSeconds(SLOW_MILLISECONDS);
+            executor.execute(operationTask);
             startCountDown.countDown();
         }
     }
 
-    private static void redisQpsTest() {
+    /**
+     * 测试redis客户端查询延迟率与并发数关系
+     */
+    @Test
+    public void redisQpsTest() {
         try {
             JedisRedisOperationServiceImpl jedisTestService = new JedisRedisOperationServiceImpl();
             CountDownLatch startCountDown = new CountDownLatch(THREAD_NUM + 1);
@@ -118,7 +127,7 @@ public class RedisPerformanceTest {
             AtomicLong milliseconds1Count = new AtomicLong(0);
             AtomicLong milliseconds10Count = new AtomicLong(0);
             AtomicLong milliseconds20Count = new AtomicLong(0);
-            newQpsTestTask(jedisTestService, startCountDown, finishCountDown, count, milliseconds1Count, milliseconds10Count, milliseconds20Count);
+            createQpsTask(jedisTestService, startCountDown, finishCountDown, count, milliseconds1Count, milliseconds10Count, milliseconds20Count);
             log.info("redis qps task task ready, number of threads: {}", THREAD_NUM);
             startCountDown.countDown();
             finishCountDown.await();
@@ -131,44 +140,22 @@ public class RedisPerformanceTest {
         }
     }
 
-    private static void newQpsTestTask(RedisOperationService redisOperationService, CountDownLatch startCountDown, CountDownLatch finishCountDown, AtomicLong count, AtomicLong milliseconds1Count, AtomicLong milliseconds10Count, AtomicLong milliseconds20Count) {
+    private void createQpsTask(RedisOperationService redisOperationService, CountDownLatch startCountDown, CountDownLatch finishCountDown, AtomicLong count, AtomicLong milliseconds1Count, AtomicLong milliseconds10Count, AtomicLong milliseconds20Count) {
         for (int i = 0; i < THREAD_NUM; i++) {
-            QpsTestTask qpsTestTask = new QpsTestTask();
-            qpsTestTask.setRedisOperationService(redisOperationService);
-            qpsTestTask.setStartCountDown(startCountDown);
-            qpsTestTask.setFinishCountDown(finishCountDown);
-            qpsTestTask.setCount(count);
-            qpsTestTask.setMilliseconds1Count(milliseconds1Count);
-            qpsTestTask.setMilliseconds10Count(milliseconds10Count);
-            qpsTestTask.setMilliseconds20Count(milliseconds20Count);
-            qpsTestTask.setTestNum(TEST_NUM);
-            qpsTestTask.setSlowMillSeconds1(SLOW_MILLISECONDS1);
-            qpsTestTask.setSlowMillSeconds10(SLOW_MILLISECONDS10);
-            qpsTestTask.setSlowMillSeconds20(SLOW_MILLISECONDS20);
-            executor.execute(qpsTestTask);
+            QpsTask qpsTask = new QpsTask();
+            qpsTask.setRedisOperationService(redisOperationService);
+            qpsTask.setStartCountDown(startCountDown);
+            qpsTask.setFinishCountDown(finishCountDown);
+            qpsTask.setCount(count);
+            qpsTask.setMilliseconds1Count(milliseconds1Count);
+            qpsTask.setMilliseconds10Count(milliseconds10Count);
+            qpsTask.setMilliseconds20Count(milliseconds20Count);
+            qpsTask.setTestNum(TEST_NUM);
+            qpsTask.setSlowMillSeconds1(SLOW_MILLISECONDS1);
+            qpsTask.setSlowMillSeconds10(SLOW_MILLISECONDS10);
+            qpsTask.setSlowMillSeconds20(SLOW_MILLISECONDS20);
+            executor.execute(qpsTask);
             startCountDown.countDown();
         }
     }
-
-    private static void redisDistributeLockTest() {
-        try {
-            String lockKey = "myLockKey";
-            DistributeLockTestTask lockTestTask1 = new DistributeLockTestTask();
-            lockTestTask1.setTaskId(1);
-            lockTestTask1.setLockKey(lockKey);
-            lockTestTask1.setIsTry(false);
-            DistributeLockTestTask lockTestTask2 = new DistributeLockTestTask();
-            lockTestTask2.setTaskId(2);
-            lockTestTask2.setLockKey(lockKey);
-            lockTestTask2.setIsTry(true);
-
-            executor.execute(lockTestTask1);
-            Thread.sleep(3000);
-            executor.execute(lockTestTask2);
-
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
 }

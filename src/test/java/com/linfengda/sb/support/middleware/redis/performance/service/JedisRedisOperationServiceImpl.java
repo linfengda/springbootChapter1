@@ -16,28 +16,6 @@ public class JedisRedisOperationServiceImpl implements RedisOperationService {
     private static RedisTemplate<String, Object> redisTemplate = JedisTemplateHelper.getTemplate();
 
     @Override
-    public void simpleStringOperation(int count) throws Exception {
-        long setTime = 0;
-        long getTime = 0;
-        long delTime = 0;
-        for (int i = 0; i < count; i++) {
-            long t0 = System.currentTimeMillis();
-            redisTemplate.opsForValue().set("key", "value");
-            long t1 = System.currentTimeMillis();
-            redisTemplate.opsForValue().get("key");
-            long t2 = System.currentTimeMillis();
-            redisTemplate.delete("key");
-            long t3 = System.currentTimeMillis();
-            setTime += t1-t0;
-            getTime += t2-t1;
-            delTime += t3-t2;
-        }
-        log.info("------------------------------------------------<string command> set service average time={}ms", setTime/count);
-        log.info("------------------------------------------------<string command> get service average time={}ms", getTime/count);
-        log.info("------------------------------------------------<string command> del service average time={}ms", delTime/count);
-    }
-
-    @Override
     public void stringSetOperation() throws Exception {
         redisTemplate.opsForValue().set("key:" + Thread.currentThread().getId(), BytePackageHelper.getBytePackage(10000));
     }

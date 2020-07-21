@@ -114,8 +114,7 @@ public class SimpleRedisTemplate extends RedisTemplate<String, Object> {
     }
 
     public <T> List<T> listGetAll(String key) {
-        List list = super.opsForList().range(key, 0, -1);
-        return null == list ? null : (List<T>) list;
+        return (List<T>) super.opsForList().range(key, 0, -1);
     }
 
     public void setAdd(String key, Object value) {
@@ -151,8 +150,7 @@ public class SimpleRedisTemplate extends RedisTemplate<String, Object> {
     }
 
     public <T> Set<T> setGetAll(String key) {
-        Set set = super.opsForSet().members(key);
-        return null == set ? null : (Set<T>) set;
+        return  (Set<T>) super.opsForSet().members(key);
     }
 
     public Long setDelete(String key, Object... values) {

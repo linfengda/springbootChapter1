@@ -17,7 +17,7 @@ public class QueryCacheInterceptor implements MethodInterceptor {
 
     @Override
     public Object invoke(MethodInvocation invocation) throws Throwable {
-        log.info("查询缓存注解拦截，{}，参数：{}", invocation.getMethod().getName(), invocation.getArguments());
+        log.debug("查询缓存注解拦截，{}，参数：{}", invocation.getMethod().getName(), invocation.getArguments());
         return CacheRouter.INSTANCE.doCache(invocation, OperationType.QUERY);
     }
 }

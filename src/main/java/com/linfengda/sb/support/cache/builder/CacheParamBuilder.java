@@ -38,24 +38,17 @@ public enum CacheParamBuilder {
         cacheParamDTO.setTimeOut(cacheMethodMeta.getTimeOut());
         cacheParamDTO.setTimeUnit(cacheMethodMeta.getTimeUnit());
         cacheParamDTO.setStrategies(cacheMethodMeta.getStrategies());
+        cacheParamDTO.setMaxSizeStrategy(cacheMethodMeta.getMaxSizeStrategy());
         cacheParamDTO.setMaxSize(cacheMethodMeta.getMaxSize());
         cacheParamDTO.setAllEntries(cacheMethodMeta.getAllEntries());
         // 初始化缓存key
         List<String> keys = getKeys(cacheMethodMeta.getKeyMetas(), arguments);
-        if (DataType.OBJECT == cacheMethodMeta.getDataType()) {
-            cacheParamDTO.setKey(buildObjectKey(cacheParamDTO.getPrefix(), keys));
-        }
-        if (DataType.LIST == cacheMethodMeta.getDataType()) {
-            cacheParamDTO.setKey(buildObjectKey(cacheParamDTO.getPrefix(), keys));
-        }
-        if (DataType.SET == cacheMethodMeta.getDataType()) {
-            cacheParamDTO.setKey(buildObjectKey(cacheParamDTO.getPrefix(), keys));
-        }
+        cacheParamDTO.setKey(buildKey(cacheParamDTO.getPrefix(), keys));
         if (DataType.HASH == cacheMethodMeta.getDataType()) {
             cacheParamDTO.setHashKey(buildHashKey(cacheParamDTO.getPrefix(), keys));
         }
         cacheParamDTO.setLruKey(buildLruKey(cacheParamDTO));
-        cacheParamDTO.setLockKey(buildLockKey(cacheParamDTO));
+        cacheParamDTO.setLockKey(buildCacheWriteLockKey(cacheParamDTO));
         return cacheParamDTO;
     }
 
@@ -93,7 +86,7 @@ public enum CacheParamBuilder {
      * @param keys      key列表
      * @return          缓存key
      */
-    private String buildObjectKey(String prefix, List<String> keys) {
+    private String buildKey(String prefix, List<String> keys) {
         StringBuilder builder = new StringBuilder();
         builder.append(prefix);
         if (CollectionUtils.isEmpty(keys)) {
@@ -136,8 +129,11 @@ public enum CacheParamBuilder {
      * @return      缓存key
      */
     public String buildLruKey(CacheParamDTO param) {
-        if (DataType.OBJECT == param.getDataType() || DataType.HASH == param.getDataType()) {
+        if (DataType.OBJECT == param.getDataType()) {
             return Constant.LRU_RECORD_PREFIX + Constant.COLON + param.getPrefix();
+        }
+        if (DataType.HASH == param.getDataType()) {
+            return Constant.LRU_RECORD_PREFIX + Constant.COLON + param.getHashKey().getKey();
         }
         if (DataType.LIST == param.getDataType() || DataType.SET == param.getDataType()) {
             return Constant.LRU_RECORD_PREFIX + Constant.COLON + param.getKey();
@@ -146,11 +142,11 @@ public enum CacheParamBuilder {
     }
 
     /**
-     * 获取缓存lockKey
+     * 获取缓存写入lockKey
      * @param param 缓存参数
      * @return      缓存lockKey
      */
-    public String buildLockKey(CacheParamDTO param) {
+    public String buildCacheWriteLockKey(CacheParamDTO param) {
         return Constant.LOCK_PREFIX + Constant.COLON + param.getKey();
     }
 }

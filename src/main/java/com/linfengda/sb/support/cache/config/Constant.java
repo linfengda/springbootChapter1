@@ -35,7 +35,11 @@ public interface Constant {
      */
     Integer DEFAULT_LRU_REMOVE_NUM = 10;
     /**
-     * 防止缓存雪崩随机时间范围：1s
+     * 防止缓存雪崩随机时间范围：60s
      */
     Integer DEFAULT_NO_CACHE_SNOW_SLIDE_RANDOM_MS = 60*1000;
+    /**
+     * 清除LRU缓存定时任务间隔时间：10min
+     */
+    Integer DEFAULT_LRU_CACHE_CLEAR_TASK = 10*60*1000;
 }

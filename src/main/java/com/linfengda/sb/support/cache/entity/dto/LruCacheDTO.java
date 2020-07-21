@@ -11,7 +11,7 @@ import lombok.Data;
  */
 @Data
 @AllArgsConstructor
-public class LRUCacheDTO {
+public class LruCacheDTO {
     /**
      * 缓存对象
      */
