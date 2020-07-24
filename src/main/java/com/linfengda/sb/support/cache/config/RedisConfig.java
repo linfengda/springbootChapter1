@@ -14,7 +14,7 @@ import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 /**
- * 描述: Redis配置：默认使用Jackson2JsonRedisSerializer
+ * 描述: Redis配置：默认使用Jackson作为序列化工具
  *
  * @author linfengda
  * @create 2018-09-10 17:00
@@ -30,7 +30,7 @@ public class RedisConfig {
 
 
     /**
-     * Jedis客户端
+     * 配置Jedis客户端
      * @return
      */
     private JedisConnectionFactory getJedisConnectionFactory() {
@@ -44,7 +44,7 @@ public class RedisConfig {
     }
 
     /**
-     * 获取jackson序列化工具
+     * 配置jackson序列化工具
      * @return
      */
     @Bean
@@ -57,6 +57,11 @@ public class RedisConfig {
         return jackson2JsonRedisSerializer;
     }
 
+    /**
+     * 配置RedisTemplate
+     * @param jackson2JsonRedisSerializer
+     * @return
+     */
     @Bean
     public SimpleRedisTemplate simpleRedisTemplate(Jackson2JsonRedisSerializer<Object> jackson2JsonRedisSerializer) {
         SimpleRedisTemplate simpleRedisTemplate = new SimpleRedisTemplate();
@@ -68,6 +73,11 @@ public class RedisConfig {
         return simpleRedisTemplate;
     }
 
+    /**
+     * 配置redis分布式锁
+     * @param simpleRedisTemplate
+     * @return
+     */
     @Bean
     public RedisDistributedLock redisDistributedLock(SimpleRedisTemplate simpleRedisTemplate) {
         RedisDistributedLock redisDistributedLock = new RedisDistributedLock();

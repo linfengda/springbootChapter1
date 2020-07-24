@@ -1,16 +1,28 @@
 package com.linfengda.sb.support.middleware.redis.performance.test;
 
+import com.alibaba.fastjson.JSON;
 import com.linfengda.sb.chapter1.Chapter1Application;
+import com.linfengda.sb.support.cache.config.Constant;
+import com.linfengda.sb.support.cache.entity.bo.LruExpireResultBO;
 import com.linfengda.sb.support.cache.redis.template.SimpleRedisTemplate;
+import com.linfengda.sb.support.cache.util.CacheUtil;
 import com.linfengda.sb.support.middleware.redis.performance.entity.MySon;
 import com.linfengda.sb.support.middleware.redis.performance.entity.Pig;
+import com.sun.tools.internal.jxc.ap.Const;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.dao.DataAccessException;
+import org.springframework.data.redis.connection.RedisConnection;
+import org.springframework.data.redis.core.Cursor;
+import org.springframework.data.redis.core.RedisCallback;
+import org.springframework.data.redis.core.ScanOptions;
+import org.springframework.data.redis.core.ZSetOperations;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.util.CollectionUtils;
 
 import javax.annotation.Resource;
 import java.sql.Timestamp;
@@ -225,5 +237,51 @@ public class SimpleRedisTemplateTest {
         // 获取哈希表中的元素
         Pig peggyPig = simpleRedisTemplate.hashGet("pigFamily", "peggy");
         log.info(peggyPig.toString());
+    }
+
+    /**
+     * 测试zset scan
+     */
+    @Test
+    public void testZsetScan() {
+        simpleRedisTemplate.opsForZSet().add(Constant.LRU_RECORD_PREFIX + Constant.COLON + "key1", "aaa", 1);
+        simpleRedisTemplate.opsForZSet().add(Constant.LRU_RECORD_PREFIX + Constant.COLON + "key1", "bbb", 2);
+        simpleRedisTemplate.opsForZSet().add(Constant.LRU_RECORD_PREFIX + Constant.COLON + "key2", "aaa", 1);
+        simpleRedisTemplate.opsForZSet().add(Constant.LRU_RECORD_PREFIX + Constant.COLON + "key2", "bbb", 2);
+
+        // 使用scan渐进删除
+        LruExpireResultBO lruExpireResultBO = simpleRedisTemplate.execute(new RedisCallback<LruExpireResultBO>() {
+            LruExpireResultBO lruExpireResultBO = new LruExpireResultBO();
+            long startTime = System.currentTimeMillis();
+
+            @Override
+            public LruExpireResultBO doInRedis(RedisConnection connection) throws DataAccessException {
+
+                Cursor<byte[]> cursor = connection.scan(new ScanOptions.ScanOptionsBuilder().match(Constant.LRU_RECORD_PREFIX + Constant.ASTERISK).count(10).build());
+                while(cursor.hasNext()) {
+                    String lruKey = new String(cursor.next());
+                    simpleRedisTemplate.opsForZSet().removeRangeByScore(lruKey, 0, CacheUtil.getKeyLruScore());
+                    log.info("批量清除LRU缓存记录，position={}，lruKey={}", cursor.getPosition(), lruKey);
+
+                    /*long offset = 0L;
+                    while(true) {
+                        Set<Object> expireKeys = simpleRedisTemplate.opsForZSet().rangeByScore(lruKey, 0, CacheUtil.getKeyLruScore(), offset, 1000);
+                        if (CollectionUtils.isEmpty(expireKeys)) {
+                            simpleRedisTemplate.delete(lruKey);
+                            break;
+                        }
+                        simpleRedisTemplate.opsForZSet().remove(lruKey, expireKeys.toArray());
+                        log.info("批量清除LRU缓存记录，lruKey={}，expireKeys={}", lruKey, JSON.toJSON(expireKeys));
+                        offset += expireKeys.size()
+                    }*/
+                    lruExpireResultBO.addLruKeyNum();
+                }
+
+                lruExpireResultBO.setCostTime(System.currentTimeMillis()-startTime);
+                return lruExpireResultBO;
+            }
+        });
+
+        log.info(lruExpireResultBO.getExpireMsg());
     }
 }

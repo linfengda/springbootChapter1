@@ -3,9 +3,11 @@ package com.linfengda.sb.support.cache.handler.strategy;
 import com.alibaba.fastjson.JSON;
 import com.linfengda.sb.support.cache.config.Constant;
 import com.linfengda.sb.support.cache.entity.dto.CacheParamDTO;
+import com.linfengda.sb.support.cache.entity.type.CacheExtraStrategy;
 import com.linfengda.sb.support.cache.entity.type.CacheMaxSizeStrategy;
 import com.linfengda.sb.support.cache.entity.type.CacheSizeStrategy;
 import com.linfengda.sb.support.cache.redis.template.SimpleRedisTemplate;
+import com.linfengda.sb.support.cache.util.CacheUtil;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 
@@ -28,7 +30,7 @@ public abstract class AbstractCacheStrategy implements CacheStrategy {
      * @param param 查询参数
      * @return      缓存最大数量类型
      */
-    protected CacheSizeStrategy checkSize(CacheParamDTO param) {
+    protected CacheSizeStrategy checkCacheSize(CacheParamDTO param) {
         CacheSizeStrategy cacheSizeStrategy = getCacheSizeStrategy(param);
         if (CacheSizeStrategy.OVER_SIZE != cacheSizeStrategy) {
             return cacheSizeStrategy;

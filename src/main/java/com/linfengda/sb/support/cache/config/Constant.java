@@ -31,6 +31,10 @@ public interface Constant {
      */
     Long DEFAULT_NO_SIZE_LIMIT = -1L;
     /**
+     * 默认后台渐进淘汰lru key数量
+     */
+    Integer DEFAULT_BG_LRU_REMOVE_BATCH_NUM = 10;
+    /**
      * 默认LRU一次性淘汰数量
      */
     Integer DEFAULT_LRU_REMOVE_NUM = 10;

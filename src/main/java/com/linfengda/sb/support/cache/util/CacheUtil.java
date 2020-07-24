@@ -30,19 +30,19 @@ public class CacheUtil {
     }
 
     /**
-     * 获取lru键的过期时间
+     * 获取key的lru过期时间
      * @return  当前时间戳
      */
-    public static double getLruKeyScore() {
+    public static double getKeyLruScore() {
         return (double) System.currentTimeMillis();
     }
 
     /**
-     * 解析lru键的过期时间
+     * 解析key的lru过期时间
      * @param score 过期时间
      * @return      过期时间
      */
-    public static double parseLruKeyScore(double score) {
+    public static double parseKeyLruScore(double score) {
         return (long) score;
     }
 }

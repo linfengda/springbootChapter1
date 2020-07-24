@@ -2,7 +2,6 @@ package com.linfengda.sb.support.cache.handler.strategy.impl;
 
 import com.linfengda.sb.support.cache.builder.HashKey;
 import com.linfengda.sb.support.cache.entity.dto.CacheParamDTO;
-import com.linfengda.sb.support.cache.entity.type.CacheExtraStrategy;
 import com.linfengda.sb.support.cache.entity.type.CacheMaxSizeStrategy;
 import com.linfengda.sb.support.cache.entity.type.CacheSizeStrategy;
 import com.linfengda.sb.support.cache.handler.strategy.AbstractCacheStrategy;
@@ -30,7 +29,7 @@ public class HashCacheStrategy extends AbstractCacheStrategy {
             return null;
         }
         if (CacheMaxSizeStrategy.MAX_SIZE_STRATEGY_LRU == param.getMaxSizeStrategy()) {
-            getSimpleRedisTemplate().opsForZSet().add(param.getLruKey(), param.getKey(), CacheUtil.getLruKeyScore());
+            getSimpleRedisTemplate().opsForZSet().add(param.getLruKey(), param.getKey(), CacheUtil.getKeyLruScore());
         }
         return value;
     }
@@ -40,19 +39,15 @@ public class HashCacheStrategy extends AbstractCacheStrategy {
         if (null == value) {
             return;
         }
-        CacheSizeStrategy cacheSizeStrategy = checkSize(param);
+        CacheSizeStrategy cacheSizeStrategy = checkCacheSize(param);
         if (CacheSizeStrategy.OVER_SIZE == cacheSizeStrategy) {
             log.debug("当前缓存大小超过限制：{}，将不再缓存数据！", param.getMaxSize());
             return;
         }
         HashKey hashKey = param.getHashKey();
-        Long timeOutMillis = param.getTimeUnit().toMillis(param.getTimeOut());
-        if (param.getStrategies().contains(CacheExtraStrategy.NO_CACHE_SNOW_SLIDE)) {
-            timeOutMillis = CacheUtil.getRandomTime(timeOutMillis);
-        }
-        getSimpleRedisTemplate().hashPut(hashKey.getKey(), hashKey.getHashKey(), value, timeOutMillis, TimeUnit.MILLISECONDS);
+        getSimpleRedisTemplate().hashPut(hashKey.getKey(), hashKey.getHashKey(), value, param.getTimeOutMillis(), TimeUnit.MILLISECONDS);
         if (CacheMaxSizeStrategy.MAX_SIZE_STRATEGY_LRU == param.getMaxSizeStrategy()) {
-            getSimpleRedisTemplate().opsForZSet().add(param.getLruKey(), param.getKey(), CacheUtil.getLruKeyScore());
+            getSimpleRedisTemplate().opsForZSet().add(param.getLruKey(), param.getKey(), CacheUtil.getKeyLruScore());
         }
     }
 

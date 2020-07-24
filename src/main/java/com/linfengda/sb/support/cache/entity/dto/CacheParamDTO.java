@@ -4,6 +4,7 @@ import com.linfengda.sb.support.cache.builder.HashKey;
 import com.linfengda.sb.support.cache.entity.type.CacheExtraStrategy;
 import com.linfengda.sb.support.cache.entity.type.CacheMaxSizeStrategy;
 import com.linfengda.sb.support.cache.entity.type.DataType;
+import com.linfengda.sb.support.cache.util.CacheUtil;
 import lombok.Data;
 
 import java.util.List;
@@ -66,4 +67,16 @@ public class CacheParamDTO {
      * @return
      */
     private Boolean allEntries;
+
+    /**
+     * 获取毫秒格式过期时间
+     * @return  毫秒格式过期时间
+     */
+    public long getTimeOutMillis() {
+        long timeOutMillis = getTimeUnit().toMillis(getTimeOut());
+        if (getStrategies().contains(CacheExtraStrategy.NO_CACHE_SNOW_SLIDE)) {
+            timeOutMillis = CacheUtil.getRandomTime(timeOutMillis);
+        }
+        return timeOutMillis;
+    }
 }
