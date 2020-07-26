@@ -281,7 +281,6 @@ public class SimpleRedisTemplateTest {
                 return lruExpireResultBO;
             }
         });
-
         log.info(lruExpireResultBO.getExpireMsg());
     }
 }
