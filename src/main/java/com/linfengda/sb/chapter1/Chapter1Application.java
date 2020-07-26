@@ -1,10 +1,9 @@
 package com.linfengda.sb.chapter1;
 
-import com.linfengda.sb.support.cache.config.EnableCache;
-import com.linfengda.sb.support.cache.manager.AopOrderManager;
+import com.linfengda.sb.support.redis.cache.manager.AopOrderManager;
+import com.linfengda.sb.support.redis.config.annotation.EnableRedisCache;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
@@ -13,9 +12,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  * @author linfengda
  * @create 2020-01-09 09:18
  */
-@EnableCache()
+@EnableRedisCache
 @EnableTransactionManagement(order = AopOrderManager.SPRING_TRANSACTION)
-@EnableAspectJAutoProxy(exposeProxy = false, proxyTargetClass = false)
 @EnableApplicationStartup
 @SpringBootApplication
 public class Chapter1Application {

@@ -1,14 +1,12 @@
 package com.linfengda.sb.support.middleware.redis.performance.test;
 
-import com.alibaba.fastjson.JSON;
 import com.linfengda.sb.chapter1.Chapter1Application;
-import com.linfengda.sb.support.cache.config.Constant;
-import com.linfengda.sb.support.cache.entity.bo.LruExpireResultBO;
-import com.linfengda.sb.support.cache.redis.template.SimpleRedisTemplate;
-import com.linfengda.sb.support.cache.util.CacheUtil;
+import com.linfengda.sb.support.redis.config.Constant;
+import com.linfengda.sb.support.redis.cache.entity.bo.LruExpireResultBO;
+import com.linfengda.sb.support.redis.template.SimpleRedisTemplate;
+import com.linfengda.sb.support.redis.cache.util.CacheUtil;
 import com.linfengda.sb.support.middleware.redis.performance.entity.MySon;
 import com.linfengda.sb.support.middleware.redis.performance.entity.Pig;
-import com.sun.tools.internal.jxc.ap.Const;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -20,9 +18,7 @@ import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.core.Cursor;
 import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.ScanOptions;
-import org.springframework.data.redis.core.ZSetOperations;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.util.CollectionUtils;
 
 import javax.annotation.Resource;
 import java.sql.Timestamp;

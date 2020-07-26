@@ -1,7 +1,7 @@
 package com.linfengda.sb.chapter1.common.cache;
 
 import com.linfengda.sb.chapter1.common.cache.manager.CacheManager;
-import com.linfengda.sb.support.cache.redis.template.SimpleRedisTemplate;
+import com.linfengda.sb.support.redis.template.SimpleRedisTemplate;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 

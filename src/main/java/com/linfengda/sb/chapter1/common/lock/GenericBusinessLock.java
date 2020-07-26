@@ -1,6 +1,6 @@
 package com.linfengda.sb.chapter1.common.lock;
 
-import com.linfengda.sb.support.cache.redis.lock.RedisDistributedLock;
+import com.linfengda.sb.support.redis.lock.RedisDistributedLock;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;

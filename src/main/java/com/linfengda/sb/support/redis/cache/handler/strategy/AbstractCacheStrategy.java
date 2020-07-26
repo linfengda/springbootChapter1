@@ -1,0 +1,140 @@
+package com.linfengda.sb.support.redis.cache.handler.strategy;
+
+import com.alibaba.fastjson.JSON;
+import com.linfengda.sb.support.redis.cache.entity.dto.CacheParamDTO;
+import com.linfengda.sb.support.redis.cache.entity.type.CacheMaxSizeStrategy;
+import com.linfengda.sb.support.redis.cache.entity.type.CacheSizeStrategy;
+import com.linfengda.sb.support.redis.cache.util.CacheUtil;
+import com.linfengda.sb.support.redis.config.Constant;
+import com.linfengda.sb.support.redis.template.SimpleRedisTemplate;
+import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
+
+import java.util.Set;
+
+/**
+ * 描述:
+ *
+ * @author: linfengda
+ * @date: 2020-07-15 17:54
+ */
+@Slf4j
+@Data
+public abstract class AbstractCacheStrategy implements CacheStrategy {
+    private SimpleRedisTemplate simpleRedisTemplate;
+
+
+    @Override
+    public Object getCache(CacheParamDTO param) {
+        Object value = doGetCache(param);
+        if (null == value) {
+            return null;
+        }
+        if (CacheMaxSizeStrategy.MAX_SIZE_STRATEGY_LRU == param.getMaxSizeStrategy()) {
+            getSimpleRedisTemplate().opsForZSet().add(param.getLruKey(), param.getKey(), CacheUtil.getKeyLruScore());
+        }
+        return value;
+    }
+
+    @Override
+    public void setCache(CacheParamDTO param, Object value) {
+        if (null == value) {
+            return;
+        }
+        CacheSizeStrategy cacheSizeStrategy = checkCacheSize(param);
+        if (CacheSizeStrategy.OVER_SIZE == cacheSizeStrategy) {
+            log.debug("当前缓存大小超过限制：{}，将不再缓存数据！", param.getMaxSize());
+            return;
+        }
+        doSetCache(param, value);
+        if (CacheMaxSizeStrategy.MAX_SIZE_STRATEGY_LRU == param.getMaxSizeStrategy()) {
+            getSimpleRedisTemplate().opsForZSet().add(param.getLruKey(), param.getKey(), CacheUtil.getKeyLruScore());
+        }
+    }
+
+    /**
+     * 检查缓存是否超过最大数量
+     * @param param 查询参数
+     * @return      缓存最大数量类型
+     */
+    protected CacheSizeStrategy checkCacheSize(CacheParamDTO param) {
+        CacheSizeStrategy cacheSizeStrategy = getCacheSizeStrategy(param);
+        if (CacheSizeStrategy.OVER_SIZE != cacheSizeStrategy) {
+            return cacheSizeStrategy;
+        }
+        if (CacheMaxSizeStrategy.MAX_SIZE_STRATEGY_LRU == param.getMaxSizeStrategy()) {
+            deleteLRU(param);
+            return CacheSizeStrategy.NORMAL_SIZE;
+        }else if (CacheMaxSizeStrategy.MAX_SIZE_STRATEGY_ABANDON == param.getMaxSizeStrategy()) {
+            return CacheSizeStrategy.OVER_SIZE;
+        }else {
+            return CacheSizeStrategy.OVER_SIZE;
+        }
+    }
+
+    /**
+     * 获取当前缓存最大数量策略类型
+     * @param param 缓存参数
+     * @return      缓存最大数量策略类型 {@link CacheSizeStrategy}
+     */
+    protected CacheSizeStrategy getCacheSizeStrategy(CacheParamDTO param) {
+        Long maxSize = param.getMaxSize();
+        if (Constant.DEFAULT_NO_SIZE_LIMIT.equals(maxSize)) {
+            return CacheSizeStrategy.UN_LIMIT;
+        }
+        if (maxSize > getCurrentCacheSize(param)) {
+            return CacheSizeStrategy.NORMAL_SIZE;
+        }
+        return CacheSizeStrategy.OVER_SIZE;
+    }
+
+    /**
+     * 采取LRU算法淘汰数据
+     * @param param 查询参数
+     */
+    protected void deleteLRU(CacheParamDTO param) {
+        Long size = getSimpleRedisTemplate().opsForZSet().size(param.getLruKey());
+        if (null == size || 0 == size) {
+            return;
+        }
+        Set<Object> delKeys = getSimpleRedisTemplate().opsForZSet().range(param.getLruKey(), 0, Constant.DEFAULT_LRU_REMOVE_NUM-1);
+        // 删除LRU记录
+        getSimpleRedisTemplate().opsForZSet().removeRange(param.getLruKey(), 0, Constant.DEFAULT_LRU_REMOVE_NUM-1);
+        // 删除具体缓存key
+        for (Object delKey : delKeys) {
+            if (null == delKey) {
+                continue;
+            }
+            getSimpleRedisTemplate().deleteObject((String) delKey);
+        }
+        log.debug("当前缓存大小超过限制：{}，采取LRU算法淘汰{}条数据，lurKey={}，delKeys={}", param.getMaxSize(), Constant.DEFAULT_LRU_REMOVE_NUM, param.getLruKey(), JSON.toJSONString(delKeys));
+    }
+
+    /**
+     * 查询缓存
+     * @param param 缓存参数
+     * @return      缓存数据
+     */
+    public abstract Object doGetCache(CacheParamDTO param);
+
+    /**
+     * 写入缓存
+     * @param param 缓存参数
+     * @param value 缓存数据
+     */
+    public abstract void doSetCache(CacheParamDTO param, Object value);
+
+    /**
+     * 获取当前缓存大小
+     * @param param 缓存参数
+     * @return      缓存大小
+     */
+    public abstract Long getCurrentCacheSize(CacheParamDTO param);
+
+    /**
+     * 查询缓存中是否存在key
+     * @param param 缓存参数
+     * @return      true：存在，false：不存在
+     */
+    public abstract Boolean hasKey(CacheParamDTO param);
+}
