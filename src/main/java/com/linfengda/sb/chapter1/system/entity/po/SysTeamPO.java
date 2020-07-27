@@ -7,28 +7,27 @@ import lombok.Data;
 import lombok.Getter;
 
 /**
- * 描述: 系统部门PO
- *
- * @author linfengda
- * @create 2020-03-23 18:07
+ * @description: 系统团队表PO
+ * @author: linfengda
+ * @date: 2020-07-27 16:56
  */
-@Table(name = "sys_department")
+@Table(name = "sys_team")
 @Data
-public class SysDepartmentPO extends BasePO {
+public class SysTeamPO extends BasePO {
     /**
      * 主键id
      */
     private Integer id;
     /**
-     * 部门名称
+     * 项目名称
      */
-    private String departmentName;
+    private String teamName;
     /**
-     * 部门别名
+     * 项目别名
      */
-    private String departmentAliasName;
+    private String teamAliasName;
     /**
-     * 部门类型，1：技术；2：业务；3：行政
+     * 项目类型，1：技术；2：业务；3：行政
      */
     private Integer type;
     /**
@@ -38,7 +37,7 @@ public class SysDepartmentPO extends BasePO {
 
 
     /**
-     * 部门类型枚举
+     * 项目类型枚举
      */
     @AllArgsConstructor
     @Getter

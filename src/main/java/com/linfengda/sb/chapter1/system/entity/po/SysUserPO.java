@@ -17,7 +17,7 @@ import lombok.Getter;
 @Data
 public class SysUserPO extends BasePO {
     /**
-     * 主键ID
+     * 主键id
      */
     @Id
     private Integer id;
@@ -25,10 +25,6 @@ public class SysUserPO extends BasePO {
      * 用户名称
      */
     private String userName;
-    /**
-     * 隶属组织ID
-     */
-    private Integer organizeId;
     /**
      * 用户手机
      */
@@ -41,6 +37,15 @@ public class SysUserPO extends BasePO {
      * 用户状态
      */
     private Integer status;
+    /**
+     * 部门id
+     */
+    private Integer departmentId;
+    /**
+     * 项目id
+     */
+    private Integer teamId;
+
 
     /**
      * 状态枚举

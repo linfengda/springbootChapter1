@@ -1,5 +1,8 @@
 package com.linfengda.sb.chapter1.system.service;
 
+import com.linfengda.sb.chapter1.common.cache.bo.SysDepartmentBO;
+import com.linfengda.sb.chapter1.system.entity.po.SysDepartmentPO;
+
 /**
  * 描述: 系统组织关系服务
  *
@@ -9,16 +12,18 @@ package com.linfengda.sb.chapter1.system.service;
 public interface SysOrganizeService {
 
     /**
-     * 删除部门
-     * @param departmentId
+     * 根据id查询部门
+     * @param departmentId  部门id
+     * @return
      * @throws Exception
      */
-    void delDepartment(Integer departmentId) throws Exception;
+    SysDepartmentPO queryDepartment(Integer departmentId) throws Exception;
 
     /**
-     * 删除团队
-     * @param teamId
+     * 根据id查询部门并缓存
+     * @param departmentId  部门id
+     * @return
      * @throws Exception
      */
-    void delTeam(Integer teamId) throws Exception;
+    SysDepartmentBO cacheDepartment(Integer departmentId) throws Exception;
 }

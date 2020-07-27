@@ -1,7 +1,7 @@
 package com.linfengda.sb.chapter1.demo.service;
 
 import com.linfengda.sb.chapter1.Chapter1Application;
-import com.linfengda.sb.chapter1.common.cache.OrganizeCache;
+import com.linfengda.sb.chapter1.common.cache.UserTokenCache;
 import com.linfengda.sb.chapter1.system.service.SysOrganizeService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;
@@ -32,7 +32,7 @@ public class ServiceSpringBootTest {
     private SysOrganizeService sysOrganizeService;
     //使用mock包装的bean，对bean调用的方法进行模拟
     @MockBean
-    private OrganizeCache organizeCache;
+    private UserTokenCache userTokenCache;
 
     @Before
     public void setup() throws Exception {
@@ -48,7 +48,7 @@ public class ServiceSpringBootTest {
     @Transactional(rollbackFor = Exception.class)
     public void test1() throws Exception {
         // 假设未连接redis，模拟缓存方法调用
-        Mockito.doNothing().when(organizeCache).clearCache();
+        Mockito.doNothing().when(userTokenCache).clearCache();
         sysOrganizeService.delDepartment(123);
         sysOrganizeService.delTeam(456);
     }

@@ -1,6 +1,8 @@
 package com.linfengda.sb.chapter1.system.service.impl;
 
-import com.linfengda.sb.chapter1.common.cache.OrganizeCache;
+import com.linfengda.sb.chapter1.common.cache.UserTokenCache;
+import com.linfengda.sb.chapter1.common.cache.bo.SysDepartmentBO;
+import com.linfengda.sb.chapter1.system.entity.po.SysDepartmentPO;
 import com.linfengda.sb.chapter1.system.service.SysOrganizeService;
 import com.linfengda.sb.support.orm.BaseService;
 import lombok.extern.slf4j.Slf4j;
@@ -17,18 +19,16 @@ import javax.annotation.Resource;
 @Service
 @Slf4j
 public class SysOrganizeServiceImpl extends BaseService implements SysOrganizeService {
-    @Resource
-    private OrganizeCache organizeCache;
 
     @Override
-    public void delDepartment(Integer departmentId) throws Exception {
-        log.info("删除部门");
-        organizeCache.clearCache();
+    public SysDepartmentPO queryDepartment(Integer departmentId) throws Exception {
+
+
+        return null;
     }
 
     @Override
-    public void delTeam(Integer teamId) throws Exception {
-        log.info("删除团队");
-        organizeCache.clearCache();
+    public SysDepartmentBO cacheDepartment(Integer departmentId) throws Exception {
+        return null;
     }
 }

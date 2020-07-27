@@ -8,14 +8,14 @@ import org.springframework.stereotype.Component;
 import javax.annotation.Resource;
 
 /**
- * 描述: 组织关系缓存
+ * 描述: 用户token-userId缓存
  *
  * @author linfengda
  * @create 2020-01-14 13:44
  */
 @Slf4j
 @Component
-public class OrganizeCache implements Cache {
+public class UserTokenCache implements Cache {
     @Resource
     private SimpleRedisTemplate jacksonRedisTemplate;
 
@@ -26,7 +26,7 @@ public class OrganizeCache implements Cache {
 
     @Override
     public void clearCache() {
-        jacksonRedisTemplate.deleteObject(CacheManager.ORGANIZE_CACHE.getPrefix());
+        jacksonRedisTemplate.deleteObject(CacheManager.USER_TOKEN_CACHE.getPrefix());
         log.warn("清除组织关系缓存...");
     }
 }
