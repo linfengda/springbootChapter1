@@ -18,7 +18,7 @@ public interface SysUserService {
      * 分页查询用户信息
      * @param userPageQueryDTO
      * @return
-     * @throws BusinessException
+     * @throws Exception
      */
     Page<UserListVO> pageUserList(UserPageQueryDTO userPageQueryDTO) throws Exception;
 

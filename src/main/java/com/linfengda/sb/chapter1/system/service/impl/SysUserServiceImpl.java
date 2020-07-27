@@ -53,7 +53,6 @@ public class SysUserServiceImpl extends BaseService implements SysUserService {
         userVO.setUserId(sysUserPO.getId());
         userVO.setUserName(sysUserPO.getUserName());
         userVO.setPhone(sysUserPO.getPhone());
-        userVO.setPassword(sysUserPO.getPassword());
         userVO.setStatus(sysUserPO.getStatus());
         return userVO;
     }

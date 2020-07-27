@@ -23,10 +23,6 @@ public class UserVO {
      */
     private String phone;
     /**
-     * 用户密码
-     */
-    private String password;
-    /**
      * 用户状态
      */
     private Integer status;

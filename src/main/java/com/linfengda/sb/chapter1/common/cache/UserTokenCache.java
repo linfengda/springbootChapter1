@@ -21,7 +21,7 @@ public class UserTokenCache implements Cache {
 
     @Override
     public void initCache() {
-        log.warn("初始化组织关系缓存...");
+        log.warn("初始化token-userId缓存...");
     }
 
     @Override

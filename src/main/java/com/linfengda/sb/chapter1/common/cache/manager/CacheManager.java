@@ -21,7 +21,33 @@ public enum CacheManager {
     /**
      * 用户token-userId缓存
      */
-    USER_TOKEN_CACHE("userTokenCache", "用户token-userId缓存", "c:org:u:t"),
+    USER_TOKEN_CACHE("userTokenCache", "用户token-userId缓存", CachePrefix.USER_TOKEN_CACHE),
+
+    /**
+     * 系统组织：部门
+     */
+    SYS_ORG_PRODUCTION_TEAM_CACHE("sysOrgProductionTeamCache", "系统组织：部门", CachePrefix.SYS_ORG_PRODUCTION_TEAM_CACHE),
+    /**
+     * 系统组织：项目
+     */
+    SYS_ORG_TEAM_CACHE("sysOrgTeamCache", "系统组织：项目", CachePrefix.SYS_ORG_TEAM_CACHE),
+    /**
+     * 系统组织：人员
+     */
+    SYS_ORG_USER_CACHE("sysOrgUserCache", "系统组织：人员", CachePrefix.SYS_ORG_USER_CACHE),
+
+    /**
+     * 部门集合
+     */
+    SYS_ORG_PRODUCTION_TEAM_SET_CACHE("sysOrgProductionTeamSetCache", "部门集合", CachePrefix.SYS_ORG_PRODUCTION_TEAM_SET_CACHE),
+    /**
+     * 项目集合
+     */
+    SYS_ORG_TEAM_SET_CACHE("sysOrgTeamSetCache", "项目集合", CachePrefix.SYS_ORG_TEAM_SET_CACHE),
+    /**
+     * 人员集合
+     */
+    SYS_ORG_USER_SET_CACHE("sysOrgUserSetCache", "人员集合", CachePrefix.SYS_ORG_USER_SET_CACHE),
     ;
 
     private String code;

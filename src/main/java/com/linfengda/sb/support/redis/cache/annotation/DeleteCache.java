@@ -17,6 +17,10 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface DeleteCache {
     /**
+     * 缓存类型
+     */
+    DataType type() default DataType.OBJECT;
+    /**
      * 缓存前缀，建议使用方法名
      * @return
      */
@@ -26,8 +30,4 @@ public @interface DeleteCache {
      * @return
      */
     boolean allEntries() default false;
-    /**
-     * 缓存类型
-     */
-    DataType type() default DataType.OBJECT;
 }
