@@ -26,3 +26,5 @@
 /target/
 /.idea/
 /.mvn/
+/logs/
+/.idea/
