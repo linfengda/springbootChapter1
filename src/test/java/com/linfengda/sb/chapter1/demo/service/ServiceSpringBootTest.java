@@ -49,7 +49,6 @@ public class ServiceSpringBootTest {
     public void test1() throws Exception {
         // 假设未连接redis，模拟缓存方法调用
         Mockito.doNothing().when(userTokenCache).clearCache();
-        sysOrganizeService.queryDepartment(123);
-        sysOrganizeService.cacheDepartment(456);
+        sysOrganizeService.queryDepartment(123, null, null);
     }
 }

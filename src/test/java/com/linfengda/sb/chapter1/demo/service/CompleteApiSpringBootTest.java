@@ -53,7 +53,6 @@ public class CompleteApiSpringBootTest extends BaseMockMvcSpringBootTest {
         userVO.setUserId(1);
         userVO.setUserName("模拟数据");
         userVO.setPhone("13632109840");
-        userVO.setPassword("123456");
         userVO.setStatus(SysUserPO.Status.YES.getCode());
         // 模拟service方法调用
         Mockito.doReturn(userVO).when(sysUserService).getUserInfo(1);
