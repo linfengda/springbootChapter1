@@ -1,9 +1,9 @@
 package com.linfengda.sb.chapter1.common.cache.manager;
 
 import com.linfengda.sb.chapter1.common.cache.UserTokenCache;
-import com.linfengda.sb.chapter1.common.context.ApplicationContextHelper;
 import com.linfengda.sb.chapter1.common.exception.BusinessException;
 import com.linfengda.sb.chapter1.common.exception.entity.ErrorCode;
+import com.linfengda.sb.chapter1.common.util.SpringUtil;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
@@ -61,7 +61,7 @@ public enum CacheManager {
             for (CacheManager cache :values()) {
                 switch (cache) {
                     case USER_TOKEN_CACHE:
-                        UserTokenCache userTokenCache = ApplicationContextHelper.getBean(UserTokenCache.class);
+                        UserTokenCache userTokenCache = SpringUtil.getBean(UserTokenCache.class);
                         userTokenCache.initCache();
                     default:
                         break;
