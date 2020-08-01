@@ -1,6 +1,6 @@
 package com.linfengda.sb.chapter1.common.api.parameter;
 
-import com.linfengda.sb.chapter1.common.api.parameter.type.BaseParameterType;
+import com.linfengda.sb.chapter1.common.api.entity.BaseType;
 import com.linfengda.sb.chapter1.common.api.parameter.type.BeanValidateAnnotationType;
 import com.linfengda.sb.chapter1.common.api.parameter.type.FieldValidateAnnotationType;
 import com.linfengda.sb.chapter1.common.api.parameter.type.NotValidateParameterType;
@@ -38,7 +38,7 @@ public class ApiParameterValidator {
             if (NotValidateParameterType.isNotValidateParameterType(parameter.getType().getName())) {
                 continue;
             }
-            if (BaseParameterType.isBaseType(parameter.getType().getName())) {
+            if (BaseType.isBaseType(parameter.getType().getName())) {
                 // 校验基本数据类型
                 if (hasFieldValidateAnnotationType(annotations)) {
                     needValidateBaseType = true;
