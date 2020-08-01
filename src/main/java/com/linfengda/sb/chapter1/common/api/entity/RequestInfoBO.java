@@ -1,5 +1,6 @@
 package com.linfengda.sb.chapter1.common.api.entity;
 
+import com.alibaba.fastjson.JSONObject;
 import com.linfengda.sb.chapter1.common.util.StringConstant;
 import lombok.Data;
 
@@ -22,11 +23,11 @@ public class RequestInfoBO {
     /**
      * 请求参数
      */
-    private RequestParam requestParam;
+    private JSONObject requestParam;
 
     public String getUriHead(){
         StringBuilder sb = new StringBuilder();
-        for (int i = 1;i< 50;i++){
+        for (int i = 1;i< url.length();i++){
             char t = url.charAt(i);
             if (t == StringConstant.SLASH_CHAR){
                 break;

@@ -1,7 +1,6 @@
 package com.linfengda.sb.chapter1.common.api.parameter.type;
 
 import com.alibaba.fastjson.JSONObject;
-import com.linfengda.sb.chapter1.common.api.entity.RequestParam;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -23,12 +22,7 @@ public enum NotValidateParameterType {
     /**
      * JSONObject
      */
-    JSON(JSONObject.class.getName()),
-    /**
-     * RequestParam
-     */
-    REQUEST_PARAM(RequestParam.class.getName()),
-    ;
+    JSON(JSONObject.class.getName());
 
     private String type;
 

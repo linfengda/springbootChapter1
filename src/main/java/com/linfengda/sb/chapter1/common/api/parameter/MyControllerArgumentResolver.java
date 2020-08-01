@@ -1,10 +1,11 @@
 package com.linfengda.sb.chapter1.common.api.parameter;
 
+import com.alibaba.fastjson.JSONObject;
 import com.linfengda.sb.chapter1.common.api.entity.BaseType;
-import com.linfengda.sb.chapter1.common.api.entity.RequestParam;
-import com.linfengda.sb.chapter1.common.util.HttpServletUtil;
-import com.linfengda.sb.chapter1.common.exception.entity.ErrorCode;
+import com.linfengda.sb.chapter1.common.api.entity.RequestInfoBO;
 import com.linfengda.sb.chapter1.common.exception.BusinessException;
+import com.linfengda.sb.chapter1.common.exception.entity.ErrorCode;
+import com.linfengda.sb.chapter1.common.util.HttpServletUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.MethodParameter;
 import org.springframework.web.bind.support.WebDataBinderFactory;
@@ -12,7 +13,6 @@ import org.springframework.web.context.request.NativeWebRequest;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.method.support.ModelAndViewContainer;
 
-import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.lang.reflect.WildcardType;
@@ -41,19 +41,24 @@ public class MyControllerArgumentResolver implements HandlerMethodArgumentResolv
         if (MAX_CONTROLLER_PARAMETER_SIZE < methodParameter.getParameterIndex()+1) {
             throw new BusinessException(ErrorCode.COMMON_PARAM_ERROR_CODE, "API参数大小限制为" +MAX_CONTROLLER_PARAMETER_SIZE+ "个");
         }
-        HttpServletRequest servletRequest = nativeWebRequest.getNativeRequest(HttpServletRequest.class);
-        RequestParam requestParam = HttpServletUtil.getRequestParam(servletRequest);
         // 转换请求参数为控制器方法参数
+        RequestInfoBO requestInfoBO = HttpServletUtil.getRequestInfoBO();
         if (BaseType.isBaseType(methodParameter.getParameterType().getName())) {
-            return requestParam.getObject(methodParameter.getParameterName(), methodParameter.getParameterType());
+            return requestInfoBO.getRequestParam().getObject(methodParameter.getParameterName(), methodParameter.getParameterType());
         }else if (java.util.List.class.equals(methodParameter.getParameterType())) {
-            return getList(methodParameter, requestParam);
+            return getList(methodParameter, requestInfoBO.getRequestParam());
         }else {
-            return requestParam.toJavaObject(methodParameter.getParameterType());
+            return requestInfoBO.getRequestParam().toJavaObject(methodParameter.getParameterType());
         }
     }
 
-    private Object getList(MethodParameter methodParameter, RequestParam requestParam) {
+    /**
+     * json参数转List
+     * @param methodParameter   方法声明的参数信息
+     * @param requestParam      请求参数
+     * @return                  List
+     */
+    private Object getList(MethodParameter methodParameter, JSONObject requestParam) {
         if (null == requestParam.get(methodParameter.getParameterName())) {
             return null;
         }

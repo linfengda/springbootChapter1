@@ -7,7 +7,7 @@ import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
 
 /**
- * 描述: Bean校验注解类型
+ * 描述: 校验Bean的注解类型
  *
  * @author linfengda
  * @create 2019-12-23 16:20

@@ -6,7 +6,7 @@ import lombok.Getter;
 import javax.validation.constraints.*;
 
 /**
- * 描述: Field校验注解类型
+ * 描述: 校验Field的注解类型
  *
  * @author linfengda
  * @create 2019-12-23 17:29

@@ -4,7 +4,6 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.linfengda.sb.chapter1.common.api.entity.HttpMethod;
 import com.linfengda.sb.chapter1.common.api.entity.RequestInfoBO;
-import com.linfengda.sb.chapter1.common.api.entity.RequestParam;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.IOUtils;
 import org.springframework.util.StringUtils;
@@ -35,6 +34,11 @@ public class HttpServletUtil {
     private static final String INTERNATIONAL_CODE = "ISO8859-1";
 
 
+    /**
+     * 获取请求BO
+     * @return  请求BO
+     * @throws Exception
+     */
     public static RequestInfoBO getRequestInfoBO() throws Exception {
         HttpServletRequest servletRequest = getHttpServletRequest();
         RequestInfoBO requestInfoBO = new RequestInfoBO();
@@ -44,28 +48,9 @@ public class HttpServletUtil {
         return requestInfoBO;
     }
 
-    public static RequestParam getRequestParam(HttpServletRequest servletRequest) throws Exception {
-        RequestParam requestParam = new RequestParam();
-        String jsonBody = (String) servletRequest.getAttribute(JSON_REQUEST_BODY);
-        if (jsonBody == null) {
-            requestParam = readRequestParam(servletRequest);
-            servletRequest.setAttribute(JSON_REQUEST_BODY, requestParam.toJSONString());
-        }else {
-            JSONObject json = JSON.parseObject(jsonBody);
-            if (json == null) {
-                return requestParam;
-            }
-            for (Map.Entry<String, Object> value : json.entrySet()) {
-                requestParam.put(value.getKey(), value.getValue());
-            }
-        }
-        return requestParam;
-    }
-
     /**
      * 获取http request
-     *
-     * @return
+     * @return  request
      */
     private static HttpServletRequest getHttpServletRequest() {
         RequestAttributes reqAttrs = RequestContextHolder.getRequestAttributes();
@@ -79,8 +64,7 @@ public class HttpServletUtil {
 
     /**
      * 获取http response
-     *
-     * @return
+     * @return  response
      */
     private static HttpServletResponse getHttpServletResponse() {
         RequestAttributes reqAttrs = RequestContextHolder.getRequestAttributes();
@@ -92,14 +76,36 @@ public class HttpServletUtil {
         }
     }
 
-    private static RequestParam readRequestParam(HttpServletRequest request) throws IOException {
-        String method = request.getMethod();
-        HttpMethod httpMethod = HttpMethod.getHttpMethod(method.toLowerCase());
+    /**
+     * 将请求参数统一封装为json格式
+     * @param servletRequest    请求
+     * @return                  json数据
+     * @throws Exception
+     */
+    private static JSONObject getRequestParam(HttpServletRequest servletRequest) throws Exception {
+        String jsonBody = (String) servletRequest.getAttribute(JSON_REQUEST_BODY);
+        if (!StringUtils.isEmpty(jsonBody)) {
+            JSONObject requestParam = JSON.parseObject(jsonBody);
+            return requestParam;
+        }
+        JSONObject requestParam = readRequestParam(servletRequest);
+        servletRequest.setAttribute(JSON_REQUEST_BODY, requestParam.toJSONString());
+        return requestParam;
+    }
 
-        RequestParam requestParam = new RequestParam();
+    /**
+     * 将请求参数统一封装为json格式
+     * @param servletRequest    请求
+     * @return                  json数据
+     * @throws IOException
+     */
+    private static JSONObject readRequestParam(HttpServletRequest servletRequest) throws IOException {
+        JSONObject requestParam = new JSONObject();
+        String method = servletRequest.getMethod();
+        HttpMethod httpMethod = HttpMethod.getHttpMethod(method.toLowerCase());
         switch (httpMethod) {
             case GET:
-                Map<String, String[]> requestParams = request.getParameterMap();
+                Map<String, String[]> requestParams = servletRequest.getParameterMap();
                 for (Map.Entry<String, String[]> value : requestParams.entrySet()) {
                     if (value.getValue().length == 1) {
                         String v = value.getValue()[0];
@@ -119,7 +125,7 @@ public class HttpServletUtil {
                 }
                 break;
             case POST:
-                String body = IOUtils.toString(request.getInputStream(), CHAR_CODE_SET);
+                String body = IOUtils.toString(servletRequest.getInputStream(), CHAR_CODE_SET);
                 JSONObject json = JSON.parseObject(body);
                 if (json == null) {
                     return requestParam;
@@ -128,6 +134,7 @@ public class HttpServletUtil {
                     requestParam.put(value.getKey(), value.getValue());
                 }
                 break;
+            default: return null;
         }
         return requestParam;
     }

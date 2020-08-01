@@ -11,7 +11,7 @@ import lombok.Getter;
  */
 @Getter
 @AllArgsConstructor
-public enum BaseValidateParameterType {
+public enum BaseParameterType {
 	/**
 	 * java.lang.String
 	 */
@@ -96,8 +96,8 @@ public enum BaseValidateParameterType {
 
     private String type;
 
-    public static boolean isBaseValidateParameterType(String type){
-		for (BaseValidateParameterType value : values()) {
+    public static boolean isBaseType(String type){
+		for (BaseParameterType value : values()) {
 			if (value.getType().equals(type)) {
 				return true;
 			}

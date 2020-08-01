@@ -147,6 +147,12 @@ public class TimeUtil {
         return true;
     }
 
+    /**
+     * 格式化时间
+     * @param timestamp
+     * @param pattern
+     * @return
+     */
     public static String format(Timestamp timestamp, String pattern){
         if(null == timestamp || StringUtils.isEmpty(pattern)){
             return null;
@@ -154,6 +160,12 @@ public class TimeUtil {
         return getSafeSimpleDateFormat(pattern).format(timestamp);
     }
 
+    /**
+     * 格式化时间
+     * @param date
+     * @param pattern
+     * @return
+     */
     public static String format(Date date, String pattern){
         if(null == date || StringUtils.isEmpty(pattern)){
             return null;
@@ -161,6 +173,12 @@ public class TimeUtil {
         return getSafeSimpleDateFormat(pattern).format(date);
     }
 
+    /**
+     * 格式化时间
+     * @param time
+     * @param pattern
+     * @return
+     */
     public static String format(Long time, String pattern){
         if(null == time || StringUtils.isEmpty(pattern)){
             return null;

@@ -1,6 +1,6 @@
 package com.linfengda.sb.chapter1.common.api.parameter;
 
-import com.linfengda.sb.chapter1.common.api.parameter.type.BaseValidateParameterType;
+import com.linfengda.sb.chapter1.common.api.parameter.type.BaseParameterType;
 import com.linfengda.sb.chapter1.common.api.parameter.type.BeanValidateAnnotationType;
 import com.linfengda.sb.chapter1.common.api.parameter.type.FieldValidateAnnotationType;
 import com.linfengda.sb.chapter1.common.api.parameter.type.NotValidateParameterType;
@@ -18,7 +18,7 @@ import java.lang.reflect.Parameter;
  * @author linfengda
  * @create 2020-03-24 17:44
  */
-public class MyParameterValidator {
+public class ApiParameterValidator {
 
     /**
      * 入参校验
@@ -34,20 +34,19 @@ public class MyParameterValidator {
         Parameter[] parameters = targetMethod.getParameters();
         for (int i=0; i <parameters.length; i++){
             Parameter parameter = parameters[i];
+            Annotation[] annotations = parameter.getAnnotations();
             if (NotValidateParameterType.isNotValidateParameterType(parameter.getType().getName())) {
                 continue;
             }
-            if (BaseValidateParameterType.isBaseValidateParameterType(parameter.getType().getName())) {
+            if (BaseParameterType.isBaseType(parameter.getType().getName())) {
                 // 校验基本数据类型
-                Annotation[] annotations = parameter.getAnnotations();
-                if (isFieldValidateAnnotationType(annotations)) {
+                if (hasFieldValidateAnnotationType(annotations)) {
                     needValidateBaseType = true;
                     continue;
                 }
             }else {
                 // 校验Bean
-                Annotation[] annotations = parameter.getAnnotations();
-                if (isBeanValidateAnnotationType(annotations)) {
+                if (hasBeanValidateAnnotationType(annotations)) {
                     MyValidateUtils.validate(args[i]);
                 }
             }
@@ -57,7 +56,12 @@ public class MyParameterValidator {
         }
     }
 
-    private boolean isFieldValidateAnnotationType(Annotation[] annotations) {
+    /**
+     * 判断是否有基本数据类型的校验注解
+     * @param annotations   参数的注解列表
+     * @return              true：有校验注解，false：无校验注解
+     */
+    private boolean hasFieldValidateAnnotationType(Annotation[] annotations) {
         if (annotations != null && annotations.length > 0) {
             for (Annotation annotation : annotations) {
                 if (FieldValidateAnnotationType.isValidateAnnotation(annotation.annotationType().getName())) {
@@ -68,7 +72,12 @@ public class MyParameterValidator {
         return false;
     }
 
-    private boolean isBeanValidateAnnotationType(Annotation[] annotations) {
+    /**
+     * 判断是否有Bean类型的校验注解
+     * @param annotations   参数的注解列表
+     * @return              true：有校验注解，false：无校验注解
+     */
+    private boolean hasBeanValidateAnnotationType(Annotation[] annotations) {
         if (annotations != null && annotations.length > 0) {
             for (Annotation annotation : annotations) {
                 if (BeanValidateAnnotationType.isValidateAnnotation(annotation.annotationType().getName())) {
