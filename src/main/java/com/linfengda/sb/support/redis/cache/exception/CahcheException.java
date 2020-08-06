@@ -4,26 +4,25 @@ import com.linfengda.sb.chapter1.common.exception.entity.ErrorCode;
 import lombok.Getter;
 
 /**
- * 描述: 业务异常类
+ * 描述: 缓存业务异常类
  *
  * @author linfengda
  * @create 2019-01-23 13:22
  */
 @Getter
-public class BusinessException extends RuntimeException {
-
-    public BusinessException(String msg) {
+public class CahcheException extends RuntimeException {
+    public CahcheException(String msg) {
         super(msg);
         this.msg = msg;
     }
 
-    public BusinessException(Integer code, String msg) {
+    public CahcheException(Integer code, String msg) {
         super(msg);
         this.code = code;
         this.msg = msg;
     }
 
-    public BusinessException(Integer code, String msg, String detailMsg) {
+    public CahcheException(Integer code, String msg, String detailMsg) {
         super(null == detailMsg ? msg : msg + "," + detailMsg);
         this.code = code;
         this.msg = msg;

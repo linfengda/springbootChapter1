@@ -2,7 +2,7 @@ package com.linfengda.sb.support.redis.cache.manager;
 
 import com.linfengda.sb.support.redis.cache.entity.dto.CacheDataDTO;
 import com.linfengda.sb.support.redis.cache.entity.type.OperationType;
-import com.linfengda.sb.support.redis.cache.exception.BusinessException;
+import com.linfengda.sb.support.redis.cache.exception.CahcheException;
 import com.linfengda.sb.support.redis.cache.handler.CacheHandler;
 import com.linfengda.sb.support.redis.cache.handler.impl.DeleteCacheHandler;
 import com.linfengda.sb.support.redis.cache.handler.impl.QueryCacheHandler;
@@ -69,6 +69,6 @@ public enum CacheHandlerManager {
                 return value.getHandler(cacheDataDTO);
             }
         }
-        throw new BusinessException("不支持的缓存操作！");
+        throw new CahcheException("不支持的缓存操作！");
     }
 }

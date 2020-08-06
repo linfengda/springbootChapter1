@@ -9,7 +9,7 @@ import com.linfengda.sb.support.redis.config.Constant;
 import com.linfengda.sb.support.redis.cache.entity.meta.CacheMethodMeta;
 import com.linfengda.sb.support.redis.cache.entity.type.CacheMaxSizeStrategy;
 import com.linfengda.sb.support.redis.cache.entity.type.OperationType;
-import com.linfengda.sb.support.redis.cache.exception.BusinessException;
+import com.linfengda.sb.support.redis.cache.exception.CahcheException;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.util.CollectionUtils;
 
@@ -51,10 +51,10 @@ public class CacheMethodMetaBuilder {
         }
         List<Annotation> cacheAnnotationList = getMethodCacheAnnotations(method);
         if (CollectionUtils.isEmpty(cacheAnnotationList)) {
-            throw new BusinessException(ErrorCode.COMMON_CACHE_ERROR_CODE, "方法["+ method.getName() +"]没有缓存注解！");
+            throw new CahcheException(ErrorCode.COMMON_CACHE_ERROR_CODE, "方法["+ method.getName() +"]没有缓存注解！");
         }
         if (cacheAnnotationList.size() > 1) {
-            throw new BusinessException(ErrorCode.COMMON_CACHE_ERROR_CODE, "方法["+ method.getName() +"]不能添加多个缓存注解！");
+            throw new CahcheException(ErrorCode.COMMON_CACHE_ERROR_CODE, "方法["+ method.getName() +"]不能添加多个缓存注解！");
         }
         CHECKED_CACHE_METHOD_CACHE.put(method, true);
         return true;
@@ -157,14 +157,14 @@ public class CacheMethodMetaBuilder {
     private static void validateCacheMethod(CacheMethodMeta cacheMethodMeta) {
         if (cacheMethodMeta.getMaxSizeStrategy() == CacheMaxSizeStrategy.MAX_SIZE_STRATEGY_ABANDON || cacheMethodMeta.getMaxSizeStrategy() == CacheMaxSizeStrategy.MAX_SIZE_STRATEGY_LRU) {
             if (Constant.DEFAULT_NO_SIZE_LIMIT.equals(cacheMethodMeta.getMaxSize())) {
-                throw new BusinessException("未限制最大缓存数量，无法启用淘汰策略！");
+                throw new CahcheException("未限制最大缓存数量，无法启用淘汰策略！");
             }
             if (cacheMethodMeta.getMaxSizeStrategy() == CacheMaxSizeStrategy.MAX_SIZE_STRATEGY_LRU && Constant.DEFAULT_NO_EXPIRE_TIME.equals(cacheMethodMeta.getTimeOut())) {
-                throw new BusinessException("未限制缓存时间，无法启用LRU算法淘汰数据！");
+                throw new CahcheException("未限制缓存时间，无法启用LRU算法淘汰数据！");
             }
         }
         if (0 == cacheMethodMeta.getMaxSize()) {
-            throw new BusinessException("缓存最大数量必须大于0！");
+            throw new CahcheException("缓存最大数量必须大于0！");
         }
     }
 

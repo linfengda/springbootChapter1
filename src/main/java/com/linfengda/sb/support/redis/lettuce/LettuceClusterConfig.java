@@ -10,13 +10,18 @@ import java.util.List;
 
 /**
  * 描述: Lettuce集群配置
- *
  * @author linfengda
  * @create 2019-02-18 22:25
  */
 @Data
 public class LettuceClusterConfig {
+    /**
+     * redis机器列表
+     */
     private List<RedisURI> redisURIList;
+    /**
+     * 序列化
+     */
     private RedisCodec<byte[], byte[]> redisCodec;
 
     public LettuceClusterConfig(String clusterNodes, RedisCodec<byte[], byte[]> redisCodec) {

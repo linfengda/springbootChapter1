@@ -1,7 +1,7 @@
 package com.linfengda.sb.support.redis.cache.entity.cache;
 
 import com.linfengda.sb.support.redis.cache.entity.dto.LruCacheDTO;
-import com.linfengda.sb.support.redis.cache.exception.BusinessException;
+import com.linfengda.sb.support.redis.cache.exception.CahcheException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.StringUtils;
 
@@ -31,10 +31,10 @@ public abstract class AbstractLRUCache {
 
     public AbstractLRUCache(Long maxSize, Long cacheTimeout) {
         if (null == maxSize || 0 == maxSize) {
-            throw new BusinessException("缓存最大数量必须大于0！");
+            throw new CahcheException("缓存最大数量必须大于0！");
         }
         if (null == cacheTimeout || 0 == cacheTimeout) {
-            throw new BusinessException("缓存失效时间必须大于0！");
+            throw new CahcheException("缓存失效时间必须大于0！");
         }
         this.maxSize = maxSize;
     }

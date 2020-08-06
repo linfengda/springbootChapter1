@@ -11,21 +11,13 @@ import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 /**
- * 描述: 获取lettuce模板
- *
+ * 描述: 获取lettuce模板，
  * @author linfengda
  * @create 2019-02-19 10:00
  */
 public class LettuceTemplateHelper {
-    private static LettuceTemplate<String, Object> lettuceTemplate;
-    public static LettuceTemplate<String, Object> getTemplate() {
-        if (null == lettuceTemplate) {
-            init();
-        }
-        return lettuceTemplate;
-    }
 
-    public static void init() {
+    public static LettuceTemplate<String, Object> getLettuceTemplate() {
         // 获取集群机器配置
         LettuceClusterConfig clusterConfig = new LettuceClusterConfig("47.106.79.8:7001,47.106.79.8:7002,47.106.79.8:7003,119.23.181.11:7004,119.23.181.11:7005,119.23.181.11:7006", ByteArrayCodec.INSTANCE);
         // 获取连接管理工厂
@@ -37,14 +29,12 @@ public class LettuceTemplateHelper {
         om.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);
         jackson2JsonRedisSerializer.setObjectMapper(om);
 
-        // 获取操作模板
-        lettuceTemplate = new LettuceTemplate();
+        LettuceTemplate<String, Object> lettuceTemplate = new LettuceTemplate();
         lettuceTemplate.setConnectionFactory(connectionFactory);
         lettuceTemplate.setKeySerializer(new StringRedisSerializer());
         lettuceTemplate.setValueSerializer(jackson2JsonRedisSerializer);
-        lettuceTemplate.setDebugAble(true);
-        // 打印集群信息
         lettuceTemplate.info();
+        return lettuceTemplate;
     }
 
 }

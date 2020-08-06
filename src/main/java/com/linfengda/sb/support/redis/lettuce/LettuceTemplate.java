@@ -3,12 +3,13 @@ package com.linfengda.sb.support.redis.lettuce;
 import io.lettuce.core.cluster.api.StatefulRedisClusterConnection;
 import io.lettuce.core.cluster.api.sync.RedisClusterCommands;
 import lombok.Data;
+import lombok.Setter;
+import org.apache.ibatis.cache.CacheException;
 import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.util.Assert;
 
 /**
- * 描述: 执行redis命令
- *
+ * 描述: Lettuce操作模版
  * @author linfengda
  * @create 2019-02-11 18:00
  */
@@ -17,9 +18,6 @@ public class LettuceTemplate<K, V> {
     private LettuceConnectionFactory connectionFactory;
     private RedisSerializer keySerializer = null;
     private RedisSerializer valueSerializer = null;
-    private boolean debugAble;
-
-
 
     /**
      * 获取redis-server信息
@@ -27,8 +25,6 @@ public class LettuceTemplate<K, V> {
     public void info() {
         execute(commands -> commands.info());
     }
-
-    /*******************************************   String操作   *********************************************/
 
     public void set(K key, V value) {
         byte[] rawKey = rawKey(key);
@@ -46,10 +42,6 @@ public class LettuceTemplate<K, V> {
         byte[] rawKey = rawKey(key);
         return execute(commands -> commands.del(rawKey));
     }
-
-    /*******************************************   String操作   *********************************************/
-
-    /*******************************************   List操作   *********************************************/
 
     public Long leftPush(K key, V value) {
         byte[] rawKey = rawKey(key);
@@ -73,8 +65,6 @@ public class LettuceTemplate<K, V> {
         return execute(commands -> commands.rpop(rawKey));
     }
 
-    /*******************************************   List操作   *********************************************/
-
 
     /**
      * 所有redisCommand在execute方法执行，已方便资源管理和异常处理
@@ -91,17 +81,9 @@ public class LettuceTemplate<K, V> {
             // 执行redis命令
             V result = (V) commandCallback.call(commands);
             return result;
-
-
-
         } catch (Exception e) {
-            if (isDebugAble()) {
-                e.printStackTrace();
-            }
-            // 异常类型转换
-            throw new LettuceConnectionException("redis命令执行异常：" + e.getStackTrace());
+            throw new CacheException("redis命令执行异常：" + e.getStackTrace());
         } finally {
-            // 释放连接资源
             if (null != connection) {
                 //connectionFactory.releaseConnection();
             }
