@@ -50,7 +50,6 @@ public class ORMFrameworkSpringBootTest {
         userVO.setUserId(sysUserPO.getId());
         userVO.setUserName(sysUserPO.getUserName());
         userVO.setPhone(sysUserPO.getPhone());
-        userVO.setPassword(sysUserPO.getPassword());
         userVO.setStatus(sysUserPO.getStatus());
         log.info("查询用户信息={}", JSON.toJSONString(userVO));
     }

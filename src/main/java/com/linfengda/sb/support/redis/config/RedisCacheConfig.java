@@ -2,7 +2,6 @@ package com.linfengda.sb.support.redis.config;
 
 import com.linfengda.sb.support.redis.cache.interceptor.*;
 import org.springframework.beans.factory.config.BeanDefinition;
-import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Role;
 
@@ -12,7 +11,6 @@ import org.springframework.context.annotation.Role;
  * @author linfengda
  * @create 2020-03-24 18:38
  */
-@SpringBootConfiguration
 public class RedisCacheConfig extends AbstractCacheConfig {
 
     @Bean

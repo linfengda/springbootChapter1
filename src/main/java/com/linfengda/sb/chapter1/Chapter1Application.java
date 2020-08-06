@@ -1,6 +1,7 @@
 package com.linfengda.sb.chapter1;
 
 import com.linfengda.sb.support.redis.cache.manager.AopOrderManager;
+import com.linfengda.sb.support.redis.config.annotation.EnableRedis;
 import com.linfengda.sb.support.redis.config.annotation.EnableRedisCache;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

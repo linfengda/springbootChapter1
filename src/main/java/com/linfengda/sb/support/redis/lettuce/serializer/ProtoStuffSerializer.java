@@ -1,4 +1,4 @@
-package com.linfengda.sb.support.redis.serializer;
+package com.linfengda.sb.support.redis.lettuce.serializer;
 
 import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.data.redis.serializer.SerializationException;

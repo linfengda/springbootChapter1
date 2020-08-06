@@ -17,7 +17,7 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
  */
 public class LettuceTemplateHelper {
 
-    public static LettuceTemplate<String, Object> getLettuceTemplate() {
+    public static LettuceTemplate<String, Object> getTemplate() {
         // 获取集群机器配置
         LettuceClusterConfig clusterConfig = new LettuceClusterConfig("47.106.79.8:7001,47.106.79.8:7002,47.106.79.8:7003,119.23.181.11:7004,119.23.181.11:7005,119.23.181.11:7006", ByteArrayCodec.INSTANCE);
         // 获取连接管理工厂

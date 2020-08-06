@@ -1,7 +1,7 @@
 package com.linfengda.sb.support.redis.cache.manager;
 
 import com.linfengda.sb.support.redis.config.Constant;
-import com.linfengda.sb.support.redis.config.RedisSupportHolder;
+import com.linfengda.sb.support.redis.config.RedisSupportConfig;
 import com.linfengda.sb.support.redis.cache.entity.bo.LruExpireResultBO;
 import com.linfengda.sb.support.redis.template.SimpleRedisTemplate;
 import com.linfengda.sb.support.redis.cache.util.CacheUtil;
@@ -24,7 +24,6 @@ import javax.annotation.PostConstruct;
  * @date: 2020-07-21 14:57
  */
 @Slf4j
-@SpringBootConfiguration
 public class CacheBackgroundManager {
     /**
      * 缓存后台管理线程池
@@ -39,7 +38,7 @@ public class CacheBackgroundManager {
                     Thread.sleep(Constant.DEFAULT_LRU_CACHE_CLEAR_TASK);
 
                     // 使用scan渐进删除
-                    SimpleRedisTemplate simpleRedisTemplate = RedisSupportHolder.getSimpleRedisTemplate();
+                    SimpleRedisTemplate simpleRedisTemplate = RedisSupportConfig.getSimpleRedisTemplate();
                     LruExpireResultBO lruExpireResultBO = simpleRedisTemplate.execute(new RedisCallback<LruExpireResultBO>() {
                         LruExpireResultBO lruExpireResultBO = new LruExpireResultBO();
                         long startTime = System.currentTimeMillis();

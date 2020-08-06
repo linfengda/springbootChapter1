@@ -1,6 +1,6 @@
 package com.linfengda.sb.support.redis.cache.handler.impl;
 
-import com.linfengda.sb.support.redis.config.RedisSupportHolder;
+import com.linfengda.sb.support.redis.config.RedisSupportConfig;
 import com.linfengda.sb.support.redis.cache.entity.dto.CacheDataDTO;
 import com.linfengda.sb.support.redis.cache.entity.dto.CacheParamDTO;
 import com.linfengda.sb.support.redis.cache.entity.type.CacheExtraStrategy;
@@ -33,7 +33,7 @@ public class QueryCacheHandler extends AbstractCacheHandler {
         if (!param.getStrategies().contains(CacheExtraStrategy.NO_CACHE_HOT_KEY_MULTI_LOAD)) {
             return getMethodResult(param);
         }
-        RedisDistributedLock distributedLock = RedisSupportHolder.getRedisDistributedLock();
+        RedisDistributedLock distributedLock = RedisSupportConfig.getRedisDistributedLock();
         try {
             if (distributedLock.lock(param.getLockKey())) {
                 value = strategy.getCache(param);

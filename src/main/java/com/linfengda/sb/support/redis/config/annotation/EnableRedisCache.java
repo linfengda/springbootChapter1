@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Import;
 import java.lang.annotation.*;
 
 /**
- * 描述: 开启redis缓存注解
+ * 描述: 开启redis缓存注解，自动引入redisTemplate，redisDistributedLock，redis注解框架
  *
  * @author linfengda
  * @create 2020-03-24 17:56

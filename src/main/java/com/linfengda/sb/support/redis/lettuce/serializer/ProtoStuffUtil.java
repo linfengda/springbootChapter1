@@ -1,4 +1,4 @@
-package com.linfengda.sb.support.redis.serializer;
+package com.linfengda.sb.support.redis.lettuce.serializer;
 
 import io.protostuff.LinkedBuffer;
 import io.protostuff.ProtostuffIOUtil;

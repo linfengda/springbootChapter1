@@ -1,6 +1,6 @@
 package com.linfengda.sb.support.redis.cache.entity.type;
 
-import com.linfengda.sb.support.redis.config.RedisSupportHolder;
+import com.linfengda.sb.support.redis.config.RedisSupportConfig;
 import com.linfengda.sb.support.redis.cache.handler.strategy.CacheStrategy;
 import com.linfengda.sb.support.redis.cache.handler.strategy.impl.HashCacheStrategy;
 import com.linfengda.sb.support.redis.cache.handler.strategy.impl.ListCacheStrategy;
@@ -24,7 +24,7 @@ public enum DataType {
         @Override
         public CacheStrategy getStrategy() {
             ObjCacheStrategy objCacheStrategy = new ObjCacheStrategy();
-            objCacheStrategy.setSimpleRedisTemplate(RedisSupportHolder.getSimpleRedisTemplate());
+            objCacheStrategy.setSimpleRedisTemplate(RedisSupportConfig.getSimpleRedisTemplate());
             return objCacheStrategy;
         }
     },
@@ -35,7 +35,7 @@ public enum DataType {
         @Override
         public CacheStrategy getStrategy() {
             HashCacheStrategy hashCacheStrategy = new HashCacheStrategy();
-            hashCacheStrategy.setSimpleRedisTemplate(RedisSupportHolder.getSimpleRedisTemplate());
+            hashCacheStrategy.setSimpleRedisTemplate(RedisSupportConfig.getSimpleRedisTemplate());
             return hashCacheStrategy;
         }
     },
@@ -46,7 +46,7 @@ public enum DataType {
         @Override
         public CacheStrategy getStrategy() {
             ListCacheStrategy listCacheStrategy = new ListCacheStrategy();
-            listCacheStrategy.setSimpleRedisTemplate(RedisSupportHolder.getSimpleRedisTemplate());
+            listCacheStrategy.setSimpleRedisTemplate(RedisSupportConfig.getSimpleRedisTemplate());
             return listCacheStrategy;
         }
     },
@@ -57,7 +57,7 @@ public enum DataType {
         @Override
         public CacheStrategy getStrategy() {
             SetCacheStrategy setCacheStrategy = new SetCacheStrategy();
-            setCacheStrategy.setSimpleRedisTemplate(RedisSupportHolder.getSimpleRedisTemplate());
+            setCacheStrategy.setSimpleRedisTemplate(RedisSupportConfig.getSimpleRedisTemplate());
             return setCacheStrategy;
         }
     },
