@@ -7,6 +7,7 @@ import com.linfengda.sb.chapter1.system.entity.dto.UserDTO;
 import com.linfengda.sb.chapter1.system.entity.dto.UserPageQueryDTO;
 import com.linfengda.sb.chapter1.system.entity.vo.UserListVO;
 import com.linfengda.sb.chapter1.system.service.SysUserService;
+import com.linfengda.sb.support.apivalidator.annotation.ApiValidator;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -41,7 +42,7 @@ public class SystemController extends BaseController {
     }
 
     @PostMapping("/pageUserList")
-    public Result pageUserList(@Validated UserPageQueryDTO userPageQueryDTO) throws Exception {
+    public Result pageUserList(@ApiValidator @RequestBody UserPageQueryDTO userPageQueryDTO) throws Exception {
         Page<UserListVO> userListVOPage = sysUserService.pageUserList(userPageQueryDTO);
         return new Result(userListVOPage);
     }

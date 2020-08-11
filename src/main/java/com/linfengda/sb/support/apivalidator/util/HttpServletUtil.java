@@ -103,7 +103,7 @@ public class HttpServletUtil {
         JSONObject requestParam = new JSONObject();
         String method = servletRequest.getMethod();
         switch (method) {
-            case "get":
+            case "GET":
                 Map<String, String[]> requestParams = servletRequest.getParameterMap();
                 for (Map.Entry<String, String[]> value : requestParams.entrySet()) {
                     if (value.getValue().length == 1) {
@@ -123,7 +123,7 @@ public class HttpServletUtil {
                     }
                 }
                 break;
-            case "post":
+            case "POST":
                 String body = IOUtils.toString(servletRequest.getInputStream(), CHAR_CODE_SET);
                 requestParam = JSON.parseObject(body);
                 break;
