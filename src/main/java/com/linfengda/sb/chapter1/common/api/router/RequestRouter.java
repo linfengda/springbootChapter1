@@ -2,7 +2,6 @@ package com.linfengda.sb.chapter1.common.api.router;
 
 import com.linfengda.sb.chapter1.common.api.context.RequestContext;
 import com.linfengda.sb.chapter1.common.api.entity.RequestInfoBO;
-import com.linfengda.sb.chapter1.common.api.parameter.ApiParameterValidator;
 import com.linfengda.sb.chapter1.common.util.HttpServletUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -28,10 +27,6 @@ public enum RequestRouter {
 
             // 2.根据url进行路由
             Object result = BizModuleHandlerProvider.provide(requestInfoBO, proceedingJoinPoint).doHandler();
-
-            // 3.在路由之后进行入参校验
-            ApiParameterValidator apiParameterValidator = new ApiParameterValidator();
-            apiParameterValidator.validateControllerMethodParameter(proceedingJoinPoint);
             return result;
         } finally {
             releaseSource();

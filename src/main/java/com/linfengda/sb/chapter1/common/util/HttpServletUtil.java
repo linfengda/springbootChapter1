@@ -52,7 +52,7 @@ public class HttpServletUtil {
      * 获取http request
      * @return  request
      */
-    private static HttpServletRequest getHttpServletRequest() {
+    public static HttpServletRequest getHttpServletRequest() {
         RequestAttributes reqAttrs = RequestContextHolder.getRequestAttributes();
         if (reqAttrs != null && reqAttrs instanceof ServletRequestAttributes) {
             return ((ServletRequestAttributes) reqAttrs).getRequest();
@@ -66,7 +66,7 @@ public class HttpServletUtil {
      * 获取http response
      * @return  response
      */
-    private static HttpServletResponse getHttpServletResponse() {
+    public static HttpServletResponse getHttpServletResponse() {
         RequestAttributes reqAttrs = RequestContextHolder.getRequestAttributes();
         if (reqAttrs != null && reqAttrs instanceof ServletRequestAttributes) {
             return ((ServletRequestAttributes) reqAttrs).getResponse();
@@ -126,13 +126,7 @@ public class HttpServletUtil {
                 break;
             case POST:
                 String body = IOUtils.toString(servletRequest.getInputStream(), CHAR_CODE_SET);
-                JSONObject json = JSON.parseObject(body);
-                if (json == null) {
-                    return requestParam;
-                }
-                for (Map.Entry<String, Object> value : json.entrySet()) {
-                    requestParam.put(value.getKey(), value.getValue());
-                }
+                requestParam = JSON.parseObject(body);
                 break;
             default: return null;
         }

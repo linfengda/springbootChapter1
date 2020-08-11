@@ -1,4 +1,4 @@
-package com.linfengda.sb.chapter1.common.api.parameter.type;
+package com.linfengda.sb.support.apivalidator.type;
 
 import com.alibaba.fastjson.JSONObject;
 import lombok.AllArgsConstructor;

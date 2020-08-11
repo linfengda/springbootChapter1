@@ -1,10 +1,10 @@
 package com.linfengda.sb.chapter1;
 
-import com.linfengda.sb.support.redis.cache.manager.AopOrderManager;
-import com.linfengda.sb.support.redis.config.annotation.EnableRedis;
+import com.linfengda.sb.support.apivalidator.annotation.EnableApiValidator;
 import com.linfengda.sb.support.redis.config.annotation.EnableRedisCache;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.core.Ordered;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
@@ -13,8 +13,9 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  * @author linfengda
  * @create 2020-01-09 09:18
  */
+@EnableApiValidator
 @EnableRedisCache
-@EnableTransactionManagement(order = AopOrderManager.SPRING_TRANSACTION)
+@EnableTransactionManagement(order = Ordered.LOWEST_PRECEDENCE-1)
 @EnableApplicationStartup
 @SpringBootApplication
 public class Chapter1Application {

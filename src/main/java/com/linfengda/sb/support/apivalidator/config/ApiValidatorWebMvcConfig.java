@@ -1,7 +1,6 @@
-package com.linfengda.sb.chapter1.common.config;
+package com.linfengda.sb.support.apivalidator.config;
 
-import com.linfengda.sb.chapter1.common.api.parameter.MyControllerArgumentResolver;
-import org.springframework.boot.SpringBootConfiguration;
+import com.linfengda.sb.support.apivalidator.config.resolver.MyControllerArgumentResolver;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -13,8 +12,7 @@ import java.util.List;
  * @author linfengda
  * @create 2019-12-18 09:53
  */
-@SpringBootConfiguration
-public class MyWebMvcConfig implements WebMvcConfigurer {
+public class ApiValidatorWebMvcConfig implements WebMvcConfigurer {
 
     @Override
     public void addArgumentResolvers(List<HandlerMethodArgumentResolver> resolvers) {

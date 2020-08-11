@@ -9,10 +9,12 @@ import com.linfengda.sb.chapter1.system.entity.vo.UserListVO;
 import com.linfengda.sb.chapter1.system.service.SysUserService;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;

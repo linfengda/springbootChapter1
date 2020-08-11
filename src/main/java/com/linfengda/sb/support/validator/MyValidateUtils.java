@@ -1,4 +1,4 @@
-package com.linfengda.sb.chapter1.common.api.parameter;
+package com.linfengda.sb.support.validator;
 
 import com.linfengda.sb.chapter1.common.exception.ParamParesException;
 import org.apache.commons.collections4.CollectionUtils;
@@ -13,13 +13,13 @@ import java.lang.reflect.Method;
 import java.util.Set;
 
 /**
- * MES对象参数校验工具类,遵循JSR303校验
- * @author Vincent-Yip@yezijie
- * @date 2019/7/19 10:10
- * @see org.hibernate.validator.constraints
- * @see javax.validation.constraints
+ * @program: hunterplan
+ * @description: MES对象参数校验工具类,遵循JSR303校验
+ * @author: linfengda
+ * @date: 2020-07-25 18:01
  */
 public class MyValidateUtils {
+
     private MyValidateUtils(){}
 
     private static Validator validator;
@@ -37,9 +37,8 @@ public class MyValidateUtils {
      * 参数校验方法
      * @param t 需要校验的对象
      * @param <T>
-     * @throws ParamParesException
      */
-    public static <T> void validate(T t) throws ParamParesException {
+    public static <T> void validate(T t) {
         if (t == null){
             throw new ParamParesException("参数异常");
         }
@@ -55,9 +54,11 @@ public class MyValidateUtils {
      * 参数校验方法
      * @param t 需要校验的对象
      * @param <T>
-     * @throws ParamParesException
      */
     public static <T> void validate(T t, Class<?>... groupClazz) {
+        if (t == null){
+            throw new ParamParesException("参数异常");
+        }
         Set<ConstraintViolation<T>> result = validator.validate(t,groupClazz);
         if(CollectionUtils.isNotEmpty(result)){
             ConstraintViolation<T> firstViolation = result.stream().findFirst().get();

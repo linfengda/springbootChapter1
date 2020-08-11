@@ -1,9 +1,9 @@
 package com.linfengda.sb.support.redis.config.annotation;
 
-import com.linfengda.sb.support.redis.cache.manager.AopOrderManager;
 import com.linfengda.sb.support.redis.config.selector.RedisCacheConfigSelector;
 import org.springframework.context.annotation.AdviceMode;
 import org.springframework.context.annotation.Import;
+import org.springframework.core.Ordered;
 
 import java.lang.annotation.*;
 
@@ -35,15 +35,15 @@ public @interface EnableRedisCache {
      * 查询注解aop优先级
      * @return
      */
-    int queryOrder() default AopOrderManager.QUERY_CACHE;
+    int queryOrder() default Ordered.LOWEST_PRECEDENCE-3;
     /**
      * 删除注解aop优先级
      * @return
      */
-    int deleteOrder() default AopOrderManager.DELETE_CACHE;
+    int deleteOrder() default Ordered.LOWEST_PRECEDENCE-2;
     /**
      * 更新注解aop优先级
      * @return
      */
-    int updateOrder() default AopOrderManager.UPDATE_CACHE;
+    int updateOrder() default Ordered.LOWEST_PRECEDENCE;
 }

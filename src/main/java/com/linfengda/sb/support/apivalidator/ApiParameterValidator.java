@@ -1,12 +1,11 @@
-package com.linfengda.sb.chapter1.common.api.parameter;
+package com.linfengda.sb.support.apivalidator;
 
 import com.linfengda.sb.chapter1.common.api.entity.BaseType;
-import com.linfengda.sb.chapter1.common.api.parameter.type.BeanValidateAnnotationType;
-import com.linfengda.sb.chapter1.common.api.parameter.type.FieldValidateAnnotationType;
-import com.linfengda.sb.chapter1.common.api.parameter.type.NotValidateParameterType;
-import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.Signature;
-import org.aspectj.lang.reflect.MethodSignature;
+import com.linfengda.sb.support.apivalidator.type.BeanValidateAnnotationType;
+import com.linfengda.sb.support.apivalidator.type.FieldValidateAnnotationType;
+import com.linfengda.sb.support.apivalidator.type.NotValidateParameterType;
+import com.linfengda.sb.support.validator.MyValidateUtils;
+import org.aopalliance.intercept.MethodInvocation;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
@@ -20,17 +19,15 @@ import java.lang.reflect.Parameter;
  */
 public class ApiParameterValidator {
 
-    /**
-     * 入参校验
-     */
-    public void validateControllerMethodParameter(ProceedingJoinPoint proceedingJoinPoint) {
-        Object [] args = proceedingJoinPoint.getArgs();
+
+    public void validateControllerMethodParameter(MethodInvocation invocation) {
+        Object [] args = invocation.getArguments();
         if (args == null || args.length == 0) {
             return;
         }
 
         boolean needValidateBaseType = false;
-        Method targetMethod = getMethodParameters(proceedingJoinPoint);
+        Method targetMethod = invocation.getMethod();
         Parameter[] parameters = targetMethod.getParameters();
         for (int i=0; i <parameters.length; i++){
             Parameter parameter = parameters[i];
@@ -52,7 +49,7 @@ public class ApiParameterValidator {
             }
         }
         if (needValidateBaseType) {
-            MyValidateUtils.validateParameters(proceedingJoinPoint.getTarget(), targetMethod, args);
+            MyValidateUtils.validateParameters(invocation.getThis(), targetMethod, args);
         }
     }
 
@@ -86,15 +83,5 @@ public class ApiParameterValidator {
             }
         }
         return false;
-    }
-
-    private Method getMethodParameters(ProceedingJoinPoint proceedingJoinPoint) {
-        Signature signature = proceedingJoinPoint.getSignature();
-        if (signature instanceof MethodSignature) {
-            MethodSignature methodSignature = (MethodSignature) signature;
-            Method targetMethod = methodSignature.getMethod();
-            return targetMethod;
-        }
-        return null;
     }
 }

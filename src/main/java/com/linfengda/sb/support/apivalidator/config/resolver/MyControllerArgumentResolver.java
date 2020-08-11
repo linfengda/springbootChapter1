@@ -1,4 +1,4 @@
-package com.linfengda.sb.chapter1.common.api.parameter;
+package com.linfengda.sb.support.apivalidator.config.resolver;
 
 import com.alibaba.fastjson.JSONObject;
 import com.linfengda.sb.chapter1.common.api.entity.BaseType;
@@ -29,7 +29,7 @@ public class MyControllerArgumentResolver implements HandlerMethodArgumentResolv
     /**
      * API参数列表大小限制
      */
-    private static final int MAX_CONTROLLER_PARAMETER_SIZE = 2;
+    private static final int MAX_CONTROLLER_PARAMETER_SIZE = 3;
 
     @Override
     public boolean supportsParameter(MethodParameter methodParameter) {
