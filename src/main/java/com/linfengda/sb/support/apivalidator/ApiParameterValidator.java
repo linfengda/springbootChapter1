@@ -1,6 +1,6 @@
 package com.linfengda.sb.support.apivalidator;
 
-import com.linfengda.sb.chapter1.common.api.entity.BaseType;
+import com.linfengda.sb.support.apivalidator.type.BaseType;
 import com.linfengda.sb.support.apivalidator.type.BeanValidateAnnotationType;
 import com.linfengda.sb.support.apivalidator.type.FieldValidateAnnotationType;
 import com.linfengda.sb.support.apivalidator.type.NotValidateParameterType;
