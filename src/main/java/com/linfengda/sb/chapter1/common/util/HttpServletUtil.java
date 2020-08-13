@@ -1,4 +1,4 @@
-package com.linfengda.sb.support.apivalidator.util;
+package com.linfengda.sb.chapter1.common.util;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;

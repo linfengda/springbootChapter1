@@ -1,6 +1,6 @@
 package com.linfengda.sb.support.validator;
 
-import com.linfengda.sb.chapter1.common.exception.ParamParesException;
+import com.linfengda.sb.chapter1.common.exception.BusinessException;
 import org.apache.commons.collections4.CollectionUtils;
 import org.hibernate.validator.HibernateValidator;
 
@@ -40,13 +40,13 @@ public class MyValidateUtils {
      */
     public static <T> void validate(T t) {
         if (t == null){
-            throw new ParamParesException("参数异常");
+            throw new BusinessException("参数异常");
         }
         Set<ConstraintViolation<T>> result = validator.validate(t);
         if(CollectionUtils.isNotEmpty(result)){
             ConstraintViolation<T> firstViolation = result.stream().findFirst().get();
             String firstErrorMsg = firstViolation.getMessage();
-            throw new ParamParesException(firstErrorMsg);
+            throw new BusinessException(firstErrorMsg);
         }
     }
 
@@ -57,13 +57,13 @@ public class MyValidateUtils {
      */
     public static <T> void validate(T t, Class<?>... groupClazz) {
         if (t == null){
-            throw new ParamParesException("参数异常");
+            throw new BusinessException("参数异常");
         }
         Set<ConstraintViolation<T>> result = validator.validate(t,groupClazz);
         if(CollectionUtils.isNotEmpty(result)){
             ConstraintViolation<T> firstViolation = result.stream().findFirst().get();
             String firstErrorMsg = firstViolation.getMessage();
-            throw new ParamParesException(firstErrorMsg);
+            throw new BusinessException(firstErrorMsg);
         }
     }
 
@@ -81,7 +81,7 @@ public class MyValidateUtils {
         if(CollectionUtils.isNotEmpty(result)){
             ConstraintViolation<T> firstViolation = result.stream().findFirst().get();
             String firstErrorMsg = firstViolation.getMessage();
-            throw new ParamParesException(firstErrorMsg);
+            throw new BusinessException(firstErrorMsg);
         }
     }
 }

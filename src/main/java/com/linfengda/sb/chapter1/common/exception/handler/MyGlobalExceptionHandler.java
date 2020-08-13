@@ -1,10 +1,9 @@
 package com.linfengda.sb.chapter1.common.exception.handler;
 
 import com.linfengda.sb.chapter1.common.api.entity.Result;
-import com.linfengda.sb.chapter1.common.exception.ParamParesException;
-import com.linfengda.sb.chapter1.common.exception.entity.ErrorCode;
 import com.linfengda.sb.chapter1.common.exception.BusinessException;
 import com.linfengda.sb.chapter1.common.exception.DistributedLockException;
+import com.linfengda.sb.chapter1.common.exception.entity.ErrorCode;
 import com.linfengda.sb.support.orm.exception.DataAccessException;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -32,25 +31,21 @@ public class MyGlobalExceptionHandler {
             DataAccessException dataAccessException = (DataAccessException) e;
             result = new Result(dataAccessException.getCode(), dataAccessException.getMsg());
             log.warn(dataAccessException.getMsg());
-        } else if (e instanceof DistributedLockException) {
+        }else if (e instanceof DistributedLockException) {
             DistributedLockException distributedLockException = (DistributedLockException) e;
             result = new Result(distributedLockException.getCode(), distributedLockException.getMsg());
             log.warn(distributedLockException.getMsg());
-        } else if (e instanceof ParamParesException) {
-            ParamParesException paramParesException = (ParamParesException) e;
-            result = new Result(paramParesException.getCode(), paramParesException.getMsg());
-            log.warn(paramParesException.getMsg());
-        } else if (e instanceof HttpRequestMethodNotSupportedException) {
-            log.warn("404找不到URL:未知请求与方法", e);
-            return RESULT_404;
-        } else if (e instanceof BusinessException) {
+        }else if (e instanceof BusinessException) {
             BusinessException businessException = (BusinessException) e;
             if (StringUtils.isNotEmpty(businessException.getDetailMsg())) {
                 result = new Result(businessException.getCode(), businessException.getMsg(), businessException.getDetailMsg());
             } else {
                 result = new Result(businessException.getCode(), businessException.getMsg());
             }
-        } else {
+        }else if (e instanceof HttpRequestMethodNotSupportedException) {
+            log.warn("404找不到URL:未知请求与方法", e);
+            return RESULT_404;
+        }else {
             log.error("error info:", e);
             result = new Result(ErrorCode.SYSTEM_ERROR_CODE, "系统故障，请稍后再试！");
         }

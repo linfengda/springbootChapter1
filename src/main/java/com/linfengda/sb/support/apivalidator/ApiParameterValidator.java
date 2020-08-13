@@ -1,5 +1,6 @@
 package com.linfengda.sb.support.apivalidator;
 
+import com.linfengda.sb.chapter1.common.exception.BusinessException;
 import com.linfengda.sb.support.apivalidator.type.BaseType;
 import com.linfengda.sb.support.apivalidator.type.BeanValidateAnnotationType;
 import com.linfengda.sb.support.apivalidator.type.FieldValidateAnnotationType;
@@ -18,6 +19,10 @@ import java.lang.reflect.Parameter;
  * @create 2020-03-24 17:44
  */
 public class ApiParameterValidator {
+    /**
+     * api参数个数限制
+     */
+    private static final int MAX_API_PARAMS_LIMIT = 3;
 
 
     public void validateControllerMethodParameter(MethodInvocation invocation) {
@@ -25,7 +30,9 @@ public class ApiParameterValidator {
         if (args == null || args.length == 0) {
             return;
         }
-
+        if (MAX_API_PARAMS_LIMIT < args.length) {
+            throw new BusinessException("api参数限制为" + MAX_API_PARAMS_LIMIT + "个！");
+        }
         boolean needValidateBaseType = false;
         Method targetMethod = invocation.getMethod();
         Parameter[] parameters = targetMethod.getParameters();
