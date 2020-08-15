@@ -8,7 +8,10 @@ import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
 
 /**
- * 描述: 校验Bean的注解类型，之所以自定义是为了跟{@link Validated}，{@link Valid}这些spring mvc本身支持的注解区分开来，如果一个api方法本身带有{@link Validated}，{@link Valid}注解，那么会走spring mvc的校验，只有显式声明了{@link ApiValidator}注解，才会走ApiValidator包下的校验。
+ * 描述: 校验Bean的注解类型，有下列4中情况:
+ * <li>1. 没有任何校验注解，不会做任何校验</li>
+ * <li>2. 有@RequestBody注解和@ApiValidator校验注解，做ApiValidator的校验</li>
+ * <li>3. 没有@RequestBody注解，有@ApiValidator/@Valid/@Validated校验注解，做ApiValidator的校验</li>
  *
  * @author linfengda
  * @create 2019-12-23 16:20
@@ -20,6 +23,14 @@ public enum BeanValidateAnnotationType {
      * ApiValidator
      */
     API_VALIDATOR(ApiValidator.class.getName()),
+    /**
+     * Valid
+     */
+    VALID(Valid.class.getName()),
+    /**
+     * Validated
+     */
+    VALIDATED(Validated.class.getName()),
     ;
 
     private String type;

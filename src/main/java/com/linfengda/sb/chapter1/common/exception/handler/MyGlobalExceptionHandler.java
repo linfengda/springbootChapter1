@@ -8,6 +8,7 @@ import com.linfengda.sb.support.orm.exception.DataAccessException;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -42,6 +43,9 @@ public class MyGlobalExceptionHandler {
             } else {
                 result = new Result(businessException.getCode(), businessException.getMsg());
             }
+        }else if (e instanceof MethodArgumentNotValidException) {
+            MethodArgumentNotValidException argumentNotValidException = (MethodArgumentNotValidException) e;
+            result = new Result(ErrorCode.COMMON_PARAM_ERROR_CODE, argumentNotValidException.getMessage());
         }else if (e instanceof HttpRequestMethodNotSupportedException) {
             log.warn("404找不到URL:未知请求与方法", e);
             return RESULT_404;
