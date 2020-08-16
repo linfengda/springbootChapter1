@@ -1,5 +1,6 @@
 package com.linfengda.sb.support.redis.config.annotation;
 
+import com.linfengda.sb.support.redis.Constant;
 import com.linfengda.sb.support.redis.config.selector.RedisCacheAnnotationConfigSelector;
 import org.springframework.context.annotation.AdviceMode;
 import org.springframework.context.annotation.Import;
@@ -46,4 +47,9 @@ public @interface EnableRedisCacheAnnotation {
      * @return
      */
     int updateOrder() default Ordered.LOWEST_PRECEDENCE;
+    /**
+     * lru缓存后台清除间隔
+     * @return
+     */
+    long lruInternal() default Constant.DEFAULT_LRU_CACHE_TASK_INTERNAL;
 }

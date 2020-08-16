@@ -3,10 +3,14 @@ package com.linfengda.sb.support.redis.cache.manager;
 import com.linfengda.sb.support.redis.Constant;
 import com.linfengda.sb.support.redis.JacksonRedisTemplate;
 import com.linfengda.sb.support.redis.cache.entity.bo.LruExpireResultBO;
-import com.linfengda.sb.support.redis.cache.handler.RedisSupportInitializing;
+import com.linfengda.sb.support.redis.cache.handler.CacheHandlerHolder;
 import com.linfengda.sb.support.redis.cache.util.CacheUtil;
 import com.linfengda.sb.support.redis.cache.util.ThreadPoolHelper;
+import com.linfengda.sb.support.redis.config.annotation.EnableRedisCacheAnnotation;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.ImportAware;
+import org.springframework.core.annotation.AnnotationAttributes;
+import org.springframework.core.type.AnnotationMetadata;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.core.Cursor;
@@ -23,18 +27,36 @@ import javax.annotation.PostConstruct;
  * @date: 2020-07-21 14:57
  */
 @Slf4j
-public class CacheBackgroundManager extends RedisSupportInitializing {
+public class CacheBackgroundManager extends CacheHandlerHolder implements ImportAware {
+    private Long internalTime;
+
+    @Override
+    public void setImportMetadata(AnnotationMetadata importMetadata) {
+        AnnotationAttributes attributes = AnnotationAttributes.fromMap(
+                importMetadata.getAnnotationAttributes(EnableRedisCacheAnnotation.class.getName(), false));
+        if (attributes == null) {
+            throw new IllegalArgumentException(
+                    "@EnableCache is not present on importing class " + importMetadata.getClassName());
+        }
+        String lruInternal = attributes.getString("lruInternal");
+        if (null == lruInternal) {
+            this.internalTime = Constant.DEFAULT_LRU_CACHE_TASK_INTERNAL;
+        }else {
+            this.internalTime = Long.valueOf(lruInternal);
+        }
+    }
+
     /**
      * 缓存后台管理线程池
      */
     private static final ThreadPoolTaskExecutor cacheBgThreadPool = ThreadPoolHelper.initThreadPool(1, 10, "cache-bg-thread");
 
     @PostConstruct
-    public void init() {
+    public void initHandlers() {
         cacheBgThreadPool.execute(() -> {
             while(true) {
                 try {
-                    Thread.sleep(Constant.DEFAULT_LRU_CACHE_CLEAR_TASK);
+                    Thread.sleep(internalTime);
                     // 使用scan渐进删除
                     JacksonRedisTemplate jacksonRedisTemplate = getRedisSupport().getJacksonRedisTemplate();
                     LruExpireResultBO lruExpireResultBO = jacksonRedisTemplate.execute(new RedisCallback<LruExpireResultBO>() {

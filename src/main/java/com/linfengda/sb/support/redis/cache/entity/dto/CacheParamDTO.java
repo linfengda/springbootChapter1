@@ -74,7 +74,7 @@ public class CacheParamDTO {
      */
     public long getTimeOutMillis() {
         long timeOutMillis = getTimeUnit().toMillis(getTimeOut());
-        if (getStrategies().contains(CacheExtraStrategy.NO_CACHE_SNOW_SLIDE)) {
+        if (getStrategies().contains(CacheExtraStrategy.PRV_CACHE_SNOW_SLIDE)) {
             timeOutMillis = CacheUtil.getRandomTime(timeOutMillis);
         }
         return timeOutMillis;

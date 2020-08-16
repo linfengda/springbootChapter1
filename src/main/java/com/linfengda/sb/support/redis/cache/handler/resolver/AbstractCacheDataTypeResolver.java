@@ -7,7 +7,7 @@ import com.linfengda.sb.support.redis.cache.entity.dto.CacheParamDTO;
 import com.linfengda.sb.support.redis.cache.entity.type.CacheMaxSizeStrategy;
 import com.linfengda.sb.support.redis.cache.entity.type.CacheSizeStrategy;
 import com.linfengda.sb.support.redis.cache.util.CacheUtil;
-import lombok.Data;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.Set;
@@ -19,7 +19,7 @@ import java.util.Set;
  * @date: 2020-07-15 17:54
  */
 @Slf4j
-@Data
+@Setter
 public abstract class AbstractCacheDataTypeResolver implements CacheDataTypeResolver {
     protected JacksonRedisTemplate jacksonRedisTemplate;
 

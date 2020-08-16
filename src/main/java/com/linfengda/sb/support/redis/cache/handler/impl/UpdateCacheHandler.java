@@ -1,6 +1,8 @@
 package com.linfengda.sb.support.redis.cache.handler.impl;
 
 import com.linfengda.sb.support.redis.cache.entity.dto.CacheTargetDTO;
+import com.linfengda.sb.support.redis.cache.entity.type.CacheAnnotationType;
+import com.linfengda.sb.support.redis.cache.handler.AbstractCacheHandler;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -12,12 +14,13 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class UpdateCacheHandler extends AbstractCacheHandler {
 
-    public UpdateCacheHandler(CacheTargetDTO cacheTargetDTO) {
-        super(cacheTargetDTO);
+    @Override
+    public boolean support(CacheAnnotationType annotationType) {
+        return CacheAnnotationType.UPDATE == annotationType;
     }
 
     @Override
-    public Object doCache() throws Throwable {
+    public Object doCache(CacheTargetDTO cacheTargetDTO) throws Throwable {
         return null;
     }
 }

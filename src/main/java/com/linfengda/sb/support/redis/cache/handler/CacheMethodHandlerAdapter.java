@@ -5,7 +5,6 @@ import com.linfengda.sb.support.redis.cache.builder.CacheParamBuilder;
 import com.linfengda.sb.support.redis.cache.entity.dto.CacheTargetDTO;
 import com.linfengda.sb.support.redis.cache.entity.meta.CacheMethodMeta;
 import com.linfengda.sb.support.redis.cache.entity.type.CacheAnnotationType;
-import com.linfengda.sb.support.redis.cache.manager.CacheHandlerManager;
 import lombok.extern.slf4j.Slf4j;
 import org.aopalliance.intercept.MethodInvocation;
 
@@ -18,7 +17,7 @@ import java.lang.reflect.Method;
  * @create 2019-12-19 17:52
  */
 @Slf4j
-public class CacheMethodHandlerAdapter extends RedisSupportInitializing {
+public class CacheMethodHandlerAdapter extends CacheHandlerHolder {
 
     /**
      * Actually invoke the handler
@@ -34,12 +33,10 @@ public class CacheMethodHandlerAdapter extends RedisSupportInitializing {
         }
         CacheMethodMeta cacheMethodMeta = CacheMethodMetaBuilder.getCacheMethodMeta(method);
         Object[] arguments = invocation.getArguments();
-
         CacheTargetDTO cacheTargetDTO = new CacheTargetDTO();
         cacheTargetDTO.setInvocation(invocation);
         cacheTargetDTO.setParam(CacheParamBuilder.INSTANCE.initCacheParam(cacheMethodMeta, arguments));
-        CacheHandler handler = CacheHandlerManager.provide(cacheTargetDTO, annotationType);
-        handler.init(getRedisSupport());
-        return handler.doCache();
+        CacheHandler handler = super.getHandler(annotationType);
+        return handler.doCache(cacheTargetDTO);
     }
 }

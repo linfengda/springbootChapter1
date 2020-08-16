@@ -42,7 +42,7 @@ public class SysUserServiceImpl extends BaseService implements SysUserService {
         return page;
     }
 
-    @QueryCache(type = DataType.OBJECT, prefix = "sys:user", timeOut = 30, timeUnit = TimeUnit.SECONDS, strategies = {CacheExtraStrategy.NO_CACHE_SNOW_SLIDE, CacheExtraStrategy.NO_CACHE_HOT_KEY_MULTI_LOAD}, maxSize = 5, maxSizeStrategy = CacheMaxSizeStrategy.MAX_SIZE_STRATEGY_LRU)
+    @QueryCache(type = DataType.OBJECT, prefix = "sys:user", timeOut = 30, timeUnit = TimeUnit.MINUTES, strategies = {CacheExtraStrategy.PRV_CACHE_SNOW_SLIDE, CacheExtraStrategy.PRV_CACHE_HOT_KEY_MULTI_LOAD}, maxSize = 5, maxSizeStrategy = CacheMaxSizeStrategy.MAX_SIZE_STRATEGY_LRU)
     @Override
     public UserVO getUserInfo(@CacheKey Integer userId) throws Exception {
         SysUserPO sysUserPO = findByPrimaryKey(userId, SysUserPO.class);
