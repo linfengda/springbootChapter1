@@ -1,15 +1,15 @@
 package com.linfengda.sb.support.redis.cache.builder;
 
+import com.linfengda.sb.chapter1.common.exception.BusinessException;
 import com.linfengda.sb.chapter1.common.exception.entity.ErrorCode;
+import com.linfengda.sb.support.redis.Constant;
 import com.linfengda.sb.support.redis.cache.annotation.CacheKey;
 import com.linfengda.sb.support.redis.cache.annotation.DeleteCache;
 import com.linfengda.sb.support.redis.cache.annotation.QueryCache;
 import com.linfengda.sb.support.redis.cache.annotation.UpdateCache;
-import com.linfengda.sb.support.redis.config.Constant;
 import com.linfengda.sb.support.redis.cache.entity.meta.CacheMethodMeta;
 import com.linfengda.sb.support.redis.cache.entity.type.CacheMaxSizeStrategy;
-import com.linfengda.sb.support.redis.cache.entity.type.OperationType;
-import com.linfengda.sb.support.redis.cache.exception.CahcheException;
+import com.linfengda.sb.support.redis.cache.entity.type.CacheAnnotationType;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.util.CollectionUtils;
 
@@ -51,10 +51,10 @@ public class CacheMethodMetaBuilder {
         }
         List<Annotation> cacheAnnotationList = getMethodCacheAnnotations(method);
         if (CollectionUtils.isEmpty(cacheAnnotationList)) {
-            throw new CahcheException(ErrorCode.COMMON_CACHE_ERROR_CODE, "方法["+ method.getName() +"]没有缓存注解！");
+            throw new BusinessException(ErrorCode.COMMON_CACHE_ERROR_CODE, "方法["+ method.getName() +"]没有缓存注解！");
         }
         if (cacheAnnotationList.size() > 1) {
-            throw new CahcheException(ErrorCode.COMMON_CACHE_ERROR_CODE, "方法["+ method.getName() +"]不能添加多个缓存注解！");
+            throw new BusinessException(ErrorCode.COMMON_CACHE_ERROR_CODE, "方法["+ method.getName() +"]不能添加多个缓存注解！");
         }
         CHECKED_CACHE_METHOD_CACHE.put(method, true);
         return true;
@@ -67,7 +67,7 @@ public class CacheMethodMetaBuilder {
      */
     private static List<Annotation> getMethodCacheAnnotations(Method method) {
         List<Annotation> cacheAnnotationList = new ArrayList<>();
-        for (OperationType annotationType : OperationType.values()) {
+        for (CacheAnnotationType annotationType : CacheAnnotationType.values()) {
             Annotation annotation = method.getDeclaredAnnotation(annotationType.getAnnotation());
             if (null == annotation) {
                 continue;
@@ -110,12 +110,12 @@ public class CacheMethodMetaBuilder {
         CacheMethodMeta cacheMethodMeta = new CacheMethodMeta();
         cacheMethodMeta.setMethod(method);
         cacheMethodMeta.setMethodName(method.getName());
-        for (OperationType type : OperationType.values()) {
+        for (CacheAnnotationType type : CacheAnnotationType.values()) {
             Annotation cacheAnnotation = method.getAnnotation(type.getAnnotation());
             if (null == cacheAnnotation) {
                 continue;
             }
-            if (OperationType.QUERY == type) {
+            if (CacheAnnotationType.QUERY == type) {
                 QueryCache queryCache = (QueryCache) cacheAnnotation;
                 cacheMethodMeta.setDataType(queryCache.type());
                 cacheMethodMeta.setPrefix(queryCache.prefix());
@@ -126,7 +126,7 @@ public class CacheMethodMetaBuilder {
                 cacheMethodMeta.setMaxSize(queryCache.maxSize());
                 cacheMethodMeta.setKeyMetas(getKeyMetas(method));
                 return cacheMethodMeta;
-            }else if (OperationType.UPDATE == type) {
+            }else if (CacheAnnotationType.UPDATE == type) {
                 UpdateCache updateCache = (UpdateCache) cacheAnnotation;
                 cacheMethodMeta.setDataType(updateCache.type());
                 cacheMethodMeta.setPrefix(updateCache.prefix());
@@ -137,7 +137,7 @@ public class CacheMethodMetaBuilder {
                 cacheMethodMeta.setMaxSize(updateCache.maxSize());
                 cacheMethodMeta.setKeyMetas(getKeyMetas(method));
                 return cacheMethodMeta;
-            }else if (OperationType.UPDATE == type) {
+            }else if (CacheAnnotationType.UPDATE == type) {
                 DeleteCache deleteCache = (DeleteCache) cacheAnnotation;
                 cacheMethodMeta.setDataType(deleteCache.type());
                 cacheMethodMeta.setPrefix(StringUtils.isBlank(deleteCache.prefix()) ? method.getName() : deleteCache.prefix());
@@ -157,14 +157,14 @@ public class CacheMethodMetaBuilder {
     private static void validateCacheMethod(CacheMethodMeta cacheMethodMeta) {
         if (cacheMethodMeta.getMaxSizeStrategy() == CacheMaxSizeStrategy.MAX_SIZE_STRATEGY_ABANDON || cacheMethodMeta.getMaxSizeStrategy() == CacheMaxSizeStrategy.MAX_SIZE_STRATEGY_LRU) {
             if (Constant.DEFAULT_NO_SIZE_LIMIT.equals(cacheMethodMeta.getMaxSize())) {
-                throw new CahcheException("未限制最大缓存数量，无法启用淘汰策略！");
+                throw new BusinessException("未限制最大缓存数量，无法启用淘汰策略！");
             }
             if (cacheMethodMeta.getMaxSizeStrategy() == CacheMaxSizeStrategy.MAX_SIZE_STRATEGY_LRU && Constant.DEFAULT_NO_EXPIRE_TIME.equals(cacheMethodMeta.getTimeOut())) {
-                throw new CahcheException("未限制缓存时间，无法启用LRU算法淘汰数据！");
+                throw new BusinessException("未限制缓存时间，无法启用LRU算法淘汰数据！");
             }
         }
         if (0 == cacheMethodMeta.getMaxSize()) {
-            throw new CahcheException("缓存最大数量必须大于0！");
+            throw new BusinessException("缓存最大数量必须大于0！");
         }
     }
 

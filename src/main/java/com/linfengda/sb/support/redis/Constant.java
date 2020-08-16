@@ -1,4 +1,4 @@
-package com.linfengda.sb.support.redis.config;
+package com.linfengda.sb.support.redis;
 
 /**
  * @description: 项目常量定义

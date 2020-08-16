@@ -1,8 +1,8 @@
 package com.linfengda.sb.support.redis.cache.manager;
 
-import com.linfengda.sb.support.redis.cache.entity.dto.CacheDataDTO;
-import com.linfengda.sb.support.redis.cache.entity.type.OperationType;
-import com.linfengda.sb.support.redis.cache.exception.CahcheException;
+import com.linfengda.sb.chapter1.common.exception.BusinessException;
+import com.linfengda.sb.support.redis.cache.entity.dto.CacheTargetDTO;
+import com.linfengda.sb.support.redis.cache.entity.type.CacheAnnotationType;
 import com.linfengda.sb.support.redis.cache.handler.CacheHandler;
 import com.linfengda.sb.support.redis.cache.handler.impl.DeleteCacheHandler;
 import com.linfengda.sb.support.redis.cache.handler.impl.QueryCacheHandler;
@@ -21,28 +21,28 @@ public enum CacheHandlerManager {
     /**
      * 查询
      */
-    EN_PASS(OperationType.QUERY, "查询") {
+    EN_PASS(CacheAnnotationType.QUERY, "查询") {
         @Override
-        public CacheHandler getHandler(CacheDataDTO cacheDataDTO) {
-            return new QueryCacheHandler(cacheDataDTO);
+        public CacheHandler getHandler(CacheTargetDTO cacheTargetDTO) {
+            return new QueryCacheHandler(cacheTargetDTO);
         }
     },
     /**
      * 删除
      */
-    EX_PASS(OperationType.DELETE, "删除") {
+    EX_PASS(CacheAnnotationType.DELETE, "删除") {
         @Override
-        public CacheHandler getHandler(CacheDataDTO cacheDataDTO) {
-            return new DeleteCacheHandler(cacheDataDTO);
+        public CacheHandler getHandler(CacheTargetDTO cacheTargetDTO) {
+            return new DeleteCacheHandler(cacheTargetDTO);
         }
     },
     /**
      * 更新
      */
-    GANTRY_PASS(OperationType.UPDATE, "更新") {
+    GANTRY_PASS(CacheAnnotationType.UPDATE, "更新") {
         @Override
-        public CacheHandler getHandler(CacheDataDTO cacheDataDTO) {
-            return new UpdateCacheHandler(cacheDataDTO);
+        public CacheHandler getHandler(CacheTargetDTO cacheTargetDTO) {
+            return new UpdateCacheHandler(cacheTargetDTO);
         }
     },
     ;
@@ -51,24 +51,26 @@ public enum CacheHandlerManager {
     /**
      * 缓存操作类型
      */
-    private OperationType type;
+    private CacheAnnotationType annotationType;
     /**
      * 描述
      */
     private String desc;
 
-    public abstract CacheHandler getHandler(CacheDataDTO cacheDataDTO);
+    public abstract CacheHandler getHandler(CacheTargetDTO cacheTargetDTO);
 
     /**
      * 获取缓存处理器
-     * @param cacheDataDTO 缓存数据DTO
+     * @param cacheTargetDTO    缓存数据DTO
+     * @param annotationType    缓存操作类型
+     * @return                  handler
      */
-    public static CacheHandler provide(CacheDataDTO cacheDataDTO) {
+    public static CacheHandler provide(CacheTargetDTO cacheTargetDTO, CacheAnnotationType annotationType) {
         for (CacheHandlerManager value : values()) {
-            if (value.getType() == cacheDataDTO.getType()) {
-                return value.getHandler(cacheDataDTO);
+            if (value.getAnnotationType() == annotationType) {
+                return value.getHandler(cacheTargetDTO);
             }
         }
-        throw new CahcheException("不支持的缓存操作！");
+        throw new BusinessException("不支持的缓存操作！" + cacheTargetDTO.toString());
     }
 }

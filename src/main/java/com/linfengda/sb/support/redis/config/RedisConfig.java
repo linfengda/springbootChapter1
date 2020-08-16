@@ -3,10 +3,14 @@ package com.linfengda.sb.support.redis.config;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.linfengda.sb.support.redis.lock.RedisDistributedLock;
-import com.linfengda.sb.support.redis.template.SimpleRedisTemplate;
+import com.linfengda.sb.support.redis.JacksonRedisTemplate;
+import com.linfengda.sb.support.redis.config.annotation.EnableRedisCacheAnnotation;
+import com.linfengda.sb.support.redis.RedisDistributedLock;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ImportAware;
+import org.springframework.core.annotation.AnnotationAttributes;
+import org.springframework.core.type.AnnotationMetadata;
 import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
@@ -18,7 +22,7 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
  * @author linfengda
  * @create 2018-09-10 17:00
  */
-public class RedisConfig {
+public class RedisConfig implements ImportAware {
     @Value("${spring.redis.host}")
     private String host;
     @Value("${spring.redis.port}")
@@ -26,6 +30,18 @@ public class RedisConfig {
     @Value("${spring.redis.database}")
     private int database;
 
+
+    protected AnnotationAttributes attributes;
+
+    @Override
+    public void setImportMetadata(AnnotationMetadata importMetadata) {
+        this.attributes = AnnotationAttributes.fromMap(
+                importMetadata.getAnnotationAttributes(EnableRedisCacheAnnotation.class.getName(), false));
+        if (this.attributes == null) {
+            throw new IllegalArgumentException(
+                    "@EnableCache is not present on importing class " + importMetadata.getClassName());
+        }
+    }
 
     /**
      * 配置Jedis客户端
@@ -61,25 +77,25 @@ public class RedisConfig {
      * @return
      */
     @Bean
-    public SimpleRedisTemplate simpleRedisTemplate(Jackson2JsonRedisSerializer<Object> jackson2JsonRedisSerializer) {
-        SimpleRedisTemplate simpleRedisTemplate = new SimpleRedisTemplate();
-        simpleRedisTemplate.setConnectionFactory(getJedisConnectionFactory());
-        simpleRedisTemplate.setKeySerializer(new StringRedisSerializer());
-        simpleRedisTemplate.setHashKeySerializer(new StringRedisSerializer());
-        simpleRedisTemplate.setValueSerializer(jackson2JsonRedisSerializer);
-        simpleRedisTemplate.setHashValueSerializer(jackson2JsonRedisSerializer);
-        return simpleRedisTemplate;
+    public JacksonRedisTemplate jacksonRedisTemplate(Jackson2JsonRedisSerializer<Object> jackson2JsonRedisSerializer) {
+        JacksonRedisTemplate jacksonRedisTemplate = new JacksonRedisTemplate();
+        jacksonRedisTemplate.setConnectionFactory(getJedisConnectionFactory());
+        jacksonRedisTemplate.setKeySerializer(new StringRedisSerializer());
+        jacksonRedisTemplate.setHashKeySerializer(new StringRedisSerializer());
+        jacksonRedisTemplate.setValueSerializer(jackson2JsonRedisSerializer);
+        jacksonRedisTemplate.setHashValueSerializer(jackson2JsonRedisSerializer);
+        return jacksonRedisTemplate;
     }
 
     /**
      * 配置redis分布式锁
-     * @param simpleRedisTemplate
+     * @param jacksonRedisTemplate
      * @return
      */
     @Bean
-    public RedisDistributedLock redisDistributedLock(SimpleRedisTemplate simpleRedisTemplate) {
+    public RedisDistributedLock redisDistributedLock(JacksonRedisTemplate jacksonRedisTemplate) {
         RedisDistributedLock redisDistributedLock = new RedisDistributedLock();
-        redisDistributedLock.setSimpleRedisTemplate(simpleRedisTemplate);
+        redisDistributedLock.setJacksonRedisTemplate(jacksonRedisTemplate);
         return redisDistributedLock;
     }
 }

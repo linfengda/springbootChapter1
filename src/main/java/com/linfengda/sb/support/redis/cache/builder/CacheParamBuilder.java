@@ -1,12 +1,12 @@
 
 package com.linfengda.sb.support.redis.cache.builder;
 
+import com.linfengda.sb.chapter1.common.exception.BusinessException;
+import com.linfengda.sb.support.redis.Constant;
 import com.linfengda.sb.support.redis.cache.entity.dto.CacheParamDTO;
 import com.linfengda.sb.support.redis.cache.entity.meta.CacheMethodMeta;
 import com.linfengda.sb.support.redis.cache.entity.type.DataType;
 import com.linfengda.sb.support.redis.cache.entity.type.KeyType;
-import com.linfengda.sb.support.redis.cache.exception.CahcheException;
-import com.linfengda.sb.support.redis.config.Constant;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 
@@ -69,7 +69,7 @@ public enum CacheParamBuilder {
         for (CacheMethodMeta.CacheKeyMeta keyMeta : keyMetas) {
             Object argument = arguments[keyMeta.getIndex()];
             if (!KeyType.isBaseType(argument.getClass().getName())) {
-                throw new CahcheException("不支持的缓存key参数类型：" + argument.getClass().getName());
+                throw new BusinessException("不支持的缓存key参数类型：" + argument.getClass().getName());
             }
             if (null == argument) {
                 keys.add(keyMeta.getNullKey());

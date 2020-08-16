@@ -1,8 +1,9 @@
-package com.linfengda.sb.support.redis.cache.handler.strategy.impl;
+package com.linfengda.sb.support.redis.cache.handler.resolver.impl;
 
 import com.linfengda.sb.support.redis.cache.entity.dto.CacheParamDTO;
-import com.linfengda.sb.support.redis.cache.handler.strategy.AbstractCacheStrategy;
-import com.linfengda.sb.support.redis.config.Constant;
+import com.linfengda.sb.support.redis.cache.entity.type.DataType;
+import com.linfengda.sb.support.redis.cache.handler.resolver.AbstractCacheDataTypeResolver;
+import com.linfengda.sb.support.redis.Constant;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.CollectionUtils;
 
@@ -17,12 +18,17 @@ import java.util.concurrent.TimeUnit;
  * @date: 2020-07-08 16:22
  */
 @Slf4j
-public class ListCacheStrategy extends AbstractCacheStrategy {
+public class ListCacheDataTypeResolver extends AbstractCacheDataTypeResolver {
+
+    @Override
+    public boolean support(DataType dataType) {
+        return DataType.LIST == dataType;
+    }
 
     @Override
     public Object doGetCache(CacheParamDTO param) {
         // 获取redis列表，如：myList:{id}
-        Object value = getSimpleRedisTemplate().listGetAll(param.getKey());
+        Object value = jacksonRedisTemplate.listGetAll(param.getKey());
         return value;
     }
 
@@ -30,12 +36,12 @@ public class ListCacheStrategy extends AbstractCacheStrategy {
     public void doSetCache(CacheParamDTO param, Object value) {
         if (value instanceof List) {
             List list = (List) value;
-            getSimpleRedisTemplate().listAddAll(param.getKey(), list, param.getTimeOutMillis(), TimeUnit.MILLISECONDS);
+            jacksonRedisTemplate.listAddAll(param.getKey(), list, param.getTimeOutMillis(), TimeUnit.MILLISECONDS);
         }else if (value instanceof Set) {
             Set set = (Set) value;
-            getSimpleRedisTemplate().listAddAll(param.getKey(), set, param.getTimeOutMillis(), TimeUnit.MILLISECONDS);
+            jacksonRedisTemplate.listAddAll(param.getKey(), set, param.getTimeOutMillis(), TimeUnit.MILLISECONDS);
         }else {
-            getSimpleRedisTemplate().listAdd(param.getKey(), value, param.getTimeOutMillis(), TimeUnit.MILLISECONDS);
+            jacksonRedisTemplate.listAdd(param.getKey(), value, param.getTimeOutMillis(), TimeUnit.MILLISECONDS);
         }
     }
 
@@ -48,7 +54,7 @@ public class ListCacheStrategy extends AbstractCacheStrategy {
     public Long getCurrentCacheSize(CacheParamDTO param) {
         // 获取指定类型redis列表数量大小，如：myList:{*}大小
         String keyPattern = param.getPrefix() + Constant.ASTERISK;
-        Set<String> set = getSimpleRedisTemplate().keys(keyPattern);
+        Set<String> set = jacksonRedisTemplate.keys(keyPattern);
         if (CollectionUtils.isEmpty(set)) {
             return 0L;
         }

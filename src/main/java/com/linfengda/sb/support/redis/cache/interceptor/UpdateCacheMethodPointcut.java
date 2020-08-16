@@ -1,6 +1,6 @@
 package com.linfengda.sb.support.redis.cache.interceptor;
 
-import com.linfengda.sb.support.redis.cache.entity.type.OperationType;
+import com.linfengda.sb.support.redis.cache.entity.type.CacheAnnotationType;
 import org.springframework.aop.support.StaticMethodMatcherPointcut;
 import org.springframework.core.annotation.AnnotationUtils;
 
@@ -16,7 +16,7 @@ public class UpdateCacheMethodPointcut extends StaticMethodMatcherPointcut {
 
     @Override
     public boolean matches(Method method, Class<?> clazz) {
-        Annotation annotation = AnnotationUtils.findAnnotation(method, OperationType.UPDATE.getAnnotation());
+        Annotation annotation = AnnotationUtils.findAnnotation(method, CacheAnnotationType.UPDATE.getAnnotation());
         if (null == annotation) {
             return false;
         }

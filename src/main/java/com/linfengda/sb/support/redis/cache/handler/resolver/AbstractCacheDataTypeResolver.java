@@ -1,12 +1,12 @@
-package com.linfengda.sb.support.redis.cache.handler.strategy;
+package com.linfengda.sb.support.redis.cache.handler.resolver;
 
 import com.alibaba.fastjson.JSON;
+import com.linfengda.sb.support.redis.Constant;
+import com.linfengda.sb.support.redis.JacksonRedisTemplate;
 import com.linfengda.sb.support.redis.cache.entity.dto.CacheParamDTO;
 import com.linfengda.sb.support.redis.cache.entity.type.CacheMaxSizeStrategy;
 import com.linfengda.sb.support.redis.cache.entity.type.CacheSizeStrategy;
 import com.linfengda.sb.support.redis.cache.util.CacheUtil;
-import com.linfengda.sb.support.redis.config.Constant;
-import com.linfengda.sb.support.redis.template.SimpleRedisTemplate;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 
@@ -20,8 +20,8 @@ import java.util.Set;
  */
 @Slf4j
 @Data
-public abstract class AbstractCacheStrategy implements CacheStrategy {
-    private SimpleRedisTemplate simpleRedisTemplate;
+public abstract class AbstractCacheDataTypeResolver implements CacheDataTypeResolver {
+    protected JacksonRedisTemplate jacksonRedisTemplate;
 
 
     @Override
@@ -31,7 +31,7 @@ public abstract class AbstractCacheStrategy implements CacheStrategy {
             return null;
         }
         if (CacheMaxSizeStrategy.MAX_SIZE_STRATEGY_LRU == param.getMaxSizeStrategy()) {
-            getSimpleRedisTemplate().opsForZSet().add(param.getLruKey(), param.getKey(), CacheUtil.getKeyLruScore());
+            jacksonRedisTemplate.opsForZSet().add(param.getLruKey(), param.getKey(), CacheUtil.getKeyLruScore());
         }
         return value;
     }
@@ -48,7 +48,7 @@ public abstract class AbstractCacheStrategy implements CacheStrategy {
         }
         doSetCache(param, value);
         if (CacheMaxSizeStrategy.MAX_SIZE_STRATEGY_LRU == param.getMaxSizeStrategy()) {
-            getSimpleRedisTemplate().opsForZSet().add(param.getLruKey(), param.getKey(), CacheUtil.getKeyLruScore());
+            jacksonRedisTemplate.opsForZSet().add(param.getLruKey(), param.getKey(), CacheUtil.getKeyLruScore());
         }
     }
 
@@ -93,19 +93,19 @@ public abstract class AbstractCacheStrategy implements CacheStrategy {
      * @param param 查询参数
      */
     protected void deleteLRU(CacheParamDTO param) {
-        Long size = getSimpleRedisTemplate().opsForZSet().size(param.getLruKey());
+        Long size = jacksonRedisTemplate.opsForZSet().size(param.getLruKey());
         if (null == size || 0 == size) {
             return;
         }
-        Set<Object> delKeys = getSimpleRedisTemplate().opsForZSet().range(param.getLruKey(), 0, Constant.DEFAULT_LRU_REMOVE_NUM-1);
+        Set<Object> delKeys = jacksonRedisTemplate.opsForZSet().range(param.getLruKey(), 0, Constant.DEFAULT_LRU_REMOVE_NUM-1);
         // 删除LRU记录
-        getSimpleRedisTemplate().opsForZSet().removeRange(param.getLruKey(), 0, Constant.DEFAULT_LRU_REMOVE_NUM-1);
+        jacksonRedisTemplate.opsForZSet().removeRange(param.getLruKey(), 0, Constant.DEFAULT_LRU_REMOVE_NUM-1);
         // 删除具体缓存key
         for (Object delKey : delKeys) {
             if (null == delKey) {
                 continue;
             }
-            getSimpleRedisTemplate().deleteObject((String) delKey);
+            jacksonRedisTemplate.deleteObject((String) delKey);
         }
         log.debug("当前缓存大小超过限制：{}，采取LRU算法淘汰{}条数据，lurKey={}，delKeys={}", param.getMaxSize(), Constant.DEFAULT_LRU_REMOVE_NUM, param.getLruKey(), JSON.toJSONString(delKeys));
     }
@@ -123,18 +123,4 @@ public abstract class AbstractCacheStrategy implements CacheStrategy {
      * @param value 缓存数据
      */
     public abstract void doSetCache(CacheParamDTO param, Object value);
-
-    /**
-     * 获取当前缓存大小
-     * @param param 缓存参数
-     * @return      缓存大小
-     */
-    public abstract Long getCurrentCacheSize(CacheParamDTO param);
-
-    /**
-     * 查询缓存中是否存在key
-     * @param param 缓存参数
-     * @return      true：存在，false：不存在
-     */
-    public abstract Boolean hasKey(CacheParamDTO param);
 }

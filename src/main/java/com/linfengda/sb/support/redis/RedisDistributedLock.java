@@ -1,7 +1,6 @@
-package com.linfengda.sb.support.redis.lock;
+package com.linfengda.sb.support.redis;
 
 import com.linfengda.sb.chapter1.common.util.ServerRunTimeUtil;
-import com.linfengda.sb.support.redis.template.SimpleRedisTemplate;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
@@ -27,7 +26,7 @@ public class RedisDistributedLock {
     private final long DEFAULT_LOCK_WAIT_TIME = 30 * 1000L;
 
     @Setter
-    private SimpleRedisTemplate simpleRedisTemplate;
+    private JacksonRedisTemplate jacksonRedisTemplate;
 
     /**
      * 加锁操作：多个
@@ -40,10 +39,10 @@ public class RedisDistributedLock {
         for (String key : keys) {
             map.put(key, currentLockRequester);
         }
-        Boolean result = simpleRedisTemplate.opsForValue().multiSetIfAbsent(map);
+        Boolean result = jacksonRedisTemplate.opsForValue().multiSetIfAbsent(map);
         if (result) {
             for (String key : keys) {
-                simpleRedisTemplate.expire(key, DEFAULT_LOCK_EXPIRE_TIME, TimeUnit.SECONDS);
+                jacksonRedisTemplate.expire(key, DEFAULT_LOCK_EXPIRE_TIME, TimeUnit.SECONDS);
                 log.info("key={}，currentLockRequester={}，lock success", key, currentLockRequester);
             }
         }
@@ -57,9 +56,9 @@ public class RedisDistributedLock {
      */
     public Boolean tryLock(String key) {
         String currentLockRequester = getCurrentLockRequester();
-        Boolean result = simpleRedisTemplate.opsForValue().setIfAbsent(key, currentLockRequester);
+        Boolean result = jacksonRedisTemplate.opsForValue().setIfAbsent(key, currentLockRequester);
         if (result) {
-            simpleRedisTemplate.expire(key, DEFAULT_LOCK_EXPIRE_TIME, TimeUnit.SECONDS);
+            jacksonRedisTemplate.expire(key, DEFAULT_LOCK_EXPIRE_TIME, TimeUnit.SECONDS);
             log.info("key={}，currentLockRequester={}，lock success", key, currentLockRequester);
         }
         return result;
@@ -104,13 +103,13 @@ public class RedisDistributedLock {
      * @return
      */
     public Boolean unLock(String key) {
-        Object lockRequester = simpleRedisTemplate.getObject(key);
+        Object lockRequester = jacksonRedisTemplate.getObject(key);
         String currentLockRequester = getCurrentLockRequester();
         if (null == lockRequester) {
             return true;
         }
         if (lockRequester.equals(currentLockRequester)) {
-            simpleRedisTemplate.delete(key);
+            jacksonRedisTemplate.delete(key);
             log.info("key={}，currentLockRequester={}，unlock success", key, currentLockRequester);
             return true;
         }

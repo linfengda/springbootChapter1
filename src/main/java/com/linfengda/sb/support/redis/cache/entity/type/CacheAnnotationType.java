@@ -9,13 +9,13 @@ import lombok.Getter;
 import java.lang.annotation.Annotation;
 
 /**
- * @description: 缓存操作类型
+ * @description: redis缓存操作类型
  * @author: linfengda
  * @date: 2020-06-24 18:23
  */
 @Getter
 @AllArgsConstructor
-public enum OperationType {
+public enum CacheAnnotationType {
     /**
      * 查询
      */

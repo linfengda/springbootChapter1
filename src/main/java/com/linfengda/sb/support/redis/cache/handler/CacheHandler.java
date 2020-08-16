@@ -8,6 +8,12 @@ package com.linfengda.sb.support.redis.cache.handler;
  */
 public interface CacheHandler {
     /**
+     * 初始化
+     * @param redisSupport
+     */
+    void init(RedisSupport redisSupport);
+
+    /**
      * 缓存
      * @return  查询缓存结果/删除缓存结果/更新缓存结果
      * @throws Throwable

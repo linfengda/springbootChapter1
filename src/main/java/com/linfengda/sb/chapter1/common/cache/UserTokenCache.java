@@ -1,7 +1,7 @@
 package com.linfengda.sb.chapter1.common.cache;
 
 import com.linfengda.sb.chapter1.common.cache.manager.CacheManager;
-import com.linfengda.sb.support.redis.template.SimpleRedisTemplate;
+import com.linfengda.sb.support.redis.JacksonRedisTemplate;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
@@ -17,7 +17,7 @@ import javax.annotation.Resource;
 @Component
 public class UserTokenCache implements Cache {
     @Resource
-    private SimpleRedisTemplate jacksonRedisTemplate;
+    private JacksonRedisTemplate jacksonRedisTemplate;
 
     @Override
     public void initCache() {

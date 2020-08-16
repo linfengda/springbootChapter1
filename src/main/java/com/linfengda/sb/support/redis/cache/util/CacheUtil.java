@@ -1,6 +1,6 @@
 package com.linfengda.sb.support.redis.cache.util;
 
-import com.linfengda.sb.support.redis.config.Constant;
+import com.linfengda.sb.support.redis.Constant;
 
 import java.util.Random;
 

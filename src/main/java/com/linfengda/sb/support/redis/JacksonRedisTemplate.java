@@ -1,6 +1,5 @@
-package com.linfengda.sb.support.redis.template;
+package com.linfengda.sb.support.redis;
 
-import com.linfengda.sb.support.redis.config.Constant;
 import org.springframework.data.redis.core.RedisTemplate;
 
 import java.util.Collection;
@@ -15,7 +14,7 @@ import java.util.concurrent.TimeUnit;
  * @author linfengda
  * @create 2018-09-12 13:40
  */
-public class SimpleRedisTemplate extends RedisTemplate<String, Object> {
+public class JacksonRedisTemplate extends RedisTemplate<String, Object> {
 
     public void setObject(String key, Object value) {
         super.opsForValue().set(key, value);

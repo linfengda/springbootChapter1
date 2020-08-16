@@ -1,6 +1,6 @@
 package com.linfengda.sb.support.redis.cache.handler.impl;
 
-import com.linfengda.sb.support.redis.cache.entity.dto.CacheDataDTO;
+import com.linfengda.sb.support.redis.cache.entity.dto.CacheTargetDTO;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -12,8 +12,8 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class UpdateCacheHandler extends AbstractCacheHandler {
 
-    public UpdateCacheHandler(CacheDataDTO cacheDataDTO) {
-        super(cacheDataDTO);
+    public UpdateCacheHandler(CacheTargetDTO cacheTargetDTO) {
+        super(cacheTargetDTO);
     }
 
     @Override

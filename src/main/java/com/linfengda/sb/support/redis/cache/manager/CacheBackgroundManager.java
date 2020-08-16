@@ -1,13 +1,12 @@
 package com.linfengda.sb.support.redis.cache.manager;
 
-import com.linfengda.sb.support.redis.config.Constant;
-import com.linfengda.sb.support.redis.config.RedisSupportConfig;
+import com.linfengda.sb.support.redis.Constant;
+import com.linfengda.sb.support.redis.JacksonRedisTemplate;
 import com.linfengda.sb.support.redis.cache.entity.bo.LruExpireResultBO;
-import com.linfengda.sb.support.redis.template.SimpleRedisTemplate;
+import com.linfengda.sb.support.redis.cache.handler.RedisSupportInitializing;
 import com.linfengda.sb.support.redis.cache.util.CacheUtil;
 import com.linfengda.sb.support.redis.cache.util.ThreadPoolHelper;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.core.Cursor;
@@ -24,7 +23,7 @@ import javax.annotation.PostConstruct;
  * @date: 2020-07-21 14:57
  */
 @Slf4j
-public class CacheBackgroundManager {
+public class CacheBackgroundManager extends RedisSupportInitializing {
     /**
      * 缓存后台管理线程池
      */
@@ -37,8 +36,8 @@ public class CacheBackgroundManager {
                 try {
                     Thread.sleep(Constant.DEFAULT_LRU_CACHE_CLEAR_TASK);
                     // 使用scan渐进删除
-                    SimpleRedisTemplate simpleRedisTemplate = RedisSupportConfig.getSimpleRedisTemplate();
-                    LruExpireResultBO lruExpireResultBO = simpleRedisTemplate.execute(new RedisCallback<LruExpireResultBO>() {
+                    JacksonRedisTemplate jacksonRedisTemplate = getRedisSupport().getJacksonRedisTemplate();
+                    LruExpireResultBO lruExpireResultBO = jacksonRedisTemplate.execute(new RedisCallback<LruExpireResultBO>() {
                         LruExpireResultBO lruExpireResultBO = new LruExpireResultBO();
                         long startTime = System.currentTimeMillis();
 
@@ -47,7 +46,7 @@ public class CacheBackgroundManager {
                             Cursor<byte[]> cursor = connection.scan(new ScanOptions.ScanOptionsBuilder().match(Constant.LRU_RECORD_PREFIX + Constant.ASTERISK).count(Constant.DEFAULT_BG_LRU_REMOVE_BATCH_NUM).build());
                             while(cursor.hasNext()) {
                                 String lruKey = new String(cursor.next());
-                                simpleRedisTemplate.opsForZSet().removeRangeByScore(lruKey, 0, CacheUtil.getKeyLruScore());
+                                jacksonRedisTemplate.opsForZSet().removeRangeByScore(lruKey, 0, CacheUtil.getKeyLruScore());
                                 lruExpireResultBO.addLruKeyNum();
                                 log.info("批量清除LRU缓存记录，position={}，lruKey={}", cursor.getPosition(), lruKey);
                             }

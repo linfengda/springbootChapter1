@@ -1,7 +1,7 @@
 package com.linfengda.sb.chapter1;
 
 import com.linfengda.sb.support.apivalidator.annotation.EnableApiValidator;
-import com.linfengda.sb.support.redis.config.annotation.EnableRedisCache;
+import com.linfengda.sb.support.redis.config.annotation.EnableRedisCacheAnnotation;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.core.Ordered;
@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  * @create 2020-01-09 09:18
  */
 @EnableApiValidator
-@EnableRedisCache
+@EnableRedisCacheAnnotation
 @EnableTransactionManagement(order = Ordered.LOWEST_PRECEDENCE-1)
 @EnableApplicationStartup
 @SpringBootApplication
