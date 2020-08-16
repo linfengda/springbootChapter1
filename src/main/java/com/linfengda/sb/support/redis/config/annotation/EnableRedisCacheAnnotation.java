@@ -1,6 +1,6 @@
 package com.linfengda.sb.support.redis.config.annotation;
 
-import com.linfengda.sb.support.redis.config.selector.RedisCacheConfigSelector;
+import com.linfengda.sb.support.redis.config.selector.RedisCacheAnnotationConfigSelector;
 import org.springframework.context.annotation.AdviceMode;
 import org.springframework.context.annotation.Import;
 import org.springframework.core.Ordered;
@@ -8,7 +8,7 @@ import org.springframework.core.Ordered;
 import java.lang.annotation.*;
 
 /**
- * 描述: 开启redis缓存注解，自动引入redisTemplate，redisDistributedLock，redis注解框架
+ * 描述: 开启redis缓存注解，自动引入redisTemplate，redisDistributedLock，缓存注解
  *
  * @author linfengda
  * @create 2020-03-24 17:56
@@ -16,8 +16,8 @@ import java.lang.annotation.*;
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-@Import({RedisCacheConfigSelector.class})
-public @interface EnableRedisCache {
+@Import({RedisCacheAnnotationConfigSelector.class})
+public @interface EnableRedisCacheAnnotation {
     /**
      * true     目标对象实现了接口	使用CGLIB代理机制
      * true     目标对象没有接口(只有实现类)	使用CGLIB代理机制

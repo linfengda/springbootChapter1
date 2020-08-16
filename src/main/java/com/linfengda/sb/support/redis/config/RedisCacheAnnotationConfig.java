@@ -6,12 +6,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Role;
 
 /**
- * 描述: redis cache配置
+ * 描述: 配置redis缓存注解增强器
  *
  * @author linfengda
  * @create 2020-03-24 18:38
  */
-public class RedisCacheConfig extends AbstractCacheConfig {
+public class RedisCacheAnnotationConfig extends AbstractCacheConfig {
 
     @Bean
     @Role(BeanDefinition.ROLE_INFRASTRUCTURE)

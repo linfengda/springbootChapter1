@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Import;
 import java.lang.annotation.*;
 
 /**
- * @description: 开启redis注解，自动引入redisTemplate，redisDistributedLock
+ * @description: 开启redis，自动引入redisTemplate，redisDistributedLock
  * @author: linfengda
  * @date: 2020-07-26 22:34
  */

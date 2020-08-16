@@ -36,7 +36,6 @@ public class CacheBackgroundManager {
             while(true) {
                 try {
                     Thread.sleep(Constant.DEFAULT_LRU_CACHE_CLEAR_TASK);
-
                     // 使用scan渐进删除
                     SimpleRedisTemplate simpleRedisTemplate = RedisSupportConfig.getSimpleRedisTemplate();
                     LruExpireResultBO lruExpireResultBO = simpleRedisTemplate.execute(new RedisCallback<LruExpireResultBO>() {
@@ -59,7 +58,7 @@ public class CacheBackgroundManager {
                     });
                     log.info(lruExpireResultBO.getExpireMsg());
                 }catch (Exception e) {
-                    log.error("清除LRU缓存失败！");
+                    log.error("清除LRU缓存失败！", e);
                 }
             }
         });

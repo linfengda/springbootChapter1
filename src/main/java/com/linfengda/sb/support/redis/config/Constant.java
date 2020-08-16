@@ -17,11 +17,11 @@ public interface Constant {
     /**
      * LRU记录前缀
      */
-    String LRU_RECORD_PREFIX = "lru:record";
+    String LRU_RECORD_PREFIX = "lru:rd";
     /**
      * LOCK前缀
      */
-    String LOCK_PREFIX = "lock";
+    String LOCK_PREFIX = "lk";
     /**
      * 默认不设置缓存过期时间
      */

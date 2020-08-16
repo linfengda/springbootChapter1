@@ -5,7 +5,7 @@ import org.springframework.context.annotation.ImportSelector;
 import org.springframework.core.type.AnnotationMetadata;
 
 /**
- * @description: redis相关配置引入
+ * @description: 开启redis
  * @author: linfengda
  * @date: 2020-07-26 22:36
  */

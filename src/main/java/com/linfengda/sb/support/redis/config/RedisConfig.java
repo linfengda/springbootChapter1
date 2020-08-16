@@ -13,7 +13,7 @@ import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 /**
- * 描述: Redis配置：默认使用Jackson作为序列化工具
+ * 描述: 配置redis
  *
  * @author linfengda
  * @create 2018-09-10 17:00
