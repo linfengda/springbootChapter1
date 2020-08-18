@@ -1,4 +1,4 @@
-package com.linfengda.sb.support.redis.cache.handler.resolver;
+package com.linfengda.sb.support.redis.cache.resolver;
 
 import com.linfengda.sb.support.redis.cache.entity.dto.CacheParamDTO;
 import com.linfengda.sb.support.redis.cache.entity.type.DataType;

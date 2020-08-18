@@ -1,5 +1,6 @@
 package com.linfengda.sb.support.redis.cache.handler;
 
+import com.linfengda.sb.support.redis.cache.entity.RedisSupport;
 import lombok.Setter;
 
 /**

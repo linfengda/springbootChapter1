@@ -1,12 +1,12 @@
-package com.linfengda.sb.support.redis.cache.handler.resolver;
+package com.linfengda.sb.support.redis.cache.resolver;
 
 import com.linfengda.sb.chapter1.common.exception.BusinessException;
+import com.linfengda.sb.support.redis.cache.entity.RedisSupport;
 import com.linfengda.sb.support.redis.cache.entity.type.DataType;
-import com.linfengda.sb.support.redis.cache.handler.RedisSupport;
-import com.linfengda.sb.support.redis.cache.handler.resolver.impl.HashCacheDataTypeResolver;
-import com.linfengda.sb.support.redis.cache.handler.resolver.impl.ListCacheDataTypeResolver;
-import com.linfengda.sb.support.redis.cache.handler.resolver.impl.ObjCacheDataTypeResolver;
-import com.linfengda.sb.support.redis.cache.handler.resolver.impl.SetCacheDataTypeResolver;
+import com.linfengda.sb.support.redis.cache.resolver.impl.HashCacheDataTypeResolver;
+import com.linfengda.sb.support.redis.cache.resolver.impl.ListCacheDataTypeResolver;
+import com.linfengda.sb.support.redis.cache.resolver.impl.ObjCacheDataTypeResolver;
+import com.linfengda.sb.support.redis.cache.resolver.impl.SetCacheDataTypeResolver;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +21,6 @@ public enum CacheDataTypeResolverHolder {
      * 单例
      */
     INSTANCE;
-
     private final List<CacheDataTypeResolver> resolvers = new ArrayList<>();
 
     /**

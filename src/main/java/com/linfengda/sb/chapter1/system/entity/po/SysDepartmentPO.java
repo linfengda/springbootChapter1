@@ -28,7 +28,7 @@ public class SysDepartmentPO extends BasePO {
      */
     private String departmentAliasName;
     /**
-     * 部门类型，1：技术；2：业务；3：行政
+     * 部门类型{@link com.linfengda.sb.chapter1.system.entity.type.SysDepartmentType}
      */
     private Integer type;
     /**
@@ -36,38 +36,6 @@ public class SysDepartmentPO extends BasePO {
      */
     private Integer status;
 
-
-    /**
-     * 部门类型枚举
-     */
-    @AllArgsConstructor
-    @Getter
-    public enum Type {
-        /**
-         * 1：技术
-         */
-        TECH(1, "技术"),
-        /**
-         * 2：业务
-         */
-        BUSINESS(2, "业务"),
-        /**
-         * 3：行政
-         */
-        ADMINISTRATION(3, "行政");
-
-        private Integer code;
-        private String name;
-
-        public static Type getType(Integer state) {
-            for (Type value : values()) {
-                if (value.getCode().equals(state)) {
-                    return value;
-                }
-            }
-            return null;
-        }
-    }
 
     /**
      * 状态枚举

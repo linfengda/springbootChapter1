@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  * @create 2020-01-09 09:18
  */
 @EnableApiValidator
-@EnableRedisCacheAnnotation
+@EnableRedisCacheAnnotation()
 @EnableTransactionManagement(order = Ordered.LOWEST_PRECEDENCE-1)
 @EnableApplicationStartup
 @SpringBootApplication

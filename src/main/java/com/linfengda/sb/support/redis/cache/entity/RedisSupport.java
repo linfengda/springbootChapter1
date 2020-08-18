@@ -1,4 +1,4 @@
-package com.linfengda.sb.support.redis.cache.handler;
+package com.linfengda.sb.support.redis.cache.entity;
 
 import com.linfengda.sb.support.redis.JacksonRedisTemplate;
 import com.linfengda.sb.support.redis.RedisDistributedLock;

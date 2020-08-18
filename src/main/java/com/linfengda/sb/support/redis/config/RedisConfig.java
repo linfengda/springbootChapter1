@@ -4,13 +4,10 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.linfengda.sb.support.redis.JacksonRedisTemplate;
-import com.linfengda.sb.support.redis.config.annotation.EnableRedisCacheAnnotation;
 import com.linfengda.sb.support.redis.RedisDistributedLock;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ImportAware;
-import org.springframework.core.annotation.AnnotationAttributes;
-import org.springframework.core.type.AnnotationMetadata;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
@@ -22,7 +19,8 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
  * @author linfengda
  * @create 2018-09-10 17:00
  */
-public class RedisConfig implements ImportAware {
+@Configuration
+public class RedisConfig extends AbstractCacheConfig {
     @Value("${spring.redis.host}")
     private String host;
     @Value("${spring.redis.port}")
@@ -30,18 +28,6 @@ public class RedisConfig implements ImportAware {
     @Value("${spring.redis.database}")
     private int database;
 
-
-    protected AnnotationAttributes attributes;
-
-    @Override
-    public void setImportMetadata(AnnotationMetadata importMetadata) {
-        this.attributes = AnnotationAttributes.fromMap(
-                importMetadata.getAnnotationAttributes(EnableRedisCacheAnnotation.class.getName(), false));
-        if (this.attributes == null) {
-            throw new IllegalArgumentException(
-                    "@EnableCache is not present on importing class " + importMetadata.getClassName());
-        }
-    }
 
     /**
      * 配置Jedis客户端

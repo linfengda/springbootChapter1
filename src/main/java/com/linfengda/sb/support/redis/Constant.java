@@ -45,5 +45,5 @@ public interface Constant {
     /**
      * 默认清除LRU缓存间隔时间：10min
      */
-    Long DEFAULT_LRU_CACHE_TASK_INTERNAL = 10*60*1000L;
+    long DEFAULT_LRU_CACHE_TASK_INTERNAL = 10*60*1000L;
 }

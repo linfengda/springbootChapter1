@@ -6,8 +6,8 @@ import com.linfengda.sb.support.redis.cache.entity.dto.CacheTargetDTO;
 import com.linfengda.sb.support.redis.cache.entity.type.CacheAnnotationType;
 import com.linfengda.sb.support.redis.cache.entity.type.CacheExtraStrategy;
 import com.linfengda.sb.support.redis.cache.handler.AbstractCacheHandler;
-import com.linfengda.sb.support.redis.cache.handler.resolver.CacheDataTypeResolver;
-import com.linfengda.sb.support.redis.cache.handler.resolver.CacheDataTypeResolverHolder;
+import com.linfengda.sb.support.redis.cache.resolver.CacheDataTypeResolver;
+import com.linfengda.sb.support.redis.cache.resolver.CacheDataTypeResolverHolder;
 import lombok.extern.slf4j.Slf4j;
 import org.aopalliance.intercept.MethodInvocation;
 

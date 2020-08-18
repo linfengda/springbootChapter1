@@ -17,7 +17,7 @@ import java.lang.reflect.Method;
  * @create 2019-12-19 17:52
  */
 @Slf4j
-public class CacheMethodHandlerAdapter extends CacheHandlerHolder {
+public class CacheMethodHandlerAdapter {
 
     /**
      * Actually invoke the handler
@@ -36,7 +36,7 @@ public class CacheMethodHandlerAdapter extends CacheHandlerHolder {
         CacheTargetDTO cacheTargetDTO = new CacheTargetDTO();
         cacheTargetDTO.setInvocation(invocation);
         cacheTargetDTO.setParam(CacheParamBuilder.INSTANCE.initCacheParam(cacheMethodMeta, arguments));
-        CacheHandler handler = super.getHandler(annotationType);
+        CacheHandler handler = CacheHandlerHolder.INSTANCE.getHandler(annotationType);
         return handler.doCache(cacheTargetDTO);
     }
 }

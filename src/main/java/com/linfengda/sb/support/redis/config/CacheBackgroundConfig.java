@@ -1,24 +1,17 @@
-package com.linfengda.sb.support.redis.cache.manager;
+package com.linfengda.sb.support.redis.config;
 
 import com.linfengda.sb.support.redis.Constant;
 import com.linfengda.sb.support.redis.JacksonRedisTemplate;
 import com.linfengda.sb.support.redis.cache.entity.bo.LruExpireResultBO;
-import com.linfengda.sb.support.redis.cache.handler.CacheHandlerHolder;
 import com.linfengda.sb.support.redis.cache.util.CacheUtil;
-import com.linfengda.sb.support.redis.cache.util.ThreadPoolHelper;
-import com.linfengda.sb.support.redis.config.annotation.EnableRedisCacheAnnotation;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.context.annotation.ImportAware;
-import org.springframework.core.annotation.AnnotationAttributes;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.core.type.AnnotationMetadata;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.core.Cursor;
 import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.ScanOptions;
-import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
-
-import javax.annotation.PostConstruct;
 
 /**
  * 描述: 缓存后台管理
@@ -27,38 +20,25 @@ import javax.annotation.PostConstruct;
  * @date: 2020-07-21 14:57
  */
 @Slf4j
-public class CacheBackgroundManager extends CacheHandlerHolder implements ImportAware {
-    private Long internalTime;
+@Configuration
+public class CacheBackgroundConfig extends AbstractCacheConfig {
 
     @Override
     public void setImportMetadata(AnnotationMetadata importMetadata) {
-        AnnotationAttributes attributes = AnnotationAttributes.fromMap(
-                importMetadata.getAnnotationAttributes(EnableRedisCacheAnnotation.class.getName(), false));
-        if (attributes == null) {
-            throw new IllegalArgumentException(
-                    "@EnableCache is not present on importing class " + importMetadata.getClassName());
+        super.setImportMetadata(importMetadata);
+        Long internalTime = attributes.<Long>getNumber("lruInternal");
+        if (null == internalTime) {
+            internalTime = Constant.DEFAULT_LRU_CACHE_TASK_INTERNAL;
         }
-        String lruInternal = attributes.getString("lruInternal");
-        if (null == lruInternal) {
-            this.internalTime = Constant.DEFAULT_LRU_CACHE_TASK_INTERNAL;
-        }else {
-            this.internalTime = Long.valueOf(lruInternal);
-        }
+        start(internalTime);
     }
 
-    /**
-     * 缓存后台管理线程池
-     */
-    private static final ThreadPoolTaskExecutor cacheBgThreadPool = ThreadPoolHelper.initThreadPool(1, 10, "cache-bg-thread");
-
-    @PostConstruct
-    public void initHandlers() {
-        cacheBgThreadPool.execute(() -> {
+    private void start(final long internalTime) {
+        Thread bgThread = new Thread(() -> {
             while(true) {
                 try {
-                    Thread.sleep(internalTime);
                     // 使用scan渐进删除
-                    JacksonRedisTemplate jacksonRedisTemplate = getRedisSupport().getJacksonRedisTemplate();
+                    JacksonRedisTemplate jacksonRedisTemplate = RedisSupportClassInitialConfig.getRedisSupport().getJacksonRedisTemplate();
                     LruExpireResultBO lruExpireResultBO = jacksonRedisTemplate.execute(new RedisCallback<LruExpireResultBO>() {
                         LruExpireResultBO lruExpireResultBO = new LruExpireResultBO();
                         long startTime = System.currentTimeMillis();
@@ -80,8 +60,16 @@ public class CacheBackgroundManager extends CacheHandlerHolder implements Import
                     log.info(lruExpireResultBO.getExpireMsg());
                 }catch (Exception e) {
                     log.error("清除LRU缓存失败！", e);
+                }finally {
+                    try {
+                        Thread.sleep(internalTime);
+                    }catch (Exception e) {
+                        log.error("清除LRU缓存休眠失败！");
+                    }
                 }
             }
         });
+        bgThread.setDaemon(true);
+        bgThread.start();
     }
 }

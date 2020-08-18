@@ -27,7 +27,7 @@ public class SysTeamPO extends BasePO {
      */
     private String teamAliasName;
     /**
-     * 项目类型，1：技术；2：业务；3：行政
+     * 项目类型{@link com.linfengda.sb.chapter1.system.entity.type.SysTeamType}
      */
     private Integer type;
     /**
@@ -35,38 +35,6 @@ public class SysTeamPO extends BasePO {
      */
     private Integer status;
 
-
-    /**
-     * 项目类型枚举
-     */
-    @AllArgsConstructor
-    @Getter
-    public enum Type {
-        /**
-         * 1：技术
-         */
-        TECH(1, "技术"),
-        /**
-         * 2：业务
-         */
-        BUSINESS(2, "业务"),
-        /**
-         * 3：行政
-         */
-        ADMINISTRATION(3, "行政");
-
-        private Integer code;
-        private String name;
-
-        public static Type getType(Integer state) {
-            for (Type value : values()) {
-                if (value.getCode().equals(state)) {
-                    return value;
-                }
-            }
-            return null;
-        }
-    }
 
     /**
      * 状态枚举

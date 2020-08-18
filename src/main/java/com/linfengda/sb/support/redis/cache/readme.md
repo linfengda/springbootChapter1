@@ -27,7 +27,7 @@ com.linfengda.sb.support.redis.cache.builder.CacheParamBuilder
 * 具体缓存处理
 com.linfengda.sb.support.redis.cache.handler.CacheHandler
 * 具体缓存类型处理
-com.linfengda.sb.support.redis.cache.handler.resolver.CacheDataTypeResolver
+com.linfengda.sb.support.redis.cache.resolver.CacheDataTypeResolver
 
 #### 四. 需要优化的地方
 1. 缓存方法切面优先级：查询缓存>删除缓存>事务>更新缓存

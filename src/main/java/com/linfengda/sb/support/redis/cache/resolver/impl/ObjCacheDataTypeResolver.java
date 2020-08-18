@@ -1,8 +1,8 @@
-package com.linfengda.sb.support.redis.cache.handler.resolver.impl;
+package com.linfengda.sb.support.redis.cache.resolver.impl;
 
 import com.linfengda.sb.support.redis.cache.entity.dto.CacheParamDTO;
 import com.linfengda.sb.support.redis.cache.entity.type.DataType;
-import com.linfengda.sb.support.redis.cache.handler.resolver.AbstractCacheDataTypeResolver;
+import com.linfengda.sb.support.redis.cache.resolver.AbstractCacheDataTypeResolver;
 import com.linfengda.sb.support.redis.Constant;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.CollectionUtils;
