@@ -28,7 +28,7 @@ public enum CacheManager {
      */
     SYS_ORG_PRODUCTION_TEAM_CACHE("sysOrgProductionTeamCache", "系统组织：部门", CachePrefix.SYS_ORG_PRODUCTION_TEAM_CACHE),
     /**
-     * 系统组织：项目
+     * 系统组织：团队
      */
     SYS_ORG_TEAM_CACHE("sysOrgTeamCache", "系统组织：项目", CachePrefix.SYS_ORG_TEAM_CACHE),
     /**
@@ -41,7 +41,7 @@ public enum CacheManager {
      */
     SYS_ORG_PRODUCTION_TEAM_SET_CACHE("sysOrgProductionTeamSetCache", "部门集合", CachePrefix.SYS_ORG_PRODUCTION_TEAM_SET_CACHE),
     /**
-     * 项目集合
+     * 团队集合
      */
     SYS_ORG_TEAM_SET_CACHE("sysOrgTeamSetCache", "项目集合", CachePrefix.SYS_ORG_TEAM_SET_CACHE),
     /**

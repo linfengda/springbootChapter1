@@ -46,13 +46,23 @@ public class SetCacheDataTypeResolver extends AbstractCacheDataTypeResolver {
     }
 
     @Override
+    public void delCache(CacheParamDTO param) {
+        Boolean allEntries = param.getAllEntries();
+        if (Boolean.TRUE.equals(allEntries)) {
+            delAllEntries(param);
+            return;
+        }
+        jacksonRedisTemplate.delete(param.getKey());
+    }
+
+    @Override
     public Boolean hasKey(CacheParamDTO param) {
         return null;
     }
 
     @Override
     public Long getCurrentCacheSize(CacheParamDTO param) {
-        // 获取指定类型redis集合数量大小，如：mySet:{*}大小
+        // 获取指定类型redis集合数量，如：mySet:{*}大小
         String keyPattern = param.getPrefix() + Constant.ASTERISK;
         Set<String> set = jacksonRedisTemplate.keys(keyPattern);
         if (CollectionUtils.isEmpty(set)) {

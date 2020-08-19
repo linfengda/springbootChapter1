@@ -4,7 +4,7 @@ import com.linfengda.sb.chapter1.Chapter1Application;
 import com.linfengda.sb.support.redis.Constant;
 import com.linfengda.sb.support.redis.cache.entity.bo.LruExpireResultBO;
 import com.linfengda.sb.support.redis.JacksonRedisTemplate;
-import com.linfengda.sb.support.redis.cache.util.CacheUtil;
+import com.linfengda.sb.support.redis.util.CacheUtil;
 import com.linfengda.sb.support.middleware.redis.performance.entity.MySon;
 import com.linfengda.sb.support.middleware.redis.performance.entity.Pig;
 import lombok.extern.slf4j.Slf4j;

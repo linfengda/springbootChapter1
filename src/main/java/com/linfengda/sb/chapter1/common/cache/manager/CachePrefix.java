@@ -15,7 +15,7 @@ public interface CachePrefix {
      */
     String SYS_ORG_PRODUCTION_TEAM_CACHE = "sys:org:pt";
     /**
-     * 系统组织：项目
+     * 系统组织：团队
      */
     String SYS_ORG_TEAM_CACHE = "sys:org:tm";
     /**
@@ -27,7 +27,7 @@ public interface CachePrefix {
      */
     String SYS_ORG_PRODUCTION_TEAM_SET_CACHE = "sys:org:pt:set";
     /**
-     * 项目集合
+     * 团队集合
      */
     String SYS_ORG_TEAM_SET_CACHE = "sys:org:tm:set";
     /**

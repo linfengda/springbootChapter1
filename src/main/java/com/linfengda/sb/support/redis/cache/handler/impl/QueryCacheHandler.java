@@ -25,7 +25,7 @@ public class QueryCacheHandler extends AbstractCacheHandler {
 
     @Override
     public Object doCache(CacheTargetDTO cacheTargetDTO) throws Throwable {
-        log.debug("查询缓存注解处理 handler，dataType={}", cacheTargetDTO.getParam().getDataType());
+        log.debug("查询缓存注解处理，dataType={}", cacheTargetDTO.getParam().getDataType());
         CacheParamDTO param = cacheTargetDTO.getParam();
         CacheDataTypeResolver resolver = CacheDataTypeResolverHolder.INSTANCE.getResolver(param.getDataType());
         Object value = resolver.getCache(param);

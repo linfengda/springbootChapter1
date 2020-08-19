@@ -32,10 +32,6 @@ public class JacksonRedisTemplate extends RedisTemplate<String, Object> {
         return (T) super.opsForValue().get(key);
     }
 
-    public Boolean deleteObject(String key) {
-        return super.delete(key);
-    }
-
     public void hashPut(String key, String hashKey, Object value) {
         super.opsForHash().put(key, hashKey, value);
     }

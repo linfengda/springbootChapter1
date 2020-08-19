@@ -31,19 +31,23 @@ public interface Constant {
      */
     Long DEFAULT_NO_SIZE_LIMIT = -1L;
     /**
-     * 默认后台渐进淘汰lru key数量
+     * 默认后台批量处理LRU缓存间隔：10min
      */
-    Integer DEFAULT_BG_LRU_REMOVE_BATCH_NUM = 10;
+    long DEFAULT_BG_REMOVE_LRU_INTERNAL = 10*60*1000L;
     /**
-     * 默认LRU一次性淘汰数量
+     * 默认后台批量处理LRU缓存数量
      */
-    Integer DEFAULT_LRU_REMOVE_NUM = 10;
+    Integer DEFAULT_BG_REMOVE_LRU_BATCH_NUM = 10;
+    /**
+     * 默认LRU一次性淘汰数量：100
+     */
+    Integer DEFAULT_LRU_REMOVE_NUM = 100;
+    /**
+     * 默认删除缓存批量数量：1000
+     */
+    Integer DEFAULT_DELETE_CACHE_LIMIT = 1000;
     /**
      * 默认防止缓存雪崩随机时间范围：60s
      */
     Integer DEFAULT_NO_CACHE_SNOW_SLIDE_RANDOM_MS = 60*1000;
-    /**
-     * 默认清除LRU缓存间隔时间：10min
-     */
-    long DEFAULT_LRU_CACHE_TASK_INTERNAL = 10*60*1000L;
 }

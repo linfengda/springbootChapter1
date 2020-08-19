@@ -1,6 +1,6 @@
 package com.linfengda.sb.support.redis.config.selector;
 
-import com.linfengda.sb.support.redis.config.CacheBackgroundConfig;
+import com.linfengda.sb.support.redis.config.RedisCacheBgConfig;
 import com.linfengda.sb.support.redis.config.RedisCacheAnnotationConfig;
 import com.linfengda.sb.support.redis.config.RedisConfig;
 import com.linfengda.sb.support.redis.config.RedisSupportClassInitializer;
@@ -18,6 +18,6 @@ public class RedisCacheAnnotationConfigSelector extends AdviceModeImportSelector
 
     @Override
     protected String[] selectImports(AdviceMode adviceMode) {
-        return new String[] {RedisConfig.class.getName(), RedisCacheAnnotationConfig.class.getName(), RedisSupportClassInitializer.class.getName(), CacheBackgroundConfig.class.getName()};
+        return new String[] {RedisConfig.class.getName(), RedisCacheAnnotationConfig.class.getName(), RedisSupportClassInitializer.class.getName(), RedisCacheBgConfig.class.getName()};
     }
 }

@@ -3,7 +3,7 @@ package com.linfengda.sb.support.redis.config;
 import com.linfengda.sb.support.redis.Constant;
 import com.linfengda.sb.support.redis.JacksonRedisTemplate;
 import com.linfengda.sb.support.redis.cache.entity.bo.LruExpireResultBO;
-import com.linfengda.sb.support.redis.cache.util.CacheUtil;
+import com.linfengda.sb.support.redis.util.CacheUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.type.AnnotationMetadata;
@@ -21,14 +21,14 @@ import org.springframework.data.redis.core.ScanOptions;
  */
 @Slf4j
 @Configuration
-public class CacheBackgroundConfig extends AbstractCacheConfig {
+public class RedisCacheBgConfig extends AbstractCacheConfig {
 
     @Override
     public void setImportMetadata(AnnotationMetadata importMetadata) {
         super.setImportMetadata(importMetadata);
         Long internalTime = attributes.<Long>getNumber("lruInternal");
         if (null == internalTime) {
-            internalTime = Constant.DEFAULT_LRU_CACHE_TASK_INTERNAL;
+            internalTime = Constant.DEFAULT_BG_REMOVE_LRU_INTERNAL;
         }
         start(internalTime);
     }
@@ -45,7 +45,7 @@ public class CacheBackgroundConfig extends AbstractCacheConfig {
 
                         @Override
                         public LruExpireResultBO doInRedis(RedisConnection connection) throws DataAccessException {
-                            Cursor<byte[]> cursor = connection.scan(new ScanOptions.ScanOptionsBuilder().match(Constant.LRU_RECORD_PREFIX + Constant.ASTERISK).count(Constant.DEFAULT_BG_LRU_REMOVE_BATCH_NUM).build());
+                            Cursor<byte[]> cursor = connection.scan(new ScanOptions.ScanOptionsBuilder().match(Constant.LRU_RECORD_PREFIX + Constant.ASTERISK).count(Constant.DEFAULT_BG_REMOVE_LRU_BATCH_NUM).build());
                             while(cursor.hasNext()) {
                                 String lruKey = new String(cursor.next());
                                 jacksonRedisTemplate.opsForZSet().removeRangeByScore(lruKey, 0, CacheUtil.getKeyLruScore());

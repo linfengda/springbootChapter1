@@ -1,4 +1,4 @@
-package com.linfengda.sb.support.redis.cache.util;
+package com.linfengda.sb.support.redis.util;
 
 import com.linfengda.sb.support.redis.Constant;
 
@@ -30,7 +30,7 @@ public class CacheUtil {
     }
 
     /**
-     * 获取key的lru过期时间
+     * 更新lru key过期时间
      * @return  当前时间戳
      */
     public static double getKeyLruScore() {
@@ -38,7 +38,7 @@ public class CacheUtil {
     }
 
     /**
-     * 解析key的lru过期时间
+     * 解析lru key过期时间
      * @param score 过期时间
      * @return      过期时间
      */

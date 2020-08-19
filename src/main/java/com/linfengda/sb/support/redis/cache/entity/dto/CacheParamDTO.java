@@ -4,7 +4,7 @@ import com.linfengda.sb.support.redis.cache.builder.HashKey;
 import com.linfengda.sb.support.redis.cache.entity.type.CacheExtraStrategy;
 import com.linfengda.sb.support.redis.cache.entity.type.CacheMaxSizeStrategy;
 import com.linfengda.sb.support.redis.cache.entity.type.DataType;
-import com.linfengda.sb.support.redis.cache.util.CacheUtil;
+import com.linfengda.sb.support.redis.util.CacheUtil;
 import lombok.Data;
 
 import java.util.List;

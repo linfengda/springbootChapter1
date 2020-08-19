@@ -1,9 +1,9 @@
 package com.linfengda.sb.support.redis.cache.resolver.impl;
 
+import com.linfengda.sb.support.redis.Constant;
 import com.linfengda.sb.support.redis.cache.entity.dto.CacheParamDTO;
 import com.linfengda.sb.support.redis.cache.entity.type.DataType;
 import com.linfengda.sb.support.redis.cache.resolver.AbstractCacheDataTypeResolver;
-import com.linfengda.sb.support.redis.Constant;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.CollectionUtils;
 
@@ -33,6 +33,16 @@ public class ObjCacheDataTypeResolver extends AbstractCacheDataTypeResolver {
     @Override
     public void doSetCache(CacheParamDTO param, Object value) {
         jacksonRedisTemplate.setObject(param.getKey(), value, param.getTimeOutMillis(), TimeUnit.MILLISECONDS);
+    }
+
+    @Override
+    public void delCache(CacheParamDTO param) {
+        Boolean allEntries = param.getAllEntries();
+        if (Boolean.TRUE.equals(allEntries)) {
+            delAllEntries(param);
+            return;
+        }
+        jacksonRedisTemplate.delete(param.getKey());
     }
 
     @Override

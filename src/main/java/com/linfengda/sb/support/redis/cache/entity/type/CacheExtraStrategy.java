@@ -15,19 +15,10 @@ public enum CacheExtraStrategy {
     /**
      * 防止缓存雪崩：对于同一时间加载的缓存，通过叠加随机时间防止缓存雪崩
      */
-    PRV_CACHE_SNOW_SLIDE("", "防止缓存雪崩"),
+    PRV_CACHE_SNOW_SLIDE,
     /**
      * 防止缓存击穿，使用分布式锁限制单个线程加载缓存，来防止热点key失效后大量线程访问DB
      */
-    PRV_CACHE_HOT_KEY_MULTI_LOAD("", "防止缓存击穿"),
+    PRV_CACHE_HOT_KEY_MULTI_LOAD,
     ;
-
-    /**
-     * 策略
-     */
-    private String code;
-    /**
-     * 策略描述
-     */
-    private String desc;
 }

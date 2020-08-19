@@ -1,9 +1,9 @@
 package com.linfengda.sb.support.redis.cache.resolver.impl;
 
+import com.linfengda.sb.support.redis.Constant;
 import com.linfengda.sb.support.redis.cache.entity.dto.CacheParamDTO;
 import com.linfengda.sb.support.redis.cache.entity.type.DataType;
 import com.linfengda.sb.support.redis.cache.resolver.AbstractCacheDataTypeResolver;
-import com.linfengda.sb.support.redis.Constant;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.CollectionUtils;
 
@@ -46,13 +46,23 @@ public class ListCacheDataTypeResolver extends AbstractCacheDataTypeResolver {
     }
 
     @Override
+    public void delCache(CacheParamDTO param) {
+        Boolean allEntries = param.getAllEntries();
+        if (Boolean.TRUE.equals(allEntries)) {
+            delAllEntries(param);
+            return;
+        }
+        jacksonRedisTemplate.delete(param.getKey());
+    }
+
+    @Override
     public Boolean hasKey(CacheParamDTO param) {
         return null;
     }
 
     @Override
     public Long getCurrentCacheSize(CacheParamDTO param) {
-        // 获取指定类型redis列表数量大小，如：myList:{*}大小
+        // 获取指定类型redis列表数量，如：myList:{*}大小
         String keyPattern = param.getPrefix() + Constant.ASTERISK;
         Set<String> set = jacksonRedisTemplate.keys(keyPattern);
         if (CollectionUtils.isEmpty(set)) {

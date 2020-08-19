@@ -6,9 +6,12 @@ import com.linfengda.sb.support.redis.JacksonRedisTemplate;
 import com.linfengda.sb.support.redis.cache.entity.dto.CacheParamDTO;
 import com.linfengda.sb.support.redis.cache.entity.type.CacheMaxSizeStrategy;
 import com.linfengda.sb.support.redis.cache.entity.type.CacheSizeStrategy;
-import com.linfengda.sb.support.redis.cache.util.CacheUtil;
+import com.linfengda.sb.support.redis.util.CacheUtil;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.redis.core.Cursor;
+import org.springframework.data.redis.core.RedisCallback;
+import org.springframework.data.redis.core.ScanOptions;
 
 import java.util.Set;
 
@@ -50,6 +53,17 @@ public abstract class AbstractCacheDataTypeResolver implements CacheDataTypeReso
         if (CacheMaxSizeStrategy.MAX_SIZE_STRATEGY_LRU == param.getMaxSizeStrategy()) {
             jacksonRedisTemplate.opsForZSet().add(param.getLruKey(), param.getKey(), CacheUtil.getKeyLruScore());
         }
+    }
+
+    protected void delAllEntries(CacheParamDTO param) {
+        jacksonRedisTemplate.execute((RedisCallback<Boolean>) connection -> {
+            Cursor<byte[]> cursor = connection.scan(new ScanOptions.ScanOptionsBuilder().match(param.getPrefix() + Constant.ASTERISK).count(Constant.DEFAULT_DELETE_CACHE_LIMIT).build());
+            while(cursor.hasNext()) {
+                String key = new String(cursor.next());
+                jacksonRedisTemplate.delete(key);
+            }
+            return true;
+        });
     }
 
     /**
@@ -105,7 +119,7 @@ public abstract class AbstractCacheDataTypeResolver implements CacheDataTypeReso
             if (null == delKey) {
                 continue;
             }
-            jacksonRedisTemplate.deleteObject((String) delKey);
+            jacksonRedisTemplate.delete((String) delKey);
         }
         log.debug("当前缓存大小超过限制：{}，采取LRU算法淘汰{}条数据，lurKey={}，delKeys={}", param.getMaxSize(), Constant.DEFAULT_LRU_REMOVE_NUM, param.getLruKey(), JSON.toJSONString(delKeys));
     }

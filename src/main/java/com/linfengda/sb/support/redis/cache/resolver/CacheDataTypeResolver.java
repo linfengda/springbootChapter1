@@ -33,6 +33,12 @@ public interface CacheDataTypeResolver {
     void setCache(CacheParamDTO param, Object value);
 
     /**
+     * 删除缓存
+     * @param param 缓存参数
+     */
+    void delCache(CacheParamDTO param);
+
+    /**
      * 获取当前缓存大小
      * @param param 缓存参数
      * @return      缓存大小

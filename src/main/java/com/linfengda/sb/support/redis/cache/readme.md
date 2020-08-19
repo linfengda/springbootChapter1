@@ -38,6 +38,6 @@ com.linfengda.sb.support.redis.cache.resolver.CacheDataTypeResolver
 6. 通过指定缓存数量（maxSize），限制缓存规模：
     * 对于object类型缓存，maxSize为指定前缀的最大缓存数量，
     * 对于hash类型缓存，maxSize为哈希表的最大缓存数量，
-    * 对于list类型缓存，maxSize为指定类型列表的最大缓存数量，
-    * 对于set类型缓存，maxSize为指定类型集合的最大缓存数量，
+    * 对于list类型缓存，maxSize为指定前缀列表的最大缓存数量，如：myList:{*}大小
+    * 对于set类型缓存，maxSize为指定前缀集合的最大缓存数量，如：mySet:{*}大小
 7. 关联加载和关联清除

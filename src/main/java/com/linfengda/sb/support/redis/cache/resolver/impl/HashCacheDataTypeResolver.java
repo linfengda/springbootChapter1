@@ -38,6 +38,17 @@ public class HashCacheDataTypeResolver extends AbstractCacheDataTypeResolver {
     }
 
     @Override
+    public void delCache(CacheParamDTO param) {
+        HashKey hashKey = param.getHashKey();
+        Boolean allEntries = param.getAllEntries();
+        if (Boolean.FALSE.equals(allEntries)) {
+            jacksonRedisTemplate.hashDel(hashKey.getKey(), hashKey.getHashKey());
+            return;
+        }
+        jacksonRedisTemplate.delete(hashKey.getKey());
+    }
+
+    @Override
     public Boolean hasKey(CacheParamDTO param) {
         HashKey hashKey = param.getHashKey();
         return jacksonRedisTemplate.hasHashKey(hashKey.getKey(), hashKey.getHashKey());

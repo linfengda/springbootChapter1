@@ -51,5 +51,5 @@ public @interface EnableRedisCacheAnnotation {
      * lru缓存后台清除间隔
      * @return
      */
-    long lruInternal() default Constant.DEFAULT_LRU_CACHE_TASK_INTERNAL;
+    long lruInternal() default Constant.DEFAULT_BG_REMOVE_LRU_INTERNAL;
 }

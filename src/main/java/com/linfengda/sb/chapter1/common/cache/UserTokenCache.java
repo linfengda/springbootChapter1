@@ -26,7 +26,7 @@ public class UserTokenCache implements Cache {
 
     @Override
     public void clearCache() {
-        jacksonRedisTemplate.deleteObject(CacheManager.USER_TOKEN_CACHE.getPrefix());
+        jacksonRedisTemplate.delete(CacheManager.USER_TOKEN_CACHE.getPrefix());
         log.warn("清除组织关系缓存...");
     }
 }
