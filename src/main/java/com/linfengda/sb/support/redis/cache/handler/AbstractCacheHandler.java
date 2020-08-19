@@ -1,6 +1,7 @@
 package com.linfengda.sb.support.redis.cache.handler;
 
-import com.linfengda.sb.support.redis.cache.entity.RedisSupport;
+import com.linfengda.sb.support.redis.JacksonRedisTemplate;
+import com.linfengda.sb.support.redis.RedisDistributedLock;
 import lombok.Setter;
 
 /**
@@ -11,8 +12,6 @@ import lombok.Setter;
  */
 @Setter
 public abstract class AbstractCacheHandler implements CacheHandler {
-    /**
-     * redis操作支持
-     */
-    protected RedisSupport redisSupport;
+    protected JacksonRedisTemplate jacksonRedisTemplate;
+    protected RedisDistributedLock redisDistributedLock;
 }

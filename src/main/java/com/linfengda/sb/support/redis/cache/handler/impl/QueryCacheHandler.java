@@ -1,6 +1,5 @@
 package com.linfengda.sb.support.redis.cache.handler.impl;
 
-import com.linfengda.sb.support.redis.RedisDistributedLock;
 import com.linfengda.sb.support.redis.cache.entity.dto.CacheParamDTO;
 import com.linfengda.sb.support.redis.cache.entity.dto.CacheTargetDTO;
 import com.linfengda.sb.support.redis.cache.entity.type.CacheAnnotationType;
@@ -36,9 +35,8 @@ public class QueryCacheHandler extends AbstractCacheHandler {
         if (!param.getStrategies().contains(CacheExtraStrategy.PRV_CACHE_HOT_KEY_MULTI_LOAD)) {
             return getMethodResult(cacheTargetDTO);
         }
-        RedisDistributedLock distributedLock = redisSupport.getRedisDistributedLock();
         try {
-            if (distributedLock.lock(param.getLockKey())) {
+            if (redisDistributedLock.lock(param.getLockKey())) {
                 value = resolver.getCache(param);
                 if (null != value) {
                     return value;
@@ -47,7 +45,7 @@ public class QueryCacheHandler extends AbstractCacheHandler {
             }
             log.warn("缓存查询超时，将会直接查询DB。");
         }finally {
-            distributedLock.unLock(param.getLockKey());
+            redisDistributedLock.unLock(param.getLockKey());
         }
         return getMethodResult(cacheTargetDTO);
     }

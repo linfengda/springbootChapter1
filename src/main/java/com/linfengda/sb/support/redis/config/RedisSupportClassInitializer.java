@@ -2,7 +2,6 @@ package com.linfengda.sb.support.redis.config;
 
 import com.linfengda.sb.support.redis.JacksonRedisTemplate;
 import com.linfengda.sb.support.redis.RedisDistributedLock;
-import com.linfengda.sb.support.redis.cache.entity.RedisSupport;
 import com.linfengda.sb.support.redis.cache.handler.CacheHandlerHolder;
 import com.linfengda.sb.support.redis.cache.resolver.CacheDataTypeResolverHolder;
 import lombok.Getter;
@@ -15,24 +14,25 @@ import org.springframework.context.ApplicationContextAware;
  * @author: linfengda
  * @date: 2020-08-18 18:55
  */
-public class RedisSupportClassInitialConfig implements ApplicationContextAware {
+public class RedisSupportClassInitializer implements ApplicationContextAware {
     @Getter
-    private static RedisSupport redisSupport;
+    private static JacksonRedisTemplate jacksonRedisTemplate;
+    @Getter
+    private static RedisDistributedLock redisDistributedLock;
 
 
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         initRedisSupport(applicationContext);
-        CacheHandlerHolder.INSTANCE.initHandlers(redisSupport);
-        CacheDataTypeResolverHolder.INSTANCE.initResolver(redisSupport);
+        CacheHandlerHolder.INSTANCE.initHandlers(jacksonRedisTemplate, redisDistributedLock);
+        CacheDataTypeResolverHolder.INSTANCE.initResolver(jacksonRedisTemplate);
     }
 
     /**
      * 初始化redis操作支持
      */
     private void initRedisSupport(ApplicationContext ctx) {
-        redisSupport = new RedisSupport();
-        redisSupport.setJacksonRedisTemplate(ctx.getBean(JacksonRedisTemplate.class));
-        redisSupport.setRedisDistributedLock(ctx.getBean(RedisDistributedLock.class));
+        jacksonRedisTemplate = ctx.getBean(JacksonRedisTemplate.class);
+        redisDistributedLock = ctx.getBean(RedisDistributedLock.class);
     }
 }

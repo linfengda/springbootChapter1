@@ -1,7 +1,7 @@
 package com.linfengda.sb.support.redis.cache.resolver;
 
 import com.linfengda.sb.chapter1.common.exception.BusinessException;
-import com.linfengda.sb.support.redis.cache.entity.RedisSupport;
+import com.linfengda.sb.support.redis.JacksonRedisTemplate;
 import com.linfengda.sb.support.redis.cache.entity.type.DataType;
 import com.linfengda.sb.support.redis.cache.resolver.impl.HashCacheDataTypeResolver;
 import com.linfengda.sb.support.redis.cache.resolver.impl.ListCacheDataTypeResolver;
@@ -25,17 +25,17 @@ public enum CacheDataTypeResolverHolder {
 
     /**
      * 初始化全部resolver
-     * @param redisSupport
+     * @param jacksonRedisTemplate
      */
-    public void initResolver(RedisSupport redisSupport) {
+    public void initResolver(JacksonRedisTemplate jacksonRedisTemplate) {
         HashCacheDataTypeResolver hashCacheDataTypeResolver = new HashCacheDataTypeResolver();
-        hashCacheDataTypeResolver.setJacksonRedisTemplate(redisSupport.getJacksonRedisTemplate());
+        hashCacheDataTypeResolver.setJacksonRedisTemplate(jacksonRedisTemplate);
         ListCacheDataTypeResolver listCacheDataTypeResolver = new ListCacheDataTypeResolver();
-        listCacheDataTypeResolver.setJacksonRedisTemplate(redisSupport.getJacksonRedisTemplate());
+        listCacheDataTypeResolver.setJacksonRedisTemplate(jacksonRedisTemplate);
         ObjCacheDataTypeResolver objCacheDataTypeResolver = new ObjCacheDataTypeResolver();
-        objCacheDataTypeResolver.setJacksonRedisTemplate(redisSupport.getJacksonRedisTemplate());
+        objCacheDataTypeResolver.setJacksonRedisTemplate(jacksonRedisTemplate);
         SetCacheDataTypeResolver setCacheDataTypeResolver = new SetCacheDataTypeResolver();
-        setCacheDataTypeResolver.setJacksonRedisTemplate(redisSupport.getJacksonRedisTemplate());
+        setCacheDataTypeResolver.setJacksonRedisTemplate(jacksonRedisTemplate);
         resolvers.add(hashCacheDataTypeResolver);
         resolvers.add(listCacheDataTypeResolver);
         resolvers.add(objCacheDataTypeResolver);

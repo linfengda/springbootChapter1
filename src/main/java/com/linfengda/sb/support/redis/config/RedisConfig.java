@@ -44,7 +44,7 @@ public class RedisConfig extends AbstractCacheConfig {
     }
 
     /**
-     * 配置jackson序列化工具
+     * 配置Jackson2JsonRedisSerializer
      * @return
      */
     @Bean
@@ -58,7 +58,7 @@ public class RedisConfig extends AbstractCacheConfig {
     }
 
     /**
-     * 配置RedisTemplate
+     * 配置JacksonRedisTemplate
      * @param jackson2JsonRedisSerializer
      * @return
      */
@@ -74,7 +74,7 @@ public class RedisConfig extends AbstractCacheConfig {
     }
 
     /**
-     * 配置redis分布式锁
+     * 配置RedisDistributedLock
      * @param jacksonRedisTemplate
      * @return
      */

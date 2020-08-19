@@ -38,7 +38,7 @@ public class CacheBackgroundConfig extends AbstractCacheConfig {
             while(true) {
                 try {
                     // 使用scan渐进删除
-                    JacksonRedisTemplate jacksonRedisTemplate = RedisSupportClassInitialConfig.getRedisSupport().getJacksonRedisTemplate();
+                    JacksonRedisTemplate jacksonRedisTemplate = RedisSupportClassInitializer.getJacksonRedisTemplate();
                     LruExpireResultBO lruExpireResultBO = jacksonRedisTemplate.execute(new RedisCallback<LruExpireResultBO>() {
                         LruExpireResultBO lruExpireResultBO = new LruExpireResultBO();
                         long startTime = System.currentTimeMillis();
