@@ -7,7 +7,8 @@
         id as userId,
         user_name as userName,
         phone as phone,
-        status as status
+        create_user as createUser,
+        create_time as createTime
         from sys_user as su
         where
         su.is_delete=0

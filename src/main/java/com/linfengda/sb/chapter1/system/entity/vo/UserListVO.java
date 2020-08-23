@@ -1,7 +1,10 @@
 package com.linfengda.sb.chapter1.system.entity.vo;
 
 import com.alibaba.fastjson.annotation.JSONField;
+import com.linfengda.sb.support.fastjson.serializer.date.DateFormatSerializer;
 import lombok.Data;
+
+import java.sql.Timestamp;
 
 /**
  * 描述: 用户信息VO
@@ -24,8 +27,12 @@ public class UserListVO {
      */
     private String phone;
     /**
-     * 用户状态
+     * 创建人
      */
-    //@JSONField(serializeUsing = )
-    private String status;
+    private Long createUser;
+    /**
+     * 创建时间
+     */
+    @JSONField(serializeUsing = DateFormatSerializer.class)
+    private Timestamp createTime;
 }
