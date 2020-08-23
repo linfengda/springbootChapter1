@@ -5,6 +5,7 @@ import com.linfengda.sb.support.apivalidator.config.interceptor.ApiValidatorInte
 import com.linfengda.sb.support.apivalidator.config.interceptor.ApiValidatorMethodPointcutAdvisor;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportAware;
 import org.springframework.context.annotation.Role;
 import org.springframework.core.annotation.AnnotationAttributes;
@@ -16,6 +17,7 @@ import org.springframework.core.type.AnnotationMetadata;
  * @author linfengda
  * @create 2018-09-10 17:00
  */
+@Configuration
 public class ApiValidatorAdvisorConfig implements ImportAware {
     protected AnnotationAttributes attributes;
 

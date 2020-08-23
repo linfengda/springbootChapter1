@@ -4,8 +4,10 @@
 
     <select id="pageUserList" parameterType="java.util.Map" resultType="com.linfengda.sb.chapter1.system.entity.vo.UserListVO">
         select
-        user_id as userId,
-        user_name as userName
+        id as userId,
+        user_name as userName,
+        phone as phone,
+        status as status
         from sys_user as su
         where
         su.is_delete=0

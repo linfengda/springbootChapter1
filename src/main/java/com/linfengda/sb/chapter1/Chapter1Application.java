@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  * @author linfengda
  * @create 2020-01-09 09:18
  */
-@EnableApiValidator
+@EnableApiValidator(pattern = "xxx")
 @EnableRedisCacheAnnotation()
 @EnableTransactionManagement(order = Ordered.LOWEST_PRECEDENCE-1)
 @EnableApplicationStartup

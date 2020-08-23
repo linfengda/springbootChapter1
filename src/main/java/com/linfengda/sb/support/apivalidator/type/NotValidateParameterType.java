@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -22,7 +23,11 @@ public enum NotValidateParameterType {
     /**
      * JSONObject
      */
-    JSON(JSONObject.class.getName());
+    JSON(JSONObject.class.getName()),
+    /**
+     * List
+     */
+    LIST(List.class.getName());
 
     private String type;
 
