@@ -1,4 +1,4 @@
-package com.linfengda.sb.chapter1.common.util;
+package com.linfengda.sb.support.util;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -372,5 +372,53 @@ public class TimeUtil {
         String date1 = String.valueOf(cal1.get(Calendar.YEAR)) + cal1.get(Calendar.MONDAY) + cal1.get(Calendar.DAY_OF_MONTH);
         String date2 = String.valueOf(cal2.get(Calendar.YEAR)) + cal2.get(Calendar.MONDAY) + cal2.get(Calendar.DAY_OF_MONTH);
         return date1.equals(date2);
+    }
+
+    /**
+     * 分钟转秒数
+     * @param min  分钟
+     * @return     秒数
+     */
+    public static Integer min2Second(Integer min) {
+        if (null == min) {
+            return null;
+        }
+        return 1000 * min;
+    }
+
+    /**
+     * 秒数转分钟
+     * @param second    秒数
+     * @return          分钟
+     */
+    public static Integer second2Min(Integer second) {
+        if (null == second) {
+            return null;
+        }
+        return second / 1000;
+    }
+
+    /**
+     * 秒数转毫秒数
+     * @param second    秒
+     * @return          毫秒
+     */
+    public static Long second2Ms(Integer second) {
+        if (null == second) {
+            return null;
+        }
+        return 1000L * second;
+    }
+
+    /**
+     * 毫秒转秒数
+     * @param timeInMillis  毫秒
+     * @return              秒
+     */
+    public static Integer ms2Second(Long timeInMillis) {
+        if (null == timeInMillis) {
+            return null;
+        }
+        return (int) (timeInMillis / 1000);
     }
 }

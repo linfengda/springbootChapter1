@@ -10,9 +10,10 @@ import java.lang.reflect.Type;
 /**
  * @description: 日期输出序列化类
  * @author: linfengda
- * @date: 2020-08-23 23:15
+ * @date: 2020-08-22 18:51
  */
-public class DateFormatSerializer extends AbstractDateBaseSerializer implements ObjectSerializer {
+public class DateFormatMdSerializer extends AbstractDateBaseSerializer implements ObjectSerializer {
+    private static final String NOW_YEAR_PATTERN = "yyyy";
     public static final DateFormatMdSerializer INSTANCE = new DateFormatMdSerializer();
 
     @Override
@@ -27,6 +28,10 @@ public class DateFormatSerializer extends AbstractDateBaseSerializer implements 
 
     @Override
     public void doWrite(Long time, SerializeWriter out) {
-        out.writeString(TimeUtil.format(time, "yyyy-MM-dd HH:mm:ss"));
+        if (TimeUtil.format(time, NOW_YEAR_PATTERN).equals(TimeUtil.format(System.currentTimeMillis(), NOW_YEAR_PATTERN))){
+            out.writeString(TimeUtil.format(time, "MM-dd"));
+        }else {
+            out.writeString(TimeUtil.format(time, "yyyy-MM-dd"));
+        }
     }
 }

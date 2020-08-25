@@ -1,8 +1,8 @@
 package com.linfengda.sb.chapter1.demo.service;
 
 import com.linfengda.sb.chapter1.common.util.StringConstant;
-import com.linfengda.sb.chapter1.common.util.StringUtil;
-import com.linfengda.sb.chapter1.common.util.TimeUtil;
+import com.linfengda.sb.support.util.StringUtil;
+import com.linfengda.sb.support.util.TimeUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.hamcrest.CoreMatchers;
 import org.junit.Before;
@@ -12,7 +12,6 @@ import org.junit.runners.JUnit4;
 
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;

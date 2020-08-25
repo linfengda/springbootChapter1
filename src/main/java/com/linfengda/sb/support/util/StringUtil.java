@@ -1,4 +1,4 @@
-package com.linfengda.sb.chapter1.common.util;
+package com.linfengda.sb.support.util;
 
 import com.linfengda.sb.chapter1.common.exception.BusinessException;
 import org.apache.commons.collections4.CollectionUtils;

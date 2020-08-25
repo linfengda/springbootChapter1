@@ -24,6 +24,9 @@ public abstract class AbstractDateBaseSerializer {
         }else if (object instanceof Date){
             Date date = (Date)object;
             doWrite(date.getTime(), out);
+        }else if (object instanceof Integer){
+            Integer second = (Integer)object;
+            doWrite(1000L * second, out);
         }
     }
 
