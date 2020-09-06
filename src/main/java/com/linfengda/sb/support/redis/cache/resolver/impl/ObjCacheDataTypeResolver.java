@@ -26,13 +26,13 @@ public class ObjCacheDataTypeResolver extends AbstractCacheDataTypeResolver {
 
     @Override
     public Object doGetCache(CacheParamDTO param) {
-        Object value = jacksonRedisTemplate.getObject(param.getKey());
+        Object value = genericRedisTemplate.getObject(param.getKey());
         return value;
     }
 
     @Override
     public void doSetCache(CacheParamDTO param, Object value) {
-        jacksonRedisTemplate.setObject(param.getKey(), value, param.getTimeOutMillis(), TimeUnit.MILLISECONDS);
+        genericRedisTemplate.setObject(param.getKey(), value, param.getTimeOutMillis(), TimeUnit.MILLISECONDS);
     }
 
     @Override
@@ -42,19 +42,19 @@ public class ObjCacheDataTypeResolver extends AbstractCacheDataTypeResolver {
             delAllEntries(param);
             return;
         }
-        jacksonRedisTemplate.delete(param.getKey());
+        genericRedisTemplate.delete(param.getKey());
     }
 
     @Override
     public Boolean hasKey(CacheParamDTO param) {
         String key = param.getKey();
-        return jacksonRedisTemplate.hasKey(key);
+        return genericRedisTemplate.hasKey(key);
     }
 
     @Override
     public Long getCurrentCacheSize(CacheParamDTO param) {
         String keyPattern = param.getPrefix() + Constant.ASTERISK;
-        Set<String> set = jacksonRedisTemplate.keys(keyPattern);
+        Set<String> set = genericRedisTemplate.keys(keyPattern);
         if (CollectionUtils.isEmpty(set)) {
             return 0L;
         }

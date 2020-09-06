@@ -1,7 +1,7 @@
 package com.linfengda.sb.support.redis.cache.handler;
 
 import com.linfengda.sb.chapter1.common.exception.BusinessException;
-import com.linfengda.sb.support.redis.JacksonRedisTemplate;
+import com.linfengda.sb.support.redis.GenericRedisTemplate;
 import com.linfengda.sb.support.redis.RedisDistributedLock;
 import com.linfengda.sb.support.redis.cache.entity.type.CacheAnnotationType;
 import com.linfengda.sb.support.redis.cache.handler.impl.DeleteCacheHandler;
@@ -26,18 +26,18 @@ public enum CacheHandlerHolder {
 
     /**
      * 初始化全部handler
-     * @param jacksonRedisTemplate
+     * @param genericRedisTemplate
      * @param redisDistributedLock
      */
-    public void initHandlers(JacksonRedisTemplate jacksonRedisTemplate, RedisDistributedLock redisDistributedLock) {
+    public void initHandlers(GenericRedisTemplate genericRedisTemplate, RedisDistributedLock redisDistributedLock) {
         QueryCacheHandler queryCacheHandler = new QueryCacheHandler();
-        queryCacheHandler.setJacksonRedisTemplate(jacksonRedisTemplate);
+        queryCacheHandler.setGenericRedisTemplate(genericRedisTemplate);
         queryCacheHandler.setRedisDistributedLock(redisDistributedLock);
         DeleteCacheHandler deleteCacheHandler = new DeleteCacheHandler();
-        deleteCacheHandler.setJacksonRedisTemplate(jacksonRedisTemplate);
+        deleteCacheHandler.setGenericRedisTemplate(genericRedisTemplate);
         deleteCacheHandler.setRedisDistributedLock(redisDistributedLock);
         UpdateCacheHandler updateCacheHandler = new UpdateCacheHandler();
-        updateCacheHandler.setJacksonRedisTemplate(jacksonRedisTemplate);
+        updateCacheHandler.setGenericRedisTemplate(genericRedisTemplate);
         updateCacheHandler.setRedisDistributedLock(redisDistributedLock);
         handlers.add(queryCacheHandler);
         handlers.add(deleteCacheHandler);

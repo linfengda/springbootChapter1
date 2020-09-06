@@ -27,14 +27,14 @@ public class HashCacheDataTypeResolver extends AbstractCacheDataTypeResolver {
     @Override
     public Object doGetCache(CacheParamDTO param) {
         HashKey hashKey = param.getHashKey();
-        Object value = jacksonRedisTemplate.hashGet(hashKey.getKey(), hashKey.getHashKey());
+        Object value = genericRedisTemplate.hashGet(hashKey.getKey(), hashKey.getHashKey());
         return value;
     }
 
     @Override
     public void doSetCache(CacheParamDTO param, Object value) {
         HashKey hashKey = param.getHashKey();
-        jacksonRedisTemplate.hashPut(hashKey.getKey(), hashKey.getHashKey(), value, param.getTimeOutMillis(), TimeUnit.MILLISECONDS);
+        genericRedisTemplate.hashPut(hashKey.getKey(), hashKey.getHashKey(), value, param.getTimeOutMillis(), TimeUnit.MILLISECONDS);
     }
 
     @Override
@@ -42,21 +42,21 @@ public class HashCacheDataTypeResolver extends AbstractCacheDataTypeResolver {
         HashKey hashKey = param.getHashKey();
         Boolean allEntries = param.getAllEntries();
         if (Boolean.FALSE.equals(allEntries)) {
-            jacksonRedisTemplate.hashDel(hashKey.getKey(), hashKey.getHashKey());
+            genericRedisTemplate.hashDel(hashKey.getKey(), hashKey.getHashKey());
             return;
         }
-        jacksonRedisTemplate.delete(hashKey.getKey());
+        genericRedisTemplate.delete(hashKey.getKey());
     }
 
     @Override
     public Boolean hasKey(CacheParamDTO param) {
         HashKey hashKey = param.getHashKey();
-        return jacksonRedisTemplate.hasHashKey(hashKey.getKey(), hashKey.getHashKey());
+        return genericRedisTemplate.hasHashKey(hashKey.getKey(), hashKey.getHashKey());
     }
 
     @Override
     public Long getCurrentCacheSize(CacheParamDTO param) {
-        Set<String> set = jacksonRedisTemplate.hashKeys(param.getHashKey().getKey());
+        Set<String> set = genericRedisTemplate.hashKeys(param.getHashKey().getKey());
         if (CollectionUtils.isEmpty(set)) {
             return 0L;
         }

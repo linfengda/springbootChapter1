@@ -3,7 +3,7 @@ package com.linfengda.sb.support.redis.config;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.linfengda.sb.support.redis.JacksonRedisTemplate;
+import com.linfengda.sb.support.redis.GenericRedisTemplate;
 import com.linfengda.sb.support.redis.RedisDistributedLock;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -30,10 +30,10 @@ public class RedisConfig extends AbstractCacheConfig {
 
 
     /**
-     * 配置Jedis客户端
+     * 配置jedisConnectionFactory
      * @return
      */
-    private JedisConnectionFactory getJedisConnectionFactory() {
+    private JedisConnectionFactory jedisConnectionFactory() {
         RedisStandaloneConfiguration standaloneConfiguration = new RedisStandaloneConfiguration();
         standaloneConfiguration.setHostName(host);
         standaloneConfiguration.setPort(port);
@@ -47,8 +47,7 @@ public class RedisConfig extends AbstractCacheConfig {
      * 配置Jackson2JsonRedisSerializer
      * @return
      */
-    @Bean
-    public Jackson2JsonRedisSerializer<Object> jackson2JsonRedisSerializer() {
+    private Jackson2JsonRedisSerializer<Object> jackson2JsonRedisSerializer() {
         ObjectMapper om = new ObjectMapper();
         om.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
         om.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);
@@ -58,30 +57,29 @@ public class RedisConfig extends AbstractCacheConfig {
     }
 
     /**
-     * 配置JacksonRedisTemplate
-     * @param jackson2JsonRedisSerializer
+     * 配置默认GenericRedisTemplate
      * @return
      */
     @Bean
-    public JacksonRedisTemplate jacksonRedisTemplate(Jackson2JsonRedisSerializer<Object> jackson2JsonRedisSerializer) {
-        JacksonRedisTemplate jacksonRedisTemplate = new JacksonRedisTemplate();
-        jacksonRedisTemplate.setConnectionFactory(getJedisConnectionFactory());
-        jacksonRedisTemplate.setKeySerializer(new StringRedisSerializer());
-        jacksonRedisTemplate.setHashKeySerializer(new StringRedisSerializer());
-        jacksonRedisTemplate.setValueSerializer(jackson2JsonRedisSerializer);
-        jacksonRedisTemplate.setHashValueSerializer(jackson2JsonRedisSerializer);
-        return jacksonRedisTemplate;
+    public GenericRedisTemplate genericRedisTemplate() {
+        Jackson2JsonRedisSerializer<Object> jackson2JsonRedisSerializer = jackson2JsonRedisSerializer();
+        GenericRedisTemplate genericRedisTemplate = new GenericRedisTemplate();
+        genericRedisTemplate.setConnectionFactory(jedisConnectionFactory());
+        genericRedisTemplate.setKeySerializer(new StringRedisSerializer());
+        genericRedisTemplate.setHashKeySerializer(new StringRedisSerializer());
+        genericRedisTemplate.setValueSerializer(jackson2JsonRedisSerializer);
+        genericRedisTemplate.setHashValueSerializer(jackson2JsonRedisSerializer);
+        return genericRedisTemplate;
     }
 
     /**
-     * 配置RedisDistributedLock
-     * @param jacksonRedisTemplate
+     * 配置默认RedisDistributedLock
      * @return
      */
     @Bean
-    public RedisDistributedLock redisDistributedLock(JacksonRedisTemplate jacksonRedisTemplate) {
+    public RedisDistributedLock redisDistributedLock(GenericRedisTemplate genericRedisTemplate) {
         RedisDistributedLock redisDistributedLock = new RedisDistributedLock();
-        redisDistributedLock.setJacksonRedisTemplate(jacksonRedisTemplate);
+        redisDistributedLock.setRedisTemplate(genericRedisTemplate);
         return redisDistributedLock;
     }
 }

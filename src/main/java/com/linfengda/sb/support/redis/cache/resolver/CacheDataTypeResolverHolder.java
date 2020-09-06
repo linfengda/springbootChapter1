@@ -1,7 +1,7 @@
 package com.linfengda.sb.support.redis.cache.resolver;
 
 import com.linfengda.sb.chapter1.common.exception.BusinessException;
-import com.linfengda.sb.support.redis.JacksonRedisTemplate;
+import com.linfengda.sb.support.redis.GenericRedisTemplate;
 import com.linfengda.sb.support.redis.cache.entity.type.DataType;
 import com.linfengda.sb.support.redis.cache.resolver.impl.HashCacheDataTypeResolver;
 import com.linfengda.sb.support.redis.cache.resolver.impl.ListCacheDataTypeResolver;
@@ -25,17 +25,17 @@ public enum CacheDataTypeResolverHolder {
 
     /**
      * 初始化全部resolver
-     * @param jacksonRedisTemplate
+     * @param genericRedisTemplate
      */
-    public void initResolver(JacksonRedisTemplate jacksonRedisTemplate) {
+    public void initResolver(GenericRedisTemplate genericRedisTemplate) {
         HashCacheDataTypeResolver hashCacheDataTypeResolver = new HashCacheDataTypeResolver();
-        hashCacheDataTypeResolver.setJacksonRedisTemplate(jacksonRedisTemplate);
+        hashCacheDataTypeResolver.setGenericRedisTemplate(genericRedisTemplate);
         ListCacheDataTypeResolver listCacheDataTypeResolver = new ListCacheDataTypeResolver();
-        listCacheDataTypeResolver.setJacksonRedisTemplate(jacksonRedisTemplate);
+        listCacheDataTypeResolver.setGenericRedisTemplate(genericRedisTemplate);
         ObjCacheDataTypeResolver objCacheDataTypeResolver = new ObjCacheDataTypeResolver();
-        objCacheDataTypeResolver.setJacksonRedisTemplate(jacksonRedisTemplate);
+        objCacheDataTypeResolver.setGenericRedisTemplate(genericRedisTemplate);
         SetCacheDataTypeResolver setCacheDataTypeResolver = new SetCacheDataTypeResolver();
-        setCacheDataTypeResolver.setJacksonRedisTemplate(jacksonRedisTemplate);
+        setCacheDataTypeResolver.setGenericRedisTemplate(genericRedisTemplate);
         resolvers.add(hashCacheDataTypeResolver);
         resolvers.add(listCacheDataTypeResolver);
         resolvers.add(objCacheDataTypeResolver);

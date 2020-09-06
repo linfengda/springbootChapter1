@@ -1,5 +1,6 @@
 package com.linfengda.sb.support.redis.config.selector;
 
+import com.linfengda.sb.support.redis.RedisDistributedLock;
 import com.linfengda.sb.support.redis.config.RedisConfig;
 import org.springframework.context.annotation.ImportSelector;
 import org.springframework.core.type.AnnotationMetadata;

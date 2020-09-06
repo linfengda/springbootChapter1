@@ -28,7 +28,7 @@ public class ListCacheDataTypeResolver extends AbstractCacheDataTypeResolver {
     @Override
     public Object doGetCache(CacheParamDTO param) {
         // 获取redis列表，如：myList:{id}
-        Object value = jacksonRedisTemplate.listGetAll(param.getKey());
+        Object value = genericRedisTemplate.listGetAll(param.getKey());
         return value;
     }
 
@@ -36,12 +36,12 @@ public class ListCacheDataTypeResolver extends AbstractCacheDataTypeResolver {
     public void doSetCache(CacheParamDTO param, Object value) {
         if (value instanceof List) {
             List list = (List) value;
-            jacksonRedisTemplate.listAddAll(param.getKey(), list, param.getTimeOutMillis(), TimeUnit.MILLISECONDS);
+            genericRedisTemplate.listAddAll(param.getKey(), list, param.getTimeOutMillis(), TimeUnit.MILLISECONDS);
         }else if (value instanceof Set) {
             Set set = (Set) value;
-            jacksonRedisTemplate.listAddAll(param.getKey(), set, param.getTimeOutMillis(), TimeUnit.MILLISECONDS);
+            genericRedisTemplate.listAddAll(param.getKey(), set, param.getTimeOutMillis(), TimeUnit.MILLISECONDS);
         }else {
-            jacksonRedisTemplate.listAdd(param.getKey(), value, param.getTimeOutMillis(), TimeUnit.MILLISECONDS);
+            genericRedisTemplate.listAdd(param.getKey(), value, param.getTimeOutMillis(), TimeUnit.MILLISECONDS);
         }
     }
 
@@ -52,7 +52,7 @@ public class ListCacheDataTypeResolver extends AbstractCacheDataTypeResolver {
             delAllEntries(param);
             return;
         }
-        jacksonRedisTemplate.delete(param.getKey());
+        genericRedisTemplate.delete(param.getKey());
     }
 
     @Override
@@ -64,7 +64,7 @@ public class ListCacheDataTypeResolver extends AbstractCacheDataTypeResolver {
     public Long getCurrentCacheSize(CacheParamDTO param) {
         // 获取指定类型redis列表数量，如：myList:{*}大小
         String keyPattern = param.getPrefix() + Constant.ASTERISK;
-        Set<String> set = jacksonRedisTemplate.keys(keyPattern);
+        Set<String> set = genericRedisTemplate.keys(keyPattern);
         if (CollectionUtils.isEmpty(set)) {
             return 0L;
         }

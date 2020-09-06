@@ -1,5 +1,6 @@
 package com.linfengda.sb.support.redis;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.RedisTemplate;
 
 import java.util.Collection;
@@ -9,12 +10,13 @@ import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 /**
- * 描述: redisTemplate
+ * 描述: 封装通用的redisTemplate
  *
  * @author linfengda
  * @create 2018-09-12 13:40
  */
-public class JacksonRedisTemplate extends RedisTemplate<String, Object> {
+@Slf4j
+public class GenericRedisTemplate extends RedisTemplate<String, Object> {
 
     public void setObject(String key, Object value) {
         super.opsForValue().set(key, value);

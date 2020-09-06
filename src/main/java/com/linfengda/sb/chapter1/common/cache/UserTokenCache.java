@@ -1,7 +1,7 @@
 package com.linfengda.sb.chapter1.common.cache;
 
 import com.linfengda.sb.chapter1.common.cache.manager.CacheManager;
-import com.linfengda.sb.support.redis.JacksonRedisTemplate;
+import com.linfengda.sb.support.redis.GenericRedisTemplate;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
@@ -17,7 +17,7 @@ import javax.annotation.Resource;
 @Component
 public class UserTokenCache implements Cache {
     @Resource
-    private JacksonRedisTemplate jacksonRedisTemplate;
+    private GenericRedisTemplate genericRedisTemplate;
 
     @Override
     public void initCache() {
@@ -26,7 +26,7 @@ public class UserTokenCache implements Cache {
 
     @Override
     public void clearCache() {
-        jacksonRedisTemplate.delete(CacheManager.USER_TOKEN_CACHE.getPrefix());
+        genericRedisTemplate.delete(CacheManager.USER_TOKEN_CACHE.getPrefix());
         log.warn("清除组织关系缓存...");
     }
 }

@@ -1,7 +1,7 @@
 package com.linfengda.sb.chapter1;
 
 import com.linfengda.sb.chapter1.common.cache.manager.CacheManager;
-import com.linfengda.sb.support.redis.JacksonRedisTemplate;
+import com.linfengda.sb.support.redis.GenericRedisTemplate;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
@@ -24,15 +24,15 @@ public class ApplicationStartup {
         // 初始应用程序缓存
         CacheManager.init();
 
-        /*JacksonRedisTemplate jacksonRedisTemplate = event.getApplicationContext().getBean(JacksonRedisTemplate.class);
-        jacksonRedisTemplate.setObject("aaa:1", "1");
-        jacksonRedisTemplate.setObject("aaa:2", "2");
-        jacksonRedisTemplate.setObject("aaa:3", "3");
-        jacksonRedisTemplate.execute((RedisCallback<Boolean>) connection -> {
+       /* GenericRedisTemplate genericRedisTemplate = event.getApplicationContext().getBean(GenericRedisTemplate.class);
+        genericRedisTemplate.setObject("aaa:1", "1");
+        genericRedisTemplate.setObject("aaa:2", "2");
+        genericRedisTemplate.setObject("aaa:3", "3");
+        genericRedisTemplate.execute((RedisCallback<Boolean>) connection -> {
             Cursor<byte[]> cursor = connection.scan(new ScanOptions.ScanOptionsBuilder().match("aaa*").count(100).build());
             while(cursor.hasNext()) {
                 String key = new String(cursor.next());
-                jacksonRedisTemplate.delete(key);
+                genericRedisTemplate.delete(key);
             }
             return true;
         });*/

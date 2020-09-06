@@ -3,7 +3,7 @@ package com.linfengda.sb.support.middleware.redis.performance.test;
 import com.linfengda.sb.chapter1.Chapter1Application;
 import com.linfengda.sb.support.redis.Constant;
 import com.linfengda.sb.support.redis.cache.entity.bo.LruExpireResultBO;
-import com.linfengda.sb.support.redis.JacksonRedisTemplate;
+import com.linfengda.sb.support.redis.GenericRedisTemplate;
 import com.linfengda.sb.support.redis.util.CacheUtil;
 import com.linfengda.sb.support.middleware.redis.performance.entity.MySon;
 import com.linfengda.sb.support.middleware.redis.performance.entity.Pig;
@@ -34,9 +34,9 @@ import java.util.*;
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Chapter1Application.class, webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class JacksonRedisTemplateTest {
+public class GenericRedisTemplateTest {
     @Resource
-    private JacksonRedisTemplate jacksonRedisTemplate;
+    private GenericRedisTemplate genericRedisTemplate;
 
 
     @Test
@@ -86,10 +86,10 @@ public class JacksonRedisTemplateTest {
         mySon.setPapaName("papa");
 
         log.info("===================================redis序列化");
-        jacksonRedisTemplate.setObject("mySon", mySon);
+        genericRedisTemplate.setObject("mySon", mySon);
 
         log.info("===================================redis反序列化");
-        MySon son = jacksonRedisTemplate.getObject("mySon");
+        MySon son = genericRedisTemplate.getObject("mySon");
         log.info("内容[" + son.toString() + "]");
     }
 
@@ -128,13 +128,13 @@ public class JacksonRedisTemplateTest {
         pigFamily.add(wilson);
 
         log.info("===================================redis list序列化");
-        jacksonRedisTemplate.listAdd("pigFamily", peggy);
-        jacksonRedisTemplate.listAdd("pigFamily", george);
-        jacksonRedisTemplate.listAddAll("pigFamily", pigFamily);
+        genericRedisTemplate.listAdd("pigFamily", peggy);
+        genericRedisTemplate.listAdd("pigFamily", george);
+        genericRedisTemplate.listAddAll("pigFamily", pigFamily);
 
         log.info("===================================redis list反序列化");
         // 返回列表中指定位置的元素（不会移除列表中元素）
-        List<Pig> pigs = jacksonRedisTemplate.listGetAll("pigFamily");
+        List<Pig> pigs = genericRedisTemplate.listGetAll("pigFamily");
         for (Pig pig : pigs) {
             log.info(pig.toString());
         }
@@ -176,15 +176,15 @@ public class JacksonRedisTemplateTest {
 
         log.info("===================================redis set序列化");
         // 向集合中添加元素
-        jacksonRedisTemplate.setAdd("pigFamily", peggy);
-        jacksonRedisTemplate.setAdd("pigFamily", george);
-        jacksonRedisTemplate.setAddAll("pigFamily", pigFamily);
+        genericRedisTemplate.setAdd("pigFamily", peggy);
+        genericRedisTemplate.setAdd("pigFamily", george);
+        genericRedisTemplate.setAddAll("pigFamily", pigFamily);
         // 移除集合中一个或多个元素
-        jacksonRedisTemplate.setDelete("pigFamily", wilson);
+        genericRedisTemplate.setDelete("pigFamily", wilson);
 
         log.info("===================================redis set反序列化");
         // 返回集合中的所有元素
-        Set<Pig> pigs = jacksonRedisTemplate.setGetAll("pigFamily");
+        Set<Pig> pigs = genericRedisTemplate.setGetAll("pigFamily");
         for (Pig pig : pigs) {
             log.info(pig.toString());
         }
@@ -222,16 +222,16 @@ public class JacksonRedisTemplateTest {
 
         log.info("===================================redis hash序列化");
         // 向哈希表中添加元素
-        jacksonRedisTemplate.hashPut("pigFamily", "peggy", peggy);
-        jacksonRedisTemplate.hashPut("pigFamily", "george", george);
-        jacksonRedisTemplate.hashPut("pigFamily", "tom", tom);
-        jacksonRedisTemplate.hashPut("pigFamily", "wilson", wilson);
+        genericRedisTemplate.hashPut("pigFamily", "peggy", peggy);
+        genericRedisTemplate.hashPut("pigFamily", "george", george);
+        genericRedisTemplate.hashPut("pigFamily", "tom", tom);
+        genericRedisTemplate.hashPut("pigFamily", "wilson", wilson);
         // 移除哈希表中一个或多个元素
-        jacksonRedisTemplate.hashDel("pigFamily", "wilson");
+        genericRedisTemplate.hashDel("pigFamily", "wilson");
 
         log.info("===================================redis hash反序列化");
         // 获取哈希表中的元素
-        Pig peggyPig = jacksonRedisTemplate.hashGet("pigFamily", "peggy");
+        Pig peggyPig = genericRedisTemplate.hashGet("pigFamily", "peggy");
         log.info(peggyPig.toString());
     }
 
@@ -240,13 +240,13 @@ public class JacksonRedisTemplateTest {
      */
     @Test
     public void testZsetScan() {
-        jacksonRedisTemplate.opsForZSet().add(Constant.LRU_RECORD_PREFIX + Constant.COLON + "key1", "aaa", 1);
-        jacksonRedisTemplate.opsForZSet().add(Constant.LRU_RECORD_PREFIX + Constant.COLON + "key1", "bbb", 2);
-        jacksonRedisTemplate.opsForZSet().add(Constant.LRU_RECORD_PREFIX + Constant.COLON + "key2", "aaa", 1);
-        jacksonRedisTemplate.opsForZSet().add(Constant.LRU_RECORD_PREFIX + Constant.COLON + "key2", "bbb", 2);
+        genericRedisTemplate.opsForZSet().add(Constant.LRU_RECORD_PREFIX + Constant.COLON + "key1", "aaa", 1);
+        genericRedisTemplate.opsForZSet().add(Constant.LRU_RECORD_PREFIX + Constant.COLON + "key1", "bbb", 2);
+        genericRedisTemplate.opsForZSet().add(Constant.LRU_RECORD_PREFIX + Constant.COLON + "key2", "aaa", 1);
+        genericRedisTemplate.opsForZSet().add(Constant.LRU_RECORD_PREFIX + Constant.COLON + "key2", "bbb", 2);
 
         // 使用scan渐进删除
-        LruExpireResultBO lruExpireResultBO = jacksonRedisTemplate.execute(new RedisCallback<LruExpireResultBO>() {
+        LruExpireResultBO lruExpireResultBO = genericRedisTemplate.execute(new RedisCallback<LruExpireResultBO>() {
             LruExpireResultBO lruExpireResultBO = new LruExpireResultBO();
             long startTime = System.currentTimeMillis();
 
@@ -256,7 +256,7 @@ public class JacksonRedisTemplateTest {
                 Cursor<byte[]> cursor = connection.scan(new ScanOptions.ScanOptionsBuilder().match(Constant.LRU_RECORD_PREFIX + Constant.ASTERISK).count(10).build());
                 while(cursor.hasNext()) {
                     String lruKey = new String(cursor.next());
-                    jacksonRedisTemplate.opsForZSet().removeRangeByScore(lruKey, 0, CacheUtil.getKeyLruScore());
+                    genericRedisTemplate.opsForZSet().removeRangeByScore(lruKey, 0, CacheUtil.getKeyLruScore());
                     log.info("批量清除LRU缓存记录，position={}，lruKey={}", cursor.getPosition(), lruKey);
 
                     /*long offset = 0L;
