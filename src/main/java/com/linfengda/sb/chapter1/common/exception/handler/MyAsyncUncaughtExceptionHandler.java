@@ -1,7 +1,6 @@
 package com.linfengda.sb.chapter1.common.exception.handler;
 
 import com.linfengda.sb.chapter1.common.exception.BusinessException;
-import com.linfengda.sb.chapter1.common.exception.DistributedLockException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.aop.interceptor.AsyncUncaughtExceptionHandler;
 
@@ -19,9 +18,7 @@ public class MyAsyncUncaughtExceptionHandler implements AsyncUncaughtExceptionHa
     @Override
     public void handleUncaughtException(Throwable throwable, Method method, Object... objects) {
         // 暂时未作任何个性化处理，使用spring boot默认实现
-        if (throwable.getClass() == DistributedLockException.class) {
-            log.warn(throwable.getMessage());
-        } else if (throwable.getClass() == BusinessException.class) {
+        if (throwable.getClass() == BusinessException.class) {
             log.warn(throwable.getMessage());
         } else {
             log.error(String.format("[my-task-thread] Unexpected error occurred invoking async method '%s'.", method), throwable);

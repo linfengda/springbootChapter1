@@ -1,4 +1,4 @@
-package com.linfengda.sb.support.fastjson.serializer.date;
+package com.linfengda.sb.support.serializer.serializer.fastjson.date;
 
 import com.alibaba.fastjson.serializer.JSONSerializer;
 import com.alibaba.fastjson.serializer.ObjectSerializer;
@@ -6,13 +6,14 @@ import com.alibaba.fastjson.serializer.SerializeWriter;
 import com.linfengda.sb.support.util.TimeUtil;
 
 import java.lang.reflect.Type;
+import java.sql.Timestamp;
 
 /**
  * @description: 日期输出序列化类
  * @author: linfengda
  * @date: 2020-08-23 23:15
  */
-public class DateFormatSerializer extends AbstractDateBaseSerializer implements ObjectSerializer {
+public class DateFormatSerializer implements ObjectSerializer {
     public static final DateFormatMdSerializer INSTANCE = new DateFormatMdSerializer();
 
     @Override
@@ -22,11 +23,17 @@ public class DateFormatSerializer extends AbstractDateBaseSerializer implements 
             out.writeString("");
             return;
         }
-        writeDate(object,out);
-    }
-
-    @Override
-    public void doWrite(Long time, SerializeWriter out) {
-        out.writeString(TimeUtil.format(time, "yyyy-MM-dd HH:mm:ss"));
+        long ms;
+        if (object instanceof java.util.Date) {
+            ms = ((java.util.Date) object).getTime();
+        }else if (object instanceof java.sql.Date) {
+            ms = ((java.sql.Date) object).getTime();
+        }else if (object instanceof Timestamp) {
+            ms = ((Timestamp) object).getTime();
+        }else {
+            out.writeString("");
+            return;
+        }
+        out.writeString(TimeUtil.format(ms, "yyyy-MM-dd HH:mm:ss"));
     }
 }

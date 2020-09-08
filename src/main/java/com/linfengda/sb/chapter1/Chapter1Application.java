@@ -1,8 +1,9 @@
 package com.linfengda.sb.chapter1;
 
 import com.linfengda.sb.support.apivalidator.annotation.EnableApiValidator;
-import com.linfengda.sb.support.fastjson.annotation.EnableFastJsonMessageConvector;
 import com.linfengda.sb.support.redis.config.annotation.EnableRedisCacheAnnotation;
+import com.linfengda.sb.support.serializer.annotation.EnableJsonFieldSerializer;
+import com.linfengda.sb.support.serializer.annotation.SerializeType;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.core.Ordered;
@@ -14,7 +15,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  * @author linfengda
  * @create 2020-01-09 09:18
  */
-@EnableFastJsonMessageConvector
+@EnableJsonFieldSerializer(serializeType = SerializeType.FAST_JSON)
 @EnableApiValidator(pattern = "xxx")
 @EnableRedisCacheAnnotation()
 @EnableTransactionManagement(order = Ordered.LOWEST_PRECEDENCE-1)

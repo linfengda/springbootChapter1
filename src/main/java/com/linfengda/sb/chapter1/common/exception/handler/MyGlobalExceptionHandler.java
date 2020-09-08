@@ -2,7 +2,6 @@ package com.linfengda.sb.chapter1.common.exception.handler;
 
 import com.linfengda.sb.chapter1.common.api.entity.Result;
 import com.linfengda.sb.chapter1.common.exception.BusinessException;
-import com.linfengda.sb.chapter1.common.exception.DistributedLockException;
 import com.linfengda.sb.chapter1.common.exception.entity.ErrorCode;
 import com.linfengda.sb.support.orm.exception.DataAccessException;
 import lombok.extern.slf4j.Slf4j;
@@ -32,10 +31,6 @@ public class MyGlobalExceptionHandler {
             DataAccessException dataAccessException = (DataAccessException) e;
             result = new Result(dataAccessException.getCode(), dataAccessException.getMsg());
             log.warn(dataAccessException.getMsg());
-        }else if (e instanceof DistributedLockException) {
-            DistributedLockException distributedLockException = (DistributedLockException) e;
-            result = new Result(distributedLockException.getCode(), distributedLockException.getMsg());
-            log.warn(distributedLockException.getMsg());
         }else if (e instanceof BusinessException) {
             BusinessException businessException = (BusinessException) e;
             if (StringUtils.isNotEmpty(businessException.getDetailMsg())) {
