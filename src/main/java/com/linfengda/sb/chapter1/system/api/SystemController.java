@@ -3,7 +3,7 @@ package com.linfengda.sb.chapter1.system.api;
 import com.github.pagehelper.Page;
 import com.linfengda.sb.chapter1.common.api.BaseController;
 import com.linfengda.sb.chapter1.common.api.entity.Result;
-import com.linfengda.sb.chapter1.system.entity.dto.UserDTO;
+import com.linfengda.sb.chapter1.system.entity.dto.UserUpdateDTO;
 import com.linfengda.sb.chapter1.system.entity.dto.UserPageQueryDTO;
 import com.linfengda.sb.chapter1.system.entity.vo.UserListVO;
 import com.linfengda.sb.chapter1.system.service.SysUserService;
@@ -38,8 +38,8 @@ public class SystemController extends BaseController {
     }
 
     @PostMapping("/updateUser")
-    public Result updateUser(@ApiValidator @RequestBody UserDTO userDTO) throws Exception {
-        sysUserService.updateUser(userDTO.getUserId(), userDTO.getUserName());
+    public Result updateUser(@ApiValidator @RequestBody UserUpdateDTO userUpdateDTO) throws Exception {
+        sysUserService.updateUser(userUpdateDTO.getUserId(), userUpdateDTO.getUserName());
         return SUCCESS_RESULT;
     }
 

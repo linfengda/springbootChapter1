@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull;
  * @create 2019-07-28 15:12
  */
 @Data
-public class UserDTO {
+public class UserUpdateDTO {
     /**
      * 用户ID
      */
