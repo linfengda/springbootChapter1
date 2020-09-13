@@ -1,6 +1,6 @@
 package com.linfengda.sb.support.redis.config;
 
-import com.linfengda.sb.support.redis.config.annotation.EnableRedisCacheAnnotation;
+import com.linfengda.sb.support.redis.config.annotation.EnableRedis;
 import org.springframework.context.annotation.ImportAware;
 import org.springframework.core.annotation.AnnotationAttributes;
 import org.springframework.core.type.AnnotationMetadata;
@@ -16,10 +16,9 @@ public class AbstractCacheConfig implements ImportAware {
     @Override
     public void setImportMetadata(AnnotationMetadata importMetadata) {
         this.attributes = AnnotationAttributes.fromMap(
-                importMetadata.getAnnotationAttributes(EnableRedisCacheAnnotation.class.getName(), false));
+                importMetadata.getAnnotationAttributes(EnableRedis.class.getName(), false));
         if (this.attributes == null) {
-            throw new IllegalArgumentException(
-                    "@EnableRedisCacheAnnotation is not present on importing class " + importMetadata.getClassName());
+            throw new IllegalArgumentException("@EnableRedis is not present on importing class " + importMetadata.getClassName());
         }
     }
 }

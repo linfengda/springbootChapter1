@@ -18,18 +18,18 @@ com.linfengda.sb.support.redis.cache.interceptor.QueryCacheMethodPointcutAdvisor
 com.linfengda.sb.support.redis.cache.interceptor.QueryCacheInterceptor
 
 #### 三. 实现过程
-* 缓存入口
+* 缓存逻辑入口
 com.linfengda.sb.support.redis.cache.handler.CacheMethodHandlerAdapter
 * 缓存方法解析
 com.linfengda.sb.support.redis.cache.builder.CacheMethodMetaBuilder
-* 缓存信息解析
+* 缓存元数据解析
 com.linfengda.sb.support.redis.cache.builder.CacheParamBuilder
-* 具体缓存处理
+* 缓存处理
 com.linfengda.sb.support.redis.cache.handler.CacheHandler
-* 具体缓存类型处理
+* 缓存数据类型处理
 com.linfengda.sb.support.redis.cache.resolver.CacheDataTypeResolver
 
-#### 四. 需要优化的地方
+#### 四. 优化日志
 1. 缓存方法切面优先级：查询缓存>删除缓存>事务>更新缓存
 2. 查询缓存切面优先于事务切面，以便缓存命中时不需要打开多余的事务。更新缓存切面优先级应该在事务切面之后，以保证数据一致性
 3. 通过设置随机过期时间，防止缓存雪崩
@@ -40,4 +40,3 @@ com.linfengda.sb.support.redis.cache.resolver.CacheDataTypeResolver
     * 对于hash类型缓存，maxSize为哈希表的最大缓存数量，
     * 对于list类型缓存，maxSize为指定前缀列表的最大缓存数量，如：myList:{*}大小
     * 对于set类型缓存，maxSize为指定前缀集合的最大缓存数量，如：mySet:{*}大小
-7. 关联加载和关联清除

@@ -31,12 +31,12 @@ public class RedisCacheInitializer extends AbstractCacheConfig implements Applic
     @Override
     public void setImportMetadata(AnnotationMetadata importMetadata) {
         super.setImportMetadata(importMetadata);
-        Long internalTime = super.attributes.<Long>getNumber("lruInternal");
-        if (null == internalTime) {
-            internalTime = Constant.DEFAULT_BG_REMOVE_LRU_INTERNAL;
+        Long lruCacheClearInternal = super.attributes.<Long>getNumber("lruCacheClearInternal");
+        if (null == lruCacheClearInternal) {
+            lruCacheClearInternal = Constant.DEFAULT_LRU_CACHE_BG_REMOVE_INTERNAL;
         }
         RedisCacheBgManager.INSTANCE.setGenericRedisTemplate(genericRedisTemplate);
-        RedisCacheBgManager.INSTANCE.start(internalTime);
+        RedisCacheBgManager.INSTANCE.start(lruCacheClearInternal);
         CacheHandlerHolder.INSTANCE.initHandlers(genericRedisTemplate, redisDistributedLock);
         CacheDataTypeResolverHolder.INSTANCE.initResolver(genericRedisTemplate);
     }

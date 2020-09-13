@@ -1,19 +1,23 @@
 package com.linfengda.sb.support.redis.config.selector;
 
-import com.linfengda.sb.support.redis.RedisDistributedLock;
+import com.linfengda.sb.support.redis.config.RedisCacheAnnotationConfig;
+import com.linfengda.sb.support.redis.config.RedisCacheInitializer;
 import com.linfengda.sb.support.redis.config.RedisConfig;
-import org.springframework.context.annotation.ImportSelector;
-import org.springframework.core.type.AnnotationMetadata;
 
 /**
  * @description: 开启redis
  * @author: linfengda
  * @date: 2020-07-26 22:36
  */
-public class RedisConfigSelector implements ImportSelector {
+
+public class RedisConfigSelector extends AbstractRedisImportSelector {
 
     @Override
-    public String[] selectImports(AnnotationMetadata importingClassMetadata) {
-        return new String[] {RedisConfig.class.getName()};
+    protected String[] selectImports(Boolean openCacheAnnotation) {
+        if (true == openCacheAnnotation) {
+            return new String[] {RedisConfig.class.getName(), RedisCacheAnnotationConfig.class.getName(), RedisCacheInitializer.class.getName()};
+        }else {
+            return new String[] {RedisConfig.class.getName()};
+        }
     }
 }

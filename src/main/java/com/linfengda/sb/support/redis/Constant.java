@@ -31,9 +31,9 @@ public interface Constant {
      */
     Long DEFAULT_NO_SIZE_LIMIT = -1L;
     /**
-     * 默认后台批量处理LRU缓存间隔：10min
+     * 默认lru缓存后台自动清除间隔：10min
      */
-    long DEFAULT_BG_REMOVE_LRU_INTERNAL = 10*60*1000L;
+    long DEFAULT_LRU_CACHE_BG_REMOVE_INTERNAL = 10*60*1000L;
     /**
      * 默认后台批量处理LRU缓存数量
      */
