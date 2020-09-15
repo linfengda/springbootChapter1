@@ -3,12 +3,15 @@ package com.linfengda.sb.chapter1.system.api;
 import com.github.pagehelper.Page;
 import com.linfengda.sb.chapter1.common.api.BaseController;
 import com.linfengda.sb.chapter1.common.api.entity.Result;
-import com.linfengda.sb.chapter1.system.entity.dto.UserUpdateDTO;
 import com.linfengda.sb.chapter1.system.entity.dto.UserPageQueryDTO;
+import com.linfengda.sb.chapter1.system.entity.dto.UserUpdateDTO;
 import com.linfengda.sb.chapter1.system.entity.vo.UserListVO;
 import com.linfengda.sb.chapter1.system.service.SysUserService;
 import com.linfengda.sb.support.apivalidator.annotation.ApiValidator;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import javax.validation.constraints.NotNull;
@@ -37,13 +40,13 @@ public class SystemController extends BaseController {
         return new Result(sysUserService.getUserInfo(userId));
     }
 
-    @PostMapping("/updateUser")
-    public Result updateUser(@ApiValidator @RequestBody UserUpdateDTO userUpdateDTO) throws Exception {
-        sysUserService.updateUser(userUpdateDTO.getUserId(), userUpdateDTO.getUserName());
+    @PostMapping("/updateUserInfo")
+    public Result updateUserInfo(@ApiValidator @RequestBody UserUpdateDTO userUpdateDTO) throws Exception {
+        sysUserService.updateUserInfo(userUpdateDTO);
         return SUCCESS_RESULT;
     }
 
-    @GetMapping("/moveUserOrganize")
+    @PostMapping("/moveUserOrganize")
     public Result moveUserOrganize(@NotNull(message = "用户id不能为空") Integer userId,
                                    @NotNull(message = "部门id不能为空") Integer departmentId,
                                    @NotNull(message = "团队id不能为空") Integer teamId) {

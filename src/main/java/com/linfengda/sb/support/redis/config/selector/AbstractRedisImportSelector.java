@@ -1,5 +1,6 @@
 package com.linfengda.sb.support.redis.config.selector;
 
+import com.linfengda.sb.support.redis.config.AnnotationMetaHolder;
 import com.linfengda.sb.support.redis.config.annotation.EnableRedis;
 import org.springframework.context.annotation.ImportSelector;
 import org.springframework.core.annotation.AnnotationAttributes;
@@ -25,8 +26,9 @@ public abstract class AbstractRedisImportSelector <A extends Annotation> impleme
         }
         Boolean openCacheAnnotation = attributes.getBoolean(OPEN_CACHE_ANNOTATION_ATTRIBUTE_NAME);
         if (null == openCacheAnnotation) {
-            throw new IllegalArgumentException("openCacheAnnotation can not be null!");
+            throw new IllegalArgumentException("attribute openCacheAnnotation can not be null!");
         }
+        AnnotationMetaHolder.INSTANCE.init(this.attributes);
         String[] imports = selectImports(openCacheAnnotation);
         return imports;
     }

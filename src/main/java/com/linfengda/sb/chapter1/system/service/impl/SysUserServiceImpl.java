@@ -4,19 +4,21 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.linfengda.sb.chapter1.system.dao.SystemDao;
 import com.linfengda.sb.chapter1.system.entity.dto.UserPageQueryDTO;
+import com.linfengda.sb.chapter1.system.entity.dto.UserUpdateDTO;
 import com.linfengda.sb.chapter1.system.entity.po.SysUserPO;
 import com.linfengda.sb.chapter1.system.entity.vo.UserListVO;
 import com.linfengda.sb.chapter1.system.entity.vo.UserVO;
 import com.linfengda.sb.chapter1.system.service.SysUserService;
+import com.linfengda.sb.support.orm.BaseService;
+import com.linfengda.sb.support.orm.entity.SetValue;
 import com.linfengda.sb.support.redis.cache.annotation.CacheKey;
 import com.linfengda.sb.support.redis.cache.annotation.QueryCache;
 import com.linfengda.sb.support.redis.cache.entity.type.CacheExtraStrategy;
 import com.linfengda.sb.support.redis.cache.entity.type.CacheMaxSizeStrategy;
 import com.linfengda.sb.support.redis.cache.entity.type.DataType;
-import com.linfengda.sb.support.orm.BaseService;
-import com.linfengda.sb.support.orm.entity.SetValue;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
@@ -57,11 +59,11 @@ public class SysUserServiceImpl extends BaseService implements SysUserService {
         return userVO;
     }
 
-    @Transactional(rollbackFor=Exception.class)
+    @Transactional(rollbackFor=Exception.class, propagation = Propagation.REQUIRED)
     @Override
-    public void updateUser(Integer userId, String userName) throws Exception {
+    public void updateUserInfo(UserUpdateDTO userUpdateDTO) throws Exception {
         SetValue setValue = new SetValue();
-        setValue.add("userName", userName);
-        updateByPrimaryKey(SysUserPO.class, setValue, userId);
+        setValue.add("userName", userUpdateDTO.getUserName());
+        updateByPrimaryKey(SysUserPO.class, setValue, userUpdateDTO.getUserId());
     }
 }

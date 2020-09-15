@@ -3,8 +3,8 @@ package com.linfengda.sb.support.redis.config;
 import com.linfengda.sb.support.redis.cache.interceptor.*;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Role;
+import org.springframework.core.annotation.AnnotationAttributes;
 
 /**
  * 描述: 配置redis缓存注解增强器
@@ -12,8 +12,7 @@ import org.springframework.context.annotation.Role;
  * @author linfengda
  * @create 2020-03-24 18:38
  */
-@Configuration
-public class RedisCacheAnnotationConfig extends AbstractCacheConfig {
+public class RedisCacheAnnotationConfig {
 
     @Bean
     @Role(BeanDefinition.ROLE_INFRASTRUCTURE)
@@ -41,8 +40,9 @@ public class RedisCacheAnnotationConfig extends AbstractCacheConfig {
     public QueryCacheMethodPointcutAdvisor queryCacheMethodPointcutAdvisor(QueryCacheInterceptor queryCacheInterceptor) {
         QueryCacheMethodPointcutAdvisor queryCacheMethodPointcutAdvisor = new QueryCacheMethodPointcutAdvisor();
         queryCacheMethodPointcutAdvisor.setAdvice(queryCacheInterceptor);
-        if (this.attributes != null) {
-            queryCacheMethodPointcutAdvisor.setOrder(this.attributes.<Integer>getNumber("queryOrder"));
+        AnnotationAttributes attributes = AnnotationMetaHolder.INSTANCE.getAttributes();
+        if (attributes != null) {
+            queryCacheMethodPointcutAdvisor.setOrder(attributes.<Integer>getNumber("queryOrder"));
         }
         return queryCacheMethodPointcutAdvisor;
     }
@@ -52,8 +52,9 @@ public class RedisCacheAnnotationConfig extends AbstractCacheConfig {
     public DeleteCacheMethodPointcutAdvisor deleteCacheMethodPointcutAdvisor(DeleteCacheInterceptor deleteQueryCacheInterceptor) {
         DeleteCacheMethodPointcutAdvisor deleteCacheMethodPointcutAdvisor = new DeleteCacheMethodPointcutAdvisor();
         deleteCacheMethodPointcutAdvisor.setAdvice(deleteQueryCacheInterceptor);
-        if (this.attributes != null) {
-            deleteCacheMethodPointcutAdvisor.setOrder(this.attributes.<Integer>getNumber("deleteOrder"));
+        AnnotationAttributes attributes = AnnotationMetaHolder.INSTANCE.getAttributes();
+        if (attributes != null) {
+            deleteCacheMethodPointcutAdvisor.setOrder(attributes.<Integer>getNumber("deleteOrder"));
         }
         return deleteCacheMethodPointcutAdvisor;
     }
@@ -63,8 +64,9 @@ public class RedisCacheAnnotationConfig extends AbstractCacheConfig {
     public UpdateCacheMethodPointcutAdvisor updateCacheMethodPointcutAdvisor(UpdateCacheInterceptor updateQueryCacheInterceptor) {
         UpdateCacheMethodPointcutAdvisor updateCacheMethodPointcutAdvisor = new UpdateCacheMethodPointcutAdvisor();
         updateCacheMethodPointcutAdvisor.setAdvice(updateQueryCacheInterceptor);
-        if (this.attributes != null) {
-            updateCacheMethodPointcutAdvisor.setOrder(this.attributes.<Integer>getNumber("updateOrder"));
+        AnnotationAttributes attributes = AnnotationMetaHolder.INSTANCE.getAttributes();
+        if (attributes != null) {
+            updateCacheMethodPointcutAdvisor.setOrder(attributes.<Integer>getNumber("updateOrder"));
         }
         return updateCacheMethodPointcutAdvisor;
     }
