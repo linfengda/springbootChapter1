@@ -1,6 +1,6 @@
 package com.linfengda.sb.support.redis.cache.resolver.impl;
 
-import com.linfengda.sb.support.redis.cache.entity.meta.HashKey;
+import com.linfengda.sb.support.redis.cache.entity.dto.HashKey;
 import com.linfengda.sb.support.redis.cache.entity.dto.CacheParamDTO;
 import com.linfengda.sb.support.redis.cache.entity.type.DataType;
 import com.linfengda.sb.support.redis.cache.resolver.AbstractCacheDataTypeResolver;

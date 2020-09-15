@@ -4,7 +4,7 @@ package com.linfengda.sb.support.redis.cache.builder;
 import com.linfengda.sb.support.redis.Constant;
 import com.linfengda.sb.support.redis.cache.entity.dto.CacheParamDTO;
 import com.linfengda.sb.support.redis.cache.entity.meta.CacheMethodMeta;
-import com.linfengda.sb.support.redis.cache.entity.meta.HashKey;
+import com.linfengda.sb.support.redis.cache.entity.dto.HashKey;
 import com.linfengda.sb.support.redis.cache.entity.type.DataType;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;

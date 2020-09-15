@@ -1,6 +1,5 @@
 package com.linfengda.sb.support.redis.cache.entity.dto;
 
-import com.linfengda.sb.support.redis.cache.entity.meta.HashKey;
 import com.linfengda.sb.support.redis.cache.entity.type.CacheExtraStrategy;
 import com.linfengda.sb.support.redis.cache.entity.type.CacheMaxSizeStrategy;
 import com.linfengda.sb.support.redis.cache.entity.type.DataType;

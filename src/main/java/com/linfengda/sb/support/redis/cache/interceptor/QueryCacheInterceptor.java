@@ -1,7 +1,6 @@
 package com.linfengda.sb.support.redis.cache.interceptor;
 
 import com.linfengda.sb.support.redis.cache.entity.type.CacheAnnotationType;
-import com.linfengda.sb.support.redis.cache.handler.CacheMethodHandlerAdapter;
 import lombok.extern.slf4j.Slf4j;
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;

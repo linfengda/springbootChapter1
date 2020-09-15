@@ -13,7 +13,7 @@ import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.ScanOptions;
 
 /**
- * 描述: 缓存后台管理
+ * 描述: lru缓存key后台自动清理
  *
  * @author: linfengda
  * @date: 2020-07-21 14:57
@@ -42,7 +42,7 @@ public enum RedisCacheBgManager {
                                 String lruKey = new String(cursor.next());
                                 genericRedisTemplate.opsForZSet().removeRangeByScore(lruKey, 0, CacheUtil.getKeyLruScore());
                                 lruExpireResultBO.addLruKeyNum();
-                                log.info("批量清除LRU缓存记录，position={}，lruKey={}", cursor.getPosition(), lruKey);
+                                log.info("批量清理LRU缓存记录，position={}，lruKey={}", cursor.getPosition(), lruKey);
                             }
                             lruExpireResultBO.setCostTime(System.currentTimeMillis()-startTime);
                             return lruExpireResultBO;
@@ -50,12 +50,12 @@ public enum RedisCacheBgManager {
                     });
                     log.info(lruExpireResultBO.getExpireMsg());
                 }catch (Exception e) {
-                    log.error("清除LRU缓存失败！", e);
+                    log.error("清理LRU缓存失败！", e);
                 }finally {
                     try {
                         Thread.sleep(internalTime);
                     }catch (Exception e) {
-                        log.error("清除LRU缓存休眠失败！");
+                        log.error("清理LRU缓存休眠失败！");
                     }
                 }
             }

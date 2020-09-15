@@ -1,4 +1,4 @@
-package com.linfengda.sb.support.redis.cache.entity.meta;
+package com.linfengda.sb.support.redis.cache.entity.dto;
 
 import lombok.Data;
 

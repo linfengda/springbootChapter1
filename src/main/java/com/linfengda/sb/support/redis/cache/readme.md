@@ -19,7 +19,7 @@ com.linfengda.sb.support.redis.cache.interceptor.QueryCacheInterceptor
 
 #### 三. 实现过程
 * 缓存逻辑入口
-com.linfengda.sb.support.redis.cache.handler.CacheMethodHandlerAdapter
+com.linfengda.sb.support.redis.cache.interceptor.CacheMethodHandlerAdapter
 * 缓存方法解析
 com.linfengda.sb.support.redis.cache.builder.CacheMethodMetaBuilder
 * 缓存元数据解析
