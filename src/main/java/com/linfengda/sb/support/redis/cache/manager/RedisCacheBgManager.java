@@ -1,4 +1,4 @@
-package com.linfengda.sb.support.redis.cache;
+package com.linfengda.sb.support.redis.cache.manager;
 
 import com.linfengda.sb.support.redis.Constant;
 import com.linfengda.sb.support.redis.GenericRedisTemplate;
@@ -24,7 +24,6 @@ public enum RedisCacheBgManager {
      * 单例
      */
     INSTANCE;
-    @Setter
     private GenericRedisTemplate genericRedisTemplate;
 
     public void start(final long internalTime) {
@@ -64,5 +63,9 @@ public enum RedisCacheBgManager {
         });
         bgThread.setDaemon(true);
         bgThread.start();
+    }
+
+    public void init(GenericRedisTemplate genericRedisTemplate) {
+        this.genericRedisTemplate = genericRedisTemplate;
     }
 }

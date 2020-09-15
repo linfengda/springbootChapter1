@@ -11,7 +11,9 @@ import org.aopalliance.intercept.MethodInvocation;
 import java.lang.reflect.Method;
 
 /**
- * 描述: 提供对{@link com.linfengda.sb.support.redis.cache.annotation.QueryCache},{@link com.linfengda.sb.support.redis.cache.annotation.DeleteCache},{@link com.linfengda.sb.support.redis.cache.annotation.UpdateCache}注解的支持
+ * 描述: 提供对{@link com.linfengda.sb.support.redis.cache.annotation.QueryCache},
+ * {@link com.linfengda.sb.support.redis.cache.annotation.DeleteCache},
+ * {@link com.linfengda.sb.support.redis.cache.annotation.UpdateCache}注解的支持
  *
  * @author linfengda
  * @create 2019-12-19 17:52

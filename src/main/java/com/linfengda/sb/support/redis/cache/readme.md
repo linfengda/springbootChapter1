@@ -1,4 +1,4 @@
-## 使用AOP编程实现Cache框架
+## 基于注解实现Cache框架
 [toc]
 
 #### 一.缓存注解
@@ -40,3 +40,4 @@ com.linfengda.sb.support.redis.cache.resolver.CacheDataTypeResolver
     * 对于hash类型缓存，maxSize为哈希表的最大缓存数量，
     * 对于list类型缓存，maxSize为指定前缀列表的最大缓存数量，如：myList:{*}大小
     * 对于set类型缓存，maxSize为指定前缀集合的最大缓存数量，如：mySet:{*}大小
+7. 使用后台守护线程定期清理lru类型缓存：

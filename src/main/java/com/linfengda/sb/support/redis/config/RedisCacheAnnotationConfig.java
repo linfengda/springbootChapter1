@@ -1,6 +1,7 @@
 package com.linfengda.sb.support.redis.config;
 
 import com.linfengda.sb.support.redis.cache.interceptor.*;
+import com.linfengda.sb.support.redis.config.meta.AnnotationMetaHolder;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Role;
@@ -12,7 +13,7 @@ import org.springframework.core.annotation.AnnotationAttributes;
  * @author linfengda
  * @create 2020-03-24 18:38
  */
-public class RedisCacheAnnotationConfig {
+public class RedisCacheAnnotationConfig extends RedisCacheAnnotationInitializer {
 
     @Bean
     @Role(BeanDefinition.ROLE_INFRASTRUCTURE)

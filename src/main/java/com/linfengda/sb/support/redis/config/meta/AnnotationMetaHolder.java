@@ -1,4 +1,4 @@
-package com.linfengda.sb.support.redis.config;
+package com.linfengda.sb.support.redis.config.meta;
 
 import lombok.Getter;
 import org.springframework.core.annotation.AnnotationAttributes;
