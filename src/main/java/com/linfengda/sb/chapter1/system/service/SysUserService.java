@@ -33,8 +33,9 @@ public interface SysUserService {
 
     /**
      * 更新用户信息
-     * @param userUpdateDTO 更新用户信息DTO
+     * @param userId            用户id
+     * @param userUpdateDTO     更新用户DTO
      * @throws Exception
      */
-    void updateUserInfo(UserUpdateDTO userUpdateDTO) throws Exception;
+    void updateUserInfo(Integer userId, UserUpdateDTO userUpdateDTO) throws Exception;
 }

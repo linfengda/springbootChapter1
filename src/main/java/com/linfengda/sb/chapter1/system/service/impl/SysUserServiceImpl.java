@@ -13,6 +13,7 @@ import com.linfengda.sb.support.orm.BaseService;
 import com.linfengda.sb.support.orm.entity.SetValue;
 import com.linfengda.sb.support.redis.cache.annotation.CacheKey;
 import com.linfengda.sb.support.redis.cache.annotation.QueryCache;
+import com.linfengda.sb.support.redis.cache.annotation.UpdateCache;
 import com.linfengda.sb.support.redis.cache.entity.type.CacheExtraStrategy;
 import com.linfengda.sb.support.redis.cache.entity.type.CacheMaxSizeStrategy;
 import com.linfengda.sb.support.redis.cache.entity.type.DataType;
@@ -44,7 +45,7 @@ public class SysUserServiceImpl extends BaseService implements SysUserService {
         return page;
     }
 
-    @QueryCache(type = DataType.OBJECT, prefix = "sys:user", timeOut = 30, timeUnit = TimeUnit.MINUTES, strategies = {CacheExtraStrategy.PRV_CACHE_SNOW_SLIDE, CacheExtraStrategy.PRV_CACHE_HOT_KEY_MULTI_LOAD}, maxSize = 5, maxSizeStrategy = CacheMaxSizeStrategy.MAX_SIZE_STRATEGY_LRU)
+    @QueryCache(type = DataType.HASH, prefix = "sys:user", timeOut = 30, timeUnit = TimeUnit.MINUTES, strategies = {CacheExtraStrategy.PRV_CACHE_SNOW_SLIDE, CacheExtraStrategy.PRV_CACHE_HOT_KEY_MULTI_LOAD}, maxSize = 5, maxSizeStrategy = CacheMaxSizeStrategy.MAX_SIZE_STRATEGY_LRU)
     @Override
     public UserVO getUserInfo(@CacheKey Integer userId) throws Exception {
         SysUserPO sysUserPO = findByPrimaryKey(userId, SysUserPO.class);
@@ -59,11 +60,12 @@ public class SysUserServiceImpl extends BaseService implements SysUserService {
         return userVO;
     }
 
+    @UpdateCache(type = DataType.HASH, prefix = "sys:user", timeOut = 30, timeUnit = TimeUnit.MINUTES, strategies = {CacheExtraStrategy.PRV_CACHE_SNOW_SLIDE, CacheExtraStrategy.PRV_CACHE_HOT_KEY_MULTI_LOAD})
     @Transactional(rollbackFor=Exception.class, propagation = Propagation.REQUIRED)
     @Override
-    public void updateUserInfo(UserUpdateDTO userUpdateDTO) throws Exception {
+    public void updateUserInfo(@CacheKey Integer userId, UserUpdateDTO userUpdateDTO) throws Exception {
         SetValue setValue = new SetValue();
         setValue.add("userName", userUpdateDTO.getUserName());
-        updateByPrimaryKey(SysUserPO.class, setValue, userUpdateDTO.getUserId());
+        updateByPrimaryKey(SysUserPO.class, setValue, userId);
     }
 }

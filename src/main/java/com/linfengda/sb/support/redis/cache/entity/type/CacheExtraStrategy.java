@@ -13,7 +13,7 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum CacheExtraStrategy {
     /**
-     * 防止缓存雪崩：对于同一时间加载的缓存，通过叠加随机时间防止缓存雪崩
+     * 防止缓存雪崩：通过叠加随机时间防止缓存雪崩
      */
     PRV_CACHE_SNOW_SLIDE,
     /**

@@ -44,7 +44,6 @@ public enum RedisCacheBgManager {
                                 lruExpireResultBO.addLruKeyNum();
                                 log.info("批量清除LRU缓存记录，position={}，lruKey={}", cursor.getPosition(), lruKey);
                             }
-
                             lruExpireResultBO.setCostTime(System.currentTimeMillis()-startTime);
                             return lruExpireResultBO;
                         }
