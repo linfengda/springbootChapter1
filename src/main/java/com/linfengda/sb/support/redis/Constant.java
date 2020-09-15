@@ -17,9 +17,9 @@ public interface Constant {
     /**
      * LRU记录前缀
      */
-    String LRU_RECORD_PREFIX = "lru:rd";
+    String LRU_RECORD_PREFIX = "lru";
     /**
-     * LOCK前缀
+     * 分布式锁前缀
      */
     String LOCK_PREFIX = "lk";
     /**
@@ -50,4 +50,8 @@ public interface Constant {
      * 默认防止缓存雪崩随机时间范围：60s
      */
     Integer DEFAULT_NO_CACHE_SNOW_SLIDE_RANDOM_MS = 60*1000;
+    /**
+     * 等待缓存加载最大自旋时间
+     */
+    long MAX_LOAD_CACHE_SPIN_TIME = 30 * 1000L;
 }

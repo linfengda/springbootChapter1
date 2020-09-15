@@ -1,12 +1,11 @@
 
 package com.linfengda.sb.support.redis.cache.builder;
 
-import com.linfengda.sb.chapter1.common.exception.BusinessException;
 import com.linfengda.sb.support.redis.Constant;
 import com.linfengda.sb.support.redis.cache.entity.dto.CacheParamDTO;
 import com.linfengda.sb.support.redis.cache.entity.meta.CacheMethodMeta;
+import com.linfengda.sb.support.redis.cache.entity.meta.HashKey;
 import com.linfengda.sb.support.redis.cache.entity.type.DataType;
-import com.linfengda.sb.support.redis.cache.entity.type.KeyType;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 
@@ -42,13 +41,13 @@ public enum CacheParamBuilder {
         cacheParamDTO.setMaxSize(cacheMethodMeta.getMaxSize());
         cacheParamDTO.setAllEntries(cacheMethodMeta.getAllEntries());
         // 初始化缓存key
-        List<String> keys = getKeys(cacheMethodMeta.getKeyMetas(), arguments);
+        List<String> keys = parseKeys(cacheMethodMeta.getKeyMetas(), arguments);
         cacheParamDTO.setKey(buildKey(cacheParamDTO.getPrefix(), keys));
         if (DataType.HASH == cacheMethodMeta.getDataType()) {
             cacheParamDTO.setHashKey(buildHashKey(cacheParamDTO.getPrefix(), keys));
         }
-        cacheParamDTO.setLruKey(buildLruKey(cacheParamDTO));
-        cacheParamDTO.setLockKey(buildCacheWriteLockKey(cacheParamDTO));
+        cacheParamDTO.setLruKey(Constant.LRU_RECORD_PREFIX + Constant.COLON + cacheParamDTO.getPrefix());
+        cacheParamDTO.setLockKey(Constant.LOCK_PREFIX + Constant.COLON + cacheParamDTO.getKey());
         return cacheParamDTO;
     }
 
@@ -58,7 +57,7 @@ public enum CacheParamBuilder {
      * @param arguments 缓存方法参数列表
      * @return          缓存key列表
      */
-    private List<String> getKeys(List<CacheMethodMeta.CacheKeyMeta> keyMetas, Object[] arguments) {
+    private List<String> parseKeys(List<CacheMethodMeta.CacheKeyMeta> keyMetas, Object[] arguments) {
         List<String> keys = new ArrayList<>();
         if (CollectionUtils.isEmpty(keyMetas)) {
             return keys;
@@ -68,14 +67,11 @@ public enum CacheParamBuilder {
         }
         for (CacheMethodMeta.CacheKeyMeta keyMeta : keyMetas) {
             Object argument = arguments[keyMeta.getIndex()];
-            if (!KeyType.isBaseType(argument.getClass().getName())) {
-                throw new BusinessException("不支持的缓存key参数类型：" + argument.getClass().getName());
-            }
             if (null == argument) {
                 keys.add(keyMeta.getNullKey());
                 continue;
             }
-            keys.add(String.valueOf(argument));
+            keys.add(argument.toString());
         }
         return keys;
     }
@@ -102,12 +98,13 @@ public enum CacheParamBuilder {
      * 获取hash类型缓存key
      * @param prefix    key前缀
      * @param keys      key列表
-     * @return          缓存key
+     * @return          缓存hashKey
      */
     private HashKey buildHashKey(String prefix, List<String> keys) {
         HashKey hashKey = new HashKey();
         hashKey.setKey(prefix);
         if (CollectionUtils.isEmpty(keys)) {
+            hashKey.setHashKey("");
             return hashKey;
         }
         StringBuilder builder = new StringBuilder();
@@ -121,23 +118,5 @@ public enum CacheParamBuilder {
         }
         hashKey.setHashKey(builder.toString());
         return hashKey;
-    }
-
-    /**
-     * 获取LRU记录缓存key
-     * @param param 缓存参数
-     * @return      缓存key
-     */
-    public String buildLruKey(CacheParamDTO param) {
-        return Constant.LRU_RECORD_PREFIX + Constant.COLON + param.getPrefix();
-    }
-
-    /**
-     * 获取缓存写入lockKey
-     * @param param 缓存参数
-     * @return      缓存lockKey
-     */
-    public String buildCacheWriteLockKey(CacheParamDTO param) {
-        return Constant.LOCK_PREFIX + Constant.COLON + param.getKey();
     }
 }

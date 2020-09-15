@@ -30,11 +30,11 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class CacheMethodMetaBuilder {
     /**
-     * 校验通过的缓存方法
+     * 缓存方法标识
      */
     private static final Map<Method, Boolean> CHECKED_CACHE_METHOD_CACHE = new ConcurrentHashMap<>(512);
     /**
-     * 缓存注解方法
+     * 缓存方法注解元数据
      */
     private static final Map<Method, CacheMethodMeta> CACHE_METHOD_CACHE = new ConcurrentHashMap<>(512);
 
@@ -83,6 +83,7 @@ public class CacheMethodMetaBuilder {
      * @return          缓存方法元数据
      */
     public static CacheMethodMeta getCacheMethodMeta(Method method) {
+        checkCacheAnnotation(method);
         CacheMethodMeta cacheMethodMeta = CACHE_METHOD_CACHE.get(method);
         if (null == cacheMethodMeta) {
             cacheMethodMeta = loadCacheAnnotation(method);

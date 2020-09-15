@@ -42,7 +42,7 @@ public class SystemController extends BaseController {
 
     @PostMapping("/updateUserInfo")
     public Result updateUserInfo(@ApiValidator @RequestBody UserUpdateDTO userUpdateDTO) throws Exception {
-        sysUserService.updateUserInfo(userUpdateDTO);
+        sysUserService.updateUserInfo(userUpdateDTO.getUserId(), userUpdateDTO);
         return SUCCESS_RESULT;
     }
 

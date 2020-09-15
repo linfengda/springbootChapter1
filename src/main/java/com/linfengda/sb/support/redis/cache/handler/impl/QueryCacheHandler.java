@@ -1,5 +1,6 @@
 package com.linfengda.sb.support.redis.cache.handler.impl;
 
+import com.linfengda.sb.support.redis.Constant;
 import com.linfengda.sb.support.redis.cache.entity.dto.CacheParamDTO;
 import com.linfengda.sb.support.redis.cache.entity.dto.CacheTargetDTO;
 import com.linfengda.sb.support.redis.cache.entity.type.CacheAnnotationType;
@@ -36,18 +37,29 @@ public class QueryCacheHandler extends AbstractCacheHandler {
             return getMethodResult(cacheTargetDTO);
         }
         try {
-            if (redisDistributedLock.lock(param.getLockKey())) {
-                value = resolver.getCache(param);
-                if (null != value) {
-                    return value;
+            if (!redisDistributedLock.tryLock(param.getLockKey())) {
+                // 出现并行加载的情况，尝试自旋读取缓存，超出最大自旋时间仍然从DB加载
+                long startTime = System.currentTimeMillis();
+                while (true) {
+                    try {
+                        if (Constant.MAX_LOAD_CACHE_SPIN_TIME < System.currentTimeMillis() - startTime) {
+                            break;
+                        }
+                        Thread.sleep(30);
+                        value = resolver.getCache(param);
+                        if (null != value) {
+                            return value;
+                        }
+                    } catch (InterruptedException e) {
+                        log.error("等待缓存加载自旋失败！", e);
+                    }
                 }
-                return getMethodResult(cacheTargetDTO);
             }
-            log.warn("缓存查询超时，将会直接查询DB。");
+            log.debug("缓存查询不到，尝试从DB查询，线程：{}", Thread.currentThread().getId());
+            return getMethodResult(cacheTargetDTO);
         }finally {
             redisDistributedLock.unLock(param.getLockKey());
         }
-        return getMethodResult(cacheTargetDTO);
     }
 
     /**

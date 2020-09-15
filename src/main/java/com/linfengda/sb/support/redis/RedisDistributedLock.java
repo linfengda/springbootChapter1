@@ -77,7 +77,7 @@ public class RedisDistributedLock {
                 if (DEFAULT_LOCK_WAIT_TIME < System.currentTimeMillis() - startTime) {
                     return false;
                 }
-                Thread.sleep(50);
+                Thread.sleep(30);
             } catch (InterruptedException e) {
                 log.error("获取redis阻塞锁失败！", e);
                 return false;
