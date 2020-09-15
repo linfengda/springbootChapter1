@@ -33,6 +33,9 @@ public class QueryCacheHandler extends AbstractCacheHandler {
         if (null != value) {
             return value;
         }
+        if (resolver.hasKey(param)) {
+            return null;
+        }
         if (!param.getStrategies().contains(CacheExtraStrategy.PRV_CACHE_HOT_KEY_MULTI_LOAD)) {
             return getMethodResult(cacheTargetDTO);
         }
@@ -49,6 +52,9 @@ public class QueryCacheHandler extends AbstractCacheHandler {
                         value = resolver.getCache(param);
                         if (null != value) {
                             return value;
+                        }
+                        if (resolver.hasKey(param)) {
+                            return null;
                         }
                     } catch (InterruptedException e) {
                         log.error("等待缓存加载自旋失败！", e);

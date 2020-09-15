@@ -41,9 +41,6 @@ public abstract class AbstractCacheDataTypeResolver implements CacheDataTypeReso
 
     @Override
     public void setCache(CacheParamDTO param, Object value) {
-        if (null == value) {
-            return;
-        }
         CacheSizeStrategy cacheSizeStrategy = checkCacheSize(param);
         if (CacheSizeStrategy.OVER_SIZE == cacheSizeStrategy) {
             log.debug("当前缓存大小超过限制：{}，将不再缓存数据！", param.getMaxSize());
