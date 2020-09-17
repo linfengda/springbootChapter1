@@ -14,28 +14,28 @@ public enum DataType {
     /**
      * object
      */
-    OBJECT("object", "对象"),
+    OBJECT("java.lang.object", "对象"),
     /**
      * hash
      */
-    HASH("hash", "哈希"),
+    HASH("java.lang.object", "哈希"),
     /**
      * list
      */
-    LIST("list", "列表"),
+    LIST("java.util.Lis", "列表"),
     /**
      * set
      */
-    SET("set", "集合"),
+    SET("java.util.Set", "集合"),
     ;
 
 
     /**
-     * redis类型编码
+     * java类型
      */
-    private String code;
+    private String javaType;
     /**
-     * redis类型名称
+     * redis类型
      */
-    private String desc;
+    private String redisType;
 }

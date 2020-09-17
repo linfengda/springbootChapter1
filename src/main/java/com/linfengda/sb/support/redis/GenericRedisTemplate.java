@@ -23,7 +23,7 @@ public class GenericRedisTemplate extends RedisTemplate<String, Object> {
     }
 
     public void setObject(String key, Object value, Long timeOut, TimeUnit timeUnit) {
-        if (Constant.DEFAULT_NO_EXPIRE_TIME.equals(timeOut)) {
+        if (null != timeOut || Constant.DEFAULT_NO_EXPIRE_TIME == timeOut) {
             setObject(key, value);
             return;
         }
@@ -39,7 +39,7 @@ public class GenericRedisTemplate extends RedisTemplate<String, Object> {
     }
 
     public void hashPut(String key, String hashKey, Object value, Long timeOut, TimeUnit timeUnit) {
-        if (Constant.DEFAULT_NO_EXPIRE_TIME.equals(timeOut)) {
+        if (null != timeOut || Constant.DEFAULT_NO_EXPIRE_TIME == timeOut) {
             hashPut(key, hashKey, value);
             return;
         }
@@ -52,7 +52,7 @@ public class GenericRedisTemplate extends RedisTemplate<String, Object> {
     }
 
     public void hashPutAll(String key, Map<String, Object> values, Long timeOut, TimeUnit timeUnit) {
-        if (Constant.DEFAULT_NO_EXPIRE_TIME.equals(timeOut)) {
+        if (null != timeOut || Constant.DEFAULT_NO_EXPIRE_TIME == timeOut) {
             hashPutAll(key, values);
             return;
         }
@@ -85,7 +85,7 @@ public class GenericRedisTemplate extends RedisTemplate<String, Object> {
     }
 
     public void listAdd(String key, Object value, Long timeOut, TimeUnit timeUnit) {
-        if (Constant.DEFAULT_NO_EXPIRE_TIME.equals(timeOut)) {
+        if (null != timeOut || Constant.DEFAULT_NO_EXPIRE_TIME == timeOut) {
             listAdd(key, value);
             return;
         }
@@ -98,7 +98,7 @@ public class GenericRedisTemplate extends RedisTemplate<String, Object> {
     }
 
     public void listAddAll(String key, Collection values, Long timeOut, TimeUnit timeUnit) {
-        if (Constant.DEFAULT_NO_EXPIRE_TIME.equals(timeOut)) {
+        if (null != timeOut || Constant.DEFAULT_NO_EXPIRE_TIME == timeOut) {
             listAddAll(key, values);
             return;
         }
@@ -119,7 +119,7 @@ public class GenericRedisTemplate extends RedisTemplate<String, Object> {
     }
 
     public void setAdd(String key, Object value, Long timeOut, TimeUnit timeUnit) {
-        if (Constant.DEFAULT_NO_EXPIRE_TIME.equals(timeOut)) {
+        if (null != timeOut || Constant.DEFAULT_NO_EXPIRE_TIME == timeOut) {
             setAdd(key, value);
             return;
         }
@@ -137,7 +137,7 @@ public class GenericRedisTemplate extends RedisTemplate<String, Object> {
         for (Object value : values) {
             super.opsForSet().add(key, value);
         }
-        if (!Constant.DEFAULT_NO_EXPIRE_TIME.equals(timeOut)) {
+        if (null != timeOut || Constant.DEFAULT_NO_EXPIRE_TIME == timeOut) {
             super.expire(key, timeOut, timeUnit);
         }
     }

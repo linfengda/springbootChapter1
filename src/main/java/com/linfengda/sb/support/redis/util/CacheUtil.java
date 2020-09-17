@@ -18,11 +18,8 @@ public class CacheUtil {
      * @return                 叠加后的过期时间
      */
     public static long getRandomTime(Long timeOutMillis) {
-        if (null == timeOutMillis) {
+        if (null == timeOutMillis || Constant.DEFAULT_NO_EXPIRE_TIME == timeOutMillis) {
             return Constant.DEFAULT_NO_EXPIRE_TIME;
-        }
-        if (Constant.DEFAULT_NO_EXPIRE_TIME.equals(timeOutMillis)) {
-            return timeOutMillis;
         }
         Random random = new Random();
         int randomTime = random.nextInt((int) Constant.DEFAULT_PRV_CACHE_SNOW_SLIDE_RANDOM_TIME);

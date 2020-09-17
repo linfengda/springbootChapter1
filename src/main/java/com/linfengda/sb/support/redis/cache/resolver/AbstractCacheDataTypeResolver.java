@@ -91,7 +91,7 @@ public abstract class AbstractCacheDataTypeResolver implements CacheDataTypeReso
      */
     protected CacheSizeStrategy getCacheSizeStrategy(CacheParamDTO param) {
         Long maxSize = param.getQueryMeta().getMaxSize();
-        if (Constant.DEFAULT_NO_SIZE_LIMIT.equals(maxSize)) {
+        if (Constant.DEFAULT_NO_SIZE_LIMIT == maxSize) {
             return CacheSizeStrategy.UN_LIMIT;
         }
         if (maxSize > getCurrentCacheSize(param)) {

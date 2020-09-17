@@ -84,9 +84,10 @@ public class CacheMethodMetaBuilder {
     public static CacheMethodMeta getCacheMethodMeta(Method method) {
         checkCacheAnnotation(method);
         CacheMethodMeta cacheMethodMeta = CACHE_METHOD_CACHE.get(method);
-        if (null == cacheMethodMeta) {
-            cacheMethodMeta = loadCacheAnnotation(method);
+        if (null != cacheMethodMeta) {
+            return cacheMethodMeta;
         }
+        cacheMethodMeta = loadCacheAnnotation(method);
         return cacheMethodMeta;
     }
 
@@ -130,7 +131,7 @@ public class CacheMethodMetaBuilder {
                 cacheQueryMeta.setSpinTime(queryCache.spinTime());
                 cacheQueryMeta.setMaxSpinCount(queryCache.maxSpinCount());
                 cacheMethodMeta.setQueryMeta(cacheQueryMeta);
-                return cacheMethodMeta;
+                break;
             }else if (CacheAnnotationType.UPDATE == type) {
                 UpdateCache updateCache = (UpdateCache) cacheAnnotation;
                 cacheMethodMeta.setDataType(updateCache.type());
@@ -140,7 +141,7 @@ public class CacheMethodMetaBuilder {
                 cacheUpdateMeta.setTimeUnit(updateCache.timeUnit());
                 cacheUpdateMeta.setPreCacheSnowSlide(updateCache.preCacheSnowSlide());
                 cacheMethodMeta.setUpdateMeta(cacheUpdateMeta);
-                return cacheMethodMeta;
+                break;
             }else if (CacheAnnotationType.UPDATE == type) {
                 DeleteCache deleteCache = (DeleteCache) cacheAnnotation;
                 cacheMethodMeta.setDataType(deleteCache.type());
@@ -148,11 +149,11 @@ public class CacheMethodMetaBuilder {
                 CacheDeleteMeta cacheDeleteMeta = new CacheDeleteMeta();
                 cacheDeleteMeta.setAllEntries(deleteCache.allEntries());
                 cacheMethodMeta.setDeleteMate(cacheDeleteMeta);
-                return cacheMethodMeta;
+                break;
             }
         }
         validateCacheMethod(cacheMethodMeta);
-        return null;
+        return cacheMethodMeta;
     }
 
     /**
@@ -160,16 +161,18 @@ public class CacheMethodMetaBuilder {
      * @param cacheMethodMeta
      */
     private static void validateCacheMethod(CacheMethodMeta cacheMethodMeta) {
-        if (!Constant.DEFAULT_NO_SIZE_LIMIT.equals(cacheMethodMeta.getQueryMeta().getMaxSize()) && 0 >= cacheMethodMeta.getQueryMeta().getMaxSize()) {
+        if (Constant.DEFAULT_NO_SIZE_LIMIT > cacheMethodMeta.getQueryMeta().getMaxSize()) {
             throw new BusinessException("非法的最大缓存数量："+ cacheMethodMeta.getQueryMeta().getMaxSize() +"！");
         }
-        if (cacheMethodMeta.getQueryMeta().getMaxSizeStrategy() == CacheMaxSizeStrategy.MAX_SIZE_STRATEGY_ABANDON || cacheMethodMeta.getQueryMeta().getMaxSizeStrategy() == CacheMaxSizeStrategy.MAX_SIZE_STRATEGY_LRU) {
-            if (Constant.DEFAULT_NO_SIZE_LIMIT.equals(cacheMethodMeta.getQueryMeta().getMaxSize())) {
-                throw new BusinessException("未限制最大缓存数量，无法启用淘汰策略！");
-            }
-            if (cacheMethodMeta.getQueryMeta().getMaxSizeStrategy() == CacheMaxSizeStrategy.MAX_SIZE_STRATEGY_LRU && Constant.DEFAULT_NO_EXPIRE_TIME.equals(cacheMethodMeta.getQueryMeta().getTimeOut())) {
-                throw new BusinessException("未限制缓存时间，无法启用LRU算法淘汰数据！");
-            }
+        if (null != cacheMethodMeta.getQueryMeta().getMaxSizeStrategy() && Constant.DEFAULT_NO_SIZE_LIMIT == cacheMethodMeta.getQueryMeta().getMaxSize()) {
+            throw new BusinessException("未设置缓存最大数量，无法启用淘汰策略！");
+        }
+        if (CacheMaxSizeStrategy.MAX_SIZE_STRATEGY_LRU == cacheMethodMeta.getQueryMeta().getMaxSizeStrategy() && Constant.DEFAULT_NO_EXPIRE_TIME == cacheMethodMeta.getQueryMeta().getTimeOut()) {
+            throw new BusinessException("未设置缓存过期时间，无法启用LRU缓存淘汰策略！");
+        }
+        String returnType = cacheMethodMeta.getMethod().getReturnType().getName();
+        if (!cacheMethodMeta.getDataType().getJavaType().equals(returnType)) {
+            throw new BusinessException("缓存数据类型与方法返回类型是否一致！，缓存数据类型：" + cacheMethodMeta.getDataType() + "，方法返回类型：" + returnType);
         }
     }
 

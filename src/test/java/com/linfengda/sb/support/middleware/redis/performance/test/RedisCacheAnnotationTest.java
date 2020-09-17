@@ -67,12 +67,12 @@ public class RedisCacheAnnotationTest {
     }
 
     /**
-     * 测试LRU缓存的查询，删除
+     * 测试LRU缓存
      * @throws Exception
      */
     @Test
     public void testLruCache() throws Exception {
-        for (int i = 1; i <= 11; i++) {
+        for (int i = 1; i <= 10; i++) {
             UserVO userVO = sysUserService.getUserInfo(i);
             log.info("{}", JSON.toJSONString(userVO));
         }

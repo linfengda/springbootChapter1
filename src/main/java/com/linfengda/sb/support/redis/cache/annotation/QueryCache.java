@@ -30,11 +30,19 @@ public @interface QueryCache {
     /**
      * 缓存失效时间
      */
-    long timeOut() default -1L;
+    long timeOut() default 0;
     /**
      * 缓存失效时间单位
      */
-    TimeUnit timeUnit() default TimeUnit.HOURS;
+    TimeUnit timeUnit() default TimeUnit.MILLISECONDS;
+    /**
+     * 最大缓存数量
+     */
+    long maxSize() default 0;
+    /**
+     * 缓存最大数量淘汰策略
+     */
+    CacheMaxSizeStrategy maxSizeStrategy() default CacheMaxSizeStrategy.MAX_SIZE_STRATEGY_ABANDON;
     /**
      * 等待缓存加载自旋时间（原则上不能超过查询数据库耗费的时间，不然取得的是反效果）
      * @return
@@ -55,12 +63,4 @@ public @interface QueryCache {
      * @return
      */
     boolean preCacheHotKeyMultiLoad() default false;
-    /**
-     * 最大缓存数量
-     */
-    long maxSize() default -1L;
-    /**
-     * 缓存最大数量淘汰策略
-     */
-    CacheMaxSizeStrategy maxSizeStrategy() default CacheMaxSizeStrategy.MAX_SIZE_STRATEGY_ABANDON;
 }
