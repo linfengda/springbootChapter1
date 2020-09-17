@@ -1,5 +1,6 @@
 package com.linfengda.sb.support.redis.cache.resolver;
 
+import com.linfengda.sb.support.redis.cache.entity.bo.CacheResultBO;
 import com.linfengda.sb.support.redis.cache.entity.dto.CacheParamDTO;
 import com.linfengda.sb.support.redis.cache.entity.type.DataType;
 
@@ -23,7 +24,7 @@ public interface CacheDataTypeResolver {
      * @param param 缓存参数
      * @return      缓存数据
      */
-    Object getCache(CacheParamDTO param);
+    CacheResultBO getCache(CacheParamDTO param);
 
     /**
      * 写入缓存
@@ -50,5 +51,5 @@ public interface CacheDataTypeResolver {
      * @param param 缓存参数
      * @return      true：存在，false：不存在
      */
-    Boolean hasKey(CacheParamDTO param);
+    boolean hasKey(CacheParamDTO param);
 }

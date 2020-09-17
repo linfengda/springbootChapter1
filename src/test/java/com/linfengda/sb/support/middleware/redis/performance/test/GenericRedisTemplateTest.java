@@ -240,10 +240,10 @@ public class GenericRedisTemplateTest {
      */
     @Test
     public void testZsetScan() {
-        genericRedisTemplate.opsForZSet().add(Constant.LRU_RECORD_PREFIX + Constant.COLON + "key1", "aaa", 1);
-        genericRedisTemplate.opsForZSet().add(Constant.LRU_RECORD_PREFIX + Constant.COLON + "key1", "bbb", 2);
-        genericRedisTemplate.opsForZSet().add(Constant.LRU_RECORD_PREFIX + Constant.COLON + "key2", "aaa", 1);
-        genericRedisTemplate.opsForZSet().add(Constant.LRU_RECORD_PREFIX + Constant.COLON + "key2", "bbb", 2);
+        genericRedisTemplate.opsForZSet().add(Constant.DEFAULT_LRU_RECORD_PREFIX + Constant.COLON + "key1", "aaa", 1);
+        genericRedisTemplate.opsForZSet().add(Constant.DEFAULT_LRU_RECORD_PREFIX + Constant.COLON + "key1", "bbb", 2);
+        genericRedisTemplate.opsForZSet().add(Constant.DEFAULT_LRU_RECORD_PREFIX + Constant.COLON + "key2", "aaa", 1);
+        genericRedisTemplate.opsForZSet().add(Constant.DEFAULT_LRU_RECORD_PREFIX + Constant.COLON + "key2", "bbb", 2);
 
         // 使用scan渐进删除
         LruExpireResultBO lruExpireResultBO = genericRedisTemplate.execute(new RedisCallback<LruExpireResultBO>() {
@@ -253,7 +253,7 @@ public class GenericRedisTemplateTest {
             @Override
             public LruExpireResultBO doInRedis(RedisConnection connection) throws DataAccessException {
 
-                Cursor<byte[]> cursor = connection.scan(new ScanOptions.ScanOptionsBuilder().match(Constant.LRU_RECORD_PREFIX + Constant.ASTERISK).count(10).build());
+                Cursor<byte[]> cursor = connection.scan(new ScanOptions.ScanOptionsBuilder().match(Constant.DEFAULT_LRU_RECORD_PREFIX + Constant.ASTERISK).count(10).build());
                 while(cursor.hasNext()) {
                     String lruKey = new String(cursor.next());
                     genericRedisTemplate.opsForZSet().removeRangeByScore(lruKey, 0, CacheUtil.getKeyLruScore());

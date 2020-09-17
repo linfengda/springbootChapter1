@@ -1,13 +1,11 @@
 package com.linfengda.sb.support.redis.cache.entity.dto;
 
-import com.linfengda.sb.support.redis.cache.entity.type.CacheExtraStrategy;
-import com.linfengda.sb.support.redis.cache.entity.type.CacheMaxSizeStrategy;
+import com.linfengda.sb.support.redis.cache.entity.meta.CacheDeleteMeta;
+import com.linfengda.sb.support.redis.cache.entity.meta.CacheQueryMeta;
+import com.linfengda.sb.support.redis.cache.entity.meta.CacheUpdateMeta;
 import com.linfengda.sb.support.redis.cache.entity.type.DataType;
 import com.linfengda.sb.support.redis.util.CacheUtil;
 import lombok.Data;
-
-import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 /**
  * 描述: 缓存查询参数DTO
@@ -17,6 +15,10 @@ import java.util.concurrent.TimeUnit;
  */
 @Data
 public class CacheParamDTO {
+    /**
+     * 返回数据类型
+     */
+    private Class<?> returnType;
     /**
      * 数据类型
      */
@@ -42,38 +44,26 @@ public class CacheParamDTO {
      */
     private String lockKey;
     /**
-     * 缓存失效时间
+     * 查询缓存参数
      */
-    private Long timeOut;
+    private CacheQueryMeta queryMeta;
     /**
-     * 缓存失效时间单位
+     * 更新缓存参数
      */
-    TimeUnit timeUnit;
+    private CacheUpdateMeta updateMeta;
     /**
-     * 缓存策略
+     * 删除缓存参数
      */
-    private List<CacheExtraStrategy> strategies;
-    /**
-     * 缓存最大数量淘汰策略
-     */
-    private CacheMaxSizeStrategy maxSizeStrategy;
-    /**
-     * 最大缓存数量
-     */
-    private Long maxSize;
-    /**
-     * 是否删除前缀的所有缓存
-     * @return
-     */
-    private Boolean allEntries;
+    private CacheDeleteMeta deleteMeta;
+
 
     /**
      * 获取毫秒格式过期时间
      * @return  毫秒格式过期时间
      */
     public long getTimeOutMillis() {
-        long timeOutMillis = getTimeUnit().toMillis(getTimeOut());
-        if (getStrategies().contains(CacheExtraStrategy.PRV_CACHE_SNOW_SLIDE)) {
+        long timeOutMillis = getQueryMeta().getTimeUnit().toMillis(getQueryMeta().getTimeOut());
+        if (getQueryMeta().getPreCacheSnowSlide()) {
             timeOutMillis = CacheUtil.getRandomTime(timeOutMillis);
         }
         return timeOutMillis;

@@ -14,7 +14,6 @@ import com.linfengda.sb.support.orm.entity.SetValue;
 import com.linfengda.sb.support.redis.cache.annotation.CacheKey;
 import com.linfengda.sb.support.redis.cache.annotation.QueryCache;
 import com.linfengda.sb.support.redis.cache.annotation.UpdateCache;
-import com.linfengda.sb.support.redis.cache.entity.type.CacheExtraStrategy;
 import com.linfengda.sb.support.redis.cache.entity.type.CacheMaxSizeStrategy;
 import com.linfengda.sb.support.redis.cache.entity.type.DataType;
 import lombok.extern.slf4j.Slf4j;
@@ -23,6 +22,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -45,9 +45,16 @@ public class SysUserServiceImpl extends BaseService implements SysUserService {
         return page;
     }
 
-    @QueryCache(type = DataType.HASH, prefix = "sys:user", timeOut = 30, timeUnit = TimeUnit.MINUTES, strategies = {CacheExtraStrategy.PRV_CACHE_SNOW_SLIDE, CacheExtraStrategy.PRV_CACHE_HOT_KEY_MULTI_LOAD}, maxSize = 5, maxSizeStrategy = CacheMaxSizeStrategy.MAX_SIZE_STRATEGY_LRU)
+    @QueryCache(type = DataType.LIST, prefix = "sys:tUser", timeOut = 30, timeUnit = TimeUnit.MINUTES, preCacheSnowSlide = true, preCacheHotKeyMultiLoad = true, maxSize = 5, maxSizeStrategy = CacheMaxSizeStrategy.MAX_SIZE_STRATEGY_LRU)
     @Override
-    public UserVO getUserInfo(@CacheKey Integer userId) throws Exception {
+    public List<UserVO> getTeamUserList(@CacheKey Integer teamId) throws Exception {
+
+        return null;
+    }
+
+    @QueryCache(type = DataType.HASH, prefix = "sys:user", timeOut = 30, timeUnit = TimeUnit.MINUTES, preCacheSnowSlide = true, preCacheHotKeyMultiLoad = true, maxSize = 5, maxSizeStrategy = CacheMaxSizeStrategy.MAX_SIZE_STRATEGY_LRU)
+    @Override
+    public UserVO getUserInfo(Integer userId) throws Exception {
         SysUserPO sysUserPO = findByPrimaryKey(userId, SysUserPO.class);
         if (null == sysUserPO) {
             return null;
@@ -60,7 +67,7 @@ public class SysUserServiceImpl extends BaseService implements SysUserService {
         return userVO;
     }
 
-    @UpdateCache(type = DataType.HASH, prefix = "sys:user", timeOut = 30, timeUnit = TimeUnit.MINUTES, strategies = {CacheExtraStrategy.PRV_CACHE_SNOW_SLIDE, CacheExtraStrategy.PRV_CACHE_HOT_KEY_MULTI_LOAD})
+    @UpdateCache(type = DataType.HASH, prefix = "sys:user", timeOut = 30, timeUnit = TimeUnit.MINUTES, preCacheSnowSlide = true)
     @Transactional(rollbackFor=Exception.class, propagation = Propagation.REQUIRED)
     @Override
     public void updateUserInfo(@CacheKey Integer userId, UserUpdateDTO userUpdateDTO) throws Exception {

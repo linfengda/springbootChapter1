@@ -25,7 +25,7 @@ public class CacheUtil {
             return timeOutMillis;
         }
         Random random = new Random();
-        Integer randomTime = random.nextInt(Constant.DEFAULT_NO_CACHE_SNOW_SLIDE_RANDOM_MS);
+        int randomTime = random.nextInt((int) Constant.DEFAULT_PRV_CACHE_SNOW_SLIDE_RANDOM_TIME);
         return timeOutMillis + randomTime;
     }
 

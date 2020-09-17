@@ -1,6 +1,5 @@
 package com.linfengda.sb.support.redis.cache.annotation;
 
-import com.linfengda.sb.support.redis.cache.entity.type.CacheExtraStrategy;
 import com.linfengda.sb.support.redis.cache.entity.type.DataType;
 
 import java.lang.annotation.ElementType;
@@ -10,7 +9,7 @@ import java.lang.annotation.Target;
 import java.util.concurrent.TimeUnit;
 
 /**
- * 描述: 更新缓存注解，如果缓存中没有，不去更新，缓存中有才更新
+ * 描述: 更新缓存注解：如果缓存中没有，不去更新，缓存中有才更新
  *
  * @author linfengda
  * @create 2020-03-24 15:08
@@ -36,7 +35,8 @@ public @interface UpdateCache {
      */
     TimeUnit timeUnit() default TimeUnit.HOURS;
     /**
-     * 缓存策略
+     * 是否防止缓存雪崩：通过叠加随机时间防止缓存雪崩
+     * @return
      */
-    CacheExtraStrategy[] strategies() default {};
+    boolean preCacheSnowSlide() default false;
 }

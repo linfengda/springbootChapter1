@@ -1,6 +1,7 @@
 package com.linfengda.sb.support.redis.cache.resolver.impl;
 
 import com.linfengda.sb.support.redis.Constant;
+import com.linfengda.sb.support.redis.cache.entity.bo.CacheResultBO;
 import com.linfengda.sb.support.redis.cache.entity.dto.CacheParamDTO;
 import com.linfengda.sb.support.redis.cache.entity.type.DataType;
 import com.linfengda.sb.support.redis.cache.resolver.AbstractCacheDataTypeResolver;
@@ -26,10 +27,17 @@ public class SetCacheDataTypeResolver extends AbstractCacheDataTypeResolver {
     }
 
     @Override
-    public Object doGetCache(CacheParamDTO param) {
-        // 获取redis集合，如：mySet:{id}
+    public CacheResultBO doGetCache(CacheParamDTO param) {
         Object value = genericRedisTemplate.listGetAll(param.getKey());
-        return value;
+        CacheResultBO cacheResultBO = new CacheResultBO();
+        Set set = (Set) value;
+        if (CollectionUtils.isEmpty(set)) {
+            cacheResultBO.setHasKey(hasKey(param));
+        }else {
+            cacheResultBO.setHasKey(true);
+        }
+        cacheResultBO.setTarget(value);
+        return cacheResultBO;
     }
 
     @Override
@@ -47,8 +55,7 @@ public class SetCacheDataTypeResolver extends AbstractCacheDataTypeResolver {
 
     @Override
     public void delCache(CacheParamDTO param) {
-        Boolean allEntries = param.getAllEntries();
-        if (Boolean.TRUE.equals(allEntries)) {
+        if (param.getDeleteMeta().getAllEntries()) {
             delAllEntries(param);
             return;
         }
@@ -56,8 +63,8 @@ public class SetCacheDataTypeResolver extends AbstractCacheDataTypeResolver {
     }
 
     @Override
-    public Boolean hasKey(CacheParamDTO param) {
-        return null;
+    public boolean hasKey(CacheParamDTO param) {
+        return genericRedisTemplate.hasKey(param.getKey());
     }
 
     @Override

@@ -4,7 +4,6 @@ import com.linfengda.sb.support.redis.Constant;
 import com.linfengda.sb.support.redis.GenericRedisTemplate;
 import com.linfengda.sb.support.redis.cache.entity.bo.LruExpireResultBO;
 import com.linfengda.sb.support.redis.util.CacheUtil;
-import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.redis.connection.RedisConnection;
@@ -37,7 +36,7 @@ public enum RedisCacheBgManager {
 
                         @Override
                         public LruExpireResultBO doInRedis(RedisConnection connection) throws DataAccessException {
-                            Cursor<byte[]> cursor = connection.scan(new ScanOptions.ScanOptionsBuilder().match(Constant.LRU_RECORD_PREFIX + Constant.ASTERISK).count(Constant.DEFAULT_BG_REMOVE_LRU_BATCH_NUM).build());
+                            Cursor<byte[]> cursor = connection.scan(new ScanOptions.ScanOptionsBuilder().match(Constant.DEFAULT_LRU_RECORD_PREFIX + Constant.ASTERISK).count(Constant.DEFAULT_LRU_CACHE_BG_REMOVE_BATCH_NUM).build());
                             while(cursor.hasNext()) {
                                 String lruKey = new String(cursor.next());
                                 genericRedisTemplate.opsForZSet().removeRangeByScore(lruKey, 0, CacheUtil.getKeyLruScore());

@@ -3,8 +3,9 @@ package com.linfengda.sb.support.redis.cache.builder;
 
 import com.linfengda.sb.support.redis.Constant;
 import com.linfengda.sb.support.redis.cache.entity.dto.CacheParamDTO;
-import com.linfengda.sb.support.redis.cache.entity.meta.CacheMethodMeta;
 import com.linfengda.sb.support.redis.cache.entity.dto.HashKey;
+import com.linfengda.sb.support.redis.cache.entity.meta.CacheKeyMeta;
+import com.linfengda.sb.support.redis.cache.entity.meta.CacheMethodMeta;
 import com.linfengda.sb.support.redis.cache.entity.type.DataType;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
@@ -32,22 +33,20 @@ public enum CacheParamBuilder {
     public CacheParamDTO initCacheParam(CacheMethodMeta cacheMethodMeta, Object[] arguments) {
         // 初始化缓存前缀，过期策略
         CacheParamDTO cacheParamDTO = new CacheParamDTO();
+        cacheParamDTO.setReturnType(cacheMethodMeta.getMethod().getReturnType());
         cacheParamDTO.setDataType(cacheMethodMeta.getDataType());
         cacheParamDTO.setPrefix(StringUtils.isEmpty(cacheMethodMeta.getPrefix()) ? cacheMethodMeta.getMethodName() : cacheMethodMeta.getPrefix());
-        cacheParamDTO.setTimeOut(cacheMethodMeta.getTimeOut());
-        cacheParamDTO.setTimeUnit(cacheMethodMeta.getTimeUnit());
-        cacheParamDTO.setStrategies(cacheMethodMeta.getStrategies());
-        cacheParamDTO.setMaxSizeStrategy(cacheMethodMeta.getMaxSizeStrategy());
-        cacheParamDTO.setMaxSize(cacheMethodMeta.getMaxSize());
-        cacheParamDTO.setAllEntries(cacheMethodMeta.getAllEntries());
+        cacheParamDTO.setQueryMeta(cacheMethodMeta.getQueryMeta());
+        cacheParamDTO.setUpdateMeta(cacheMethodMeta.getUpdateMeta());
+        cacheParamDTO.setDeleteMeta(cacheMethodMeta.getDeleteMate());
         // 初始化缓存key
-        List<String> keys = parseKeys(cacheMethodMeta.getKeyMetas(), arguments);
+        List<String> keys = parseKeys(cacheMethodMeta.getMethodCacheKeys(), arguments);
         cacheParamDTO.setKey(buildKey(cacheParamDTO.getPrefix(), keys));
         if (DataType.HASH == cacheMethodMeta.getDataType()) {
             cacheParamDTO.setHashKey(buildHashKey(cacheParamDTO.getPrefix(), keys));
         }
-        cacheParamDTO.setLruKey(Constant.LRU_RECORD_PREFIX + Constant.COLON + cacheParamDTO.getPrefix());
-        cacheParamDTO.setLockKey(Constant.LOCK_PREFIX + Constant.COLON + cacheParamDTO.getKey());
+        cacheParamDTO.setLruKey(Constant.DEFAULT_LRU_RECORD_PREFIX + Constant.COLON + cacheParamDTO.getPrefix());
+        cacheParamDTO.setLockKey(Constant.DEFAULT_LOCK_PREFIX + Constant.COLON + cacheParamDTO.getKey());
         return cacheParamDTO;
     }
 
@@ -57,7 +56,7 @@ public enum CacheParamBuilder {
      * @param arguments 缓存方法参数列表
      * @return          缓存key列表
      */
-    private List<String> parseKeys(List<CacheMethodMeta.CacheKeyMeta> keyMetas, Object[] arguments) {
+    private List<String> parseKeys(List<CacheKeyMeta> keyMetas, Object[] arguments) {
         List<String> keys = new ArrayList<>();
         if (CollectionUtils.isEmpty(keyMetas)) {
             return keys;
@@ -65,7 +64,7 @@ public enum CacheParamBuilder {
         if (null == arguments || 0 == arguments.length) {
             return keys;
         }
-        for (CacheMethodMeta.CacheKeyMeta keyMeta : keyMetas) {
+        for (CacheKeyMeta keyMeta : keyMetas) {
             Object argument = arguments[keyMeta.getIndex()];
             if (null == argument) {
                 keys.add(keyMeta.getNullKey());

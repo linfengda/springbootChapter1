@@ -1,11 +1,12 @@
 package com.linfengda.sb.chapter1.system.service;
 
 import com.github.pagehelper.Page;
-import com.linfengda.sb.chapter1.common.exception.BusinessException;
 import com.linfengda.sb.chapter1.system.entity.dto.UserPageQueryDTO;
 import com.linfengda.sb.chapter1.system.entity.dto.UserUpdateDTO;
 import com.linfengda.sb.chapter1.system.entity.vo.UserListVO;
 import com.linfengda.sb.chapter1.system.entity.vo.UserVO;
+
+import java.util.List;
 
 /**
  * 描述: 系统用户服务
@@ -22,6 +23,14 @@ public interface SysUserService {
      * @throws Exception
      */
     Page<UserListVO> pageUserList(UserPageQueryDTO userPageQueryDTO) throws Exception;
+
+    /**
+     * 查询团队下的所有用户
+     * @param teamId    团队id
+     * @return
+     * @throws Exception
+     */
+    List<UserVO> getTeamUserList(Integer teamId) throws Exception;
 
     /**
      * 查询用户信息

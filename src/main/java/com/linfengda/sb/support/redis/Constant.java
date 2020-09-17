@@ -17,11 +17,11 @@ public interface Constant {
     /**
      * LRU记录前缀
      */
-    String LRU_RECORD_PREFIX = "lru";
+    String DEFAULT_LRU_RECORD_PREFIX = "lru";
     /**
      * 分布式锁前缀
      */
-    String LOCK_PREFIX = "lk";
+    String DEFAULT_LOCK_PREFIX = "lk";
     /**
      * 默认不设置缓存过期时间
      */
@@ -35,23 +35,23 @@ public interface Constant {
      */
     long DEFAULT_LRU_CACHE_BG_REMOVE_INTERNAL = 10*60*1000L;
     /**
-     * 默认后台批量处理LRU缓存数量
+     * 默认lru缓存后台自动清除批量：10个
      */
-    Integer DEFAULT_BG_REMOVE_LRU_BATCH_NUM = 10;
+    int DEFAULT_LRU_CACHE_BG_REMOVE_BATCH_NUM = 10;
     /**
-     * 默认LRU一次性淘汰数量：100
+     * 默认渐进式删除缓存批量：100
      */
-    Integer DEFAULT_LRU_REMOVE_NUM = 100;
+    int DEFAULT_DELETE_CACHE_BATCH_NUM = 100;
     /**
-     * 默认删除缓存批量数量：1000
+     * 默认防止缓存雪崩随机时间范围：60min
      */
-    Integer DEFAULT_DELETE_CACHE_LIMIT = 1000;
+    long DEFAULT_PRV_CACHE_SNOW_SLIDE_RANDOM_TIME = 60*60*1000;
     /**
-     * 默认防止缓存雪崩随机时间范围：60s
+     * 默认等待缓存加载自旋时间
      */
-    Integer DEFAULT_NO_CACHE_SNOW_SLIDE_RANDOM_MS = 60*1000;
+    long DEFAULT_LOAD_CACHE_SPIN_TIME = 50L;
     /**
-     * 等待缓存加载最大自旋时间
+     * 默认等待缓存加载自旋次数
      */
-    long MAX_LOAD_CACHE_SPIN_TIME = 30 * 1000L;
+    int DEFAULT_LOAD_CACHE_SPIN_COUNT = 3;
 }

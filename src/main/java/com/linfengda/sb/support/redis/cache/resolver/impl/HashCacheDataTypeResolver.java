@@ -1,7 +1,8 @@
 package com.linfengda.sb.support.redis.cache.resolver.impl;
 
-import com.linfengda.sb.support.redis.cache.entity.dto.HashKey;
+import com.linfengda.sb.support.redis.cache.entity.bo.CacheResultBO;
 import com.linfengda.sb.support.redis.cache.entity.dto.CacheParamDTO;
+import com.linfengda.sb.support.redis.cache.entity.dto.HashKey;
 import com.linfengda.sb.support.redis.cache.entity.type.DataType;
 import com.linfengda.sb.support.redis.cache.resolver.AbstractCacheDataTypeResolver;
 import lombok.extern.slf4j.Slf4j;
@@ -25,10 +26,15 @@ public class HashCacheDataTypeResolver extends AbstractCacheDataTypeResolver {
     }
 
     @Override
-    public Object doGetCache(CacheParamDTO param) {
+    public CacheResultBO doGetCache(CacheParamDTO param) {
         HashKey hashKey = param.getHashKey();
         Object value = genericRedisTemplate.hashGet(hashKey.getKey(), hashKey.getHashKey());
-        return value;
+        CacheResultBO cacheResultBO = new CacheResultBO();
+        if (null == value) {
+            cacheResultBO.setHasKey(hasKey(param));
+        }
+        cacheResultBO.setTarget(value);
+        return cacheResultBO;
     }
 
     @Override
@@ -40,7 +46,7 @@ public class HashCacheDataTypeResolver extends AbstractCacheDataTypeResolver {
     @Override
     public void delCache(CacheParamDTO param) {
         HashKey hashKey = param.getHashKey();
-        Boolean allEntries = param.getAllEntries();
+        Boolean allEntries = param.getDeleteMeta().getAllEntries();
         if (Boolean.FALSE.equals(allEntries)) {
             genericRedisTemplate.hashDel(hashKey.getKey(), hashKey.getHashKey());
             return;
@@ -49,7 +55,7 @@ public class HashCacheDataTypeResolver extends AbstractCacheDataTypeResolver {
     }
 
     @Override
-    public Boolean hasKey(CacheParamDTO param) {
+    public boolean hasKey(CacheParamDTO param) {
         HashKey hashKey = param.getHashKey();
         return genericRedisTemplate.hasHashKey(hashKey.getKey(), hashKey.getHashKey());
     }
