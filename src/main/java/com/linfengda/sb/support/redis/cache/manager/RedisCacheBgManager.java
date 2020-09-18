@@ -3,7 +3,6 @@ package com.linfengda.sb.support.redis.cache.manager;
 import com.linfengda.sb.support.redis.Constant;
 import com.linfengda.sb.support.redis.GenericRedisTemplate;
 import com.linfengda.sb.support.redis.cache.entity.bo.LruExpireResultBO;
-import com.linfengda.sb.support.redis.util.CacheUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.redis.connection.RedisConnection;
@@ -12,7 +11,7 @@ import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.ScanOptions;
 
 /**
- * 描述: lru缓存key后台自动清理
+ * 描述: redis会自动清理过期的lru类型缓存，但并不会清理lru keys，因此需要本地后台线程清理。
  *
  * @author: linfengda
  * @date: 2020-07-21 14:57
@@ -39,7 +38,8 @@ public enum RedisCacheBgManager {
                             Cursor<byte[]> cursor = connection.scan(new ScanOptions.ScanOptionsBuilder().match(Constant.DEFAULT_LRU_RECORD_PREFIX + Constant.ASTERISK).count(Constant.DEFAULT_LRU_CACHE_BG_REMOVE_BATCH_NUM).build());
                             while(cursor.hasNext()) {
                                 String lruKey = new String(cursor.next());
-                                genericRedisTemplate.opsForZSet().removeRangeByScore(lruKey, 0, CacheUtil.getKeyLruScore());
+                                // 淘汰过期key的lru缓存标识
+                                genericRedisTemplate.opsForZSet().removeRangeByScore(lruKey, 0, (double) System.currentTimeMillis());
                                 lruExpireResultBO.addLruKeyNum();
                                 log.info("批量清理LRU缓存记录，position={}，lruKey={}", cursor.getPosition(), lruKey);
                             }

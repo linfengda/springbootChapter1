@@ -24,4 +24,9 @@ public class CacheUpdateMeta {
      * @return
      */
     private Boolean preCacheSnowSlide;
+    /**
+     * 防止缓存雪崩随机时间范围
+     * @return
+     */
+    private Long preCacheSnowSlideTime;
 }

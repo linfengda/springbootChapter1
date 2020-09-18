@@ -10,6 +10,7 @@ import com.linfengda.sb.chapter1.system.entity.vo.UserListVO;
 import com.linfengda.sb.chapter1.system.entity.vo.UserVO;
 import com.linfengda.sb.chapter1.system.service.SysUserService;
 import com.linfengda.sb.support.orm.BaseService;
+import com.linfengda.sb.support.orm.entity.ConditionParam;
 import com.linfengda.sb.support.orm.entity.SetValue;
 import com.linfengda.sb.support.redis.cache.annotation.CacheKey;
 import com.linfengda.sb.support.redis.cache.annotation.QueryCache;
@@ -20,8 +21,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.CollectionUtils;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -45,16 +48,30 @@ public class SysUserServiceImpl extends BaseService implements SysUserService {
         return page;
     }
 
-    @QueryCache(type = DataType.LIST, prefix = "sys:tUser", timeOut = 30, timeUnit = TimeUnit.MINUTES, preCacheSnowSlide = true, preCacheHotKeyMultiLoad = true, maxSize = 5, maxSizeStrategy = CacheMaxSizeStrategy.MAX_SIZE_STRATEGY_LRU)
+    @QueryCache(type = DataType.LIST, prefix = "sys:tUser", timeOut = 30, timeUnit = TimeUnit.SECONDS, preCacheSnowSlide = true, preCacheSnowSlideTime = 1000, preCacheHotKeyMultiLoad = true)
     @Override
     public List<UserVO> getTeamUserList(@CacheKey Integer teamId) throws Exception {
-
-        return null;
+        ConditionParam conditionParam = new ConditionParam();
+        conditionParam.add("teamId", teamId);
+        List<SysUserPO> sysUserPOList = findAll(conditionParam, SysUserPO.class);
+        if (CollectionUtils.isEmpty(sysUserPOList)) {
+            return null;
+        }
+        List<UserVO> userVOList = new ArrayList<>();
+        for (SysUserPO sysUserPO : sysUserPOList) {
+            UserVO userVO = new UserVO();
+            userVO.setUserId(sysUserPO.getId());
+            userVO.setUserName(sysUserPO.getUserName());
+            userVO.setPhone(sysUserPO.getPhone());
+            userVO.setStatus(sysUserPO.getStatus());
+            userVOList.add(userVO);
+        }
+        return userVOList;
     }
 
-    @QueryCache(type = DataType.HASH, prefix = "sys:user", timeOut = 30, timeUnit = TimeUnit.MINUTES, preCacheSnowSlide = true, preCacheHotKeyMultiLoad = true, maxSize = 5, maxSizeStrategy = CacheMaxSizeStrategy.MAX_SIZE_STRATEGY_LRU)
+    @QueryCache(type = DataType.HASH, prefix = "sys:user", timeOut = 30, timeUnit = TimeUnit.SECONDS, preCacheSnowSlide = true, preCacheSnowSlideTime = 1000, preCacheHotKeyMultiLoad = true, maxSize = 5, maxSizeStrategy = CacheMaxSizeStrategy.MAX_SIZE_STRATEGY_LRU)
     @Override
-    public UserVO getUserInfo(Integer userId) throws Exception {
+    public UserVO getUserInfo(@CacheKey Integer userId) throws Exception {
         SysUserPO sysUserPO = findByPrimaryKey(userId, SysUserPO.class);
         if (null == sysUserPO) {
             return null;

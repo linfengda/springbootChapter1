@@ -1,6 +1,5 @@
 package com.linfengda.sb.support.redis.cache.annotation;
 
-import com.linfengda.sb.support.redis.Constant;
 import com.linfengda.sb.support.redis.cache.entity.type.CacheMaxSizeStrategy;
 import com.linfengda.sb.support.redis.cache.entity.type.DataType;
 
@@ -44,20 +43,30 @@ public @interface QueryCache {
      */
     CacheMaxSizeStrategy maxSizeStrategy() default CacheMaxSizeStrategy.MAX_SIZE_STRATEGY_ABANDON;
     /**
+     * 当lru缓存大小超出限制时，删除的key数量
+     * @return
+     */
+    int deleteLruBatchNum() default 1;
+    /**
      * 等待缓存加载自旋时间（原则上不能超过查询数据库耗费的时间，不然取得的是反效果）
      * @return
      */
-    long spinTime() default Constant.DEFAULT_LOAD_CACHE_SPIN_TIME;
+    long spinTime() default 50;
     /**
      * 等待缓存加载自旋次数
      * @return
      */
-    int maxSpinCount() default Constant.DEFAULT_LOAD_CACHE_SPIN_COUNT;
+    int maxSpinCount() default 3;
     /**
      * 是否防止缓存雪崩：通过叠加随机时间防止缓存雪崩
      * @return
      */
     boolean preCacheSnowSlide() default false;
+    /**
+     * 防止缓存雪崩随机时间范围
+     * @return
+     */
+    long preCacheSnowSlideTime() default 60*60*1000;
     /**
      * 防止缓存击穿，使用分布式锁限制单个线程加载缓存，来防止热点key失效后大量线程访问DB
      * @return

@@ -20,17 +20,20 @@ com.linfengda.sb.support.redis.cache.interceptor.QueryCacheInterceptor
 #### 三. 实现过程
 * 缓存逻辑入口
 com.linfengda.sb.support.redis.cache.interceptor.CacheMethodHandlerAdapter
-* 缓存方法解析
+* 缓存方法元数据解析
 com.linfengda.sb.support.redis.cache.builder.CacheMethodMetaBuilder
-* 缓存元数据解析
+* 缓存参数解析
 com.linfengda.sb.support.redis.cache.builder.CacheParamBuilder
 * 缓存处理
 com.linfengda.sb.support.redis.cache.handler.CacheHandler
 * 缓存数据类型处理
 com.linfengda.sb.support.redis.cache.resolver.CacheDataTypeResolver
 
-#### 四. 优化日志
-1. 缓存方法切面优先级：查询缓存>删除缓存>事务>更新缓存；
+#### 四. 版本日志
+##### 1.关于切面
+缓存方法切面优先级：查询缓存>删除缓存>事务>更新缓存；
+
+1. 
 2. 查询缓存切面优先于事务切面，以便缓存命中时不需要打开多余的事务。更新缓存切面优先级应该在事务切面之后，以保证数据一致性；
 3. 通过设置随机过期时间，防止缓存雪崩；
 4. 通过互斥锁限制只有一个线程更新缓存，防止缓存击穿；

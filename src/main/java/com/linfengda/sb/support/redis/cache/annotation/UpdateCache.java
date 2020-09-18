@@ -39,4 +39,9 @@ public @interface UpdateCache {
      * @return
      */
     boolean preCacheSnowSlide() default false;
+    /**
+     * 防止缓存雪崩随机时间范围
+     * @return
+     */
+    long preCacheSnowSlideTime() default 60*60*1000;
 }

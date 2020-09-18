@@ -4,8 +4,9 @@ import com.linfengda.sb.support.redis.cache.entity.meta.CacheDeleteMeta;
 import com.linfengda.sb.support.redis.cache.entity.meta.CacheQueryMeta;
 import com.linfengda.sb.support.redis.cache.entity.meta.CacheUpdateMeta;
 import com.linfengda.sb.support.redis.cache.entity.type.DataType;
-import com.linfengda.sb.support.redis.util.CacheUtil;
 import lombok.Data;
+
+import java.util.Random;
 
 /**
  * 描述: 缓存查询参数DTO
@@ -62,10 +63,22 @@ public class CacheParamDTO {
      * @return  毫秒格式过期时间
      */
     public long getTimeOutMillis() {
+        int boundTime = null != getQueryMeta() ? getQueryMeta().getPreCacheSnowSlideTime().intValue() : getUpdateMeta().getPreCacheSnowSlideTime().intValue();
         long timeOutMillis = getQueryMeta().getTimeUnit().toMillis(getQueryMeta().getTimeOut());
         if (getQueryMeta().getPreCacheSnowSlide()) {
-            timeOutMillis = CacheUtil.getRandomTime(timeOutMillis);
+            Random random = new Random();
+            int randomTime = random.nextInt(boundTime);
+            return timeOutMillis + randomTime;
         }
         return timeOutMillis;
+    }
+
+    /**
+     * lruKeyScore=now+expireTime，确保排名的同时保证可以被后台清除线程识别
+     * @return  lruKeyScore
+     */
+    public double getLruKeyScore() {
+        long timeOutMillis = getQueryMeta().getTimeUnit().toMillis(getQueryMeta().getTimeOut());
+        return (double) (System.currentTimeMillis() + timeOutMillis);
     }
 }

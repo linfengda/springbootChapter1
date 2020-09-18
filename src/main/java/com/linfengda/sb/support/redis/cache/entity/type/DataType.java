@@ -22,7 +22,7 @@ public enum DataType {
     /**
      * list
      */
-    LIST("java.util.Lis", "列表"),
+    LIST("java.util.List", "列表"),
     /**
      * set
      */

@@ -40,11 +40,11 @@ public interface CacheDataTypeResolver {
     void delCache(CacheParamDTO param);
 
     /**
-     * 获取当前缓存大小
+     * 查询当前是否有缓存空间
      * @param param 缓存参数
-     * @return      缓存大小
+     * @return      true：仍有缓存空间，false：没有缓存空间
      */
-    Long getCurrentCacheSize(CacheParamDTO param);
+    boolean hasSize(CacheParamDTO param);
 
     /**
      * 查询缓存中是否存在key

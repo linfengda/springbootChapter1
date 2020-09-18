@@ -8,12 +8,16 @@ package com.linfengda.sb.support.redis.cache.entity.type;
  */
 public enum CacheMaxSizeStrategy {
     /**
-     * 缓存最大数量淘汰策略：LRU
-     */
-    MAX_SIZE_STRATEGY_LRU,
-    /**
      * 缓存最大数量淘汰策略：抛弃
      */
     MAX_SIZE_STRATEGY_ABANDON,
+    /**
+     * 缓存最大数量淘汰策略：LRU
+     */
+    MAX_SIZE_STRATEGY_LRU,
     ;
+
+    public static boolean hasStrategy(CacheMaxSizeStrategy strategy) {
+        return MAX_SIZE_STRATEGY_ABANDON == strategy || MAX_SIZE_STRATEGY_LRU == strategy;
+    }
 }

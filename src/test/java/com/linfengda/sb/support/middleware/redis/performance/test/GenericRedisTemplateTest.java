@@ -4,7 +4,6 @@ import com.linfengda.sb.chapter1.Chapter1Application;
 import com.linfengda.sb.support.redis.Constant;
 import com.linfengda.sb.support.redis.cache.entity.bo.LruExpireResultBO;
 import com.linfengda.sb.support.redis.GenericRedisTemplate;
-import com.linfengda.sb.support.redis.util.CacheUtil;
 import com.linfengda.sb.support.middleware.redis.performance.entity.MySon;
 import com.linfengda.sb.support.middleware.redis.performance.entity.Pig;
 import lombok.extern.slf4j.Slf4j;
@@ -256,8 +255,8 @@ public class GenericRedisTemplateTest {
                 Cursor<byte[]> cursor = connection.scan(new ScanOptions.ScanOptionsBuilder().match(Constant.DEFAULT_LRU_RECORD_PREFIX + Constant.ASTERISK).count(10).build());
                 while(cursor.hasNext()) {
                     String lruKey = new String(cursor.next());
-                    genericRedisTemplate.opsForZSet().removeRangeByScore(lruKey, 0, CacheUtil.getKeyLruScore());
-                    log.info("批量清除LRU缓存记录，position={}，lruKey={}", cursor.getPosition(), lruKey);
+                    genericRedisTemplate.opsForZSet().removeRangeByScore(lruKey, 0, (double) System.currentTimeMillis());
+                    log.info("批量清理LRU缓存记录，position={}，lruKey={}", cursor.getPosition(), lruKey);
 
                     /*long offset = 0L;
                     while(true) {

@@ -42,16 +42,4 @@ public interface Constant {
      * 默认渐进式删除缓存批量：100
      */
     int DEFAULT_DELETE_CACHE_BATCH_NUM = 100;
-    /**
-     * 默认防止缓存雪崩随机时间范围：60min
-     */
-    long DEFAULT_PRV_CACHE_SNOW_SLIDE_RANDOM_TIME = 60*60*1000;
-    /**
-     * 默认等待缓存加载自旋时间
-     */
-    long DEFAULT_LOAD_CACHE_SPIN_TIME = 50;
-    /**
-     * 默认等待缓存加载自旋次数
-     */
-    int DEFAULT_LOAD_CACHE_SPIN_COUNT = 3;
 }

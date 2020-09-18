@@ -29,15 +29,15 @@ public class SetCacheDataTypeResolver extends AbstractCacheDataTypeResolver {
     @Override
     public CacheResultBO doGetCache(CacheParamDTO param) {
         Object value = genericRedisTemplate.listGetAll(param.getKey());
-        CacheResultBO cacheResultBO = new CacheResultBO();
+        CacheResultBO resultBO = new CacheResultBO();
         Set set = (Set) value;
         if (CollectionUtils.isEmpty(set)) {
-            cacheResultBO.setHasKey(hasKey(param));
+            resultBO.setHasKey(hasKey(param));
         }else {
-            cacheResultBO.setHasKey(true);
+            resultBO.setHasKey(true);
         }
-        cacheResultBO.setTarget(value);
-        return cacheResultBO;
+        resultBO.setTarget(value);
+        return resultBO;
     }
 
     @Override
@@ -68,13 +68,13 @@ public class SetCacheDataTypeResolver extends AbstractCacheDataTypeResolver {
     }
 
     @Override
-    public Long getCurrentCacheSize(CacheParamDTO param) {
+    public boolean hasSize(CacheParamDTO param) {
         // 获取指定类型redis集合数量，如：mySet:{*}大小
         String keyPattern = param.getPrefix() + Constant.ASTERISK;
         Set<String> set = genericRedisTemplate.keys(keyPattern);
         if (CollectionUtils.isEmpty(set)) {
-            return 0L;
+            return true;
         }
-        return (long) set.size();
+        return set.size() < param.getQueryMeta().getMaxSize();
     }
 }

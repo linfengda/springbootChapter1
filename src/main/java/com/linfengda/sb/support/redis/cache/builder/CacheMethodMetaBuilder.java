@@ -10,6 +10,7 @@ import com.linfengda.sb.support.redis.cache.annotation.UpdateCache;
 import com.linfengda.sb.support.redis.cache.entity.meta.*;
 import com.linfengda.sb.support.redis.cache.entity.type.CacheAnnotationType;
 import com.linfengda.sb.support.redis.cache.entity.type.CacheMaxSizeStrategy;
+import com.linfengda.sb.support.redis.cache.entity.type.DataType;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.util.CollectionUtils;
 
@@ -125,9 +126,11 @@ public class CacheMethodMetaBuilder {
                 cacheQueryMeta.setTimeOut(queryCache.timeOut());
                 cacheQueryMeta.setTimeUnit(queryCache.timeUnit());
                 cacheQueryMeta.setPreCacheSnowSlide(queryCache.preCacheSnowSlide());
+                cacheQueryMeta.setPreCacheSnowSlideTime(queryCache.preCacheSnowSlideTime());
                 cacheQueryMeta.setPreCacheHotKeyMultiLoad(queryCache.preCacheHotKeyMultiLoad());
-                cacheQueryMeta.setMaxSizeStrategy(queryCache.maxSizeStrategy());
                 cacheQueryMeta.setMaxSize(queryCache.maxSize());
+                cacheQueryMeta.setMaxSizeStrategy(queryCache.maxSizeStrategy());
+                cacheQueryMeta.setDeleteLruBatchNum(queryCache.deleteLruBatchNum());
                 cacheQueryMeta.setSpinTime(queryCache.spinTime());
                 cacheQueryMeta.setMaxSpinCount(queryCache.maxSpinCount());
                 cacheMethodMeta.setQueryMeta(cacheQueryMeta);
@@ -140,6 +143,7 @@ public class CacheMethodMetaBuilder {
                 cacheUpdateMeta.setTimeOut(updateCache.timeOut());
                 cacheUpdateMeta.setTimeUnit(updateCache.timeUnit());
                 cacheUpdateMeta.setPreCacheSnowSlide(updateCache.preCacheSnowSlide());
+                cacheUpdateMeta.setPreCacheSnowSlideTime(updateCache.preCacheSnowSlideTime());
                 cacheMethodMeta.setUpdateMeta(cacheUpdateMeta);
                 break;
             }else if (CacheAnnotationType.UPDATE == type) {
@@ -161,17 +165,21 @@ public class CacheMethodMetaBuilder {
      * @param cacheMethodMeta
      */
     private static void validateCacheMethod(CacheMethodMeta cacheMethodMeta) {
-        if (Constant.DEFAULT_NO_SIZE_LIMIT > cacheMethodMeta.getQueryMeta().getMaxSize()) {
-            throw new BusinessException("非法的最大缓存数量："+ cacheMethodMeta.getQueryMeta().getMaxSize() +"！");
+        if (Constant.DEFAULT_NO_EXPIRE_TIME > cacheMethodMeta.getQueryMeta().getTimeOut()) {
+            throw new BusinessException("非法的缓存过期时间："+ cacheMethodMeta.getQueryMeta().getTimeOut() +"！");
         }
-        if (null != cacheMethodMeta.getQueryMeta().getMaxSizeStrategy() && Constant.DEFAULT_NO_SIZE_LIMIT == cacheMethodMeta.getQueryMeta().getMaxSize()) {
-            throw new BusinessException("未设置缓存最大数量，无法启用淘汰策略！");
+        if (Constant.DEFAULT_NO_SIZE_LIMIT > cacheMethodMeta.getQueryMeta().getMaxSize()) {
+            throw new BusinessException("非法的缓存最大数量："+ cacheMethodMeta.getQueryMeta().getMaxSize() +"！");
+        }
+        if (cacheMethodMeta.getQueryMeta().getPreCacheSnowSlide() && Constant.DEFAULT_NO_EXPIRE_TIME == cacheMethodMeta.getQueryMeta().getTimeOut()) {
+            throw new BusinessException("未设置缓存过期时间，无需防止缓存雪崩！");
         }
         if (CacheMaxSizeStrategy.MAX_SIZE_STRATEGY_LRU == cacheMethodMeta.getQueryMeta().getMaxSizeStrategy() && Constant.DEFAULT_NO_EXPIRE_TIME == cacheMethodMeta.getQueryMeta().getTimeOut()) {
             throw new BusinessException("未设置缓存过期时间，无法启用LRU缓存淘汰策略！");
         }
         String returnType = cacheMethodMeta.getMethod().getReturnType().getName();
-        if (!cacheMethodMeta.getDataType().getJavaType().equals(returnType)) {
+        boolean illegalReturnType = (DataType.LIST == cacheMethodMeta.getDataType() || DataType.SET == cacheMethodMeta.getDataType()) && !cacheMethodMeta.getDataType().getJavaType().equals(returnType);
+        if (illegalReturnType) {
             throw new BusinessException("缓存数据类型与方法返回类型是否一致！，缓存数据类型：" + cacheMethodMeta.getDataType() + "，方法返回类型：" + returnType);
         }
     }

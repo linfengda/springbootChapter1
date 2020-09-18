@@ -29,12 +29,14 @@ public class HashCacheDataTypeResolver extends AbstractCacheDataTypeResolver {
     public CacheResultBO doGetCache(CacheParamDTO param) {
         HashKey hashKey = param.getHashKey();
         Object value = genericRedisTemplate.hashGet(hashKey.getKey(), hashKey.getHashKey());
-        CacheResultBO cacheResultBO = new CacheResultBO();
+        CacheResultBO resultBO = new CacheResultBO();
         if (null == value) {
-            cacheResultBO.setHasKey(hasKey(param));
+            resultBO.setHasKey(hasKey(param));
+        }else {
+            resultBO.setHasKey(true);
         }
-        cacheResultBO.setTarget(value);
-        return cacheResultBO;
+        resultBO.setTarget(value);
+        return resultBO;
     }
 
     @Override
@@ -55,17 +57,17 @@ public class HashCacheDataTypeResolver extends AbstractCacheDataTypeResolver {
     }
 
     @Override
-    public boolean hasKey(CacheParamDTO param) {
-        HashKey hashKey = param.getHashKey();
-        return genericRedisTemplate.hasHashKey(hashKey.getKey(), hashKey.getHashKey());
+    public boolean hasSize(CacheParamDTO param) {
+        Set<String> set = genericRedisTemplate.hashKeys(param.getHashKey().getKey());
+        if (CollectionUtils.isEmpty(set)) {
+            return true;
+        }
+        return set.size() < param.getQueryMeta().getMaxSize();
     }
 
     @Override
-    public Long getCurrentCacheSize(CacheParamDTO param) {
-        Set<String> set = genericRedisTemplate.hashKeys(param.getHashKey().getKey());
-        if (CollectionUtils.isEmpty(set)) {
-            return 0L;
-        }
-        return (long) set.size();
+    public boolean hasKey(CacheParamDTO param) {
+        HashKey hashKey = param.getHashKey();
+        return genericRedisTemplate.hasHashKey(hashKey.getKey(), hashKey.getHashKey());
     }
 }
