@@ -6,7 +6,10 @@ import com.linfengda.sb.support.redis.GenericRedisTemplate;
 import com.linfengda.sb.support.redis.cache.annotation.QueryCache;
 import com.linfengda.sb.support.redis.cache.entity.bo.CacheResultBO;
 import com.linfengda.sb.support.redis.cache.entity.dto.CacheParamDTO;
+import com.linfengda.sb.support.redis.cache.entity.dto.HashKey;
+import com.linfengda.sb.support.redis.cache.entity.meta.CacheDeleteMeta;
 import com.linfengda.sb.support.redis.cache.entity.type.CacheMaxSizeStrategy;
+import com.linfengda.sb.support.redis.cache.entity.type.DataType;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.Cursor;
@@ -83,7 +86,7 @@ public abstract class AbstractCacheDataTypeResolver implements CacheDataTypeReso
      * @param param 查询参数
      */
     private void deleteLRU(CacheParamDTO param) {
-        int num = param.getQueryMeta().getDeleteLruBatchNum();
+        int num = param.getQueryMeta().getDeleteLruBatchNum()-1;
         Long size = genericRedisTemplate.opsForZSet().size(param.getLruKey());
         if (null == size || 0 == size) {
             return;
@@ -96,7 +99,20 @@ public abstract class AbstractCacheDataTypeResolver implements CacheDataTypeReso
             if (null == delKey) {
                 continue;
             }
-            genericRedisTemplate.delete(String.valueOf(delKey));
+            CacheParamDTO delParam = new CacheParamDTO();
+            CacheDeleteMeta deleteMeta = new CacheDeleteMeta();
+            deleteMeta.setAllEntries(false);
+            delParam.setDeleteMeta(deleteMeta);
+            String key = String.valueOf(delKey);
+            if (DataType.HASH == param.getDataType()) {
+                HashKey hashKey = new HashKey();
+                hashKey.setKey(key.substring(0, key.lastIndexOf(Constant.COLON)));
+                hashKey.setHashKey(key.substring(key.lastIndexOf(Constant.COLON)+1));
+                delParam.setHashKey(hashKey);
+            }else {
+                delParam.setKey(key);
+            }
+            delCache(delParam);
         }
         log.debug("当前缓存：{}超过最大缓存限制：{}，采取LRU算法淘汰{}条数据，lurKey={}，delKeys={}", param.getPrefix(), param.getQueryMeta().getMaxSize(), Constant.DEFAULT_LRU_CACHE_BG_REMOVE_BATCH_NUM, param.getLruKey(), JSON.toJSONString(delKeys));
     }
