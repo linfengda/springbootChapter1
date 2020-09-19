@@ -2,6 +2,7 @@ package com.linfengda.sb.support.redis.cache.manager;
 
 import com.linfengda.sb.support.redis.Constant;
 import com.linfengda.sb.support.redis.GenericRedisTemplate;
+import com.linfengda.sb.support.redis.RedisDistributedLock;
 import com.linfengda.sb.support.redis.cache.entity.bo.LruExpireResultBO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataAccessException;
@@ -23,6 +24,7 @@ public enum RedisCacheBgManager {
      */
     INSTANCE;
     private GenericRedisTemplate genericRedisTemplate;
+    private RedisDistributedLock redisDistributedLock;
 
     public void start(final long internalTime) {
         Thread bgThread = new Thread(() -> {
@@ -38,10 +40,17 @@ public enum RedisCacheBgManager {
                             Cursor<byte[]> cursor = connection.scan(new ScanOptions.ScanOptionsBuilder().match(Constant.DEFAULT_LRU_RECORD_PREFIX + Constant.ASTERISK).count(Constant.DEFAULT_LRU_CACHE_BG_REMOVE_BATCH_NUM).build());
                             while(cursor.hasNext()) {
                                 String lruKey = new String(cursor.next());
-                                // 淘汰过期key的lru缓存标识
-                                genericRedisTemplate.opsForZSet().removeRangeByScore(lruKey, 0, (double) System.currentTimeMillis());
-                                lruExpireResultBO.addLruKeyNum();
-                                log.info("批量清理LRU缓存记录，position={}，lruKey={}", cursor.getPosition(), lruKey);
+                                try {
+                                    // 使用锁实现多台实例分布式淘汰
+                                    if (redisDistributedLock.tryLock(Constant.DEFAULT_BG_LRU_LOCK_PREFIX + Constant.COLON + lruKey)) {
+                                        // 淘汰过期key的lru缓存标识
+                                        genericRedisTemplate.opsForZSet().removeRangeByScore(lruKey, 0, (double) System.currentTimeMillis());
+                                        lruExpireResultBO.addLruKeyNum();
+                                        log.info("批量清理LRU缓存记录，position={}，lruKey={}", cursor.getPosition(), lruKey);
+                                    }
+                                }finally {
+                                    redisDistributedLock.unLock(Constant.DEFAULT_BG_LRU_LOCK_PREFIX + Constant.COLON + lruKey);
+                                }
                             }
                             lruExpireResultBO.setCostTime(System.currentTimeMillis()-startTime);
                             return lruExpireResultBO;
@@ -63,7 +72,8 @@ public enum RedisCacheBgManager {
         bgThread.start();
     }
 
-    public void init(GenericRedisTemplate genericRedisTemplate) {
+    public void init(GenericRedisTemplate genericRedisTemplate, RedisDistributedLock redisDistributedLock) {
         this.genericRedisTemplate = genericRedisTemplate;
+        this.redisDistributedLock = redisDistributedLock;
     }
 }

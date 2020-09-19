@@ -23,6 +23,10 @@ public interface Constant {
      */
     String DEFAULT_LOCK_PREFIX = "lk";
     /**
+     * 后台lru key清除分布式锁前缀
+     */
+    String DEFAULT_BG_LRU_LOCK_PREFIX = "bg:lru:lk";
+    /**
      * 默认不设置缓存过期时间
      */
     long DEFAULT_NO_EXPIRE_TIME = 0;

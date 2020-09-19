@@ -33,7 +33,7 @@ public class RedisCacheAnnotationInitializer implements ApplicationContextAware 
         if (null == lruCacheClearInternal) {
             lruCacheClearInternal = Constant.DEFAULT_LRU_CACHE_BG_REMOVE_INTERNAL;
         }
-        RedisCacheBgManager.INSTANCE.init(genericRedisTemplate);
+        RedisCacheBgManager.INSTANCE.init(genericRedisTemplate, redisDistributedLock);
         RedisCacheBgManager.INSTANCE.start(lruCacheClearInternal);
         CacheHandlerHolder.INSTANCE.initHandlers(genericRedisTemplate, redisDistributedLock);
         CacheDataTypeResolverHolder.INSTANCE.initResolver(genericRedisTemplate);
