@@ -1,4 +1,4 @@
-package com.linfengda.sb.chapter1.common.cache.bo;
+package com.linfengda.sb.chapter1.system.entity.dto;
 
 import com.linfengda.sb.support.orm.entity.BasePO;
 import lombok.Data;
@@ -11,7 +11,7 @@ import java.sql.Timestamp;
  * @date: 2020-07-27 17:26
  */
 @Data
-public class SysDepartmentBO {
+public class SysDepartmentDTO {
     /**
      * 主键id
      */

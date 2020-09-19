@@ -1,6 +1,6 @@
 package com.linfengda.sb.chapter1.system.entity.dto;
 
-import com.linfengda.sb.chapter1.common.api.entity.BasePageDTO;
+import com.linfengda.sb.chapter1.common.entity.dto.BasePageDTO;
 import lombok.Data;
 
 import javax.validation.constraints.NotNull;

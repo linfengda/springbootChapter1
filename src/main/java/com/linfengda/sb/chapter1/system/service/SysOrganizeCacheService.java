@@ -1,6 +1,6 @@
 package com.linfengda.sb.chapter1.system.service;
 
-import com.linfengda.sb.chapter1.common.cache.bo.SysDepartmentBO;
+import com.linfengda.sb.chapter1.system.entity.dto.SysDepartmentDTO;
 
 /**
  * @description: 系统组织缓存服务
@@ -15,7 +15,7 @@ public interface SysOrganizeCacheService {
      * @return
      * @throws Exception
      */
-    SysDepartmentBO queryDepartment(Integer departmentId) throws Exception;
+    SysDepartmentDTO queryDepartment(Integer departmentId) throws Exception;
 
     /**
      * 根据id删除部门

@@ -19,12 +19,19 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1ac92d16-a2f3-4d49-8fdb-b5b56f35641b" name="Default" comment="refactor: lru缓存测试通过">
+    <list default="true" id="1ac92d16-a2f3-4d49-8fdb-b5b56f35641b" name="Default" comment="refactor: 后台线程兼容多个实例">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/entity/T.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/redis/Constant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/redis/Constant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/redis/cache/manager/RedisCacheBgManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/redis/cache/manager/RedisCacheBgManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/redis/cache/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/redis/cache/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/redis/config/RedisCacheAnnotationInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/redis/config/RedisCacheAnnotationInitializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/ApplicationStartup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/ApplicationStartup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/BaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/BaseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/entity/BasePageDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/entity/dto/BasePageDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/entity/PageResult.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/cache/UserTokenCache.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/cache/UserTokenCache.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/cache/bo/SysDepartmentBO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/system/entity/dto/SysDepartmentDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/cache/manager/CacheManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/cache/CacheManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/cache/manager/CachePrefix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/cache/CachePrefix.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/system/service/impl/SysOrganizeCacheServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/system/service/impl/SysOrganizeCacheServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/system/service/impl/SysOrganizeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/system/service/impl/SysOrganizeServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -800,14 +807,8 @@
       <workItem from="1600410873554" duration="13815000" />
       <workItem from="1600426241817" duration="2426000" />
       <workItem from="1600428840380" duration="54000" />
-      <workItem from="1600482012469" duration="882000" />
-    </task>
-    <task id="LOCAL-00090" summary="feat: 缓存框架，初始化信息">
-      <created>1593684055735</created>
-      <option name="number" value="00090" />
-      <option name="presentableId" value="LOCAL-00090" />
-      <option name="project" value="LOCAL" />
-      <updated>1593684055735</updated>
+      <workItem from="1600482012469" duration="3436000" />
+      <workItem from="1600494533028" duration="264000" />
     </task>
     <task id="LOCAL-00091" summary="feat: 缓存框架，使用handler处理不同缓存注解">
       <created>1593755505933</created>
@@ -1145,7 +1146,14 @@
       <option name="project" value="LOCAL" />
       <updated>1600428712552</updated>
     </task>
-    <option name="localTasksCounter" value="139" />
+    <task id="LOCAL-00139" summary="refactor: 后台线程兼容多个实例">
+      <created>1600483147254</created>
+      <option name="number" value="00139" />
+      <option name="presentableId" value="LOCAL-00139" />
+      <option name="project" value="LOCAL" />
+      <updated>1600483147255</updated>
+    </task>
+    <option name="localTasksCounter" value="140" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1309,7 +1317,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="refactor: 使用统一类" />
     <MESSAGE value="refactor: 优化lettuce代码" />
     <MESSAGE value="refactor: 缓存框架，删除不需要的注解" />
     <MESSAGE value="refactor: 抽离统一api层校验" />
@@ -1334,7 +1341,8 @@
     <MESSAGE value="refactor: 缓存校验" />
     <MESSAGE value="refactor: 缓存测试" />
     <MESSAGE value="refactor: lru缓存测试通过" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor: lru缓存测试通过" />
+    <MESSAGE value="refactor: 后台线程兼容多个实例" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor: 后台线程兼容多个实例" />
   </component>
   <component name="WindowStateProjectService">
     <state x="361" y="70" key="#Illuminated_Cloud" timestamp="1594085284865">
@@ -1383,12 +1391,12 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="591" y="316" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages/0.0.1536.824@0.0.1536.824" timestamp="1592197384108" />
-    <state x="0" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1600324147235">
+    <state x="0" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1600494745838">
       <screen x="0" y="23" width="1440" height="803" />
     </state>
     <state x="430" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824@0.0.1536.824" timestamp="1594092232375" />
     <state x="403" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.23.1440.800@0.23.1440.800" timestamp="1596297486100" />
-    <state x="0" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.23.1440.803@0.23.1440.803" timestamp="1600324147235" />
+    <state x="0" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.23.1440.803@0.23.1440.803" timestamp="1600494745838" />
     <state x="0" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.23.1440.805@0.23.1440.805" timestamp="1597582870576" />
     <state x="518" y="228" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1600417697089">
       <screen x="0" y="23" width="1440" height="803" />
@@ -1401,8 +1409,8 @@
     <state x="921" y="-1054" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.805/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597818908803" />
     <state x="518" y="229" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.805@0.23.1440.805" timestamp="1597566794898" />
     <state x="518" y="230" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.807@0.23.1440.807" timestamp="1597504928440" />
-    <state x="0" y="23" width="1440" height="805" key="CommitChangelistDialog2" timestamp="1600428712176">
-      <screen x="0" y="23" width="1440" height="805" />
+    <state x="0" y="30" width="1440" height="805" key="CommitChangelistDialog2" timestamp="1600483146883">
+      <screen x="0" y="23" width="1440" height="803" />
     </state>
     <state x="1916" y="-540" key="CommitChangelistDialog2/0.0.1440.900/1440.-540.2560.1440@1440.-540.2560.1440" timestamp="1595560889773" />
     <state x="286" y="8" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1594115519501" />
@@ -1411,7 +1419,7 @@
     <state x="0" y="-1417" width="2560" height="1417" key="CommitChangelistDialog2/0.23.1440.800/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597060500805" />
     <state x="0" y="23" width="1440" height="800" key="CommitChangelistDialog2/0.23.1440.800@0.23.1440.800" timestamp="1596298864913" />
     <state x="0" y="-1417" key="CommitChangelistDialog2/0.23.1440.803/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597146976476" />
-    <state x="0" y="30" key="CommitChangelistDialog2/0.23.1440.803@0.23.1440.803" timestamp="1600360071008" />
+    <state x="0" y="30" key="CommitChangelistDialog2/0.23.1440.803@0.23.1440.803" timestamp="1600483146883" />
     <state x="0" y="-1417" key="CommitChangelistDialog2/0.23.1440.805/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597819823901" />
     <state x="0" y="23" width="1440" height="805" key="CommitChangelistDialog2/0.23.1440.805@0.23.1440.805" timestamp="1600428712176" />
     <state x="0" y="-1417" key="CommitChangelistDialog2/0.23.1440.807/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597311174855" />
@@ -1647,8 +1655,8 @@
     </state>
     <state x="614" y="326" key="VCS.ChangelistChooser/0.0.1536.824@0.0.1536.824" timestamp="1594109853839" />
     <state x="1023" y="-856" key="VCS.ChangelistChooser/0.23.1440.805/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597403086028" />
-    <state x="414" y="218" key="Vcs.Push.Dialog.v2" timestamp="1600428716218">
-      <screen x="0" y="23" width="1440" height="805" />
+    <state x="414" y="218" key="Vcs.Push.Dialog.v2" timestamp="1600483151689">
+      <screen x="0" y="23" width="1440" height="803" />
     </state>
     <state x="2176" y="-190" key="Vcs.Push.Dialog.v2/0.0.1440.900/1440.-540.2560.1440@1440.-540.2560.1440" timestamp="1595560914945" />
     <state x="442" y="200" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1594115529784" />
@@ -1656,7 +1664,7 @@
     <state x="414" y="216" key="Vcs.Push.Dialog.v2/0.23.1440.797@0.23.1440.797" timestamp="1595866033558" />
     <state x="414" y="217" key="Vcs.Push.Dialog.v2/0.23.1440.800@0.23.1440.800" timestamp="1596298871885" />
     <state x="736" y="-1073" key="Vcs.Push.Dialog.v2/0.23.1440.803/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597146981370" />
-    <state x="414" y="218" key="Vcs.Push.Dialog.v2/0.23.1440.803@0.23.1440.803" timestamp="1600360075560" />
+    <state x="414" y="218" key="Vcs.Push.Dialog.v2/0.23.1440.803@0.23.1440.803" timestamp="1600483151689" />
     <state x="736" y="-1074" key="Vcs.Push.Dialog.v2/0.23.1440.805/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597819829960" />
     <state x="414" y="218" key="Vcs.Push.Dialog.v2/0.23.1440.805@0.23.1440.805" timestamp="1600428716218" />
     <state x="736" y="-1073" key="Vcs.Push.Dialog.v2/0.23.1440.807/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597311183187" />

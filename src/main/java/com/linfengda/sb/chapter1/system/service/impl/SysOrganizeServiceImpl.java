@@ -1,6 +1,6 @@
 package com.linfengda.sb.chapter1.system.service.impl;
 
-import com.linfengda.sb.chapter1.common.cache.bo.SysDepartmentBO;
+import com.linfengda.sb.chapter1.system.entity.dto.SysDepartmentDTO;
 import com.linfengda.sb.chapter1.system.entity.po.SysDepartmentPO;
 import com.linfengda.sb.chapter1.system.service.SysOrganizeCacheService;
 import com.linfengda.sb.chapter1.system.service.SysOrganizeService;
@@ -25,18 +25,18 @@ public class SysOrganizeServiceImpl extends BaseService implements SysOrganizeSe
 
     @Override
     public SysDepartmentPO queryDepartment(Integer departmentId, Integer status, Integer isDelete) throws Exception {
-        SysDepartmentBO sysDepartmentBO = sysOrganizeCacheService.queryDepartment(departmentId);
-        if (null == sysDepartmentBO) {
+        SysDepartmentDTO sysDepartmentDTO = sysOrganizeCacheService.queryDepartment(departmentId);
+        if (null == sysDepartmentDTO) {
             return null;
         }
-        if (null != status && !status.equals(sysDepartmentBO.getStatus())) {
+        if (null != status && !status.equals(sysDepartmentDTO.getStatus())) {
             return null;
         }
-        if (null != isDelete && !isDelete.equals(sysDepartmentBO.getIsDelete())) {
+        if (null != isDelete && !isDelete.equals(sysDepartmentDTO.getIsDelete())) {
             return null;
         }
         SysDepartmentPO sysDepartmentPO = new SysDepartmentPO();
-        BeanUtils.copyProperties(sysDepartmentBO, sysDepartmentPO);
+        BeanUtils.copyProperties(sysDepartmentDTO, sysDepartmentPO);
         return sysDepartmentPO;
     }
 
