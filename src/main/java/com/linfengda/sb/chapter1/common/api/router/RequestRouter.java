@@ -2,7 +2,7 @@ package com.linfengda.sb.chapter1.common.api.router;
 
 import com.linfengda.sb.chapter1.common.api.context.RequestContext;
 import com.linfengda.sb.chapter1.common.api.entity.RequestInfoBO;
-import com.linfengda.sb.chapter1.common.util.HttpServletUtil;
+import com.linfengda.sb.chapter1.common.api.util.HttpServletUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 
@@ -21,11 +21,10 @@ public enum RequestRouter {
 
     public Object doRouter(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
         try {
-            // 1.获取请求信息上下文
+            // 1.获取请求信息
             RequestInfoBO requestInfoBO = HttpServletUtil.getRequestInfoBO();
             RequestContext.setParam(requestInfoBO);
-
-            // 2.根据url进行路由
+            // 2.根据urlHeader进行路由
             Object result = BizModuleHandlerProvider.provide(requestInfoBO, proceedingJoinPoint).doHandler();
             return result;
         } finally {

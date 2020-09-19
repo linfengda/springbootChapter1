@@ -29,7 +29,7 @@ public class RequestInfoBO {
         StringBuilder sb = new StringBuilder();
         for (int i = 1;i< url.length();i++){
             char t = url.charAt(i);
-            if (t == StringConstant.SLASH_CHAR){
+            if (t == '/'){
                 break;
             }
             sb.append(t);

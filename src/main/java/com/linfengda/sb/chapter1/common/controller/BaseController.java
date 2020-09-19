@@ -1,6 +1,6 @@
-package com.linfengda.sb.chapter1.common.api;
+package com.linfengda.sb.chapter1.common.controller;
 
-import com.linfengda.sb.chapter1.common.api.entity.Result;
+import com.linfengda.sb.chapter1.common.entity.Result;
 
 /**
  * 描述: 基本control控制类

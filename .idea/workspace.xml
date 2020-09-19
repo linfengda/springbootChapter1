@@ -19,19 +19,17 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1ac92d16-a2f3-4d49-8fdb-b5b56f35641b" name="Default" comment="refactor: 后台线程兼容多个实例">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/entity/T.java" afterDir="false" />
+    <list default="true" id="1ac92d16-a2f3-4d49-8fdb-b5b56f35641b" name="Default" comment="refactor: common包结构调整">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/ApplicationStartup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/ApplicationStartup.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/BaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/BaseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/entity/BasePageDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/entity/dto/BasePageDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/entity/PageResult.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/cache/UserTokenCache.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/cache/UserTokenCache.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/cache/bo/SysDepartmentBO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/system/entity/dto/SysDepartmentDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/cache/manager/CacheManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/cache/CacheManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/cache/manager/CachePrefix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/cache/CachePrefix.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/system/service/impl/SysOrganizeCacheServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/system/service/impl/SysOrganizeCacheServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/system/service/impl/SysOrganizeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/system/service/impl/SysOrganizeServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/BaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/controller/BaseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/entity/RequestInfoBO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/entity/RequestInfoBO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/entity/Result.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/entity/Result.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/router/RequestRouter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/router/RequestRouter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/entity/T.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/exception/handler/MyGlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/exception/handler/MyGlobalExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/util/HttpServletUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/util/HttpServletUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/util/IpUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/util/IpUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/system/api/SystemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/system/api/SystemController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -167,24 +165,24 @@
       <recent name="com.linfengda.sb.chapter1" />
       <recent name="com.linfengda.sb.support" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/apivalidator/config" />
-      <recent name="D:\IdeaProjects\springboot\chapter1\src\test\java\com\linfengda\sb\chapter1" />
-      <recent name="D:\IdeaProjects\springboot\chapter1\src\test\java\com\linfengda\sb\chapter1\support\middleware\redis" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.linfengda.sb.support.fastjson.selector" />
-      <recent name="com.linfengda.sb.support.apivalidator.util" />
-      <recent name="com.linfengda.sb.support.apivalidator.annotation" />
-      <recent name="com.linfengda.sb.support.apivalidator.config" />
-      <recent name="com.linfengda.sb.support.redis.cache.util" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support" />
       <recent name="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/fastjson/serializer/date" />
       <recent name="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/fastjson" />
       <recent name="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/apivalidator/config/interceptor" />
       <recent name="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/apivalidator" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.linfengda.sb.chapter1.common.entity.dto" />
+      <recent name="com.linfengda.sb.support.fastjson.selector" />
+      <recent name="com.linfengda.sb.support.apivalidator.util" />
+      <recent name="com.linfengda.sb.support.apivalidator.annotation" />
+      <recent name="com.linfengda.sb.support.apivalidator.config" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/apivalidator/config" />
+      <recent name="D:\IdeaProjects\springboot\chapter1\src\test\java\com\linfengda\sb\chapter1" />
+      <recent name="D:\IdeaProjects\springboot\chapter1\src\test\java\com\linfengda\sb\chapter1\support\middleware\redis" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -808,14 +806,7 @@
       <workItem from="1600426241817" duration="2426000" />
       <workItem from="1600428840380" duration="54000" />
       <workItem from="1600482012469" duration="3436000" />
-      <workItem from="1600494533028" duration="264000" />
-    </task>
-    <task id="LOCAL-00091" summary="feat: 缓存框架，使用handler处理不同缓存注解">
-      <created>1593755505933</created>
-      <option name="number" value="00091" />
-      <option name="presentableId" value="LOCAL-00091" />
-      <option name="project" value="LOCAL" />
-      <updated>1593755505934</updated>
+      <workItem from="1600494533028" duration="5239000" />
     </task>
     <task id="LOCAL-00092" summary="feat: 缓存框架，处理不同缓存数据类型">
       <created>1594092515192</created>
@@ -1153,7 +1144,14 @@
       <option name="project" value="LOCAL" />
       <updated>1600483147255</updated>
     </task>
-    <option name="localTasksCounter" value="140" />
+    <task id="LOCAL-00140" summary="refactor: common包结构调整">
+      <created>1600494814999</created>
+      <option name="number" value="00140" />
+      <option name="presentableId" value="LOCAL-00140" />
+      <option name="project" value="LOCAL" />
+      <updated>1600494814999</updated>
+    </task>
+    <option name="localTasksCounter" value="141" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1317,7 +1315,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="refactor: 优化lettuce代码" />
     <MESSAGE value="refactor: 缓存框架，删除不需要的注解" />
     <MESSAGE value="refactor: 抽离统一api层校验" />
     <MESSAGE value="refactor: 优化校验代码" />
@@ -1342,7 +1339,8 @@
     <MESSAGE value="refactor: 缓存测试" />
     <MESSAGE value="refactor: lru缓存测试通过" />
     <MESSAGE value="refactor: 后台线程兼容多个实例" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor: 后台线程兼容多个实例" />
+    <MESSAGE value="refactor: common包结构调整" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor: common包结构调整" />
   </component>
   <component name="WindowStateProjectService">
     <state x="361" y="70" key="#Illuminated_Cloud" timestamp="1594085284865">
@@ -1409,7 +1407,7 @@
     <state x="921" y="-1054" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.805/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597818908803" />
     <state x="518" y="229" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.805@0.23.1440.805" timestamp="1597566794898" />
     <state x="518" y="230" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.807@0.23.1440.807" timestamp="1597504928440" />
-    <state x="0" y="30" width="1440" height="805" key="CommitChangelistDialog2" timestamp="1600483146883">
+    <state x="0" y="30" width="1440" height="805" key="CommitChangelistDialog2" timestamp="1600494814723">
       <screen x="0" y="23" width="1440" height="803" />
     </state>
     <state x="1916" y="-540" key="CommitChangelistDialog2/0.0.1440.900/1440.-540.2560.1440@1440.-540.2560.1440" timestamp="1595560889773" />
@@ -1419,7 +1417,7 @@
     <state x="0" y="-1417" width="2560" height="1417" key="CommitChangelistDialog2/0.23.1440.800/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597060500805" />
     <state x="0" y="23" width="1440" height="800" key="CommitChangelistDialog2/0.23.1440.800@0.23.1440.800" timestamp="1596298864913" />
     <state x="0" y="-1417" key="CommitChangelistDialog2/0.23.1440.803/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597146976476" />
-    <state x="0" y="30" key="CommitChangelistDialog2/0.23.1440.803@0.23.1440.803" timestamp="1600483146883" />
+    <state x="0" y="30" key="CommitChangelistDialog2/0.23.1440.803@0.23.1440.803" timestamp="1600494814723" />
     <state x="0" y="-1417" key="CommitChangelistDialog2/0.23.1440.805/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597819823901" />
     <state x="0" y="23" width="1440" height="805" key="CommitChangelistDialog2/0.23.1440.805@0.23.1440.805" timestamp="1600428712176" />
     <state x="0" y="-1417" key="CommitChangelistDialog2/0.23.1440.807/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597311174855" />
@@ -1434,12 +1432,12 @@
     <state width="975" height="459" key="DebuggerActiveHint/0.23.1440.803/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597399076325" />
     <state width="548" height="260" key="DebuggerActiveHint/0.23.1440.803@0.23.1440.803" timestamp="1597334379460" />
     <state width="669" height="261" key="DebuggerActiveHint/0.23.1440.805@0.23.1440.805" timestamp="1600426646130" />
-    <state x="198" y="162" width="1152" height="642" key="DiffContextDialog" timestamp="1600192771032">
+    <state x="198" y="162" width="1152" height="642" key="DiffContextDialog" timestamp="1600495187961">
       <screen x="0" y="23" width="1440" height="803" />
     </state>
     <state x="1793" y="-110" key="DiffContextDialog/0.0.1440.900/1440.-540.2560.1440@1440.-540.2560.1440" timestamp="1595560859858" />
     <state x="353" y="-1173" width="1748" height="964" key="DiffContextDialog/0.23.1440.803/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597139354382" />
-    <state x="198" y="162" width="1152" height="642" key="DiffContextDialog/0.23.1440.803@0.23.1440.803" timestamp="1600192771031" />
+    <state x="198" y="162" width="1152" height="642" key="DiffContextDialog/0.23.1440.803@0.23.1440.803" timestamp="1600495187961" />
     <state x="354" y="-1173" key="DiffContextDialog/0.23.1440.805/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597819807194" />
     <state x="199" y="162" key="DiffContextDialog/0.23.1440.805@0.23.1440.805" timestamp="1600166841042" />
     <state x="353" y="-1173" width="1152" height="645" key="DiffContextDialog/0.23.1440.807/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597315262016" />
@@ -1655,7 +1653,7 @@
     </state>
     <state x="614" y="326" key="VCS.ChangelistChooser/0.0.1536.824@0.0.1536.824" timestamp="1594109853839" />
     <state x="1023" y="-856" key="VCS.ChangelistChooser/0.23.1440.805/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597403086028" />
-    <state x="414" y="218" key="Vcs.Push.Dialog.v2" timestamp="1600483151689">
+    <state x="414" y="218" key="Vcs.Push.Dialog.v2" timestamp="1600494818785">
       <screen x="0" y="23" width="1440" height="803" />
     </state>
     <state x="2176" y="-190" key="Vcs.Push.Dialog.v2/0.0.1440.900/1440.-540.2560.1440@1440.-540.2560.1440" timestamp="1595560914945" />
@@ -1664,7 +1662,7 @@
     <state x="414" y="216" key="Vcs.Push.Dialog.v2/0.23.1440.797@0.23.1440.797" timestamp="1595866033558" />
     <state x="414" y="217" key="Vcs.Push.Dialog.v2/0.23.1440.800@0.23.1440.800" timestamp="1596298871885" />
     <state x="736" y="-1073" key="Vcs.Push.Dialog.v2/0.23.1440.803/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597146981370" />
-    <state x="414" y="218" key="Vcs.Push.Dialog.v2/0.23.1440.803@0.23.1440.803" timestamp="1600483151689" />
+    <state x="414" y="218" key="Vcs.Push.Dialog.v2/0.23.1440.803@0.23.1440.803" timestamp="1600494818785" />
     <state x="736" y="-1074" key="Vcs.Push.Dialog.v2/0.23.1440.805/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597819829960" />
     <state x="414" y="218" key="Vcs.Push.Dialog.v2/0.23.1440.805@0.23.1440.805" timestamp="1600428716218" />
     <state x="736" y="-1073" key="Vcs.Push.Dialog.v2/0.23.1440.807/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597311183187" />
@@ -1675,12 +1673,12 @@
     </state>
     <state x="499" y="165" width="538" height="501" key="extract.method.dialog/0.0.1536.824@0.0.1536.824" timestamp="1594091702628" />
     <state x="468" y="184" width="524" height="490" key="extract.method.dialog/0.23.1440.805@0.23.1440.805" timestamp="1600152525231" />
-    <state x="477" y="222" width="837" height="550" key="find.popup" timestamp="1600421293646">
-      <screen x="0" y="23" width="1440" height="805" />
+    <state x="477" y="222" width="837" height="549" key="find.popup" timestamp="1600495046939">
+      <screen x="0" y="23" width="1440" height="803" />
     </state>
     <state x="509" y="204" width="642" height="534" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1593676707110" />
     <state x="848" y="-1066" width="1070" height="919" key="find.popup/0.23.1440.800/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597060115452" />
-    <state x="477" y="222" width="837" height="549" key="find.popup/0.23.1440.803@0.23.1440.803" timestamp="1599238256551" />
+    <state x="477" y="222" width="837" height="549" key="find.popup/0.23.1440.803@0.23.1440.803" timestamp="1600495046939" />
     <state x="477" y="222" width="837" height="550" key="find.popup/0.23.1440.805@0.23.1440.805" timestamp="1600421293646" />
     <state x="414" y="218" key="git4idea.merge.GitPullDialog" timestamp="1598157872706">
       <screen x="0" y="23" width="1440" height="805" />

@@ -1,8 +1,8 @@
 package com.linfengda.sb.chapter1.system.api;
 
 import com.github.pagehelper.Page;
-import com.linfengda.sb.chapter1.common.api.BaseController;
-import com.linfengda.sb.chapter1.common.api.entity.Result;
+import com.linfengda.sb.chapter1.common.controller.BaseController;
+import com.linfengda.sb.chapter1.common.entity.Result;
 import com.linfengda.sb.chapter1.system.entity.dto.UserPageQueryDTO;
 import com.linfengda.sb.chapter1.system.entity.dto.UserUpdateDTO;
 import com.linfengda.sb.chapter1.system.entity.vo.UserListVO;

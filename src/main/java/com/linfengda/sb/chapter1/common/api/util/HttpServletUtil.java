@@ -1,9 +1,8 @@
-package com.linfengda.sb.chapter1.common.util;
+package com.linfengda.sb.chapter1.common.api.util;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.linfengda.sb.chapter1.common.api.entity.RequestInfoBO;
-import com.linfengda.sb.chapter1.common.util.IpUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.IOUtils;
 import org.springframework.util.StringUtils;
