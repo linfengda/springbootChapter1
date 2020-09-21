@@ -2,7 +2,7 @@ package com.linfengda.sb.chapter1.common.api.router;
 
 import com.linfengda.sb.chapter1.common.api.entity.RequestInfoBO;
 import lombok.Data;
-import org.aspectj.lang.ProceedingJoinPoint;
+import org.springframework.web.method.HandlerMethod;
 
 /**
  * 描述: Abstract Request Handler
@@ -17,12 +17,12 @@ public abstract class AbstractRequestHandler implements RequestHandler {
      */
     private RequestInfoBO requestInfoBO;
     /**
-     * 请求JoinPoint
+     * 请求handlerMethod
      */
-    private ProceedingJoinPoint proceedingJoinPoint;
+    private HandlerMethod handlerMethod;
 
-    public AbstractRequestHandler(RequestInfoBO requestInfoBO, ProceedingJoinPoint proceedingJoinPoint) {
+    public AbstractRequestHandler(RequestInfoBO requestInfoBO, HandlerMethod handlerMethod) {
         this.requestInfoBO = requestInfoBO;
-        this.proceedingJoinPoint = proceedingJoinPoint;
+        this.handlerMethod = handlerMethod;
     }
 }

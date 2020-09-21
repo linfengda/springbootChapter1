@@ -10,8 +10,7 @@ public interface RequestHandler {
 
     /**
      * 处理请求
-     * @return  请求处理结果
-     * @throws Throwable
+     * @throws Exception
      */
-    Object doHandler() throws Throwable;
+    void doHandler() throws Exception;
 }

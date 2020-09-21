@@ -3,7 +3,7 @@ package com.linfengda.sb.chapter1.common.api.router.impl;
 import com.linfengda.sb.chapter1.common.api.entity.RequestInfoBO;
 import com.linfengda.sb.chapter1.common.api.router.AbstractRequestHandler;
 import lombok.extern.slf4j.Slf4j;
-import org.aspectj.lang.ProceedingJoinPoint;
+import org.springframework.web.method.HandlerMethod;
 
 /**
  * 描述: PC端Handler
@@ -14,13 +14,12 @@ import org.aspectj.lang.ProceedingJoinPoint;
 @Slf4j
 public class PcRequestHandler extends AbstractRequestHandler {
 
-    public PcRequestHandler(RequestInfoBO requestInfoBO, ProceedingJoinPoint proceedingJoinPoint) {
-        super(requestInfoBO, proceedingJoinPoint);
+    public PcRequestHandler(RequestInfoBO requestInfoBO, HandlerMethod handlerMethod) {
+        super(requestInfoBO, handlerMethod);
     }
 
     @Override
-    public Object doHandler() throws Throwable {
-        log.info("PC端接口访问，ip={}，url={}，requestParam={}", getRequestInfoBO().getIp(), getRequestInfoBO().getUrl(), getRequestInfoBO().getRequestParam());
-        return getProceedingJoinPoint().proceed();
+    public void doHandler() throws Exception {
+        log.info("PC端接口访问，ip={}，url={}", getRequestInfoBO().getIp(), getRequestInfoBO().getUrl());
     }
 }

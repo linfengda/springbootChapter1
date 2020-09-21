@@ -5,7 +5,7 @@ import com.linfengda.sb.chapter1.common.api.router.impl.PcRequestHandler;
 import com.linfengda.sb.chapter1.common.api.router.impl.WeChatRequestHandler;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import org.aspectj.lang.ProceedingJoinPoint;
+import org.springframework.web.method.HandlerMethod;
 
 /**
  * 描述: 业务模块请求处理器提供策略
@@ -21,8 +21,8 @@ public enum BizModuleHandlerProvider {
      */
     PC("pc", "pc端业务") {
         @Override
-        public RequestHandler getHandler(RequestInfoBO requestInfoBO, ProceedingJoinPoint proceedingJoinPoint) {
-            return new PcRequestHandler(requestInfoBO, proceedingJoinPoint);
+        public RequestHandler getHandler(RequestInfoBO requestInfoBO, HandlerMethod handlerMethod) {
+            return new PcRequestHandler(requestInfoBO, handlerMethod);
         }
     },
     /**
@@ -30,8 +30,8 @@ public enum BizModuleHandlerProvider {
      */
     WeChat("weChat", "微信端业务") {
         @Override
-        public RequestHandler getHandler(RequestInfoBO requestInfoBO, ProceedingJoinPoint proceedingJoinPoint) {
-            return new WeChatRequestHandler(requestInfoBO, proceedingJoinPoint);
+        public RequestHandler getHandler(RequestInfoBO requestInfoBO, HandlerMethod handlerMethod) {
+            return new WeChatRequestHandler(requestInfoBO, handlerMethod);
         }
     },
     ;
@@ -39,19 +39,19 @@ public enum BizModuleHandlerProvider {
     private String prefix;
     private String name;
 
-    public abstract RequestHandler getHandler(RequestInfoBO requestInfoBO, ProceedingJoinPoint proceedingJoinPoint);
+    public abstract RequestHandler getHandler(RequestInfoBO requestInfoBO, HandlerMethod handlerMethod);
 
     /**
      * 获取请求处理器
      * @param requestInfoBO         请求信息BO
-     * @param proceedingJoinPoint   请求JoinPoint
+     * @param handlerMethod         请求handlerMethod
      * @return                      对应业务模块请求处理器
      */
-    public static RequestHandler provide(RequestInfoBO requestInfoBO, ProceedingJoinPoint proceedingJoinPoint) {
+    public static RequestHandler provide(RequestInfoBO requestInfoBO, HandlerMethod handlerMethod) {
         String uriHeader = requestInfoBO.getUriHead();
         for (BizModuleHandlerProvider value : values()) {
             if (value.getPrefix().equals(uriHeader)) {
-                return value.getHandler(requestInfoBO, proceedingJoinPoint);
+                return value.getHandler(requestInfoBO, handlerMethod);
             }
         }
         return null;

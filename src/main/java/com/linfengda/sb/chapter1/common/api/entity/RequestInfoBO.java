@@ -1,8 +1,8 @@
 package com.linfengda.sb.chapter1.common.api.entity;
 
-import com.alibaba.fastjson.JSONObject;
-import com.linfengda.sb.chapter1.common.util.StringConstant;
 import lombok.Data;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * 描述: 接口请求信息BO
@@ -23,7 +23,7 @@ public class RequestInfoBO {
     /**
      * 请求参数
      */
-    private JSONObject requestParam;
+    private HttpServletRequest request;
 
     public String getUriHead(){
         StringBuilder sb = new StringBuilder();

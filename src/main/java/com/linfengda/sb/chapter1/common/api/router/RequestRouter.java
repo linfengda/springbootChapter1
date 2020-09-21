@@ -1,10 +1,8 @@
 package com.linfengda.sb.chapter1.common.api.router;
 
-import com.linfengda.sb.chapter1.common.api.context.RequestContext;
 import com.linfengda.sb.chapter1.common.api.entity.RequestInfoBO;
-import com.linfengda.sb.chapter1.common.api.util.HttpServletUtil;
 import lombok.extern.slf4j.Slf4j;
-import org.aspectj.lang.ProceedingJoinPoint;
+import org.springframework.web.method.HandlerMethod;
 
 /**
  * 描述: 接口路由（使用委派模式设计）
@@ -19,23 +17,7 @@ public enum RequestRouter {
      */
     INSTANCE;
 
-    public Object doRouter(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
-        try {
-            // 1.获取请求信息
-            RequestInfoBO requestInfoBO = HttpServletUtil.getRequestInfoBO();
-            RequestContext.setParam(requestInfoBO);
-            // 2.根据urlHeader进行路由
-            Object result = BizModuleHandlerProvider.provide(requestInfoBO, proceedingJoinPoint).doHandler();
-            return result;
-        } finally {
-            releaseSource();
-        }
-    }
-
-    /**
-     * 释放资源
-     */
-    private void releaseSource() {
-        RequestContext.remove();
+    public void doRouter(RequestInfoBO requestInfoBO, HandlerMethod handlerMethod) throws Exception {
+        BizModuleHandlerProvider.provide(requestInfoBO, handlerMethod).doHandler();
     }
 }
