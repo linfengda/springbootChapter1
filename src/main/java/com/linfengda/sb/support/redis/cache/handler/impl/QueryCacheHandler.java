@@ -33,7 +33,7 @@ public class QueryCacheHandler extends AbstractCacheHandler {
             return resultBO.getTarget();
         }
         Object value;
-        if (!param.getQueryMeta().getPreCacheHotKeyMultiLoad()) {
+        if (!param.getPreCacheHotKeyMultiLoad()) {
             return getMethodResult(cacheTargetDTO);
         }
         try {
@@ -42,11 +42,11 @@ public class QueryCacheHandler extends AbstractCacheHandler {
                 int spinCount = 1;
                 while (true) {
                     try {
-                        if (param.getQueryMeta().getMaxSpinCount() < spinCount) {
+                        if (param.getMaxSpinCount() < spinCount) {
                             break;
                         }
                         log.info("尝试自旋读取缓存，线程id：{}", Thread.currentThread().getId());
-                        Thread.sleep(param.getQueryMeta().getSpinTime());
+                        Thread.sleep(param.getSpinTime());
                         value = resolver.getCache(param);
                         if (null != value) {
                             return value;

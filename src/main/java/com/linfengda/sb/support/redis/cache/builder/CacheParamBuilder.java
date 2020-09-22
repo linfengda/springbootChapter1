@@ -7,6 +7,7 @@ import com.linfengda.sb.support.redis.cache.entity.dto.HashKey;
 import com.linfengda.sb.support.redis.cache.entity.meta.CacheKeyMeta;
 import com.linfengda.sb.support.redis.cache.entity.meta.CacheMethodMeta;
 import com.linfengda.sb.support.redis.cache.entity.type.DataType;
+import org.springframework.beans.BeanUtils;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 
@@ -36,9 +37,7 @@ public enum CacheParamBuilder {
         cacheParamDTO.setReturnType(cacheMethodMeta.getMethod().getReturnType());
         cacheParamDTO.setDataType(cacheMethodMeta.getDataType());
         cacheParamDTO.setPrefix(StringUtils.isEmpty(cacheMethodMeta.getPrefix()) ? cacheMethodMeta.getMethodName() : cacheMethodMeta.getPrefix());
-        cacheParamDTO.setQueryMeta(cacheMethodMeta.getQueryMeta());
-        cacheParamDTO.setUpdateMeta(cacheMethodMeta.getUpdateMeta());
-        cacheParamDTO.setDeleteMeta(cacheMethodMeta.getDeleteMate());
+        BeanUtils.copyProperties(cacheMethodMeta, cacheParamDTO);
         // 初始化缓存key
         List<String> keys = parseKeys(cacheMethodMeta.getMethodCacheKeys(), arguments);
         cacheParamDTO.setKey(buildKey(cacheParamDTO.getPrefix(), keys));

@@ -18,6 +18,7 @@ import com.linfengda.sb.support.redis.cache.annotation.UpdateCache;
 import com.linfengda.sb.support.redis.cache.entity.type.CacheMaxSizeStrategy;
 import com.linfengda.sb.support.redis.cache.entity.type.DataType;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -29,7 +30,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
-import java.util.stream.Collectors;
 
 /**
  * 描述: 系统服务
@@ -104,12 +104,17 @@ public class SysUserServiceImpl extends BaseService implements SysUserService {
         return userVO;
     }
 
+
     @UpdateCache(type = DataType.HASH, prefix = "sys:user", timeOut = 30, timeUnit = TimeUnit.MINUTES, preCacheSnowSlide = true)
     @Transactional(rollbackFor=Exception.class, propagation = Propagation.REQUIRED)
     @Override
-    public void updateUserInfo(@CacheKey Integer userId, UserUpdateDTO userUpdateDTO) throws Exception {
+    public UserVO updateUserInfo(@CacheKey Integer userId, UserUpdateDTO userUpdateDTO) throws Exception {
         SetValue setValue = new SetValue();
         setValue.add("userName", userUpdateDTO.getUserName());
         updateByPrimaryKey(SysUserPO.class, setValue, userId);
+        UserVO userVO = new UserVO();
+        SysUserPO sysUserPO = findByPrimaryKey(userId, SysUserPO.class);
+        BeanUtils.copyProperties(sysUserPO, userVO);
+        return userVO;
     }
 }

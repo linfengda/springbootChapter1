@@ -1,10 +1,12 @@
 package com.linfengda.sb.support.redis.cache.entity.meta;
 
+import com.linfengda.sb.support.redis.cache.entity.type.CacheAnnotationType;
 import com.linfengda.sb.support.redis.cache.entity.type.DataType;
 import lombok.Data;
 
 import java.lang.reflect.Method;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * 描述: 缓存方法元数据
@@ -13,7 +15,7 @@ import java.util.List;
  * @create 2020-03-27 15:10
  */
 @Data
-public class CacheMethodMeta {
+public class CacheMethodMeta extends CacheQueryMeta {
     /**
      * 原始方法对象
      */
@@ -23,27 +25,27 @@ public class CacheMethodMeta {
      */
     private String methodName;
     /**
-     * 参数列表
+     * 缓存操作类型
      */
-    private List<CacheKeyMeta> methodCacheKeys;
+    private CacheAnnotationType cacheAnnotationType;
     /**
      * 数据类型
      */
     private DataType dataType;
     /**
+     * 参数列表
+     */
+    private List<CacheKeyMeta> methodCacheKeys;
+    /**
      * 缓存前缀
      */
     private String prefix;
     /**
-     * 查询缓存参数
+     * 缓存失效时间
      */
-    private CacheQueryMeta queryMeta;
+    private Long timeOut;
     /**
-     * 更新缓存参数
+     * 缓存失效时间单位
      */
-    private CacheUpdateMeta updateMeta;
-    /**
-     * 删除缓存参数
-     */
-    private CacheDeleteMeta deleteMate;
+    TimeUnit timeUnit;
 }

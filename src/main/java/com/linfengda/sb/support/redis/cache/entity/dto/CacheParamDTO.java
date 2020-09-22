@@ -1,12 +1,12 @@
 package com.linfengda.sb.support.redis.cache.entity.dto;
 
-import com.linfengda.sb.support.redis.cache.entity.meta.CacheDeleteMeta;
 import com.linfengda.sb.support.redis.cache.entity.meta.CacheQueryMeta;
-import com.linfengda.sb.support.redis.cache.entity.meta.CacheUpdateMeta;
+import com.linfengda.sb.support.redis.cache.entity.type.CacheAnnotationType;
 import com.linfengda.sb.support.redis.cache.entity.type.DataType;
 import lombok.Data;
 
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 /**
  * 描述: 缓存查询参数DTO
@@ -15,11 +15,15 @@ import java.util.Random;
  * @date: 2020-07-10 14:34
  */
 @Data
-public class CacheParamDTO {
+public class CacheParamDTO extends CacheQueryMeta {
     /**
      * 返回数据类型
      */
     private Class<?> returnType;
+    /**
+     * 缓存操作类型
+     */
+    private CacheAnnotationType cacheAnnotationType;
     /**
      * 数据类型
      */
@@ -45,17 +49,13 @@ public class CacheParamDTO {
      */
     private String lockKey;
     /**
-     * 查询缓存参数
+     * 缓存失效时间
      */
-    private CacheQueryMeta queryMeta;
+    private Long timeOut;
     /**
-     * 更新缓存参数
+     * 缓存失效时间单位
      */
-    private CacheUpdateMeta updateMeta;
-    /**
-     * 删除缓存参数
-     */
-    private CacheDeleteMeta deleteMeta;
+    TimeUnit timeUnit;
 
 
     /**
@@ -63,11 +63,10 @@ public class CacheParamDTO {
      * @return  毫秒格式过期时间
      */
     public long getTimeOutMillis() {
-        int boundTime = null != getQueryMeta() ? getQueryMeta().getPreCacheSnowSlideTime().intValue() : getUpdateMeta().getPreCacheSnowSlideTime().intValue();
-        long timeOutMillis = getQueryMeta().getTimeUnit().toMillis(getQueryMeta().getTimeOut());
-        if (getQueryMeta().getPreCacheSnowSlide()) {
+        long timeOutMillis = getTimeUnit().toMillis(getTimeOut());
+        if (getPreCacheSnowSlide()) {
             Random random = new Random();
-            int randomTime = random.nextInt(boundTime);
+            int randomTime = random.nextInt(getPreCacheSnowSlideTime().intValue());
             return timeOutMillis + randomTime;
         }
         return timeOutMillis;
@@ -78,7 +77,7 @@ public class CacheParamDTO {
      * @return  lruKeyScore
      */
     public double getLruKeyScore() {
-        long timeOutMillis = getQueryMeta().getTimeUnit().toMillis(getQueryMeta().getTimeOut());
+        long timeOutMillis = getTimeUnit().toMillis(getTimeOut());
         return (double) (System.currentTimeMillis() + timeOutMillis);
     }
 }

@@ -48,7 +48,7 @@ public class HashCacheDataTypeResolver extends AbstractCacheDataTypeResolver {
     @Override
     public void delCache(CacheParamDTO param) {
         HashKey hashKey = param.getHashKey();
-        Boolean allEntries = param.getDeleteMeta().getAllEntries();
+        Boolean allEntries = param.getAllEntries();
         if (Boolean.FALSE.equals(allEntries)) {
             genericRedisTemplate.hashDel(hashKey.getKey(), hashKey.getHashKey());
             return;
@@ -62,7 +62,7 @@ public class HashCacheDataTypeResolver extends AbstractCacheDataTypeResolver {
         if (CollectionUtils.isEmpty(set)) {
             return true;
         }
-        return set.size() < param.getQueryMeta().getMaxSize();
+        return set.size() < param.getMaxSize();
     }
 
     @Override

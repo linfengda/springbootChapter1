@@ -7,7 +7,8 @@ import com.linfengda.sb.support.redis.cache.annotation.CacheKey;
 import com.linfengda.sb.support.redis.cache.annotation.DeleteCache;
 import com.linfengda.sb.support.redis.cache.annotation.QueryCache;
 import com.linfengda.sb.support.redis.cache.annotation.UpdateCache;
-import com.linfengda.sb.support.redis.cache.entity.meta.*;
+import com.linfengda.sb.support.redis.cache.entity.meta.CacheKeyMeta;
+import com.linfengda.sb.support.redis.cache.entity.meta.CacheMethodMeta;
 import com.linfengda.sb.support.redis.cache.entity.type.CacheAnnotationType;
 import com.linfengda.sb.support.redis.cache.entity.type.CacheMaxSizeStrategy;
 import com.linfengda.sb.support.redis.cache.entity.type.DataType;
@@ -118,41 +119,36 @@ public class CacheMethodMetaBuilder {
             if (null == cacheAnnotation) {
                 continue;
             }
+            cacheMethodMeta.setCacheAnnotationType(type);
             if (CacheAnnotationType.QUERY == type) {
                 QueryCache queryCache = (QueryCache) cacheAnnotation;
                 cacheMethodMeta.setDataType(queryCache.type());
                 cacheMethodMeta.setPrefix(queryCache.prefix());
-                CacheQueryMeta cacheQueryMeta = new CacheQueryMeta();
-                cacheQueryMeta.setTimeOut(queryCache.timeOut());
-                cacheQueryMeta.setTimeUnit(queryCache.timeUnit());
-                cacheQueryMeta.setPreCacheSnowSlide(queryCache.preCacheSnowSlide());
-                cacheQueryMeta.setPreCacheSnowSlideTime(queryCache.preCacheSnowSlideTime());
-                cacheQueryMeta.setPreCacheHotKeyMultiLoad(queryCache.preCacheHotKeyMultiLoad());
-                cacheQueryMeta.setMaxSize(queryCache.maxSize());
-                cacheQueryMeta.setMaxSizeStrategy(queryCache.maxSizeStrategy());
-                cacheQueryMeta.setDeleteLruBatchNum(queryCache.deleteLruBatchNum());
-                cacheQueryMeta.setSpinTime(queryCache.spinTime());
-                cacheQueryMeta.setMaxSpinCount(queryCache.maxSpinCount());
-                cacheMethodMeta.setQueryMeta(cacheQueryMeta);
+                cacheMethodMeta.setTimeOut(queryCache.timeOut());
+                cacheMethodMeta.setTimeUnit(queryCache.timeUnit());
+                cacheMethodMeta.setPreCacheSnowSlide(queryCache.preCacheSnowSlide());
+                cacheMethodMeta.setPreCacheSnowSlideTime(queryCache.preCacheSnowSlideTime());
+                cacheMethodMeta.setPreCacheHotKeyMultiLoad(queryCache.preCacheHotKeyMultiLoad());
+                cacheMethodMeta.setMaxSize(queryCache.maxSize());
+                cacheMethodMeta.setMaxSizeStrategy(queryCache.maxSizeStrategy());
+                cacheMethodMeta.setDeleteLruBatchNum(queryCache.deleteLruBatchNum());
+                cacheMethodMeta.setSpinTime(queryCache.spinTime());
+                cacheMethodMeta.setMaxSpinCount(queryCache.maxSpinCount());
                 break;
             }else if (CacheAnnotationType.UPDATE == type) {
                 UpdateCache updateCache = (UpdateCache) cacheAnnotation;
                 cacheMethodMeta.setDataType(updateCache.type());
                 cacheMethodMeta.setPrefix(updateCache.prefix());
-                CacheUpdateMeta cacheUpdateMeta = new CacheUpdateMeta();
-                cacheUpdateMeta.setTimeOut(updateCache.timeOut());
-                cacheUpdateMeta.setTimeUnit(updateCache.timeUnit());
-                cacheUpdateMeta.setPreCacheSnowSlide(updateCache.preCacheSnowSlide());
-                cacheUpdateMeta.setPreCacheSnowSlideTime(updateCache.preCacheSnowSlideTime());
-                cacheMethodMeta.setUpdateMeta(cacheUpdateMeta);
+                cacheMethodMeta.setTimeOut(updateCache.timeOut());
+                cacheMethodMeta.setTimeUnit(updateCache.timeUnit());
+                cacheMethodMeta.setPreCacheSnowSlide(updateCache.preCacheSnowSlide());
+                cacheMethodMeta.setPreCacheSnowSlideTime(updateCache.preCacheSnowSlideTime());
                 break;
             }else if (CacheAnnotationType.UPDATE == type) {
                 DeleteCache deleteCache = (DeleteCache) cacheAnnotation;
                 cacheMethodMeta.setDataType(deleteCache.type());
                 cacheMethodMeta.setPrefix(StringUtils.isBlank(deleteCache.prefix()) ? method.getName() : deleteCache.prefix());
-                CacheDeleteMeta cacheDeleteMeta = new CacheDeleteMeta();
-                cacheDeleteMeta.setAllEntries(deleteCache.allEntries());
-                cacheMethodMeta.setDeleteMate(cacheDeleteMeta);
+                cacheMethodMeta.setAllEntries(deleteCache.allEntries());
                 break;
             }
         }
@@ -165,17 +161,31 @@ public class CacheMethodMetaBuilder {
      * @param cacheMethodMeta
      */
     private static void validateCacheMethod(CacheMethodMeta cacheMethodMeta) {
-        if (Constant.DEFAULT_NO_EXPIRE_TIME > cacheMethodMeta.getQueryMeta().getTimeOut()) {
-            throw new BusinessException("非法的缓存过期时间："+ cacheMethodMeta.getQueryMeta().getTimeOut() +"！");
+        if (CacheAnnotationType.DELETE == cacheMethodMeta.getCacheAnnotationType()) {
+            return;
         }
-        if (Constant.DEFAULT_NO_SIZE_LIMIT > cacheMethodMeta.getQueryMeta().getMaxSize()) {
-            throw new BusinessException("非法的缓存最大数量："+ cacheMethodMeta.getQueryMeta().getMaxSize() +"！");
-        }
-        if (cacheMethodMeta.getQueryMeta().getPreCacheSnowSlide() && Constant.DEFAULT_NO_EXPIRE_TIME == cacheMethodMeta.getQueryMeta().getTimeOut()) {
-            throw new BusinessException("未设置缓存过期时间，无需防止缓存雪崩！");
-        }
-        if (CacheMaxSizeStrategy.MAX_SIZE_STRATEGY_LRU == cacheMethodMeta.getQueryMeta().getMaxSizeStrategy() && Constant.DEFAULT_NO_EXPIRE_TIME == cacheMethodMeta.getQueryMeta().getTimeOut()) {
-            throw new BusinessException("未设置缓存过期时间，无法启用LRU缓存淘汰策略！");
+        if (CacheAnnotationType.UPDATE == cacheMethodMeta.getCacheAnnotationType()) {
+            long timeOut = cacheMethodMeta.getTimeOut();
+            if (Constant.DEFAULT_NO_EXPIRE_TIME > timeOut) {
+                throw new BusinessException("非法的缓存过期时间："+ timeOut +"！");
+            }
+            if (cacheMethodMeta.getPreCacheSnowSlide() && Constant.DEFAULT_NO_EXPIRE_TIME == timeOut) {
+                throw new BusinessException("未设置缓存过期时间，无需防止缓存雪崩！");
+            }
+        }else if (CacheAnnotationType.QUERY == cacheMethodMeta.getCacheAnnotationType()) {
+            long timeOut = cacheMethodMeta.getTimeOut();
+            if (Constant.DEFAULT_NO_EXPIRE_TIME > timeOut) {
+                throw new BusinessException("非法的缓存过期时间："+ timeOut +"！");
+            }
+            if (cacheMethodMeta.getPreCacheSnowSlide() && Constant.DEFAULT_NO_EXPIRE_TIME == timeOut) {
+                throw new BusinessException("未设置缓存过期时间，无需防止缓存雪崩！");
+            }
+            if (Constant.DEFAULT_NO_SIZE_LIMIT > cacheMethodMeta.getMaxSize()) {
+                throw new BusinessException("非法的缓存最大数量："+ cacheMethodMeta.getMaxSize() +"！");
+            }
+            if (CacheMaxSizeStrategy.MAX_SIZE_STRATEGY_LRU == cacheMethodMeta.getMaxSizeStrategy() && Constant.DEFAULT_NO_EXPIRE_TIME == timeOut) {
+                throw new BusinessException("未设置缓存过期时间，无法启用LRU缓存淘汰策略！");
+            }
         }
         String returnType = cacheMethodMeta.getMethod().getReturnType().getName();
         boolean illegalReturnType = (DataType.LIST == cacheMethodMeta.getDataType() || DataType.SET == cacheMethodMeta.getDataType()) && !cacheMethodMeta.getDataType().getJavaType().equals(returnType);

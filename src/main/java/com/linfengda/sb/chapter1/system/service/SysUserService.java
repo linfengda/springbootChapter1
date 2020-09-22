@@ -28,7 +28,7 @@ public interface SysUserService {
 
     /**
      * 查询部门下的所有用户
-     * @param departmentId
+     * @param departmentId  部门id
      * @return
      * @throws Exception
      */
@@ -52,9 +52,10 @@ public interface SysUserService {
 
     /**
      * 更新用户信息
-     * @param userId            用户id
-     * @param userUpdateDTO     更新用户DTO
+     * @param userId
+     * @param userUpdateDTO
+     * @return
      * @throws Exception
      */
-    void updateUserInfo(Integer userId, UserUpdateDTO userUpdateDTO) throws Exception;
+    UserVO updateUserInfo(Integer userId, UserUpdateDTO userUpdateDTO) throws Exception;
 }

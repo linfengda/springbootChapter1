@@ -55,7 +55,7 @@ public class SetCacheDataTypeResolver extends AbstractCacheDataTypeResolver {
 
     @Override
     public void delCache(CacheParamDTO param) {
-        if (param.getDeleteMeta().getAllEntries()) {
+        if (param.getAllEntries()) {
             delAllEntries(param);
             return;
         }
@@ -75,6 +75,6 @@ public class SetCacheDataTypeResolver extends AbstractCacheDataTypeResolver {
         if (CollectionUtils.isEmpty(set)) {
             return true;
         }
-        return set.size() < param.getQueryMeta().getMaxSize();
+        return set.size() < param.getMaxSize();
     }
 }

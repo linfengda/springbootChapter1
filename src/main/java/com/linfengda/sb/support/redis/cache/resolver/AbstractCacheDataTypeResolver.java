@@ -7,7 +7,7 @@ import com.linfengda.sb.support.redis.cache.annotation.QueryCache;
 import com.linfengda.sb.support.redis.cache.entity.bo.CacheResultBO;
 import com.linfengda.sb.support.redis.cache.entity.dto.CacheParamDTO;
 import com.linfengda.sb.support.redis.cache.entity.dto.HashKey;
-import com.linfengda.sb.support.redis.cache.entity.meta.CacheDeleteMeta;
+import com.linfengda.sb.support.redis.cache.entity.type.CacheAnnotationType;
 import com.linfengda.sb.support.redis.cache.entity.type.CacheMaxSizeStrategy;
 import com.linfengda.sb.support.redis.cache.entity.type.DataType;
 import lombok.Setter;
@@ -33,7 +33,7 @@ public abstract class AbstractCacheDataTypeResolver implements CacheDataTypeReso
     @Override
     public CacheResultBO getCache(CacheParamDTO param) {
         CacheResultBO resultBO = doGetCache(param);
-        if (resultBO.getHasKey() && CacheMaxSizeStrategy.MAX_SIZE_STRATEGY_LRU == param.getQueryMeta().getMaxSizeStrategy()) {
+        if (resultBO.getHasKey() && CacheMaxSizeStrategy.MAX_SIZE_STRATEGY_LRU == param.getMaxSizeStrategy()) {
             // 更新lru缓存过期时间
             setCache(param, resultBO.getTarget());
             // 更新lru缓存标识
@@ -44,7 +44,11 @@ public abstract class AbstractCacheDataTypeResolver implements CacheDataTypeReso
 
     @Override
     public void setCache(CacheParamDTO param, Object value) {
-        if (Constant.DEFAULT_NO_SIZE_LIMIT == param.getQueryMeta().getMaxSize()) {
+        if (CacheAnnotationType.UPDATE == param.getCacheAnnotationType() || CacheAnnotationType.DELETE == param.getCacheAnnotationType()) {
+            doSetCache(param, value);
+            return;
+        }
+        if (Constant.DEFAULT_NO_SIZE_LIMIT == param.getMaxSize()) {
             // 未设置最大缓存数量
             doSetCache(param, value);
         }else {
@@ -53,15 +57,15 @@ public abstract class AbstractCacheDataTypeResolver implements CacheDataTypeReso
             if (hasSize) {
                 // 设置最大缓存数量但有空间
                 doSetCache(param, value);
-                if (CacheMaxSizeStrategy.MAX_SIZE_STRATEGY_LRU == param.getQueryMeta().getMaxSizeStrategy()) {
+                if (CacheMaxSizeStrategy.MAX_SIZE_STRATEGY_LRU == param.getMaxSizeStrategy()) {
                     genericRedisTemplate.opsForZSet().add(param.getLruKey(), param.getKey(), param.getLruKeyScore());
                 }
             }else {
                 // 设置最大缓存数量且没有空间
-                if (CacheMaxSizeStrategy.MAX_SIZE_STRATEGY_ABANDON == param.getQueryMeta().getMaxSizeStrategy()) {
-                    log.debug("当前缓存：{}超过最大缓存限制：{}，缓存策略：CacheMaxSizeStrategy.MAX_SIZE_STRATEGY_ABANDON，将不再缓存数据！", param.getPrefix(), param.getQueryMeta().getMaxSize());
-                }else if (CacheMaxSizeStrategy.MAX_SIZE_STRATEGY_LRU == param.getQueryMeta().getMaxSizeStrategy()) {
-                    log.debug("当前缓存：{}超过最大缓存限制：{}，缓存策略：CacheMaxSizeStrategy.MAX_SIZE_STRATEGY_LRU，将淘汰数据！", param.getPrefix(), param.getQueryMeta().getMaxSize());
+                if (CacheMaxSizeStrategy.MAX_SIZE_STRATEGY_ABANDON == param.getMaxSizeStrategy()) {
+                    log.debug("当前缓存：{}超过最大缓存限制：{}，缓存策略：CacheMaxSizeStrategy.MAX_SIZE_STRATEGY_ABANDON，将不再缓存数据！", param.getPrefix(), param.getMaxSize());
+                }else if (CacheMaxSizeStrategy.MAX_SIZE_STRATEGY_LRU == param.getMaxSizeStrategy()) {
+                    log.debug("当前缓存：{}超过最大缓存限制：{}，缓存策略：CacheMaxSizeStrategy.MAX_SIZE_STRATEGY_LRU，将淘汰数据！", param.getPrefix(), param.getMaxSize());
                     deleteLRU(param);
                     doSetCache(param, value);
                     genericRedisTemplate.opsForZSet().add(param.getLruKey(), param.getKey(), param.getLruKeyScore());
@@ -70,23 +74,12 @@ public abstract class AbstractCacheDataTypeResolver implements CacheDataTypeReso
         }
     }
 
-    protected void delAllEntries(CacheParamDTO param) {
-        genericRedisTemplate.execute((RedisCallback<Boolean>) connection -> {
-            Cursor<byte[]> cursor = connection.scan(new ScanOptions.ScanOptionsBuilder().match(param.getPrefix() + Constant.ASTERISK).count(Constant.DEFAULT_DELETE_CACHE_BATCH_NUM).build());
-            while(cursor.hasNext()) {
-                String key = new String(cursor.next());
-                genericRedisTemplate.delete(key);
-            }
-            return true;
-        });
-    }
-
     /**
      * 采取LRU算法批量淘汰数据 {@link QueryCache#deleteLruBatchNum()}
      * @param param 查询参数
      */
     private void deleteLRU(CacheParamDTO param) {
-        int num = param.getQueryMeta().getDeleteLruBatchNum()-1;
+        int num = param.getDeleteLruBatchNum()-1;
         Long size = genericRedisTemplate.opsForZSet().size(param.getLruKey());
         if (null == size || 0 == size) {
             return;
@@ -100,9 +93,7 @@ public abstract class AbstractCacheDataTypeResolver implements CacheDataTypeReso
                 continue;
             }
             CacheParamDTO delParam = new CacheParamDTO();
-            CacheDeleteMeta deleteMeta = new CacheDeleteMeta();
-            deleteMeta.setAllEntries(false);
-            delParam.setDeleteMeta(deleteMeta);
+            delParam.setAllEntries(false);
             String key = String.valueOf(delKey);
             if (DataType.HASH == param.getDataType()) {
                 HashKey hashKey = new HashKey();
@@ -114,7 +105,18 @@ public abstract class AbstractCacheDataTypeResolver implements CacheDataTypeReso
             }
             delCache(delParam);
         }
-        log.debug("当前缓存：{}超过最大缓存限制：{}，采取LRU算法淘汰{}条数据，lurKey={}，delKeys={}", param.getPrefix(), param.getQueryMeta().getMaxSize(), Constant.DEFAULT_LRU_CACHE_BG_REMOVE_BATCH_NUM, param.getLruKey(), JSON.toJSONString(delKeys));
+        log.debug("当前缓存：{}超过最大缓存限制：{}，采取LRU算法淘汰{}条数据，lurKey={}，delKeys={}", param.getPrefix(), param.getMaxSize(), Constant.DEFAULT_LRU_CACHE_BG_REMOVE_BATCH_NUM, param.getLruKey(), JSON.toJSONString(delKeys));
+    }
+
+    protected void delAllEntries(CacheParamDTO param) {
+        genericRedisTemplate.execute((RedisCallback<Boolean>) connection -> {
+            Cursor<byte[]> cursor = connection.scan(new ScanOptions.ScanOptionsBuilder().match(param.getPrefix() + Constant.ASTERISK).count(Constant.DEFAULT_DELETE_CACHE_BATCH_NUM).build());
+            while(cursor.hasNext()) {
+                String key = new String(cursor.next());
+                genericRedisTemplate.delete(key);
+            }
+            return true;
+        });
     }
 
     /**

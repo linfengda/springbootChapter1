@@ -45,7 +45,7 @@ public class ObjCacheDataTypeResolver extends AbstractCacheDataTypeResolver {
 
     @Override
     public void delCache(CacheParamDTO param) {
-        Boolean allEntries = param.getDeleteMeta().getAllEntries();
+        Boolean allEntries = param.getAllEntries();
         if (Boolean.TRUE.equals(allEntries)) {
             delAllEntries(param);
             return;
@@ -60,7 +60,7 @@ public class ObjCacheDataTypeResolver extends AbstractCacheDataTypeResolver {
         if (CollectionUtils.isEmpty(set)) {
             return true;
         }
-        return set.size() < param.getQueryMeta().getMaxSize();
+        return set.size() < param.getMaxSize();
     }
 
     @Override
