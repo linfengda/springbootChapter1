@@ -2,9 +2,12 @@ package com.linfengda.sb.chapter1.system.service.impl;
 
 import com.linfengda.sb.chapter1.common.cache.CachePrefix;
 import com.linfengda.sb.chapter1.system.entity.dto.SysDepartmentDTO;
+import com.linfengda.sb.chapter1.system.entity.dto.SysTeamDTO;
 import com.linfengda.sb.chapter1.system.entity.po.SysDepartmentPO;
+import com.linfengda.sb.chapter1.system.entity.po.SysTeamPO;
 import com.linfengda.sb.chapter1.system.service.SysOrganizeCacheService;
 import com.linfengda.sb.support.orm.BaseService;
+import com.linfengda.sb.support.orm.entity.ConditionParam;
 import com.linfengda.sb.support.orm.entity.SetValue;
 import com.linfengda.sb.support.redis.cache.annotation.DeleteCache;
 import com.linfengda.sb.support.redis.cache.annotation.QueryCache;
@@ -15,6 +18,9 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -63,5 +69,20 @@ public class SysOrganizeCacheServiceImpl extends BaseService implements SysOrgan
         SysDepartmentDTO sysDepartmentDTO = new SysDepartmentDTO();
         BeanUtils.copyProperties(sysDepartmentPO, sysDepartmentDTO);
         return sysDepartmentDTO;
+    }
+
+    @QueryCache(type = DataType.SET, prefix = CachePrefix.SYS_ORG_TEAM_SET_CACHE, timeOut = 1, timeUnit = TimeUnit.DAYS)
+    @Override
+    public Set<SysTeamDTO> queryTeamByDepartmentId(Integer departmentId) throws Exception {
+        ConditionParam conditionParam = new ConditionParam();
+        conditionParam.add("departmentId", departmentId);
+        List<SysTeamPO> sysTeamPOList = findAll(conditionParam, SysTeamPO.class);
+        Set<SysTeamDTO> sysTeamDTOSet = new HashSet<>();
+        for (SysTeamPO sysTeamPO : sysTeamPOList) {
+            SysTeamDTO sysTeamDTO = new SysTeamDTO();
+            BeanUtils.copyProperties(sysTeamPO, sysTeamDTO);
+            sysTeamDTOSet.add(sysTeamDTO);
+        }
+        return sysTeamDTOSet;
     }
 }

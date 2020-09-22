@@ -1,31 +1,32 @@
 package com.linfengda.sb.chapter1.system.entity.dto;
 
 import com.linfengda.sb.support.orm.entity.BasePO;
+import com.linfengda.sb.support.orm.tableAnnontation.Id;
 import lombok.Data;
 
 import java.sql.Timestamp;
 
 /**
- * @description: 系统部门缓存dto
+ * @description:
  * @author: linfengda
- * @date: 2020-07-27 17:26
+ * @date: 2020-09-23 00:12
  */
 @Data
-public class SysDepartmentDTO {
+public class SysTeamDTO {
     /**
      * 主键id
      */
     private Integer id;
     /**
-     * 部门名称
+     * 项目名称
      */
-    private String departmentName;
+    private String teamName;
     /**
-     * 部门别名
+     * 项目别名
      */
-    private String departmentAliasName;
+    private String teamAliasName;
     /**
-     * 部门类型{@link com.linfengda.sb.chapter1.system.entity.type.SysDepartmentType}
+     * 项目类型{@link com.linfengda.sb.chapter1.system.entity.type.SysTeamType}
      */
     private Integer type;
     /**

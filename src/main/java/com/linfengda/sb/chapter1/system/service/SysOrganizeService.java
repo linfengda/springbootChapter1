@@ -1,7 +1,9 @@
 package com.linfengda.sb.chapter1.system.service;
 
 import com.linfengda.sb.chapter1.system.entity.dto.SysDepartmentDTO;
-import com.linfengda.sb.chapter1.system.entity.po.SysDepartmentPO;
+import com.linfengda.sb.chapter1.system.entity.dto.SysTeamDTO;
+
+import java.util.List;
 
 /**
  * 描述: 系统组织关系服务
@@ -18,22 +20,14 @@ public interface SysOrganizeService {
      * @return              部门
      * @throws Exception
      */
-    SysDepartmentPO queryDepartment(Integer departmentId, Integer status) throws Exception;
+    SysDepartmentDTO queryDepartment(Integer departmentId, Integer status) throws Exception;
 
     /**
-     * 根据id删除部门
+     * 根据id查询所有团队
      * @param departmentId  部门id
+     * @param status        团队状态{@link com.linfengda.sb.chapter1.system.entity.po.SysDepartmentPO.Status}
+     * @return              该部门的所有团队
      * @throws Exception
      */
-    void delDepartment(Integer departmentId) throws Exception;
-
-    /**
-     * 根据id更新部门
-     * @param departmentId      部门id
-     * @param departmentName    部门名称
-     * @param status            状态
-     * @return
-     * @throws Exception
-     */
-    SysDepartmentDTO updateDepartment(Integer departmentId, String departmentName, Integer status) throws Exception;
+    List<SysTeamDTO> queryTeamByDepartmentId(Integer departmentId, Integer status) throws Exception;
 }
