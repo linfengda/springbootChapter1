@@ -144,7 +144,7 @@ public class CacheMethodMetaBuilder {
                 cacheMethodMeta.setPreCacheSnowSlide(updateCache.preCacheSnowSlide());
                 cacheMethodMeta.setPreCacheSnowSlideTime(updateCache.preCacheSnowSlideTime());
                 break;
-            }else if (CacheAnnotationType.UPDATE == type) {
+            }else if (CacheAnnotationType.DELETE == type) {
                 DeleteCache deleteCache = (DeleteCache) cacheAnnotation;
                 cacheMethodMeta.setDataType(deleteCache.type());
                 cacheMethodMeta.setPrefix(StringUtils.isBlank(deleteCache.prefix()) ? method.getName() : deleteCache.prefix());

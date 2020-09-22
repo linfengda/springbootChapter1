@@ -1,6 +1,7 @@
 package com.linfengda.sb.chapter1.system.entity.po;
 
 import com.linfengda.sb.support.orm.entity.BasePO;
+import com.linfengda.sb.support.orm.tableAnnontation.Id;
 import com.linfengda.sb.support.orm.tableAnnontation.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,6 +19,7 @@ public class SysDepartmentPO extends BasePO {
     /**
      * 主键id
      */
+    @Id
     private Integer id;
     /**
      * 部门名称

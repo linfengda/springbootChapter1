@@ -1,15 +1,19 @@
 package com.linfengda.sb.chapter1.system.service.impl;
 
-import com.linfengda.sb.chapter1.system.entity.dto.SysDepartmentDTO;
 import com.linfengda.sb.chapter1.common.cache.CachePrefix;
+import com.linfengda.sb.chapter1.system.entity.dto.SysDepartmentDTO;
 import com.linfengda.sb.chapter1.system.entity.po.SysDepartmentPO;
 import com.linfengda.sb.chapter1.system.service.SysOrganizeCacheService;
 import com.linfengda.sb.support.orm.BaseService;
+import com.linfengda.sb.support.orm.entity.SetValue;
 import com.linfengda.sb.support.redis.cache.annotation.DeleteCache;
 import com.linfengda.sb.support.redis.cache.annotation.QueryCache;
+import com.linfengda.sb.support.redis.cache.annotation.UpdateCache;
 import com.linfengda.sb.support.redis.cache.entity.type.DataType;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.concurrent.TimeUnit;
 
@@ -23,7 +27,7 @@ import java.util.concurrent.TimeUnit;
 public class SysOrganizeCacheServiceImpl extends BaseService implements SysOrganizeCacheService {
 
 
-    @QueryCache(type = DataType.HASH, prefix = CachePrefix.SYS_ORG_PRODUCTION_TEAM_CACHE, timeOut = 7, timeUnit = TimeUnit.DAYS)
+    @QueryCache(type = DataType.HASH, prefix = CachePrefix.SYS_ORG_PRODUCTION_TEAM_CACHE, timeOut = 1, timeUnit = TimeUnit.DAYS)
     @Override
     public SysDepartmentDTO queryDepartment(Integer departmentId) throws Exception {
         SysDepartmentPO sysDepartmentPO = findByPrimaryKey(departmentId, SysDepartmentPO.class);
@@ -31,17 +35,33 @@ public class SysOrganizeCacheServiceImpl extends BaseService implements SysOrgan
             return null;
         }
         SysDepartmentDTO sysDepartmentDTO = new SysDepartmentDTO();
-        sysDepartmentDTO.setId(sysDepartmentPO.getId());
-        sysDepartmentDTO.setDepartmentName(sysDepartmentPO.getDepartmentName());
-        sysDepartmentDTO.setDepartmentAliasName(sysDepartmentPO.getDepartmentAliasName());
-        sysDepartmentDTO.setType(sysDepartmentPO.getType());
-        sysDepartmentDTO.setStatus(sysDepartmentPO.getStatus());
+        BeanUtils.copyProperties(sysDepartmentPO, sysDepartmentDTO);
         return sysDepartmentDTO;
     }
 
+    @Transactional(rollbackFor = Exception.class)
     @DeleteCache(type = DataType.HASH, prefix = CachePrefix.SYS_ORG_PRODUCTION_TEAM_CACHE)
     @Override
     public void delDepartment(Integer departmentId) throws Exception {
-        // TODO 逻辑删除部门并同时删除缓存
+        SetValue setValue = new SetValue();
+        setValue.add("isDelete", SysDepartmentPO.Delete.DELETED.getCode());
+        updateByPrimaryKey(SysDepartmentPO.class, setValue, departmentId);
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    @UpdateCache(type = DataType.HASH, prefix = CachePrefix.SYS_ORG_PRODUCTION_TEAM_CACHE, timeOut = 1, timeUnit = TimeUnit.DAYS)
+    @Override
+    public SysDepartmentDTO updateDepartment(Integer departmentId, String departmentName, Integer status) throws Exception {
+        SetValue setValue = new SetValue();
+        setValue.add("departmentName", departmentName);
+        setValue.add("status", status);
+        updateByPrimaryKey(SysDepartmentPO.class, setValue, departmentId);
+        SysDepartmentPO sysDepartmentPO = findByPrimaryKey(departmentId, SysDepartmentPO.class);
+        if (null == sysDepartmentPO) {
+            return null;
+        }
+        SysDepartmentDTO sysDepartmentDTO = new SysDepartmentDTO();
+        BeanUtils.copyProperties(sysDepartmentPO, sysDepartmentDTO);
+        return sysDepartmentDTO;
     }
 }

@@ -14,15 +14,26 @@ import lombok.Getter;
 public class DataAccessException extends RuntimeException {
 
     public DataAccessException(String msg) {
+        super(msg);
         this.msg = msg;
     }
 
-    public DataAccessException(int code, String msg) {
+    public DataAccessException(Integer code, String msg) {
+        super(msg);
         this.code = code;
         this.msg = msg;
+    }
+
+    public DataAccessException(Integer code, String msg, String detailMsg) {
+        super(null == detailMsg ? msg : msg + "," + detailMsg);
+        this.code = code;
+        this.msg = msg;
+        this.detailMsg = detailMsg;
     }
 
     private int code = ErrorCode.COMMON_DAO_ERROR_CODE;
 
     private String msg;
+
+    private String detailMsg;
 }

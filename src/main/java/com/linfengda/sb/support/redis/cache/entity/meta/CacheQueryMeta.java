@@ -19,14 +19,14 @@ public class CacheQueryMeta extends CacheUpdateMeta {
      */
     private CacheMaxSizeStrategy maxSizeStrategy;
     /**
+     * 当lru缓存大小超出限制时，删除的key数量
+     */
+    private int deleteLruBatchNum;
+    /**
      * 防止缓存击穿
      * @return
      */
     private Boolean preCacheHotKeyMultiLoad;
-    /**
-     * 当lru缓存大小超出限制时，删除的key数量
-     */
-    private int deleteLruBatchNum;
     /**
      * 等待缓存加载自旋时间
      */

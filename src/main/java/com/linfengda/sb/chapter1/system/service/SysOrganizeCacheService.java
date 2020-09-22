@@ -23,4 +23,14 @@ public interface SysOrganizeCacheService {
      * @throws Exception
      */
     void delDepartment(Integer departmentId) throws Exception;
+
+    /**
+     * 根据id更新部门
+     * @param departmentId      部门id
+     * @param departmentName    部门名称
+     * @param status            状态
+     * @return
+     * @throws Exception
+     */
+    SysDepartmentDTO updateDepartment(Integer departmentId, String departmentName, Integer status) throws Exception;
 }

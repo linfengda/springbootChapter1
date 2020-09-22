@@ -25,7 +25,7 @@ public class SysDepartmentDTO {
      */
     private String departmentAliasName;
     /**
-     * 部门类型，1：技术；2：业务；3：行政
+     * 部门类型{@link com.linfengda.sb.chapter1.system.entity.type.SysDepartmentType}
      */
     private Integer type;
     /**

@@ -2,7 +2,7 @@ package com.linfengda.sb.chapter1.demo.service;
 
 import com.linfengda.sb.chapter1.Chapter1Application;
 import com.linfengda.sb.chapter1.system.cache.UserTokenCache;
-import com.linfengda.sb.chapter1.system.service.SysOrganizeService;
+import com.linfengda.sb.chapter1.system.service.SysUserService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
@@ -29,7 +29,7 @@ import org.springframework.transaction.annotation.Transactional;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ServiceSpringBootTest {
     @Autowired
-    private SysOrganizeService sysOrganizeService;
+    private SysUserService sysUserService;
     //使用mock包装的bean，对bean调用的方法进行模拟
     @MockBean
     private UserTokenCache userTokenCache;
@@ -49,6 +49,6 @@ public class ServiceSpringBootTest {
     public void test1() throws Exception {
         // 假设未连接redis，模拟缓存方法调用
         Mockito.doNothing().when(userTokenCache).clearCache();
-        sysOrganizeService.queryDepartment(123, null, null);
+        sysUserService.getUserInfo(1);
     }
 }

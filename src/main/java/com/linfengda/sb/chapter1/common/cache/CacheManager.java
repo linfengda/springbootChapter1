@@ -25,7 +25,7 @@ public enum CacheManager {
     /**
      * 用户token-userInfo缓存
      */
-    USER_INFO_CACHE("userInfoCache", "用户token-userInfo缓存", CachePrefix.USER_TOKEN_CACHE),
+    USER_INFO_CACHE("userInfoCache", "用户token-userInfo缓存", CachePrefix.USER_INFO_CACHE),
 
     /**
      * 系统组织：部门

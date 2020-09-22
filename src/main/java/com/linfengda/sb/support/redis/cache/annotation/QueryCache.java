@@ -48,6 +48,11 @@ public @interface QueryCache {
      */
     int deleteLruBatchNum() default 1;
     /**
+     * 防止缓存击穿，使用分布式锁限制单个线程加载缓存，来防止热点key失效后大量线程访问DB
+     * @return
+     */
+    boolean preCacheHotKeyMultiLoad() default false;
+    /**
      * 等待缓存加载自旋时间（原则上不能超过查询数据库耗费的时间，不然取得的是反效果）
      * @return
      */
@@ -67,9 +72,4 @@ public @interface QueryCache {
      * @return
      */
     long preCacheSnowSlideTime() default 60*60*1000;
-    /**
-     * 防止缓存击穿，使用分布式锁限制单个线程加载缓存，来防止热点key失效后大量线程访问DB
-     * @return
-     */
-    boolean preCacheHotKeyMultiLoad() default false;
 }
