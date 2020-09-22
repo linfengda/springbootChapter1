@@ -2,6 +2,7 @@ package com.linfengda.sb.chapter1.system.entity.dto;
 
 import lombok.Data;
 
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -20,6 +21,6 @@ public class UserUpdateDTO {
     /**
      * 用户名称
      */
-    @NotNull(message = "用户名称")
+    @NotBlank(message = "用户名称")
     private String userName;
 }

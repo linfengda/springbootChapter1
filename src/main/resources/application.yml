@@ -10,7 +10,7 @@ spring:
     active: @myActivateFile@,common-@myActivateFile@,mq-@myActivateFile@,redis-@myActivateFile@
 
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.zaxxer.hikari.HikariDataSource
     hikari:
       pool-name: HikariCP

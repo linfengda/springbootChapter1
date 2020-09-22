@@ -1,7 +1,7 @@
 package com.linfengda.sb.support.middleware.redis.performance.test;
 
-import com.linfengda.sb.support.redis.lettuce.serializer.ProtoStuffSerializer;
 import com.linfengda.sb.support.middleware.redis.performance.entity.bo.StringClazz;
+import com.linfengda.sb.support.redis.lettuce.serializer.ProtoStuffSerializer;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
