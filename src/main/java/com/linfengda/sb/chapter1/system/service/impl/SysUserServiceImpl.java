@@ -25,8 +25,11 @@ import org.springframework.util.CollectionUtils;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
 /**
  * 描述: 系统服务
@@ -48,11 +51,28 @@ public class SysUserServiceImpl extends BaseService implements SysUserService {
         return page;
     }
 
-    @QueryCache(type = DataType.LIST, prefix = "sys:tUser", timeOut = 30, timeUnit = TimeUnit.SECONDS, preCacheSnowSlide = true, preCacheSnowSlideTime = 1000, preCacheHotKeyMultiLoad = true)
+    @QueryCache(type = DataType.SET, prefix = "sys:dUser", timeOut = 30, timeUnit = TimeUnit.MINUTES, preCacheSnowSlide = true, preCacheSnowSlideTime = 1000, preCacheHotKeyMultiLoad = true)
+    @Override
+    public Set<UserVO> getDepartmentUserList(@CacheKey Integer departmentId) throws Exception {
+        ConditionParam conditionParam = new ConditionParam();
+        conditionParam.add("departmentId", departmentId);
+        List<UserVO> userVOList = getUserVOS(conditionParam);
+        if (null == userVOList) {
+            return null;
+        }
+        return new HashSet<>(userVOList);
+    }
+
+    @QueryCache(type = DataType.LIST, prefix = "sys:tUser", timeOut = 30, timeUnit = TimeUnit.MINUTES, preCacheSnowSlide = true, preCacheSnowSlideTime = 1000, preCacheHotKeyMultiLoad = true)
     @Override
     public List<UserVO> getTeamUserList(@CacheKey Integer teamId) throws Exception {
         ConditionParam conditionParam = new ConditionParam();
         conditionParam.add("teamId", teamId);
+        List<UserVO> userVOList = getUserVOS(conditionParam);
+        return userVOList;
+    }
+
+    private List<UserVO> getUserVOS(ConditionParam conditionParam) throws Exception {
         List<SysUserPO> sysUserPOList = findAll(conditionParam, SysUserPO.class);
         if (CollectionUtils.isEmpty(sysUserPOList)) {
             return null;

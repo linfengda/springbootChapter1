@@ -9,7 +9,11 @@ public interface CachePrefix {
     /**
      * 用户token-userId缓存
      */
-    String USER_TOKEN_CACHE = "sys:org:u:t";
+    String USER_TOKEN_CACHE = "sys:org:t:u:c";
+    /**
+     * 用户token-userInfo缓存
+     */
+    String USER_INFO_CACHE = "sys:org:u:i:c";
     /**
      * 系统组织：部门
      */

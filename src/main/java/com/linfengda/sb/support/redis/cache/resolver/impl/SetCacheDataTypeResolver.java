@@ -28,7 +28,7 @@ public class SetCacheDataTypeResolver extends AbstractCacheDataTypeResolver {
 
     @Override
     public CacheResultBO doGetCache(CacheParamDTO param) {
-        Object value = genericRedisTemplate.listGetAll(param.getKey());
+        Object value = genericRedisTemplate.setGetAll(param.getKey());
         CacheResultBO resultBO = new CacheResultBO();
         Set set = (Set) value;
         if (CollectionUtils.isEmpty(set)) {

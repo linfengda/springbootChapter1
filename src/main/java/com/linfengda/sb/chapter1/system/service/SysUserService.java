@@ -5,8 +5,10 @@ import com.linfengda.sb.chapter1.system.entity.dto.UserPageQueryDTO;
 import com.linfengda.sb.chapter1.system.entity.dto.UserUpdateDTO;
 import com.linfengda.sb.chapter1.system.entity.vo.UserListVO;
 import com.linfengda.sb.chapter1.system.entity.vo.UserVO;
+import com.linfengda.sb.support.redis.cache.annotation.CacheKey;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * 描述: 系统用户服务
@@ -23,6 +25,14 @@ public interface SysUserService {
      * @throws Exception
      */
     Page<UserListVO> pageUserList(UserPageQueryDTO userPageQueryDTO) throws Exception;
+
+    /**
+     * 查询部门下的所有用户
+     * @param departmentId
+     * @return
+     * @throws Exception
+     */
+    Set<UserVO> getDepartmentUserList(@CacheKey Integer departmentId) throws Exception;
 
     /**
      * 查询团队下的所有用户

@@ -61,7 +61,8 @@ public class RedisCacheAnnotationTest {
      * @throws Exception
      */
     @Test
-    public void testCacheNullKey() throws Exception {
+    public void testNullKeyCache() throws Exception {
+        log.info("{}", JSON.toJSONString(sysUserService.getDepartmentUserList(-1)));
         log.info("{}", JSON.toJSONString(sysUserService.getTeamUserList(-1)));
         log.info("{}", JSON.toJSONString(sysUserService.getUserInfo(-1)));
     }

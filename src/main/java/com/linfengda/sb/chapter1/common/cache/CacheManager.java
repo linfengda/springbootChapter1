@@ -3,6 +3,7 @@ package com.linfengda.sb.chapter1.common.cache;
 import com.linfengda.sb.chapter1.common.exception.BusinessException;
 import com.linfengda.sb.chapter1.common.exception.entity.ErrorCode;
 import com.linfengda.sb.chapter1.common.util.SpringUtil;
+import com.linfengda.sb.chapter1.system.cache.UserTokenCache;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
@@ -21,6 +22,10 @@ public enum CacheManager {
      * 用户token-userId缓存
      */
     USER_TOKEN_CACHE("userTokenCache", "用户token-userId缓存", CachePrefix.USER_TOKEN_CACHE),
+    /**
+     * 用户token-userInfo缓存
+     */
+    USER_INFO_CACHE("userInfoCache", "用户token-userInfo缓存", CachePrefix.USER_TOKEN_CACHE),
 
     /**
      * 系统组织：部门
