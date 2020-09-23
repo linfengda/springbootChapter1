@@ -2,7 +2,7 @@ package com.linfengda.sb.chapter1.system.service;
 
 import com.alibaba.fastjson.JSON;
 import com.linfengda.sb.chapter1.Chapter1Application;
-import com.linfengda.sb.chapter1.common.cache.CachePrefix;
+import com.linfengda.sb.chapter1.system.cache.CachePrefix;
 import com.linfengda.sb.chapter1.system.entity.dto.SysDepartmentDTO;
 import com.linfengda.sb.chapter1.system.entity.dto.SysTeamDTO;
 import com.linfengda.sb.support.redis.Constant;
@@ -16,8 +16,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 /**

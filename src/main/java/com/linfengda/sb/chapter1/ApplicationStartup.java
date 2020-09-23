@@ -1,6 +1,6 @@
 package com.linfengda.sb.chapter1;
 
-import com.linfengda.sb.chapter1.common.cache.CacheManager;
+import com.linfengda.sb.chapter1.system.cache.CacheManager;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;

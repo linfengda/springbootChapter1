@@ -1,7 +1,7 @@
 package com.linfengda.sb.chapter1.demo.service;
 
 import com.linfengda.sb.chapter1.Chapter1Application;
-import com.linfengda.sb.chapter1.system.cache.UserTokenCache;
+import com.linfengda.sb.chapter1.system.cache.impl.UserTokenCache;
 import com.linfengda.sb.chapter1.system.service.SysUserService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;

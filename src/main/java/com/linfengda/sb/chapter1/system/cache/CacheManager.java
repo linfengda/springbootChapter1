@@ -1,9 +1,9 @@
-package com.linfengda.sb.chapter1.common.cache;
+package com.linfengda.sb.chapter1.system.cache;
 
 import com.linfengda.sb.chapter1.common.exception.BusinessException;
 import com.linfengda.sb.chapter1.common.exception.entity.ErrorCode;
 import com.linfengda.sb.chapter1.common.util.SpringUtil;
-import com.linfengda.sb.chapter1.system.cache.UserTokenCache;
+import com.linfengda.sb.chapter1.system.cache.impl.UserTokenCache;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;

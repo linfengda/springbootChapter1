@@ -1,6 +1,6 @@
 package com.linfengda.sb.chapter1.system.service.impl;
 
-import com.linfengda.sb.chapter1.common.cache.CachePrefix;
+import com.linfengda.sb.chapter1.system.cache.CachePrefix;
 import com.linfengda.sb.chapter1.system.entity.dto.SysDepartmentDTO;
 import com.linfengda.sb.chapter1.system.entity.dto.SysTeamDTO;
 import com.linfengda.sb.chapter1.system.entity.po.SysDepartmentPO;

@@ -1,4 +1,4 @@
-package com.linfengda.sb.chapter1.common.cache;
+package com.linfengda.sb.chapter1.system.cache;
 
 /**
  * @description: 缓存命名空间
