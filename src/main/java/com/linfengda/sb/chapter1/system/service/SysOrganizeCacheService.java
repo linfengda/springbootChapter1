@@ -13,12 +13,29 @@ import java.util.Set;
 public interface SysOrganizeCacheService {
 
     /**
+     * 查询所有部门
+     * @return  所有部门
+     * @throws Exception
+     */
+    Set<SysDepartmentDTO> queryDepartments() throws Exception;
+
+    /**
      * 根据id查询部门
      * @param departmentId  部门id
-     * @return
+     * @return              部门
      * @throws Exception
      */
     SysDepartmentDTO queryDepartment(Integer departmentId) throws Exception;
+
+    /**
+     * 根据id更新部门
+     * @param departmentId      部门id
+     * @param departmentName    部门名称
+     * @param status            状态
+     * @return                  部门
+     * @throws Exception
+     */
+    SysDepartmentDTO updateDepartment(Integer departmentId, String departmentName, Integer status) throws Exception;
 
     /**
      * 根据id删除部门
@@ -26,16 +43,6 @@ public interface SysOrganizeCacheService {
      * @throws Exception
      */
     void delDepartment(Integer departmentId) throws Exception;
-
-    /**
-     * 根据id更新部门
-     * @param departmentId      部门id
-     * @param departmentName    部门名称
-     * @param status            状态
-     * @return
-     * @throws Exception
-     */
-    SysDepartmentDTO updateDepartment(Integer departmentId, String departmentName, Integer status) throws Exception;
 
     /**
      * 根据id查询所有团队

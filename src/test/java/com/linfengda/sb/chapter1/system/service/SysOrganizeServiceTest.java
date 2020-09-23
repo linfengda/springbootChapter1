@@ -2,8 +2,10 @@ package com.linfengda.sb.chapter1.system.service;
 
 import com.alibaba.fastjson.JSON;
 import com.linfengda.sb.chapter1.Chapter1Application;
+import com.linfengda.sb.chapter1.common.cache.CachePrefix;
 import com.linfengda.sb.chapter1.system.entity.dto.SysDepartmentDTO;
 import com.linfengda.sb.chapter1.system.entity.dto.SysTeamDTO;
+import com.linfengda.sb.support.redis.Constant;
 import com.linfengda.sb.support.redis.GenericRedisTemplate;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.FixMethodOrder;
@@ -14,7 +16,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @description:
@@ -27,29 +31,39 @@ import java.util.List;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class SysOrganizeServiceTest {
     @Resource
-    private SysOrganizeService sysOrganizeService;
-    @Resource
     private SysOrganizeCacheService sysOrganizeCacheService;
     @Resource
     private GenericRedisTemplate genericRedisTemplate;
 
 
     /**
-     * 测试部门缓存查询，删除
+     * 部门缓存查询，新增，修改，删除
      * @throws Exception
      */
     @Test
     public void testDepartmentCache() throws Exception {
-        SysDepartmentDTO sysDepartmentDTO = sysOrganizeService.queryDepartment(1, 0);
-        log.info("根据id查询部门：{}", JSON.toJSONString(sysDepartmentDTO));
+        sysOrganizeCacheService.queryDepartment(1);
+        SysDepartmentDTO queryDepartmentDTO = genericRedisTemplate.hashGet(CachePrefix.SYS_ORG_PRODUCTION_TEAM_CACHE, "1");
+        log.info("缓存后，根据id查询部门：{}", JSON.toJSONString(queryDepartmentDTO));
         sysOrganizeCacheService.updateDepartment(1, "技术部", 0);
-        SysDepartmentDTO updateDepartmentDTO = sysOrganizeService.queryDepartment(1, 0);
-        log.info("更新缓存后，查询部门：{}", JSON.toJSONString(updateDepartmentDTO));
+        SysDepartmentDTO updateDepartmentDTO = genericRedisTemplate.hashGet(CachePrefix.SYS_ORG_PRODUCTION_TEAM_CACHE, "1");
+        log.info("更新缓存后，根据id查询部门：{}", JSON.toJSONString(updateDepartmentDTO));
         sysOrganizeCacheService.delDepartment(1);
-        SysDepartmentDTO delDepartmentDTO = genericRedisTemplate.hashGet("sys:org:pt", "1");
-        log.info("删除缓存后，查询部门：{}", JSON.toJSONString(delDepartmentDTO));
+        SysDepartmentDTO delDepartmentDTO = genericRedisTemplate.hashGet(CachePrefix.SYS_ORG_PRODUCTION_TEAM_CACHE, "1");
+        log.info("删除缓存后，根据id查询部门：{}", JSON.toJSONString(delDepartmentDTO));
+        sysOrganizeCacheService.queryDepartments();
+        Set<SysDepartmentDTO> sysDepartmentDTOSet = genericRedisTemplate.setGetAll(CachePrefix.SYS_ORG_PRODUCTION_TEAM_SET_CACHE);
+        log.info("缓存后，查询所有部门：{}", JSON.toJSONString(sysDepartmentDTOSet));
+    }
 
-        List<SysTeamDTO> sysTeamDTOList = sysOrganizeService.queryTeamByDepartmentId(1, 0);
-        log.info("根据id查询所有团队：{}", JSON.toJSONString(sysTeamDTOList));
+    /**
+     * 团队缓存查询，新增，修改，删除
+     * @throws Exception
+     */
+    @Test
+    public void testTeamCache() throws Exception {
+        sysOrganizeCacheService.queryTeamByDepartmentId(1);
+        Set<SysTeamDTO> sysTeamDTOSet = genericRedisTemplate.setGetAll(CachePrefix.SYS_ORG_TEAM_SET_CACHE + Constant.COLON + "1");
+        log.info("缓存后，根据部门id查询所有团队：{}", JSON.toJSONString(sysTeamDTOSet));
     }
 }
