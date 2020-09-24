@@ -31,6 +31,10 @@ public class UserTokenCache implements Cache {
         log.warn("清除用户token缓存...");
     }
 
+    public void put(String userId, String token){
+        genericRedisTemplate.hashPut(CacheManager.USER_TOKEN_CACHE.getPrefix(), userId, token);
+    }
+
     public void remove(String userId){
         genericRedisTemplate.hashDel(CacheManager.USER_TOKEN_CACHE.getPrefix(), userId);
     }

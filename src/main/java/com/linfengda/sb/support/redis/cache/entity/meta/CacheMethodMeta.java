@@ -17,6 +17,10 @@ import java.util.concurrent.TimeUnit;
 @Data
 public class CacheMethodMeta extends CacheQueryMeta {
     /**
+     * 缓存操作类型
+     */
+    private CacheAnnotationType cacheAnnotationType;
+    /**
      * 原始方法对象
      */
     private Method method;
@@ -24,10 +28,6 @@ public class CacheMethodMeta extends CacheQueryMeta {
      * 方法名称
      */
     private String methodName;
-    /**
-     * 缓存操作类型
-     */
-    private CacheAnnotationType cacheAnnotationType;
     /**
      * 数据类型
      */

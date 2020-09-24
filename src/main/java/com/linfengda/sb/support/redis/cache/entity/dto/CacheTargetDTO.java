@@ -3,6 +3,8 @@ package com.linfengda.sb.support.redis.cache.entity.dto;
 import lombok.Data;
 import org.aopalliance.intercept.MethodInvocation;
 
+import java.util.List;
+
 /**
  * 描述: redis缓存处理对象
  *
@@ -19,4 +21,8 @@ public class CacheTargetDTO {
      * 缓存参数信息
      */
     private CacheParamDTO param;
+    /**
+     * 删除缓存参数信息（多个）
+     */
+    private List<CacheParamDTO> deleteParams;
 }

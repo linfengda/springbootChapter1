@@ -1,38 +1,45 @@
 package com.linfengda.sb.chapter1.system.entity.dto;
 
 import com.linfengda.sb.support.orm.entity.BasePO;
-import com.linfengda.sb.support.orm.tableAnnontation.Id;
 import lombok.Data;
 
 import java.sql.Timestamp;
 
 /**
- * @description:
+ * @description: 用户缓存dto
  * @author: linfengda
- * @date: 2020-09-23 00:12
+ * @date: 2020-09-23 22:34
  */
 @Data
-public class SysTeamDTO {
+public class SysUserCacheDTO {
     /**
      * 主键id
      */
     private Integer id;
     /**
-     * 项目名称
+     * 用户名称
      */
-    private String teamName;
+    private String userName;
     /**
-     * 项目别名
+     * 用户手机
      */
-    private String teamAliasName;
+    private String phone;
     /**
-     * 项目类型{@link com.linfengda.sb.chapter1.system.entity.type.SysTeamType}
+     * 用户密码
      */
-    private Integer type;
+    private String password;
     /**
-     * 状态：0启用，1停用
+     * 用户状态
      */
     private Integer status;
+    /**
+     * 部门id
+     */
+    private Integer departmentId;
+    /**
+     * 项目id
+     */
+    private Integer teamId;
     /**
      * 创建人
      */

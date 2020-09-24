@@ -1,12 +1,8 @@
 package com.linfengda.sb.support.redis.cache.builder;
 
 import com.linfengda.sb.chapter1.common.exception.BusinessException;
-import com.linfengda.sb.chapter1.common.exception.entity.ErrorCode;
 import com.linfengda.sb.support.redis.Constant;
-import com.linfengda.sb.support.redis.cache.annotation.CacheKey;
-import com.linfengda.sb.support.redis.cache.annotation.DeleteCache;
-import com.linfengda.sb.support.redis.cache.annotation.QueryCache;
-import com.linfengda.sb.support.redis.cache.annotation.UpdateCache;
+import com.linfengda.sb.support.redis.cache.annotation.*;
 import com.linfengda.sb.support.redis.cache.entity.meta.CacheKeyMeta;
 import com.linfengda.sb.support.redis.cache.entity.meta.CacheMethodMeta;
 import com.linfengda.sb.support.redis.cache.entity.type.CacheAnnotationType;
@@ -22,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.stream.Collectors;
 
 /**
  * 描述: 缓存方法注解解析并缓存
@@ -31,66 +28,23 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class CacheMethodMetaBuilder {
     /**
-     * 缓存方法标识
-     */
-    private static final Map<Method, Boolean> CHECKED_CACHE_METHOD_CACHE = new ConcurrentHashMap<>(512);
-    /**
      * 缓存方法注解元数据
      */
-    private static final Map<Method, CacheMethodMeta> CACHE_METHOD_CACHE = new ConcurrentHashMap<>(512);
+    private static final Map<Method, Map<CacheAnnotationType, CacheMethodMeta>> CACHE_METHOD_CACHE = new ConcurrentHashMap<>(512);
 
-
-    /**
-     * 判断方法是否有缓存注解（当方法有多个缓存注解时报错）
-     * @param method    方法
-     * @return          true：有缓存注解，false：无缓存注解
-     */
-    public static boolean checkCacheAnnotation(Method method) {
-        Boolean flag = CHECKED_CACHE_METHOD_CACHE.get(method);
-        if (null != flag) {
-            return flag;
-        }
-        List<Annotation> cacheAnnotationList = getMethodCacheAnnotations(method);
-        if (CollectionUtils.isEmpty(cacheAnnotationList)) {
-            throw new BusinessException(ErrorCode.COMMON_CACHE_ERROR_CODE, "方法["+ method.getName() +"]没有缓存注解！");
-        }
-        if (cacheAnnotationList.size() > 1) {
-            throw new BusinessException(ErrorCode.COMMON_CACHE_ERROR_CODE, "方法["+ method.getName() +"]不能添加多个缓存注解！");
-        }
-        CHECKED_CACHE_METHOD_CACHE.put(method, true);
-        return true;
-    }
-
-    /**
-     * 获取方法缓存注解
-     * @param method    方法
-     * @return          缓存注解列表
-     */
-    private static List<Annotation> getMethodCacheAnnotations(Method method) {
-        List<Annotation> cacheAnnotationList = new ArrayList<>();
-        for (CacheAnnotationType annotationType : CacheAnnotationType.values()) {
-            Annotation annotation = method.getDeclaredAnnotation(annotationType.getAnnotation());
-            if (null == annotation) {
-                continue;
-            }
-            cacheAnnotationList.add(annotation);
-        }
-        return cacheAnnotationList;
-    }
 
     /**
      *获取缓存信息
      * @param method    方法
      * @return          缓存方法元数据
      */
-    public static CacheMethodMeta getCacheMethodMeta(Method method) {
-        checkCacheAnnotation(method);
-        CacheMethodMeta cacheMethodMeta = CACHE_METHOD_CACHE.get(method);
-        if (null != cacheMethodMeta) {
-            return cacheMethodMeta;
+    public static CacheMethodMeta getCacheMethodMeta(Method method, CacheAnnotationType annotationType) {
+        Map<CacheAnnotationType, CacheMethodMeta> cacheMethodMetaMap = CACHE_METHOD_CACHE.get(method);
+        if (null != cacheMethodMetaMap) {
+            return cacheMethodMetaMap.get(annotationType);
         }
-        cacheMethodMeta = loadCacheAnnotation(method);
-        return cacheMethodMeta;
+        cacheMethodMetaMap = loadCacheAnnotation(method);
+        return cacheMethodMetaMap.get(annotationType);
     }
 
     /**
@@ -98,10 +52,12 @@ public class CacheMethodMetaBuilder {
      * @param method    方法参数
      * @return          缓存方法信息
      */
-    private static CacheMethodMeta loadCacheAnnotation(Method method) {
-        CacheMethodMeta cacheMethodMeta = parseCacheAnnotation(method);
-        CACHE_METHOD_CACHE.put(method, cacheMethodMeta);
-        return cacheMethodMeta;
+    private static Map<CacheAnnotationType, CacheMethodMeta> loadCacheAnnotation(Method method) {
+        List<CacheMethodMeta> cacheMethodMetas = parseCacheAnnotation(method);
+        Map<CacheAnnotationType, CacheMethodMeta> cacheMethodMetaMap = cacheMethodMetas.stream().collect(Collectors.toMap(CacheMethodMeta::getCacheAnnotationType, v -> v, (k1, k2) -> k1));
+        validateCacheMethod(cacheMethodMetaMap);
+        CACHE_METHOD_CACHE.put(method, cacheMethodMetaMap);
+        return cacheMethodMetaMap;
     }
 
     /**
@@ -109,16 +65,17 @@ public class CacheMethodMetaBuilder {
      * @param method    方法参数
      * @return          缓存方法信息
      */
-    private static CacheMethodMeta parseCacheAnnotation(Method method) {
-        CacheMethodMeta cacheMethodMeta = new CacheMethodMeta();
-        cacheMethodMeta.setMethod(method);
-        cacheMethodMeta.setMethodName(method.getName());
-        cacheMethodMeta.setMethodCacheKeys(getKeyMetas(method));
+    private static List<CacheMethodMeta> parseCacheAnnotation(Method method) {
+        List<CacheMethodMeta> cacheMethodMetas = new ArrayList<>();
         for (CacheAnnotationType type : CacheAnnotationType.values()) {
             Annotation cacheAnnotation = method.getAnnotation(type.getAnnotation());
             if (null == cacheAnnotation) {
                 continue;
             }
+            CacheMethodMeta cacheMethodMeta = new CacheMethodMeta();
+            cacheMethodMeta.setMethod(method);
+            cacheMethodMeta.setMethodName(method.getName());
+            cacheMethodMeta.setMethodCacheKeys(getKeyMetas(method));
             cacheMethodMeta.setCacheAnnotationType(type);
             if (CacheAnnotationType.QUERY == type) {
                 QueryCache queryCache = (QueryCache) cacheAnnotation;
@@ -134,7 +91,6 @@ public class CacheMethodMetaBuilder {
                 cacheMethodMeta.setDeleteLruBatchNum(queryCache.deleteLruBatchNum());
                 cacheMethodMeta.setSpinTime(queryCache.spinTime());
                 cacheMethodMeta.setMaxSpinCount(queryCache.maxSpinCount());
-                break;
             }else if (CacheAnnotationType.UPDATE == type) {
                 UpdateCache updateCache = (UpdateCache) cacheAnnotation;
                 cacheMethodMeta.setDataType(updateCache.type());
@@ -143,25 +99,54 @@ public class CacheMethodMetaBuilder {
                 cacheMethodMeta.setTimeUnit(updateCache.timeUnit());
                 cacheMethodMeta.setPreCacheSnowSlide(updateCache.preCacheSnowSlide());
                 cacheMethodMeta.setPreCacheSnowSlideTime(updateCache.preCacheSnowSlideTime());
-                break;
             }else if (CacheAnnotationType.DELETE == type) {
+                List<CacheMethodMeta> deleteMetas = new ArrayList<>();
                 DeleteCache deleteCache = (DeleteCache) cacheAnnotation;
-                cacheMethodMeta.setDataType(deleteCache.type());
-                cacheMethodMeta.setPrefix(StringUtils.isBlank(deleteCache.prefix()) ? method.getName() : deleteCache.prefix());
-                cacheMethodMeta.setAllEntries(deleteCache.allEntries());
-                break;
+                Cache[] caches = deleteCache.caches();
+                for (Cache cache : caches) {
+                    CacheMethodMeta deleteMeta = new CacheMethodMeta();
+                    deleteMeta.setMethod(cacheMethodMeta.getMethod());
+                    deleteMeta.setMethodName(cacheMethodMeta.getMethodName());
+                    deleteMeta.setMethodCacheKeys(cacheMethodMeta.getMethodCacheKeys());
+                    deleteMeta.setCacheAnnotationType(cacheMethodMeta.getCacheAnnotationType());
+                    deleteMeta.setDataType(cache.type());
+                    deleteMeta.setPrefix(StringUtils.isBlank(cache.prefix()) ? method.getName() : cache.prefix());
+                    deleteMeta.setAllEntries(cache.allEntries());
+                    deleteMetas.add(deleteMeta);
+                }
+                cacheMethodMeta.setDeleteMetas(deleteMetas);
             }
+            validateCacheMethodMeta(cacheMethodMeta);
+            cacheMethodMetas.add(cacheMethodMeta);
         }
-        validateCacheMethod(cacheMethodMeta);
-        return cacheMethodMeta;
+        return cacheMethodMetas;
     }
 
     /**
      * 检查缓存方法，将使用错误遏止在开发阶段
+     * @param cacheMethodMetaMap
+     */
+    private static void validateCacheMethod(Map<CacheAnnotationType, CacheMethodMeta> cacheMethodMetaMap) {
+        if (null == cacheMethodMetaMap) {
+            return;
+        }
+        if (cacheMethodMetaMap.containsKey(CacheAnnotationType.QUERY) && cacheMethodMetaMap.containsKey(CacheAnnotationType.DELETE)) {
+            throw new BusinessException("方法请不要同时使用@QueryCache和@DeleteCache注解！");
+        }
+        if (cacheMethodMetaMap.containsKey(CacheAnnotationType.QUERY) && cacheMethodMetaMap.containsKey(CacheAnnotationType.UPDATE)) {
+            throw new BusinessException("方法请不要同时使用@QueryCache和@UpdateCache注解！");
+        }
+    }
+
+    /**
+     * 检查缓存注解，将使用错误遏止在开发阶段
      * @param cacheMethodMeta
      */
-    private static void validateCacheMethod(CacheMethodMeta cacheMethodMeta) {
+    private static void validateCacheMethodMeta(CacheMethodMeta cacheMethodMeta) {
         if (CacheAnnotationType.DELETE == cacheMethodMeta.getCacheAnnotationType()) {
+            if (CollectionUtils.isEmpty(cacheMethodMeta.getDeleteMetas())) {
+                throw new BusinessException("@DeleteCache注解至少要定义一个删除的缓存！");
+            }
             return;
         }
         if (CacheAnnotationType.UPDATE == cacheMethodMeta.getCacheAnnotationType()) {

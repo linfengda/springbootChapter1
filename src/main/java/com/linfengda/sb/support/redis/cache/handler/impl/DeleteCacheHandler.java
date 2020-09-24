@@ -1,5 +1,6 @@
 package com.linfengda.sb.support.redis.cache.handler.impl;
 
+import com.linfengda.sb.support.redis.cache.entity.dto.CacheParamDTO;
 import com.linfengda.sb.support.redis.cache.entity.dto.CacheTargetDTO;
 import com.linfengda.sb.support.redis.cache.entity.type.CacheAnnotationType;
 import com.linfengda.sb.support.redis.cache.handler.AbstractCacheHandler;
@@ -24,9 +25,11 @@ public class DeleteCacheHandler extends AbstractCacheHandler {
 
     @Override
     public Object doCache(CacheTargetDTO cacheTargetDTO) throws Throwable {
-        log.debug("删除缓存注解处理，dataType={}", cacheTargetDTO.getParam().getDataType());
-        CacheDataTypeResolver resolver = CacheDataTypeResolverHolder.INSTANCE.getResolver(cacheTargetDTO.getParam().getDataType());
-        resolver.delCache(cacheTargetDTO.getParam());
+        for (CacheParamDTO deleteParam : cacheTargetDTO.getDeleteParams()) {
+            log.debug("删除缓存注解处理，dataType={}", deleteParam.getDataType());
+            CacheDataTypeResolver resolver = CacheDataTypeResolverHolder.INSTANCE.getResolver(deleteParam.getDataType());
+            resolver.delCache(deleteParam);
+        }
         MethodInvocation invocation = cacheTargetDTO.getInvocation();
         return invocation.proceed();
     }

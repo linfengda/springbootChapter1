@@ -2,16 +2,17 @@ package com.linfengda.sb.support.redis.cache.entity.meta;
 
 import lombok.Data;
 
+import java.util.List;
+
 /**
  * @description:
  * @author: linfengda
  * @date: 2020-09-17 18:39
  */
 @Data
-public class CacheDeleteMeta {
+public class CacheDeleteMeta extends CacheMeta {
     /**
-     * 是否删除前缀的所有缓存
-     * @return
+     * 删除列表
      */
-    private Boolean allEntries;
+    private List<CacheMethodMeta> deleteMetas;
 }

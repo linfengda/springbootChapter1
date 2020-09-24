@@ -50,9 +50,9 @@ public class RedisCacheAnnotationConfig extends RedisCacheAnnotationInitializer 
 
     @Bean
     @Role(BeanDefinition.ROLE_INFRASTRUCTURE)
-    public DeleteCacheMethodPointcutAdvisor deleteCacheMethodPointcutAdvisor(DeleteCacheInterceptor deleteQueryCacheInterceptor) {
+    public DeleteCacheMethodPointcutAdvisor deleteCacheMethodPointcutAdvisor(DeleteCacheInterceptor deleteCacheInterceptor) {
         DeleteCacheMethodPointcutAdvisor deleteCacheMethodPointcutAdvisor = new DeleteCacheMethodPointcutAdvisor();
-        deleteCacheMethodPointcutAdvisor.setAdvice(deleteQueryCacheInterceptor);
+        deleteCacheMethodPointcutAdvisor.setAdvice(deleteCacheInterceptor);
         AnnotationAttributes attributes = AnnotationMetaHolder.INSTANCE.getAttributes();
         if (attributes != null) {
             deleteCacheMethodPointcutAdvisor.setOrder(attributes.<Integer>getNumber("deleteOrder"));
@@ -62,9 +62,9 @@ public class RedisCacheAnnotationConfig extends RedisCacheAnnotationInitializer 
 
     @Bean
     @Role(BeanDefinition.ROLE_INFRASTRUCTURE)
-    public UpdateCacheMethodPointcutAdvisor updateCacheMethodPointcutAdvisor(UpdateCacheInterceptor updateQueryCacheInterceptor) {
+    public UpdateCacheMethodPointcutAdvisor updateCacheMethodPointcutAdvisor(UpdateCacheInterceptor updateCacheInterceptor) {
         UpdateCacheMethodPointcutAdvisor updateCacheMethodPointcutAdvisor = new UpdateCacheMethodPointcutAdvisor();
-        updateCacheMethodPointcutAdvisor.setAdvice(updateQueryCacheInterceptor);
+        updateCacheMethodPointcutAdvisor.setAdvice(updateCacheInterceptor);
         AnnotationAttributes attributes = AnnotationMetaHolder.INSTANCE.getAttributes();
         if (attributes != null) {
             updateCacheMethodPointcutAdvisor.setOrder(attributes.<Integer>getNumber("updateOrder"));
