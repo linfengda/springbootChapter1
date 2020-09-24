@@ -1,4 +1,4 @@
-package com.linfengda.sb.support.orm.sqlHandler;
+package com.linfengda.sb.support.orm.sql.handler;
 
 import com.linfengda.sb.support.orm.entity.AttributeValue;
 
@@ -7,6 +7,12 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 
+/**
+ * 描述: execute sql
+ *
+ * @author linfengda
+ * @create 2019-04-12 13:25
+ */
 public class BaseSqlHandler {
 
     protected PreparedStatement getPreparedStatement(Connection conn, String sql, List<AttributeValue> params) throws SQLException {

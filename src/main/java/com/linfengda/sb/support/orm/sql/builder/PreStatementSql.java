@@ -1,4 +1,4 @@
-package com.linfengda.sb.support.orm.sqlHandler;
+package com.linfengda.sb.support.orm.sql.builder;
 
 import com.linfengda.sb.support.orm.entity.AttributeValue;
 import lombok.Data;

@@ -6,6 +6,10 @@ import lombok.Getter;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 更新参数类
+ * @author linfengda
+ */
 public class SetValue {
 
     private String partSql = " SET version=version+1,";

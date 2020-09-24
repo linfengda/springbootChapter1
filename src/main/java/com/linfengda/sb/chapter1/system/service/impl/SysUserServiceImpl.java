@@ -9,7 +9,7 @@ import com.linfengda.sb.chapter1.system.entity.po.SysUserPO;
 import com.linfengda.sb.chapter1.system.entity.vo.UserListVO;
 import com.linfengda.sb.chapter1.system.entity.vo.UserVO;
 import com.linfengda.sb.chapter1.system.service.SysUserService;
-import com.linfengda.sb.support.orm.BaseService;
+import com.linfengda.sb.support.orm.AbstractBaseService;
 import com.linfengda.sb.support.orm.entity.ConditionParam;
 import com.linfengda.sb.support.orm.entity.SetValue;
 import com.linfengda.sb.support.redis.cache.annotation.CacheKey;
@@ -39,7 +39,7 @@ import java.util.concurrent.TimeUnit;
  */
 @Service
 @Slf4j
-public class SysUserServiceImpl extends BaseService implements SysUserService {
+public class SysUserServiceImpl extends AbstractBaseService implements SysUserService {
     @Resource
     private SystemDao systemDao;
 

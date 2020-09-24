@@ -1,6 +1,7 @@
-package com.linfengda.sb.support.orm.sqlHandler;
+package com.linfengda.sb.support.orm.sql.handler;
 
 import com.linfengda.sb.support.orm.exception.DataAccessException;
+import com.linfengda.sb.support.orm.sql.builder.PreStatementSql;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.jdbc.datasource.DataSourceUtils;
 
@@ -10,19 +11,25 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * 描述: execute sql
+ *
+ * @author linfengda
+ * @create 2019-04-12 13:25
+ */
 @Slf4j
 public class PreStatementSqlHandler extends BaseSqlHandler {
 
+	private DataSource dataSource;
 	private Connection conn;
+	private PreStatementSql preStatementSql;
 	private PreparedStatement preStatement;
 	private ResultSet result;
-	private PreStatementSql preStatementSql;
-	private DataSource dataSource;
 
 	public PreStatementSqlHandler(PreStatementSql sql, DataSource dataSource) {
 		this.preStatementSql = sql;
-		this.conn = DataSourceUtils.getConnection(dataSource);
 		this.dataSource = dataSource;
+		this.conn = DataSourceUtils.getConnection(dataSource);
 	}
 
 	/**

@@ -8,7 +8,7 @@ import com.linfengda.sb.chapter1.system.entity.po.SysDepartmentPO;
 import com.linfengda.sb.chapter1.system.entity.po.SysTeamPO;
 import com.linfengda.sb.chapter1.system.entity.po.SysUserPO;
 import com.linfengda.sb.chapter1.system.service.SysOrganizeCacheService;
-import com.linfengda.sb.support.orm.BaseService;
+import com.linfengda.sb.support.orm.AbstractBaseService;
 import com.linfengda.sb.support.orm.entity.ConditionParam;
 import com.linfengda.sb.support.orm.entity.SetValue;
 import com.linfengda.sb.support.redis.cache.annotation.*;
@@ -30,7 +30,7 @@ import java.util.concurrent.TimeUnit;
  */
 @Service
 @Slf4j
-public class SysOrganizeCacheServiceImpl extends BaseService implements SysOrganizeCacheService {
+public class SysOrganizeCacheServiceImpl extends AbstractBaseService implements SysOrganizeCacheService {
 
 
     @QueryCache(type = DataType.HASH, prefix = CachePrefix.SYS_ORG_PRODUCTION_TEAM_CACHE, timeOut = 1, timeUnit = TimeUnit.DAYS)

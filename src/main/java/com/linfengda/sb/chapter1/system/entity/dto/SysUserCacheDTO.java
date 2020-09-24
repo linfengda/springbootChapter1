@@ -1,6 +1,6 @@
 package com.linfengda.sb.chapter1.system.entity.dto;
 
-import com.linfengda.sb.support.orm.entity.BasePO;
+import com.linfengda.sb.support.orm.entity.base.BasePO;
 import lombok.Data;
 
 import java.sql.Timestamp;

@@ -6,5 +6,5 @@ package com.linfengda.sb.support.orm;
  * @author linfengda
  * @create 2019-12-17 15:37
  */
-public class OrmTemplate extends BaseService {
+public class OrmTemplate extends AbstractBaseService {
 }

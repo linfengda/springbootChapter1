@@ -1,11 +1,10 @@
-package com.linfengda.sb.support.orm.sqlBuilder;
+package com.linfengda.sb.support.orm.sql.builder;
 
 import com.linfengda.sb.support.orm.entity.AttributeValue;
 import com.linfengda.sb.support.orm.entity.ConditionParam;
 import com.linfengda.sb.support.orm.entity.base.DefaultField;
 import com.linfengda.sb.support.orm.entity.SetValue;
 import com.linfengda.sb.support.orm.exception.DataAccessException;
-import com.linfengda.sb.support.orm.sqlHandler.PreStatementSql;
 import com.linfengda.sb.support.orm.utils.ClassUtil;
 import com.linfengda.sb.support.orm.utils.UserUtil;
 
@@ -14,7 +13,16 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 描述: build sql
+ *
+ * @author linfengda
+ * @create 2019-04-12 13:25
+ */
 public enum PreStatementSqlBuilder {
+    /**
+     * 实例
+     */
     INSTANCE;
 
     public PreStatementSql buildBatchInsertSql(Object po) throws Exception {

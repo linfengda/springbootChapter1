@@ -4,9 +4,9 @@ import com.linfengda.sb.support.orm.entity.AttributeValue;
 import com.linfengda.sb.support.orm.entity.ConditionParam;
 import com.linfengda.sb.support.orm.entity.base.DefaultFieldSetter;
 import com.linfengda.sb.support.orm.entity.SetValue;
-import com.linfengda.sb.support.orm.sqlBuilder.PreStatementSqlBuilder;
-import com.linfengda.sb.support.orm.sqlHandler.PreStatementSql;
-import com.linfengda.sb.support.orm.sqlHandler.PreStatementSqlHandler;
+import com.linfengda.sb.support.orm.sql.builder.PreStatementSqlBuilder;
+import com.linfengda.sb.support.orm.sql.builder.PreStatementSql;
+import com.linfengda.sb.support.orm.sql.handler.PreStatementSqlHandler;
 import com.linfengda.sb.support.orm.utils.ClassUtil;
 import com.linfengda.sb.support.orm.utils.ResultSetUtil;
 import lombok.Setter;
@@ -22,7 +22,7 @@ import java.util.List;
  * @author linfengda
  * @create 2019-04-12 13:25
  */
-public class BaseService {
+public abstract class AbstractBaseService {
     @Setter
     @Resource
     private DataSource dataSource;
