@@ -2,7 +2,7 @@ package com.linfengda.sb.support.orm;
 
 import com.linfengda.sb.support.orm.entity.AttributeValue;
 import com.linfengda.sb.support.orm.entity.ConditionParam;
-import com.linfengda.sb.support.orm.entity.DefaultFieldSetter;
+import com.linfengda.sb.support.orm.entity.base.DefaultFieldSetter;
 import com.linfengda.sb.support.orm.entity.SetValue;
 import com.linfengda.sb.support.orm.sqlBuilder.PreStatementSqlBuilder;
 import com.linfengda.sb.support.orm.sqlHandler.PreStatementSql;

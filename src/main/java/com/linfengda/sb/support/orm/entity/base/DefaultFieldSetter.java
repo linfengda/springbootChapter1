@@ -1,4 +1,4 @@
-package com.linfengda.sb.support.orm.entity;
+package com.linfengda.sb.support.orm.entity.base;
 
 import com.linfengda.sb.support.orm.utils.ClassUtil;
 import com.linfengda.sb.support.orm.utils.UserUtil;
@@ -14,33 +14,20 @@ import java.util.List;
  * @create 2019-04-12 13:25
  */
 public class DefaultFieldSetter implements DefaultField {
+
 	/**
-	 * 设置默认字段值
+	 * 创建PO默认字段值
 	 * @param po
 	 * @throws Exception
 	 */
 	public void addDefaultValue(Object po) throws Exception {
 		List<Field> fields =  ClassUtil.getFields(po.getClass());
-		String idName = ClassUtil.getIdName(po.getClass());
-		AttributeValue idValue = ClassUtil.getValueByProperty(idName, po);
 		for (Field field : fields) {
-			if(field.getName().equals(CREATE_TIME)) {
+			if(field.getName().equals(CREATE_TIME) || field.getName().equals(UPDATE_TIME)) {
 				field.setAccessible(true);
 				field.set(po, new Timestamp(System.currentTimeMillis()));
 			}
-			if(field.getName().equals(CREATE_TIME)) {
-				field.setAccessible(true);
-				field.set(po, new Timestamp(System.currentTimeMillis()));
-			}
-			if (field.getName().equals(CREATE_USER)){
-				field.setAccessible(true);
-				field.set(po, UserUtil.getCurrentUserId());
-			}
-			if (field.getName().equals(UPDATE_TIME)){
-				field.setAccessible(true);
-				field.set(po, new Timestamp(System.currentTimeMillis()));
-			}
-			if (field.getName().equals(UPDATE_USER)){
+			if (field.getName().equals(CREATE_USER) || field.getName().equals(UPDATE_USER)){
 				field.setAccessible(true);
 				field.set(po, UserUtil.getCurrentUserId());
 			}
@@ -56,7 +43,7 @@ public class DefaultFieldSetter implements DefaultField {
 	}
 
     /**
-     * 更新默认字段值
+     * 更新PO默认字段值
      * @param po
      * @throws IllegalAccessException
      */
@@ -73,15 +60,15 @@ public class DefaultFieldSetter implements DefaultField {
 			}
 			if (field.getName().equals(VERSION)){
 				Object value = ClassUtil.getValueByProperty(field.getName(),po).getValue();
-				Integer value_l = (Integer)value;
-				if (value_l == null){
-					value_l = 1;
+				Integer version = (Integer)value;
+				if (version == null){
+					version = 1;
 				}else {
-					value_l = value_l+1;
+					version = version+1;
 				}
 
 				field.setAccessible(true);
-				field.set(po, value_l);
+				field.set(po, version);
 			}
 		}
 	}

@@ -1,4 +1,4 @@
-package com.linfengda.sb.support.orm.entity;
+package com.linfengda.sb.support.orm.entity.base;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,7 +16,7 @@ public class BasePO {
 	/**
 	 * 创建人
 	 */
-	private Long createUser;
+	private Integer createUser;
 	/**
 	 * 创建时间
 	 */
@@ -24,7 +24,7 @@ public class BasePO {
 	/**
 	 * 修改人
 	 */
-	private Long updateUser;
+	private Integer updateUser;
 	/**
 	 * 修改时间
 	 */

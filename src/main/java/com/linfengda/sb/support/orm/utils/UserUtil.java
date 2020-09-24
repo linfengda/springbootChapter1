@@ -7,7 +7,7 @@ package com.linfengda.sb.support.orm.utils;
  * @create 2019-04-12 13:25
  */
 public class UserUtil {
-    public static Long getCurrentUserId(){
-        return -1L;
+    public static Integer getCurrentUserId(){
+        return 1;
     }
 }

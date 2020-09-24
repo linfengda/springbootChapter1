@@ -1,4 +1,4 @@
-package com.linfengda.sb.support.orm.entity;
+package com.linfengda.sb.support.orm.entity.base;
 
 /**
  * 描述: 默认字段
