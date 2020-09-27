@@ -3,7 +3,7 @@ package com.linfengda.sb.support.serializer.serializer.fastjson.date;
 import com.alibaba.fastjson.serializer.JSONSerializer;
 import com.alibaba.fastjson.serializer.ObjectSerializer;
 import com.alibaba.fastjson.serializer.SerializeWriter;
-import com.linfengda.sb.support.util.TimeUtil;
+import com.linfengda.sb.support.serializer.util.TimeUtil;
 
 import java.lang.reflect.Type;
 import java.sql.Timestamp;

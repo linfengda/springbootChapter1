@@ -1,4 +1,4 @@
-package com.linfengda.sb.support.util;
+package com.linfengda.sb.support.serializer.util;
 
 import org.apache.commons.lang3.StringUtils;
 

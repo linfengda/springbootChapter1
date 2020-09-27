@@ -1,8 +1,7 @@
 package com.linfengda.sb.chapter1.demo.service;
 
-import com.linfengda.sb.chapter1.common.util.StringConstant;
-import com.linfengda.sb.support.util.StringUtil;
-import com.linfengda.sb.support.util.TimeUtil;
+import com.linfengda.sb.chapter1.common.util.StringUtil;
+import com.linfengda.sb.support.serializer.util.TimeUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.hamcrest.CoreMatchers;
 import org.junit.Before;
@@ -36,10 +35,10 @@ public class SampleSpringBootTest {
         log.info("测试工具方法com.linfengda.sb.chapter1.common.util.StringUtil#getRandomStr(), result={}", StringUtil.getRandomStr(10));
         log.info("测试工具方法com.linfengda.sb.chapter1.common.util.StringUtil#getRandomNum(), result={}", StringUtil.getRandomNum(10));
 
-        List<String> strList = StringUtil.string2List("a,b,c", StringConstant.COMMA);
+        List<String> strList = StringUtil.string2List("a,b,c", ",");
         assertThat(strList, CoreMatchers.equalTo(Arrays.asList("a","b","c")));
 
-        String str = StringUtil.join(StringConstant.COMMA, "a", "b", "c");
+        String str = StringUtil.join(",", "a", "b", "c");
         assertThat(str, CoreMatchers.equalTo("a,b,c"));
     }
 
