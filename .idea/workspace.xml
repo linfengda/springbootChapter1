@@ -19,40 +19,20 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1ac92d16-a2f3-4d49-8fdb-b5b56f35641b" name="Default" comment="refactor: orm框架优化">
+    <list default="true" id="1ac92d16-a2f3-4d49-8fdb-b5b56f35641b" name="Default" comment="refactor: 包结构调整">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/annotation/RequiresAccessCode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/entity/enums/AccessCodeEnum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/entity/enums/ModuleType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/entity/enums/WhiteUrlListType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/rabbitmq/QueueVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/support/rabbitmq/QueueVo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/rabbitmq/RabbitmqTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/support/rabbitmq/RabbitmqTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/rabbitmq/helper/ConnectionHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/support/rabbitmq/ConnectionHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/rabbitmq/service/MqConsumerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/support/rabbitmq/service/MqConsumerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/rabbitmq/service/MqProducerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/support/rabbitmq/service/MqProducerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/common/proxy/cglib/CglibSample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/common/proxy/cglib/CglibSample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/common/proxy/readme.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/support/middleware/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/support/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/support/middleware/redis/performance/entity/MySecondSon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/support/redis/performance/entity/MySecondSon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/support/middleware/redis/performance/entity/MySon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/support/redis/performance/entity/MySon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/support/middleware/redis/performance/entity/Pig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/support/redis/performance/entity/Pig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/support/middleware/redis/performance/entity/YourPapa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/support/redis/performance/entity/YourPapa.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/support/middleware/redis/performance/entity/bo/DoubleClazz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/support/redis/performance/entity/bo/DoubleClazz.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/support/middleware/redis/performance/entity/bo/IntClazz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/support/redis/performance/entity/bo/IntClazz.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/support/middleware/redis/performance/entity/bo/StringClazz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/support/redis/performance/entity/bo/StringClazz.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/support/middleware/redis/performance/helper/BytePackageHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/support/redis/performance/helper/BytePackageHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/support/middleware/redis/performance/helper/JedisTemplateHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/support/redis/performance/helper/JedisTemplateHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/support/middleware/redis/performance/helper/LettuceTemplateHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/support/redis/performance/helper/LettuceTemplateHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/support/middleware/redis/performance/service/JedisRedisOperationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/support/redis/performance/service/JedisRedisOperationServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/support/middleware/redis/performance/service/LettuceRedisOperationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/support/redis/performance/service/LettuceRedisOperationServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/support/middleware/redis/performance/service/RedisOperationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/support/redis/performance/service/RedisOperationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/support/middleware/redis/performance/task/DistributeLockTestTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/support/redis/performance/task/DistributeLockTestTask.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/support/middleware/redis/performance/task/OperationTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/support/redis/performance/task/OperationTask.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/support/middleware/redis/performance/task/QpsTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/support/redis/performance/task/QpsTask.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/support/middleware/redis/performance/test/GenericRedisTemplateTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/support/redis/performance/test/GenericRedisTemplateTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/support/middleware/redis/performance/test/RedisCacheAnnotationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/support/redis/performance/test/RedisCacheAnnotationTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/support/middleware/redis/performance/test/RedisClientPerformanceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/support/redis/performance/test/RedisClientPerformanceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/support/middleware/redis/performance/test/RedisDistributeLockTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/support/redis/performance/test/RedisDistributeLockTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/support/middleware/redis/performance/test/RedisSerializerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/support/redis/performance/test/RedisSerializerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/support/middleware/redis/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/support/redis/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/support/orm/readme.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/support/rabbitmq/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/AuthInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/AuthInterceptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/acl/WhiteUrlList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/acl/WhiteUrlList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/entity/RequestInfoBO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/entity/bo/RequestInfoBO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/router/AbstractRequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/router/AbstractRequestHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/router/BizModuleHandlerProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/router/BizModuleHandlerProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/router/RequestRouter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/router/RequestRouter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/router/impl/PcRequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/router/impl/PcRequestHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/router/impl/WeChatRequestHandler.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -167,7 +147,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="extract.method.default.visibility" value="private" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/test/java/com/linfengda/sb/support" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -188,24 +168,24 @@
       <recent name="com.linfengda.sb.chapter1" />
       <recent name="com.linfengda.sb.support" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/test/java/com/linfengda/sb/support" />
-      <recent name="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support" />
-      <recent name="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/fastjson/serializer/date" />
-      <recent name="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/fastjson" />
-      <recent name="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/apivalidator/config/interceptor" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.linfengda.sb.chapter1.system.cache.dto" />
-      <recent name="com.linfengda.sb.chapter1.common.api" />
-      <recent name="com.linfengda.sb.chapter1.common.entity.dto" />
-      <recent name="com.linfengda.sb.support.fastjson.selector" />
-      <recent name="com.linfengda.sb.support.apivalidator.util" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/apivalidator/config" />
       <recent name="D:\IdeaProjects\springboot\chapter1\src\test\java\com\linfengda\sb\chapter1" />
       <recent name="D:\IdeaProjects\springboot\chapter1\src\test\java\com\linfengda\sb\chapter1\support\middleware\redis" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.linfengda.sb.chapter1.common.api.annotation" />
+      <recent name="com.linfengda.sb.chapter1.system.cache.dto" />
+      <recent name="com.linfengda.sb.chapter1.common.api" />
+      <recent name="com.linfengda.sb.chapter1.common.entity.dto" />
+      <recent name="com.linfengda.sb.support.fastjson.selector" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api" />
+      <recent name="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/entity" />
+      <recent name="$PROJECT_DIR$/src/test/java/com/linfengda/sb/support" />
+      <recent name="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support" />
+      <recent name="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/fastjson/serializer/date" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -851,13 +831,7 @@
       <workItem from="1601090381817" duration="3131000" />
       <workItem from="1601109528065" duration="2047000" />
       <workItem from="1601115087437" duration="721000" />
-    </task>
-    <task id="LOCAL-00104" summary="refactor: 去掉功能冗余的类">
-      <created>1596296752462</created>
-      <option name="number" value="00104" />
-      <option name="presentableId" value="LOCAL-00104" />
-      <option name="project" value="LOCAL" />
-      <updated>1596296752463</updated>
+      <workItem from="1601219953075" duration="1517000" />
     </task>
     <task id="LOCAL-00105" summary="refactor: 优化api aop代码">
       <created>1596298767416</created>
@@ -1195,7 +1169,14 @@
       <option name="project" value="LOCAL" />
       <updated>1600962259120</updated>
     </task>
-    <option name="localTasksCounter" value="153" />
+    <task id="LOCAL-00153" summary="refactor: 包结构调整">
+      <created>1601220001431</created>
+      <option name="number" value="00153" />
+      <option name="presentableId" value="LOCAL-00153" />
+      <option name="project" value="LOCAL" />
+      <updated>1601220001431</updated>
+    </task>
+    <option name="localTasksCounter" value="154" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1359,7 +1340,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="refactor: 缓存框架，初步完成" />
     <MESSAGE value="refactor: api校验非dto类型" />
     <MESSAGE value="refactor: 引入fastjson序列化" />
     <MESSAGE value="refactor: 增加fastjson序列化支持" />
@@ -1384,7 +1364,8 @@
     <MESSAGE value="feat: 缓存框架应用成功！" />
     <MESSAGE value="refactor: 代码优化" />
     <MESSAGE value="refactor: orm框架优化" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor: orm框架优化" />
+    <MESSAGE value="refactor: 包结构调整" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor: 包结构调整" />
   </component>
   <component name="WindowStateProjectService">
     <state x="361" y="70" key="#Illuminated_Cloud" timestamp="1594085284865">
@@ -1435,18 +1416,18 @@
     <state x="403" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.23.1440.800@0.23.1440.800" timestamp="1596297486100" />
     <state x="0" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.23.1440.803@0.23.1440.803" timestamp="1600942600298" />
     <state x="0" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.23.1440.805@0.23.1440.805" timestamp="1597582870576" />
-    <state x="518" y="228" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1600914815658">
+    <state x="518" y="228" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1601221672016">
       <screen x="0" y="23" width="1440" height="803" />
     </state>
     <state x="552" y="211" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1594016763080" />
     <state x="921" y="-1054" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.800/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597061138405" />
     <state x="518" y="228" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.800@0.23.1440.800" timestamp="1596298802005" />
     <state x="921" y="-1054" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.803/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597133344202" />
-    <state x="518" y="228" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.803@0.23.1440.803" timestamp="1600914815658" />
+    <state x="518" y="228" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.803@0.23.1440.803" timestamp="1601221672016" />
     <state x="921" y="-1054" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.805/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597818908803" />
     <state x="518" y="229" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.805@0.23.1440.805" timestamp="1600876978200" />
     <state x="518" y="230" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.807@0.23.1440.807" timestamp="1597504928440" />
-    <state x="0" y="30" width="1440" height="805" key="CommitChangelistDialog2" timestamp="1600962258783">
+    <state x="0" y="30" width="1440" height="805" key="CommitChangelistDialog2" timestamp="1601220001051">
       <screen x="0" y="23" width="1440" height="803" />
     </state>
     <state x="1916" y="-540" key="CommitChangelistDialog2/0.0.1440.900/1440.-540.2560.1440@1440.-540.2560.1440" timestamp="1595560889773" />
@@ -1456,7 +1437,7 @@
     <state x="0" y="-1417" width="2560" height="1417" key="CommitChangelistDialog2/0.23.1440.800/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597060500805" />
     <state x="0" y="23" width="1440" height="800" key="CommitChangelistDialog2/0.23.1440.800@0.23.1440.800" timestamp="1596298864913" />
     <state x="0" y="-1417" key="CommitChangelistDialog2/0.23.1440.803/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597146976476" />
-    <state x="0" y="30" key="CommitChangelistDialog2/0.23.1440.803@0.23.1440.803" timestamp="1600962258783" />
+    <state x="0" y="30" key="CommitChangelistDialog2/0.23.1440.803@0.23.1440.803" timestamp="1601220001051" />
     <state x="0" y="-1417" key="CommitChangelistDialog2/0.23.1440.805/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597819823901" />
     <state x="0" y="23" width="1440" height="805" key="CommitChangelistDialog2/0.23.1440.805@0.23.1440.805" timestamp="1600916759345" />
     <state x="0" y="-1417" key="CommitChangelistDialog2/0.23.1440.807/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597311174855" />
@@ -1472,12 +1453,12 @@
     <state width="548" height="260" key="DebuggerActiveHint/0.23.1440.803@0.23.1440.803" timestamp="1597334379460" />
     <state width="669" height="261" key="DebuggerActiveHint/0.23.1440.805@0.23.1440.805" timestamp="1600426646130" />
     <state width="669" height="263" key="DebuggerActiveHint/0.23.1440.810@0.23.1440.810" timestamp="1600916432844" />
-    <state x="198" y="162" width="1152" height="642" key="DiffContextDialog" timestamp="1600962236884">
+    <state x="198" y="162" width="1152" height="642" key="DiffContextDialog" timestamp="1601219979832">
       <screen x="0" y="23" width="1440" height="803" />
     </state>
     <state x="1793" y="-110" key="DiffContextDialog/0.0.1440.900/1440.-540.2560.1440@1440.-540.2560.1440" timestamp="1595560859858" />
     <state x="353" y="-1173" width="1748" height="964" key="DiffContextDialog/0.23.1440.803/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597139354382" />
-    <state x="198" y="162" width="1152" height="642" key="DiffContextDialog/0.23.1440.803@0.23.1440.803" timestamp="1600962236884" />
+    <state x="198" y="162" width="1152" height="642" key="DiffContextDialog/0.23.1440.803@0.23.1440.803" timestamp="1601219979832" />
     <state x="354" y="-1173" key="DiffContextDialog/0.23.1440.805/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597819807194" />
     <state x="199" y="162" key="DiffContextDialog/0.23.1440.805@0.23.1440.805" timestamp="1600877005538" />
     <state x="353" y="-1173" width="1152" height="645" key="DiffContextDialog/0.23.1440.807/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597315262016" />
@@ -1704,7 +1685,7 @@
     </state>
     <state x="614" y="326" key="VCS.ChangelistChooser/0.0.1536.824@0.0.1536.824" timestamp="1594109853839" />
     <state x="1023" y="-856" key="VCS.ChangelistChooser/0.23.1440.805/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597403086028" />
-    <state x="414" y="218" key="Vcs.Push.Dialog.v2" timestamp="1600962264237">
+    <state x="414" y="218" key="Vcs.Push.Dialog.v2" timestamp="1601220007070">
       <screen x="0" y="23" width="1440" height="803" />
     </state>
     <state x="2176" y="-190" key="Vcs.Push.Dialog.v2/0.0.1440.900/1440.-540.2560.1440@1440.-540.2560.1440" timestamp="1595560914945" />
@@ -1713,7 +1694,7 @@
     <state x="414" y="216" key="Vcs.Push.Dialog.v2/0.23.1440.797@0.23.1440.797" timestamp="1595866033558" />
     <state x="414" y="217" key="Vcs.Push.Dialog.v2/0.23.1440.800@0.23.1440.800" timestamp="1596298871885" />
     <state x="736" y="-1073" key="Vcs.Push.Dialog.v2/0.23.1440.803/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597146981370" />
-    <state x="414" y="218" key="Vcs.Push.Dialog.v2/0.23.1440.803@0.23.1440.803" timestamp="1600962264237" />
+    <state x="414" y="218" key="Vcs.Push.Dialog.v2/0.23.1440.803@0.23.1440.803" timestamp="1601220007070" />
     <state x="736" y="-1074" key="Vcs.Push.Dialog.v2/0.23.1440.805/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597819829960" />
     <state x="414" y="218" key="Vcs.Push.Dialog.v2/0.23.1440.805@0.23.1440.805" timestamp="1600916764104" />
     <state x="736" y="-1073" key="Vcs.Push.Dialog.v2/0.23.1440.807/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597311183187" />
@@ -1752,7 +1733,7 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="493" y="190" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1593683716859" />
-    <state x="796" y="201" width="670" height="525" key="search.everywhere.popup" timestamp="1600871051094">
+    <state x="796" y="201" width="670" height="525" key="search.everywhere.popup" timestamp="1601221764339">
       <screen x="0" y="23" width="1440" height="803" />
     </state>
     <state x="1415" y="-1122" width="1120" height="941" key="search.everywhere.popup/0.0.1440.900/0.-1440.2560.1440@0.-1440.2560.1440" timestamp="1595554979436" />
@@ -1760,7 +1741,7 @@
     <state x="796" y="199" width="670" height="521" key="search.everywhere.popup/0.23.1440.797@0.23.1440.797" timestamp="1595864636934" />
     <state x="796" y="200" width="670" height="523" key="search.everywhere.popup/0.23.1440.800@0.23.1440.800" timestamp="1596298822598" />
     <state x="1415" y="-1103" width="1192" height="927" key="search.everywhere.popup/0.23.1440.803/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597398598168" />
-    <state x="796" y="201" width="670" height="525" key="search.everywhere.popup/0.23.1440.803@0.23.1440.803" timestamp="1600871051094" />
+    <state x="796" y="201" width="670" height="525" key="search.everywhere.popup/0.23.1440.803@0.23.1440.803" timestamp="1601221764339" />
     <state x="1415" y="-1103" width="1192" height="927" key="search.everywhere.popup/0.23.1440.805/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597402552008" />
     <state x="796" y="201" width="670" height="527" key="search.everywhere.popup/0.23.1440.805@0.23.1440.805" timestamp="1600787383103" />
     <state x="1415" y="-1103" width="1192" height="927" key="search.everywhere.popup/0.23.1440.807/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597822580514" />

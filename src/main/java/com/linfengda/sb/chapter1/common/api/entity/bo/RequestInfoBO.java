@@ -1,4 +1,4 @@
-package com.linfengda.sb.chapter1.common.api.entity;
+package com.linfengda.sb.chapter1.common.api.entity.bo;
 
 import lombok.Data;
 

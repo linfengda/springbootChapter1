@@ -1,10 +1,10 @@
 package com.linfengda.sb.chapter1.common.api;
 
-import com.linfengda.sb.chapter1.common.api.entity.RequestInfoBO;
+import com.linfengda.sb.chapter1.common.api.acl.WhiteUrlList;
+import com.linfengda.sb.chapter1.common.api.entity.bo.RequestInfoBO;
 import com.linfengda.sb.chapter1.common.api.router.RequestRouter;
 import com.linfengda.sb.chapter1.common.api.util.IpUtil;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Indexed;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
@@ -21,6 +21,14 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+        if (!(handler instanceof HandlerMethod)) {
+            //只处理Controller方法
+            return super.preHandle(request, response, handler);
+        }
+        if (WhiteUrlList.isWhiteUrl(request.getRequestURI())) {
+            //ark系统白名单
+            return super.preHandle(request, response, handler);
+        }
         RequestInfoBO requestInfoBO = getRequestInfoBO(request);
         RequestRouter.INSTANCE.doRouter(requestInfoBO, (HandlerMethod) handler);
         return super.preHandle(request, response, handler);

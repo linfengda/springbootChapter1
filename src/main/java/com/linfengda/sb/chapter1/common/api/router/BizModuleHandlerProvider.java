@@ -1,8 +1,7 @@
 package com.linfengda.sb.chapter1.common.api.router;
 
-import com.linfengda.sb.chapter1.common.api.entity.RequestInfoBO;
+import com.linfengda.sb.chapter1.common.api.entity.bo.RequestInfoBO;
 import com.linfengda.sb.chapter1.common.api.router.impl.PcRequestHandler;
-import com.linfengda.sb.chapter1.common.api.router.impl.WeChatRequestHandler;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.web.method.HandlerMethod;
@@ -23,15 +22,6 @@ public enum BizModuleHandlerProvider {
         @Override
         public RequestHandler getHandler(RequestInfoBO requestInfoBO, HandlerMethod handlerMethod) {
             return new PcRequestHandler(requestInfoBO, handlerMethod);
-        }
-    },
-    /**
-     * 微信端业务
-     */
-    WeChat("weChat", "微信端业务") {
-        @Override
-        public RequestHandler getHandler(RequestInfoBO requestInfoBO, HandlerMethod handlerMethod) {
-            return new WeChatRequestHandler(requestInfoBO, handlerMethod);
         }
     },
     ;
