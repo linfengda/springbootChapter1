@@ -1,10 +1,12 @@
-package com.linfengda.sb.chapter1.order.client;
+package com.linfengda.sb.chapter1.plm.client;
 
 import com.alibaba.fastjson.JSONObject;
 import com.linfengda.sb.chapter1.order.entity.dto.BigBomMaterialQueryDTO;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * @description:
@@ -19,6 +21,14 @@ public interface PlmClient {
      * @param bigBomMaterialQueryDTO
      * @return
      */
-    @PostMapping("/pc/order/getOrderBigBomMaterials")
+    @PostMapping("/pc/plm/getOrderBigBomMaterials")
     JSONObject getOrderBigBomMaterials(@RequestBody BigBomMaterialQueryDTO bigBomMaterialQueryDTO);
+
+    /**
+     * 请求plm物料单价
+     * @param sku
+     * @return
+     */
+    @GetMapping("/pc/plm/getMaterialPrice")
+    JSONObject getMaterialPrice(@RequestParam String sku);
 }

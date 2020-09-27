@@ -2,6 +2,7 @@ package com.linfengda.sb.chapter1.order.client;
 
 import com.linfengda.sb.chapter1.Chapter1Application;
 import com.linfengda.sb.chapter1.order.entity.dto.BigBomMaterialQueryDTO;
+import com.linfengda.sb.chapter1.plm.client.PlmClient;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -26,7 +27,7 @@ public class PlmClientTest {
     private PlmClient plmClient;
 
     /**
-     * 测试请求plm订单大货物料信息
+     * 测试feign post请求
      */
     @Test
     public void testGetOrderBigBomMaterials() {
@@ -34,5 +35,13 @@ public class PlmClientTest {
         bigBomMaterialQueryDTO.setSku("DK1234");
         bigBomMaterialQueryDTO.setVersion(1);
         log.info("请求plm订单大货物料信息，返回：{}", plmClient.getOrderBigBomMaterials(bigBomMaterialQueryDTO));
+    }
+
+    /**
+     * 测试feign get请求
+     */
+    @Test
+    public void getMaterialPrice() {
+        log.info("请求plm物料单价，返回：{}", plmClient.getMaterialPrice("DK1234"));
     }
 }
