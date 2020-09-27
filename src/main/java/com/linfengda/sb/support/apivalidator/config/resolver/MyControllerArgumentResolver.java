@@ -34,6 +34,7 @@ public class MyControllerArgumentResolver implements HandlerMethodArgumentResolv
             throw new BusinessException("请将"+ methodParameter.getParameterType().getName() +"类型参数封装为DTO！");
         }
         HttpServletRequest servletRequest = nativeWebRequest.getNativeRequest(HttpServletRequest.class);
+        log.info("appKey={}", servletRequest.getHeader("appKey"));
         JSONObject requestParam = HttpServletUtil.getRequestParam(servletRequest);
         if (BaseType.isBaseType(methodParameter.getParameterType().getName())) {
             return requestParam.getObject(methodParameter.getParameterName(), methodParameter.getParameterType());

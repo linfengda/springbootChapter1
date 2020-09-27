@@ -5,7 +5,10 @@ import com.linfengda.sb.chapter1.common.entity.Result;
 import com.linfengda.sb.chapter1.order.entity.dto.BigBomMaterialQueryDTO;
 import com.linfengda.sb.support.apivalidator.annotation.ApiValidator;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.constraints.NotBlank;
 
@@ -20,7 +23,7 @@ import javax.validation.constraints.NotBlank;
 public class PlmOuterControlller {
 
     @PostMapping("/getOrderBigBomMaterials")
-    public Result getOrderBigBomMaterials(@ApiValidator @RequestBody BigBomMaterialQueryDTO bigBomMaterialQueryDTO) throws Exception {
+    public Result getOrderBigBomMaterials(@ApiValidator BigBomMaterialQueryDTO bigBomMaterialQueryDTO) throws Exception {
         log.info("查询订单大货物料信息，bigBomMaterialQueryDTO={}", JSON.toJSONString(bigBomMaterialQueryDTO));
         return new Result("请求成功");
     }
