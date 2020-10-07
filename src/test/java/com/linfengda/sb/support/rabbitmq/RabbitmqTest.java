@@ -170,16 +170,16 @@ public class RabbitmqTest {
     public void testDirectMode() throws Exception {
         String DIRECT_EXCHANGE_NAME = "directEx";
         List<QueueVo> queueVos = new ArrayList<>(3);
-        QueueVo queueVo1 = new QueueVo("directQueue1", "routingKey1", "", "我不是渣，我只是想给每个女孩子一个家。");
-        QueueVo queueVo2 = new QueueVo("directQueue2", "routingKey2", "", "我从没有绿过任何人，我只是忘记了说分手。");
-        QueueVo queueVo3 = new QueueVo("directQueue3", "routingKey3", "", "你的多情出卖我的爱情。");
+        QueueVo queueVo1 = new QueueVo("directQueue1", "routingKey1", "", "这是频道1正在播放消息。");
+        QueueVo queueVo2 = new QueueVo("directQueue2", "routingKey2", "", "这是频道2正在播放消息。");
+        QueueVo queueVo3 = new QueueVo("directQueue3", "routingKey3", "", "这是频道3正在播放消息。");
         queueVos.add(queueVo1);
         queueVos.add(queueVo2);
         queueVos.add(queueVo3);
         for (QueueVo queueVo : queueVos) {
             executor.execute(() -> {
                 try {
-                    new MqConsumerService().consumeDirectMsg(queueVo);
+                    new MqConsumerService().consumeDirectMsg(queueVo.getQueue());
                 } catch (Exception e) {
                     log.error("mq消费出错：", e);
                     throw new BusinessException("mq消费出错：" + e);

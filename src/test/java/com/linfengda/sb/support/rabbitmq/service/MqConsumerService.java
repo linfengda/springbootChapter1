@@ -1,7 +1,6 @@
 package com.linfengda.sb.support.rabbitmq.service;
 
 import com.linfengda.sb.support.rabbitmq.ConnectionHelper;
-import com.linfengda.sb.support.rabbitmq.QueueVo;
 import com.rabbitmq.client.BuiltinExchangeType;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
@@ -20,15 +19,15 @@ import java.util.concurrent.TimeUnit;
 public class MqConsumerService {
 
 
-    public void consumeDirectMsg(QueueVo queueVo) throws Exception {
+    public void consumeDirectMsg(String queue) throws Exception {
         Connection connection = ConnectionHelper.getConnection();
         Channel channel = connection.createChannel();
         DeliverCallback deliverCallback = (consumerTag, delivery) -> {
             String message = new String(delivery.getBody());
-            log.info("{}接收mq消息：{}", queueVo.getQueue(), message);
+            log.info("{}接收mq消息：{}", queue, message);
             channel.basicAck(delivery.getEnvelope().getDeliveryTag(), false);
         };
-        channel.basicConsume(queueVo.getQueue(), false, deliverCallback, consumerTag -> { });
+        channel.basicConsume(queue, false, deliverCallback, consumerTag -> { });
         TimeUnit.SECONDS.sleep(30);
         channel.close();
         connection.close();
