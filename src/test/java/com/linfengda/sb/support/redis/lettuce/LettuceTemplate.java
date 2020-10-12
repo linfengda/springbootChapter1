@@ -3,7 +3,6 @@ package com.linfengda.sb.support.redis.lettuce;
 import io.lettuce.core.cluster.api.StatefulRedisClusterConnection;
 import io.lettuce.core.cluster.api.sync.RedisClusterCommands;
 import lombok.Data;
-import lombok.Setter;
 import org.apache.ibatis.cache.CacheException;
 import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.util.Assert;
