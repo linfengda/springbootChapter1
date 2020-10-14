@@ -1,7 +1,7 @@
 package com.linfengda.sb.chapter1.system.cache.impl;
 
 import com.linfengda.sb.chapter1.common.exception.BusinessException;
-import com.linfengda.sb.chapter1.system.cache.CacheManager;
+import com.linfengda.sb.chapter1.system.cache.SystemCachePrefix;
 import com.linfengda.sb.chapter1.system.cache.dto.UserInfo;
 import com.linfengda.sb.support.redis.GenericRedisTemplate;
 import lombok.extern.slf4j.Slf4j;
@@ -30,23 +30,23 @@ public class UserInfoCache {
     }
 
     public void clearCache() {
-        genericRedisTemplate.delete(CacheManager.USER_INFO_CACHE.getPrefix());
+        genericRedisTemplate.delete(SystemCachePrefix.USER_INFO_CACHE);
         log.warn("清除用户信息缓存...");
     }
 
     public void put(String token, UserInfo userInfo){
-        genericRedisTemplate.hashPut(CacheManager.USER_INFO_CACHE.getPrefix(), token, userInfo);
+        genericRedisTemplate.hashPut(SystemCachePrefix.USER_INFO_CACHE, token, userInfo);
     }
 
     public void remove(String token){
-        genericRedisTemplate.hashDel(CacheManager.USER_INFO_CACHE.getPrefix(), token);
+        genericRedisTemplate.hashDel(SystemCachePrefix.USER_INFO_CACHE, token);
     }
 
     public UserInfo getUserInfo(String token){
         if(StringUtils.isEmpty(token)){
             return null;
         }
-        UserInfo userInfo = genericRedisTemplate.hashGet(CacheManager.USER_INFO_CACHE.getPrefix(), token);
+        UserInfo userInfo = genericRedisTemplate.hashGet(SystemCachePrefix.USER_INFO_CACHE, token);
         return userInfo;
     }
 

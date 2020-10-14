@@ -1,11 +1,11 @@
 package com.linfengda.sb.chapter1.system.cache;
 
 /**
- * @description: 缓存命名空间
+ * @description: 系统用户缓存命名空间
  * @author: linfengda
  * @date: 2020-07-27 23:54
  */
-public interface CachePrefix {
+public interface SystemCachePrefix {
     /**
      * 用户token-userId缓存
      */

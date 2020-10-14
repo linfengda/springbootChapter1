@@ -1,6 +1,6 @@
 package com.linfengda.sb.chapter1.system.impl;
 
-import com.linfengda.sb.chapter1.system.cache.CachePrefix;
+import com.linfengda.sb.chapter1.system.cache.SystemCachePrefix;
 import com.linfengda.sb.chapter1.system.entity.dto.SysDepartmentCacheDTO;
 import com.linfengda.sb.chapter1.system.entity.dto.SysTeamCacheDTO;
 import com.linfengda.sb.chapter1.system.entity.dto.SysUserCacheDTO;
@@ -33,7 +33,7 @@ import java.util.concurrent.TimeUnit;
 public class SysOrganizeCacheServiceImpl extends AbstractBaseService implements SysOrganizeCacheService {
 
 
-    @QueryCache(type = DataType.HASH, prefix = CachePrefix.SYS_ORG_PRODUCTION_TEAM_CACHE, timeOut = 1, timeUnit = TimeUnit.DAYS)
+    @QueryCache(type = DataType.HASH, prefix = SystemCachePrefix.SYS_ORG_PRODUCTION_TEAM_CACHE, timeOut = 1, timeUnit = TimeUnit.DAYS)
     @Override
     public SysDepartmentCacheDTO queryDepartment(@CacheKey Integer departmentId) throws Exception {
         SysDepartmentPO sysDepartmentPO = findByPrimaryKey(departmentId, SysDepartmentPO.class);
@@ -45,8 +45,8 @@ public class SysOrganizeCacheServiceImpl extends AbstractBaseService implements 
         return sysDepartmentCacheDTO;
     }
 
-    @DeleteCache(caches = {@Cache(type = DataType.SET, prefix = CachePrefix.SYS_ORG_PRODUCTION_TEAM_SET_CACHE, allEntries = true)})
-    @UpdateCache(type = DataType.HASH, prefix = CachePrefix.SYS_ORG_PRODUCTION_TEAM_CACHE, timeOut = 1, timeUnit = TimeUnit.DAYS)
+    @DeleteCache(caches = {@Cache(type = DataType.SET, prefix = SystemCachePrefix.SYS_ORG_PRODUCTION_TEAM_SET_CACHE, allEntries = true)})
+    @UpdateCache(type = DataType.HASH, prefix = SystemCachePrefix.SYS_ORG_PRODUCTION_TEAM_CACHE, timeOut = 1, timeUnit = TimeUnit.DAYS)
     @Transactional(rollbackFor = Exception.class)
     @Override
     public SysDepartmentCacheDTO updateDepartment(@CacheKey Integer departmentId, String departmentName, Integer status) throws Exception {
@@ -65,8 +65,8 @@ public class SysOrganizeCacheServiceImpl extends AbstractBaseService implements 
 
     @DeleteCache(
             caches = {
-            @Cache(type = DataType.SET, prefix = CachePrefix.SYS_ORG_PRODUCTION_TEAM_SET_CACHE, allEntries = true),
-            @Cache(type = DataType.HASH, prefix = CachePrefix.SYS_ORG_PRODUCTION_TEAM_CACHE)})
+            @Cache(type = DataType.SET, prefix = SystemCachePrefix.SYS_ORG_PRODUCTION_TEAM_SET_CACHE, allEntries = true),
+            @Cache(type = DataType.HASH, prefix = SystemCachePrefix.SYS_ORG_PRODUCTION_TEAM_CACHE)})
     @Transactional(rollbackFor = Exception.class)
     @Override
     public void delDepartment(@CacheKey Integer departmentId) throws Exception {
@@ -75,7 +75,7 @@ public class SysOrganizeCacheServiceImpl extends AbstractBaseService implements 
         updateByPrimaryKey(SysDepartmentPO.class, setValue, departmentId);
     }
 
-    @QueryCache(type = DataType.SET, prefix = CachePrefix.SYS_ORG_PRODUCTION_TEAM_SET_CACHE, timeOut = 1, timeUnit = TimeUnit.DAYS)
+    @QueryCache(type = DataType.SET, prefix = SystemCachePrefix.SYS_ORG_PRODUCTION_TEAM_SET_CACHE, timeOut = 1, timeUnit = TimeUnit.DAYS)
     @Override
     public Set<SysDepartmentCacheDTO> queryDepartments() throws Exception {
         ConditionParam conditionParam = new ConditionParam();
@@ -89,7 +89,7 @@ public class SysOrganizeCacheServiceImpl extends AbstractBaseService implements 
         return sysDepartmentCacheDTOSet;
     }
 
-    @QueryCache(type = DataType.SET, prefix = CachePrefix.SYS_ORG_TEAM_SET_CACHE, timeOut = 1, timeUnit = TimeUnit.DAYS)
+    @QueryCache(type = DataType.SET, prefix = SystemCachePrefix.SYS_ORG_TEAM_SET_CACHE, timeOut = 1, timeUnit = TimeUnit.DAYS)
     @Override
     public Set<SysTeamCacheDTO> queryTeamByDepartmentId(@CacheKey Integer departmentId) throws Exception {
         ConditionParam conditionParam = new ConditionParam();
@@ -104,7 +104,7 @@ public class SysOrganizeCacheServiceImpl extends AbstractBaseService implements 
         return sysTeamCacheDTOSet;
     }
 
-    @QueryCache(type = DataType.SET, prefix = CachePrefix.SYS_ORG_USER_SET_CACHE, timeOut = 1, timeUnit = TimeUnit.DAYS)
+    @QueryCache(type = DataType.SET, prefix = SystemCachePrefix.SYS_ORG_USER_SET_CACHE, timeOut = 1, timeUnit = TimeUnit.DAYS)
     @Override
     public Set<SysUserCacheDTO> queryUserByTeamId(@CacheKey Integer teamId) throws Exception {
         ConditionParam conditionParam = new ConditionParam();

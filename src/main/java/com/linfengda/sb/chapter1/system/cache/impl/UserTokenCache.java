@@ -1,6 +1,6 @@
 package com.linfengda.sb.chapter1.system.cache.impl;
 
-import com.linfengda.sb.chapter1.system.cache.CacheManager;
+import com.linfengda.sb.chapter1.system.cache.SystemCachePrefix;
 import com.linfengda.sb.support.redis.GenericRedisTemplate;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -24,19 +24,19 @@ public class UserTokenCache {
     }
 
     public void clearCache() {
-        genericRedisTemplate.delete(CacheManager.USER_TOKEN_CACHE.getPrefix());
+        genericRedisTemplate.delete(SystemCachePrefix.USER_TOKEN_CACHE);
         log.warn("清除用户token缓存...");
     }
 
     public void put(String userId, String token){
-        genericRedisTemplate.hashPut(CacheManager.USER_TOKEN_CACHE.getPrefix(), userId, token);
+        genericRedisTemplate.hashPut(SystemCachePrefix.USER_TOKEN_CACHE, userId, token);
     }
 
     public void remove(String userId){
-        genericRedisTemplate.hashDel(CacheManager.USER_TOKEN_CACHE.getPrefix(), userId);
+        genericRedisTemplate.hashDel(SystemCachePrefix.USER_TOKEN_CACHE, userId);
     }
 
     public String getToken(String userId){
-        return genericRedisTemplate.hashGet(CacheManager.USER_TOKEN_CACHE.getPrefix(), userId);
+        return genericRedisTemplate.hashGet(SystemCachePrefix.USER_TOKEN_CACHE, userId);
     }
 }
