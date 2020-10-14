@@ -109,6 +109,9 @@ public abstract class AbstractCacheDataTypeResolver implements CacheDataTypeReso
     }
 
     protected void delAllEntries(CacheParamDTO param) {
+        // 删除key=prefix的缓存
+        genericRedisTemplate.delete(param.getPrefix());
+        // 删除prefix*开头的所有缓存
         genericRedisTemplate.execute((RedisCallback<Boolean>) connection -> {
             Cursor<byte[]> cursor = connection.scan(new ScanOptions.ScanOptionsBuilder().match(param.getPrefix() + Constant.ASTERISK).count(Constant.DEFAULT_DELETE_CACHE_BATCH_NUM).build());
             while(cursor.hasNext()) {

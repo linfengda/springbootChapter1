@@ -1,4 +1,4 @@
-package com.linfengda.sb.chapter1.demo.service;
+package com.linfengda.sb.chapter1.demo;
 
 import com.linfengda.sb.chapter1.common.util.StringUtil;
 import com.linfengda.sb.support.serializer.util.TimeUtil;

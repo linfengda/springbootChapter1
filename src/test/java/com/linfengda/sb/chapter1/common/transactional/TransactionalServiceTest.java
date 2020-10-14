@@ -1,6 +1,6 @@
 package com.linfengda.sb.chapter1.common.transactional;
 
-import com.linfengda.sb.chapter1.system.service.TransactionalService;
+import com.linfengda.sb.chapter1.system.TransactionalService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;

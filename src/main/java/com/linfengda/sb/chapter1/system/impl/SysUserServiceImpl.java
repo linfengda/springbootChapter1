@@ -1,4 +1,4 @@
-package com.linfengda.sb.chapter1.system.service.impl;
+package com.linfengda.sb.chapter1.system.impl;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
@@ -8,7 +8,7 @@ import com.linfengda.sb.chapter1.system.entity.dto.UserUpdateDTO;
 import com.linfengda.sb.chapter1.system.entity.po.SysUserPO;
 import com.linfengda.sb.chapter1.system.entity.vo.UserListVO;
 import com.linfengda.sb.chapter1.system.entity.vo.UserVO;
-import com.linfengda.sb.chapter1.system.service.SysUserService;
+import com.linfengda.sb.chapter1.system.SysUserService;
 import com.linfengda.sb.support.orm.AbstractBaseService;
 import com.linfengda.sb.support.orm.entity.ConditionParam;
 import com.linfengda.sb.support.orm.entity.SetValue;

@@ -1,4 +1,4 @@
-package com.linfengda.sb.chapter1.system.service.impl;
+package com.linfengda.sb.chapter1.system.impl;
 
 import com.linfengda.sb.chapter1.system.cache.CachePrefix;
 import com.linfengda.sb.chapter1.system.entity.dto.SysDepartmentCacheDTO;
@@ -7,7 +7,7 @@ import com.linfengda.sb.chapter1.system.entity.dto.SysUserCacheDTO;
 import com.linfengda.sb.chapter1.system.entity.po.SysDepartmentPO;
 import com.linfengda.sb.chapter1.system.entity.po.SysTeamPO;
 import com.linfengda.sb.chapter1.system.entity.po.SysUserPO;
-import com.linfengda.sb.chapter1.system.service.SysOrganizeCacheService;
+import com.linfengda.sb.chapter1.system.SysOrganizeCacheService;
 import com.linfengda.sb.support.orm.AbstractBaseService;
 import com.linfengda.sb.support.orm.entity.ConditionParam;
 import com.linfengda.sb.support.orm.entity.SetValue;
@@ -45,9 +45,9 @@ public class SysOrganizeCacheServiceImpl extends AbstractBaseService implements 
         return sysDepartmentCacheDTO;
     }
 
-    @Transactional(rollbackFor = Exception.class)
     @DeleteCache(caches = {@Cache(type = DataType.SET, prefix = CachePrefix.SYS_ORG_PRODUCTION_TEAM_SET_CACHE, allEntries = true)})
     @UpdateCache(type = DataType.HASH, prefix = CachePrefix.SYS_ORG_PRODUCTION_TEAM_CACHE, timeOut = 1, timeUnit = TimeUnit.DAYS)
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public SysDepartmentCacheDTO updateDepartment(@CacheKey Integer departmentId, String departmentName, Integer status) throws Exception {
         SetValue setValue = new SetValue();
@@ -63,7 +63,8 @@ public class SysOrganizeCacheServiceImpl extends AbstractBaseService implements 
         return sysDepartmentCacheDTO;
     }
 
-    @DeleteCache(caches = {
+    @DeleteCache(
+            caches = {
             @Cache(type = DataType.SET, prefix = CachePrefix.SYS_ORG_PRODUCTION_TEAM_SET_CACHE, allEntries = true),
             @Cache(type = DataType.HASH, prefix = CachePrefix.SYS_ORG_PRODUCTION_TEAM_CACHE)})
     @Transactional(rollbackFor = Exception.class)

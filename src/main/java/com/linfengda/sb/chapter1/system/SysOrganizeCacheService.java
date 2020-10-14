@@ -1,4 +1,4 @@
-package com.linfengda.sb.chapter1.system.service;
+package com.linfengda.sb.chapter1.system;
 
 import com.linfengda.sb.chapter1.system.entity.dto.SysDepartmentCacheDTO;
 import com.linfengda.sb.chapter1.system.entity.dto.SysTeamCacheDTO;

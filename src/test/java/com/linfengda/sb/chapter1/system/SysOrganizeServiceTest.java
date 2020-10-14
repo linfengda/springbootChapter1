@@ -1,9 +1,8 @@
-package com.linfengda.sb.chapter1.system.service;
+package com.linfengda.sb.chapter1.system;
 
 import com.alibaba.fastjson.JSON;
 import com.linfengda.sb.chapter1.Chapter1Application;
 import com.linfengda.sb.chapter1.system.cache.CachePrefix;
-import com.linfengda.sb.chapter1.system.entity.dto.SysDepartmentCacheDTO;
 import com.linfengda.sb.chapter1.system.entity.dto.SysTeamCacheDTO;
 import com.linfengda.sb.chapter1.system.entity.dto.SysUserCacheDTO;
 import com.linfengda.sb.support.redis.Constant;

@@ -5,7 +5,7 @@ import com.linfengda.sb.chapter1.Chapter1Application;
 import com.linfengda.sb.chapter1.common.thread.ThreadPoolHelper;
 import com.linfengda.sb.chapter1.system.entity.dto.UserUpdateDTO;
 import com.linfengda.sb.chapter1.system.entity.vo.UserVO;
-import com.linfengda.sb.chapter1.system.service.SysUserService;
+import com.linfengda.sb.chapter1.system.SysUserService;
 import com.linfengda.sb.support.redis.GenericRedisTemplate;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.FixMethodOrder;

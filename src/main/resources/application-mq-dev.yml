@@ -1,0 +1,6 @@
+spring:
+  rabbitmq:
+    host: 115.28.49.96
+    port: 5672
+    username: backend
+    password: stylewe

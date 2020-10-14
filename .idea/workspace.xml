@@ -20,16 +20,40 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1ac92d16-a2f3-4d49-8fdb-b5b56f35641b" name="Default" comment="refactor: 修改">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/config/MyMqConfirmCallback.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/config/RabbitMqConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/config/MySchedulingConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/exception/handler/MyAsyncUncaughtExceptionHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/exception/handler/MySchedulingExceptionHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/redis/lettuce/LettuceClusterConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/lettuce/LettuceClusterConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/redis/lettuce/LettuceCommandCallback.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/lettuce/LettuceCommandCallback.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/redis/lettuce/LettuceConnectionFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/lettuce/LettuceConnectionFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/redis/lettuce/LettuceTemplate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/lettuce/LettuceTemplate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/redis/lettuce/serializer/ProtoStuffSerializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/lettuce/serializer/ProtoStuffSerializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/redis/lettuce/serializer/ProtoStuffUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/lettuce/serializer/ProtoStuffUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/BaseController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/order/api/PlmOuterControlller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/order/api/PlmOuterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/order/client/AppKeyInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/order/remote/AppKeyInterceptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/order/client/PlmClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/order/remote/PlmRemote.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/order/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/order/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/system/api/SystemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/system/api/SystemController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/system/service/SysOrganizeCacheService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/system/SysOrganizeCacheService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/system/service/SysUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/system/SysUserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/system/service/impl/SysOrganizeCacheServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/system/impl/SysOrganizeCacheServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/system/service/impl/SysUserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/system/impl/SysUserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/redis/RedisDistributedLock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/redis/lock/RedisDistributedLock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/redis/cache/handler/AbstractCacheHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/redis/cache/handler/AbstractCacheHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/redis/cache/handler/CacheHandlerHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/redis/cache/handler/CacheHandlerHolder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/redis/cache/manager/RedisCacheBgManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/redis/cache/manager/RedisCacheBgManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/redis/cache/resolver/AbstractCacheDataTypeResolver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/redis/cache/resolver/AbstractCacheDataTypeResolver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/redis/config/RedisCacheAnnotationInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/redis/config/RedisCacheAnnotationInitializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/redis/config/RedisConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/redis/config/RedisConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/remote/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/remote/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application-mq-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-mq-dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/common/transactional/TransactionalServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/common/transactional/TransactionalServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/demo/service/CompleteApiSpringBootTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/demo/CompleteApiSpringBootTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/demo/service/ORMFrameworkSpringBootTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/demo/ORMFrameworkSpringBootTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/demo/service/SampleSpringBootTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/demo/SampleSpringBootTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/demo/service/ServiceSpringBootTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/demo/ServiceSpringBootTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/order/client/PlmClientTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/order/PlmRemoteTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/system/service/SysOrganizeServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/system/SysOrganizeServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/system/service/TransactionalOtherService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/system/TransactionalOtherService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/system/service/TransactionalService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/system/TransactionalService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/system/service/impl/TransactionalOtherServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/system/impl/TransactionalOtherServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/system/service/impl/TransactionalServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/system/impl/TransactionalServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/support/redis/test/RedisCacheAnnotationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/support/redis/test/RedisCacheAnnotationTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -159,18 +183,16 @@
       <recent name="https://code.aliyun.com/bkbox_cloud_removal/bkbox_center_entry.git" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.linfengda.sb.support.redis" />
       <recent name="com.linfengda.sb.support" />
       <recent name="com.linfengda.sb.chapter1.system.service.impl" />
       <recent name="com.linfengda.sb.chapter1.system.service" />
       <recent name="com.linfengda.sb.chapter1.common" />
-      <recent name="com.linfengda.sb.chapter1" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api" />
-      <recent name="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/entity" />
-      <recent name="$PROJECT_DIR$/src/test/java/com/linfengda/sb/support" />
-      <recent name="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support" />
-      <recent name="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/fastjson/serializer/date" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/apivalidator/config" />
+      <recent name="D:\IdeaProjects\springboot\chapter1\src\test\java\com\linfengda\sb\chapter1" />
+      <recent name="D:\IdeaProjects\springboot\chapter1\src\test\java\com\linfengda\sb\chapter1\support\middleware\redis" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.linfengda.sb.chapter1.common.api.annotation" />
@@ -179,10 +201,12 @@
       <recent name="com.linfengda.sb.chapter1.common.entity.dto" />
       <recent name="com.linfengda.sb.support.fastjson.selector" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/apivalidator/config" />
-      <recent name="D:\IdeaProjects\springboot\chapter1\src\test\java\com\linfengda\sb\chapter1" />
-      <recent name="D:\IdeaProjects\springboot\chapter1\src\test\java\com\linfengda\sb\chapter1\support\middleware\redis" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api" />
+      <recent name="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/entity" />
+      <recent name="$PROJECT_DIR$/src/test/java/com/linfengda/sb/support" />
+      <recent name="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support" />
+      <recent name="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/fastjson/serializer/date" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -192,7 +216,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.Chapter1Application">
+  <component name="RunManager" selected="JUnit.SysOrganizeServiceTest.testDepartmentCache">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HTML_USED" value="false" />
       <option name="WIDTH" value="400" />
@@ -270,23 +294,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RabbitmqTest.testMultiConsumer" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="chapter1" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.linfengda.sb.support.rabbitmq.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.linfengda.sb.support.rabbitmq" />
-      <option name="MAIN_CLASS_NAME" value="com.linfengda.sb.support.rabbitmq.RabbitmqTest" />
-      <option name="METHOD_NAME" value="testMultiConsumer" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="RabbitmqTest.testTopicMode" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="chapter1" />
       <extension name="coverage">
@@ -298,6 +305,23 @@
       <option name="PACKAGE_NAME" value="com.linfengda.sb.support.rabbitmq" />
       <option name="MAIN_CLASS_NAME" value="com.linfengda.sb.support.rabbitmq.RabbitmqTest" />
       <option name="METHOD_NAME" value="testTopicMode" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SysOrganizeServiceTest.testDepartmentCache" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="chapter1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.linfengda.sb.chapter1.system.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.linfengda.sb.chapter1.system" />
+      <option name="MAIN_CLASS_NAME" value="com.linfengda.sb.chapter1.system.SysOrganizeServiceTest" />
+      <option name="METHOD_NAME" value="testDepartmentCache" />
       <option name="TEST_OBJECT" value="method" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
@@ -338,20 +362,20 @@
     </configuration>
     <list>
       <item itemvalue="Application.QueryCacheHandler" />
-      <item itemvalue="JUnit.RabbitmqTest.testMultiConsumer" />
       <item itemvalue="JUnit.RabbitmqTest" />
       <item itemvalue="JUnit.RabbitmqTest.testFanoutMode" />
       <item itemvalue="JUnit.RabbitmqTest.testDirectMode" />
       <item itemvalue="JUnit.RabbitmqTest.testTopicMode" />
       <item itemvalue="Spring Boot.Chapter1Application" />
+      <item itemvalue="JUnit.SysOrganizeServiceTest.testDepartmentCache" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.SysOrganizeServiceTest.testDepartmentCache" />
         <item itemvalue="JUnit.RabbitmqTest.testDirectMode" />
         <item itemvalue="JUnit.RabbitmqTest.testTopicMode" />
         <item itemvalue="JUnit.RabbitmqTest.testFanoutMode" />
         <item itemvalue="JUnit.RabbitmqTest" />
-        <item itemvalue="JUnit.RabbitmqTest.testMultiConsumer" />
       </list>
     </recent_temporary>
   </component>
@@ -845,13 +869,10 @@
       <workItem from="1602341076034" duration="979000" />
       <workItem from="1602343374088" duration="160000" />
       <workItem from="1602379642843" duration="2770000" />
-    </task>
-    <task id="LOCAL-00112" summary="refactor: 优化校验代码">
-      <created>1597311175078</created>
-      <option name="number" value="00112" />
-      <option name="presentableId" value="LOCAL-00112" />
-      <option name="project" value="LOCAL" />
-      <updated>1597311175078</updated>
+      <workItem from="1602519359893" duration="2262000" />
+      <workItem from="1602584240808" duration="48000" />
+      <workItem from="1602660988320" duration="279000" />
+      <workItem from="1602686488841" duration="2240000" />
     </task>
     <task id="LOCAL-00113" summary="refactor: 优化校验代码">
       <created>1597507261622</created>
@@ -1189,7 +1210,14 @@
       <option name="project" value="LOCAL" />
       <updated>1602064976775</updated>
     </task>
-    <option name="localTasksCounter" value="161" />
+    <task id="LOCAL-00161" summary="refactor: 修改">
+      <created>1602519549623</created>
+      <option name="number" value="00161" />
+      <option name="presentableId" value="LOCAL-00161" />
+      <option name="project" value="LOCAL" />
+      <updated>1602519549624</updated>
+    </task>
+    <option name="localTasksCounter" value="162" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1393,13 +1421,13 @@
       <screen x="0" y="23" width="1440" height="805" />
     </state>
     <state x="463" y="234" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1440.805@0.23.1440.805" timestamp="1602064171551" />
-    <state x="574" y="199" key="#com.intellij.ide.util.MemberChooser" timestamp="1601223712146">
+    <state x="574" y="199" key="#com.intellij.ide.util.MemberChooser" timestamp="1602521734503">
       <screen x="0" y="23" width="1440" height="803" />
     </state>
     <state x="612" y="181" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1594090896538" />
     <state x="574" y="198" key="#com.intellij.ide.util.MemberChooser/0.23.1440.797@0.23.1440.797" timestamp="1595865820035" />
     <state x="1020" y="-1106" key="#com.intellij.ide.util.MemberChooser/0.23.1440.800/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597046771352" />
-    <state x="574" y="199" key="#com.intellij.ide.util.MemberChooser/0.23.1440.803@0.23.1440.803" timestamp="1601223712146" />
+    <state x="574" y="199" key="#com.intellij.ide.util.MemberChooser/0.23.1440.803@0.23.1440.803" timestamp="1602521734503" />
     <state x="574" y="200" key="#com.intellij.ide.util.MemberChooser/0.23.1440.805@0.23.1440.805" timestamp="1600790241386" />
     <state x="574" y="200" key="#com.intellij.ide.util.MemberChooser/0.23.1440.807@0.23.1440.807" timestamp="1597502601416" />
     <state x="2279" y="-147" key="#com.intellij.openapi.keymap.impl.ui.EditKeymapsDialog" timestamp="1595560934578">
@@ -1426,17 +1454,16 @@
       <screen x="0" y="23" width="1440" height="803" />
     </state>
     <state x="486" y="312" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages/0.23.1440.803@0.23.1440.803" timestamp="1602519526571" />
-    <state x="0" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1600942600298">
+    <state x="0" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1602687353160">
       <screen x="0" y="23" width="1440" height="803" />
     </state>
     <state x="430" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824@0.0.1536.824" timestamp="1594092232375" />
     <state x="403" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.23.1440.800@0.23.1440.800" timestamp="1596297486100" />
-    <state x="0" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.23.1440.803@0.23.1440.803" timestamp="1600942600298" />
+    <state x="0" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.23.1440.803@0.23.1440.803" timestamp="1602687353160" />
     <state x="0" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.23.1440.805@0.23.1440.805" timestamp="1597582870576" />
     <state x="518" y="229" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1602064441948">
       <screen x="0" y="23" width="1440" height="805" />
     </state>
-    <state x="552" y="211" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1594016763080" />
     <state x="921" y="-1054" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.800/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597061138405" />
     <state x="518" y="228" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.800@0.23.1440.800" timestamp="1596298802005" />
     <state x="921" y="-1054" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.803/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597133344202" />
@@ -1444,8 +1471,8 @@
     <state x="921" y="-1054" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.805/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597818908803" />
     <state x="518" y="229" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.805@0.23.1440.805" timestamp="1602064441948" />
     <state x="518" y="230" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.807@0.23.1440.807" timestamp="1597504928440" />
-    <state x="0" y="23" width="1440" height="805" key="CommitChangelistDialog2" timestamp="1602064976334">
-      <screen x="0" y="23" width="1440" height="805" />
+    <state x="0" y="30" width="1440" height="805" key="CommitChangelistDialog2" timestamp="1602519549294">
+      <screen x="0" y="23" width="1440" height="803" />
     </state>
     <state x="1916" y="-540" key="CommitChangelistDialog2/0.0.1440.900/1440.-540.2560.1440@1440.-540.2560.1440" timestamp="1595560889773" />
     <state x="286" y="8" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1594115519501" />
@@ -1454,7 +1481,7 @@
     <state x="0" y="-1417" width="2560" height="1417" key="CommitChangelistDialog2/0.23.1440.800/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597060500805" />
     <state x="0" y="23" width="1440" height="800" key="CommitChangelistDialog2/0.23.1440.800@0.23.1440.800" timestamp="1596298864913" />
     <state x="0" y="-1417" key="CommitChangelistDialog2/0.23.1440.803/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597146976476" />
-    <state x="0" y="30" key="CommitChangelistDialog2/0.23.1440.803@0.23.1440.803" timestamp="1601285908648" />
+    <state x="0" y="30" key="CommitChangelistDialog2/0.23.1440.803@0.23.1440.803" timestamp="1602519549294" />
     <state x="0" y="-1417" key="CommitChangelistDialog2/0.23.1440.805/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597819823901" />
     <state x="0" y="23" width="1440" height="805" key="CommitChangelistDialog2/0.23.1440.805@0.23.1440.805" timestamp="1602064976334" />
     <state x="0" y="-1417" key="CommitChangelistDialog2/0.23.1440.807/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597311174855" />
@@ -1484,14 +1511,14 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="418" y="217" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1594115727022" />
-    <state width="1007" height="418" key="GridCell.Tab.0.bottom" timestamp="1602383537288">
+    <state width="1398" height="331" key="GridCell.Tab.0.bottom" timestamp="1602688755507">
       <screen x="0" y="23" width="1440" height="803" />
     </state>
     <state width="2518" height="518" key="GridCell.Tab.0.bottom/0.0.1440.900/1440.-540.2560.1440@1440.-540.2560.1440" timestamp="1595560406524" />
     <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1594109963052" />
     <state width="1007" height="314" key="GridCell.Tab.0.bottom/0.23.1440.797@0.23.1440.797" timestamp="1595779089178" />
     <state width="1832" height="342" key="GridCell.Tab.0.bottom/0.23.1440.803/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597399179021" />
-    <state width="1007" height="418" key="GridCell.Tab.0.bottom/0.23.1440.803@0.23.1440.803" timestamp="1602383537288" />
+    <state width="1398" height="331" key="GridCell.Tab.0.bottom/0.23.1440.803@0.23.1440.803" timestamp="1602688755507" />
     <state width="1832" height="471" key="GridCell.Tab.0.bottom/0.23.1440.805/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597822444194" />
     <state width="1398" height="331" key="GridCell.Tab.0.bottom/0.23.1440.805@0.23.1440.805" timestamp="1602217293587" />
     <state width="1832" height="471" key="GridCell.Tab.0.bottom/0.23.1440.807/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597823148186" />
@@ -1500,14 +1527,14 @@
     <state width="1398" height="331" key="GridCell.Tab.0.bottom/0.23.1440.810@0.23.1440.810" timestamp="1600916454105" />
     <state width="1832" height="471" key="GridCell.Tab.0.bottom/0.23.1440.812/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597823729381" />
     <state width="2518" height="518" key="GridCell.Tab.0.bottom/0.23.1440.877/1440.-517.2560.1332@1440.-517.2560.1332" timestamp="1595571077317" />
-    <state width="1007" height="418" key="GridCell.Tab.0.center" timestamp="1602383537288">
+    <state width="1398" height="331" key="GridCell.Tab.0.center" timestamp="1602688755505">
       <screen x="0" y="23" width="1440" height="803" />
     </state>
     <state width="2518" height="518" key="GridCell.Tab.0.center/0.0.1440.900/1440.-540.2560.1440@1440.-540.2560.1440" timestamp="1595560406522" />
     <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1594109963052" />
     <state width="1007" height="314" key="GridCell.Tab.0.center/0.23.1440.797@0.23.1440.797" timestamp="1595779089176" />
     <state width="1832" height="342" key="GridCell.Tab.0.center/0.23.1440.803/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597399179019" />
-    <state width="1007" height="418" key="GridCell.Tab.0.center/0.23.1440.803@0.23.1440.803" timestamp="1602383537288" />
+    <state width="1398" height="331" key="GridCell.Tab.0.center/0.23.1440.803@0.23.1440.803" timestamp="1602688755505" />
     <state width="1832" height="471" key="GridCell.Tab.0.center/0.23.1440.805/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597822444193" />
     <state width="1398" height="331" key="GridCell.Tab.0.center/0.23.1440.805@0.23.1440.805" timestamp="1602217293587" />
     <state width="1832" height="471" key="GridCell.Tab.0.center/0.23.1440.807/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597823148185" />
@@ -1516,14 +1543,14 @@
     <state width="1398" height="331" key="GridCell.Tab.0.center/0.23.1440.810@0.23.1440.810" timestamp="1600916454104" />
     <state width="1832" height="471" key="GridCell.Tab.0.center/0.23.1440.812/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597823729380" />
     <state width="2518" height="518" key="GridCell.Tab.0.center/0.23.1440.877/1440.-517.2560.1332@1440.-517.2560.1332" timestamp="1595571077316" />
-    <state width="1007" height="418" key="GridCell.Tab.0.left" timestamp="1602383537287">
+    <state width="1398" height="331" key="GridCell.Tab.0.left" timestamp="1602688755504">
       <screen x="0" y="23" width="1440" height="803" />
     </state>
     <state width="2518" height="518" key="GridCell.Tab.0.left/0.0.1440.900/1440.-540.2560.1440@1440.-540.2560.1440" timestamp="1595560406521" />
     <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1594109963052" />
     <state width="1007" height="314" key="GridCell.Tab.0.left/0.23.1440.797@0.23.1440.797" timestamp="1595779089175" />
     <state width="1832" height="342" key="GridCell.Tab.0.left/0.23.1440.803/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597399179019" />
-    <state width="1007" height="418" key="GridCell.Tab.0.left/0.23.1440.803@0.23.1440.803" timestamp="1602383537287" />
+    <state width="1398" height="331" key="GridCell.Tab.0.left/0.23.1440.803@0.23.1440.803" timestamp="1602688755504" />
     <state width="1832" height="471" key="GridCell.Tab.0.left/0.23.1440.805/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597822444193" />
     <state width="1398" height="331" key="GridCell.Tab.0.left/0.23.1440.805@0.23.1440.805" timestamp="1602217293586" />
     <state width="1832" height="471" key="GridCell.Tab.0.left/0.23.1440.807/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597823148185" />
@@ -1532,14 +1559,14 @@
     <state width="1398" height="331" key="GridCell.Tab.0.left/0.23.1440.810@0.23.1440.810" timestamp="1600916454103" />
     <state width="1832" height="471" key="GridCell.Tab.0.left/0.23.1440.812/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597823729379" />
     <state width="2518" height="518" key="GridCell.Tab.0.left/0.23.1440.877/1440.-517.2560.1332@1440.-517.2560.1332" timestamp="1595571077315" />
-    <state width="1007" height="418" key="GridCell.Tab.0.right" timestamp="1602383537288">
+    <state width="1398" height="331" key="GridCell.Tab.0.right" timestamp="1602688755506">
       <screen x="0" y="23" width="1440" height="803" />
     </state>
     <state width="2518" height="518" key="GridCell.Tab.0.right/0.0.1440.900/1440.-540.2560.1440@1440.-540.2560.1440" timestamp="1595560406523" />
     <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1594109963052" />
     <state width="1007" height="314" key="GridCell.Tab.0.right/0.23.1440.797@0.23.1440.797" timestamp="1595779089177" />
     <state width="1832" height="342" key="GridCell.Tab.0.right/0.23.1440.803/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597399179020" />
-    <state width="1007" height="418" key="GridCell.Tab.0.right/0.23.1440.803@0.23.1440.803" timestamp="1602383537288" />
+    <state width="1398" height="331" key="GridCell.Tab.0.right/0.23.1440.803@0.23.1440.803" timestamp="1602688755506" />
     <state width="1832" height="471" key="GridCell.Tab.0.right/0.23.1440.805/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597822444194" />
     <state width="1398" height="331" key="GridCell.Tab.0.right/0.23.1440.805@0.23.1440.805" timestamp="1602217293587" />
     <state width="1832" height="471" key="GridCell.Tab.0.right/0.23.1440.807/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597823148186" />
@@ -1548,14 +1575,14 @@
     <state width="1398" height="331" key="GridCell.Tab.0.right/0.23.1440.810@0.23.1440.810" timestamp="1600916454105" />
     <state width="1832" height="471" key="GridCell.Tab.0.right/0.23.1440.812/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597823729380" />
     <state width="2518" height="518" key="GridCell.Tab.0.right/0.23.1440.877/1440.-517.2560.1332@1440.-517.2560.1332" timestamp="1595571077316" />
-    <state width="1007" height="418" key="GridCell.Tab.1.bottom" timestamp="1602383537289">
+    <state width="1398" height="331" key="GridCell.Tab.1.bottom" timestamp="1602688755509">
       <screen x="0" y="23" width="1440" height="803" />
     </state>
     <state width="2518" height="518" key="GridCell.Tab.1.bottom/0.0.1440.900/1440.-540.2560.1440@1440.-540.2560.1440" timestamp="1595560406527" />
     <state width="1493" height="261" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1594109950670" />
     <state width="1007" height="314" key="GridCell.Tab.1.bottom/0.23.1440.797@0.23.1440.797" timestamp="1595779089179" />
     <state width="1832" height="342" key="GridCell.Tab.1.bottom/0.23.1440.803/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597399179022" />
-    <state width="1007" height="418" key="GridCell.Tab.1.bottom/0.23.1440.803@0.23.1440.803" timestamp="1602383537289" />
+    <state width="1398" height="331" key="GridCell.Tab.1.bottom/0.23.1440.803@0.23.1440.803" timestamp="1602688755509" />
     <state width="1832" height="471" key="GridCell.Tab.1.bottom/0.23.1440.805/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597822444196" />
     <state width="1398" height="331" key="GridCell.Tab.1.bottom/0.23.1440.805@0.23.1440.805" timestamp="1602217293588" />
     <state width="1832" height="471" key="GridCell.Tab.1.bottom/0.23.1440.807/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597823148188" />
@@ -1564,14 +1591,14 @@
     <state width="1398" height="331" key="GridCell.Tab.1.bottom/0.23.1440.810@0.23.1440.810" timestamp="1600916454107" />
     <state width="1832" height="471" key="GridCell.Tab.1.bottom/0.23.1440.812/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597823729383" />
     <state width="2518" height="518" key="GridCell.Tab.1.bottom/0.23.1440.877/1440.-517.2560.1332@1440.-517.2560.1332" timestamp="1595571077318" />
-    <state width="1007" height="418" key="GridCell.Tab.1.center" timestamp="1602383537288">
+    <state width="1398" height="331" key="GridCell.Tab.1.center" timestamp="1602688755508">
       <screen x="0" y="23" width="1440" height="803" />
     </state>
     <state width="2518" height="518" key="GridCell.Tab.1.center/0.0.1440.900/1440.-540.2560.1440@1440.-540.2560.1440" timestamp="1595560406526" />
     <state width="1493" height="261" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1594109950669" />
     <state width="1007" height="314" key="GridCell.Tab.1.center/0.23.1440.797@0.23.1440.797" timestamp="1595779089179" />
     <state width="1832" height="342" key="GridCell.Tab.1.center/0.23.1440.803/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597399179022" />
-    <state width="1007" height="418" key="GridCell.Tab.1.center/0.23.1440.803@0.23.1440.803" timestamp="1602383537288" />
+    <state width="1398" height="331" key="GridCell.Tab.1.center/0.23.1440.803@0.23.1440.803" timestamp="1602688755508" />
     <state width="1832" height="471" key="GridCell.Tab.1.center/0.23.1440.805/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597822444195" />
     <state width="1398" height="331" key="GridCell.Tab.1.center/0.23.1440.805@0.23.1440.805" timestamp="1602217293588" />
     <state width="1832" height="471" key="GridCell.Tab.1.center/0.23.1440.807/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597823148187" />
@@ -1580,14 +1607,14 @@
     <state width="1398" height="331" key="GridCell.Tab.1.center/0.23.1440.810@0.23.1440.810" timestamp="1600916454107" />
     <state width="1832" height="471" key="GridCell.Tab.1.center/0.23.1440.812/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597823729382" />
     <state width="2518" height="518" key="GridCell.Tab.1.center/0.23.1440.877/1440.-517.2560.1332@1440.-517.2560.1332" timestamp="1595571077317" />
-    <state width="1007" height="418" key="GridCell.Tab.1.left" timestamp="1602383537288">
+    <state width="1398" height="331" key="GridCell.Tab.1.left" timestamp="1602688755508">
       <screen x="0" y="23" width="1440" height="803" />
     </state>
     <state width="2518" height="518" key="GridCell.Tab.1.left/0.0.1440.900/1440.-540.2560.1440@1440.-540.2560.1440" timestamp="1595560406525" />
     <state width="1493" height="261" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1594109950669" />
     <state width="1007" height="314" key="GridCell.Tab.1.left/0.23.1440.797@0.23.1440.797" timestamp="1595779089178" />
     <state width="1832" height="342" key="GridCell.Tab.1.left/0.23.1440.803/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597399179021" />
-    <state width="1007" height="418" key="GridCell.Tab.1.left/0.23.1440.803@0.23.1440.803" timestamp="1602383537288" />
+    <state width="1398" height="331" key="GridCell.Tab.1.left/0.23.1440.803@0.23.1440.803" timestamp="1602688755508" />
     <state width="1832" height="471" key="GridCell.Tab.1.left/0.23.1440.805/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597822444195" />
     <state width="1398" height="331" key="GridCell.Tab.1.left/0.23.1440.805@0.23.1440.805" timestamp="1602217293588" />
     <state width="1832" height="471" key="GridCell.Tab.1.left/0.23.1440.807/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597823148186" />
@@ -1596,14 +1623,14 @@
     <state width="1398" height="331" key="GridCell.Tab.1.left/0.23.1440.810@0.23.1440.810" timestamp="1600916454106" />
     <state width="1832" height="471" key="GridCell.Tab.1.left/0.23.1440.812/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597823729381" />
     <state width="2518" height="518" key="GridCell.Tab.1.left/0.23.1440.877/1440.-517.2560.1332@1440.-517.2560.1332" timestamp="1595571077317" />
-    <state width="1007" height="418" key="GridCell.Tab.1.right" timestamp="1602383537288">
+    <state width="1398" height="331" key="GridCell.Tab.1.right" timestamp="1602688755508">
       <screen x="0" y="23" width="1440" height="803" />
     </state>
     <state width="2518" height="518" key="GridCell.Tab.1.right/0.0.1440.900/1440.-540.2560.1440@1440.-540.2560.1440" timestamp="1595560406526" />
     <state width="1493" height="261" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1594109950669" />
     <state width="1007" height="314" key="GridCell.Tab.1.right/0.23.1440.797@0.23.1440.797" timestamp="1595779089179" />
     <state width="1832" height="342" key="GridCell.Tab.1.right/0.23.1440.803/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597399179022" />
-    <state width="1007" height="418" key="GridCell.Tab.1.right/0.23.1440.803@0.23.1440.803" timestamp="1602383537288" />
+    <state width="1398" height="331" key="GridCell.Tab.1.right/0.23.1440.803@0.23.1440.803" timestamp="1602688755508" />
     <state width="1832" height="471" key="GridCell.Tab.1.right/0.23.1440.805/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597822444196" />
     <state width="1398" height="331" key="GridCell.Tab.1.right/0.23.1440.805@0.23.1440.805" timestamp="1602217293588" />
     <state width="1832" height="471" key="GridCell.Tab.1.right/0.23.1440.807/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597823148188" />
@@ -1697,7 +1724,7 @@
     </state>
     <state x="614" y="326" key="VCS.ChangelistChooser/0.0.1536.824@0.0.1536.824" timestamp="1594109853839" />
     <state x="1023" y="-856" key="VCS.ChangelistChooser/0.23.1440.805/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597403086028" />
-    <state x="414" y="218" key="Vcs.Push.Dialog.v2" timestamp="1601285913171">
+    <state x="414" y="218" key="Vcs.Push.Dialog.v2" timestamp="1602519553976">
       <screen x="0" y="23" width="1440" height="803" />
     </state>
     <state x="2176" y="-190" key="Vcs.Push.Dialog.v2/0.0.1440.900/1440.-540.2560.1440@1440.-540.2560.1440" timestamp="1595560914945" />
@@ -1706,7 +1733,7 @@
     <state x="414" y="216" key="Vcs.Push.Dialog.v2/0.23.1440.797@0.23.1440.797" timestamp="1595866033558" />
     <state x="414" y="217" key="Vcs.Push.Dialog.v2/0.23.1440.800@0.23.1440.800" timestamp="1596298871885" />
     <state x="736" y="-1073" key="Vcs.Push.Dialog.v2/0.23.1440.803/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597146981370" />
-    <state x="414" y="218" key="Vcs.Push.Dialog.v2/0.23.1440.803@0.23.1440.803" timestamp="1601285913171" />
+    <state x="414" y="218" key="Vcs.Push.Dialog.v2/0.23.1440.803@0.23.1440.803" timestamp="1602519553976" />
     <state x="736" y="-1074" key="Vcs.Push.Dialog.v2/0.23.1440.805/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597819829960" />
     <state x="414" y="218" key="Vcs.Push.Dialog.v2/0.23.1440.805@0.23.1440.805" timestamp="1600916764104" />
     <state x="736" y="-1073" key="Vcs.Push.Dialog.v2/0.23.1440.807/0.-1417.2560.1417@0.-1417.2560.1417" timestamp="1597311183187" />

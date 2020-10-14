@@ -2,7 +2,7 @@ package com.linfengda.sb.support.redis.cache.manager;
 
 import com.linfengda.sb.support.redis.Constant;
 import com.linfengda.sb.support.redis.GenericRedisTemplate;
-import com.linfengda.sb.support.redis.RedisDistributedLock;
+import com.linfengda.sb.support.redis.lock.RedisDistributedLock;
 import com.linfengda.sb.support.redis.cache.entity.bo.LruExpireResultBO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataAccessException;

@@ -1,8 +1,8 @@
-package com.linfengda.sb.chapter1.order.client;
+package com.linfengda.sb.chapter1.order;
 
 import com.linfengda.sb.chapter1.Chapter1Application;
 import com.linfengda.sb.chapter1.order.entity.dto.BigBomMaterialQueryDTO;
-import com.linfengda.sb.chapter1.plm.client.PlmClient;
+import com.linfengda.sb.chapter1.order.remote.PlmRemote;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -22,9 +22,9 @@ import javax.annotation.Resource;
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Chapter1Application.class, webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class PlmClientTest {
+public class PlmRemoteTest {
     @Resource
-    private PlmClient plmClient;
+    private PlmRemote plmRemote;
 
     /**
      * 测试feign post请求
@@ -34,7 +34,7 @@ public class PlmClientTest {
         BigBomMaterialQueryDTO bigBomMaterialQueryDTO = new BigBomMaterialQueryDTO();
         bigBomMaterialQueryDTO.setSku("DK1234");
         bigBomMaterialQueryDTO.setVersion(1);
-        log.info("请求plm订单大货物料信息，返回：{}", plmClient.getOrderBigBomMaterials(bigBomMaterialQueryDTO));
+        log.info("请求plm订单大货物料信息，返回：{}", plmRemote.getOrderBigBomMaterials(bigBomMaterialQueryDTO));
     }
 
     /**
@@ -42,6 +42,6 @@ public class PlmClientTest {
      */
     @Test
     public void getMaterialPrice() {
-        log.info("请求plm物料单价，返回：{}", plmClient.getMaterialPrice("DK1234"));
+        log.info("请求plm物料单价，返回：{}", plmRemote.getMaterialPrice("DK1234"));
     }
 }

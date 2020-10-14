@@ -1,12 +1,11 @@
 package com.linfengda.sb.chapter1.system.api;
 
 import com.github.pagehelper.Page;
-import com.linfengda.sb.chapter1.common.api.BaseController;
 import com.linfengda.sb.chapter1.common.entity.Result;
 import com.linfengda.sb.chapter1.system.entity.dto.UserPageQueryDTO;
 import com.linfengda.sb.chapter1.system.entity.dto.UserUpdateDTO;
 import com.linfengda.sb.chapter1.system.entity.vo.UserListVO;
-import com.linfengda.sb.chapter1.system.service.SysUserService;
+import com.linfengda.sb.chapter1.system.SysUserService;
 import com.linfengda.sb.support.apivalidator.annotation.ApiValidator;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,7 +23,7 @@ import javax.validation.constraints.NotNull;
  */
 @RestController()
 @RequestMapping("/pc/sys")
-public class SystemController extends BaseController {
+public class SystemController {
     @Resource
     private SysUserService sysUserService;
 
@@ -43,13 +42,13 @@ public class SystemController extends BaseController {
     @PostMapping("/updateUserInfo")
     public Result updateUserInfo(@ApiValidator @RequestBody UserUpdateDTO userUpdateDTO) throws Exception {
         sysUserService.updateUserInfo(userUpdateDTO.getUserId(), userUpdateDTO);
-        return SUCCESS_RESULT;
+        return new Result();
     }
 
     @PostMapping("/moveUserOrganize")
     public Result moveUserOrganize(@NotNull(message = "用户id不能为空") Integer userId,
                                    @NotNull(message = "部门id不能为空") Integer departmentId,
                                    @NotNull(message = "团队id不能为空") Integer teamId) {
-        return SUCCESS_RESULT;
+        return new Result();
     }
 }

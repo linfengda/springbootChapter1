@@ -1,4 +1,4 @@
-package com.linfengda.sb.chapter1.system.service;
+package com.linfengda.sb.chapter1.system;
 
 public interface TransactionalService {
 

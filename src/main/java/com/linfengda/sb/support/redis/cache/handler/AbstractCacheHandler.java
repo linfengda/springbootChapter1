@@ -1,7 +1,7 @@
 package com.linfengda.sb.support.redis.cache.handler;
 
 import com.linfengda.sb.support.redis.GenericRedisTemplate;
-import com.linfengda.sb.support.redis.RedisDistributedLock;
+import com.linfengda.sb.support.redis.lock.RedisDistributedLock;
 import lombok.Setter;
 
 /**

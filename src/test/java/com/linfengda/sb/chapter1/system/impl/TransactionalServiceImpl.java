@@ -1,9 +1,9 @@
-package com.linfengda.sb.chapter1.system.service.impl;
+package com.linfengda.sb.chapter1.system.impl;
 
 import com.linfengda.sb.chapter1.common.exception.BusinessException;
 import com.linfengda.sb.chapter1.system.entity.po.SysUserPO;
-import com.linfengda.sb.chapter1.system.service.TransactionalOtherService;
-import com.linfengda.sb.chapter1.system.service.TransactionalService;
+import com.linfengda.sb.chapter1.system.TransactionalOtherService;
+import com.linfengda.sb.chapter1.system.TransactionalService;
 import com.linfengda.sb.support.orm.AbstractBaseService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

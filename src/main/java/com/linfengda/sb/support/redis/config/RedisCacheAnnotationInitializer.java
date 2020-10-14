@@ -2,7 +2,7 @@ package com.linfengda.sb.support.redis.config;
 
 import com.linfengda.sb.support.redis.Constant;
 import com.linfengda.sb.support.redis.GenericRedisTemplate;
-import com.linfengda.sb.support.redis.RedisDistributedLock;
+import com.linfengda.sb.support.redis.lock.RedisDistributedLock;
 import com.linfengda.sb.support.redis.cache.manager.RedisCacheBgManager;
 import com.linfengda.sb.support.redis.cache.handler.CacheHandlerHolder;
 import com.linfengda.sb.support.redis.cache.resolver.CacheDataTypeResolverHolder;

@@ -1,4 +1,4 @@
-package com.linfengda.sb.chapter1.order.client;
+package com.linfengda.sb.chapter1.order.remote;
 
 import feign.RequestInterceptor;
 import feign.RequestTemplate;

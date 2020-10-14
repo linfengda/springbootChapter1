@@ -1,4 +1,4 @@
-package com.linfengda.sb.support.redis;
+package com.linfengda.sb.support.redis.lock;
 
 import com.linfengda.sb.chapter1.common.util.ServerRunTimeUtil;
 import lombok.Setter;
