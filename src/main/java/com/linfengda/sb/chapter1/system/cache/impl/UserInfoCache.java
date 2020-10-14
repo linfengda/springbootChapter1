@@ -1,7 +1,6 @@
 package com.linfengda.sb.chapter1.system.cache.impl;
 
 import com.linfengda.sb.chapter1.common.exception.BusinessException;
-import com.linfengda.sb.chapter1.system.cache.Cache;
 import com.linfengda.sb.chapter1.system.cache.CacheManager;
 import com.linfengda.sb.chapter1.system.cache.dto.UserInfo;
 import com.linfengda.sb.support.redis.GenericRedisTemplate;
@@ -18,7 +17,7 @@ import javax.annotation.Resource;
  */
 @Slf4j
 @Component
-public class UserInfoCache implements Cache {
+public class UserInfoCache {
     private static final long userTokenExpired = 24*60*60*1000L;
     @Resource
     private GenericRedisTemplate genericRedisTemplate;
@@ -26,12 +25,10 @@ public class UserInfoCache implements Cache {
     private UserTokenCache userTokenCache;
 
 
-    @Override
     public void initCache() {
         log.warn("初始化用户信息缓存...");
     }
 
-    @Override
     public void clearCache() {
         genericRedisTemplate.delete(CacheManager.USER_INFO_CACHE.getPrefix());
         log.warn("清除用户信息缓存...");

@@ -1,6 +1,5 @@
 package com.linfengda.sb.chapter1.system.cache.impl;
 
-import com.linfengda.sb.chapter1.system.cache.Cache;
 import com.linfengda.sb.chapter1.system.cache.CacheManager;
 import com.linfengda.sb.support.redis.GenericRedisTemplate;
 import lombok.extern.slf4j.Slf4j;
@@ -16,16 +15,14 @@ import javax.annotation.Resource;
  */
 @Slf4j
 @Component
-public class UserTokenCache implements Cache {
+public class UserTokenCache {
     @Resource
     private GenericRedisTemplate genericRedisTemplate;
 
-    @Override
     public void initCache() {
         log.warn("初始化用户token缓存...");
     }
 
-    @Override
     public void clearCache() {
         genericRedisTemplate.delete(CacheManager.USER_TOKEN_CACHE.getPrefix());
         log.warn("清除用户token缓存...");
