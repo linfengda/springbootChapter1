@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
  * 描述: 缓存方法元数据
  *
  * @author linfengda
- * @create 2020-03-27 15:10
+ * @create 2020-07-22 15:10
  */
 @Data
 public class CacheMethodMeta extends CacheQueryMeta {

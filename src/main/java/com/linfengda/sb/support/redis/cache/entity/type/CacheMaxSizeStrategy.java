@@ -4,7 +4,7 @@ package com.linfengda.sb.support.redis.cache.entity.type;
  * 描述: 缓存最大数量淘汰策略
  *
  * @author: linfengda
- * @date: 2020-07-20 11:25
+ * @date: 2020-07-26 11:25
  */
 public enum CacheMaxSizeStrategy {
     /**

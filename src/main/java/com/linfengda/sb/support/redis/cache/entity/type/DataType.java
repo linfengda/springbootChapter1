@@ -6,7 +6,7 @@ import lombok.Getter;
 /**
  * @description: redis缓存数据类型
  * @author: linfengda
- * @date: 2020-06-24 19:20
+ * @date: 2020-07-26 19:20
  */
 @Getter
 @AllArgsConstructor

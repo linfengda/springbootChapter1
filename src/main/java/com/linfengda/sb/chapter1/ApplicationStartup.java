@@ -1,6 +1,6 @@
 package com.linfengda.sb.chapter1;
 
-import com.linfengda.sb.chapter1.system.cache.CacheManager;
+import com.linfengda.sb.chapter1.system.cache.SystemCacheManager;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
@@ -18,7 +18,7 @@ public class ApplicationStartup {
     public void onApplicationEvent(ContextRefreshedEvent event) {
         log.info("springboot应用程序初始化中......");
         // 初始应用程序缓存
-        CacheManager.init();
+        SystemCacheManager.init();
 
        /* GenericRedisTemplate genericRedisTemplate = event.getApplicationContext().getBean(GenericRedisTemplate.class);
         genericRedisTemplate.setObject("aaa:1", "1");

@@ -11,7 +11,7 @@ import java.lang.annotation.Annotation;
 /**
  * @description: redis缓存操作类型
  * @author: linfengda
- * @date: 2020-06-24 18:23
+ * @date: 2020-07-26 18:23
  */
 @Getter
 @AllArgsConstructor

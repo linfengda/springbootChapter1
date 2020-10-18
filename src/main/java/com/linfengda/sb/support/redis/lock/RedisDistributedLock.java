@@ -5,8 +5,6 @@ import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.RedisTemplate;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -29,26 +27,6 @@ public class RedisDistributedLock {
     @Setter
     private RedisTemplate<String, Object> redisTemplate;
 
-    /**
-     * 加锁操作：多个
-     * @param keys
-     * @return
-     */
-    public Boolean tryLock(String[] keys) {
-        String currentLockRequester = getCurrentLockRequester();
-        Map map = new HashMap(16);
-        for (String key : keys) {
-            map.put(key, currentLockRequester);
-        }
-        Boolean result = redisTemplate.opsForValue().multiSetIfAbsent(map);
-        if (result) {
-            for (String key : keys) {
-                redisTemplate.expire(key, DEFAULT_LOCK_EXPIRE_TIME, TimeUnit.SECONDS);
-                log.info("key={}，currentLockRequester={}，lock success", key, currentLockRequester);
-            }
-        }
-        return result;
-    }
 
     /**
      * 加锁操作：单个
@@ -82,18 +60,6 @@ public class RedisDistributedLock {
                 log.error("获取redis阻塞锁失败！", e);
                 return false;
             }
-        }
-        return true;
-    }
-
-    /**
-     * 解锁操作：多个
-     * @param keys
-     * @return
-     */
-    public Boolean unLock(String[] keys) {
-        for (String key : keys) {
-            unLock(key);
         }
         return true;
     }

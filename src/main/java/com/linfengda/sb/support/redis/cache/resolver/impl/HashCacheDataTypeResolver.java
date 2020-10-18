@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
  * 描述: hash
  *
  * @author: linfengda
- * @date: 2020-07-08 16:22
+ * @date: 2020-08-01 16:22
  */
 @Slf4j
 public class HashCacheDataTypeResolver extends AbstractCacheDataTypeResolver {

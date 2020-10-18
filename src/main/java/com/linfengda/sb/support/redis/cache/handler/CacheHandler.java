@@ -7,7 +7,7 @@ import com.linfengda.sb.support.redis.cache.entity.type.CacheAnnotationType;
  * 描述: 缓存委派模式接口
  *
  * @author linfengda
- * @create 2020-06-15 14:10
+ * @create 2020-07-26 14:10
  */
 public interface CacheHandler {
     /**

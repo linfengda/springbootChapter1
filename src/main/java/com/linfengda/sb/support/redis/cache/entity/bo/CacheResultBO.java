@@ -5,7 +5,7 @@ import lombok.Data;
 /**
  * @description: 缓存查询结果BO
  * @author: linfengda
- * @date: 2020-09-17 20:30
+ * @date: 2020-07-24 20:30
  */
 @Data
 public class CacheResultBO {

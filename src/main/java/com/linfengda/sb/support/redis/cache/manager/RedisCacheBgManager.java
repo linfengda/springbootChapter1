@@ -15,7 +15,7 @@ import org.springframework.data.redis.core.ScanOptions;
  * 描述: redis会自动清理过期的lru类型缓存，但并不会清理lru keys，因此需要本地后台线程清理。
  *
  * @author: linfengda
- * @date: 2020-07-21 14:57
+ * @date: 2020-07-26 14:57
  */
 @Slf4j
 public enum RedisCacheBgManager {

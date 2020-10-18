@@ -6,7 +6,7 @@ import lombok.Data;
 /**
  * @description:
  * @author: linfengda
- * @date: 2020-09-17 18:40
+ * @date: 2020-07-22 18:40
  */
 @Data
 public class CacheQueryMeta extends CacheUpdateMeta {
