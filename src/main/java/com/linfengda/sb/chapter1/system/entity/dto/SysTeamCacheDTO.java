@@ -25,7 +25,7 @@ public class SysTeamCacheDTO {
      */
     private String teamAliasName;
     /**
-     * 项目类型{@link com.linfengda.sb.chapter1.system.entity.type.SysTeamType}
+     * 项目类型{@link com.linfengda.sb.chapter1.system.entity.enums.SysTeamType}
      */
     private Integer type;
     /**

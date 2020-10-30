@@ -1,4 +1,4 @@
-package com.linfengda.sb.chapter1.system.entity.type;
+package com.linfengda.sb.chapter1.system.entity.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -6,11 +6,11 @@ import lombok.Getter;
 /**
  * @description:
  * @author: linfengda
- * @date: 2020-08-18 13:44
+ * @date: 2020-08-18 13:53
  */
 @Getter
 @AllArgsConstructor
-public enum SysDepartmentType {
+public enum SysTeamType {
     /**
      * 1：技术
      */
@@ -40,8 +40,8 @@ public enum SysDepartmentType {
     private Integer code;
     private String name;
 
-    public static SysDepartmentType getType(Integer state) {
-        for (SysDepartmentType value : values()) {
+    public static SysTeamType getType(Integer state) {
+        for (SysTeamType value : values()) {
             if (value.getCode().equals(state)) {
                 return value;
             }

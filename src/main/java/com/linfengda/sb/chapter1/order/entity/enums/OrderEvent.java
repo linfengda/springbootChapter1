@@ -1,4 +1,4 @@
-package com.linfengda.sb.chapter1.order.entity.type;
+package com.linfengda.sb.chapter1.order.entity.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

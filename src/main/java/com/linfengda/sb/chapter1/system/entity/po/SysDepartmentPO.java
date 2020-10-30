@@ -30,7 +30,7 @@ public class SysDepartmentPO extends BasePO {
      */
     private String departmentAliasName;
     /**
-     * 部门类型{@link com.linfengda.sb.chapter1.system.entity.type.SysDepartmentType}
+     * 部门类型{@link com.linfengda.sb.chapter1.system.entity.enums.SysDepartmentType}
      */
     private Integer type;
     /**

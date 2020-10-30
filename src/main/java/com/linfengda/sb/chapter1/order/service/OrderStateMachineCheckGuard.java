@@ -1,7 +1,7 @@
 package com.linfengda.sb.chapter1.order.service;
 
-import com.linfengda.sb.chapter1.order.entity.type.OrderEvent;
-import com.linfengda.sb.chapter1.order.entity.type.OrderState;
+import com.linfengda.sb.chapter1.order.entity.enums.OrderEvent;
+import com.linfengda.sb.chapter1.order.entity.enums.OrderState;
 import org.springframework.statemachine.StateContext;
 import org.springframework.statemachine.guard.Guard;
 

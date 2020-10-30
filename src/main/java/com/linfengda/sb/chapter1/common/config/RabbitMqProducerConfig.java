@@ -15,12 +15,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Primary;
 
 /**
- * @description: RabbitMq配置
+ * @description: RabbitMq生产者配置
  * @author: linfengda
  * @date: 2020-10-13 00:40
  */
 @SpringBootConfiguration
-public class RabbitMqConfig {
+public class RabbitMqProducerConfig {
     @Value("${spring.rabbitmq.host}")
     private String host;
     @Value("${spring.rabbitmq.port}")

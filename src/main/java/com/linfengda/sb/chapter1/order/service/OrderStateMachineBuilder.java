@@ -1,8 +1,8 @@
 package com.linfengda.sb.chapter1.order.service;
 
 import com.linfengda.sb.chapter1.common.util.SpringUtil;
-import com.linfengda.sb.chapter1.order.entity.type.OrderEvent;
-import com.linfengda.sb.chapter1.order.entity.type.OrderState;
+import com.linfengda.sb.chapter1.order.entity.enums.OrderEvent;
+import com.linfengda.sb.chapter1.order.entity.enums.OrderState;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.statemachine.config.StateMachineBuilder;
