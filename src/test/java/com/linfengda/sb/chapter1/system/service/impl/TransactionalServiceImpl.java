@@ -1,4 +1,4 @@
-package com.linfengda.sb.chapter1.system.impl;
+package com.linfengda.sb.chapter1.system.service.impl;
 
 import com.linfengda.sb.chapter1.common.exception.BusinessException;
 import com.linfengda.sb.chapter1.system.entity.po.SysUserPO;

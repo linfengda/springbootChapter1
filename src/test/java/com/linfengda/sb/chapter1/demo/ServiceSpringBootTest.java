@@ -2,7 +2,7 @@ package com.linfengda.sb.chapter1.demo;
 
 import com.linfengda.sb.chapter1.Chapter1Application;
 import com.linfengda.sb.chapter1.system.cache.impl.UserTokenCache;
-import com.linfengda.sb.chapter1.system.SysUserService;
+import com.linfengda.sb.chapter1.system.service.SysUserService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;
 import org.junit.FixMethodOrder;

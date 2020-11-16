@@ -1,4 +1,4 @@
-package com.linfengda.sb.chapter1.system.impl;
+package com.linfengda.sb.chapter1.system.service.impl;
 
 import com.linfengda.sb.chapter1.system.cache.SystemCachePrefix;
 import com.linfengda.sb.chapter1.system.entity.dto.SysDepartmentCacheDTO;
@@ -7,7 +7,7 @@ import com.linfengda.sb.chapter1.system.entity.dto.SysUserCacheDTO;
 import com.linfengda.sb.chapter1.system.entity.po.SysDepartmentPO;
 import com.linfengda.sb.chapter1.system.entity.po.SysTeamPO;
 import com.linfengda.sb.chapter1.system.entity.po.SysUserPO;
-import com.linfengda.sb.chapter1.system.SysOrganizeCacheService;
+import com.linfengda.sb.chapter1.system.service.SysOrganizeCacheService;
 import com.linfengda.sb.support.orm.AbstractBaseService;
 import com.linfengda.sb.support.orm.entity.ConditionParam;
 import com.linfengda.sb.support.orm.entity.SetValue;

@@ -12,16 +12,32 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum OrderEvent {
     /**
-     * 支付
+     * 创建订单
      */
-    PAY,
+    CREATE_ORDER,
     /**
-     * 收货
+     * 工厂接单
+     */
+    ACCEPT_ORDER,
+    /**
+     * 工厂已打包
+     */
+    PACKAGE,
+    /**
+     * 工厂已发货
+     */
+    SEND,
+    /**
+     * 仓库已收货
      */
     RECEIVE,
     /**
-     * 验收
+     * 质检不合格
      */
-    CHECK,
+    QC_NO_PASS,
+    /**
+     * 质检合格
+     */
+    QC_PASS,
     ;
 }

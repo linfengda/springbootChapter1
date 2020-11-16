@@ -5,7 +5,7 @@ import com.linfengda.sb.chapter1.common.entity.Result;
 import com.linfengda.sb.chapter1.system.entity.dto.UserPageQueryDTO;
 import com.linfengda.sb.chapter1.system.entity.dto.UserUpdateDTO;
 import com.linfengda.sb.chapter1.system.entity.vo.UserListVO;
-import com.linfengda.sb.chapter1.system.SysUserService;
+import com.linfengda.sb.chapter1.system.service.SysUserService;
 import com.linfengda.sb.support.apivalidator.annotation.ApiValidator;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

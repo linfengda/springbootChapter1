@@ -1,11 +1,10 @@
-package com.linfengda.sb.chapter1.system;
+package com.linfengda.sb.chapter1.system.service;
 
 import com.github.pagehelper.Page;
 import com.linfengda.sb.chapter1.system.entity.dto.UserPageQueryDTO;
 import com.linfengda.sb.chapter1.system.entity.dto.UserUpdateDTO;
 import com.linfengda.sb.chapter1.system.entity.vo.UserListVO;
 import com.linfengda.sb.chapter1.system.entity.vo.UserVO;
-import com.linfengda.sb.support.redis.cache.annotation.CacheKey;
 
 import java.util.List;
 import java.util.Set;
@@ -32,7 +31,7 @@ public interface SysUserService {
      * @return
      * @throws Exception
      */
-    Set<UserVO> getDepartmentUserList(@CacheKey Integer departmentId) throws Exception;
+    Set<UserVO> getDepartmentUserList(Integer departmentId) throws Exception;
 
     /**
      * 查询团队下的所有用户

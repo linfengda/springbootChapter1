@@ -5,6 +5,7 @@ import com.linfengda.sb.chapter1.Chapter1Application;
 import com.linfengda.sb.chapter1.system.cache.SystemCachePrefix;
 import com.linfengda.sb.chapter1.system.entity.dto.SysTeamCacheDTO;
 import com.linfengda.sb.chapter1.system.entity.dto.SysUserCacheDTO;
+import com.linfengda.sb.chapter1.system.service.SysOrganizeCacheService;
 import com.linfengda.sb.support.redis.Constant;
 import com.linfengda.sb.support.redis.GenericRedisTemplate;
 import lombok.extern.slf4j.Slf4j;

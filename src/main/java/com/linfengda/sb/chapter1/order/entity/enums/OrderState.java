@@ -12,9 +12,21 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum OrderState {
     /**
-     * 待支付
+     * 待排产
      */
-    UN_PAID(1, "待支付"),
+    WAITING_PRODUCE(1, "待排产"),
+    /**
+     * 待分单
+     */
+    WAITING_ALLOCATION(2, "待分单"),
+    /**
+     * 生产中
+     */
+    PRODUCING(3, "生产中"),
+    /**
+     * 待发货
+     */
+    WAITING_DELIVERY(4, "待发货"),
     /**
      * 待收货
      */
@@ -22,7 +34,7 @@ public enum OrderState {
     /**
      * 待验收
      */
-    WAITING_CHECK(3, "收货"),
+    WAITING_CHECK(3, "待验收"),
     /**
      * 退货
      */
