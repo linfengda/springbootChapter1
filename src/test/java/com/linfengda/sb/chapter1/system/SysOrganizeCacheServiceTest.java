@@ -28,7 +28,7 @@ import java.util.Set;
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Chapter1Application.class, webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class SysOrganizeServiceTest {
+public class SysOrganizeCacheServiceTest {
     @Resource
     private SysOrganizeCacheService sysOrganizeCacheService;
     @Resource

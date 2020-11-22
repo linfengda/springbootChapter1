@@ -2,6 +2,7 @@ package com.linfengda.sb.chapter1.demo;
 
 import com.alibaba.fastjson.JSON;
 import com.linfengda.sb.chapter1.Chapter1Application;
+import com.linfengda.sb.chapter1.order.entity.po.OrderRecordPO;
 import com.linfengda.sb.chapter1.system.entity.po.SysUserPO;
 import com.linfengda.sb.chapter1.system.entity.vo.UserVO;
 import com.linfengda.sb.support.orm.OrmTemplate;
@@ -42,7 +43,7 @@ public class ORMFrameworkSpringBootTest {
     }
 
     @Test
-    @Rollback(true)
+    @Rollback(false)
     @Transactional(rollbackFor = Exception.class)
     public void testQuery() throws Exception {
         SysUserPO sysUserPO = ormTemplate.findByPrimaryKey(1, SysUserPO.class);
@@ -52,5 +53,14 @@ public class ORMFrameworkSpringBootTest {
         userVO.setPhone(sysUserPO.getPhone());
         userVO.setStatus(sysUserPO.getStatus());
         log.info("查询用户信息={}", JSON.toJSONString(userVO));
+    }
+
+    @Test
+    @Rollback(false)
+    @Transactional(rollbackFor = Exception.class)
+    public void testInsert() throws Exception {
+        OrderRecordPO orderRecordPO = new OrderRecordPO();
+        ormTemplate.save(orderRecordPO);
+        log.info("保存订单信息={}", JSON.toJSONString(orderRecordPO));
     }
 }

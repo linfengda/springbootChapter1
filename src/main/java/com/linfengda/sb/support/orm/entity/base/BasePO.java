@@ -32,7 +32,7 @@ public class BasePO {
 	/**
 	 * 是否删除 {@link Delete}
 	 */
-	private Integer isDelete;
+	private Integer delete;
 	/**
 	 * 版本号
 	 */
