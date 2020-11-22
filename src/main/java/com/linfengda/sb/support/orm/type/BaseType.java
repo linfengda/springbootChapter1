@@ -1,5 +1,6 @@
 package com.linfengda.sb.support.orm.type;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 import java.util.HashMap;
@@ -12,6 +13,7 @@ import java.util.Map;
  * @create 2019-04-12 13:25
  */
 @Getter
+@AllArgsConstructor
 public enum BaseType {
 	/**
 	 * java.lang.String
@@ -78,7 +80,7 @@ public enum BaseType {
 	 */
 	BYTES("[B"),
 	/**
-	 * [Ljava.lang.Byte
+	 * java.lang.Byte
 	 */
 	B_BYTES("[Ljava.lang.Byte;"),
 	/**
@@ -100,10 +102,6 @@ public enum BaseType {
 		}
 	}
     
-	 BaseType(String value) {
-		this.value = value;
-	}
-
 	public static BaseType getBaseType(String value) {
 		return BASE_TYPE_MAP.get(value);
 	 }

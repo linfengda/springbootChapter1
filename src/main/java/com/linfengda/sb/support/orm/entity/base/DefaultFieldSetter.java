@@ -18,9 +18,9 @@ public class DefaultFieldSetter implements DefaultField {
 	/**
 	 * 创建PO默认字段值
 	 * @param po
-	 * @throws Exception
+	 * @throws IllegalAccessException
 	 */
-	public void addDefaultValue(Object po) throws Exception {
+	public void addDefaultValue(Object po) throws IllegalAccessException {
 		List<Field> fields =  ClassUtil.getFields(po.getClass());
 		for (Field field : fields) {
 			if(field.getName().equals(CREATE_TIME) || field.getName().equals(UPDATE_TIME)) {
@@ -31,7 +31,7 @@ public class DefaultFieldSetter implements DefaultField {
 				field.setAccessible(true);
 				field.set(po, UserUtil.getCurrentUserId());
 			}
-			if (field.getName().equals(IS_DELETE)){
+			if (field.getName().equals(DELETE)){
 				field.setAccessible(true);
 				field.set(po, BasePO.Delete.NORMAL.getCode());
 			}
@@ -66,7 +66,6 @@ public class DefaultFieldSetter implements DefaultField {
 				}else {
 					version = version+1;
 				}
-
 				field.setAccessible(true);
 				field.set(po, version);
 			}

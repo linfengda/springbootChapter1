@@ -1,4 +1,4 @@
-package com.linfengda.sb.support.orm.tableAnnontation;
+package com.linfengda.sb.support.orm.annontation;
 
 import java.lang.annotation.*;
 

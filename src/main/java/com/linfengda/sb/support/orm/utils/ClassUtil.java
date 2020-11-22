@@ -2,8 +2,8 @@ package com.linfengda.sb.support.orm.utils;
 
 import com.linfengda.sb.support.orm.entity.AttributeValue;
 import com.linfengda.sb.support.orm.exception.DataAccessException;
-import com.linfengda.sb.support.orm.tableAnnontation.Id;
-import com.linfengda.sb.support.orm.tableAnnontation.Table;
+import com.linfengda.sb.support.orm.annontation.Id;
+import com.linfengda.sb.support.orm.annontation.Table;
 
 import java.beans.PropertyDescriptor;
 import java.lang.annotation.Annotation;

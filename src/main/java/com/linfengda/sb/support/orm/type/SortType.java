@@ -1,5 +1,6 @@
 package com.linfengda.sb.support.orm.type;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /**
@@ -8,13 +9,17 @@ import lombok.Getter;
  * @author linfengda
  * @create 2019-04-12 13:25
  */
+@Getter
+@AllArgsConstructor
 public enum SortType {
+    /**
+     * 倒序
+     */
     DESC("DESC"),
+    /**
+     * 正序
+     */
     ASC("ASC");
-    @Getter private String value;
 
-    SortType(String value){
-        this.value = value;
-    }
-
+    private String value;
 }

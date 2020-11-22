@@ -48,7 +48,7 @@ public class ConditionParam implements Serializable{
     /**
      * 排序语句
      */
-    private String orderBy = new String(ORDER);
+    private String orderBy = ORDER;
 
     /**
      * 条件参数值

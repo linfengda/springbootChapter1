@@ -7,6 +7,11 @@ package com.linfengda.sb.support.orm.utils;
  * @create 2019-04-12 13:25
  */
 public class UserUtil {
+
+    /**
+     * 获取当前操作人
+     * @return  当前操作人
+     */
     public static Integer getCurrentUserId(){
         return 1;
     }

@@ -1,8 +1,8 @@
 package com.linfengda.sb.chapter1.order.entity.po;
 
 import com.linfengda.sb.support.orm.entity.base.BasePO;
-import com.linfengda.sb.support.orm.tableAnnontation.Id;
-import com.linfengda.sb.support.orm.tableAnnontation.Table;
+import com.linfengda.sb.support.orm.annontation.Id;
+import com.linfengda.sb.support.orm.annontation.Table;
 import lombok.Data;
 
 import java.math.BigDecimal;

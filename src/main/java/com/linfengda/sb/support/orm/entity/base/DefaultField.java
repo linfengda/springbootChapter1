@@ -7,6 +7,7 @@ package com.linfengda.sb.support.orm.entity.base;
  * @create 2019-04-12 13:25
  */
 public interface DefaultField {
+
     String CREATE_TIME = "createTime";
 
     String UPDATE_TIME = "updateTime";
@@ -17,5 +18,5 @@ public interface DefaultField {
 
     String VERSION = "version";
 
-    String IS_DELETE= "isDelete";
+    String DELETE = "delete";
 }
