@@ -71,8 +71,8 @@ public class ResultSetUtil {
                     ClassUtil.setValue(field, o, result.getInt(dbFieldName));
                     break;
                 case B_INT:
-                    Object obj = result.getObject(dbFieldName);
-                    if (null != obj){
+                    Object bi = result.getObject(dbFieldName);
+                    if (null != bi){
                         ClassUtil.setValue(field, o, result.getInt(dbFieldName));
                     }
                     break;
@@ -80,33 +80,33 @@ public class ResultSetUtil {
                     ClassUtil.setValue(field, o, result.getLong(dbFieldName));
                     break;
                 case B_LONG:
-                    Object ob = result.getObject(dbFieldName);
-                    if (null != ob){
-                        ClassUtil.setValue(field, o, Long.valueOf(ob.toString()));
+                    Object bl = result.getObject(dbFieldName);
+                    if (null != bl){
+                        ClassUtil.setValue(field, o, Long.valueOf(bl.toString()));
                     }
                     break;
                 case DOUBLE:
                     ClassUtil.setValue(field, o, result.getDouble(dbFieldName));
                     break;
                 case B_DOUBLE:
-                    Object bo = result.getObject(dbFieldName);
-                    if (null != bo){
-                        if (bo instanceof BigDecimal){
-                            BigDecimal d = (BigDecimal)bo;
+                    Object bd = result.getObject(dbFieldName);
+                    if (null != bd){
+                        if (bd instanceof BigDecimal){
+                            BigDecimal d = (BigDecimal)bd;
                             ClassUtil.setValue(field, o, d.doubleValue());
                         }else {
-                            ClassUtil.setValue(field, o, bo);
+                            ClassUtil.setValue(field, o, bd);
                         }
                     }
                     break;
                 case BIG_DECIMAL:
-                    Object bd = result.getObject(dbFieldName);
-                    if (null != bd){
-                        if (bd instanceof Double){
-                            Double dou = (Double)bd;
+                    Object bdc = result.getObject(dbFieldName);
+                    if (null != bdc){
+                        if (bdc instanceof Double){
+                            Double dou = (Double)bdc;
                             ClassUtil.setValue(field,o,new BigDecimal(dou.toString()));
                         }else {
-                            ClassUtil.setValue(field, o, bd);
+                            ClassUtil.setValue(field, o, bdc);
                         }
                     }
                     break;
@@ -126,13 +126,10 @@ public class ResultSetUtil {
                     }
                     break;
                 case SQL_DATE:
-                    ClassUtil.setValue(field, o, result.getTimestamp(dbFieldName));
+                    ClassUtil.setValue(field, o, result.getDate(dbFieldName));
                     break;
-                case SQL_DATE_TIME:
+                case SQL_TIMESTAMP:
                     ClassUtil.setValue(field, o, result.getTimestamp(dbFieldName));
-                    break;
-                case BYTES:
-                    ClassUtil.setValue(field, o, result.getBytes(dbFieldName));
                     break;
                 case BYTE:
                     ClassUtil.setValue(field, o, result.getByte(dbFieldName));

@@ -19,24 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1ac92d16-a2f3-4d49-8fdb-b5b56f35641b" name="Default" comment="feat: 梳理ORM框架">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/orm/entity/BaseFieldAware.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/order/entity/po/OrderRecordPO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/order/entity/po/OrderRecordPO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/system/entity/dto/SysDepartmentCacheDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/system/entity/dto/SysDepartmentCacheDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/system/entity/dto/SysTeamCacheDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/system/entity/dto/SysTeamCacheDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/system/entity/dto/SysUserCacheDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/system/entity/dto/SysUserCacheDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/system/entity/po/SysDepartmentPO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/system/entity/po/SysDepartmentPO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/system/entity/po/SysTeamPO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/system/entity/po/SysTeamPO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/system/entity/po/SysUserPO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/system/entity/po/SysUserPO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/orm/AbstractBaseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/orm/AbstractBaseService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/orm/OrmTemplate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/orm/OrmTemplate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/orm/entity/SetValue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/orm/entity/SetValue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/orm/entity/base/BasePO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/entity/po/BasePO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/orm/entity/base/DefaultField.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/orm/entity/base/DefaultFieldSetter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/orm/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/orm/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/orm/sql/builder/PreStatementSqlBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/orm/sql/builder/PreStatementSqlBuilder.java" afterDir="false" />
+    <list default="true" id="1ac92d16-a2f3-4d49-8fdb-b5b56f35641b" name="Default" comment="feat: 充分理解orm框架实现流程">
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/orm/type/BaseType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/orm/type/BaseType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/orm/utils/ResultSetUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/orm/utils/ResultSetUtil.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -871,14 +856,7 @@
       <workItem from="1606055633616" duration="1000" />
       <workItem from="1606273502170" duration="20000" />
       <workItem from="1606541242927" duration="55000" />
-      <workItem from="1606571055187" duration="4662000" />
-    </task>
-    <task id="LOCAL-00121" summary="refactor: 引入fastjson序列化">
-      <created>1598157867862</created>
-      <option name="number" value="00121" />
-      <option name="presentableId" value="LOCAL-00121" />
-      <option name="project" value="LOCAL" />
-      <updated>1598157867862</updated>
+      <workItem from="1606571055187" duration="5174000" />
     </task>
     <task id="LOCAL-00122" summary="refactor: 增加fastjson序列化支持">
       <created>1598373282988</created>
@@ -1216,7 +1194,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606049473500</updated>
     </task>
-    <option name="localTasksCounter" value="170" />
+    <task id="LOCAL-00170" summary="feat: 充分理解orm框架实现流程">
+      <created>1606575864014</created>
+      <option name="number" value="00170" />
+      <option name="presentableId" value="LOCAL-00170" />
+      <option name="project" value="LOCAL" />
+      <updated>1606575864014</updated>
+    </task>
+    <option name="localTasksCounter" value="171" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1380,7 +1365,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="refactor: 后台线程兼容多个实例" />
     <MESSAGE value="refactor: common包结构调整" />
     <MESSAGE value="refactor: 使用spring mvc拦截器替代切面，更加灵活" />
     <MESSAGE value="refactor: 缓存框架测试" />
@@ -1405,7 +1389,8 @@
     <MESSAGE value="feat: 提交状态机" />
     <MESSAGE value="feat: 提交ORM框架优化日志，规划下一步" />
     <MESSAGE value="feat: 梳理ORM框架" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: 梳理ORM框架" />
+    <MESSAGE value="feat: 充分理解orm框架实现流程" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: 充分理解orm框架实现流程" />
   </component>
   <component name="WindowStateProjectService">
     <state x="495" y="157" key="#Project_Structure" timestamp="1602775208893">
@@ -1443,9 +1428,10 @@
     <state x="518" y="227" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.800@0.23.1440.800" timestamp="1606572005733" />
     <state x="518" y="228" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.803@0.23.1440.803" timestamp="1602688955687" />
     <state x="518" y="229" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.805@0.23.1440.805" timestamp="1602064441948" />
-    <state x="0" y="30" width="1440" height="805" key="CommitChangelistDialog2" timestamp="1606049473152">
-      <screen x="0" y="23" width="1440" height="803" />
+    <state x="0" y="23" width="1440" height="800" key="CommitChangelistDialog2" timestamp="1606575863545">
+      <screen x="0" y="23" width="1440" height="800" />
     </state>
+    <state x="0" y="23" width="1440" height="800" key="CommitChangelistDialog2/0.23.1440.800@0.23.1440.800" timestamp="1606575863545" />
     <state x="0" y="30" key="CommitChangelistDialog2/0.23.1440.803@0.23.1440.803" timestamp="1606049473152" />
     <state x="0" y="23" width="1440" height="805" key="CommitChangelistDialog2/0.23.1440.805@0.23.1440.805" timestamp="1604036135515" />
     <state width="669" height="263" key="DebuggerActiveHint" timestamp="1600916432844">
@@ -1543,9 +1529,10 @@
     </state>
     <state x="601" y="262" key="RollbackChangesDialog/0.23.1440.803@0.23.1440.803" timestamp="1600766308420" />
     <state x="601" y="263" key="RollbackChangesDialog/0.23.1440.805@0.23.1440.805" timestamp="1604654227436" />
-    <state x="414" y="218" key="Vcs.Push.Dialog.v2" timestamp="1606049477302">
-      <screen x="0" y="23" width="1440" height="803" />
+    <state x="414" y="217" key="Vcs.Push.Dialog.v2" timestamp="1606575869195">
+      <screen x="0" y="23" width="1440" height="800" />
     </state>
+    <state x="414" y="217" key="Vcs.Push.Dialog.v2/0.23.1440.800@0.23.1440.800" timestamp="1606575869195" />
     <state x="414" y="218" key="Vcs.Push.Dialog.v2/0.23.1440.803@0.23.1440.803" timestamp="1606049477302" />
     <state x="414" y="218" key="Vcs.Push.Dialog.v2/0.23.1440.805@0.23.1440.805" timestamp="1604036144254" />
     <state x="368" y="46" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1600915403011">
@@ -1570,9 +1557,10 @@
       <screen x="0" y="23" width="1440" height="805" />
     </state>
     <state x="414" y="218" key="git4idea.merge.GitPullDialog/0.23.1440.805@0.23.1440.805" timestamp="1598157872706" />
-    <state x="796" y="201" width="670" height="525" key="search.everywhere.popup" timestamp="1606047872339">
-      <screen x="0" y="23" width="1440" height="803" />
+    <state x="796" y="200" width="670" height="524" key="search.everywhere.popup" timestamp="1606576338231">
+      <screen x="0" y="23" width="1440" height="800" />
     </state>
+    <state x="796" y="200" width="670" height="524" key="search.everywhere.popup/0.23.1440.800@0.23.1440.800" timestamp="1606576338231" />
     <state x="796" y="201" width="670" height="525" key="search.everywhere.popup/0.23.1440.803@0.23.1440.803" timestamp="1606047872339" />
     <state x="796" y="201" width="670" height="527" key="search.everywhere.popup/0.23.1440.805@0.23.1440.805" timestamp="1600787383103" />
   </component>

@@ -66,7 +66,7 @@ public enum BaseType {
 	/**
 	 * java.sql.Timestamp
 	 */
-	SQL_DATE_TIME("java.sql.Timestamp"),
+	SQL_TIMESTAMP("java.sql.Timestamp"),
 	/**
 	 * byte
 	 */
@@ -75,10 +75,6 @@ public enum BaseType {
 	 * java.lang.Byte
 	 */
 	B_BYTE("java.lang.Byte"),
-	/**
-	 * [B
-	 */
-	BYTES("[B"),
 	/**
 	 * java.lang.Byte
 	 */
