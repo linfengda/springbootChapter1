@@ -1,6 +1,6 @@
 package com.linfengda.sb.chapter1.system.entity.po;
 
-import com.linfengda.sb.support.orm.entity.base.BasePO;
+import com.linfengda.sb.chapter1.common.entity.po.BasePO;
 import com.linfengda.sb.support.orm.annontation.Id;
 import com.linfengda.sb.support.orm.annontation.Table;
 import lombok.AllArgsConstructor;

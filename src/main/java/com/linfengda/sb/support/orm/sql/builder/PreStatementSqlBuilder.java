@@ -2,14 +2,11 @@ package com.linfengda.sb.support.orm.sql.builder;
 
 import com.linfengda.sb.support.orm.entity.AttributeValue;
 import com.linfengda.sb.support.orm.entity.ConditionParam;
-import com.linfengda.sb.support.orm.entity.base.DefaultField;
 import com.linfengda.sb.support.orm.entity.SetValue;
 import com.linfengda.sb.support.orm.exception.DataAccessException;
 import com.linfengda.sb.support.orm.utils.ClassUtil;
-import com.linfengda.sb.support.orm.utils.UserUtil;
 
 import java.lang.reflect.Field;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +22,7 @@ public enum PreStatementSqlBuilder {
      */
     INSTANCE;
 
-    public PreStatementSql buildBatchInsertSql(Object po) throws Exception {
+    public PreStatementSql buildInsertSql(Object po) throws Exception {
         Class clazz = po.getClass();
         List<Field> fields = ClassUtil.getFields(clazz);
         String tableName = ClassUtil.getTableName(clazz);
@@ -95,16 +92,7 @@ public enum PreStatementSqlBuilder {
 
     public PreStatementSql buildUpdateSql(SetValue setValue, ConditionParam conditionParam, Class<?> clazz) throws Exception {
         StringBuilder sql = new StringBuilder("UPDATE " + getTableName(clazz));
-        List<Field> fields = ClassUtil.getFields(clazz);
-        for (Field field : fields) {
-            if (field.getName().equals(DefaultField.UPDATE_TIME)) {
-                setValue.add(DefaultField.UPDATE_TIME, new Timestamp(System.currentTimeMillis()));
-            }
-            if (field.getName().equals(DefaultField.UPDATE_USER)) {
-                setValue.add(DefaultField.UPDATE_USER, UserUtil.getCurrentUserId());
-            }
-        }
-        sql.append(setValue.getPartSql());
+        sql.append(setValue.getUpdateSql());
         sql.append(conditionParam.getConditionSql());
 
         List<AttributeValue> params = new ArrayList<>();

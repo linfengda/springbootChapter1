@@ -2,8 +2,8 @@ package com.linfengda.sb.support.orm;
 
 import com.linfengda.sb.support.orm.entity.AttributeValue;
 import com.linfengda.sb.support.orm.entity.ConditionParam;
-import com.linfengda.sb.support.orm.entity.base.DefaultFieldSetter;
 import com.linfengda.sb.support.orm.entity.SetValue;
+import com.linfengda.sb.support.orm.entity.BaseFieldAware;
 import com.linfengda.sb.support.orm.sql.builder.PreStatementSqlBuilder;
 import com.linfengda.sb.support.orm.sql.builder.PreStatementSql;
 import com.linfengda.sb.support.orm.sql.handler.PreStatementSqlHandler;
@@ -26,7 +26,6 @@ public abstract class AbstractBaseService {
     @Setter
     @Resource
     private DataSource dataSource;
-    private DefaultFieldSetter defaultFieldSetter = new DefaultFieldSetter();
 
 
     @SuppressWarnings("unchecked")
@@ -44,19 +43,16 @@ public abstract class AbstractBaseService {
             PreStatementSql preSql;
             if (idValue.getValue() == null) {
                 //simple save
-                defaultFieldSetter.addDefaultValue(po);
-                preSql = PreStatementSqlBuilder.INSTANCE.buildBatchInsertSql(po);
-            } else {
-                Long id = (Long) idValue.getValue();
-                if (id.longValue() == 0L) {
-                    //simple save
-                    defaultFieldSetter.addDefaultValue(po);
-                    preSql = PreStatementSqlBuilder.INSTANCE.buildBatchInsertSql(po);
-                } else {
-                    //simple update
-                    defaultFieldSetter.updateDefaultValue(po);
-                    preSql = PreStatementSqlBuilder.INSTANCE.buildUpdateSql(idValue, po);
+                if (po instanceof BaseFieldAware) {
+                    ((BaseFieldAware) po).onCreate();
                 }
+                preSql = PreStatementSqlBuilder.INSTANCE.buildInsertSql(po);
+            } else {
+                //simple update
+                if (po instanceof BaseFieldAware) {
+                    ((BaseFieldAware) po).onUpdate();
+                }
+                preSql = PreStatementSqlBuilder.INSTANCE.buildUpdateSql(idValue, po);
             }
             statement = new PreStatementSqlHandler(preSql, dataSource);
             statement.executeUpdate();
@@ -67,20 +63,15 @@ public abstract class AbstractBaseService {
         }
     }
 
-    /**
-     * 批量新增
-     *
-     * @param poList
-     * @throws Exception
-     */
     public void batchSave(List<Object> poList) throws Exception {
         if (poList == null || poList.size() == 0) {
             return;
         }
         for (Object po : poList) {
-            defaultFieldSetter.addDefaultValue(po);
+            if (po instanceof BaseFieldAware) {
+                ((BaseFieldAware) po).onCreate();
+            }
         }
-
         this.doBatchSave(poList);
     }
 

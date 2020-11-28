@@ -1,7 +1,6 @@
 package com.linfengda.sb.support.orm.entity;
 
 import com.linfengda.sb.support.orm.utils.ClassUtil;
-import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,20 +10,23 @@ import java.util.List;
  * @author linfengda
  */
 public class SetValue {
-
-    private String partSql = " SET version=version+1,";
-    @Getter private List<AttributeValue> params = new ArrayList<>();
+    private String updateSql = " SET version=version+1,";
+    private List<AttributeValue> params = new ArrayList<>();
 
     public SetValue add(String fieldName,Object value){
         if (value == null){
             return this;
         }
-        partSql += ClassUtil.convert(fieldName)+"=?,";
+        updateSql += ClassUtil.convert(fieldName)+"=?,";
         params.add(new AttributeValue(value, ClassUtil.convertType(value.getClass())));
         return this;
     }
 
-    public String getPartSql(){
-      return  partSql.substring(0,partSql.lastIndexOf(","));
+    public String getUpdateSql(){
+      return  updateSql.substring(0, updateSql.lastIndexOf(","));
+    }
+
+    public List<AttributeValue> getParams() {
+        return params;
     }
 }

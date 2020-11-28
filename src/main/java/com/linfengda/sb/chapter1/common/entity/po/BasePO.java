@@ -1,5 +1,7 @@
-package com.linfengda.sb.support.orm.entity.base;
+package com.linfengda.sb.chapter1.common.entity.po;
 
+import com.linfengda.sb.support.orm.entity.BaseFieldAware;
+import com.linfengda.sb.support.orm.utils.UserUtil;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -12,7 +14,7 @@ import java.sql.Timestamp;
  *
  */
 @Data
-public class BasePO {
+public abstract class BasePO implements BaseFieldAware {
 	/**
 	 * 创建人
 	 */
@@ -37,6 +39,27 @@ public class BasePO {
 	 * 版本号
 	 */
 	private Integer version;
+
+
+	@Override
+	public void onCreate() {
+		createUser = UserUtil.getCurrentUserId();
+		createTime = new Timestamp(System.currentTimeMillis());
+		updateUser = UserUtil.getCurrentUserId();
+		updateTime = new Timestamp(System.currentTimeMillis());
+		version = 1;
+	}
+
+	@Override
+	public void onUpdate() {
+		updateUser = UserUtil.getCurrentUserId();
+		updateTime = new Timestamp(System.currentTimeMillis());
+		if (version == null){
+			version = 1;
+		}else {
+			version = version+1;
+		}
+	}
 
 	/**
 	 * 删除字段枚举
