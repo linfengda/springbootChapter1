@@ -1,19 +1,19 @@
 package com.linfengda.sb.support.orm;
 
-import com.linfengda.sb.support.orm.entity.AttributeValue;
-import com.linfengda.sb.support.orm.entity.ConditionParam;
-import com.linfengda.sb.support.orm.entity.SetValue;
-import com.linfengda.sb.support.orm.entity.BaseFieldAware;
-import com.linfengda.sb.support.orm.sql.builder.PreStatementSqlBuilder;
+import com.linfengda.sb.support.orm.entity.*;
+import com.linfengda.sb.support.orm.exception.DataAccessException;
 import com.linfengda.sb.support.orm.sql.builder.PreStatementSql;
+import com.linfengda.sb.support.orm.sql.builder.PreStatementSqlBuilder;
 import com.linfengda.sb.support.orm.sql.handler.PreStatementSqlHandler;
 import com.linfengda.sb.support.orm.utils.ClassUtil;
+import com.linfengda.sb.support.orm.utils.PageUtil;
 import com.linfengda.sb.support.orm.utils.ResultSetUtil;
 import lombok.Setter;
 
 import javax.annotation.Resource;
 import javax.sql.DataSource;
 import java.sql.ResultSet;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -111,7 +111,42 @@ public abstract class AbstractBaseService {
         update(clazz, setValue, conditionParam);
     }
 
-    public <T> List<T> findAll(ConditionParam param, Class<T> clazz) throws Exception {
+    public <T> PageResult<T> page(ConditionParam param, Class<T> clazz) throws Exception{
+        PreStatementSqlHandler statement = null;
+        PageResult<T> pageResult = new PageResult<>();
+        try {
+            long totalRecord = this.countByParam(param,clazz);
+            int totalPage = PageUtil.getTotalPage(param.getPageSize(),totalRecord);
+            if (totalRecord == 0L){
+                pageResult.setPageNo(param.getPageNo());
+                pageResult.setPageSize(param.getPageSize());
+                pageResult.setTotalRecord(totalRecord);
+                pageResult.setTotalPage(totalPage);
+                pageResult.setRecorders(Collections.EMPTY_LIST);
+                return pageResult;
+            }
+            if (param.getPageNo() > totalPage) {
+                throw new DataAccessException("当前查询页数超过最大页数，pageNo：" + param.getPageNo() + "，totalPage：" + totalPage);
+            }
+            PreStatementSql preSql = PreStatementSqlBuilder.INSTANCE.getQuerySqlByConditionParam(param, clazz, true);
+            statement = new PreStatementSqlHandler(preSql, dataSource);
+            ResultSet result = statement.executeQuery();
+            List records = ResultSetUtil.convertToListObject(clazz, result);
+
+            pageResult.setPageNo(param.getPageNo());
+            pageResult.setPageSize(param.getPageSize());
+            pageResult.setTotalRecord(totalRecord);
+            pageResult.setTotalPage(totalPage);
+            pageResult.setRecorders(records);
+            return pageResult;
+        }finally {
+            if (statement != null) {
+                statement.close();
+            }
+        }
+    }
+
+    public <T> List<T> query(ConditionParam param, Class<T> clazz) throws Exception {
         PreStatementSqlHandler statement = null;
         try {
             PreStatementSql preSql = PreStatementSqlBuilder.INSTANCE.getQuerySqlByConditionParam(param, clazz, false);
@@ -127,7 +162,7 @@ public abstract class AbstractBaseService {
         }
     }
 
-    public <T> T findOne(ConditionParam param, Class<T> clazz) throws Exception {
+    public <T> T get(ConditionParam param, Class<T> clazz) throws Exception {
         param.setPageNo(1);
         param.setPageSize(1);
         PreStatementSqlHandler statement = null;
@@ -143,7 +178,7 @@ public abstract class AbstractBaseService {
         }
     }
 
-    public <T> T findByPrimaryKey(Integer id, Class<T> clazz) throws Exception {
+    public <T> T getByPrimaryKey(Integer id, Class<T> clazz) throws Exception {
         PreStatementSqlHandler statement = null;
         try {
             PreStatementSql preSql = PreStatementSqlBuilder.INSTANCE.buildQuerySql(id, clazz);

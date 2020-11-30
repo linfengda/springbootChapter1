@@ -73,7 +73,7 @@ public class SysUserServiceImpl extends AbstractBaseService implements SysUserSe
     }
 
     private List<UserVO> getUserVOS(ConditionParam conditionParam) throws Exception {
-        List<SysUserPO> sysUserPOList = findAll(conditionParam, SysUserPO.class);
+        List<SysUserPO> sysUserPOList = query(conditionParam, SysUserPO.class);
         if (CollectionUtils.isEmpty(sysUserPOList)) {
             return null;
         }
@@ -92,7 +92,7 @@ public class SysUserServiceImpl extends AbstractBaseService implements SysUserSe
     @QueryCache(type = DataType.HASH, prefix = "sys:user", timeOut = 30, timeUnit = TimeUnit.MINUTES, preCacheSnowSlide = true, preCacheSnowSlideTime = 1000, preCacheHotKeyMultiLoad = true, maxSize = 5, maxSizeStrategy = CacheMaxSizeStrategy.MAX_SIZE_STRATEGY_LRU)
     @Override
     public UserVO getUserInfo(@CacheKey Integer userId) throws Exception {
-        SysUserPO sysUserPO = findByPrimaryKey(userId, SysUserPO.class);
+        SysUserPO sysUserPO = getByPrimaryKey(userId, SysUserPO.class);
         if (null == sysUserPO) {
             return null;
         }
@@ -113,7 +113,7 @@ public class SysUserServiceImpl extends AbstractBaseService implements SysUserSe
         setValue.add("userName", userUpdateDTO.getUserName());
         updateByPrimaryKey(SysUserPO.class, setValue, userId);
         UserVO userVO = new UserVO();
-        SysUserPO sysUserPO = findByPrimaryKey(userId, SysUserPO.class);
+        SysUserPO sysUserPO = getByPrimaryKey(userId, SysUserPO.class);
         BeanUtils.copyProperties(sysUserPO, userVO);
         return userVO;
     }

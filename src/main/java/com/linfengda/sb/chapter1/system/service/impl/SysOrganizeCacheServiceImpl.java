@@ -36,7 +36,7 @@ public class SysOrganizeCacheServiceImpl extends AbstractBaseService implements 
     @QueryCache(type = DataType.HASH, prefix = SystemCachePrefix.SYS_ORG_PRODUCTION_TEAM_CACHE, timeOut = 1, timeUnit = TimeUnit.DAYS)
     @Override
     public SysDepartmentCacheDTO queryDepartment(@CacheKey Integer departmentId) throws Exception {
-        SysDepartmentPO sysDepartmentPO = findByPrimaryKey(departmentId, SysDepartmentPO.class);
+        SysDepartmentPO sysDepartmentPO = getByPrimaryKey(departmentId, SysDepartmentPO.class);
         if (null == sysDepartmentPO) {
             return null;
         }
@@ -54,7 +54,7 @@ public class SysOrganizeCacheServiceImpl extends AbstractBaseService implements 
         setValue.add("departmentName", departmentName);
         setValue.add("status", status);
         updateByPrimaryKey(SysDepartmentPO.class, setValue, departmentId);
-        SysDepartmentPO sysDepartmentPO = findByPrimaryKey(departmentId, SysDepartmentPO.class);
+        SysDepartmentPO sysDepartmentPO = getByPrimaryKey(departmentId, SysDepartmentPO.class);
         if (null == sysDepartmentPO) {
             return null;
         }
@@ -79,7 +79,7 @@ public class SysOrganizeCacheServiceImpl extends AbstractBaseService implements 
     @Override
     public Set<SysDepartmentCacheDTO> queryDepartments() throws Exception {
         ConditionParam conditionParam = new ConditionParam();
-        List<SysDepartmentPO> sysDepartmentPOList = findAll(conditionParam, SysDepartmentPO.class);
+        List<SysDepartmentPO> sysDepartmentPOList = query(conditionParam, SysDepartmentPO.class);
         Set<SysDepartmentCacheDTO> sysDepartmentCacheDTOSet = new HashSet<>();
         for (SysDepartmentPO sysDepartmentPO : sysDepartmentPOList) {
             SysDepartmentCacheDTO sysDepartmentCacheDTO = new SysDepartmentCacheDTO();
@@ -94,7 +94,7 @@ public class SysOrganizeCacheServiceImpl extends AbstractBaseService implements 
     public Set<SysTeamCacheDTO> queryTeamByDepartmentId(@CacheKey Integer departmentId) throws Exception {
         ConditionParam conditionParam = new ConditionParam();
         conditionParam.add("departmentId", departmentId);
-        List<SysTeamPO> sysTeamPOList = findAll(conditionParam, SysTeamPO.class);
+        List<SysTeamPO> sysTeamPOList = query(conditionParam, SysTeamPO.class);
         Set<SysTeamCacheDTO> sysTeamCacheDTOSet = new HashSet<>();
         for (SysTeamPO sysTeamPO : sysTeamPOList) {
             SysTeamCacheDTO sysTeamCacheDTO = new SysTeamCacheDTO();
@@ -109,7 +109,7 @@ public class SysOrganizeCacheServiceImpl extends AbstractBaseService implements 
     public Set<SysUserCacheDTO> queryUserByTeamId(@CacheKey Integer teamId) throws Exception {
         ConditionParam conditionParam = new ConditionParam();
         conditionParam.add("teamId", teamId);
-        List<SysUserPO> sysUserPOList = findAll(conditionParam, SysUserPO.class);
+        List<SysUserPO> sysUserPOList = query(conditionParam, SysUserPO.class);
         Set<SysUserCacheDTO> sysUserCacheDTOSet = new HashSet<>();
         for (SysUserPO sysUserPO : sysUserPOList) {
             SysUserCacheDTO sysUserCacheDTO = new SysUserCacheDTO();

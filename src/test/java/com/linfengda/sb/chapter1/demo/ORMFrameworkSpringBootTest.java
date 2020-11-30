@@ -6,6 +6,8 @@ import com.linfengda.sb.chapter1.order.entity.po.OrderRecordPO;
 import com.linfengda.sb.chapter1.system.entity.po.SysUserPO;
 import com.linfengda.sb.chapter1.system.entity.vo.UserVO;
 import com.linfengda.sb.support.orm.OrmTemplate;
+import com.linfengda.sb.support.orm.entity.ConditionParam;
+import com.linfengda.sb.support.orm.entity.PageResult;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
@@ -20,6 +22,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * 描述: MES ORM框架测试
@@ -44,15 +47,30 @@ public class ORMFrameworkSpringBootTest {
 
     @Test
     @Rollback(false)
-    @Transactional(rollbackFor = Exception.class)
+    public void testGet() throws Exception {
+        SysUserPO sysUserPO = ormTemplate.getByPrimaryKey(1, SysUserPO.class);
+        log.info("测试根据主键查询用户信息={}", JSON.toJSONString(sysUserPO));
+
+        ConditionParam conditionParam = new ConditionParam();
+        conditionParam.add("phone", "13632109840");
+        SysUserPO sysUserPO2 = ormTemplate.get(conditionParam, SysUserPO.class);
+        log.info("测试根据条件查询用户信息={}", JSON.toJSONString(sysUserPO2));
+    }
+
+    @Test
+    @Rollback(false)
     public void testQuery() throws Exception {
-        SysUserPO sysUserPO = ormTemplate.findByPrimaryKey(1, SysUserPO.class);
-        UserVO userVO = new UserVO();
-        userVO.setUserId(sysUserPO.getId());
-        userVO.setUserName(sysUserPO.getUserName());
-        userVO.setPhone(sysUserPO.getPhone());
-        userVO.setStatus(sysUserPO.getStatus());
-        log.info("查询用户信息={}", JSON.toJSONString(userVO));
+        ConditionParam conditionParam = new ConditionParam();
+        conditionParam.add("departmentId", "1");
+        List<SysUserPO> sysUserPOList = ormTemplate.query(conditionParam, SysUserPO.class);
+        log.info("测试根据条件查询所有用户信息={}", JSON.toJSONString(sysUserPOList));
+
+        ConditionParam pageParam = new ConditionParam();
+        pageParam.add("departmentId", "1");
+        pageParam.setPageNo(1);
+        pageParam.setPageSize(2);
+        PageResult<SysUserPO> pageUserList = ormTemplate.page(pageParam, SysUserPO.class);
+        log.info("测试根据条件分页查询用户信息={}", JSON.toJSONString(pageUserList));
     }
 
     @Test
@@ -60,7 +78,25 @@ public class ORMFrameworkSpringBootTest {
     @Transactional(rollbackFor = Exception.class)
     public void testInsert() throws Exception {
         OrderRecordPO orderRecordPO = new OrderRecordPO();
+        orderRecordPO.setState(1);
+        orderRecordPO.setState(1);
+        orderRecordPO.setState(1);
+        orderRecordPO.setState(1);
+        orderRecordPO.setState(1);
+        orderRecordPO.setState(1);
+        orderRecordPO.setState(1);
+        orderRecordPO.setState(1);
+        orderRecordPO.setState(1);
+        orderRecordPO.setState(1);
+        orderRecordPO.setState(1);
+        orderRecordPO.setState(1);
+        orderRecordPO.setState(1);
+        orderRecordPO.setState(1);
+        orderRecordPO.setState(1);
+        orderRecordPO.setState(1);
+        orderRecordPO.setState(1);
+        orderRecordPO.setState(1);
         ormTemplate.save(orderRecordPO);
-        log.info("保存订单信息={}", JSON.toJSONString(orderRecordPO));
+        log.info("测试保存订单信息={}", JSON.toJSONString(orderRecordPO));
     }
 }
