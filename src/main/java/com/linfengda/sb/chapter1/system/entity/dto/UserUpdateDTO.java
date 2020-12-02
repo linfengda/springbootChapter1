@@ -1,5 +1,6 @@
 package com.linfengda.sb.chapter1.system.entity.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 import javax.validation.constraints.NotBlank;

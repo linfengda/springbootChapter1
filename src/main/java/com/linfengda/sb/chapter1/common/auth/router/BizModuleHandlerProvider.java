@@ -2,6 +2,7 @@ package com.linfengda.sb.chapter1.common.auth.router;
 
 import com.linfengda.sb.chapter1.common.auth.entity.bo.RequestInfoBO;
 import com.linfengda.sb.chapter1.common.auth.router.impl.PcRequestHandler;
+import com.linfengda.sb.chapter1.common.exception.BusinessException;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.web.method.HandlerMethod;
@@ -44,6 +45,6 @@ public enum BizModuleHandlerProvider {
                 return value.getHandler(requestInfoBO, handlerMethod);
             }
         }
-        return null;
+        throw new BusinessException("获取不到请求处理器！uriHeader："+uriHeader);
     }
 }
