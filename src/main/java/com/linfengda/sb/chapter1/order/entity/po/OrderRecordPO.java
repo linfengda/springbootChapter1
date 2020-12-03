@@ -46,10 +46,6 @@ public class OrderRecordPO extends BasePO {
      */
     private Integer colorId;
     /**
-     * 时效要求（分钟）
-     */
-    private Integer timeRequired;
-    /**
      * 生产单价
      */
     private BigDecimal purchasePrice;

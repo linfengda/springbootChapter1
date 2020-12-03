@@ -1,5 +1,6 @@
 package com.linfengda.sb.chapter1.system.service.impl;
 
+import com.linfengda.sb.chapter1.common.entity.po.BasePO;
 import com.linfengda.sb.chapter1.system.cache.SystemCachePrefix;
 import com.linfengda.sb.chapter1.system.entity.dto.SysDepartmentCacheDTO;
 import com.linfengda.sb.chapter1.system.entity.dto.SysTeamCacheDTO;
@@ -71,7 +72,7 @@ public class SysOrganizeCacheServiceImpl extends AbstractBaseService implements 
     @Override
     public void delDepartment(@CacheKey Integer departmentId) throws Exception {
         SetValue setValue = new SetValue();
-        setValue.add("isDelete", SysDepartmentPO.Delete.DELETED.getCode());
+        setValue.add("deleted", BasePO.Deleted.DELETED.getCode());
         updateByPrimaryKey(SysDepartmentPO.class, setValue, departmentId);
     }
 

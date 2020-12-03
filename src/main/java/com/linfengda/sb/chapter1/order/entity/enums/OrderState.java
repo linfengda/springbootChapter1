@@ -30,19 +30,19 @@ public enum OrderState {
     /**
      * 待收货
      */
-    WAITING_RECEIVE(2, "待收货"),
+    WAITING_RECEIVE(5, "待收货"),
     /**
      * 待验收
      */
-    WAITING_CHECK(3, "待验收"),
+    WAITING_CHECK(6, "待验收"),
     /**
      * 退货
      */
-    RETURN(4, "退货"),
+    RETURN(7, "退货"),
     /**
      * 结束
      */
-    DONE(5, "结束"),
+    DONE(8, "结束"),
     ;
 
     private Integer code;

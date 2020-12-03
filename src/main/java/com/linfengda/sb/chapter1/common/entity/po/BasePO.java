@@ -32,9 +32,9 @@ public abstract class BasePO implements BaseFieldAware {
 	 */
 	private Timestamp updateTime;
 	/**
-	 * 是否删除 {@link Delete}
+	 * 是否删除 {@link Deleted}
 	 */
-	private Integer delete;
+	private Integer deleted;
 	/**
 	 * 版本号
 	 */
@@ -66,7 +66,7 @@ public abstract class BasePO implements BaseFieldAware {
 	 */
 	@AllArgsConstructor
 	@Getter
-	public enum Delete {
+	public enum Deleted {
 		/**
 		 * 0：正常
 		 */
@@ -78,10 +78,10 @@ public abstract class BasePO implements BaseFieldAware {
 		private final Integer code;
 		private final String name;
 
-		public static Delete getType(Integer state) {
-			for (Delete delete : values()) {
-				if (delete.getCode().equals(state)) {
-					return delete;
+		public static Deleted getType(Integer state) {
+			for (Deleted deleted : values()) {
+				if (deleted.getCode().equals(state)) {
+					return deleted;
 				}
 			}
 			return null;

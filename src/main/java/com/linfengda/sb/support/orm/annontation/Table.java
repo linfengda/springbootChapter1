@@ -12,5 +12,5 @@ import java.lang.annotation.*;
 @Documented
 public @interface Table {
 
-	String name() default "none";
+	String name() default "";
 }

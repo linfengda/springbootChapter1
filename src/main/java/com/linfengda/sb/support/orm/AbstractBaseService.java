@@ -28,15 +28,12 @@ public abstract class AbstractBaseService {
     private DataSource dataSource;
 
 
-    @SuppressWarnings("unchecked")
     public void save(Object po) throws Exception {
         PreStatementSqlHandler statement = null;
         try {
             //batch save
             if (po instanceof List) {
-                List<Object> poList = (List<Object>) po;
-                this.batchSave(poList);
-                return;
+                throw new DataAccessException("请使用batchSave方法保存list对象！");
             }
             String idName = ClassUtil.getIdName(po.getClass());
             AttributeValue idValue = ClassUtil.getValueByProperty(idName, po);
@@ -72,10 +69,6 @@ public abstract class AbstractBaseService {
                 ((BaseFieldAware) po).onCreate();
             }
         }
-        this.doBatchSave(poList);
-    }
-
-    private void doBatchSave(List<Object> poList) throws Exception {
         PreStatementSqlHandler statement = null;
         try {
             PreStatementSql preSql = PreStatementSqlBuilder.INSTANCE.buildBatchInsertSql(poList);
@@ -103,9 +96,6 @@ public abstract class AbstractBaseService {
 
     public void updateByPrimaryKey(Class<?> clazz, SetValue setValue, Integer id) throws Exception {
         String idName = ClassUtil.getIdName(clazz);
-        if (idName == null || idName.equals("")) {
-            throw new Exception(clazz + " 类没有ID属性");
-        }
         ConditionParam conditionParam = new ConditionParam();
         conditionParam.add(idName, id);
         update(clazz, setValue, conditionParam);

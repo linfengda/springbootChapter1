@@ -1,9 +1,9 @@
 package com.linfengda.sb.support.orm.utils;
 
-import com.linfengda.sb.support.orm.entity.AttributeValue;
-import com.linfengda.sb.support.orm.exception.DataAccessException;
 import com.linfengda.sb.support.orm.annontation.Id;
 import com.linfengda.sb.support.orm.annontation.Table;
+import com.linfengda.sb.support.orm.entity.AttributeValue;
+import com.linfengda.sb.support.orm.exception.DataAccessException;
 
 import java.beans.PropertyDescriptor;
 import java.lang.annotation.Annotation;
@@ -26,7 +26,7 @@ public class ClassUtil {
 	 * @return
 	 */
 	public static List<Field> getFields(Class<?> clazz){
-		List<Field> fieldList = new ArrayList<Field>();
+		List<Field> fieldList = new ArrayList<>();
         while(true) {
         	Field[] fields = clazz.getDeclaredFields();;
         	for (Field field : fields) {
@@ -44,29 +44,32 @@ public class ClassUtil {
 	}
 	
 	public static String getTableName(Class<?> clazz) {
-		Annotation[] anns = clazz.getAnnotations();
-		for (Annotation annotation : anns) {
+		Annotation[] annotations = clazz.getAnnotations();
+		for (Annotation annotation : annotations) {
 			if(annotation.annotationType().equals(Table.class)) {
 				Table tableAnno = (Table)annotation;
-				return tableAnno.name();
+				String tableName = tableAnno.name();
+				if (0 != tableName.length()) {
+					return tableName;
+				}
 			}
 		}
-		return "none";
+		throw new DataAccessException("没有发现table属性！");
 	}
 	
 	public static String getIdName(Class<?> clazz) {
 		List<Field> fields = getFields(clazz);
         for (Field field : fields) {
-            Annotation[] annos =  field.getAnnotations();
-            if(annos != null && annos.length > 0) {
-                for (Annotation annotation : annos) {
+            Annotation[] annotations =  field.getAnnotations();
+            if(annotations != null && annotations.length > 0) {
+                for (Annotation annotation : annotations) {
                     if(annotation.annotationType().equals(Id.class)) {
                         return field.getName();
                     }
                 }
             }
         }
-        throw new DataAccessException("没有发现id属性.");
+        throw new DataAccessException("没有发现id属性！");
 	}
 	
 	/**

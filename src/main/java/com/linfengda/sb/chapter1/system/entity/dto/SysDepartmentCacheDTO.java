@@ -49,7 +49,7 @@ public class SysDepartmentCacheDTO {
      */
     private Timestamp updateTime;
     /**
-     * 是否删除 {@link BasePO.Delete}
+     * 是否删除 {@link BasePO.Deleted}
      */
     private Integer isDelete;
     /**

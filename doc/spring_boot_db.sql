@@ -9,7 +9,7 @@ CREATE TABLE `sys_department` (
     `create_time` datetime NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '创建时间',
     `update_user` int(11) NOT NULL DEFAULT '0' COMMENT '修改人',
     `update_time` datetime NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '修改时间',
-    `delete` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否删除(0：未删除，1：已删除)',
+    `deleted` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否删除(0：未删除，1：已删除)',
     `version` int(11) NOT NULL DEFAULT '1' COMMENT '版本号',
     `last_update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '最后更新时间',
     PRIMARY KEY (`id`) USING BTREE,
@@ -28,7 +28,7 @@ CREATE TABLE `sys_team` (
     `create_time` datetime NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '创建时间',
     `update_user` int(11) NOT NULL DEFAULT '0' COMMENT '修改人',
     `update_time` datetime NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '修改时间',
-    `delete` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否删除(0：未删除，1：已删除)',
+    `deleted` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否删除(0：未删除，1：已删除)',
     `version` int(11) NOT NULL DEFAULT '1' COMMENT '版本号',
     `last_update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '最后更新时间',
 PRIMARY KEY (`id`),
@@ -49,7 +49,7 @@ CREATE TABLE `sys_user` (
     `create_time` datetime NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '创建时间',
     `update_user` int(11) NOT NULL DEFAULT '0' COMMENT '修改人',
     `update_time` datetime NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '修改时间',
-    `delete` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否删除(0：未删除，1：已删除)',
+    `deleted` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否删除(0：未删除，1：已删除)',
     `version` int(11) NOT NULL DEFAULT '1' COMMENT '版本号',
     `last_update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '最后更新时间',
 PRIMARY KEY (`id`) USING BTREE,
@@ -118,7 +118,7 @@ CREATE TABLE `mq_send_message` (
    `create_user` bigint NOT NULL DEFAULT '0' COMMENT '创建人',
    `update_time` datetime NOT NULL DEFAULT '1970-01-01 08:00:00' COMMENT '更新时间',
    `update_user` bigint NOT NULL DEFAULT '0' COMMENT '更新人',
-   `delete` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否删除(0：未删除，1：已删除)',
+   `deleted` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否删除(0：未删除，1：已删除)',
    `version` int NOT NULL DEFAULT '0' COMMENT '版本号，非查询操作需要递增+1',
    PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='mq消息发送表';
@@ -131,7 +131,6 @@ CREATE TABLE `order_record` (
     `reference_spu` varchar(64) NOT NULL DEFAULT '' COMMENT '参考spu',
     `color` varchar(50) NOT NULL DEFAULT '' COMMENT '颜色',
     `color_id` int NOT NULL DEFAULT '0' COMMENT '颜色id',
-    `time_required` int NOT NULL DEFAULT '0' COMMENT '时效要求',
     `purchase_price` decimal(10,2) NOT NULL DEFAULT '0.00' COMMENT '生产单价',
     `reference_image` varchar(256) NOT NULL DEFAULT '' COMMENT '参考图片地址',
     `material_type_enum` smallint NOT NULL DEFAULT '0' COMMENT '面料品类',
@@ -152,7 +151,7 @@ CREATE TABLE `order_record` (
     `create_user` varchar(64) NOT NULL DEFAULT '' COMMENT '创建人',
     `update_time` datetime NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '更新时间',
     `update_user` varchar(64) NOT NULL DEFAULT '' COMMENT '更新人',
-    `delete` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否删除，0:否，1:是',
+    `deleted` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否删除，0:否，1:是',
     `version` tinyint(1) NOT NULL DEFAULT '0' COMMENT '版本',
     PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='生产订单表';

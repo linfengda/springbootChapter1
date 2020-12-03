@@ -3,7 +3,6 @@ package com.linfengda.sb.support.orm.sql.builder;
 import com.linfengda.sb.support.orm.entity.AttributeValue;
 import com.linfengda.sb.support.orm.entity.ConditionParam;
 import com.linfengda.sb.support.orm.entity.SetValue;
-import com.linfengda.sb.support.orm.exception.DataAccessException;
 import com.linfengda.sb.support.orm.utils.ClassUtil;
 
 import java.lang.reflect.Field;
@@ -22,10 +21,11 @@ public enum PreStatementSqlBuilder {
      */
     INSTANCE;
 
-    public PreStatementSql buildInsertSql(Object po) throws Exception {
-        Class clazz = po.getClass();
-        List<Field> fields = ClassUtil.getFields(clazz);
+    public PreStatementSql buildInsertSql(Object po) {
+        Class<?> clazz = po.getClass();
         String tableName = ClassUtil.getTableName(clazz);
+        List<Field> fields = ClassUtil.getFields(clazz);
+        fields = getNotNullField(fields, po, clazz);
 
         PreStatementSql preSql = new PreStatementSql();
         // set sql
@@ -33,7 +33,7 @@ public enum PreStatementSqlBuilder {
         // set params
         List<AttributeValue> params = new ArrayList<>();
         for (Field field : fields) {
-            AttributeValue aValue = ClassUtil.getValueByProperty(field.getName(), po, po.getClass());
+            AttributeValue aValue = ClassUtil.getValueByProperty(field.getName(), po, clazz);
             params.add(aValue);
         }
         preSql.setParams(params);
@@ -41,10 +41,10 @@ public enum PreStatementSqlBuilder {
         return preSql;
     }
 
-    public PreStatementSql buildBatchInsertSql(List<Object> poList) throws Exception {
-        Class clazz = poList.get(0).getClass();
-        List<Field> fields = ClassUtil.getFields(clazz);
+    public PreStatementSql buildBatchInsertSql(List<Object> poList) {
+        Class<?> clazz = poList.get(0).getClass();
         String tableName = ClassUtil.getTableName(clazz);
+        List<Field> fields = ClassUtil.getFields(clazz);
 
         PreStatementSql preSql = new PreStatementSql();
         // set sql
@@ -64,44 +64,33 @@ public enum PreStatementSqlBuilder {
         return preSql;
     }
 
-    public PreStatementSql buildUpdateSql(AttributeValue idValue, Object po) throws Exception {
-        PreStatementSql preSql = new PreStatementSql();
-        Class clazz = po.getClass();
+    public PreStatementSql buildUpdateSql(AttributeValue idValue, Object po) {
+        Class<?> clazz = po.getClass();
         List<Field> fields = ClassUtil.getFields(clazz);
-        preSql.setSql(getUpdateSqlStr(fields, clazz));
-
-        List<AttributeValue> params = new ArrayList<>();
+        SetValue setValue = new SetValue();
         for (Field field : fields) {
             AttributeValue value = ClassUtil.getValueByProperty(field.getName(), po, clazz);
-            params.add(value);
+            if (null == value) {
+                continue;
+            }
+            setValue.add(field.getName(), value.getValue());
         }
-        params.add(idValue);
+        String idName = ClassUtil.getIdName(clazz);
+        ConditionParam conditionParam = new ConditionParam();
+        conditionParam.add(idName, idValue.getValue());
 
-        AttributeValue versionValue = ClassUtil.getValueByProperty("version", po, clazz);
-        if (versionValue == null) {
-            throw new DataAccessException("po实体version为空");
-        }
-        Integer version = (Integer) versionValue.getValue();
-        version = version - 1;
-        versionValue.setValue(version);
-        params.add(versionValue);
-
-        preSql.setParams(params);
+        PreStatementSql preSql = buildUpdateSql(setValue, conditionParam, clazz);
         return preSql;
     }
 
-    public PreStatementSql buildUpdateSql(SetValue setValue, ConditionParam conditionParam, Class<?> clazz) throws Exception {
+    public PreStatementSql buildUpdateSql(SetValue setValue, ConditionParam conditionParam, Class<?> clazz) {
         StringBuilder sql = new StringBuilder("UPDATE " + getTableName(clazz));
         sql.append(setValue.getUpdateSql());
         sql.append(conditionParam.getConditionSql());
 
         List<AttributeValue> params = new ArrayList<>();
-        for (AttributeValue attr : setValue.getParams()) {
-            params.add(attr);
-        }
-        for (AttributeValue attr : conditionParam.getParams()) {
-            params.add(attr);
-        }
+        params.addAll(setValue.getParams());
+        params.addAll(conditionParam.getParams());
 
         PreStatementSql preSql = new PreStatementSql();
         preSql.setSql(sql.toString());
@@ -109,7 +98,7 @@ public enum PreStatementSqlBuilder {
         return preSql;
     }
 
-    public PreStatementSql buildQuerySql(Integer Id, Class<?> clazz) throws Exception {
+    public PreStatementSql buildQuerySql(Integer Id, Class<?> clazz) {
         PreStatementSql preSql = new PreStatementSql();
         String tableName = getTableName(clazz);
         StringBuilder sql = new StringBuilder("SELECT * FROM ");
@@ -125,7 +114,7 @@ public enum PreStatementSqlBuilder {
         return preSql;
     }
 
-    public PreStatementSql getQuerySqlByConditionParam(ConditionParam param, Class<?> clazz, boolean isUsePage) throws Exception {
+    public PreStatementSql getQuerySqlByConditionParam(ConditionParam param, Class<?> clazz, boolean isUsePage) {
         PreStatementSql preSql = new PreStatementSql();
         String tableName = getTableName(clazz);
 
@@ -142,7 +131,7 @@ public enum PreStatementSqlBuilder {
         return preSql;
     }
 
-    public PreStatementSql buildCountSql(ConditionParam param, Class<?> clazz) throws Exception {
+    public PreStatementSql buildCountSql(ConditionParam param, Class<?> clazz) {
         PreStatementSql preSql = new PreStatementSql();
         String tableName = getTableName(clazz);
 
@@ -154,7 +143,7 @@ public enum PreStatementSqlBuilder {
         return preSql;
     }
 
-    private String getInsertSqlStr(List<Field> fields, String tableName) throws Exception {
+    private String getInsertSqlStr(List<Field> fields, String tableName) {
         int len = fields.size();
         // 追加字段名
         StringBuilder sql = new StringBuilder("INSERT INTO ");
@@ -182,39 +171,26 @@ public enum PreStatementSqlBuilder {
         return sql.toString();
     }
 
-    private String getUpdateSqlStr(List<Field> fields, Class<?> clazz) throws Exception {
-        int len = fields.size();
-        String tableName = getTableName(clazz);
-        StringBuilder sql = new StringBuilder("UPDATE " + tableName);
-        sql.append(" SET ");
-        for (int i = 0; i < len; i++) {
-            if (i == len - 1) {
-                sql.append(ClassUtil.convert(fields.get(i).getName())).append("=?");
-            } else {
-                sql.append(ClassUtil.convert(fields.get(i).getName())).append("=?").append(",");
-            }
-        }
-        sql.append(" WHERE ").append(ClassUtil.convert(ClassUtil.getIdName(clazz))).append("=?");
-        sql.append(" AND version=?");
-        return sql.toString();
-    }
-
-    private String getTableName(Class<?> clazz) throws Exception {
+    private String getTableName(Class<?> clazz) {
         String tableName = ClassUtil.getTableName(clazz);
-        if (tableName == null || tableName.equals("none")) {
-            throw new Exception("对象类型没有添加表名注解!");
-        }
-
         return tableName;
     }
 
-    private String getIdName(Class<?> clazz) throws Exception {
+    private String getIdName(Class<?> clazz) {
         String idName = ClassUtil.getIdName(clazz);
-        if (idName == null || idName.equals("")) {
-            throw new Exception(clazz + " 类没有ID属性");
-        }
         idName = ClassUtil.convert(idName);
-
         return idName;
+    }
+
+    private List<Field> getNotNullField(List<Field> fields, Object po, Class<?> clazz) {
+        List<Field> notNullFields = new ArrayList<>();
+        for (Field field : fields) {
+            AttributeValue aValue = ClassUtil.getValueByProperty(field.getName(), po, clazz);
+            if (null == aValue.getValue()) {
+                continue;
+            }
+            notNullFields.add(field);
+        }
+        return notNullFields;
     }
 }
