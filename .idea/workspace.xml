@@ -19,8 +19,24 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1ac92d16-a2f3-4d49-8fdb-b5b56f35641b" name="Default" comment="feat: 对null值不保存">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/remote/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/remote/readme.md" afterDir="false" />
+    <list default="true" id="1ac92d16-a2f3-4d49-8fdb-b5b56f35641b" name="Default" comment="feat: 测试查询方法">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/spring_boot_db.sql" beforeDir="false" afterPath="$PROJECT_DIR$/doc/spring_boot_db.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/entity/po/BasePO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/entity/po/BasePO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/order/entity/enums/OrderState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/order/entity/enums/OrderState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/order/entity/po/OrderRecordPO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/order/entity/po/OrderRecordPO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/system/entity/dto/SysDepartmentCacheDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/system/entity/dto/SysDepartmentCacheDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/system/entity/dto/SysTeamCacheDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/system/entity/dto/SysTeamCacheDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/system/entity/dto/SysUserCacheDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/system/entity/dto/SysUserCacheDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/system/service/impl/SysOrganizeCacheServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/system/service/impl/SysOrganizeCacheServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/orm/AbstractBaseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/orm/AbstractBaseService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/orm/annontation/Table.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/orm/annontation/Table.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/orm/entity/SetValue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/orm/entity/SetValue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/orm/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/orm/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/orm/sql/builder/PreStatementSqlBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/orm/sql/builder/PreStatementSqlBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/orm/sql/handler/PreStatementSqlHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/orm/sql/handler/PreStatementSqlHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/orm/utils/ClassUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/orm/utils/ClassUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/demo/ORMFrameworkSpringBootTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/linfengda/sb/chapter1/demo/ORMFrameworkSpringBootTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,12 +78,12 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feature/业务锁注解" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IlluminatedCloudWorkspaceSettings">
     <option name="projectWorkspaceSettings">
@@ -869,9 +885,14 @@
       <workItem from="1606821586328" duration="2761000" />
       <workItem from="1606897840384" duration="15296000" />
       <workItem from="1606960685136" duration="889000" />
-      <workItem from="1606978399597" duration="4231000" />
-      <workItem from="1607325112110" duration="20000" />
-      <workItem from="1607328587159" duration="15000" />
+      <workItem from="1606978399597" duration="4155000" />
+    </task>
+    <task id="LOCAL-00125" summary="refactor: 重构序列化框架">
+      <created>1600011871587</created>
+      <option name="number" value="00125" />
+      <option name="presentableId" value="LOCAL-00125" />
+      <option name="project" value="LOCAL" />
+      <updated>1600011871587</updated>
     </task>
     <task id="LOCAL-00126" summary="refactor: 优化代码">
       <created>1600012134089</created>
@@ -1209,14 +1230,7 @@
       <option name="project" value="LOCAL" />
       <updated>1606899845819</updated>
     </task>
-    <task id="LOCAL-00174" summary="feat: 对null值不保存">
-      <created>1606984145774</created>
-      <option name="number" value="00174" />
-      <option name="presentableId" value="LOCAL-00174" />
-      <option name="project" value="LOCAL" />
-      <updated>1606984145774</updated>
-    </task>
-    <option name="localTasksCounter" value="175" />
+    <option name="localTasksCounter" value="174" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1380,6 +1394,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <MESSAGE value="refactor: 缓存框架通过基本测试" />
     <MESSAGE value="refactor: 引入feign" />
     <MESSAGE value="feat: 缓存框架初步应用" />
     <MESSAGE value="feat: 缓存框架应用成功！" />
@@ -1404,8 +1419,7 @@
     <MESSAGE value="feat: orm结果集映射" />
     <MESSAGE value="feat: 测试查询方法" />
     <MESSAGE value="refactor: spring拦截器兼容404" />
-    <MESSAGE value="feat: 对null值不保存" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: 对null值不保存" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor: spring拦截器兼容404" />
   </component>
   <component name="WindowStateProjectService">
     <state x="495" y="157" key="#Project_Structure" timestamp="1602775208893">
@@ -1443,10 +1457,10 @@
     <state x="518" y="227" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.800@0.23.1440.800" timestamp="1606572005733" />
     <state x="518" y="228" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.803@0.23.1440.803" timestamp="1602688955687" />
     <state x="518" y="229" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.805@0.23.1440.805" timestamp="1602064441948" />
-    <state x="0" y="23" width="1440" height="800" key="CommitChangelistDialog2" timestamp="1606984145372">
-      <screen x="0" y="23" width="1440" height="800" />
+    <state x="0" y="30" width="1440" height="800" key="CommitChangelistDialog2" timestamp="1606918192831">
+      <screen x="0" y="23" width="1440" height="803" />
     </state>
-    <state x="0" y="23" width="1440" height="800" key="CommitChangelistDialog2/0.23.1440.800@0.23.1440.800" timestamp="1606984145372" />
+    <state x="0" y="23" width="1440" height="800" key="CommitChangelistDialog2/0.23.1440.800@0.23.1440.800" timestamp="1606576434424" />
     <state x="0" y="30" key="CommitChangelistDialog2/0.23.1440.803@0.23.1440.803" timestamp="1606918192831" />
     <state x="0" y="23" width="1440" height="805" key="CommitChangelistDialog2/0.23.1440.805@0.23.1440.805" timestamp="1604036135515" />
     <state width="669" height="261" key="DebuggerActiveHint" timestamp="1606899765444">
@@ -1462,66 +1476,66 @@
     <state x="198" y="161" width="1152" height="640" key="DiffContextDialog/0.23.1440.800@0.23.1440.800" timestamp="1606901636114" />
     <state x="198" y="162" width="1152" height="642" key="DiffContextDialog/0.23.1440.803@0.23.1440.803" timestamp="1606918191819" />
     <state x="199" y="162" key="DiffContextDialog/0.23.1440.805@0.23.1440.805" timestamp="1600877005538" />
-    <state width="1398" height="329" key="GridCell.Tab.0.bottom" timestamp="1606984157788">
+    <state width="1398" height="329" key="GridCell.Tab.0.bottom" timestamp="1606984111432">
       <screen x="0" y="23" width="1440" height="800" />
     </state>
-    <state width="1398" height="329" key="GridCell.Tab.0.bottom/0.23.1440.800@0.23.1440.800" timestamp="1606984157788" />
+    <state width="1398" height="329" key="GridCell.Tab.0.bottom/0.23.1440.800@0.23.1440.800" timestamp="1606984111432" />
     <state width="1398" height="329" key="GridCell.Tab.0.bottom/0.23.1440.803@0.23.1440.803" timestamp="1606921675687" />
     <state width="1007" height="416" key="GridCell.Tab.0.bottom/0.23.1440.805@0.23.1440.805" timestamp="1606825168308" />
     <state width="1398" height="331" key="GridCell.Tab.0.bottom/0.23.1440.807@0.23.1440.807" timestamp="1600916473459" />
     <state width="1398" height="331" key="GridCell.Tab.0.bottom/0.23.1440.810@0.23.1440.810" timestamp="1600916454105" />
-    <state width="1398" height="329" key="GridCell.Tab.0.center" timestamp="1606984157787">
+    <state width="1398" height="329" key="GridCell.Tab.0.center" timestamp="1606984111430">
       <screen x="0" y="23" width="1440" height="800" />
     </state>
-    <state width="1398" height="329" key="GridCell.Tab.0.center/0.23.1440.800@0.23.1440.800" timestamp="1606984157787" />
+    <state width="1398" height="329" key="GridCell.Tab.0.center/0.23.1440.800@0.23.1440.800" timestamp="1606984111430" />
     <state width="1398" height="329" key="GridCell.Tab.0.center/0.23.1440.803@0.23.1440.803" timestamp="1606921675685" />
     <state width="1007" height="416" key="GridCell.Tab.0.center/0.23.1440.805@0.23.1440.805" timestamp="1606825168307" />
     <state width="1398" height="331" key="GridCell.Tab.0.center/0.23.1440.807@0.23.1440.807" timestamp="1600916473459" />
     <state width="1398" height="331" key="GridCell.Tab.0.center/0.23.1440.810@0.23.1440.810" timestamp="1600916454104" />
-    <state width="1398" height="329" key="GridCell.Tab.0.left" timestamp="1606984157786">
+    <state width="1398" height="329" key="GridCell.Tab.0.left" timestamp="1606984111429">
       <screen x="0" y="23" width="1440" height="800" />
     </state>
-    <state width="1398" height="329" key="GridCell.Tab.0.left/0.23.1440.800@0.23.1440.800" timestamp="1606984157786" />
+    <state width="1398" height="329" key="GridCell.Tab.0.left/0.23.1440.800@0.23.1440.800" timestamp="1606984111429" />
     <state width="1398" height="329" key="GridCell.Tab.0.left/0.23.1440.803@0.23.1440.803" timestamp="1606921675685" />
     <state width="1007" height="416" key="GridCell.Tab.0.left/0.23.1440.805@0.23.1440.805" timestamp="1606825168306" />
     <state width="1398" height="331" key="GridCell.Tab.0.left/0.23.1440.807@0.23.1440.807" timestamp="1600916473458" />
     <state width="1398" height="331" key="GridCell.Tab.0.left/0.23.1440.810@0.23.1440.810" timestamp="1600916454103" />
-    <state width="1398" height="329" key="GridCell.Tab.0.right" timestamp="1606984157788">
+    <state width="1398" height="329" key="GridCell.Tab.0.right" timestamp="1606984111431">
       <screen x="0" y="23" width="1440" height="800" />
     </state>
-    <state width="1398" height="329" key="GridCell.Tab.0.right/0.23.1440.800@0.23.1440.800" timestamp="1606984157788" />
+    <state width="1398" height="329" key="GridCell.Tab.0.right/0.23.1440.800@0.23.1440.800" timestamp="1606984111431" />
     <state width="1398" height="329" key="GridCell.Tab.0.right/0.23.1440.803@0.23.1440.803" timestamp="1606921675686" />
     <state width="1007" height="416" key="GridCell.Tab.0.right/0.23.1440.805@0.23.1440.805" timestamp="1606825168307" />
     <state width="1398" height="331" key="GridCell.Tab.0.right/0.23.1440.807@0.23.1440.807" timestamp="1600916473459" />
     <state width="1398" height="331" key="GridCell.Tab.0.right/0.23.1440.810@0.23.1440.810" timestamp="1600916454105" />
-    <state width="1398" height="329" key="GridCell.Tab.1.bottom" timestamp="1606984157789">
+    <state width="1398" height="329" key="GridCell.Tab.1.bottom" timestamp="1606984111434">
       <screen x="0" y="23" width="1440" height="800" />
     </state>
-    <state width="1398" height="329" key="GridCell.Tab.1.bottom/0.23.1440.800@0.23.1440.800" timestamp="1606984157789" />
+    <state width="1398" height="329" key="GridCell.Tab.1.bottom/0.23.1440.800@0.23.1440.800" timestamp="1606984111434" />
     <state width="1398" height="329" key="GridCell.Tab.1.bottom/0.23.1440.803@0.23.1440.803" timestamp="1606921675689" />
     <state width="1007" height="416" key="GridCell.Tab.1.bottom/0.23.1440.805@0.23.1440.805" timestamp="1606825168309" />
     <state width="1398" height="331" key="GridCell.Tab.1.bottom/0.23.1440.807@0.23.1440.807" timestamp="1600916473327" />
     <state width="1398" height="331" key="GridCell.Tab.1.bottom/0.23.1440.810@0.23.1440.810" timestamp="1600916454107" />
-    <state width="1398" height="329" key="GridCell.Tab.1.center" timestamp="1606984157789">
+    <state width="1398" height="329" key="GridCell.Tab.1.center" timestamp="1606984111433">
       <screen x="0" y="23" width="1440" height="800" />
     </state>
-    <state width="1398" height="329" key="GridCell.Tab.1.center/0.23.1440.800@0.23.1440.800" timestamp="1606984157789" />
+    <state width="1398" height="329" key="GridCell.Tab.1.center/0.23.1440.800@0.23.1440.800" timestamp="1606984111433" />
     <state width="1398" height="329" key="GridCell.Tab.1.center/0.23.1440.803@0.23.1440.803" timestamp="1606921675688" />
     <state width="1007" height="416" key="GridCell.Tab.1.center/0.23.1440.805@0.23.1440.805" timestamp="1606825168308" />
     <state width="1398" height="331" key="GridCell.Tab.1.center/0.23.1440.807@0.23.1440.807" timestamp="1600916473326" />
     <state width="1398" height="331" key="GridCell.Tab.1.center/0.23.1440.810@0.23.1440.810" timestamp="1600916454107" />
-    <state width="1398" height="329" key="GridCell.Tab.1.left" timestamp="1606984157788">
+    <state width="1398" height="329" key="GridCell.Tab.1.left" timestamp="1606984111433">
       <screen x="0" y="23" width="1440" height="800" />
     </state>
-    <state width="1398" height="329" key="GridCell.Tab.1.left/0.23.1440.800@0.23.1440.800" timestamp="1606984157788" />
+    <state width="1398" height="329" key="GridCell.Tab.1.left/0.23.1440.800@0.23.1440.800" timestamp="1606984111433" />
     <state width="1398" height="329" key="GridCell.Tab.1.left/0.23.1440.803@0.23.1440.803" timestamp="1606921675688" />
     <state width="1007" height="416" key="GridCell.Tab.1.left/0.23.1440.805@0.23.1440.805" timestamp="1606825168308" />
     <state width="1398" height="331" key="GridCell.Tab.1.left/0.23.1440.807@0.23.1440.807" timestamp="1600916473326" />
     <state width="1398" height="331" key="GridCell.Tab.1.left/0.23.1440.810@0.23.1440.810" timestamp="1600916454106" />
-    <state width="1398" height="329" key="GridCell.Tab.1.right" timestamp="1606984157789">
+    <state width="1398" height="329" key="GridCell.Tab.1.right" timestamp="1606984111434">
       <screen x="0" y="23" width="1440" height="800" />
     </state>
-    <state width="1398" height="329" key="GridCell.Tab.1.right/0.23.1440.800@0.23.1440.800" timestamp="1606984157789" />
+    <state width="1398" height="329" key="GridCell.Tab.1.right/0.23.1440.800@0.23.1440.800" timestamp="1606984111434" />
     <state width="1398" height="329" key="GridCell.Tab.1.right/0.23.1440.803@0.23.1440.803" timestamp="1606921675689" />
     <state width="1007" height="416" key="GridCell.Tab.1.right/0.23.1440.805@0.23.1440.805" timestamp="1606825168308" />
     <state width="1398" height="331" key="GridCell.Tab.1.right/0.23.1440.807@0.23.1440.807" timestamp="1600916473326" />
@@ -1550,6 +1564,10 @@
     <state width="1139" height="416" key="GridCell.Tab.2.right/0.23.1440.800@0.23.1440.800" timestamp="1606924362546" />
     <state width="1139" height="416" key="GridCell.Tab.2.right/0.23.1440.803@0.23.1440.803" timestamp="1606921663200" />
     <state width="1007" height="416" key="GridCell.Tab.2.right/0.23.1440.805@0.23.1440.805" timestamp="1606825168309" />
+    <state x="431" y="146" key="MultipleFileMergeDialog" timestamp="1607431685003">
+      <screen x="0" y="23" width="1440" height="800" />
+    </state>
+    <state x="431" y="146" key="MultipleFileMergeDialog/0.23.1440.800@0.23.1440.800" timestamp="1607431685003" />
     <state x="547" y="360" key="ReplaceDuplicatesPrompt" timestamp="1600741825426">
       <screen x="0" y="23" width="1440" height="803" />
     </state>
@@ -1560,10 +1578,10 @@
     <state x="601" y="259" key="RollbackChangesDialog/0.23.1440.800@0.23.1440.800" timestamp="1606722667916" />
     <state x="601" y="262" key="RollbackChangesDialog/0.23.1440.803@0.23.1440.803" timestamp="1600766308420" />
     <state x="601" y="263" key="RollbackChangesDialog/0.23.1440.805@0.23.1440.805" timestamp="1606823166735" />
-    <state x="414" y="217" key="Vcs.Push.Dialog.v2" timestamp="1607431088491">
+    <state x="414" y="217" key="Vcs.Push.Dialog.v2" timestamp="1607431673544">
       <screen x="0" y="23" width="1440" height="800" />
     </state>
-    <state x="414" y="217" key="Vcs.Push.Dialog.v2/0.23.1440.800@0.23.1440.800" timestamp="1607431088491" />
+    <state x="414" y="217" key="Vcs.Push.Dialog.v2/0.23.1440.800@0.23.1440.800" timestamp="1607431673544" />
     <state x="414" y="218" key="Vcs.Push.Dialog.v2/0.23.1440.803@0.23.1440.803" timestamp="1606899850546" />
     <state x="414" y="218" key="Vcs.Push.Dialog.v2/0.23.1440.805@0.23.1440.805" timestamp="1604036144254" />
     <state width="720" height="400" key="XDebugger.FullValuePopup" timestamp="1606982006761">
@@ -1590,6 +1608,14 @@
     <state x="477" y="221" width="837" height="548" key="find.popup/0.23.1440.800@0.23.1440.800" timestamp="1606912917208" />
     <state x="477" y="222" width="837" height="550" key="find.popup/0.23.1440.803@0.23.1440.803" timestamp="1602774946822" />
     <state x="477" y="222" width="837" height="550" key="find.popup/0.23.1440.805@0.23.1440.805" timestamp="1600746590698" />
+    <state x="476" y="143" key="git4idea.branch.GitSmartOperationDialog" timestamp="1607431680689">
+      <screen x="0" y="23" width="1440" height="800" />
+    </state>
+    <state x="476" y="143" key="git4idea.branch.GitSmartOperationDialog/0.23.1440.800@0.23.1440.800" timestamp="1607431680689" />
+    <state x="380" y="221" key="git4idea.merge.GitPullDialog" timestamp="1607431664185">
+      <screen x="0" y="23" width="1440" height="800" />
+    </state>
+    <state x="380" y="221" key="git4idea.merge.GitPullDialog/0.23.1440.800@0.23.1440.800" timestamp="1607431664185" />
     <state x="796" y="200" width="670" height="524" key="search.everywhere.popup" timestamp="1606913814699">
       <screen x="0" y="23" width="1440" height="800" />
     </state>
