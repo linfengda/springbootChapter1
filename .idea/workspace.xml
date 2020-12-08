@@ -183,7 +183,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.ORMFrameworkSpringBootTest.testUpdate">
+  <component name="RunManager" selected="Spring Boot.Chapter1Application">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HTML_USED" value="false" />
       <option name="WIDTH" value="400" />
