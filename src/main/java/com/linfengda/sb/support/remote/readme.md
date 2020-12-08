@@ -3,6 +3,7 @@
 #### 1.对指定包路径的mapper类进行扫描
 ###### (1).通过spring的后置处理BeanDefinitionRegistryPostProcessor注册ClassPathBeanDefinitionScanner，就可以对指定包路径进行扫描
 ```  ```
+
 #### 2.为mapper类建立代理
 ###### (1).扫描到mapper接口后，注册mapper接口的实例，并通过GenericBeanDefinition#setBeanClass方法为mapper接口实现代理
 ```  ```
