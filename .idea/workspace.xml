@@ -19,8 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1ac92d16-a2f3-4d49-8fdb-b5b56f35641b" name="Default" comment="feat: 测试查询方法">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/queue/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/queue/readme.md" afterDir="false" />
+    <list default="true" id="1ac92d16-a2f3-4d49-8fdb-b5b56f35641b" name="Default" comment="feat: 提交11">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/remote/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/remote/readme.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -871,13 +872,6 @@
       <workItem from="1606960685136" duration="889000" />
       <workItem from="1606978399597" duration="4155000" />
     </task>
-    <task id="LOCAL-00125" summary="refactor: 重构序列化框架">
-      <created>1600011871587</created>
-      <option name="number" value="00125" />
-      <option name="presentableId" value="LOCAL-00125" />
-      <option name="project" value="LOCAL" />
-      <updated>1600011871587</updated>
-    </task>
     <task id="LOCAL-00126" summary="refactor: 优化代码">
       <created>1600012134089</created>
       <option name="number" value="00126" />
@@ -1214,7 +1208,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606899845819</updated>
     </task>
-    <option name="localTasksCounter" value="174" />
+    <task id="LOCAL-00174" summary="feat: 提交11">
+      <created>1607432448162</created>
+      <option name="number" value="00174" />
+      <option name="presentableId" value="LOCAL-00174" />
+      <option name="project" value="LOCAL" />
+      <updated>1607432448162</updated>
+    </task>
+    <option name="localTasksCounter" value="175" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1383,7 +1384,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="refactor: 缓存框架通过基本测试" />
     <MESSAGE value="refactor: 引入feign" />
     <MESSAGE value="feat: 缓存框架初步应用" />
     <MESSAGE value="feat: 缓存框架应用成功！" />
@@ -1408,7 +1408,8 @@
     <MESSAGE value="feat: orm结果集映射" />
     <MESSAGE value="feat: 测试查询方法" />
     <MESSAGE value="refactor: spring拦截器兼容404" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor: spring拦截器兼容404" />
+    <MESSAGE value="feat: 提交11" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: 提交11" />
   </component>
   <component name="WindowStateProjectService">
     <state x="495" y="157" key="#Project_Structure" timestamp="1602775208893">
@@ -1553,10 +1554,10 @@
     <state width="1139" height="416" key="GridCell.Tab.2.right/0.23.1440.800@0.23.1440.800" timestamp="1606924362546" />
     <state width="1139" height="416" key="GridCell.Tab.2.right/0.23.1440.803@0.23.1440.803" timestamp="1606921663200" />
     <state width="1007" height="416" key="GridCell.Tab.2.right/0.23.1440.805@0.23.1440.805" timestamp="1606825168309" />
-    <state x="431" y="146" key="MultipleFileMergeDialog" timestamp="1607432288557">
+    <state x="431" y="146" key="MultipleFileMergeDialog" timestamp="1607431685003">
       <screen x="0" y="23" width="1440" height="800" />
     </state>
-    <state x="431" y="146" key="MultipleFileMergeDialog/0.23.1440.800@0.23.1440.800" timestamp="1607432288557" />
+    <state x="431" y="146" key="MultipleFileMergeDialog/0.23.1440.800@0.23.1440.800" timestamp="1607431685003" />
     <state x="547" y="360" key="ReplaceDuplicatesPrompt" timestamp="1600741825426">
       <screen x="0" y="23" width="1440" height="803" />
     </state>
@@ -1567,15 +1568,11 @@
     <state x="601" y="259" key="RollbackChangesDialog/0.23.1440.800@0.23.1440.800" timestamp="1606722667916" />
     <state x="601" y="262" key="RollbackChangesDialog/0.23.1440.803@0.23.1440.803" timestamp="1600766308420" />
     <state x="601" y="263" key="RollbackChangesDialog/0.23.1440.805@0.23.1440.805" timestamp="1606823166735" />
-    <state x="570" y="345" key="VCS.ChangelistChooser" timestamp="1607432436004">
+    <state x="414" y="218" key="Vcs.Push.Dialog.v2" timestamp="1607432663653">
       <screen x="0" y="23" width="1440" height="803" />
     </state>
-    <state x="570" y="345" key="VCS.ChangelistChooser/0.23.1440.803@0.23.1440.803" timestamp="1607432436004" />
-    <state x="414" y="217" key="Vcs.Push.Dialog.v2" timestamp="1607432362569">
-      <screen x="0" y="23" width="1440" height="800" />
-    </state>
-    <state x="414" y="217" key="Vcs.Push.Dialog.v2/0.23.1440.800@0.23.1440.800" timestamp="1607432362569" />
-    <state x="414" y="218" key="Vcs.Push.Dialog.v2/0.23.1440.803@0.23.1440.803" timestamp="1606899850546" />
+    <state x="414" y="217" key="Vcs.Push.Dialog.v2/0.23.1440.800@0.23.1440.800" timestamp="1607431673544" />
+    <state x="414" y="218" key="Vcs.Push.Dialog.v2/0.23.1440.803@0.23.1440.803" timestamp="1607432663653" />
     <state x="414" y="218" key="Vcs.Push.Dialog.v2/0.23.1440.805@0.23.1440.805" timestamp="1604036144254" />
     <state width="720" height="400" key="XDebugger.FullValuePopup" timestamp="1606982006761">
       <screen x="0" y="23" width="1440" height="800" />
@@ -1601,10 +1598,11 @@
     <state x="477" y="221" width="837" height="548" key="find.popup/0.23.1440.800@0.23.1440.800" timestamp="1606912917208" />
     <state x="477" y="222" width="837" height="550" key="find.popup/0.23.1440.803@0.23.1440.803" timestamp="1602774946822" />
     <state x="477" y="222" width="837" height="550" key="find.popup/0.23.1440.805@0.23.1440.805" timestamp="1600746590698" />
-    <state x="476" y="143" key="git4idea.branch.GitSmartOperationDialog" timestamp="1607431680689">
-      <screen x="0" y="23" width="1440" height="800" />
+    <state x="476" y="143" key="git4idea.branch.GitSmartOperationDialog" timestamp="1607432854488">
+      <screen x="0" y="23" width="1440" height="803" />
     </state>
     <state x="476" y="143" key="git4idea.branch.GitSmartOperationDialog/0.23.1440.800@0.23.1440.800" timestamp="1607431680689" />
+    <state x="476" y="143" key="git4idea.branch.GitSmartOperationDialog/0.23.1440.803@0.23.1440.803" timestamp="1607432854488" />
     <state x="380" y="221" key="git4idea.merge.GitPullDialog" timestamp="1607431664185">
       <screen x="0" y="23" width="1440" height="800" />
     </state>
