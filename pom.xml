@@ -40,11 +40,6 @@
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>com.zaxxer</groupId>
-            <artifactId>HikariCP</artifactId>
-        </dependency>
-
         <!-- mybatis相关 -->
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
@@ -340,7 +335,16 @@
                     </execution>
                 </executions>
             </plugin>
-            <!-- 声明maven打包跳过测试用例 -->
+            <!-- spring boot配置使用@引用pom变量 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <configuration>
+                    <delimiters>@</delimiters>
+                    <useDefaultDelimiters>false</useDefaultDelimiters>
+                </configuration>
+            </plugin>
+            <!-- maven打包跳过测试用例 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
