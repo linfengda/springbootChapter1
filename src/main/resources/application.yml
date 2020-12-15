@@ -5,7 +5,7 @@ spring:
   application:
     name: springBootChapter1
   profiles:
-    active: 'common-@myActivateFile@,mq-@myActivateFile@,redis-@myActivateFile@'
+    active: @myActivateFile@,common-@myActivateFile@,mq-@myActivateFile@,redis-@myActivateFile@
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -16,7 +16,7 @@ spring:
       max-lifetime: 30000
       connection-timeout: 1800000
       minimum-idle: 10
-      maximum-pool-size: 20
+      maximum-pool-size: 100
       connection-test-query: SELECT 1
 
   redis:
