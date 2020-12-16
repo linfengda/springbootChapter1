@@ -6,7 +6,7 @@ import com.linfengda.sb.support.gateway.router.RequestRouter;
 import com.linfengda.sb.support.gateway.util.IpUtil;
 import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
-import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  * @date: 2020-09-21 15:21
  */
 @Component
-public class AuthInterceptor extends HandlerInterceptorAdapter {
+public class AuthInterceptor implements HandlerInterceptor {
     /**
      * org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error
      */
@@ -30,15 +30,15 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
         }
         if (!(handler instanceof HandlerMethod)) {
             //只处理Controller方法
-            return super.preHandle(request, response, handler);
+            return true;
         }
         if (WhiteUrlList.isWhiteUrl(request.getRequestURI())) {
             //系统白名单
-            return super.preHandle(request, response, handler);
+            return true;
         }
         RequestInfoBO requestInfoBO = getRequestInfoBO(request);
         RequestRouter.INSTANCE.doRouter(requestInfoBO, (HandlerMethod) handler);
-        return super.preHandle(request, response, handler);
+        return true;
     }
 
     /**
