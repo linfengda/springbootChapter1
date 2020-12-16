@@ -1,4 +1,4 @@
-package com.linfengda.sb.chapter1.common.auth.annotation;
+package com.linfengda.sb.chapter1.common.api.annotation;
 
 import java.lang.annotation.*;
 

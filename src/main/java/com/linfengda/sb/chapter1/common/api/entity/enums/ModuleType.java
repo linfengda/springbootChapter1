@@ -1,4 +1,4 @@
-package com.linfengda.sb.chapter1.common.auth.entity.enums;
+package com.linfengda.sb.chapter1.common.api.entity.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -1,10 +1,9 @@
-package com.linfengda.sb.chapter1.common.auth;
+package com.linfengda.sb.chapter1.common.api;
 
-import com.linfengda.sb.chapter1.common.auth.acl.WhiteUrlList;
-import com.linfengda.sb.chapter1.common.auth.entity.bo.RequestInfoBO;
-import com.linfengda.sb.chapter1.common.auth.router.RequestRouter;
-import com.linfengda.sb.chapter1.common.auth.util.IpUtil;
-import org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController;
+import com.linfengda.sb.chapter1.common.api.acl.WhiteUrlList;
+import com.linfengda.sb.chapter1.common.api.entity.bo.RequestInfoBO;
+import com.linfengda.sb.chapter1.common.api.router.RequestRouter;
+import com.linfengda.sb.chapter1.common.api.util.IpUtil;
 import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;

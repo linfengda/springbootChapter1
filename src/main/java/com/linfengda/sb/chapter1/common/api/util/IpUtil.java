@@ -1,4 +1,4 @@
-package com.linfengda.sb.chapter1.common.auth.util;
+package com.linfengda.sb.chapter1.common.api.util;
 
 import org.springframework.util.StringUtils;
 
