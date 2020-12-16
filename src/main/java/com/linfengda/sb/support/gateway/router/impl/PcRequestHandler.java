@@ -1,10 +1,10 @@
-package com.linfengda.sb.chapter1.common.api.router.impl;
+package com.linfengda.sb.support.gateway.router.impl;
 
 import com.alibaba.fastjson.JSON;
-import com.linfengda.sb.chapter1.common.api.annotation.RequiresAccessCode;
-import com.linfengda.sb.chapter1.common.api.entity.bo.RequestInfoBO;
-import com.linfengda.sb.chapter1.common.api.entity.enums.ModuleType;
-import com.linfengda.sb.chapter1.common.api.router.AbstractRequestHandler;
+import com.linfengda.sb.support.gateway.annotation.RequiresAccessCode;
+import com.linfengda.sb.support.gateway.entity.bo.RequestInfoBO;
+import com.linfengda.sb.support.gateway.entity.enums.ModuleType;
+import com.linfengda.sb.support.gateway.router.AbstractRequestHandler;
 import com.linfengda.sb.chapter1.common.exception.BusinessException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.method.HandlerMethod;

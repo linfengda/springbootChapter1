@@ -19,8 +19,20 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1ac92d16-a2f3-4d49-8fdb-b5b56f35641b" name="Default" comment="feat: 提交11">
+    <list default="true" id="1ac92d16-a2f3-4d49-8fdb-b5b56f35641b" name="Default" comment="refactor: 更新包名">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/AuthInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/gateway/AuthInterceptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/acl/WhiteUrlList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/gateway/acl/WhiteUrlList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/annotation/RequiresAccessCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/gateway/annotation/RequiresAccessCode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/entity/bo/RequestInfoBO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/gateway/entity/bo/RequestInfoBO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/entity/enums/ModuleType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/gateway/entity/enums/ModuleType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/entity/enums/WhiteUrlListType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/gateway/entity/enums/WhiteUrlListType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/router/AbstractRequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/gateway/router/AbstractRequestHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/router/BizModuleHandlerProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/gateway/router/BizModuleHandlerProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/router/RequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/gateway/router/RequestHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/router/RequestRouter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/gateway/router/RequestRouter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/router/impl/PcRequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/gateway/router/impl/PcRequestHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/util/IpUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/gateway/util/IpUtil.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -875,13 +887,8 @@
       <workItem from="1606897840384" duration="15296000" />
       <workItem from="1606960685136" duration="889000" />
       <workItem from="1606978399597" duration="4155000" />
-    </task>
-    <task id="LOCAL-00126" summary="refactor: 优化代码">
-      <created>1600012134089</created>
-      <option name="number" value="00126" />
-      <option name="presentableId" value="LOCAL-00126" />
-      <option name="project" value="LOCAL" />
-      <updated>1600012134089</updated>
+      <workItem from="1608104804712" duration="102000" />
+      <workItem from="1608108268601" duration="1165000" />
     </task>
     <task id="LOCAL-00127" summary="refactor: 缓存注解信息">
       <created>1600152253718</created>
@@ -1219,7 +1226,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607432448162</updated>
     </task>
-    <option name="localTasksCounter" value="175" />
+    <task id="LOCAL-00175" summary="refactor: 更新包名">
+      <created>1608104892645</created>
+      <option name="number" value="00175" />
+      <option name="presentableId" value="LOCAL-00175" />
+      <option name="project" value="LOCAL" />
+      <updated>1608104892645</updated>
+    </task>
+    <option name="localTasksCounter" value="176" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1388,7 +1402,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="refactor: 引入feign" />
     <MESSAGE value="feat: 缓存框架初步应用" />
     <MESSAGE value="feat: 缓存框架应用成功！" />
     <MESSAGE value="refactor: 代码优化" />
@@ -1413,7 +1426,8 @@
     <MESSAGE value="feat: 测试查询方法" />
     <MESSAGE value="refactor: spring拦截器兼容404" />
     <MESSAGE value="feat: 提交11" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: 提交11" />
+    <MESSAGE value="refactor: 更新包名" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor: 更新包名" />
   </component>
   <component name="WindowStateProjectService">
     <state x="495" y="157" key="#Project_Structure" timestamp="1602775208893">
@@ -1430,14 +1444,16 @@
     <state x="574" y="199" key="#com.intellij.ide.util.MemberChooser/0.23.1440.800@0.23.1440.800" timestamp="1606574603897" />
     <state x="574" y="199" key="#com.intellij.ide.util.MemberChooser/0.23.1440.803@0.23.1440.803" timestamp="1602774113942" />
     <state x="574" y="200" key="#com.intellij.ide.util.MemberChooser/0.23.1440.805@0.23.1440.805" timestamp="1604852449680" />
-    <state x="348" y="367" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1604847547241">
-      <screen x="0" y="23" width="1440" height="805" />
+    <state x="348" y="365" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1608109359997">
+      <screen x="0" y="23" width="1440" height="800" />
     </state>
+    <state x="348" y="365" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.23.1440.800@0.23.1440.800" timestamp="1608109359997" />
     <state x="387" y="366" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.23.1440.803@0.23.1440.803" timestamp="1602519524002" />
     <state x="348" y="367" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.23.1440.805@0.23.1440.805" timestamp="1604847547241" />
-    <state x="486" y="312" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages" timestamp="1602519526571">
-      <screen x="0" y="23" width="1440" height="803" />
+    <state x="486" y="311" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages" timestamp="1608109362332">
+      <screen x="0" y="23" width="1440" height="800" />
     </state>
+    <state x="486" y="311" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages/0.23.1440.800@0.23.1440.800" timestamp="1608109362332" />
     <state x="486" y="312" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages/0.23.1440.803@0.23.1440.803" timestamp="1602519526571" />
     <state x="0" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1606982120778">
       <screen x="0" y="23" width="1440" height="800" />
@@ -1451,10 +1467,10 @@
     <state x="518" y="227" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.800@0.23.1440.800" timestamp="1606572005733" />
     <state x="518" y="228" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.803@0.23.1440.803" timestamp="1602688955687" />
     <state x="518" y="229" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.805@0.23.1440.805" timestamp="1602064441948" />
-    <state x="0" y="30" width="1440" height="800" key="CommitChangelistDialog2" timestamp="1606918192831">
-      <screen x="0" y="23" width="1440" height="803" />
+    <state x="0" y="23" width="1440" height="800" key="CommitChangelistDialog2" timestamp="1608104892311">
+      <screen x="0" y="23" width="1440" height="800" />
     </state>
-    <state x="0" y="23" width="1440" height="800" key="CommitChangelistDialog2/0.23.1440.800@0.23.1440.800" timestamp="1606576434424" />
+    <state x="0" y="23" width="1440" height="800" key="CommitChangelistDialog2/0.23.1440.800@0.23.1440.800" timestamp="1608104892311" />
     <state x="0" y="30" key="CommitChangelistDialog2/0.23.1440.803@0.23.1440.803" timestamp="1606918192831" />
     <state x="0" y="23" width="1440" height="805" key="CommitChangelistDialog2/0.23.1440.805@0.23.1440.805" timestamp="1604036135515" />
     <state width="669" height="261" key="DebuggerActiveHint" timestamp="1606899765444">
@@ -1572,10 +1588,10 @@
     <state x="601" y="259" key="RollbackChangesDialog/0.23.1440.800@0.23.1440.800" timestamp="1606722667916" />
     <state x="601" y="262" key="RollbackChangesDialog/0.23.1440.803@0.23.1440.803" timestamp="1600766308420" />
     <state x="601" y="263" key="RollbackChangesDialog/0.23.1440.805@0.23.1440.805" timestamp="1606823166735" />
-    <state x="414" y="218" key="Vcs.Push.Dialog.v2" timestamp="1607432663653">
-      <screen x="0" y="23" width="1440" height="803" />
+    <state x="414" y="217" key="Vcs.Push.Dialog.v2" timestamp="1608104895750">
+      <screen x="0" y="23" width="1440" height="800" />
     </state>
-    <state x="414" y="217" key="Vcs.Push.Dialog.v2/0.23.1440.800@0.23.1440.800" timestamp="1607431673544" />
+    <state x="414" y="217" key="Vcs.Push.Dialog.v2/0.23.1440.800@0.23.1440.800" timestamp="1608104895750" />
     <state x="414" y="218" key="Vcs.Push.Dialog.v2/0.23.1440.803@0.23.1440.803" timestamp="1607432663653" />
     <state x="414" y="218" key="Vcs.Push.Dialog.v2/0.23.1440.805@0.23.1440.805" timestamp="1604036144254" />
     <state width="720" height="400" key="XDebugger.FullValuePopup" timestamp="1606982006761">

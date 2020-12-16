@@ -1,6 +1,6 @@
-package com.linfengda.sb.chapter1.common.api.acl;
+package com.linfengda.sb.support.gateway.acl;
 
-import com.linfengda.sb.chapter1.common.api.entity.enums.WhiteUrlListType;
+import com.linfengda.sb.support.gateway.entity.enums.WhiteUrlListType;
 
 import java.util.HashMap;
 import java.util.Map;

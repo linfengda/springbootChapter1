@@ -1,9 +1,9 @@
-package com.linfengda.sb.chapter1.common.api;
+package com.linfengda.sb.support.gateway;
 
-import com.linfengda.sb.chapter1.common.api.acl.WhiteUrlList;
-import com.linfengda.sb.chapter1.common.api.entity.bo.RequestInfoBO;
-import com.linfengda.sb.chapter1.common.api.router.RequestRouter;
-import com.linfengda.sb.chapter1.common.api.util.IpUtil;
+import com.linfengda.sb.support.gateway.acl.WhiteUrlList;
+import com.linfengda.sb.support.gateway.entity.bo.RequestInfoBO;
+import com.linfengda.sb.support.gateway.router.RequestRouter;
+import com.linfengda.sb.support.gateway.util.IpUtil;
 import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;

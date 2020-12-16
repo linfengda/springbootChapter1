@@ -1,4 +1,4 @@
-package com.linfengda.sb.chapter1.common.api.router;
+package com.linfengda.sb.support.gateway.router;
 
 /**
  * 描述: 请求处理委派模式接口，用于请求分流

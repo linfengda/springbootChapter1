@@ -1,7 +1,7 @@
-package com.linfengda.sb.chapter1.common.api.router;
+package com.linfengda.sb.support.gateway.router;
 
-import com.linfengda.sb.chapter1.common.api.entity.bo.RequestInfoBO;
-import com.linfengda.sb.chapter1.common.api.entity.enums.ModuleType;
+import com.linfengda.sb.support.gateway.entity.bo.RequestInfoBO;
+import com.linfengda.sb.support.gateway.entity.enums.ModuleType;
 import lombok.Data;
 import org.springframework.web.method.HandlerMethod;
 

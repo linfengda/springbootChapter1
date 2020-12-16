@@ -1,6 +1,6 @@
-package com.linfengda.sb.chapter1.common.api.router;
+package com.linfengda.sb.support.gateway.router;
 
-import com.linfengda.sb.chapter1.common.api.entity.bo.RequestInfoBO;
+import com.linfengda.sb.support.gateway.entity.bo.RequestInfoBO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.method.HandlerMethod;
 
