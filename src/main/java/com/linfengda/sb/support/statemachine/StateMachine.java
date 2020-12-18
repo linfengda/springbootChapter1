@@ -19,9 +19,8 @@ public interface StateMachine<S, E> {
     /**
      * 初始化状态机状态
      * @param state     初始状态
-     * @return          状态机对象
      */
-    StateMachine<S, E> initState(S state);
+    void initState(S state);
 
     /**
      * 触发状态机事件

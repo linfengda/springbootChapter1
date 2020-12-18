@@ -21,18 +21,8 @@
   <component name="ChangeListManager">
     <list default="true" id="1ac92d16-a2f3-4d49-8fdb-b5b56f35641b" name="Default" comment="refactor: 更新包名">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/AuthInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/gateway/AuthInterceptor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/acl/WhiteUrlList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/gateway/acl/WhiteUrlList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/annotation/RequiresAccessCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/gateway/annotation/RequiresAccessCode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/entity/bo/RequestInfoBO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/gateway/entity/bo/RequestInfoBO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/entity/enums/ModuleType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/gateway/entity/enums/ModuleType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/entity/enums/WhiteUrlListType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/gateway/entity/enums/WhiteUrlListType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/router/AbstractRequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/gateway/router/AbstractRequestHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/router/BizModuleHandlerProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/gateway/router/BizModuleHandlerProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/router/RequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/gateway/router/RequestHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/router/RequestRouter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/gateway/router/RequestRouter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/router/impl/PcRequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/gateway/router/impl/PcRequestHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/util/IpUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/gateway/util/IpUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/statemachine/GenericStateMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/statemachine/GenericStateMachine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/statemachine/StateMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/statemachine/StateMachine.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -162,18 +152,16 @@
       <recent name="https://code.aliyun.com/bkbox_cloud_removal/bkbox_center_entry.git" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="com.linfengda.sb.support.redis" />
       <recent name="com.linfengda.sb.support" />
+      <recent name="com.linfengda.sb.support.redis" />
       <recent name="com.linfengda.sb.chapter1.system.service.impl" />
       <recent name="com.linfengda.sb.chapter1.system.service" />
       <recent name="com.linfengda.sb.chapter1.common" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api" />
-      <recent name="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/entity" />
-      <recent name="$PROJECT_DIR$/src/test/java/com/linfengda/sb/support" />
-      <recent name="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support" />
-      <recent name="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/fastjson/serializer/date" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/apivalidator/config" />
+      <recent name="D:\IdeaProjects\springboot\chapter1\src\test\java\com\linfengda\sb\chapter1" />
+      <recent name="D:\IdeaProjects\springboot\chapter1\src\test\java\com\linfengda\sb\chapter1\support\middleware\redis" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.linfengda.sb.support.orm.utils" />
@@ -182,10 +170,12 @@
       <recent name="com.linfengda.sb.chapter1.common.api" />
       <recent name="com.linfengda.sb.chapter1.common.entity.dto" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/apivalidator/config" />
-      <recent name="D:\IdeaProjects\springboot\chapter1\src\test\java\com\linfengda\sb\chapter1" />
-      <recent name="D:\IdeaProjects\springboot\chapter1\src\test\java\com\linfengda\sb\chapter1\support\middleware\redis" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api" />
+      <recent name="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/common/api/entity" />
+      <recent name="$PROJECT_DIR$/src/test/java/com/linfengda/sb/support" />
+      <recent name="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support" />
+      <recent name="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/fastjson/serializer/date" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -888,21 +878,9 @@
       <workItem from="1606960685136" duration="889000" />
       <workItem from="1606978399597" duration="4155000" />
       <workItem from="1608104804712" duration="102000" />
-      <workItem from="1608108268601" duration="1165000" />
-    </task>
-    <task id="LOCAL-00127" summary="refactor: 缓存注解信息">
-      <created>1600152253718</created>
-      <option name="number" value="00127" />
-      <option name="presentableId" value="LOCAL-00127" />
-      <option name="project" value="LOCAL" />
-      <updated>1600152253718</updated>
-    </task>
-    <task id="LOCAL-00128" summary="refactor: 优化">
-      <created>1600156492668</created>
-      <option name="number" value="00128" />
-      <option name="presentableId" value="LOCAL-00128" />
-      <option name="project" value="LOCAL" />
-      <updated>1600156492668</updated>
+      <workItem from="1608108268601" duration="1185000" />
+      <workItem from="1608110259825" duration="2037000" />
+      <workItem from="1608271650577" duration="779000" />
     </task>
     <task id="LOCAL-00129" summary="refactor: 优化">
       <created>1600166846281</created>
@@ -1233,7 +1211,21 @@
       <option name="project" value="LOCAL" />
       <updated>1608104892645</updated>
     </task>
-    <option name="localTasksCounter" value="176" />
+    <task id="LOCAL-00176" summary="refactor: 更新包名">
+      <created>1608109444713</created>
+      <option name="number" value="00176" />
+      <option name="presentableId" value="LOCAL-00176" />
+      <option name="project" value="LOCAL" />
+      <updated>1608109444713</updated>
+    </task>
+    <task id="LOCAL-00177" summary="refactor: 更改">
+      <created>1608111275066</created>
+      <option name="number" value="00177" />
+      <option name="presentableId" value="LOCAL-00177" />
+      <option name="project" value="LOCAL" />
+      <updated>1608111275066</updated>
+    </task>
+    <option name="localTasksCounter" value="178" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1402,7 +1394,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: 缓存框架初步应用" />
     <MESSAGE value="feat: 缓存框架应用成功！" />
     <MESSAGE value="refactor: 代码优化" />
     <MESSAGE value="refactor: orm框架优化" />
@@ -1427,7 +1418,8 @@
     <MESSAGE value="refactor: spring拦截器兼容404" />
     <MESSAGE value="feat: 提交11" />
     <MESSAGE value="refactor: 更新包名" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor: 更新包名" />
+    <MESSAGE value="refactor: 更改" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor: 更改" />
   </component>
   <component name="WindowStateProjectService">
     <state x="495" y="157" key="#Project_Structure" timestamp="1602775208893">
@@ -1467,10 +1459,10 @@
     <state x="518" y="227" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.800@0.23.1440.800" timestamp="1606572005733" />
     <state x="518" y="228" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.803@0.23.1440.803" timestamp="1602688955687" />
     <state x="518" y="229" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.805@0.23.1440.805" timestamp="1602064441948" />
-    <state x="0" y="23" width="1440" height="800" key="CommitChangelistDialog2" timestamp="1608104892311">
+    <state x="0" y="23" width="1440" height="800" key="CommitChangelistDialog2" timestamp="1608111274878">
       <screen x="0" y="23" width="1440" height="800" />
     </state>
-    <state x="0" y="23" width="1440" height="800" key="CommitChangelistDialog2/0.23.1440.800@0.23.1440.800" timestamp="1608104892311" />
+    <state x="0" y="23" width="1440" height="800" key="CommitChangelistDialog2/0.23.1440.800@0.23.1440.800" timestamp="1608111274878" />
     <state x="0" y="30" key="CommitChangelistDialog2/0.23.1440.803@0.23.1440.803" timestamp="1606918192831" />
     <state x="0" y="23" width="1440" height="805" key="CommitChangelistDialog2/0.23.1440.805@0.23.1440.805" timestamp="1604036135515" />
     <state width="669" height="261" key="DebuggerActiveHint" timestamp="1606899765444">
@@ -1588,10 +1580,10 @@
     <state x="601" y="259" key="RollbackChangesDialog/0.23.1440.800@0.23.1440.800" timestamp="1606722667916" />
     <state x="601" y="262" key="RollbackChangesDialog/0.23.1440.803@0.23.1440.803" timestamp="1600766308420" />
     <state x="601" y="263" key="RollbackChangesDialog/0.23.1440.805@0.23.1440.805" timestamp="1606823166735" />
-    <state x="414" y="217" key="Vcs.Push.Dialog.v2" timestamp="1608104895750">
+    <state x="414" y="217" key="Vcs.Push.Dialog.v2" timestamp="1608111277888">
       <screen x="0" y="23" width="1440" height="800" />
     </state>
-    <state x="414" y="217" key="Vcs.Push.Dialog.v2/0.23.1440.800@0.23.1440.800" timestamp="1608104895750" />
+    <state x="414" y="217" key="Vcs.Push.Dialog.v2/0.23.1440.800@0.23.1440.800" timestamp="1608111277888" />
     <state x="414" y="218" key="Vcs.Push.Dialog.v2/0.23.1440.803@0.23.1440.803" timestamp="1607432663653" />
     <state x="414" y="218" key="Vcs.Push.Dialog.v2/0.23.1440.805@0.23.1440.805" timestamp="1604036144254" />
     <state width="720" height="400" key="XDebugger.FullValuePopup" timestamp="1606982006761">

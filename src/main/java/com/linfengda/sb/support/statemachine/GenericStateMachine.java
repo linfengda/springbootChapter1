@@ -29,9 +29,8 @@ public class GenericStateMachine<S, E> implements StateMachine<S, E> {
     }
 
     @Override
-    public StateMachine<S, E> initState(S state) {
+    public void initState(S state) {
         this.initialState = state;
-        return null;
     }
 
     @Override
