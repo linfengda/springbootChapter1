@@ -11,7 +11,7 @@
         create_time as createTime
         from sys_user as su
         where
-        su.is_delete=0
+        su.deleted=0
     </select>
 
 </mapper>

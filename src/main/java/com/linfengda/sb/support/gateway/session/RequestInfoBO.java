@@ -1,29 +1,42 @@
-package com.linfengda.sb.support.gateway.entity.bo;
+package com.linfengda.sb.support.gateway.session;
 
+import lombok.Builder;
 import lombok.Data;
 
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * 描述: 接口请求信息BO
- *
- * @author linfengda
- * @create 2019-12-24 10:52
+ * @description: 请求BO
+ * @author: linfengda
+ * @date: 2020-12-16 22:19
  */
 @Data
+@Builder
 public class RequestInfoBO {
     /**
-     * ip
+     * 请求id
      */
-    private String ip;
+    private String traceId;
     /**
-     * url
+     * 请求url
      */
     private String url;
     /**
+     * 请求方式
+     */
+    private String method;
+    /**
      * 请求参数
      */
+    private String requestParams;
+    /**
+     * 请求
+     */
     private HttpServletRequest request;
+    /**
+     * 请求开始时间
+     */
+    private Long requestTime;
 
     public String getUriHead(){
         StringBuilder sb = new StringBuilder();

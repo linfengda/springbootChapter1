@@ -4,7 +4,7 @@ import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.linfengda.sb.support.serializer.serializer.fastjson.date.DateFormatMdSerializer;
-import com.linfengda.sb.support.serializer.util.TimeUtil;
+import com.linfengda.sb.chapter1.common.util.TimeUtil;
 
 import java.io.IOException;
 

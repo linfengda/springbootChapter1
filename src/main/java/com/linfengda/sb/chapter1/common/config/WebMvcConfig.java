@@ -1,6 +1,6 @@
 package com.linfengda.sb.chapter1.common.config;
 
-import com.linfengda.sb.support.gateway.AuthInterceptor;
+import com.linfengda.sb.support.gateway.interceptor.RequestInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -15,12 +15,11 @@ import javax.annotation.Resource;
 @Configuration
 public class WebMvcConfig implements WebMvcConfigurer {
     @Resource
-    private AuthInterceptor authInterceptor;
+    private RequestInterceptor requestInterceptor;
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         //接口登录权限检测拦截器--拦截所有请求
-        registry.addInterceptor(authInterceptor)
-                .addPathPatterns("/**");
+        registry.addInterceptor(requestInterceptor).addPathPatterns("/**");
     }
 }

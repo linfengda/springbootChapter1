@@ -1,8 +1,8 @@
 package com.linfengda.sb.support.gateway.router;
 
-import com.linfengda.sb.support.gateway.entity.bo.RequestInfoBO;
-import com.linfengda.sb.support.gateway.router.impl.PcRequestHandler;
 import com.linfengda.sb.chapter1.common.exception.BusinessException;
+import com.linfengda.sb.support.gateway.router.impl.PcRequestHandler;
+import com.linfengda.sb.support.gateway.session.RequestInfoBO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.web.method.HandlerMethod;

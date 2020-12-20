@@ -1,11 +1,11 @@
 package com.linfengda.sb.support.gateway.router.impl;
 
 import com.alibaba.fastjson.JSON;
-import com.linfengda.sb.support.gateway.annotation.RequiresAccessCode;
-import com.linfengda.sb.support.gateway.entity.bo.RequestInfoBO;
-import com.linfengda.sb.support.gateway.entity.enums.ModuleType;
-import com.linfengda.sb.support.gateway.router.AbstractRequestHandler;
 import com.linfengda.sb.chapter1.common.exception.BusinessException;
+import com.linfengda.sb.support.gateway.annotation.Permission;
+import com.linfengda.sb.support.gateway.enums.ModuleType;
+import com.linfengda.sb.support.gateway.router.AbstractRequestHandler;
+import com.linfengda.sb.support.gateway.session.RequestInfoBO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.method.HandlerMethod;
 
@@ -33,14 +33,14 @@ public class PcRequestHandler extends AbstractRequestHandler {
 
     @Override
     public void doHandler() throws Exception {
-        RequiresAccessCode requiresAccessCode = getMethodOrClassAnnotation(RequiresAccessCode.class);
-        if(null == requiresAccessCode){
+        Permission permission = getMethodOrClassAnnotation(Permission.class);
+        if(null == permission){
             return;
         }
         long startTime = System.currentTimeMillis();
-        log.info("PC端接口鉴权开始，ip：{}，url：{}，开始时间: {}", requestInfoBO.getIp(), requestInfoBO.getUrl(), startTime);
+        log.info("PC端接口鉴权开始，url：{}，开始时间: {}", requestInfoBO.getUrl(), startTime);
         checkSupplier();
-        log.info("PC端接口鉴权结束，ip：{}，url：{}，结束时间: {}，总耗时: {}ms", requestInfoBO.getIp(), requestInfoBO.getUrl(), System.currentTimeMillis(), System.currentTimeMillis()-startTime);
+        log.info("PC端接口鉴权结束，url：{}，结束时间: {}，总耗时: {}ms", requestInfoBO.getUrl(), System.currentTimeMillis(), System.currentTimeMillis()-startTime);
     }
 
     /**
@@ -63,9 +63,9 @@ public class PcRequestHandler extends AbstractRequestHandler {
      * @return {@code true} has permission {@code false} not permission
      */
     private boolean checkSupplierPermission(List<String> accessCodeList) {
-        RequiresAccessCode requiresAccessCode = getMethodOrClassAnnotation(RequiresAccessCode.class);
-        if(null != requiresAccessCode){
-            String[] value = requiresAccessCode.value();
+        Permission permission = getMethodOrClassAnnotation(Permission.class);
+        if(null != permission){
+            String[] value = permission.value();
             //当前登陆供应商拥有的权限列表
             for (String accessCode : value) {
                 if(accessCodeList.contains(accessCode)){

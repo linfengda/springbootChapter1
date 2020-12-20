@@ -20,7 +20,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableApiValidator(pattern = "xxx")
 @EnableTransactionManagement(order = Ordered.LOWEST_PRECEDENCE-1)
 @EnableApplicationStartup
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"com.linfengda.sb.chapter1", "com.linfengda.sb.support"})
 public class Chapter1Application {
 
 	public static void main(String[] args) {
