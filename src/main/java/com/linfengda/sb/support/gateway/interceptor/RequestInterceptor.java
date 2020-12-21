@@ -1,8 +1,11 @@
 package com.linfengda.sb.support.gateway.interceptor;
 
+import com.linfengda.sb.chapter1.Constant;
 import com.linfengda.sb.support.gateway.acl.SystemWhiteUrl;
+import com.linfengda.sb.support.gateway.session.RequestSessionHelper;
 import com.linfengda.sb.support.gateway.session.UserSessionHelper;
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.MDC;
 import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -12,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * @description:
+ * @description: 将拦截器业务和释放会话信息解耦
  * @author: linfengda
  * @date: 2020-12-16 17:51
  */
@@ -22,31 +25,42 @@ public class RequestInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        if (!isApiRequest(request, handler)) {
-            return true;
-        }
-        for (HandlerInterceptor handlerInterceptor : InterceptorHolder.handlerInterceptors) {
-            if (!handlerInterceptor.preHandle(request, response, handler)) {
-                log.info("handlerInterceptor：{}返回false", handlerInterceptor.getClass().getSimpleName());
-                return false;
+        try {
+            if (isApiRequest(request, handler)) {
+                return true;
             }
+            for (HandlerInterceptor handlerInterceptor : InterceptorHolder.handlerInterceptors) {
+                if (!handlerInterceptor.preHandle(request, response, handler)) {
+                    log.info("拦截器返回false，handlerInterceptor：{}", handlerInterceptor.getClass().getSimpleName());
+                    clearSession();
+                    return false;
+                }
+            }
+        }catch (Exception e) {
+            clearSession();
+            throw e;
         }
         return true;
     }
 
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
-        if (!isApiRequest(request, handler)) {
-            return;
-        }
-        for (HandlerInterceptor handlerInterceptor : InterceptorHolder.handlerInterceptors) {
-            handlerInterceptor.postHandle(request, response, handler, modelAndView);
+        try {
+            if (isApiRequest(request, handler)) {
+                return;
+            }
+            for (HandlerInterceptor handlerInterceptor : InterceptorHolder.handlerInterceptors) {
+                handlerInterceptor.postHandle(request, response, handler, modelAndView);
+            }
+        }catch (Exception e) {
+            clearSession();
+            throw e;
         }
     }
 
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
-        if (!isApiRequest(request, handler)) {
+        if (isApiRequest(request, handler)) {
             return;
         }
         try {
@@ -54,8 +68,17 @@ public class RequestInterceptor implements HandlerInterceptor {
                 handlerInterceptor.afterCompletion(request, response, handler, ex);
             }
         }finally {
-            UserSessionHelper.remove();
+            clearSession();
         }
+    }
+
+    /**
+     * 统一清除会话
+     */
+    private void clearSession() {
+        RequestSessionHelper.remove();
+        UserSessionHelper.remove();
+        MDC.remove(Constant.TRACE_ID);
     }
 
     /**

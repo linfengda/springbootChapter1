@@ -48,7 +48,5 @@ public class ApiCallInterceptor implements HandlerInterceptor {
 		RequestInfoBO requestInfoBO = RequestSessionHelper.get();
 		Long endTime = System.currentTimeMillis();
 		log.info("请求路径: {}, 请求方式: {}, 请求人: {}, 请求结束时间: {}，请求耗时：{}ms，traceId: {}", requestInfoBO.getUrl(), requestInfoBO.getMethod(), UserSessionHelper.getUserName(), TimeUtil.format(endTime, "yyyy-MM-dd HH:mm:ss"), endTime- requestInfoBO.getRequestTime(), requestInfoBO.getTraceId());
-		RequestSessionHelper.remove();
-		MDC.remove(Constant.TRACE_ID);
     }
 }
