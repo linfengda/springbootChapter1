@@ -26,7 +26,7 @@ public class RequestInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         try {
-            if (isApiRequest(request, handler)) {
+            if (!isApiRequest(request, handler)) {
                 return true;
             }
             for (HandlerInterceptor handlerInterceptor : InterceptorHolder.handlerInterceptors) {
@@ -46,7 +46,7 @@ public class RequestInterceptor implements HandlerInterceptor {
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
         try {
-            if (isApiRequest(request, handler)) {
+            if (!isApiRequest(request, handler)) {
                 return;
             }
             for (HandlerInterceptor handlerInterceptor : InterceptorHolder.handlerInterceptors) {
@@ -60,10 +60,10 @@ public class RequestInterceptor implements HandlerInterceptor {
 
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
-        if (isApiRequest(request, handler)) {
-            return;
-        }
         try {
+            if (!isApiRequest(request, handler)) {
+                return;
+            }
             for (HandlerInterceptor handlerInterceptor : InterceptorHolder.handlerInterceptors) {
                 handlerInterceptor.afterCompletion(request, response, handler, ex);
             }

@@ -19,10 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1ac92d16-a2f3-4d49-8fdb-b5b56f35641b" name="Default" comment="feat: 增加系统请求网关">
+    <list default="true" id="1ac92d16-a2f3-4d49-8fdb-b5b56f35641b" name="Default" comment="refactor: 保证会话信息清除">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/gateway/interceptor/RequestInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/gateway/interceptor/RequestInterceptor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/gateway/interceptor/impl/ApiCallInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/gateway/interceptor/impl/ApiCallInterceptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/gateway/session/RequestInfoBO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/gateway/session/RequestInfoBO.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -361,7 +361,7 @@
               <path>
                 <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
                 <item name="Spring Boot" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-                <item name="Running" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="Finished" type="7427dc5b:ServiceModel$ServiceGroupNode" />
               </path>
             </expand>
             <select />
@@ -881,14 +881,7 @@
       <workItem from="1608271650577" duration="779000" />
       <workItem from="1608286492917" duration="2797000" />
       <workItem from="1608465569671" duration="2401000" />
-      <workItem from="1608516933582" duration="5150000" />
-    </task>
-    <task id="LOCAL-00131" summary="refactor: 优化缓存并行加载逻辑：不强制依赖锁，使用自旋">
-      <created>1600191715509</created>
-      <option name="number" value="00131" />
-      <option name="presentableId" value="LOCAL-00131" />
-      <option name="project" value="LOCAL" />
-      <updated>1600191715509</updated>
+      <workItem from="1608516933582" duration="5789000" />
     </task>
     <task id="LOCAL-00132" summary="refactor: 缓存空值">
       <created>1600192047414</created>
@@ -1226,7 +1219,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608467975406</updated>
     </task>
-    <option name="localTasksCounter" value="180" />
+    <task id="LOCAL-00180" summary="refactor: 保证会话信息清除">
+      <created>1608522163867</created>
+      <option name="number" value="00180" />
+      <option name="presentableId" value="LOCAL-00180" />
+      <option name="project" value="LOCAL" />
+      <updated>1608522163867</updated>
+    </task>
+    <option name="localTasksCounter" value="181" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1353,7 +1353,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="feature/封装消息队列" />
+                        <option value="feature/业务锁注解" />
                       </list>
                     </value>
                   </entry>
@@ -1380,6 +1380,11 @@
             <list>
               <RecentGroup>
                 <option name="FILTER_VALUES">
+                  <option value="feature/业务锁注解" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
                   <option value="feature/封装消息队列" />
                 </option>
               </RecentGroup>
@@ -1395,7 +1400,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="refactor: 代码优化" />
     <MESSAGE value="refactor: orm框架优化" />
     <MESSAGE value="refactor: 包结构调整" />
     <MESSAGE value="refactor: 完善权限信息" />
@@ -1420,7 +1424,8 @@
     <MESSAGE value="refactor: 更改" />
     <MESSAGE value="refactor: 修改" />
     <MESSAGE value="feat: 增加系统请求网关" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: 增加系统请求网关" />
+    <MESSAGE value="refactor: 保证会话信息清除" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor: 保证会话信息清除" />
   </component>
   <component name="WindowStateProjectService">
     <state x="495" y="157" key="#Project_Structure" timestamp="1602775208893">
@@ -1464,10 +1469,10 @@
     <state x="518" y="227" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.800@0.23.1440.800" timestamp="1608287091820" />
     <state x="518" y="228" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.803@0.23.1440.803" timestamp="1602688955687" />
     <state x="518" y="229" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.805@0.23.1440.805" timestamp="1602064441948" />
-    <state x="0" y="23" width="1440" height="800" key="CommitChangelistDialog2" timestamp="1608522050220">
+    <state x="0" y="23" width="1440" height="800" key="CommitChangelistDialog2" timestamp="1608522163573">
       <screen x="0" y="23" width="1440" height="800" />
     </state>
-    <state x="0" y="23" width="1440" height="800" key="CommitChangelistDialog2/0.23.1440.800@0.23.1440.800" timestamp="1608522050220" />
+    <state x="0" y="23" width="1440" height="800" key="CommitChangelistDialog2/0.23.1440.800@0.23.1440.800" timestamp="1608522163573" />
     <state x="0" y="30" key="CommitChangelistDialog2/0.23.1440.803@0.23.1440.803" timestamp="1606918192831" />
     <state x="0" y="23" width="1440" height="805" key="CommitChangelistDialog2/0.23.1440.805@0.23.1440.805" timestamp="1604036135515" />
     <state width="669" height="260" key="DebuggerActiveHint" timestamp="1608467799107">
@@ -1477,10 +1482,10 @@
     <state width="669" height="261" key="DebuggerActiveHint/0.23.1440.803@0.23.1440.803" timestamp="1606899765444" />
     <state width="669" height="261" key="DebuggerActiveHint/0.23.1440.805@0.23.1440.805" timestamp="1606824743732" />
     <state width="669" height="263" key="DebuggerActiveHint/0.23.1440.810@0.23.1440.810" timestamp="1600916432844" />
-    <state x="198" y="161" width="1152" height="640" key="DiffContextDialog" timestamp="1608522049231">
+    <state x="198" y="161" width="1152" height="640" key="DiffContextDialog" timestamp="1608522737350">
       <screen x="0" y="23" width="1440" height="800" />
     </state>
-    <state x="198" y="161" width="1152" height="640" key="DiffContextDialog/0.23.1440.800@0.23.1440.800" timestamp="1608522049231" />
+    <state x="198" y="161" width="1152" height="640" key="DiffContextDialog/0.23.1440.800@0.23.1440.800" timestamp="1608522737350" />
     <state x="198" y="162" width="1152" height="642" key="DiffContextDialog/0.23.1440.803@0.23.1440.803" timestamp="1606918191819" />
     <state x="199" y="162" key="DiffContextDialog/0.23.1440.805@0.23.1440.805" timestamp="1600877005538" />
     <state width="1139" height="416" key="GridCell.Tab.0.bottom" timestamp="1608521983100">
@@ -1585,10 +1590,10 @@
     <state x="601" y="259" key="RollbackChangesDialog/0.23.1440.800@0.23.1440.800" timestamp="1608287964025" />
     <state x="601" y="262" key="RollbackChangesDialog/0.23.1440.803@0.23.1440.803" timestamp="1600766308420" />
     <state x="601" y="263" key="RollbackChangesDialog/0.23.1440.805@0.23.1440.805" timestamp="1606823166735" />
-    <state x="414" y="217" key="Vcs.Push.Dialog.v2" timestamp="1608467977466">
+    <state x="414" y="217" key="Vcs.Push.Dialog.v2" timestamp="1608522168957">
       <screen x="0" y="23" width="1440" height="800" />
     </state>
-    <state x="414" y="217" key="Vcs.Push.Dialog.v2/0.23.1440.800@0.23.1440.800" timestamp="1608467977466" />
+    <state x="414" y="217" key="Vcs.Push.Dialog.v2/0.23.1440.800@0.23.1440.800" timestamp="1608522168957" />
     <state x="414" y="218" key="Vcs.Push.Dialog.v2/0.23.1440.803@0.23.1440.803" timestamp="1607432663653" />
     <state x="414" y="218" key="Vcs.Push.Dialog.v2/0.23.1440.805@0.23.1440.805" timestamp="1604036144254" />
     <state width="720" height="400" key="XDebugger.FullValuePopup" timestamp="1606982006761">
@@ -1620,10 +1625,10 @@
     </state>
     <state x="476" y="143" key="git4idea.branch.GitSmartOperationDialog/0.23.1440.800@0.23.1440.800" timestamp="1607431680689" />
     <state x="476" y="143" key="git4idea.branch.GitSmartOperationDialog/0.23.1440.803@0.23.1440.803" timestamp="1607432854488" />
-    <state x="380" y="221" key="git4idea.merge.GitPullDialog" timestamp="1607431664185">
+    <state x="380" y="221" key="git4idea.merge.GitPullDialog" timestamp="1608522166049">
       <screen x="0" y="23" width="1440" height="800" />
     </state>
-    <state x="380" y="221" key="git4idea.merge.GitPullDialog/0.23.1440.800@0.23.1440.800" timestamp="1607431664185" />
+    <state x="380" y="221" key="git4idea.merge.GitPullDialog/0.23.1440.800@0.23.1440.800" timestamp="1608522166049" />
     <state x="796" y="200" width="670" height="524" key="search.everywhere.popup" timestamp="1608467514712">
       <screen x="0" y="23" width="1440" height="800" />
     </state>

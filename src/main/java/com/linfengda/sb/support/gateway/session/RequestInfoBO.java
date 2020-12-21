@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 @Builder
 public class RequestInfoBO {
     /**
-     * 请求id
+     * traceId
      */
     private String traceId;
     /**
