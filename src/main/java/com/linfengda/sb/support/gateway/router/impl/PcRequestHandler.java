@@ -6,6 +6,7 @@ import com.linfengda.sb.support.gateway.annotation.Permission;
 import com.linfengda.sb.support.gateway.enums.ModuleType;
 import com.linfengda.sb.support.gateway.router.AbstractRequestHandler;
 import com.linfengda.sb.support.gateway.session.RequestInfoBO;
+import com.linfengda.sb.support.gateway.session.UserSessionHelper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.method.HandlerMethod;
 
@@ -49,12 +50,22 @@ public class PcRequestHandler extends AbstractRequestHandler {
      */
     private void checkSupplier() {
         // 从缓存中获取权限信息
-        List<String> accessCodeList = new ArrayList<>();
+        List<String> accessCodeList = getPermission();
         log.info("权限信息：{}", JSON.toJSONString(accessCodeList));
         boolean hasPermission = checkSupplierPermission(accessCodeList);
         if(!hasPermission){
             throw new BusinessException("没有[" + requestInfoBO.getUrl() + "]接口权限！");
         }
+    }
+
+    /**
+     * 获取用户权限列表
+     * @return  用户权限列表
+     */
+    private List<String> getPermission() {
+        String userId = UserSessionHelper.getUserId();
+        // 查询用户权限
+        return new ArrayList<>();
     }
 
     /**

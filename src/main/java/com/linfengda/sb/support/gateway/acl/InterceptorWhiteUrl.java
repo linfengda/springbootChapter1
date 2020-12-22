@@ -8,7 +8,7 @@ import lombok.AllArgsConstructor;
  * @date: 2020-12-16 17:08
  */
 @AllArgsConstructor
-public enum SystemWhiteUrl {
+public enum InterceptorWhiteUrl {
     /**
      * org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error
      */
@@ -18,7 +18,7 @@ public enum SystemWhiteUrl {
     private String desc;
 
     public static boolean isWhiteUrl(String url) {
-        for (SystemWhiteUrl whiteUrl : values()) {
+        for (InterceptorWhiteUrl whiteUrl : values()) {
             if (whiteUrl.url.equals(url)) {
                 return true;
             }

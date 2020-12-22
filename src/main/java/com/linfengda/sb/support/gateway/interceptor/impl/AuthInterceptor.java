@@ -1,7 +1,7 @@
 package com.linfengda.sb.support.gateway.interceptor.impl;
 
 import com.linfengda.sb.chapter1.common.exception.BusinessException;
-import com.linfengda.sb.support.gateway.acl.WhiteUrlList;
+import com.linfengda.sb.support.gateway.acl.AuthWhiteUrlList;
 import com.linfengda.sb.support.gateway.router.RequestRouter;
 import com.linfengda.sb.support.gateway.session.*;
 import lombok.extern.slf4j.Slf4j;
@@ -26,7 +26,7 @@ public class AuthInterceptor implements HandlerInterceptor, UserSessionConstant 
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        if (WhiteUrlList.isWhiteUrl(request.getRequestURI())) {
+        if (AuthWhiteUrlList.isWhiteUrl(request.getRequestURI())) {
             //系统白名单
             return true;
         }

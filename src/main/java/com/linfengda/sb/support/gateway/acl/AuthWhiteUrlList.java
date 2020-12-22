@@ -11,7 +11,7 @@ import java.util.Map;
  * @author linfengda
  * @create 2019-12-17 18:19
  */
-public class WhiteUrlList {
+public class AuthWhiteUrlList {
     private static final Map<String, WhiteUrlListType> WHITE_URL_SET = new HashMap<>(32);
     static {
         WHITE_URL_SET.put("/login", WhiteUrlListType.ARK);

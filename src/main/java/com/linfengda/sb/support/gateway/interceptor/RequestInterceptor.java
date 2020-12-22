@@ -1,7 +1,7 @@
 package com.linfengda.sb.support.gateway.interceptor;
 
 import com.linfengda.sb.chapter1.Constant;
-import com.linfengda.sb.support.gateway.acl.SystemWhiteUrl;
+import com.linfengda.sb.support.gateway.acl.InterceptorWhiteUrl;
 import com.linfengda.sb.support.gateway.session.RequestSessionHelper;
 import com.linfengda.sb.support.gateway.session.UserSessionHelper;
 import lombok.extern.slf4j.Slf4j;
@@ -92,7 +92,7 @@ public class RequestInterceptor implements HandlerInterceptor {
             //只处理Controller方法
             return false;
         }
-        if (SystemWhiteUrl.isWhiteUrl(request.getRequestURI())) {
+        if (InterceptorWhiteUrl.isWhiteUrl(request.getRequestURI())) {
             return false;
         }
         return true;
