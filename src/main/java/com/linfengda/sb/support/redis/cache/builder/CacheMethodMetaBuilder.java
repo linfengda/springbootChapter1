@@ -34,16 +34,15 @@ public class CacheMethodMetaBuilder {
 
 
     /**
-     *获取缓存信息
+     * 获取缓存信息
      * @param method    方法
      * @return          缓存方法元数据
      */
     public static CacheMethodMeta getCacheMethodMeta(Method method, CacheAnnotationType annotationType) {
-        Map<CacheAnnotationType, CacheMethodMeta> cacheMethodMetaMap = CACHE_METHOD_CACHE.get(method);
-        if (null != cacheMethodMetaMap) {
-            return cacheMethodMetaMap.get(annotationType);
+        if (CACHE_METHOD_CACHE.containsKey(method)) {
+            return CACHE_METHOD_CACHE.get(method).get(annotationType);
         }
-        cacheMethodMetaMap = loadCacheAnnotation(method);
+        Map<CacheAnnotationType, CacheMethodMeta> cacheMethodMetaMap = loadCacheAnnotation(method);
         return cacheMethodMetaMap.get(annotationType);
     }
 

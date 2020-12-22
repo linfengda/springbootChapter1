@@ -19,17 +19,15 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1ac92d16-a2f3-4d49-8fdb-b5b56f35641b" name="Default" comment="refactor: 去掉lru缓存，因lru缓存需要守护线程刷新，一是刷新可能不太稳定，二是存在并发问题">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/order/entity/dto/AcceptOrderDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/redis/lock/RequestLockKeyMeta.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/redis/lock/RequestLockMetaBuilder.java" afterDir="false" />
+    <list default="true" id="1ac92d16-a2f3-4d49-8fdb-b5b56f35641b" name="Default" comment="feat: 暂时提交业务锁注解">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/redis/lock/meta/LockKeyMeta.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/redis/lock/meta/LockMethodMeta.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/order/api/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/chapter1/order/api/OrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/gateway/acl/SystemWhiteUrl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/gateway/acl/InterceptorWhiteUrl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/gateway/acl/WhiteUrlList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/gateway/acl/AuthWhiteUrlList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/gateway/interceptor/RequestInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/gateway/interceptor/RequestInterceptor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/gateway/interceptor/impl/AuthInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/gateway/interceptor/impl/AuthInterceptor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/gateway/router/impl/PcRequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/gateway/router/impl/PcRequestHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/redis/cache/builder/CacheMethodMetaBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/redis/cache/builder/CacheMethodMetaBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/redis/lock/RequestLockKeyMeta.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/redis/lock/RequestLockMetaBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/redis/lock/RequestLockMetaBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/redis/lock/annotation/RequestLockKey.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/linfengda/sb/support/redis/lock/annotation/RequestLockKey.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -892,14 +890,9 @@
       <workItem from="1608603224497" duration="540000" />
       <workItem from="1608607324911" duration="1840000" />
       <workItem from="1608612601141" duration="4071000" />
-      <workItem from="1608619603944" duration="321000" />
-    </task>
-    <task id="LOCAL-00135" summary="refactor: 缓存空值">
-      <created>1600346849250</created>
-      <option name="number" value="00135" />
-      <option name="presentableId" value="LOCAL-00135" />
-      <option name="project" value="LOCAL" />
-      <updated>1600346849250</updated>
+      <workItem from="1608619603944" duration="375000" />
+      <workItem from="1608628966924" duration="40000" />
+      <workItem from="1608643314637" duration="3739000" />
     </task>
     <task id="LOCAL-00136" summary="refactor: 缓存校验">
       <created>1600360071294</created>
@@ -1237,7 +1230,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608616506956</updated>
     </task>
-    <option name="localTasksCounter" value="184" />
+    <task id="LOCAL-00184" summary="feat: 暂时提交业务锁注解">
+      <created>1608619957575</created>
+      <option name="number" value="00184" />
+      <option name="presentableId" value="LOCAL-00184" />
+      <option name="project" value="LOCAL" />
+      <updated>1608619957575</updated>
+    </task>
+    <option name="localTasksCounter" value="185" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1411,7 +1411,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="refactor: 完善权限信息" />
     <MESSAGE value="refactor: 删除demo包" />
     <MESSAGE value="refactor: 包结构优化" />
     <MESSAGE value="refactor: 测试feign" />
@@ -1436,7 +1435,8 @@
     <MESSAGE value="refactor: 保证会话信息清除" />
     <MESSAGE value="refactor: 使用java类判断" />
     <MESSAGE value="refactor: 去掉lru缓存，因lru缓存需要守护线程刷新，一是刷新可能不太稳定，二是存在并发问题" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor: 去掉lru缓存，因lru缓存需要守护线程刷新，一是刷新可能不太稳定，二是存在并发问题" />
+    <MESSAGE value="feat: 暂时提交业务锁注解" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: 暂时提交业务锁注解" />
   </component>
   <component name="WindowStateProjectService">
     <state x="495" y="157" key="#Project_Structure" timestamp="1602775208893">
@@ -1480,10 +1480,10 @@
     <state x="518" y="227" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.800@0.23.1440.800" timestamp="1608619708822" />
     <state x="518" y="228" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.803@0.23.1440.803" timestamp="1602688955687" />
     <state x="518" y="229" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.805@0.23.1440.805" timestamp="1602064441948" />
-    <state x="0" y="23" width="1440" height="800" key="CommitChangelistDialog2" timestamp="1608616506677">
+    <state x="0" y="23" width="1440" height="800" key="CommitChangelistDialog2" timestamp="1608619957292">
       <screen x="0" y="23" width="1440" height="800" />
     </state>
-    <state x="0" y="23" width="1440" height="800" key="CommitChangelistDialog2/0.23.1440.800@0.23.1440.800" timestamp="1608616506677" />
+    <state x="0" y="23" width="1440" height="800" key="CommitChangelistDialog2/0.23.1440.800@0.23.1440.800" timestamp="1608619957292" />
     <state x="0" y="30" key="CommitChangelistDialog2/0.23.1440.803@0.23.1440.803" timestamp="1606918192831" />
     <state x="0" y="23" width="1440" height="805" key="CommitChangelistDialog2/0.23.1440.805@0.23.1440.805" timestamp="1604036135515" />
     <state width="669" height="260" key="DebuggerActiveHint" timestamp="1608467799107">
@@ -1493,10 +1493,10 @@
     <state width="669" height="261" key="DebuggerActiveHint/0.23.1440.803@0.23.1440.803" timestamp="1606899765444" />
     <state width="669" height="261" key="DebuggerActiveHint/0.23.1440.805@0.23.1440.805" timestamp="1606824743732" />
     <state width="669" height="263" key="DebuggerActiveHint/0.23.1440.810@0.23.1440.810" timestamp="1600916432844" />
-    <state x="198" y="161" width="1152" height="640" key="DiffContextDialog" timestamp="1608522747468">
+    <state x="198" y="161" width="1152" height="640" key="DiffContextDialog" timestamp="1608619937253">
       <screen x="0" y="23" width="1440" height="800" />
     </state>
-    <state x="198" y="161" width="1152" height="640" key="DiffContextDialog/0.23.1440.800@0.23.1440.800" timestamp="1608522747468" />
+    <state x="198" y="161" width="1152" height="640" key="DiffContextDialog/0.23.1440.800@0.23.1440.800" timestamp="1608619937253" />
     <state x="198" y="162" width="1152" height="642" key="DiffContextDialog/0.23.1440.803@0.23.1440.803" timestamp="1606918191819" />
     <state x="199" y="162" key="DiffContextDialog/0.23.1440.805@0.23.1440.805" timestamp="1600877005538" />
     <state width="1139" height="416" key="GridCell.Tab.0.bottom" timestamp="1608619221327">
@@ -1605,10 +1605,10 @@
       <screen x="0" y="23" width="1440" height="800" />
     </state>
     <state x="221" y="62" key="SettingsEditor/0.23.1440.800@0.23.1440.800" timestamp="1608607446190" />
-    <state x="414" y="217" key="Vcs.Push.Dialog.v2" timestamp="1608616509506">
+    <state x="414" y="217" key="Vcs.Push.Dialog.v2" timestamp="1608619959798">
       <screen x="0" y="23" width="1440" height="800" />
     </state>
-    <state x="414" y="217" key="Vcs.Push.Dialog.v2/0.23.1440.800@0.23.1440.800" timestamp="1608616509506" />
+    <state x="414" y="217" key="Vcs.Push.Dialog.v2/0.23.1440.800@0.23.1440.800" timestamp="1608619959798" />
     <state x="414" y="218" key="Vcs.Push.Dialog.v2/0.23.1440.803@0.23.1440.803" timestamp="1607432663653" />
     <state x="414" y="218" key="Vcs.Push.Dialog.v2/0.23.1440.805@0.23.1440.805" timestamp="1604036144254" />
     <state width="720" height="400" key="XDebugger.FullValuePopup" timestamp="1606982006761">
@@ -1644,10 +1644,10 @@
       <screen x="0" y="23" width="1440" height="800" />
     </state>
     <state x="380" y="221" key="git4idea.merge.GitPullDialog/0.23.1440.800@0.23.1440.800" timestamp="1608522166049" />
-    <state x="796" y="200" width="670" height="524" key="search.everywhere.popup" timestamp="1608618043911">
+    <state x="796" y="200" width="670" height="524" key="search.everywhere.popup" timestamp="1608644734317">
       <screen x="0" y="23" width="1440" height="800" />
     </state>
-    <state x="796" y="200" width="670" height="524" key="search.everywhere.popup/0.23.1440.800@0.23.1440.800" timestamp="1608618043911" />
+    <state x="796" y="200" width="670" height="524" key="search.everywhere.popup/0.23.1440.800@0.23.1440.800" timestamp="1608644734317" />
     <state x="796" y="201" width="670" height="525" key="search.everywhere.popup/0.23.1440.803@0.23.1440.803" timestamp="1606899603544" />
     <state x="796" y="201" width="670" height="527" key="search.everywhere.popup/0.23.1440.805@0.23.1440.805" timestamp="1600787383103" />
   </component>
