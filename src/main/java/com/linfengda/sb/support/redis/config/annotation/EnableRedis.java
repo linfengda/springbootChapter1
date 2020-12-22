@@ -1,6 +1,5 @@
 package com.linfengda.sb.support.redis.config.annotation;
 
-import com.linfengda.sb.support.redis.Constant;
 import com.linfengda.sb.support.redis.config.selector.RedisConfigSelector;
 import org.springframework.context.annotation.Import;
 import org.springframework.core.Ordered;
@@ -8,7 +7,7 @@ import org.springframework.core.Ordered;
 import java.lang.annotation.*;
 
 /**
- * @description: 开启redis，自动引入redisTemplate，redisDistributedLock
+ * @description: 开启redis，自动引入redisTemplate，redisDistributedLock，redis缓存等
  * @author: linfengda
  * @date: 2020-07-26 22:34
  */
@@ -18,7 +17,7 @@ import java.lang.annotation.*;
 @Import({RedisConfigSelector.class})
 public @interface EnableRedis {
     /**
-     * 是否开启缓存注解
+     * 是否启用注解缓存
      * @return
      */
     boolean openCacheAnnotation() default false;
@@ -37,9 +36,4 @@ public @interface EnableRedis {
      * @return
      */
     int updateOrder() default Ordered.LOWEST_PRECEDENCE;
-    /**
-     * lru缓存后台自动清除间隔
-     * @return
-     */
-    long lruCacheClearInternal() default Constant.DEFAULT_LRU_CACHE_BG_REMOVE_INTERNAL;
 }

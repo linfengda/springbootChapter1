@@ -21,7 +21,7 @@ public class OrderController {
 
     @RequestLock(desc = "更新订单状态业务锁")
     @GetMapping("/test")
-    public Result test(@RequestParam @RequestLockKey(nullable = true) Integer orderId) {
+    public Result test(@RequestParam @RequestLockKey Integer orderId) {
         return null;
     }
 

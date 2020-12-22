@@ -1,12 +1,9 @@
 package com.linfengda.sb.support.redis.config;
 
-import com.linfengda.sb.support.redis.Constant;
 import com.linfengda.sb.support.redis.GenericRedisTemplate;
-import com.linfengda.sb.support.redis.lock.RedisDistributedLock;
-import com.linfengda.sb.support.redis.cache.manager.RedisCacheBgManager;
 import com.linfengda.sb.support.redis.cache.handler.CacheHandlerHolder;
 import com.linfengda.sb.support.redis.cache.resolver.CacheDataTypeResolverHolder;
-import com.linfengda.sb.support.redis.config.meta.AnnotationMetaHolder;
+import com.linfengda.sb.support.redis.lock.RedisDistributedLock;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
@@ -29,12 +26,6 @@ public class RedisCacheAnnotationInitializer implements ApplicationContextAware 
     }
 
     private void init() {
-        Long lruCacheClearInternal = AnnotationMetaHolder.INSTANCE.getAttributes().<Long>getNumber("lruCacheClearInternal");
-        if (null == lruCacheClearInternal) {
-            lruCacheClearInternal = Constant.DEFAULT_LRU_CACHE_BG_REMOVE_INTERNAL;
-        }
-        RedisCacheBgManager.INSTANCE.init(genericRedisTemplate, redisDistributedLock);
-        RedisCacheBgManager.INSTANCE.start(lruCacheClearInternal);
         CacheHandlerHolder.INSTANCE.initHandlers(genericRedisTemplate, redisDistributedLock);
         CacheDataTypeResolverHolder.INSTANCE.initResolver(genericRedisTemplate);
     }

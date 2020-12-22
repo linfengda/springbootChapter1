@@ -15,13 +15,8 @@ import java.util.concurrent.TimeUnit;
  */
 @Slf4j
 public class RedisDistributedLock {
-
     /**
      * 锁默认超时时间
-     *
-     *
-     *
-     *
      */
     private final int DEFAULT_LOCK_EXPIRE_TIME = 60;
     /**
