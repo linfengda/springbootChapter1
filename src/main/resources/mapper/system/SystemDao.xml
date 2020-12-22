@@ -12,6 +12,13 @@
         from sys_user as su
         where
         su.deleted=0
+        <if test="@org.apache.commons.lang.StringUtils@isNotBlank(status)">
+            and su.status=#{status}
+        </if>
+        <if test="@org.apache.commons.lang.StringUtils@isNotBlank(userName)">
+            and su.user_name=#{userName}
+        </if>
+
     </select>
 
 </mapper>

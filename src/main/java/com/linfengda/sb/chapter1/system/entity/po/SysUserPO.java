@@ -3,9 +3,7 @@ package com.linfengda.sb.chapter1.system.entity.po;
 import com.linfengda.sb.chapter1.common.entity.po.BasePO;
 import com.linfengda.sb.support.orm.annontation.Id;
 import com.linfengda.sb.support.orm.annontation.Table;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
 
 /**
  * 描述: 系统用户PO
@@ -45,33 +43,4 @@ public class SysUserPO extends BasePO {
      * 项目id
      */
     private Integer teamId;
-
-
-    /**
-     * 状态枚举
-     */
-    @AllArgsConstructor
-    @Getter
-    public enum Status {
-        /**
-         * 0：启用
-         */
-        YES(0, "启用"),
-        /**
-         * 1：停用
-         */
-        NO(1, "停用");
-
-        private Integer code;
-        private String name;
-
-        public static Status getType(Integer state) {
-            for (Status value : values()) {
-                if (value.getCode().equals(state)) {
-                    return value;
-                }
-            }
-            return null;
-        }
-    }
 }
