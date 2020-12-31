@@ -25,7 +25,7 @@ public class UserTokenCache {
 
     public void clearCache() {
         genericRedisTemplate.delete(SystemCachePrefix.USER_TOKEN_CACHE);
-        log.warn("清除用户token缓存...");
+        log.info("清除用户token缓存...");
     }
 
     public void put(String userId, String token){

@@ -1,6 +1,6 @@
 package com.linfengda.sb.support.apivalidator.config;
 
-import com.linfengda.sb.support.apivalidator.config.resolver.MyControllerArgumentResolver;
+import com.linfengda.sb.support.apivalidator.resolver.MyControllerArgumentResolver;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 

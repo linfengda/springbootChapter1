@@ -1,4 +1,4 @@
-package com.linfengda.sb.support.apivalidator.config.resolver;
+package com.linfengda.sb.support.apivalidator.resolver;
 
 import com.alibaba.fastjson.JSONObject;
 import com.linfengda.sb.chapter1.common.exception.BusinessException;

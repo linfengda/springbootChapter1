@@ -17,10 +17,20 @@ import java.lang.annotation.*;
 @Import({RedisConfigSelector.class})
 public @interface EnableRedis {
     /**
-     * 是否启用注解缓存
+     * 是否启用缓存注解
      * @return
      */
-    boolean openCacheAnnotation() default false;
+    boolean enableCacheAnnotation() default false;
+    /**
+     * 是否启用业务锁注解
+     * @return
+     */
+    boolean enableBusinessLockAnnotation() default false;
+    /**
+     * 业务锁注解aop优先级
+     * @return
+     */
+    int lockOrder() default Ordered.LOWEST_PRECEDENCE-4;
     /**
      * 查询注解aop优先级
      * @return

@@ -1,6 +1,7 @@
 package com.linfengda.sb.support.redis.config;
 
 import com.linfengda.sb.support.redis.cache.interceptor.*;
+import com.linfengda.sb.support.redis.config.initailizer.RedisCacheAnnotationInitializer;
 import com.linfengda.sb.support.redis.config.meta.AnnotationMetaHolder;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Bean;
@@ -18,22 +19,19 @@ public class RedisCacheAnnotationConfig extends RedisCacheAnnotationInitializer 
     @Bean
     @Role(BeanDefinition.ROLE_INFRASTRUCTURE)
     public QueryCacheInterceptor queryCacheInterceptor() {
-        QueryCacheInterceptor queryCacheInterceptor = new QueryCacheInterceptor();
-        return queryCacheInterceptor;
+        return new QueryCacheInterceptor();
     }
 
     @Bean
     @Role(BeanDefinition.ROLE_INFRASTRUCTURE)
     public DeleteCacheInterceptor deleteCacheInterceptor() {
-        DeleteCacheInterceptor deleteCacheInterceptor = new DeleteCacheInterceptor();
-        return deleteCacheInterceptor;
+        return new DeleteCacheInterceptor();
     }
 
     @Bean
     @Role(BeanDefinition.ROLE_INFRASTRUCTURE)
     public UpdateCacheInterceptor updateCacheInterceptor() {
-        UpdateCacheInterceptor updateCacheInterceptor = new UpdateCacheInterceptor();
-        return updateCacheInterceptor;
+        return new UpdateCacheInterceptor();
     }
 
     @Bean

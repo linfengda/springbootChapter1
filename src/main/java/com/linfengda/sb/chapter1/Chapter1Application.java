@@ -15,9 +15,9 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  * @author linfengda
  * @create 2020-01-09 09:18
  */
-@EnableRedis(openCacheAnnotation = true)
+@EnableRedis(enableCacheAnnotation = true, enableBusinessLockAnnotation = true)
 @EnableJsonFieldSerializer(serializeType = SerializeType.FAST_JSON)
-@EnableApiValidator(pattern = "xxx")
+@EnableApiValidator()
 @EnableTransactionManagement(order = Ordered.LOWEST_PRECEDENCE-1)
 @EnableApplicationStartup
 @SpringBootApplication(scanBasePackages = {"com.linfengda.sb.chapter1", "com.linfengda.sb.support"})

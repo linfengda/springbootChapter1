@@ -1,6 +1,6 @@
 package com.linfengda.sb.support.apivalidator.annotation;
 
-import com.linfengda.sb.support.apivalidator.selector.ApiValidatorConfigSelector;
+import com.linfengda.sb.support.apivalidator.config.ApiValidatorConfigSelector;
 import org.springframework.context.annotation.Import;
 
 import java.lang.annotation.*;

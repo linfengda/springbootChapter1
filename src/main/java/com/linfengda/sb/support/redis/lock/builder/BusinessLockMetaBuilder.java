@@ -1,8 +1,8 @@
-package com.linfengda.sb.support.redis.lock;
+package com.linfengda.sb.support.redis.lock.builder;
 
 import com.linfengda.sb.chapter1.common.exception.BusinessException;
-import com.linfengda.sb.support.redis.lock.annotation.RequestLock;
-import com.linfengda.sb.support.redis.lock.annotation.RequestLockKey;
+import com.linfengda.sb.support.redis.lock.annotation.BusinessLock;
+import com.linfengda.sb.support.redis.lock.annotation.BusinessLockKey;
 import com.linfengda.sb.support.redis.lock.meta.LockKeyMeta;
 import com.linfengda.sb.support.redis.lock.meta.LockMethodMeta;
 import org.springframework.util.CollectionUtils;
@@ -10,18 +10,16 @@ import org.springframework.util.CollectionUtils;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.stream.Collectors;
 
 /**
  * @description:
  * @author: linfengda
  * @date: 2020-12-22 14:47
  */
-public class RequestLockMetaBuilder {
+public class BusinessLockMetaBuilder {
     /**
      * 支持的requestLockKey字段类型
      */
@@ -51,13 +49,13 @@ public class RequestLockMetaBuilder {
      * @return          注解信息
      */
     private static LockMethodMeta loadLockAnnotation(Method method) {
-        RequestLock requestLock = method.getDeclaredAnnotation(RequestLock.class);
-        if (null == requestLock) {
-            return null;
+        BusinessLock businessLock = method.getDeclaredAnnotation(BusinessLock.class);
+        if (null == businessLock) {
+            throw new BusinessException("找不到的BusinessLock注解！");
         }
         List<LockKeyMeta> lockKeyMetas = parseLockKeyAnnotation(method);
         if (CollectionUtils.isEmpty(lockKeyMetas)) {
-            throw new BusinessException("找不到的RequestLockKey！");
+            throw new BusinessException("找不到的BusinessLockKey注解！");
         }
         LockMethodMeta lockMethodMeta = new LockMethodMeta();
         lockMethodMeta.setLockKeys(lockKeyMetas);
@@ -84,19 +82,20 @@ public class RequestLockMetaBuilder {
             }
             lockKeyMetas.add(lockKeyMeta);
         }
+        lockKeyMetas.stream().sorted(Comparator.comparing(LockKeyMeta::getKeyIndex)).collect(Collectors.toList());
         return lockKeyMetas;
     }
 
     private static LockKeyMeta initKeyMeta(Parameter parameter, int i) {
-        RequestLockKey requestLockKey = parameter.getAnnotation(RequestLockKey.class);
-        if (null != requestLockKey) {
+        BusinessLockKey businessLockKey = parameter.getAnnotation(BusinessLockKey.class);
+        if (null != businessLockKey) {
             if (!REQUEST_LOCK_KEY_SUPPORT_TYPE.contains(parameter.getType().getName())) {
                 throw new BusinessException("不支持的RequestLockKey类型！");
             }
             LockKeyMeta lockKeyMeta = new LockKeyMeta();
             lockKeyMeta.setKeyParameter(parameter);
             lockKeyMeta.setKeyParameterIndex(i);
-            lockKeyMeta.setKeyIndex(requestLockKey.index());
+            lockKeyMeta.setKeyIndex(businessLockKey.index());
             return lockKeyMeta;
         }
         return initFiledKeyMeta(parameter, i);
@@ -108,18 +107,18 @@ public class RequestLockMetaBuilder {
             return null;
         }
         for (Field field : fields) {
+            BusinessLockKey businessLockKey = field.getAnnotation(BusinessLockKey.class);
+            if (null == businessLockKey) {
+                continue;
+            }
             if (!REQUEST_LOCK_KEY_SUPPORT_TYPE.contains(field.getType().getName())) {
                 throw new BusinessException("不支持的RequestLockKey类型！");
-            }
-            RequestLockKey requestLockKey = field.getAnnotation(RequestLockKey.class);
-            if (null == requestLockKey) {
-                continue;
             }
             LockKeyMeta lockKeyMeta = new LockKeyMeta();
             lockKeyMeta.setKeyParameter(parameter);
             lockKeyMeta.setKeyParameterIndex(i);
             lockKeyMeta.setKeyField(field);
-            lockKeyMeta.setKeyIndex(requestLockKey.index());
+            lockKeyMeta.setKeyIndex(businessLockKey.index());
             return lockKeyMeta;
         }
         return null;

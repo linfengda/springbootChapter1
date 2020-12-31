@@ -1,4 +1,4 @@
-package com.linfengda.sb.support.apivalidator.config.interceptor;
+package com.linfengda.sb.support.apivalidator.interceptor;
 
 import com.linfengda.sb.support.apivalidator.ApiParameterValidator;
 import lombok.extern.slf4j.Slf4j;

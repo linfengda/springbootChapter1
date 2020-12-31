@@ -1,8 +1,8 @@
 package com.linfengda.sb.support.apivalidator.config;
 
 import com.linfengda.sb.support.apivalidator.annotation.EnableApiValidator;
-import com.linfengda.sb.support.apivalidator.config.interceptor.ApiValidatorInterceptor;
-import com.linfengda.sb.support.apivalidator.config.interceptor.ApiValidatorMethodPointcutAdvisor;
+import com.linfengda.sb.support.apivalidator.interceptor.ApiValidatorInterceptor;
+import com.linfengda.sb.support.apivalidator.interceptor.ApiValidatorMethodPointcutAdvisor;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

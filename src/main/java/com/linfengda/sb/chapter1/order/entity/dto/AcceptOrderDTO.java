@@ -1,6 +1,6 @@
 package com.linfengda.sb.chapter1.order.entity.dto;
 
-import com.linfengda.sb.support.redis.lock.annotation.RequestLockKey;
+import com.linfengda.sb.support.redis.lock.annotation.BusinessLockKey;
 import lombok.Data;
 
 /**
@@ -13,6 +13,6 @@ public class AcceptOrderDTO {
     /**
      * 订单id
      */
-    @RequestLockKey
+    @BusinessLockKey
     private Integer orderId;
 }

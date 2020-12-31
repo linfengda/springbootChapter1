@@ -13,19 +13,19 @@ import java.lang.reflect.Parameter;
 @Data
 public class LockKeyMeta {
     /**
+     * key位置
+     */
+    private Integer keyIndex;
+    /**
+     * key参数位置
+     */
+    private Integer keyParameterIndex;
+    /**
      * key参数
      */
     private Parameter keyParameter;
     /**
-     * key参数下标
-     */
-    private Integer keyParameterIndex;
-    /**
-     * key域
+     * key参数取值字段（{@link com.linfengda.sb.support.redis.lock.annotation.BusinessLock}注解在dto字段）
      */
     private Field keyField;
-    /**
-     * key下标
-     */
-    private Integer keyIndex;
 }

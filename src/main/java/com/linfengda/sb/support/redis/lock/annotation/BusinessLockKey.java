@@ -1,11 +1,16 @@
 package com.linfengda.sb.support.redis.lock.annotation;
 
+import java.lang.annotation.*;
+
 /**
- * @description: 请求业务锁key
+ * @description: 业务锁key
  * @author: linfengda
  * @date: 2020-11-16 11:55
  */
-public @interface RequestLockKey {
+@Documented
+@Retention(RetentionPolicy.RUNTIME)
+@Target({ElementType.PARAMETER, ElementType.FIELD})
+public @interface BusinessLockKey {
 
     /**
      * 当多个参数作为key时，需要指定key的顺序
