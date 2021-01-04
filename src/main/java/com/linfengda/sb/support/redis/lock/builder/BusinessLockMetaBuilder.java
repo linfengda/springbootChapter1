@@ -73,54 +73,69 @@ public class BusinessLockMetaBuilder {
         if (null == parameters || 0 == parameters.length) {
             return null;
         }
-        List<LockKeyMeta> lockKeyMetas = new ArrayList<>();
-        for (int i = 0; i < parameters.length; i++) {
-            Parameter parameter = parameters[i];
-            LockKeyMeta lockKeyMeta = initKeyMeta(parameter, i);
-            if (null == lockKeyMeta) {
-                continue;
-            }
-            lockKeyMetas.add(lockKeyMeta);
+        List<LockKeyMeta> lockKeyMetas = parse(parameters);
+        if (CollectionUtils.isEmpty(lockKeyMetas)) {
+            lockKeyMetas = parseFromDto(parameters);
         }
         lockKeyMetas.stream().sorted(Comparator.comparing(LockKeyMeta::getKeyIndex)).collect(Collectors.toList());
         return lockKeyMetas;
     }
 
-    private static LockKeyMeta initKeyMeta(Parameter parameter, int i) {
-        BusinessLockKey businessLockKey = parameter.getAnnotation(BusinessLockKey.class);
-        if (null != businessLockKey) {
-            if (!REQUEST_LOCK_KEY_SUPPORT_TYPE.contains(parameter.getType().getName())) {
-                throw new BusinessException("不支持的RequestLockKey类型！");
-            }
-            LockKeyMeta lockKeyMeta = new LockKeyMeta();
-            lockKeyMeta.setKeyParameter(parameter);
-            lockKeyMeta.setKeyParameterIndex(i);
-            lockKeyMeta.setKeyIndex(businessLockKey.index());
-            return lockKeyMeta;
-        }
-        return initFiledKeyMeta(parameter, i);
-    }
-
-    private static LockKeyMeta initFiledKeyMeta(Parameter parameter, int i) {
-        Field[] fields = parameter.getType().getDeclaredFields();
-        if (0 == fields.length) {
-            return null;
-        }
-        for (Field field : fields) {
-            BusinessLockKey businessLockKey = field.getAnnotation(BusinessLockKey.class);
+    private static List<LockKeyMeta> parse(Parameter[] parameters) {
+        List<LockKeyMeta> lockKeyMetas = new ArrayList<>();
+        for (int i = 0; i < parameters.length; i++) {
+            Parameter parameter = parameters[i];
+            BusinessLockKey businessLockKey = parameter.getAnnotation(BusinessLockKey.class);
             if (null == businessLockKey) {
                 continue;
             }
-            if (!REQUEST_LOCK_KEY_SUPPORT_TYPE.contains(field.getType().getName())) {
-                throw new BusinessException("不支持的RequestLockKey类型！");
+            lockKeyMetas.add(initKeyMeta(parameter, i, businessLockKey));
+        }
+        return lockKeyMetas;
+    }
+
+    private static LockKeyMeta initKeyMeta(Parameter parameter, int i, BusinessLockKey businessLockKey) {
+        checkKeyType(parameter.getType());
+        LockKeyMeta lockKeyMeta = new LockKeyMeta();
+        lockKeyMeta.setKeyIndex(businessLockKey.index());
+        lockKeyMeta.setKeyParameterIndex(i);
+        return lockKeyMeta;
+    }
+
+    private static List<LockKeyMeta> parseFromDto(Parameter[] parameters) {
+        for (int i = 0; i < parameters.length; i++) {
+            Parameter parameter = parameters[i];
+            Field[] fields = parameter.getType().getDeclaredFields();
+            if (0 == fields.length) {
+                continue;
             }
-            LockKeyMeta lockKeyMeta = new LockKeyMeta();
-            lockKeyMeta.setKeyParameter(parameter);
-            lockKeyMeta.setKeyParameterIndex(i);
-            lockKeyMeta.setKeyField(field);
-            lockKeyMeta.setKeyIndex(businessLockKey.index());
-            return lockKeyMeta;
+            List<LockKeyMeta> lockKeyMetas = new ArrayList<>();
+            for (Field field : fields) {
+                BusinessLockKey businessLockKey = field.getAnnotation(BusinessLockKey.class);
+                if (null == businessLockKey) {
+                    continue;
+                }
+                lockKeyMetas.add(initKeyMeta(field, i, businessLockKey));
+            }
+            if (!CollectionUtils.isEmpty(lockKeyMetas)) {
+                return lockKeyMetas;
+            }
         }
         return null;
+    }
+
+    private static LockKeyMeta initKeyMeta(Field field, int i, BusinessLockKey businessLockKey) {
+        checkKeyType(field.getType());
+        LockKeyMeta lockKeyMeta = new LockKeyMeta();
+        lockKeyMeta.setKeyIndex(businessLockKey.index());
+        lockKeyMeta.setKeyParameterIndex(i);
+        lockKeyMeta.setKeyField(field);
+        return lockKeyMeta;
+    }
+
+    private static void checkKeyType(Class<?> type) {
+        if (!REQUEST_LOCK_KEY_SUPPORT_TYPE.contains(type.getName())) {
+            throw new BusinessException("不支持的RequestLockKey类型！");
+        }
     }
 }

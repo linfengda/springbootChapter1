@@ -13,6 +13,11 @@ public class AcceptOrderDTO {
     /**
      * 订单id
      */
-    @BusinessLockKey
+    @BusinessLockKey(index = 0)
     private Integer orderId;
+    /**
+     * 明细id
+     */
+    @BusinessLockKey(index = 1)
+    private Integer detailId;
 }

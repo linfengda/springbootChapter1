@@ -2,6 +2,7 @@ package com.linfengda.sb.chapter1.order.api;
 
 import com.linfengda.sb.chapter1.common.entity.Result;
 import com.linfengda.sb.chapter1.order.entity.dto.AcceptOrderDTO;
+import com.linfengda.sb.support.redis.cache.annotation.QueryCache;
 import com.linfengda.sb.support.redis.lock.annotation.BusinessLock;
 import com.linfengda.sb.support.redis.lock.annotation.BusinessLockKey;
 import lombok.extern.slf4j.Slf4j;
@@ -17,16 +18,16 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/pc/order")
 public class OrderController {
 
-    @BusinessLock(desc = "更新订单状态业务锁")
+    @QueryCache
+    @BusinessLock(desc = "测试业务锁")
     @GetMapping("/test1")
     public Result test1(@RequestParam @BusinessLockKey Integer orderId) {
         return null;
     }
 
-    @BusinessLock(desc = "更新订单状态业务锁")
+    @BusinessLock(desc = "测试业务锁")
     @PostMapping("/test2")
     public Result test2(@RequestBody AcceptOrderDTO acceptOrderDTO) {
         return null;
     }
-
 }
