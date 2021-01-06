@@ -1,7 +1,7 @@
 package com.linfengda.sb.chapter1.system.entity.vo;
 
 import com.alibaba.fastjson.annotation.JSONField;
-import com.linfengda.sb.support.serializer.serializer.fastjson.date.DateFormatSerializer;
+import com.linfengda.sb.support.serializable.serializer.fastjson.date.DateFormatSerializer;
 import lombok.Data;
 
 import java.sql.Timestamp;

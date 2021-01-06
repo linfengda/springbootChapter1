@@ -1,4 +1,4 @@
-package com.linfengda.sb.support.serializer.serializer.jackson.date;
+package com.linfengda.sb.support.serializable.serializer.jackson.date;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;

@@ -1,4 +1,4 @@
-package com.linfengda.sb.support.serializer.annotation;
+package com.linfengda.sb.support.serializable.annotation;
 
 /**
  * @description: 序列化类型

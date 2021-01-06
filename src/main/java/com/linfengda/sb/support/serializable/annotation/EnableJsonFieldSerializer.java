@@ -1,6 +1,6 @@
-package com.linfengda.sb.support.serializer.annotation;
+package com.linfengda.sb.support.serializable.annotation;
 
-import com.linfengda.sb.support.serializer.selector.JsonFieldSerializerConfigSelector;
+import com.linfengda.sb.support.serializable.selector.JsonFieldSerializerConfigSelector;
 import org.springframework.context.annotation.Import;
 
 import java.lang.annotation.*;

@@ -21,9 +21,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public void changeOrderStatus(OrderStateChangeDTO orderStateChangeDTO) {
-        OrderState dbState = OrderState.WAITING_PRODUCE;
         StateMachine<OrderState, OrderEvent> orderStateMachine = this.buildOrderMachine();
-        orderStateMachine.initState(dbState);
         boolean result = orderStateMachine.sendEvent(orderStateChangeDTO.getEvent());
         if (result) {
             log.info("状态机校验通过，允许订单状态更新！");
@@ -35,6 +33,7 @@ public class OrderServiceImpl implements OrderService {
     private StateMachine<OrderState, OrderEvent> buildOrderMachine() {
         StateMachine<OrderState, OrderEvent> orderStateMachine = new GenericStateMachine<>();
         orderStateMachine
+                .initState(OrderState.WAITING_PRODUCE)
                 .build(OrderState.WAITING_PRODUCE, OrderState.WAITING_ALLOCATION, OrderEvent.CREATE_ORDER)
                 .build(OrderState.WAITING_ALLOCATION, OrderState.PRODUCING, OrderEvent.ACCEPT_ORDER)
                 .build(OrderState.PRODUCING, OrderState.WAITING_DELIVERY, OrderEvent.PACKAGE)

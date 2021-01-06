@@ -1,4 +1,4 @@
-package com.linfengda.sb.support.serializer.serializer.fastjson.money;
+package com.linfengda.sb.support.serializable.serializer.fastjson.money;
 
 import com.alibaba.fastjson.serializer.JSONSerializer;
 import com.alibaba.fastjson.serializer.ObjectSerializer;

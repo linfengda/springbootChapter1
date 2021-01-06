@@ -1,4 +1,4 @@
-package com.linfengda.sb.support.serializer.config;
+package com.linfengda.sb.support.serializable.config;
 
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.support.config.FastJsonConfig;

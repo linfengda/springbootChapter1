@@ -2,8 +2,8 @@ package com.linfengda.sb.chapter1;
 
 import com.linfengda.sb.support.apivalidator.annotation.EnableApiValidator;
 import com.linfengda.sb.support.redis.config.annotation.EnableRedis;
-import com.linfengda.sb.support.serializer.annotation.EnableJsonFieldSerializer;
-import com.linfengda.sb.support.serializer.annotation.SerializeType;
+import com.linfengda.sb.support.serializable.annotation.EnableJsonFieldSerializer;
+import com.linfengda.sb.support.serializable.annotation.SerializeType;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.core.Ordered;

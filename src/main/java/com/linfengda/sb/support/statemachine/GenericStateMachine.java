@@ -35,11 +35,11 @@ public class GenericStateMachine<S, E> implements StateMachine<S, E> {
 
     @Override
     public boolean sendEvent(E event) {
-        if (null == event) {
-            throw new BusinessException("触发事件为空！");
-        }
         if (null == this.initialState) {
             throw new BusinessException("未初始化状态机状态！");
+        }
+        if (null == event) {
+            throw new BusinessException("触发事件为空！");
         }
         for (StateEvent<S, E> stateEvent : stateEvents) {
             if (event.equals(stateEvent.getEvent())) {

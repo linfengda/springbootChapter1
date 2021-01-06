@@ -1,4 +1,4 @@
-package com.linfengda.sb.support.serializer.serializer.fastjson.date;
+package com.linfengda.sb.support.serializable.serializer.fastjson.date;
 
 import com.alibaba.fastjson.serializer.JSONSerializer;
 import com.alibaba.fastjson.serializer.ObjectSerializer;
@@ -11,10 +11,9 @@ import java.sql.Timestamp;
 /**
  * @description: 日期输出序列化类
  * @author: linfengda
- * @date: 2020-08-22 18:51
+ * @date: 2020-08-23 23:15
  */
-public class DateFormatMdSerializer implements ObjectSerializer {
-    private static final String NOW_YEAR_PATTERN = "yyyy";
+public class DateFormatSerializer implements ObjectSerializer {
     public static final DateFormatMdSerializer INSTANCE = new DateFormatMdSerializer();
 
     @Override
@@ -35,10 +34,6 @@ public class DateFormatMdSerializer implements ObjectSerializer {
             out.writeString("");
             return;
         }
-        if (TimeUtil.format(ms, NOW_YEAR_PATTERN).equals(TimeUtil.format(System.currentTimeMillis(), NOW_YEAR_PATTERN))){
-            out.writeString(TimeUtil.format(ms, "MM-dd"));
-        }else {
-            out.writeString(TimeUtil.format(ms, "yyyy-MM-dd"));
-        }
+        out.writeString(TimeUtil.format(ms, "yyyy-MM-dd HH:mm:ss"));
     }
 }

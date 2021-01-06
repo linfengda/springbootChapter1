@@ -1,7 +1,7 @@
-package com.linfengda.sb.support.serializer.selector;
+package com.linfengda.sb.support.serializable.selector;
 
-import com.linfengda.sb.support.serializer.annotation.EnableJsonFieldSerializer;
-import com.linfengda.sb.support.serializer.annotation.SerializeType;
+import com.linfengda.sb.support.serializable.annotation.EnableJsonFieldSerializer;
+import com.linfengda.sb.support.serializable.annotation.SerializeType;
 import org.springframework.context.annotation.ImportSelector;
 import org.springframework.core.annotation.AnnotationAttributes;
 import org.springframework.core.type.AnnotationMetadata;
