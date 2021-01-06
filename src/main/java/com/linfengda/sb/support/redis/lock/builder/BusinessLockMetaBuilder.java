@@ -58,6 +58,7 @@ public class BusinessLockMetaBuilder {
             throw new BusinessException("找不到的BusinessLockKey注解！");
         }
         LockMethodMeta lockMethodMeta = new LockMethodMeta();
+        lockMethodMeta.setPrefix(businessLock.prefix());
         lockMethodMeta.setLockKeys(lockKeyMetas);
         LOCK_METHOD_CACHE.put(method, lockMethodMeta);
         return lockMethodMeta;

@@ -48,6 +48,8 @@ public class BusinessLockInterceptor implements MethodInterceptor {
      */
     private String parseKey(LockMethodMeta lockMethodMeta, Object[] arguments) throws IllegalAccessException {
         StringBuilder sb = new StringBuilder();
+        sb.append(lockMethodMeta.getPrefix());
+        sb.append(":");
         List<LockKeyMeta> lockKeys = lockMethodMeta.getLockKeys();
         for (LockKeyMeta lockKey : lockKeys) {
             Object key = arguments[lockKey.getKeyParameterIndex()];

@@ -14,5 +14,7 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface BusinessLock {
 
+    String prefix() default "";
+
     String desc() default "";
 }

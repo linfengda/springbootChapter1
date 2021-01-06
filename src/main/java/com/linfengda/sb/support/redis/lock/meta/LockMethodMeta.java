@@ -12,6 +12,10 @@ import java.util.List;
 @Data
 public class LockMethodMeta {
     /**
+     * 业务锁key前缀
+     */
+    private String prefix;
+    /**
      * 业务锁key列表
      */
     private List<LockKeyMeta> lockKeys;

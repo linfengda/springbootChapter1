@@ -18,14 +18,13 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/pc/order")
 public class OrderController {
 
-    @QueryCache
-    @BusinessLock(desc = "测试业务锁")
+    @BusinessLock(prefix = "order", desc = "测试业务锁")
     @GetMapping("/test1")
     public Result test1(@RequestParam @BusinessLockKey Integer orderId) {
         return null;
     }
 
-    @BusinessLock(desc = "测试业务锁")
+    @BusinessLock(prefix = "order", desc = "测试业务锁")
     @PostMapping("/test2")
     public Result test2(@RequestBody AcceptOrderDTO acceptOrderDTO) {
         return null;
