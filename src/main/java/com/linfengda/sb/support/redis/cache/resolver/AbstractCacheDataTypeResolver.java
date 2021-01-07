@@ -55,21 +55,20 @@ public abstract class AbstractCacheDataTypeResolver implements CacheDataTypeReso
             // 设置最大缓存数量
             boolean hasSize = hasSize(param);
             if (hasSize) {
-                // 设置最大缓存数量但有空间
                 doSetCache(param, value);
-                if (CacheMaxSizeStrategy.MAX_SIZE_STRATEGY_LRU == param.getMaxSizeStrategy()) {
-                    genericRedisTemplate.opsForZSet().add(param.getLruKey(), param.getKey(), param.getLruKeyScore());
-                }
             }else {
-                // 设置最大缓存数量且没有空间
                 if (CacheMaxSizeStrategy.MAX_SIZE_STRATEGY_ABANDON == param.getMaxSizeStrategy()) {
                     log.debug("当前缓存：{}超过最大缓存限制：{}，缓存策略：CacheMaxSizeStrategy.MAX_SIZE_STRATEGY_ABANDON，将不再缓存数据！", param.getPrefix(), param.getMaxSize());
+                    return;
                 }else if (CacheMaxSizeStrategy.MAX_SIZE_STRATEGY_LRU == param.getMaxSizeStrategy()) {
                     log.debug("当前缓存：{}超过最大缓存限制：{}，缓存策略：CacheMaxSizeStrategy.MAX_SIZE_STRATEGY_LRU，将淘汰数据！", param.getPrefix(), param.getMaxSize());
                     deleteLRU(param);
                     doSetCache(param, value);
-                    genericRedisTemplate.opsForZSet().add(param.getLruKey(), param.getKey(), param.getLruKeyScore());
                 }
+            }
+            if (CacheMaxSizeStrategy.MAX_SIZE_STRATEGY_LRU == param.getMaxSizeStrategy()) {
+                deleteAnyExpireLRU(param);
+                genericRedisTemplate.opsForZSet().add(param.getLruKey(), param.getKey(), param.getLruKeyScore());
             }
         }
     }
@@ -85,8 +84,6 @@ public abstract class AbstractCacheDataTypeResolver implements CacheDataTypeReso
             return;
         }
         Set<Object> delKeys = genericRedisTemplate.opsForZSet().range(param.getLruKey(), 0, num);
-        // 删除LRU记录
-        genericRedisTemplate.opsForZSet().removeRange(param.getLruKey(), 0, num);
         // 删除具体缓存key
         for (Object delKey : delKeys) {
             if (null == delKey) {
@@ -105,7 +102,18 @@ public abstract class AbstractCacheDataTypeResolver implements CacheDataTypeReso
             }
             delCache(delParam);
         }
+        // 删除LRU记录
+        genericRedisTemplate.opsForZSet().removeRange(param.getLruKey(), 0, num);
         log.debug("当前缓存：{}超过最大缓存限制：{}，采取LRU算法淘汰{}条数据，lurKey={}，delKeys={}", param.getPrefix(), param.getMaxSize(), Constant.DEFAULT_LRU_CACHE_BG_REMOVE_BATCH_NUM, param.getLruKey(), JSON.toJSONString(delKeys));
+    }
+
+    /**
+     * 淘汰过期key的lru缓存标识
+     * @param param 查询参数
+     */
+    private void deleteAnyExpireLRU(CacheParamDTO param) {
+        genericRedisTemplate.opsForZSet().removeRangeByScore(param.getLruKey(), 0, (double) System.currentTimeMillis());
+        log.info("淘汰过期key的lru缓存标识，lruKey={}", param.getLruKey());
     }
 
     protected void delAllEntries(CacheParamDTO param) {
