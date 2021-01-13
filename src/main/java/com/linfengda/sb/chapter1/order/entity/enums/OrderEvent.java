@@ -12,10 +12,6 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum OrderEvent {
     /**
-     * 创建订单
-     */
-    CREATE_ORDER,
-    /**
      * 工厂接单
      */
     ACCEPT_ORDER,

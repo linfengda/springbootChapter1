@@ -44,7 +44,7 @@ public class ProduceOrderPO extends BasePO {
     /**
      * 参考图片地址
      */
-    private String referenceImageUrl;
+    private String referenceImage;
     /**
      * 面料品类
      */

@@ -33,9 +33,8 @@ public class OrderServiceImpl implements OrderService {
     private StateMachine<OrderState, OrderEvent> buildOrderMachine() {
         StateMachine<OrderState, OrderEvent> orderStateMachine = new GenericStateMachine<>();
         orderStateMachine
-                .initState(OrderState.WAITING_PRODUCE)
-                .build(OrderState.WAITING_PRODUCE, OrderState.WAITING_ALLOCATION, OrderEvent.CREATE_ORDER)
-                .build(OrderState.WAITING_ALLOCATION, OrderState.PRODUCING, OrderEvent.ACCEPT_ORDER)
+                .initState(OrderState.WAITING_ACCEPT)
+                .build(OrderState.WAITING_ACCEPT, OrderState.PRODUCING, OrderEvent.ACCEPT_ORDER)
                 .build(OrderState.PRODUCING, OrderState.WAITING_DELIVERY, OrderEvent.PACKAGE)
                 .build(OrderState.WAITING_DELIVERY, OrderState.WAITING_RECEIVE, OrderEvent.SEND)
                 .build(OrderState.WAITING_RECEIVE, OrderState.WAITING_CHECK, OrderEvent.RECEIVE)

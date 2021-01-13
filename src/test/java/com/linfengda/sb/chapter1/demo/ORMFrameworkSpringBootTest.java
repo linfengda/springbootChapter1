@@ -97,7 +97,7 @@ public class ORMFrameworkSpringBootTest {
     public void testInsert() throws Exception {
         ProduceOrderPO produceOrderPO = new ProduceOrderPO();
         produceOrderPO.setOrderNumber("000001");
-        produceOrderPO.setState(OrderState.WAITING_PRODUCE.getCode());
+        produceOrderPO.setState(OrderState.WAITING_ACCEPT.getCode());
         produceOrderPO.setSku("xxx");
         produceOrderPO.setReferenceSku("xxx");
         produceOrderPO.setPurchasePrice(new BigDecimal(9.99));
@@ -120,7 +120,7 @@ public class ORMFrameworkSpringBootTest {
     public void testUpdate() throws Exception {
         ProduceOrderPO produceOrderPO = new ProduceOrderPO();
         produceOrderPO.setId(1);
-        produceOrderPO.setState(OrderState.WAITING_ALLOCATION.getCode());
+        produceOrderPO.setState(OrderState.PRODUCING.getCode());
         ormTemplate.save(produceOrderPO);
         log.info("测试更新订单信息={}", JSON.toJSONString(produceOrderPO));
 
