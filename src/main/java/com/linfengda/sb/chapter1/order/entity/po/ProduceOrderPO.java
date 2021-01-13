@@ -13,9 +13,9 @@ import java.sql.Timestamp;
  * @author: linfengda
  * @date: 2020-10-14 23:21
  */
-@Table(name = "order_record")
+@Table(name = "produce_order")
 @Data
-public class OrderRecordPO extends BasePO {
+public class ProduceOrderPO extends BasePO {
     /**
      * 主键id
      */
@@ -30,21 +30,13 @@ public class OrderRecordPO extends BasePO {
      */
     private String orderNumber;
     /**
-     * spu
+     * sku
      */
-    private String spu;
+    private String sku;
     /**
-     * 参考spu
+     * 参考sku
      */
-    private String referenceSpu;
-    /**
-     * 颜色
-     */
-    private String color;
-    /**
-     * 颜色id
-     */
-    private Integer colorId;
+    private String referenceSku;
     /**
      * 生产单价
      */
@@ -52,7 +44,7 @@ public class OrderRecordPO extends BasePO {
     /**
      * 参考图片地址
      */
-    private String referenceImage;
+    private String referenceImageUrl;
     /**
      * 面料品类
      */
@@ -98,15 +90,7 @@ public class OrderRecordPO extends BasePO {
      */
     private Integer groupId;
     /**
-     * 分单时间
+     * 接单时间
      */
-    private Timestamp receiveTime;
-    /**
-     * 做样时间，制作产前样的时间
-     */
-    private Timestamp paperMakeTime;
-    /**
-     * 回样时间，完成产前样的时间
-     */
-    private Timestamp paperFinishTime;
+    private Timestamp acceptTime;
 }

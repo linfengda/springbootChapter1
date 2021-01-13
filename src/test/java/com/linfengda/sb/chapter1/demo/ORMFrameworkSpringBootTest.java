@@ -3,9 +3,8 @@ package com.linfengda.sb.chapter1.demo;
 import com.alibaba.fastjson.JSON;
 import com.linfengda.sb.chapter1.Chapter1Application;
 import com.linfengda.sb.chapter1.order.entity.enums.OrderState;
-import com.linfengda.sb.chapter1.order.entity.po.OrderRecordPO;
+import com.linfengda.sb.chapter1.order.entity.po.ProduceOrderPO;
 import com.linfengda.sb.chapter1.system.entity.po.SysUserPO;
-import com.linfengda.sb.chapter1.system.entity.vo.UserVO;
 import com.linfengda.sb.support.orm.OrmTemplate;
 import com.linfengda.sb.support.orm.entity.ConditionParam;
 import com.linfengda.sb.support.orm.entity.PageResult;
@@ -96,41 +95,39 @@ public class ORMFrameworkSpringBootTest {
     @Rollback(false)
     @Transactional(rollbackFor = Exception.class)
     public void testInsert() throws Exception {
-        OrderRecordPO orderRecordPO = new OrderRecordPO();
-        orderRecordPO.setOrderNumber("000001");
-        orderRecordPO.setState(OrderState.WAITING_PRODUCE.getCode());
-        orderRecordPO.setSpu("xxx");
-        orderRecordPO.setReferenceSpu("xxx");
-        orderRecordPO.setColor("红色");
-        orderRecordPO.setColorId(1);
-        orderRecordPO.setPurchasePrice(new BigDecimal(9.99));
-        orderRecordPO.setMaterialTypeEnum(1);
-        orderRecordPO.setThreeCategoryId("1001");
-        orderRecordPO.setSpecialTechnologyTag(1);
-        orderRecordPO.setSpecialTechnologyText("印花");
-        orderRecordPO.setFirstOrder(1);
-        orderRecordPO.setUrgent(1);
-        orderRecordPO.setMerchandiser("林大大");
-        orderRecordPO.setGroupName("中东站");
-        orderRecordPO.setGroupId(1);
-        ormTemplate.save(orderRecordPO);
-        log.info("测试保存订单信息={}", JSON.toJSONString(orderRecordPO));
+        ProduceOrderPO produceOrderPO = new ProduceOrderPO();
+        produceOrderPO.setOrderNumber("000001");
+        produceOrderPO.setState(OrderState.WAITING_PRODUCE.getCode());
+        produceOrderPO.setSku("xxx");
+        produceOrderPO.setReferenceSku("xxx");
+        produceOrderPO.setPurchasePrice(new BigDecimal(9.99));
+        produceOrderPO.setMaterialTypeEnum(1);
+        produceOrderPO.setThreeCategoryId("1001");
+        produceOrderPO.setSpecialTechnologyTag(1);
+        produceOrderPO.setSpecialTechnologyText("印花");
+        produceOrderPO.setFirstOrder(1);
+        produceOrderPO.setUrgent(1);
+        produceOrderPO.setMerchandiser("林大大");
+        produceOrderPO.setGroupName("中东站");
+        produceOrderPO.setGroupId(1);
+        ormTemplate.save(produceOrderPO);
+        log.info("测试保存订单信息={}", JSON.toJSONString(produceOrderPO));
     }
 
     @Test
     @Rollback(false)
     @Transactional(rollbackFor = Exception.class)
     public void testUpdate() throws Exception {
-        OrderRecordPO orderRecordPO = new OrderRecordPO();
-        orderRecordPO.setId(1);
-        orderRecordPO.setState(OrderState.WAITING_ALLOCATION.getCode());
-        ormTemplate.save(orderRecordPO);
-        log.info("测试更新订单信息={}", JSON.toJSONString(orderRecordPO));
+        ProduceOrderPO produceOrderPO = new ProduceOrderPO();
+        produceOrderPO.setId(1);
+        produceOrderPO.setState(OrderState.WAITING_ALLOCATION.getCode());
+        ormTemplate.save(produceOrderPO);
+        log.info("测试更新订单信息={}", JSON.toJSONString(produceOrderPO));
 
         Integer id = 1;
         SetValue setValue = new SetValue();
         setValue.add("referenceImage", "www.sldflasflsajkl");
-        ormTemplate.updateByPrimaryKey(OrderRecordPO.class, setValue, id);
+        ormTemplate.updateByPrimaryKey(ProduceOrderPO.class, setValue, id);
         log.info("测试根据id更新订单信息，id={}", id);
     }
 }

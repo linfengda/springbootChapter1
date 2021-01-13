@@ -5,7 +5,7 @@ package com.linfengda.sb.support.orm.entity;
  * @author: linfengda
  * @date: 2020-11-28 21:51
  */
-public interface BaseFieldAware {
+public interface BaseEntityAware {
 
     /**
      * 创建po监听

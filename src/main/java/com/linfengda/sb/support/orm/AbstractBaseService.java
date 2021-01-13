@@ -40,14 +40,14 @@ public abstract class AbstractBaseService {
             PreStatementSql preSql;
             if (idValue.getValue() == null) {
                 //simple save
-                if (po instanceof BaseFieldAware) {
-                    ((BaseFieldAware) po).onCreate();
+                if (po instanceof BaseEntityAware) {
+                    ((BaseEntityAware) po).onCreate();
                 }
                 preSql = PreStatementSqlBuilder.INSTANCE.buildInsertSql(po);
             } else {
                 //simple update
-                if (po instanceof BaseFieldAware) {
-                    ((BaseFieldAware) po).onUpdate();
+                if (po instanceof BaseEntityAware) {
+                    ((BaseEntityAware) po).onUpdate();
                 }
                 preSql = PreStatementSqlBuilder.INSTANCE.buildUpdateSql(idValue, po);
             }
@@ -65,8 +65,8 @@ public abstract class AbstractBaseService {
             return;
         }
         for (Object po : poList) {
-            if (po instanceof BaseFieldAware) {
-                ((BaseFieldAware) po).onCreate();
+            if (po instanceof BaseEntityAware) {
+                ((BaseEntityAware) po).onCreate();
             }
         }
         PreStatementSqlHandler statement = null;

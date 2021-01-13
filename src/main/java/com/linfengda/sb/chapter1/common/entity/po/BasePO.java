@@ -1,6 +1,6 @@
 package com.linfengda.sb.chapter1.common.entity.po;
 
-import com.linfengda.sb.support.orm.entity.BaseFieldAware;
+import com.linfengda.sb.support.orm.entity.BaseEntityAware;
 import com.linfengda.sb.support.orm.utils.UserUtil;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,19 +14,27 @@ import java.sql.Timestamp;
  *
  */
 @Data
-public abstract class BasePO implements BaseFieldAware {
+public abstract class BasePO implements BaseEntityAware {
+	/**
+	 * 创建人id
+	 */
+	private Integer createUser;
 	/**
 	 * 创建人
 	 */
-	private Integer createUser;
+	private String createUserName;
 	/**
 	 * 创建时间
 	 */
 	private Timestamp createTime;
 	/**
-	 * 修改人
+	 * 修改人id
 	 */
 	private Integer updateUser;
+	/**
+	 * 修改人
+	 */
+	private Integer updateUserName;
 	/**
 	 * 修改时间
 	 */
