@@ -1,4 +1,4 @@
-package com.linfengda.sb.chapter1.system.api;
+package com.linfengda.sb.chapter1.system.controller;
 
 import com.github.pagehelper.Page;
 import com.linfengda.sb.chapter1.common.entity.Result;

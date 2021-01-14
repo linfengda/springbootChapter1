@@ -21,7 +21,7 @@ public interface PlmRemote {
      * @param bigBomMaterialQueryDTO
      * @return
      */
-    @PostMapping("/plm/outer/getOrderBigBomMaterials")
+    @PostMapping("/pc/plm/outer/getOrderBigBomMaterials")
     JSONObject getOrderBigBomMaterials(@RequestBody BigBomMaterialQueryDTO bigBomMaterialQueryDTO);
 
     /**
@@ -29,6 +29,6 @@ public interface PlmRemote {
      * @param sku
      * @return
      */
-    @GetMapping("/plm/outer/getMaterialPrice")
+    @GetMapping("/pc/plm/outer/getMaterialPrice")
     JSONObject getMaterialPrice(@RequestParam String sku);
 }

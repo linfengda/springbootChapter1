@@ -1,4 +1,4 @@
-package com.linfengda.sb.chapter1.plm.controller;
+package com.linfengda.sb.chapter1.order.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.linfengda.sb.chapter1.common.entity.Result;
@@ -19,7 +19,7 @@ import javax.validation.constraints.NotBlank;
  */
 @Slf4j
 @RestController()
-@RequestMapping("/plm/outer")
+@RequestMapping("/pc/plm/outer")
 public class PlmOuterController {
 
     @PostMapping("/getOrderBigBomMaterials")

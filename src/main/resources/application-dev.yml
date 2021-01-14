@@ -14,3 +14,4 @@ spring:
     port: 5672
     username: backend
     password: stylewe
+    virtual-host: mrp

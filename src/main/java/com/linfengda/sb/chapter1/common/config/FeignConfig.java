@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
  * @author: linfengda
  * @date: 2020-09-22 14:36
  */
-@Configuration()
+@Configuration
 @EnableFeignClients(basePackages = "com.linfengda.sb.chapter1")
 public class FeignConfig {
 
