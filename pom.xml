@@ -312,17 +312,6 @@
                 <filtering>true</filtering>
                 <!-- 打包资源文件的路径 -->
                 <directory>${basedir}/src/main/resources</directory>
-                <!-- 打包包含哪些文件 -->
-                <includes>
-                    <include>**/mapper/**/*.xml</include>
-                    <include>**/application.yml</include>
-                    <include>**/application-${myActivateFile}.yml</include>
-                    <include>**/banner.txt</include>
-                </includes>
-                <!-- 不包含哪些文件 -->
-                <excludes>
-                    <exclude>**/excludeFile.properties</exclude>
-                </excludes>
             </resource>
         </resources>
 

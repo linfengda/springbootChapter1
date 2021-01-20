@@ -35,4 +35,4 @@ thread:
     queueSize: 30
     keepAlive: 60
 logging:
-  config: logback.xml
+  config: classpath:logback.xml
