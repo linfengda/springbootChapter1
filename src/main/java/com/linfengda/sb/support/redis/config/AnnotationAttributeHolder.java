@@ -1,4 +1,4 @@
-package com.linfengda.sb.support.redis.config.meta;
+package com.linfengda.sb.support.redis.config;
 
 import lombok.Getter;
 import org.springframework.core.annotation.AnnotationAttributes;
@@ -9,7 +9,7 @@ import org.springframework.core.annotation.AnnotationAttributes;
  * @date: 2020-09-15 11:59
  */
 @Getter
-public enum AnnotationMetaHolder {
+public enum AnnotationAttributeHolder {
     /**
      * 单例
      */

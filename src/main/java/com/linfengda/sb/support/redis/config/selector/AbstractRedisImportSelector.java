@@ -1,7 +1,7 @@
 package com.linfengda.sb.support.redis.config.selector;
 
 import com.linfengda.sb.support.redis.config.annotation.EnableRedis;
-import com.linfengda.sb.support.redis.config.meta.AnnotationMetaHolder;
+import com.linfengda.sb.support.redis.config.AnnotationAttributeHolder;
 import org.springframework.context.annotation.ImportSelector;
 import org.springframework.core.annotation.AnnotationAttributes;
 import org.springframework.core.type.AnnotationMetadata;
@@ -24,11 +24,10 @@ public abstract class AbstractRedisImportSelector <A extends Annotation> impleme
         if (this.attributes == null) {
             throw new IllegalArgumentException("@EnableRedis is not present on importing class " + importMetadata.getClassName());
         }
-        AnnotationMetaHolder.INSTANCE.init(this.attributes);
+        AnnotationAttributeHolder.INSTANCE.init(this.attributes);
         boolean enableCacheAnnotation = attributes.getBoolean(ENABLE_CACHE_ANNOTATION_ATTRIBUTE_NAME);
         boolean enableBusinessLockAnnotation = attributes.getBoolean(ENABLE_BUSINESS_LOCK_ANNOTATION_ATTRIBUTE_NAME);
-        String[] imports = selectImports(enableCacheAnnotation, enableBusinessLockAnnotation);
-        return imports;
+        return selectImports(enableCacheAnnotation, enableBusinessLockAnnotation);
     }
 
     /**

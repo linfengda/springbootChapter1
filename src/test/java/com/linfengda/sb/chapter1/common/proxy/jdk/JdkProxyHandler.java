@@ -7,14 +7,14 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 
 /**
- * 描述: 权限校验JDK动态代理
+ * 描述: jdk代理handler
  *
  * @author linfengda
- * @create 2020-03-30 16:32
+ * @create 2019-12-24 15:22
  */
 @Slf4j
 @AllArgsConstructor
-public class AuthCheckDynamicProxy implements InvocationHandler {
+public class JdkProxyHandler implements InvocationHandler {
     /**
      * 代理目标
      */
@@ -22,7 +22,7 @@ public class AuthCheckDynamicProxy implements InvocationHandler {
 
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-        log.info("权限校验方法执行，time={}", System.currentTimeMillis());
+        log.info("日志打印方法执行，time={}", System.currentTimeMillis());
         Object result = method.invoke(target,args);
         return result;
     }

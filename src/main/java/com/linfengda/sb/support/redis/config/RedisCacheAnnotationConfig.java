@@ -2,7 +2,6 @@ package com.linfengda.sb.support.redis.config;
 
 import com.linfengda.sb.support.redis.cache.interceptor.*;
 import com.linfengda.sb.support.redis.config.initailizer.RedisCacheAnnotationInitializer;
-import com.linfengda.sb.support.redis.config.meta.AnnotationMetaHolder;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Role;
@@ -39,7 +38,7 @@ public class RedisCacheAnnotationConfig extends RedisCacheAnnotationInitializer 
     public QueryCacheMethodPointcutAdvisor queryCacheMethodPointcutAdvisor(QueryCacheInterceptor queryCacheInterceptor) {
         QueryCacheMethodPointcutAdvisor queryCacheMethodPointcutAdvisor = new QueryCacheMethodPointcutAdvisor();
         queryCacheMethodPointcutAdvisor.setAdvice(queryCacheInterceptor);
-        AnnotationAttributes attributes = AnnotationMetaHolder.INSTANCE.getAttributes();
+        AnnotationAttributes attributes = AnnotationAttributeHolder.INSTANCE.getAttributes();
         if (attributes != null) {
             queryCacheMethodPointcutAdvisor.setOrder(attributes.<Integer>getNumber("queryOrder"));
         }
@@ -51,7 +50,7 @@ public class RedisCacheAnnotationConfig extends RedisCacheAnnotationInitializer 
     public DeleteCacheMethodPointcutAdvisor deleteCacheMethodPointcutAdvisor(DeleteCacheInterceptor deleteCacheInterceptor) {
         DeleteCacheMethodPointcutAdvisor deleteCacheMethodPointcutAdvisor = new DeleteCacheMethodPointcutAdvisor();
         deleteCacheMethodPointcutAdvisor.setAdvice(deleteCacheInterceptor);
-        AnnotationAttributes attributes = AnnotationMetaHolder.INSTANCE.getAttributes();
+        AnnotationAttributes attributes = AnnotationAttributeHolder.INSTANCE.getAttributes();
         if (attributes != null) {
             deleteCacheMethodPointcutAdvisor.setOrder(attributes.<Integer>getNumber("deleteOrder"));
         }
@@ -63,7 +62,7 @@ public class RedisCacheAnnotationConfig extends RedisCacheAnnotationInitializer 
     public UpdateCacheMethodPointcutAdvisor updateCacheMethodPointcutAdvisor(UpdateCacheInterceptor updateCacheInterceptor) {
         UpdateCacheMethodPointcutAdvisor updateCacheMethodPointcutAdvisor = new UpdateCacheMethodPointcutAdvisor();
         updateCacheMethodPointcutAdvisor.setAdvice(updateCacheInterceptor);
-        AnnotationAttributes attributes = AnnotationMetaHolder.INSTANCE.getAttributes();
+        AnnotationAttributes attributes = AnnotationAttributeHolder.INSTANCE.getAttributes();
         if (attributes != null) {
             updateCacheMethodPointcutAdvisor.setOrder(attributes.<Integer>getNumber("updateOrder"));
         }

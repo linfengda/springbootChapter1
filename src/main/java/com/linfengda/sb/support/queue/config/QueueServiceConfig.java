@@ -1,23 +1,22 @@
-package com.linfengda.sb.chapter1.common.config;
+package com.linfengda.sb.support.queue.config;
 
 import org.springframework.amqp.core.AcknowledgeMode;
 import org.springframework.amqp.rabbit.config.SimpleRabbitListenerContainerFactory;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
+import org.springframework.amqp.rabbit.core.RabbitAdmin;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Primary;
 
 /**
- * @description: RabbitMq生产者配置
+ * @description:
  * @author: linfengda
- * @date: 2020-10-13 00:40
+ * @date: 2021-01-15 11:47
  */
-@SpringBootConfiguration
-public class RabbitMqConfig {
+public class QueueServiceConfig {
     @Value("${spring.rabbitmq.host}")
     private String host;
     @Value("${spring.rabbitmq.port}")
@@ -42,11 +41,19 @@ public class RabbitMqConfig {
         return connectionFactory;
     }
 
+    @Bean(name = "rabbitAdmin")
+    @Primary
+    public RabbitAdmin rabbitAdmin(@Qualifier("connectionFactory") ConnectionFactory connectionFactory) {
+        RabbitAdmin rabbitAdmin = new RabbitAdmin(connectionFactory);
+        rabbitAdmin.setAutoStartup(true);
+        return rabbitAdmin;
+    }
+
     @Bean(name = "simpleRabbitListenerContainerFactory")
     @Primary
-    public SimpleRabbitListenerContainerFactory simpleRabbitListenerContainerFactory(@Qualifier("connectionFactory") ConnectionFactory cachingConnectionFactory) {
+    public SimpleRabbitListenerContainerFactory simpleRabbitListenerContainerFactory(@Qualifier("connectionFactory") ConnectionFactory connectionFactory) {
         SimpleRabbitListenerContainerFactory factory = new SimpleRabbitListenerContainerFactory();
-        factory.setConnectionFactory(cachingConnectionFactory);
+        factory.setConnectionFactory(connectionFactory);
         factory.setMessageConverter(new Jackson2JsonMessageConverter());
         factory.setConcurrentConsumers(1);
         factory.setMaxConcurrentConsumers(1);
@@ -54,5 +61,10 @@ public class RabbitMqConfig {
         factory.setAcknowledgeMode(AcknowledgeMode.MANUAL);
         factory.setAutoStartup(true);
         return factory;
+    }
+
+    @Bean
+    public QueueServiceBeanRegister queueServiceBeanRegister() {
+        return new QueueServiceBeanRegister();
     }
 }

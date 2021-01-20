@@ -10,14 +10,14 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 /**
- * 描述: JDK动态代理测试
+ * 描述: JDK代理测试
  *
  * @author linfengda
  * @create 2019-12-24 15:28
  */
 @Slf4j
 @RunWith(JUnit4.class)
-public class JDKProxyTest {
+public class JdkProxyTest {
 
     /**
      * JDK动态代理使我们可以在运行期动态的创建代理类。动态代理是在运行期间通过接口生成代理类的，与静态代理相比更加灵活，但是也有一定的限制，
@@ -30,16 +30,9 @@ public class JDKProxyTest {
      * 然后执行java.lang.reflect.Proxy#defineClass0返回对应class实例，至此生成proxy class流程就完成了。
      */
     @Test
-    public void testJDKProxy1() {
-        Subject subject = (Subject) ProxyHandlerProvider.newLogDynamicProxy(new RealSubject());
-        subject.doSomething();
-        printProxyClass("C:\\Users\\SI-GZ-1134\\Desktop\\TestProxy.class");
-    }
-
-    @Test
-    public void testJDKProxy2() {
-        Subject subject = (Subject) ProxyHandlerProvider.newAuthCheckDynamicProxy(new RealSubject());
-        subject.doSomething();
+    public void testProxy() {
+        ProxyTarget proxyTarget = (ProxyTarget) JdkProxyHandlerProvider.newProxy(new RealProxyTarget());
+        proxyTarget.doSomething();
         printProxyClass("C:\\Users\\SI-GZ-1134\\Desktop\\TestProxy.class");
     }
 
@@ -48,7 +41,7 @@ public class JDKProxyTest {
      * @param path
      */
     private void printProxyClass(String path) {
-        byte[] classFile = ProxyGenerator.generateProxyClass("$Proxy0", RealSubject.class.getInterfaces());
+        byte[] classFile = ProxyGenerator.generateProxyClass("$Proxy0", RealProxyTarget.class.getInterfaces());
         FileOutputStream out = null;
         try {
             out = new FileOutputStream(path);

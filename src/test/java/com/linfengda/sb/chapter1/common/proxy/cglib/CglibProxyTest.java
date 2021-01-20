@@ -22,9 +22,9 @@ public class CglibProxyTest {
     @Test
     public void test1() {
         Enhancer enhancer = new Enhancer();
-        enhancer.setSuperclass(CglibSample.class);
+        enhancer.setSuperclass(CglibProxyTarget.class);
         enhancer.setCallback(NoOp.INSTANCE);
-        CglibSample proxy = (CglibSample)enhancer.create();
+        CglibProxyTarget proxy = (CglibProxyTarget)enhancer.create();
         assertThat(proxy.test(null), CoreMatchers.equalTo("hello world"));
     }
 
@@ -34,14 +34,14 @@ public class CglibProxyTest {
     @Test
     public void test2() {
         Enhancer enhancer = new Enhancer();
-        enhancer.setSuperclass(CglibSample.class);
+        enhancer.setSuperclass(CglibProxyTarget.class);
         enhancer.setCallback(new FixedValue() {
             @Override
             public Object loadObject() throws Exception {
                 return "hello cglib!";
             }
         });
-        CglibSample proxy = (CglibSample)enhancer.create();
+        CglibProxyTarget proxy = (CglibProxyTarget)enhancer.create();
         assertThat(proxy.test(null), CoreMatchers.equalTo("hello cglib!"));
     }
 
@@ -51,7 +51,7 @@ public class CglibProxyTest {
     @Test
     public void test3() {
         Enhancer enhancer = new Enhancer();
-        enhancer.setSuperclass(CglibSample.class);
+        enhancer.setSuperclass(CglibProxyTarget.class);
         enhancer.setCallback(new MethodInterceptor() {
             @Override
             public Object intercept(Object obj, Method method, Object[] args, MethodProxy proxy) throws Throwable {
@@ -61,7 +61,7 @@ public class CglibProxyTest {
                 return result;
             }
         });
-        CglibSample proxy = (CglibSample)enhancer.create();
+        CglibProxyTarget proxy = (CglibProxyTarget)enhancer.create();
         assertThat(proxy.test(null), CoreMatchers.equalTo("hello world"));
     }
 }

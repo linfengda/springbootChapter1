@@ -6,23 +6,23 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * @description: 队列消费注解
+ * @description: 监听队列注解
  * @author: linfengda
  * @date: 2021-01-14 22:52
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface QueueConsume {
-    /**
-     * 队列名称
-     * @return
-     */
-    String name() default "";
+public @interface Queue {
     /**
      * queue
      * @return
      */
     String queue() default "";
+    /**
+     * 描述
+     * @return
+     */
+    String desc() default "";
     /**
      * virtualHost
      * @return

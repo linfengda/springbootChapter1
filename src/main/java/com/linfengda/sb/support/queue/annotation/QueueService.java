@@ -8,7 +8,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * @description: 外部系统注解
+ * @description: 监听服务注解
  * @author: linfengda
  * @date: 2020-11-16 11:52
  */
@@ -16,7 +16,7 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface QueueService {
     /**
-     * 外部系统名称
+     * 监听服务名称
      * @return
      */
     String name() default "";

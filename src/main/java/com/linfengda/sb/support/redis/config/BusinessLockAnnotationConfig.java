@@ -1,7 +1,6 @@
 package com.linfengda.sb.support.redis.config;
 
 import com.linfengda.sb.support.redis.config.initailizer.BusinessLockAnnotationInitializer;
-import com.linfengda.sb.support.redis.config.meta.AnnotationMetaHolder;
 import com.linfengda.sb.support.redis.lock.interceptor.BusinessLockInterceptor;
 import com.linfengda.sb.support.redis.lock.interceptor.BusinessLockMethodPointcutAdvisor;
 import org.springframework.beans.factory.config.BeanDefinition;
@@ -27,7 +26,7 @@ public class BusinessLockAnnotationConfig extends BusinessLockAnnotationInitiali
     public BusinessLockMethodPointcutAdvisor businessLockMethodPointcutAdvisor(BusinessLockInterceptor businessLockInterceptor) {
         BusinessLockMethodPointcutAdvisor businessLockMethodPointcutAdvisor = new BusinessLockMethodPointcutAdvisor();
         businessLockMethodPointcutAdvisor.setAdvice(businessLockInterceptor);
-        AnnotationAttributes attributes = AnnotationMetaHolder.INSTANCE.getAttributes();
+        AnnotationAttributes attributes = AnnotationAttributeHolder.INSTANCE.getAttributes();
         if (attributes != null) {
             businessLockMethodPointcutAdvisor.setOrder(attributes.<Integer>getNumber("lockOrder"));
         }

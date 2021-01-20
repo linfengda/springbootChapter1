@@ -6,7 +6,7 @@ package com.linfengda.sb.chapter1.common.proxy.jdk;
  * @author linfengda
  * @create 2019-12-24 15:21
  */
-public class RealSubject implements Subject {
+public class RealProxyTarget implements ProxyTarget {
     @Override
     public void doSomething() {
         System.out.println("call doSomething()");

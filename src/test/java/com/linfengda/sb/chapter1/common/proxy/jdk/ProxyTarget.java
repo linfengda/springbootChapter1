@@ -6,6 +6,6 @@ package com.linfengda.sb.chapter1.common.proxy.jdk;
  * @author linfengda
  * @create 2019-12-24 15:20
  */
-public interface Subject {
+public interface ProxyTarget {
     public void doSomething();
 }

@@ -18,8 +18,8 @@ import java.io.IOException;
 @Component
 public class ProduceOrderListener {
 
-    @RabbitListener(containerFactory = "simpleRabbitListenerContainerFactory", queues = "mrp.hunter.plate.material.purchase.local")
-    @RabbitHandler
+    //@RabbitListener(containerFactory = "simpleRabbitListenerContainerFactory", queues = "mrp.hunter.plate.material.purchase.local")
+    //@RabbitHandler
     public void onMessage(Channel channel, Message message) throws IOException {
         try {
             byte[] body = message.getBody();

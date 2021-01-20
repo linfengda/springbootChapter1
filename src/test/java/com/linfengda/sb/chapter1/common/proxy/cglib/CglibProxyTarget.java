@@ -6,7 +6,7 @@ package com.linfengda.sb.chapter1.common.proxy.cglib;
  * @author linfengda
  * @create 2020-03-27 13:40
  */
-public class CglibSample {
+public class CglibProxyTarget {
 
     public String test(String input) {
         System.out.println("hello world");
