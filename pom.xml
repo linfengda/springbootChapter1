@@ -29,7 +29,7 @@
     <!-- dependencies标签：声明依赖的jar包 -->
     <dependencies>
 
-        <!-- DAO相关 -->
+        <!-- jdbc相关 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-jdbc</artifactId>
