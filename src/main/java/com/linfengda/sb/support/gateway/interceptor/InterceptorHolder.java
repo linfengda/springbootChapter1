@@ -1,6 +1,6 @@
 package com.linfengda.sb.support.gateway.interceptor;
 
-import com.linfengda.sb.chapter1.common.util.SpringUtil;
+import com.linfengda.sb.support.util.SpringUtil;
 import com.linfengda.sb.support.gateway.interceptor.impl.ApiCallInterceptor;
 import com.linfengda.sb.support.gateway.interceptor.impl.AuthInterceptor;
 import lombok.Getter;

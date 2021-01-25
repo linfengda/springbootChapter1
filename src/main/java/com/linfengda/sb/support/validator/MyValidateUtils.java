@@ -1,8 +1,8 @@
 package com.linfengda.sb.support.validator;
 
 import com.linfengda.sb.support.exception.BusinessException;
-import org.apache.commons.collections4.CollectionUtils;
 import org.hibernate.validator.HibernateValidator;
+import org.springframework.util.CollectionUtils;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
@@ -43,7 +43,7 @@ public class MyValidateUtils {
             throw new BusinessException("参数异常");
         }
         Set<ConstraintViolation<T>> result = validator.validate(t);
-        if(CollectionUtils.isNotEmpty(result)){
+        if(!CollectionUtils.isEmpty(result)){
             ConstraintViolation<T> firstViolation = result.stream().findFirst().get();
             String firstErrorMsg = firstViolation.getMessage();
             throw new BusinessException(firstErrorMsg);
@@ -60,7 +60,7 @@ public class MyValidateUtils {
             throw new BusinessException("参数异常");
         }
         Set<ConstraintViolation<T>> result = validator.validate(t,groupClazz);
-        if(CollectionUtils.isNotEmpty(result)){
+        if(!CollectionUtils.isEmpty(result)){
             ConstraintViolation<T> firstViolation = result.stream().findFirst().get();
             String firstErrorMsg = firstViolation.getMessage();
             throw new BusinessException(firstErrorMsg);
@@ -78,7 +78,7 @@ public class MyValidateUtils {
     public static <T> void validateParameters(T object, Method method, Object[] parameterValues, Class<?>... groups) {
         ExecutableValidator execVal = validator.forExecutables();
         Set<ConstraintViolation<T>> result = execVal.validateParameters(object, method, parameterValues, groups);
-        if(CollectionUtils.isNotEmpty(result)){
+        if(!CollectionUtils.isEmpty(result)){
             ConstraintViolation<T> firstViolation = result.stream().findFirst().get();
             String firstErrorMsg = firstViolation.getMessage();
             throw new BusinessException(firstErrorMsg);

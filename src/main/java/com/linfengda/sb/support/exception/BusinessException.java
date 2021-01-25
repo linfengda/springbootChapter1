@@ -30,7 +30,7 @@ public class BusinessException extends RuntimeException {
         this.detailMsg = detailMsg;
     }
 
-    private int code = ErrorCode.COMMON_DAO_ERROR_CODE;
+    private int code = 1000;
 
     private String msg;
 

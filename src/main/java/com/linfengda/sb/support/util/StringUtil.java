@@ -1,7 +1,7 @@
 package com.linfengda.sb.support.util;
 
-import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.util.CollectionUtils;
 
 import java.math.BigDecimal;
 import java.util.*;
