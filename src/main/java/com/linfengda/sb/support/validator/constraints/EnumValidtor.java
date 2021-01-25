@@ -2,9 +2,9 @@ package com.linfengda.sb.support.validator.constraints;
 
 
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.BeansException;
+import org.springframework.util.StringUtils;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
@@ -70,7 +70,7 @@ public class EnumValidtor implements ConstraintValidator<EnumValid, Object> {
     }
     
     private Method getReadMethod() throws BeansException {
-        if (StringUtils.isBlank(validateFieldName)) {
+        if (StringUtils.isEmpty(validateFieldName)) {
             return null;
         }
         PropertyDescriptor propertyDescriptor = BeanUtils.getPropertyDescriptor(cls, validateFieldName);

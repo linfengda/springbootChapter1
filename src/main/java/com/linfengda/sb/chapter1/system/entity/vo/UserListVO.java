@@ -1,7 +1,7 @@
 package com.linfengda.sb.chapter1.system.entity.vo;
 
 import com.alibaba.fastjson.annotation.JSONField;
-import com.linfengda.sb.support.serializable.serializer.fastjson.date.DateFormatSerializer;
+import com.linfengda.sb.support.serializable.jackson.date.TimeFormatMdSerializer;
 import lombok.Data;
 
 import java.sql.Timestamp;
@@ -33,6 +33,6 @@ public class UserListVO {
     /**
      * 创建时间
      */
-    @JSONField(serializeUsing = DateFormatSerializer.class)
+    @JSONField(serializeUsing = TimeFormatMdSerializer.class)
     private Timestamp createTime;
 }

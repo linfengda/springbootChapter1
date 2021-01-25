@@ -1,4 +1,4 @@
-package com.linfengda.sb.chapter1.common.util;
+package com.linfengda.sb.support.util;
 
 import java.lang.management.ManagementFactory;
 import java.lang.management.RuntimeMXBean;

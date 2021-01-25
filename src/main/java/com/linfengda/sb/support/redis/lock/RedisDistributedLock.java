@@ -1,6 +1,6 @@
 package com.linfengda.sb.support.redis.lock;
 
-import com.linfengda.sb.chapter1.common.util.ServerRunTimeUtil;
+import com.linfengda.sb.support.util.ServerRunTimeUtil;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.RedisTemplate;

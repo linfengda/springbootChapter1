@@ -1,6 +1,6 @@
 package com.linfengda.sb.support.redis.cache.resolver;
 
-import com.linfengda.sb.chapter1.common.exception.BusinessException;
+import com.linfengda.sb.support.exception.BusinessException;
 import com.linfengda.sb.support.redis.GenericRedisTemplate;
 import com.linfengda.sb.support.redis.cache.entity.type.DataType;
 import com.linfengda.sb.support.redis.cache.resolver.impl.HashCacheDataTypeResolver;

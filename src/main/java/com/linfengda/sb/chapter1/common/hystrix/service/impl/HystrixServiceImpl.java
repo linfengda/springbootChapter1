@@ -1,6 +1,6 @@
 package com.linfengda.sb.chapter1.common.hystrix.service.impl;
 
-import com.linfengda.sb.chapter1.common.exception.BusinessException;
+import com.linfengda.sb.support.exception.BusinessException;
 import com.linfengda.sb.chapter1.common.hystrix.service.HystrixService;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;

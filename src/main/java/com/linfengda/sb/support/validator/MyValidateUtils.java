@@ -1,6 +1,6 @@
 package com.linfengda.sb.support.validator;
 
-import com.linfengda.sb.chapter1.common.exception.BusinessException;
+import com.linfengda.sb.support.exception.BusinessException;
 import org.apache.commons.collections4.CollectionUtils;
 import org.hibernate.validator.HibernateValidator;
 

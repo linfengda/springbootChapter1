@@ -1,9 +1,8 @@
-package com.linfengda.sb.support.serializable.serializer.jackson.date;
+package com.linfengda.sb.support.serializable.jackson.date;
 
 import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
-import com.linfengda.sb.chapter1.common.util.TimeUtil;
+import com.linfengda.sb.support.util.TimeUtil;
 
 import java.io.IOException;
 
@@ -12,15 +11,14 @@ import java.io.IOException;
  * @author: linfengda
  * @date: 2020-08-22 18:51
  */
-public class SecondFormatMdSerializer extends JsonSerializer<Integer> {
+public class TimeFormatMdSerializer extends TimeFormatSerializer {
     private static final String NOW_YEAR_PATTERN = "yyyy";
-    public static final SecondFormatMdSerializer INSTANCE = new SecondFormatMdSerializer();
 
 
     @Override
-    public void serialize(Integer time, JsonGenerator jsonGenerator, SerializerProvider serializerProvider) throws IOException {
-        Long ms = TimeUtil.second2Ms(time);
-        if (null == ms || 0 == ms.intValue()) {
+    public void serialize(Object time, JsonGenerator jsonGenerator, SerializerProvider serializerProvider) throws IOException {
+        Long ms = convert(time);
+        if (null == ms || 0 == ms) {
             jsonGenerator.writeString("");
             return;
         }

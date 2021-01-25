@@ -1,4 +1,4 @@
-package com.linfengda.sb.chapter1.common.exception;
+package com.linfengda.sb.support.exception;
 
 import com.linfengda.sb.chapter1.common.exception.entity.ErrorCode;
 import lombok.Getter;

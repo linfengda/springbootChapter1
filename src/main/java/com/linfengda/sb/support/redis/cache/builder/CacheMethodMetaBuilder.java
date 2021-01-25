@@ -1,6 +1,6 @@
 package com.linfengda.sb.support.redis.cache.builder;
 
-import com.linfengda.sb.chapter1.common.exception.BusinessException;
+import com.linfengda.sb.support.exception.BusinessException;
 import com.linfengda.sb.support.redis.Constant;
 import com.linfengda.sb.support.redis.cache.annotation.*;
 import com.linfengda.sb.support.redis.cache.entity.meta.CacheKeyMeta;
@@ -8,8 +8,8 @@ import com.linfengda.sb.support.redis.cache.entity.meta.CacheMethodMeta;
 import com.linfengda.sb.support.redis.cache.entity.type.CacheAnnotationType;
 import com.linfengda.sb.support.redis.cache.entity.type.CacheMaxSizeStrategy;
 import com.linfengda.sb.support.redis.cache.entity.type.DataType;
-import org.apache.commons.lang.StringUtils;
 import org.springframework.util.CollectionUtils;
+import org.springframework.util.StringUtils;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
@@ -109,7 +109,7 @@ public class CacheMethodMetaBuilder {
                     deleteMeta.setMethodCacheKeys(cacheMethodMeta.getMethodCacheKeys());
                     deleteMeta.setCacheAnnotationType(cacheMethodMeta.getCacheAnnotationType());
                     deleteMeta.setDataType(cache.type());
-                    deleteMeta.setPrefix(StringUtils.isBlank(cache.prefix()) ? method.getName() : cache.prefix());
+                    deleteMeta.setPrefix(StringUtils.isEmpty(cache.prefix()) ? method.getName() : cache.prefix());
                     deleteMeta.setAllEntries(cache.allEntries());
                     deleteMetas.add(deleteMeta);
                 }

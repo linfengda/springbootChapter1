@@ -1,7 +1,7 @@
 package com.linfengda.sb.support.gateway.router.impl;
 
 import com.alibaba.fastjson.JSON;
-import com.linfengda.sb.chapter1.common.exception.BusinessException;
+import com.linfengda.sb.support.exception.BusinessException;
 import com.linfengda.sb.support.gateway.annotation.Permission;
 import com.linfengda.sb.support.gateway.enums.ModuleType;
 import com.linfengda.sb.support.gateway.router.AbstractRequestHandler;

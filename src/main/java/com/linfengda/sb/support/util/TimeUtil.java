@@ -1,4 +1,4 @@
-package com.linfengda.sb.chapter1.common.util;
+package com.linfengda.sb.support.util;
 
 import org.apache.commons.lang3.StringUtils;
 

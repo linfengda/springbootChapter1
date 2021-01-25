@@ -1,6 +1,6 @@
 package com.linfengda.sb.support.redis.lock.builder;
 
-import com.linfengda.sb.chapter1.common.exception.BusinessException;
+import com.linfengda.sb.support.exception.BusinessException;
 import com.linfengda.sb.support.redis.lock.annotation.BusinessLock;
 import com.linfengda.sb.support.redis.lock.annotation.BusinessLockKey;
 import com.linfengda.sb.support.redis.lock.meta.LockKeyMeta;

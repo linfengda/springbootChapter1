@@ -1,6 +1,6 @@
 package com.linfengda.sb.support.gateway.router;
 
-import com.linfengda.sb.chapter1.common.exception.BusinessException;
+import com.linfengda.sb.support.exception.BusinessException;
 import com.linfengda.sb.support.gateway.router.impl.PcRequestHandler;
 import com.linfengda.sb.support.gateway.session.RequestInfoBO;
 import lombok.AllArgsConstructor;

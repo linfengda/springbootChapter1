@@ -1,6 +1,6 @@
 package com.linfengda.sb.chapter1.system.cache.impl;
 
-import com.linfengda.sb.chapter1.common.exception.BusinessException;
+import com.linfengda.sb.support.exception.BusinessException;
 import com.linfengda.sb.chapter1.system.cache.SystemCachePrefix;
 import com.linfengda.sb.chapter1.system.cache.dto.UserInfo;
 import com.linfengda.sb.support.redis.GenericRedisTemplate;

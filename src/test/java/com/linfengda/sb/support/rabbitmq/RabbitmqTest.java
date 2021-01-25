@@ -1,6 +1,6 @@
 package com.linfengda.sb.support.rabbitmq;
 
-import com.linfengda.sb.chapter1.common.exception.BusinessException;
+import com.linfengda.sb.support.exception.BusinessException;
 import com.linfengda.sb.chapter1.common.thread.ThreadPoolHelper;
 import com.linfengda.sb.support.rabbitmq.service.MqConsumerService;
 import com.linfengda.sb.support.rabbitmq.service.MqProducerService;

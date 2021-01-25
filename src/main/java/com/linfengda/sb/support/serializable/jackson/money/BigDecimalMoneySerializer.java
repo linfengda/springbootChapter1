@@ -1,4 +1,4 @@
-package com.linfengda.sb.support.serializable.serializer.jackson.money;
+package com.linfengda.sb.support.serializable.jackson.money;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;
@@ -16,7 +16,6 @@ import java.text.DecimalFormat;
  */
 public class BigDecimalMoneySerializer extends JsonSerializer<BigDecimal> {
     public static final BigDecimalMoneySerializer INSTANCE = new BigDecimalMoneySerializer();
-    private static final DecimalFormat DF = new DecimalFormat("###.00");
 
     @Override
     public void serialize(BigDecimal money, JsonGenerator jsonGenerator, SerializerProvider serializerProvider) throws IOException {
