@@ -1,4 +1,4 @@
-package com.linfengda.sb.support.gateway.util;
+package com.linfengda.sb.support.util;
 
 import org.springframework.util.StringUtils;
 

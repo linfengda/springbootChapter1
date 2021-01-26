@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.linfengda.sb.support.exception.BusinessException;
 import com.linfengda.sb.support.apivalidator.type.BaseType;
 import com.linfengda.sb.support.apivalidator.type.NotValidateParameterType;
-import com.linfengda.sb.support.apivalidator.util.HttpServletUtil;
+import com.linfengda.sb.support.util.HttpServletUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.MethodParameter;
 import org.springframework.web.bind.support.WebDataBinderFactory;
