@@ -14,9 +14,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * @description: 权限拦截
- * @author: linfengda
- * @date: 2020-09-21 15:21
+ * @description 权限拦截
+ * @author linfengda
+ * @date 2020-09-21 15:21
  */
 @Slf4j
 @Component

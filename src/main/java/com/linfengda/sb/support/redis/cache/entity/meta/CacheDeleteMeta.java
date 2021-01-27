@@ -5,9 +5,9 @@ import lombok.Data;
 import java.util.List;
 
 /**
- * @description:
- * @author: linfengda
- * @date: 2020-07-22 18:39
+ * @description
+ * @author linfengda
+ * @date 2020-07-22 18:39
  */
 @Data
 public class CacheDeleteMeta extends CacheMeta {

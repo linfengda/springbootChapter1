@@ -4,9 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /**
- * @description: 模块类型
- * @author: linfengda
- * @date: 2020-09-23 11:40
+ * @description 模块类型
+ * @author linfengda
+ * @date 2020-09-23 11:40
  */
 @Getter
 @AllArgsConstructor

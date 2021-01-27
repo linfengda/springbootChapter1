@@ -7,8 +7,8 @@ import lombok.Setter;
 /**
  * 描述:
  *
- * @author: linfengda
- * @date: 2020-07-26 10:32
+ * @author linfengda
+ * @date 2020-07-26 10:32
  */
 public abstract class AbstractCacheHandler implements CacheHandler {
     @Setter

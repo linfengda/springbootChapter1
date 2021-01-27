@@ -11,9 +11,9 @@ import java.net.URLDecoder;
 import java.util.Optional;
 
 /**
- * @description: 用户session初始化器
- * @author: linfengda
- * @date: 2020-12-15 22:33
+ * @description 用户session初始化器
+ * @author linfengda
+ * @date 2020-12-15 22:33
  */
 @Slf4j
 @Component

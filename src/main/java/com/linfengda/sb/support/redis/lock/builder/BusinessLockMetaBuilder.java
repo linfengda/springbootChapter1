@@ -15,9 +15,9 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
 /**
- * @description:
- * @author: linfengda
- * @date: 2020-12-22 14:47
+ * @description
+ * @author linfengda
+ * @date 2020-12-22 14:47
  */
 public class BusinessLockMetaBuilder {
     /**

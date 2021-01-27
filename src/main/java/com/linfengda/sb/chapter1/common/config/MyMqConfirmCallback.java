@@ -8,9 +8,9 @@ import java.io.IOException;
 import java.util.Optional;
 
 /**
- * @description: mq消息成功发送到broker回调
- * @author: linfengda
- * @date: 2020-10-13 00:53
+ * @description mq消息成功发送到broker回调
+ * @author linfengda
+ * @date 2020-10-13 00:53
  */
 @Slf4j
 public class MyMqConfirmCallback implements RabbitTemplate.ConfirmCallback {

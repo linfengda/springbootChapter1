@@ -4,9 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /**
- * @description: 白名单接口类型
- * @author: linfengda
- * @date: 2020-09-23 15:42
+ * @description 白名单接口类型
+ * @author linfengda
+ * @date 2020-09-23 15:42
  */
 @Getter
 @AllArgsConstructor

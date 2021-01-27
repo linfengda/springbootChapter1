@@ -4,9 +4,9 @@ import org.springframework.beans.factory.FactoryBean;
 import org.springframework.cglib.proxy.Enhancer;
 
 /**
- * @description: 代理类型
- * @author: linfengda
- * @date: 2021-01-15 11:52
+ * @description 代理类型
+ * @author linfengda
+ * @date 2021-01-15 11:52
  */
 public class QueueServiceProxyFactoryBean<T> implements FactoryBean<T> {
 

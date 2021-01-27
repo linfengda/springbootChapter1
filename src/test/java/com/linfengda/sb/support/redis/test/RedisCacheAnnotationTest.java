@@ -21,9 +21,9 @@ import java.util.Set;
 import java.util.concurrent.CountDownLatch;
 
 /**
- * @description: redis缓存注解测试
- * @author: linfengda
- * @date: 2020-09-17 15:54
+ * @description redis缓存注解测试
+ * @author linfengda
+ * @date 2020-09-17 15:54
  */
 @Slf4j
 @RunWith(SpringRunner.class)

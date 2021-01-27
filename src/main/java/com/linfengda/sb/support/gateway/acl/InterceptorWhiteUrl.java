@@ -3,9 +3,9 @@ package com.linfengda.sb.support.gateway.acl;
 import lombok.AllArgsConstructor;
 
 /**
- * @description: 系统白名单
- * @author: linfengda
- * @date: 2020-12-16 17:08
+ * @description 系统白名单
+ * @author linfengda
+ * @date 2020-12-16 17:08
  */
 @AllArgsConstructor
 public enum InterceptorWhiteUrl {

@@ -5,9 +5,9 @@ import lombok.Data;
 import java.util.List;
 
 /**
- * @description: 业务锁方法注解元数据
- * @author: linfengda
- * @date: 2020-12-22 22:07
+ * @description 业务锁方法注解元数据
+ * @author linfengda
+ * @date 2020-12-22 22:07
  */
 @Data
 public class LockMethodMeta {

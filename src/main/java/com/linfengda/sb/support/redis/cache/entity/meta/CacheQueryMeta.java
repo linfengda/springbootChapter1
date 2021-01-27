@@ -4,9 +4,9 @@ import com.linfengda.sb.support.redis.cache.entity.type.CacheMaxSizeStrategy;
 import lombok.Data;
 
 /**
- * @description:
- * @author: linfengda
- * @date: 2020-07-22 18:40
+ * @description
+ * @author linfengda
+ * @date 2020-07-22 18:40
  */
 @Data
 public class CacheQueryMeta extends CacheUpdateMeta {

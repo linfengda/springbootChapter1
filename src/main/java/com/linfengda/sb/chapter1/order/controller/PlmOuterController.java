@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.constraints.NotBlank;
 
 /**
- * @description: 模拟plm系统对外api
- * @author: linfengda
- * @date: 2020-09-28 00:08
+ * @description 模拟plm系统对外api
+ * @author linfengda
+ * @date 2020-09-28 00:08
  */
 @Slf4j
 @RestController()

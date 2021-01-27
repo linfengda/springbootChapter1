@@ -9,9 +9,9 @@ import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 /**
- * @description: 生产订单po
- * @author: linfengda
- * @date: 2020-10-14 23:21
+ * @description 生产订单po
+ * @author linfengda
+ * @date 2020-10-14 23:21
  */
 @Table(name = "produce_order")
 @Data

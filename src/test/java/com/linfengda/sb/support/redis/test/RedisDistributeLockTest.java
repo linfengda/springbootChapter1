@@ -11,8 +11,8 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 /**
  * 描述: redis分布式锁测试
  *
- * @author: linfengda
- * @date: 2020-07-20 10:04
+ * @author linfengda
+ * @date 2020-07-20 10:04
  */
 @Slf4j
 @RunWith(JUnit4.class)

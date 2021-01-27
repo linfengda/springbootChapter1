@@ -13,9 +13,9 @@ import org.springframework.core.type.filter.AnnotationTypeFilter;
 import java.util.Set;
 
 /**
- * @description: 扫描并注册bean到spring容器
- * @author: linfengda
- * @date: 2021-01-15 11:07
+ * @description 扫描并注册bean到spring容器
+ * @author linfengda
+ * @date 2021-01-15 11:07
  */
 public class QueueServiceScanner extends ClassPathBeanDefinitionScanner {
 

@@ -7,9 +7,9 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
 /**
- * @description: 初始化业务锁注解服务的依赖
- * @author: linfengda
- * @date: 2020-12-29 23:12
+ * @description 初始化业务锁注解服务的依赖
+ * @author linfengda
+ * @date 2020-12-29 23:12
  */
 public class BusinessLockAnnotationInitializer implements ApplicationContextAware {
 

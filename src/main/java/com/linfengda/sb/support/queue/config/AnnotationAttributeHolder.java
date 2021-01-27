@@ -4,9 +4,9 @@ import lombok.Getter;
 import org.springframework.core.annotation.AnnotationAttributes;
 
 /**
- * @description: 注解缓存元数据
- * @author: linfengda
- * @date: 2020-09-15 11:59
+ * @description 注解缓存元数据
+ * @author linfengda
+ * @date 2020-09-15 11:59
  */
 @Getter
 public enum AnnotationAttributeHolder {

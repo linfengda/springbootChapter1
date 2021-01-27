@@ -7,8 +7,8 @@ import com.linfengda.sb.support.redis.cache.entity.type.DataType;
 /**
  * 描述: 不同数据类型缓存处理
  *
- * @author: linfengda
- * @date: 2020-08-01 16:15
+ * @author linfengda
+ * @date 2020-08-01 16:15
  */
 public interface CacheDataTypeResolver {
 

@@ -14,9 +14,9 @@ import java.lang.reflect.Method;
 
 /**
  * @program: hunterplan
- * @description: 枚举类校验逻辑
- * @author: linfengda
- * @date: 2020-07-28 11:01
+ * @description 枚举类校验逻辑
+ * @author linfengda
+ * @date 2020-07-28 11:01
  */
 @SuppressWarnings("all")
 @Slf4j

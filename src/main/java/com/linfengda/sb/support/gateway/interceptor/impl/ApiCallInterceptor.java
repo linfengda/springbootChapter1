@@ -17,9 +17,9 @@ import java.util.UUID;
 
 
 /**
- * @description: 请求拦截
- * @author: linfengda
- * @date: 2020-12-16 16:43
+ * @description 请求拦截
+ * @author linfengda
+ * @date 2020-12-16 16:43
  */
 @Slf4j
 @Component

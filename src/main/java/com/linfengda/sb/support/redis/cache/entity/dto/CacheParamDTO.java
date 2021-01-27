@@ -11,8 +11,8 @@ import java.util.concurrent.TimeUnit;
 /**
  * 描述: 缓存查询参数DTO
  *
- * @author: linfengda
- * @date: 2020-07-26 14:34
+ * @author linfengda
+ * @date 2020-07-26 14:34
  */
 @Data
 public class CacheParamDTO extends CacheQueryMeta {

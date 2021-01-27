@@ -5,8 +5,8 @@ import org.springframework.aop.support.AbstractBeanFactoryPointcutAdvisor;
 
 /**
  * 描述: 拦截{@link com.linfengda.sb.support.redis.cache.annotation.DeleteCache}注解的增强器
- * @author: linfengda
- * @date: 2020-06-27 11:26
+ * @author linfengda
+ * @date 2020-06-27 11:26
  */
 public class DeleteCacheMethodPointcutAdvisor extends AbstractBeanFactoryPointcutAdvisor {
     /**

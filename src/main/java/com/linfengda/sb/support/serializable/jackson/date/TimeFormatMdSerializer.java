@@ -7,9 +7,9 @@ import com.linfengda.sb.support.util.TimeUtil;
 import java.io.IOException;
 
 /**
- * @description: 日期输出序列化类
- * @author: linfengda
- * @date: 2020-08-22 18:51
+ * @description 日期输出序列化类
+ * @author linfengda
+ * @date 2020-08-22 18:51
  */
 public class TimeFormatMdSerializer extends TimeFormatSerializer {
     private static final String NOW_YEAR_PATTERN = "yyyy";

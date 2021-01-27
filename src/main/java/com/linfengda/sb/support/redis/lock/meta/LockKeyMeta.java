@@ -5,9 +5,9 @@ import lombok.Data;
 import java.lang.reflect.Field;
 
 /**
- * @description: 业务锁key注解元数据
- * @author: linfengda
- * @date: 2020-12-22 14:12
+ * @description 业务锁key注解元数据
+ * @author linfengda
+ * @date 2020-12-22 14:12
  */
 @Data
 public class LockKeyMeta {

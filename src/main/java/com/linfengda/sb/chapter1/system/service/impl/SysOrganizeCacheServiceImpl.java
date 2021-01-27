@@ -25,9 +25,9 @@ import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @description: 系统组织缓存服务
- * @author: linfengda
- * @date: 2020-07-27 23:32
+ * @description 系统组织缓存服务
+ * @author linfengda
+ * @date 2020-07-27 23:32
  */
 @Service
 @Slf4j

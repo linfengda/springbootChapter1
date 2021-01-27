@@ -4,9 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /**
- * @description: 订单状态
- * @author: linfengda
- * @date: 2020-08-10 15:37
+ * @description 订单状态
+ * @author linfengda
+ * @date 2020-08-10 15:37
  */
 @Getter
 @AllArgsConstructor

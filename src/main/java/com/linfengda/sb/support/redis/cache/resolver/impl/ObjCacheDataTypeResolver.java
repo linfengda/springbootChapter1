@@ -14,8 +14,8 @@ import java.util.concurrent.TimeUnit;
 /**
  * 描述: object
  *
- * @author: linfengda
- * @date: 2020-08-01 16:17
+ * @author linfengda
+ * @date 2020-08-01 16:17
  */
 @Slf4j
 public class ObjCacheDataTypeResolver extends AbstractCacheDataTypeResolver {

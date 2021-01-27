@@ -9,9 +9,9 @@ import lombok.Getter;
 import java.lang.annotation.Annotation;
 
 /**
- * @description: redis缓存操作类型
- * @author: linfengda
- * @date: 2020-07-26 18:23
+ * @description redis缓存操作类型
+ * @author linfengda
+ * @date 2020-07-26 18:23
  */
 @Getter
 @AllArgsConstructor

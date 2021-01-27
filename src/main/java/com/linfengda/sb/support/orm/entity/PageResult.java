@@ -6,9 +6,9 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * @description: 分页查询结果
- * @author: linfengda
- * @date: 2020-11-30 23:18
+ * @description 分页查询结果
+ * @author linfengda
+ * @date 2020-11-30 23:18
  */
 @Data
 public class PageResult<T> implements Serializable {

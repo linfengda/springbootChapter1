@@ -11,9 +11,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.aopalliance.intercept.MethodInvocation;
 
 /**
- * @description: 查询缓存注解处理 handler
- * @author: linfengda
- * @date: 2020-07-26 14:08
+ * @description 查询缓存注解处理 handler
+ * @author linfengda
+ * @date 2020-07-26 14:08
  */
 @Slf4j
 public class QueryCacheHandler extends AbstractCacheHandler {

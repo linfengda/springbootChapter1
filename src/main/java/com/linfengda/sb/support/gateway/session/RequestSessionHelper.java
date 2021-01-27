@@ -4,9 +4,9 @@ import com.alibaba.ttl.TransmittableThreadLocal;
 import org.springframework.stereotype.Component;
 
 /**
- * @description: 访问api接口缓存，通过com.linfengda.sb.support.gateway.interceptor.impl.ApiCallInterceptor后初始化
- * @author: linfengda
- * @date: 2020-12-20 20:12
+ * @description 访问api接口缓存，通过com.linfengda.sb.support.gateway.interceptor.impl.ApiCallInterceptor后初始化
+ * @author linfengda
+ * @date 2020-12-20 20:12
  */
 @Component
 public class RequestSessionHelper {

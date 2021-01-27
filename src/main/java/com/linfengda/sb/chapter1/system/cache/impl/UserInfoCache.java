@@ -11,9 +11,9 @@ import org.springframework.stereotype.Component;
 import javax.annotation.Resource;
 
 /**
- * @description: 用户token-userInfo缓存
- * @author: linfengda
- * @date: 2020-09-21 16:56
+ * @description 用户token-userInfo缓存
+ * @author linfengda
+ * @date 2020-09-21 16:56
  */
 @Slf4j
 @Component

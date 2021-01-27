@@ -6,9 +6,9 @@ import org.springframework.cglib.proxy.MethodProxy;
 import java.lang.reflect.Method;
 
 /**
- * @description: 注解执行动态代理
- * @author: linfengda
- * @date: 2021-01-15 11:54
+ * @description 注解执行动态代理
+ * @author linfengda
+ * @date 2021-01-15 11:54
  */
 public class QueueServiceDynamicProxy implements MethodInterceptor {
 

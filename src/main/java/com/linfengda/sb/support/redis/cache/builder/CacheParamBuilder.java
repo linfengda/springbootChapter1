@@ -17,8 +17,8 @@ import java.util.List;
 /**
  * 描述: 缓存key封装
  *
- * @author: linfengda
- * @date: 2020-07-24 15:12
+ * @author linfengda
+ * @date 2020-07-24 15:12
  */
 public enum CacheParamBuilder {
     /**

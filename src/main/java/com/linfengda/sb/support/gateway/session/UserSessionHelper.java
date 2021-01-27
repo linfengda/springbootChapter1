@@ -6,9 +6,9 @@ import org.springframework.util.StringUtils;
 
 
 /**
- * @description: 访问api接口用户缓存，通过com.linfengda.sb.support.gateway.interceptor.impl.AuthInterceptor拦截器后初始化
- * @author: linfengda
- * @date: 2020-12-20 20:12
+ * @description 访问api接口用户缓存，通过com.linfengda.sb.support.gateway.interceptor.impl.AuthInterceptor拦截器后初始化
+ * @author linfengda
+ * @date 2020-12-20 20:12
  */
 @Slf4j
 public class UserSessionHelper {

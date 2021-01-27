@@ -7,9 +7,9 @@ import com.linfengda.sb.chapter1.system.entity.dto.SysUserCacheDTO;
 import java.util.Set;
 
 /**
- * @description: 系统组织缓存服务
- * @author: linfengda
- * @date: 2020-07-27 23:31
+ * @description 系统组织缓存服务
+ * @author linfengda
+ * @date 2020-07-27 23:31
  */
 public interface SysOrganizeCacheService {
 

@@ -10,9 +10,9 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 
 /**
- * @description:
- * @author: linfengda
- * @date: 2021-01-13 15:23
+ * @description
+ * @author linfengda
+ * @date 2021-01-13 15:23
  */
 @Slf4j
 @Component

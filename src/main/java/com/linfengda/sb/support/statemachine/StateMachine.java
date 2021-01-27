@@ -1,9 +1,9 @@
 package com.linfengda.sb.support.statemachine;
 
 /**
- * @description: 状态机抽象
- * @author: linfengda
- * @date: 2020-11-08 23:55
+ * @description 状态机抽象
+ * @author linfengda
+ * @date 2020-11-08 23:55
  */
 public interface StateMachine<S, E> {
 

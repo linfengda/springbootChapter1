@@ -3,9 +3,9 @@ package com.linfengda.sb.support.redis.cache.entity.bo;
 import lombok.Data;
 
 /**
- * @description: lru key淘汰结果BO
- * @author: linfengda
- * @date: 2020-07-24 10:14
+ * @description lru key淘汰结果BO
+ * @author linfengda
+ * @date 2020-07-24 10:14
  */
 @Data
 public class LruExpireResultBO {

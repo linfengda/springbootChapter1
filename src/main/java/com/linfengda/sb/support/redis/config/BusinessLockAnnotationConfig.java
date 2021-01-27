@@ -9,9 +9,9 @@ import org.springframework.context.annotation.Role;
 import org.springframework.core.annotation.AnnotationAttributes;
 
 /**
- * @description: 配置业务锁注解增强器
- * @author: linfengda
- * @date: 2020-12-29 22:14
+ * @description 配置业务锁注解增强器
+ * @author linfengda
+ * @date 2020-12-29 22:14
  */
 public class BusinessLockAnnotationConfig extends BusinessLockAnnotationInitializer {
 

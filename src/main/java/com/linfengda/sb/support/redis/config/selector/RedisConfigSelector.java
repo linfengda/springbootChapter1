@@ -9,9 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @description: 开启redis
- * @author: linfengda
- * @date: 2020-07-26 22:36
+ * @description 开启redis
+ * @author linfengda
+ * @date 2020-07-26 22:36
  */
 public class RedisConfigSelector extends AbstractRedisImportSelector<EnableRedis> {
 

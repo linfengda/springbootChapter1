@@ -21,8 +21,8 @@ import java.util.Set;
 /**
  * 描述:
  *
- * @author: linfengda
- * @date: 2020-08-01 17:54
+ * @author linfengda
+ * @date 2020-08-01 17:54
  */
 @Slf4j
 public abstract class AbstractCacheDataTypeResolver implements CacheDataTypeResolver {

@@ -3,9 +3,9 @@ package com.linfengda.sb.chapter1.order.service;
 import com.linfengda.sb.chapter1.order.entity.dto.OrderStateChangeDTO;
 
 /**
- * @description: 订单服务
- * @author: linfengda
- * @date: 2020-11-09 00:18
+ * @description 订单服务
+ * @author linfengda
+ * @date 2020-11-09 00:18
  */
 public interface OrderService {
 

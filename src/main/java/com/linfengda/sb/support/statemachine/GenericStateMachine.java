@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @description: 状态机实现
- * @author: linfengda
- * @date: 2020-11-08 23:58
+ * @description 状态机实现
+ * @author linfengda
+ * @date 2020-11-08 23:58
  */
 public class GenericStateMachine<S, E> implements StateMachine<S, E> {
     /**

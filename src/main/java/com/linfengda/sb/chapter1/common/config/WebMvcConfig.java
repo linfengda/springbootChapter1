@@ -8,9 +8,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import javax.annotation.Resource;
 
 /**
- * @description:
- * @author: linfengda
- * @date: 2020-09-21 16:45
+ * @description
+ * @author linfengda
+ * @date 2020-09-21 16:45
  */
 @Configuration
 public class WebMvcConfig implements WebMvcConfigurer {

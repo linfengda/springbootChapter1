@@ -12,9 +12,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @description: 初始化全部resolver
- * @author: linfengda
- * @date: 2020-08-01 16:36
+ * @description 初始化全部resolver
+ * @author linfengda
+ * @date 2020-08-01 16:36
  */
 public enum CacheDataTypeResolverHolder {
     /**

@@ -5,8 +5,8 @@ import lombok.Data;
 /**
  * 描述: 哈希key
  *
- * @author: linfengda
- * @date: 2020-07-26 11:11
+ * @author linfengda
+ * @date 2020-07-26 11:11
  */
 @Data
 public class HashKey {

@@ -4,9 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /**
- * @description: 事件触发状态改变抽象
- * @author: linfengda
- * @date: 2020-11-09 00:03
+ * @description 事件触发状态改变抽象
+ * @author linfengda
+ * @date 2020-11-09 00:03
  */
 @Getter
 @AllArgsConstructor

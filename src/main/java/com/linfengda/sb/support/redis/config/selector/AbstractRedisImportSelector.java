@@ -9,9 +9,9 @@ import org.springframework.core.type.AnnotationMetadata;
 import java.lang.annotation.Annotation;
 
 /**
- * @description:
- * @author: linfengda
- * @date: 2020-09-13 23:29
+ * @description
+ * @author linfengda
+ * @date 2020-09-13 23:29
  */
 public abstract class AbstractRedisImportSelector <A extends Annotation> implements ImportSelector {
     public static final String ENABLE_CACHE_ANNOTATION_ATTRIBUTE_NAME = "enableCacheAnnotation";

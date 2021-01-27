@@ -14,9 +14,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @description: 时间工具类
- * @author: linfengda
- * @date: 2020-05-14 15:07
+ * @description 时间工具类
+ * @author linfengda
+ * @date 2020-05-14 15:07
  */
 public class TimeUtil {
     public static class FormatCache {

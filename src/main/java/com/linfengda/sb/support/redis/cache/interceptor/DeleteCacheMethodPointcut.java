@@ -8,9 +8,9 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 
 /**
- * @description: 删除缓存注解静态切入点
- * @author: linfengda
- * @date: 2020-06-27 11:21
+ * @description 删除缓存注解静态切入点
+ * @author linfengda
+ * @date 2020-06-27 11:21
  */
 public class DeleteCacheMethodPointcut extends StaticMethodMatcherPointcut {
 

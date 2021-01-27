@@ -20,9 +20,9 @@ import javax.annotation.Resource;
 import java.util.Set;
 
 /**
- * @description:
- * @author: linfengda
- * @date: 2020-09-22 23:00
+ * @description
+ * @author linfengda
+ * @date 2020-09-22 23:00
  */
 @Slf4j
 @RunWith(SpringRunner.class)

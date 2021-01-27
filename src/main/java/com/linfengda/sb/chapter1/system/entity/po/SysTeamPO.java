@@ -6,9 +6,9 @@ import com.linfengda.sb.support.orm.annontation.Table;
 import lombok.Data;
 
 /**
- * @description: 系统团队表PO
- * @author: linfengda
- * @date: 2020-07-27 16:56
+ * @description 系统团队表PO
+ * @author linfengda
+ * @date 2020-07-27 16:56
  */
 @Table(name = "sys_team")
 @Data

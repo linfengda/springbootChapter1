@@ -6,9 +6,9 @@ import org.springframework.context.annotation.Import;
 import java.lang.annotation.*;
 
 /**
- * @description: 开启rabbitmq队列消费扩展
- * @author: linfengda
- * @date: 2021-01-15 11:43
+ * @description 开启rabbitmq队列消费扩展
+ * @author linfengda
+ * @date 2021-01-15 11:43
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)

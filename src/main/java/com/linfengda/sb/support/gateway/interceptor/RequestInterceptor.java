@@ -15,9 +15,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * @description: 将拦截器业务和释放会话信息解耦
- * @author: linfengda
- * @date: 2020-12-16 17:51
+ * @description 将拦截器业务和释放会话信息解耦
+ * @author linfengda
+ * @date 2020-12-16 17:51
  */
 @Slf4j
 @Component

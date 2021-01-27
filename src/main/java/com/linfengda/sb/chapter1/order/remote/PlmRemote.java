@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /**
- * @description:
- * @author: linfengda
- * @date: 2020-09-22 14:57
+ * @description
+ * @author linfengda
+ * @date 2020-09-22 14:57
  */
 @FeignClient(name = "plm-service", url = "http://localhost:9000", configuration = {AppKeyInterceptor.class})
 public interface PlmRemote {

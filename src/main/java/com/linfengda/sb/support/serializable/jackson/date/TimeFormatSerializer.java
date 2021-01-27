@@ -10,9 +10,9 @@ import java.io.IOException;
 import java.time.ZoneOffset;
 
 /**
- * @description: 日期输出序列化类
- * @author: linfengda
- * @date: 2020-08-23 23:15
+ * @description 日期输出序列化类
+ * @author linfengda
+ * @date 2020-08-23 23:15
  */
 public class TimeFormatSerializer extends JsonSerializer<Object> {
 

@@ -14,9 +14,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 import javax.annotation.Resource;
 
 /**
- * @description:
- * @author: linfengda
- * @date: 2020-09-22 15:11
+ * @description
+ * @author linfengda
+ * @date 2020-09-22 15:11
  */
 @Slf4j
 @RunWith(SpringRunner.class)

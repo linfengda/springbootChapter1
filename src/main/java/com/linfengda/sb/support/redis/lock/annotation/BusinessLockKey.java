@@ -3,9 +3,9 @@ package com.linfengda.sb.support.redis.lock.annotation;
 import java.lang.annotation.*;
 
 /**
- * @description: 业务锁key
- * @author: linfengda
- * @date: 2020-11-16 11:55
+ * @description 业务锁key
+ * @author linfengda
+ * @date 2020-11-16 11:55
  */
 @Documented
 @Retention(RetentionPolicy.RUNTIME)

@@ -12,9 +12,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Primary;
 
 /**
- * @description:
- * @author: linfengda
- * @date: 2021-01-15 11:47
+ * @description
+ * @author linfengda
+ * @date 2021-01-15 11:47
  */
 public class QueueServiceConfig {
     @Value("${spring.rabbitmq.host}")

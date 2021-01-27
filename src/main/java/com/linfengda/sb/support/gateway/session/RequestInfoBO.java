@@ -6,9 +6,9 @@ import lombok.Data;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * @description: 请求BO
- * @author: linfengda
- * @date: 2020-12-16 22:19
+ * @description 请求BO
+ * @author linfengda
+ * @date 2020-12-16 22:19
  */
 @Data
 @Builder

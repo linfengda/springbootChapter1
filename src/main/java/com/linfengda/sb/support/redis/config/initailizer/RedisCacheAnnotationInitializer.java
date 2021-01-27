@@ -9,9 +9,9 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
 /**
- * @description: 初始化缓存注解服务的依赖
- * @author: linfengda
- * @date: 2020-08-18 18:55
+ * @description 初始化缓存注解服务的依赖
+ * @author linfengda
+ * @date 2020-08-18 18:55
  */
 public class RedisCacheAnnotationInitializer implements ApplicationContextAware {
 

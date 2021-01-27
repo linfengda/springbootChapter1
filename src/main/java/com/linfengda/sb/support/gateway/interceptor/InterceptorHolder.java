@@ -10,9 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @description:
- * @author: linfengda
- * @date: 2020-12-16 17:46
+ * @description
+ * @author linfengda
+ * @date 2020-12-16 17:46
  */
 @Getter
 public class InterceptorHolder {

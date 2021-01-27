@@ -10,9 +10,9 @@ import java.text.DecimalFormat;
 
 
 /**
- * @description: 金额保留2位小数序列化类
- * @author: linfengda
- * @date: 2020-08-22 18:51
+ * @description 金额保留2位小数序列化类
+ * @author linfengda
+ * @date 2020-08-22 18:51
  */
 public class BigDecimalMoneySerializer extends JsonSerializer<BigDecimal> {
     public static final BigDecimalMoneySerializer INSTANCE = new BigDecimalMoneySerializer();

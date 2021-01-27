@@ -3,9 +3,9 @@ package com.linfengda.sb.chapter1.system.cache.dto;
 import lombok.Data;
 
 /**
- * @description:
- * @author: linfengda
- * @date: 2020-09-21 17:15
+ * @description
+ * @author linfengda
+ * @date 2020-09-21 17:15
  */
 @Data
 public class UserInfo {

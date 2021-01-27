@@ -4,9 +4,9 @@ import lombok.Builder;
 import lombok.Data;
 
 /**
- * @description: mes用户session信息
- * @author: linfengda
- * @date: 2020-12-15 22:37
+ * @description mes用户session信息
+ * @author linfengda
+ * @date 2020-12-15 22:37
  */
 @Data
 @Builder

@@ -6,9 +6,9 @@ import lombok.Data;
 import java.sql.Timestamp;
 
 /**
- * @description: 部门缓存dto
- * @author: linfengda
- * @date: 2020-07-27 17:26
+ * @description 部门缓存dto
+ * @author linfengda
+ * @date 2020-07-27 17:26
  */
 @Data
 public class SysDepartmentCacheDTO {

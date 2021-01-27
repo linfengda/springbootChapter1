@@ -7,9 +7,9 @@ import org.springframework.core.annotation.AnnotationAttributes;
 import org.springframework.core.type.AnnotationMetadata;
 
 /**
- * @description:
- * @author: linfengda
- * @date: 2021-01-15 11:45
+ * @description
+ * @author linfengda
+ * @date 2021-01-15 11:45
  */
 public class QueueServiceConfigSelector implements ImportSelector {
 

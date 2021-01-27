@@ -4,9 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /**
- * @description: redis缓存数据类型
- * @author: linfengda
- * @date: 2020-07-26 19:20
+ * @description redis缓存数据类型
+ * @author linfengda
+ * @date 2020-07-26 19:20
  */
 @Getter
 @AllArgsConstructor

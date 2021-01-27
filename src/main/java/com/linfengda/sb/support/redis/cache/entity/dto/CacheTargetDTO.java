@@ -8,8 +8,8 @@ import java.util.List;
 /**
  * 描述: redis缓存处理对象
  *
- * @author: linfengda
- * @date: 2020-07-26 10:46
+ * @author linfengda
+ * @date 2020-07-26 10:46
  */
 @Data
 public class CacheTargetDTO {
