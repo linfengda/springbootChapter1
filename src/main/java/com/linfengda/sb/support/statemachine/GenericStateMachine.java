@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @description 状态机实现
+ * 状态机实现
  * @author linfengda
  * @date 2020-11-08 23:58
  */
@@ -16,6 +16,10 @@ public class GenericStateMachine<S, E> implements StateMachine<S, E> {
      */
     private S initialState;
     /**
+     * 状态机下一状态
+     */
+    private S targetState;
+    /**
      * 状态机描述列表
      */
     private List<StateEvent<S, E>> stateEvents = new ArrayList<>();
@@ -23,7 +27,7 @@ public class GenericStateMachine<S, E> implements StateMachine<S, E> {
 
     @Override
     public StateMachine<S, E> build(S source, S target, E event) {
-        StateEvent<S, E> stateEvent = new StateEvent(source, target, event);
+        StateEvent<S, E> stateEvent = new StateEvent<>(source, target, event);
         stateEvents.add(stateEvent);
         return this;
     }
@@ -45,10 +49,16 @@ public class GenericStateMachine<S, E> implements StateMachine<S, E> {
         for (StateEvent<S, E> stateEvent : stateEvents) {
             if (event.equals(stateEvent.getEvent())) {
                 if (this.initialState == stateEvent.getSource()) {
+                    this.targetState = stateEvent.getTarget();
                     return true;
                 }
             }
         }
         return false;
+    }
+
+    @Override
+    public S getTargetState() {
+        return this.targetState;
     }
 }

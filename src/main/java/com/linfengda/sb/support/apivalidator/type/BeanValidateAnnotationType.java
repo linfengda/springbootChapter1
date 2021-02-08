@@ -8,10 +8,7 @@ import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
 
 /**
- * 描述: 校验Bean的注解类型，有下列4中情况:
- * <li>1. 没有任何校验注解，不会做任何校验</li>
- * <li>2. 有@RequestParam注解/@RequestBody注解，但加了@ApiValidator校验注解，就做ApiValidator的校验</li>
- * <li>3. 没有@RequestParam注解/@RequestBody注解，有@ApiValidator/@Valid/@Validated校验注解，框架仍然会自动解析参数，做ApiValidator的校验</li>
+ * 描述: 当使用以下注解时，会校验Bean
  *
  * @author linfengda
  * @create 2019-12-23 16:20

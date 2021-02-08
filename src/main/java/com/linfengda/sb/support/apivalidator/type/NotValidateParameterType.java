@@ -1,10 +1,8 @@
 package com.linfengda.sb.support.apivalidator.type;
 
-import com.alibaba.fastjson.JSONObject;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -20,14 +18,7 @@ public enum NotValidateParameterType {
      * Map
      */
     MAP(Map.class.getName()),
-    /**
-     * JSONObject
-     */
-    JSON(JSONObject.class.getName()),
-    /**
-     * List
-     */
-    LIST(List.class.getName());
+    ;
 
     private String type;
 

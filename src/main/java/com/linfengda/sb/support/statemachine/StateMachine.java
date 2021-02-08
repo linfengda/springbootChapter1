@@ -1,7 +1,7 @@
 package com.linfengda.sb.support.statemachine;
 
 /**
- * @description 状态机抽象
+ * 状态机抽象
  * @author linfengda
  * @date 2020-11-08 23:55
  */
@@ -29,4 +29,10 @@ public interface StateMachine<S, E> {
      * @return          true：状态机成功，false：状态机失败
      */
     boolean sendEvent(E event);
+
+    /**
+     * 获取下一个状态
+     * @return  如果状态机校验不通过，返回null
+     */
+    S getTargetState();
 }

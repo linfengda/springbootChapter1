@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Import;
 import java.lang.annotation.*;
 
 /**
- * @description 开启api层统一校验注解
+ * 开启api层统一校验注解
  * @author linfengda
  * @date 2020-07-26 22:34
  */
