@@ -1,7 +1,7 @@
 package com.linfengda.sb.support.redis.service;
 
 import com.alibaba.fastjson.JSONObject;
-import com.linfengda.sb.chapter1.system.entity.vo.UserListVO;
+import com.linfengda.sb.chapter1.entity.vo.UserListVO;
 import com.linfengda.sb.support.redis.lettuce.LettuceTemplate;
 import com.linfengda.sb.support.redis.helper.LettuceTemplateHelper;
 import lombok.extern.slf4j.Slf4j;

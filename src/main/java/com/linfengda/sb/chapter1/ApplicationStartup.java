@@ -1,7 +1,8 @@
 package com.linfengda.sb.chapter1;
 
-import com.linfengda.sb.chapter1.system.cache.SystemCacheManager;
+import com.linfengda.sb.chapter1.cache.SystemCacheManager;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
 
@@ -11,6 +12,7 @@ import org.springframework.context.event.EventListener;
  * @author linfengda
  * @create 2020-01-09 09:18
  */
+@Configuration
 @Slf4j
 public class ApplicationStartup {
 

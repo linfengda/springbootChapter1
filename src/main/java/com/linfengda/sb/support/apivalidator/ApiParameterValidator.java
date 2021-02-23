@@ -1,9 +1,8 @@
 package com.linfengda.sb.support.apivalidator;
 
-import com.linfengda.sb.support.apivalidator.type.BaseType;
 import com.linfengda.sb.support.apivalidator.type.BeanValidateAnnotationType;
 import com.linfengda.sb.support.apivalidator.type.FieldValidateAnnotationType;
-import com.linfengda.sb.support.apivalidator.type.NotValidateParameterType;
+import com.linfengda.sb.support.exception.BusinessException;
 import com.linfengda.sb.support.validator.MyValidateUtils;
 import org.aopalliance.intercept.MethodInvocation;
 
@@ -11,6 +10,7 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 描述: API入参校验
@@ -23,10 +23,6 @@ public class ApiParameterValidator {
      * api参数个数限制
      */
     private static final int MAX_API_PARAMS_LIMIT = 3;
-    /**
-     * List类型
-     */
-    private static final String LIST_TYPE = List.class.getName();
 
 
     public void validateControllerMethodParameter(MethodInvocation invocation) {
@@ -37,19 +33,16 @@ public class ApiParameterValidator {
             return;
         }
         if (MAX_API_PARAMS_LIMIT < args.length) {
-            //throw new BusinessException("api参数限制为" + MAX_API_PARAMS_LIMIT + "个！");
+            throw new BusinessException("api参数限制为" + MAX_API_PARAMS_LIMIT + "个！");
         }
         for (int i = 0; i < parameters.length; i++) {
             Parameter parameter = parameters[i];
             String parameterName = parameter.getType().getName();
             Annotation[] annotations = parameter.getAnnotations();
-            if (NotValidateParameterType.isNotValidateParameterType(parameterName)) {
+            if (Map.class.getName().equals(parameterName)) {
                 continue;
             }
-            if (BaseType.isBaseType(parameterName) && hasFieldValidateAnnotationType(annotations)) {
-                MyValidateUtils.validateParameters(invocation.getThis(), targetMethod, args);
-                return;
-            } else if (LIST_TYPE.equals(parameterName)) {
+            if (List.class.getName().equals(parameterName)) {
                 if (hasFieldValidateAnnotationType(annotations)) {
                     MyValidateUtils.validateParameters(invocation.getThis(), targetMethod, args);
                 }
@@ -59,11 +52,13 @@ public class ApiParameterValidator {
                         MyValidateUtils.validate(obj);
                     }
                 }
-            } else {
-                // 校验Bean
-                if (hasBeanValidateAnnotationType(annotations)) {
-                    MyValidateUtils.validate(args[i]);
-                }
+                continue;
+            }
+            if (hasFieldValidateAnnotationType(annotations)) {
+                MyValidateUtils.validateParameters(invocation.getThis(), targetMethod, args);
+            }
+            if (hasBeanValidateAnnotationType(annotations)) {
+                MyValidateUtils.validate(args[i]);
             }
         }
     }

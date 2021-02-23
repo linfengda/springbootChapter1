@@ -1,8 +1,8 @@
 package com.linfengda.sb.chapter1.order;
 
 import com.linfengda.sb.chapter1.Chapter1Application;
-import com.linfengda.sb.chapter1.order.entity.dto.BigBomMaterialQueryDTO;
-import com.linfengda.sb.chapter1.order.remote.PlmRemote;
+import com.linfengda.sb.chapter1.entity.dto.BigBomMaterialQueryDTO;
+import com.linfengda.sb.chapter1.remote.PlmRemote;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.FixMethodOrder;
 import org.junit.Test;

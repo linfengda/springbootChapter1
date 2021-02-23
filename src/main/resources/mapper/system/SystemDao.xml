@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.linfengda.sb.chapter1.system.dao.SystemDao">
 
-    <select id="pageUserList" parameterType="java.util.Map" resultType="com.linfengda.sb.chapter1.system.entity.vo.UserListVO">
+    <select id="pageUserList" parameterType="java.util.Map" resultType="com.linfengda.sb.chapter1.entity.vo.UserListVO">
         select
         id as userId,
         user_name as userName,

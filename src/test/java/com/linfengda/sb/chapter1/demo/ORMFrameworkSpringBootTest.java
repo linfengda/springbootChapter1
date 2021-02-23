@@ -2,9 +2,9 @@ package com.linfengda.sb.chapter1.demo;
 
 import com.alibaba.fastjson.JSON;
 import com.linfengda.sb.chapter1.Chapter1Application;
-import com.linfengda.sb.chapter1.order.entity.enums.OrderState;
-import com.linfengda.sb.chapter1.order.entity.po.ProduceOrderPO;
-import com.linfengda.sb.chapter1.system.entity.po.SysUserPO;
+import com.linfengda.sb.chapter1.entity.type.OrderState;
+import com.linfengda.sb.chapter1.entity.po.ProduceOrderPO;
+import com.linfengda.sb.chapter1.entity.po.SysUserPO;
 import com.linfengda.sb.support.orm.OrmTemplate;
 import com.linfengda.sb.support.orm.entity.ConditionParam;
 import com.linfengda.sb.support.orm.entity.PageResult;

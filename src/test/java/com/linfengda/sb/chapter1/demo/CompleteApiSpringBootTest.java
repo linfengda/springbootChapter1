@@ -1,10 +1,9 @@
 package com.linfengda.sb.chapter1.demo;
 
 import com.linfengda.sb.chapter1.Chapter1Application;
-import com.linfengda.sb.chapter1.system.entity.enums.SysUserStatus;
-import com.linfengda.sb.chapter1.system.entity.po.SysUserPO;
-import com.linfengda.sb.chapter1.system.entity.vo.UserVO;
-import com.linfengda.sb.chapter1.system.service.SysUserService;
+import com.linfengda.sb.chapter1.entity.type.SysUserStatus;
+import com.linfengda.sb.chapter1.entity.vo.UserVO;
+import com.linfengda.sb.chapter1.service.SysUserService;
 import lombok.extern.slf4j.Slf4j;
 import org.hamcrest.CoreMatchers;
 import org.junit.Before;

@@ -153,4 +153,10 @@ public class GenericRedisTemplate extends RedisTemplate<String, Object> {
     public Long setDelete(String key, Object... values) {
         return super.opsForSet().remove(key, values);
     }
+
+    public String generateFlowNo(String prefix, int length) {
+        String formatter = prefix + "%0" + length + "d";
+        Long i = super.opsForValue().increment(prefix);
+        return String.format(formatter, i);
+    }
 }
