@@ -1,6 +1,5 @@
 package com.linfengda.sb.chapter1.demo;
 
-import com.linfengda.sb.support.util.StringUtil;
 import com.linfengda.sb.support.util.TimeUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.hamcrest.CoreMatchers;
@@ -8,10 +7,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
+import org.springframework.util.StringUtils;
 
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
-import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -32,13 +30,10 @@ public class SampleSpringBootTest {
 
     @Test
     public void test1() throws Exception {
-        log.info("测试工具方法com.linfengda.sb.chapter1.common.util.StringUtil#getRandomStr(), result={}", StringUtil.getRandomStr(10));
-        log.info("测试工具方法com.linfengda.sb.chapter1.common.util.StringUtil#getRandomNum(), result={}", StringUtil.getRandomNum(10));
+        String[] stringArray = StringUtils.delimitedListToStringArray("a,b,c", ",");
+        assertThat(stringArray, CoreMatchers.equalTo(new String[] {"a","b","c"}));
 
-        List<String> strList = StringUtil.string2List("a,b,c", ",");
-        assertThat(strList, CoreMatchers.equalTo(Arrays.asList("a","b","c")));
-
-        String str = StringUtil.join(",", "a", "b", "c");
+        String str = StringUtils.arrayToCommaDelimitedString(new Object[] {",", "a", "b", "c"});
         assertThat(str, CoreMatchers.equalTo("a,b,c"));
     }
 

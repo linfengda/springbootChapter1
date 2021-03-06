@@ -249,6 +249,13 @@
             <version>3.3.0</version>
         </dependency>
 
+        <!--工具包-->
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-core</artifactId>
+            <version>5.5.7</version>
+        </dependency>
+
 
 	</dependencies>
 

@@ -1,5 +1,7 @@
 package com.linfengda.sb.support.util;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -10,7 +12,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import org.apache.commons.lang3.StringUtils;
 
 /**
  * 时间工具类
@@ -28,7 +29,7 @@ public final class TimeUtil {
         /**
          * 缓存对象内部日期时间格式化对象
          */
-        public static final Map<String, SimpleDateFormat> TIME_FORMAT_MAP = new HashMap<>(8);
+        public final Map<String, SimpleDateFormat> TIME_FORMAT_MAP = new HashMap<>(8);
     }
 
     private static final ThreadLocal<FormatCache> DATE_TIME_FORMAT_THREAD_LOCAL = new ThreadLocal<>();
