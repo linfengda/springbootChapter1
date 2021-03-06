@@ -2,14 +2,15 @@ package com.linfengda.sb.support.gateway.interceptor.impl;
 
 import com.linfengda.sb.support.exception.BusinessException;
 import com.linfengda.sb.support.gateway.acl.AuthWhiteUrlList;
+import com.linfengda.sb.support.gateway.entity.UserSessionBO;
 import com.linfengda.sb.support.gateway.router.RequestRouter;
-import com.linfengda.sb.support.gateway.session.*;
+import com.linfengda.sb.support.gateway.session.RequestSessionHelper;
+import com.linfengda.sb.support.gateway.session.UserSessionHelper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -20,9 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @Slf4j
 @Component
-public class AuthInterceptor implements HandlerInterceptor, UserSessionConstant {
-    @Resource
-    private UserSessionInitializer userSessionInitializer;
+public class AuthInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
@@ -31,8 +30,8 @@ public class AuthInterceptor implements HandlerInterceptor, UserSessionConstant 
             return true;
         }
         // 统一登陆校验
-        String authToken = request.getHeader(AUTHORIZATION);
-        UserSessionBO userSessionBO = userSessionInitializer.initFromPlatform(authToken);
+        String authorization = request.getHeader("AUTHORIZATION");
+        UserSessionBO userSessionBO = getUserSessionBO(authorization);
         if (null == userSessionBO) {
             throw new BusinessException("当前用户未登陆！");
         }
@@ -40,5 +39,12 @@ public class AuthInterceptor implements HandlerInterceptor, UserSessionConstant 
         // 模块权限校验
         RequestRouter.INSTANCE.doRouter(RequestSessionHelper.get(), (HandlerMethod) handler);
         return true;
+    }
+
+    private UserSessionBO getUserSessionBO(String authorization) {
+        return UserSessionBO.builder()
+                .userId("123")
+                .userName("林丰达")
+                .build();
     }
 }

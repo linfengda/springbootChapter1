@@ -128,7 +128,7 @@ PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='mq消息发送表';
 
 -- 定时任务表
-CREATE TABLE `base_schedule` (
+CREATE TABLE `_schedule` (
 `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键id',
 `job_name` varchar(64) NOT NULL DEFAULT '' COMMENT '名称',
 `job_desc` varchar(64) NOT NULL DEFAULT '' COMMENT '描述',
@@ -137,13 +137,7 @@ CREATE TABLE `base_schedule` (
 `class_name` varchar(64) NOT NULL DEFAULT '' COMMENT '类名',
 `method_name` varchar(64) NOT NULL DEFAULT '' COMMENT '方法名',
 `state` varchar(32) NOT NULL DEFAULT '' COMMENT '状态',
-`create_uid` varchar(32) NOT NULL DEFAULT '' COMMENT '创建人uid',
-`create_uname` varchar(32) NOT NULL DEFAULT '' COMMENT '创建人',
-`create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-`update_uid` varchar(32) NOT NULL DEFAULT '' COMMENT '更新人uid',
-`update_uname` varchar(32) NOT NULL DEFAULT '' COMMENT '更新人',
-`update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '更新时间',
-`delete_tag` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否逻辑删除 0未删除 1删除',
 `version` tinyint(1) NOT NULL DEFAULT '0' COMMENT '版本',
+`last_update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '最后更新时间',
 PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='定时任务表';

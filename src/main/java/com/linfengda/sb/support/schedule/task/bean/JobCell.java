@@ -1,7 +1,7 @@
 package com.linfengda.sb.support.schedule.task.bean;
 
 import lombok.Data;
-import org.springframework.util.ReflectionUtils;
+import org.springframework.data.util.ReflectionUtils;
 
 import java.lang.reflect.Method;
 import java.sql.SQLException;
@@ -53,6 +53,6 @@ public class JobCell {
 
 
     public void run() throws SQLException {
-        ReflectionUtils.invokeJdbcMethod(method, target);
+        //ReflectionUtils.invokeJdbcMethod(method, target);
     }
 }

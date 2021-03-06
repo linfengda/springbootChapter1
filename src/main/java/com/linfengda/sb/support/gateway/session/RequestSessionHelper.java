@@ -1,6 +1,7 @@
 package com.linfengda.sb.support.gateway.session;
 
 import com.alibaba.ttl.TransmittableThreadLocal;
+import com.linfengda.sb.support.gateway.entity.RequestInfoBO;
 import org.springframework.stereotype.Component;
 
 /**
@@ -10,17 +11,17 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class RequestSessionHelper {
-    private final static ThreadLocal<RequestInfoBO> MES_SESSION_INFO_THREAD_LOCAL = new TransmittableThreadLocal<>();
+    private final static ThreadLocal<RequestInfoBO> REQUEST_INFO_THREAD_LOCAL = new TransmittableThreadLocal<>();
 
     public static void put(RequestInfoBO session){
-        MES_SESSION_INFO_THREAD_LOCAL.set(session);
+        REQUEST_INFO_THREAD_LOCAL.set(session);
     }
 
     public static void remove() {
-        MES_SESSION_INFO_THREAD_LOCAL.remove();
+        REQUEST_INFO_THREAD_LOCAL.remove();
     }
 
     public static RequestInfoBO get() {
-        return MES_SESSION_INFO_THREAD_LOCAL.get();
+        return REQUEST_INFO_THREAD_LOCAL.get();
     }
 }

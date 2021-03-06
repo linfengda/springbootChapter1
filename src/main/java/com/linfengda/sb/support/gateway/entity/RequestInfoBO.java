@@ -1,4 +1,4 @@
-package com.linfengda.sb.support.gateway.session;
+package com.linfengda.sb.support.gateway.entity;
 
 import lombok.Builder;
 import lombok.Data;

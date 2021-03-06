@@ -1,6 +1,7 @@
 package com.linfengda.sb.support.gateway.session;
 
 import com.alibaba.ttl.TransmittableThreadLocal;
+import com.linfengda.sb.support.gateway.entity.UserSessionBO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.StringUtils;
 
@@ -12,14 +13,14 @@ import org.springframework.util.StringUtils;
  */
 @Slf4j
 public class UserSessionHelper {
-    private final static ThreadLocal<UserSessionBO> MES_USER_SESSION_INFO_THREAD_LOCAL = new TransmittableThreadLocal<>();
+    private final static ThreadLocal<UserSessionBO> USER_SESSION_INFO_THREAD_LOCAL = new TransmittableThreadLocal<>();
 
     public static void put(UserSessionBO session){
-        MES_USER_SESSION_INFO_THREAD_LOCAL.set(session);
+        USER_SESSION_INFO_THREAD_LOCAL.set(session);
     }
 
     public static void remove() {
-        MES_USER_SESSION_INFO_THREAD_LOCAL.remove();
+        USER_SESSION_INFO_THREAD_LOCAL.remove();
     }
 
     /**
@@ -27,7 +28,7 @@ public class UserSessionHelper {
      * @return
      */
     public static String getUserId() {
-        UserSessionBO userSessionBO = MES_USER_SESSION_INFO_THREAD_LOCAL.get();
+        UserSessionBO userSessionBO = USER_SESSION_INFO_THREAD_LOCAL.get();
         if (null == userSessionBO) {
             return "";
         }
@@ -43,7 +44,7 @@ public class UserSessionHelper {
      * @return
      */
     public static String getUserName() {
-        UserSessionBO userSessionBO = MES_USER_SESSION_INFO_THREAD_LOCAL.get();
+        UserSessionBO userSessionBO = USER_SESSION_INFO_THREAD_LOCAL.get();
         if (null == userSessionBO) {
             return "system";
         }
@@ -59,7 +60,7 @@ public class UserSessionHelper {
      * @return
      */
     public static String getAuthorization() {
-        UserSessionBO userSessionBO = MES_USER_SESSION_INFO_THREAD_LOCAL.get();
+        UserSessionBO userSessionBO = USER_SESSION_INFO_THREAD_LOCAL.get();
         if (null == userSessionBO) {
             return "";
         }

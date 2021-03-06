@@ -3,7 +3,7 @@ package com.linfengda.sb.support.gateway.interceptor.impl;
 import com.alibaba.fastjson.JSON;
 import com.linfengda.sb.chapter1.Constant;
 import com.linfengda.sb.support.util.TimeUtil;
-import com.linfengda.sb.support.gateway.session.RequestInfoBO;
+import com.linfengda.sb.support.gateway.entity.RequestInfoBO;
 import com.linfengda.sb.support.gateway.session.RequestSessionHelper;
 import com.linfengda.sb.support.gateway.session.UserSessionHelper;
 import lombok.extern.slf4j.Slf4j;

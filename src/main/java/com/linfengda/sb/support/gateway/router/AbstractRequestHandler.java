@@ -1,7 +1,7 @@
 package com.linfengda.sb.support.gateway.router;
 
 import com.linfengda.sb.support.gateway.enums.ModuleType;
-import com.linfengda.sb.support.gateway.session.RequestInfoBO;
+import com.linfengda.sb.support.gateway.entity.RequestInfoBO;
 import lombok.Data;
 import org.springframework.web.method.HandlerMethod;
 
