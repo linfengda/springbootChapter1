@@ -1,7 +1,7 @@
 package com.linfengda.sb.chapter1.controller;
 
 import com.alibaba.fastjson.JSON;
-import com.linfengda.sb.chapter1.common.entity.Result;
+import com.linfengda.sb.chapter1.common.bean.Result;
 import com.linfengda.sb.chapter1.entity.dto.BigBomMaterialQueryDTO;
 import com.linfengda.sb.support.apivalidator.annotation.ApiValidator;
 import lombok.extern.slf4j.Slf4j;

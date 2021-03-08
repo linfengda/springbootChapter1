@@ -1,6 +1,6 @@
 package com.linfengda.sb.support.redis.task;
 
-import com.linfengda.sb.support.util.ServerRunTimeUtil;
+import com.linfengda.sb.chapter1.common.util.ServerRunTimeUtil;
 import com.linfengda.sb.support.redis.helper.JedisTemplateHelper;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;

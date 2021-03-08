@@ -2,7 +2,7 @@ package com.linfengda.sb.support.redis.test;
 
 import com.alibaba.fastjson.JSON;
 import com.linfengda.sb.chapter1.Chapter1Application;
-import com.linfengda.sb.chapter1.common.thread.ThreadPoolHelper;
+import com.linfengda.sb.chapter1.common.util.ThreadPoolUtil;
 import com.linfengda.sb.chapter1.entity.dto.UserUpdateDTO;
 import com.linfengda.sb.chapter1.entity.vo.UserVO;
 import com.linfengda.sb.chapter1.service.SysUserService;
@@ -42,7 +42,7 @@ public class RedisCacheAnnotationTest {
      */
     @Test
     public void testMultiQueryCache() throws Exception {
-        ThreadPoolTaskExecutor executor = ThreadPoolHelper.initThreadPool(10, 20, "test-thread");
+        ThreadPoolTaskExecutor executor = ThreadPoolUtil.initThreadPool(10, 20, "test-thread");
         CountDownLatch startCount = new CountDownLatch(10);
         for (int i = 0; i < 10; i++) {
             executor.submit(() -> {

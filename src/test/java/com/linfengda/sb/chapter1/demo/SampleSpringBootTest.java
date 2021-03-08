@@ -1,6 +1,6 @@
 package com.linfengda.sb.chapter1.demo;
 
-import com.linfengda.sb.support.util.TimeUtil;
+import com.linfengda.sb.chapter1.common.util.TimeUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.hamcrest.CoreMatchers;
 import org.junit.Before;

@@ -55,35 +55,34 @@ public abstract class AbstractAnnotationResultInterceptor<T extends Annotation> 
         if (BaseType.isBaseDataType(className)) {
             return;
         }
-        if(result instanceof List){
+        if (result instanceof List) {
             List<?> resultList = (List<?>) result;
-            if(CollectionUtils.isEmpty(resultList)){
+            if (CollectionUtils.isEmpty(resultList)) {
                 return;
             }
-            Object obj = resultList.get(0);
-            // 若List数据为基础数据类型，直接跳过
-            if(obj != null && BaseType.isBaseDataType(obj.getClass().getName())){
+            if (1 == resultList.size() && null == resultList.get(0)) {
                 return;
             }
             for (Object value : resultList) {
                 resolveResult(value);
             }
-        }
-        // 没有拦截属性注解的类，直接跳过
-        InterceptorClass interceptorClass = getInterceptorClass(result.getClass());
-        if (CollectionUtils.isEmpty(interceptorClass.getInterceptorFieldList())) {
-            return;
-        }
-        Class<? extends Annotation> interceptorAnnotation = getInterceptorAnnotation();
-        List<InterceptorField> interceptorFields = interceptorClass.getInterceptorFieldList();
-        for (InterceptorField interceptorField : interceptorFields) {
-            if (!interceptorField.contains(interceptorAnnotation.getName())) {
-                continue;
+        } else {
+            // 没有拦截属性注解的类，直接跳过
+            InterceptorClass interceptorClass = getInterceptorClass(result.getClass());
+            if (CollectionUtils.isEmpty(interceptorClass.getInterceptorFieldList())) {
+                return;
             }
-            Field field = interceptorField.getField();
-            Object value = getFieldValue(field, result);
-            T annotation = (T) interceptorField.get(interceptorAnnotation.getName());
-            interceptorField(result, value, field, annotation);
+            Class<? extends Annotation> interceptorAnnotation = getInterceptorAnnotation();
+            List<InterceptorField> interceptorFields = interceptorClass.getInterceptorFieldList();
+            for (InterceptorField interceptorField : interceptorFields) {
+                if (!interceptorField.contains(interceptorAnnotation.getName())) {
+                    continue;
+                }
+                Field field = interceptorField.getField();
+                Object value = getFieldValue(field, result);
+                T annotation = (T) interceptorField.get(interceptorAnnotation.getName());
+                interceptorField(result, value, field, annotation);
+            }
         }
     }
 

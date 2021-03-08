@@ -1,6 +1,6 @@
 package com.linfengda.sb.chapter1.entity.dto;
 
-import com.linfengda.sb.chapter1.common.entity.po.BasePO;
+import com.linfengda.sb.chapter1.common.bean.po.BaseIncrementEntity;
 import lombok.Data;
 
 import java.sql.Timestamp;
@@ -57,7 +57,7 @@ public class SysUserCacheDTO {
      */
     private Timestamp updateTime;
     /**
-     * 是否删除 {@link BasePO.Deleted}
+     * 是否删除 {@link BaseIncrementEntity.Deleted}
      */
     private Integer isDelete;
     /**

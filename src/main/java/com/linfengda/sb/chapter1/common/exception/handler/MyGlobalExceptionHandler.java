@@ -1,6 +1,6 @@
 package com.linfengda.sb.chapter1.common.exception.handler;
 
-import com.linfengda.sb.chapter1.common.entity.Result;
+import com.linfengda.sb.chapter1.common.bean.Result;
 import com.linfengda.sb.support.exception.BusinessException;
 import com.linfengda.sb.chapter1.common.exception.entity.ErrorCode;
 import com.linfengda.sb.support.orm.exception.DataAccessException;

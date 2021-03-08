@@ -1,6 +1,6 @@
 package com.linfengda.sb.chapter1.entity.dto;
 
-import com.linfengda.sb.chapter1.common.entity.po.BasePO;
+import com.linfengda.sb.chapter1.common.bean.po.BaseIncrementEntity;
 import com.linfengda.sb.chapter1.entity.type.SysDepartmentType;
 import lombok.Data;
 
@@ -50,7 +50,7 @@ public class SysDepartmentCacheDTO {
      */
     private Timestamp updateTime;
     /**
-     * 是否删除 {@link BasePO.Deleted}
+     * 是否删除 {@link BaseIncrementEntity.Deleted}
      */
     private Integer isDelete;
     /**

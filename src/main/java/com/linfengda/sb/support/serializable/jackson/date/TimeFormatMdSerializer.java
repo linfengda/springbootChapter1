@@ -2,7 +2,7 @@ package com.linfengda.sb.support.serializable.jackson.date;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.SerializerProvider;
-import com.linfengda.sb.support.util.TimeUtil;
+import com.linfengda.sb.chapter1.common.util.TimeUtil;
 
 import java.io.IOException;
 

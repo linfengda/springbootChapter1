@@ -1,6 +1,6 @@
 package com.linfengda.sb.chapter1.controller;
 
-import com.linfengda.sb.chapter1.common.entity.Result;
+import com.linfengda.sb.chapter1.common.bean.Result;
 import com.linfengda.sb.chapter1.entity.dto.AcceptOrderDTO;
 import com.linfengda.sb.support.redis.lock.annotation.BusinessLock;
 import com.linfengda.sb.support.redis.lock.annotation.BusinessLockKey;

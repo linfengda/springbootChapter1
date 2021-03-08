@@ -1,7 +1,7 @@
 package com.linfengda.sb.chapter1.common.transactional.service;
 
 import com.linfengda.sb.support.exception.BusinessException;
-import com.linfengda.sb.chapter1.entity.po.SysUserPO;
+import com.linfengda.sb.chapter1.entity.po.SysUserIncrementEntity;
 import com.linfengda.sb.support.orm.AbstractBaseService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -115,7 +115,7 @@ public class TransactionalOtherServiceImpl extends AbstractBaseService implement
 
 
     void insert() throws Exception {
-        SysUserPO sysUserPO = new SysUserPO();
+        SysUserIncrementEntity sysUserPO = new SysUserIncrementEntity();
         sysUserPO.setId(456);
         sysUserPO.setUserName("用户456");
         sysUserPO.setPhone("456");
@@ -124,7 +124,7 @@ public class TransactionalOtherServiceImpl extends AbstractBaseService implement
     }
 
     void insertAndThrow() throws Exception {
-        SysUserPO sysUserPO = new SysUserPO();
+        SysUserIncrementEntity sysUserPO = new SysUserIncrementEntity();
         sysUserPO.setId(456);
         sysUserPO.setUserName("用户456");
         sysUserPO.setPhone("456");

@@ -4,9 +4,6 @@ server:
 spring:
   application:
     name: springBootChapter1
-  profiles:
-    active: dev
-
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.zaxxer.hikari.HikariDataSource
@@ -18,7 +15,6 @@ spring:
       minimum-idle: 10
       maximum-pool-size: 100
       connection-test-query: SELECT 1
-
   redis:
     timeout: 5000
     jedis:
@@ -27,12 +23,5 @@ spring:
         min-idle: 0
         max-idle: 5
         max-wait: -1
-
-thread:
-  pool:
-    corePoolSize: 50
-    maxPoolSize: 100
-    queueSize: 30
-    keepAlive: 60
 logging:
   config: classpath:logback.xml

@@ -1,6 +1,6 @@
 package com.linfengda.sb.chapter1.controller;
 
-import com.linfengda.sb.chapter1.common.entity.Result;
+import com.linfengda.sb.chapter1.common.bean.Result;
 import com.linfengda.sb.chapter1.entity.dto.UserUpdateDTO;
 import com.linfengda.sb.chapter1.service.SysUserService;
 import org.springframework.web.bind.annotation.PostMapping;

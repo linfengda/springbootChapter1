@@ -1,7 +1,7 @@
 package com.linfengda.sb.chapter1.service.impl;
 
 import com.linfengda.sb.chapter1.entity.dto.UserUpdateDTO;
-import com.linfengda.sb.chapter1.entity.po.SysUserPO;
+import com.linfengda.sb.chapter1.entity.po.SysUserIncrementEntity;
 import com.linfengda.sb.chapter1.entity.vo.UserVO;
 import com.linfengda.sb.chapter1.service.SysUserService;
 import com.linfengda.sb.support.orm.AbstractBaseService;
@@ -58,12 +58,12 @@ public class SysUserServiceImpl extends AbstractBaseService implements SysUserSe
     }
 
     private List<UserVO> getUserVOS(ConditionParam conditionParam) throws Exception {
-        List<SysUserPO> sysUserPOList = query(conditionParam, SysUserPO.class);
+        List<SysUserIncrementEntity> sysUserPOList = query(conditionParam, SysUserIncrementEntity.class);
         if (CollectionUtils.isEmpty(sysUserPOList)) {
             return null;
         }
         List<UserVO> userVOList = new ArrayList<>();
-        for (SysUserPO sysUserPO : sysUserPOList) {
+        for (SysUserIncrementEntity sysUserPO : sysUserPOList) {
             UserVO userVO = new UserVO();
             userVO.setUserId(sysUserPO.getId());
             userVO.setUserName(sysUserPO.getUserName());
@@ -77,7 +77,7 @@ public class SysUserServiceImpl extends AbstractBaseService implements SysUserSe
     @QueryCache(type = DataType.HASH, prefix = "sys:user", timeOut = 30, timeUnit = TimeUnit.MINUTES, preCacheSnowSlide = true, preCacheSnowSlideTime = 1000, preCacheHotKeyMultiLoad = true, maxSize = 5, maxSizeStrategy = CacheMaxSizeStrategy.MAX_SIZE_STRATEGY_LRU)
     @Override
     public UserVO getUserInfo(@CacheKey Integer userId) throws Exception {
-        SysUserPO sysUserPO = getByPrimaryKey(userId, SysUserPO.class);
+        SysUserIncrementEntity sysUserPO = getByPrimaryKey(userId, SysUserIncrementEntity.class);
         if (null == sysUserPO) {
             return null;
         }
@@ -96,9 +96,9 @@ public class SysUserServiceImpl extends AbstractBaseService implements SysUserSe
     public UserVO updateUserInfo(@CacheKey Integer userId, UserUpdateDTO userUpdateDTO) throws Exception {
         SetValue setValue = new SetValue();
         setValue.add("userName", userUpdateDTO.getUserName());
-        updateByPrimaryKey(SysUserPO.class, setValue, userId);
+        updateByPrimaryKey(SysUserIncrementEntity.class, setValue, userId);
         UserVO userVO = new UserVO();
-        SysUserPO sysUserPO = getByPrimaryKey(userId, SysUserPO.class);
+        SysUserIncrementEntity sysUserPO = getByPrimaryKey(userId, SysUserIncrementEntity.class);
         BeanUtils.copyProperties(sysUserPO, userVO);
         return userVO;
     }

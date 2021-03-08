@@ -1,7 +1,7 @@
 package com.linfengda.sb.support.rabbitmq;
 
 import com.linfengda.sb.support.exception.BusinessException;
-import com.linfengda.sb.chapter1.common.thread.ThreadPoolHelper;
+import com.linfengda.sb.chapter1.common.util.ThreadPoolUtil;
 import com.linfengda.sb.support.rabbitmq.service.MqConsumerService;
 import com.linfengda.sb.support.rabbitmq.service.MqProducerService;
 import com.rabbitmq.client.*;
@@ -24,7 +24,7 @@ import java.util.concurrent.CountDownLatch;
 @Slf4j
 @RunWith(JUnit4.class)
 public class RabbitmqTest {
-    private static ThreadPoolTaskExecutor executor = ThreadPoolHelper.initThreadPool(10, 50, "test-thread");
+    private static ThreadPoolTaskExecutor executor = ThreadPoolUtil.initThreadPool(10, 50, "test-thread");
 
 
     /**

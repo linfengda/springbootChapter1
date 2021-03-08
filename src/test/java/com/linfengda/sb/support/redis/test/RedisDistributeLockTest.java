@@ -1,6 +1,6 @@
 package com.linfengda.sb.support.redis.test;
 
-import com.linfengda.sb.chapter1.common.thread.ThreadPoolHelper;
+import com.linfengda.sb.chapter1.common.util.ThreadPoolUtil;
 import com.linfengda.sb.support.redis.task.DistributeLockTestTask;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
@@ -24,7 +24,7 @@ public class RedisDistributeLockTest {
     /**
      * 定义线程池
      */
-    private static ThreadPoolTaskExecutor executor = ThreadPoolHelper.initThreadPool(THREAD_NUM, THREAD_NUM, "test-thread");
+    private static ThreadPoolTaskExecutor executor = ThreadPoolUtil.initThreadPool(THREAD_NUM, THREAD_NUM, "test-thread");
 
 
 

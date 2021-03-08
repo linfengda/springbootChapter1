@@ -2,7 +2,7 @@ package com.linfengda.sb.chapter1.cache;
 
 import com.linfengda.sb.support.exception.BusinessException;
 import com.linfengda.sb.chapter1.common.exception.entity.ErrorCode;
-import com.linfengda.sb.support.util.SpringUtil;
+import com.linfengda.sb.chapter1.common.util.SpringUtil;
 import com.linfengda.sb.chapter1.cache.impl.UserTokenCache;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
