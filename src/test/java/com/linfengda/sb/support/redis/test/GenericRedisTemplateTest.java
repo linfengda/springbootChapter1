@@ -2,8 +2,8 @@ package com.linfengda.sb.support.redis.test;
 
 import com.linfengda.sb.chapter1.Chapter1Application;
 import com.linfengda.sb.support.redis.Constant;
-import com.linfengda.sb.support.redis.cache.entity.bo.LruExpireResultBO;
 import com.linfengda.sb.support.redis.GenericRedisTemplate;
+import com.linfengda.sb.support.redis.cache.entity.bo.LruExpireResultBO;
 import com.linfengda.sb.support.redis.entity.MySon;
 import com.linfengda.sb.support.redis.entity.Pig;
 import lombok.extern.slf4j.Slf4j;

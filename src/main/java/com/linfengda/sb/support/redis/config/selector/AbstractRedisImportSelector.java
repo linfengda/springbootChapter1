@@ -1,7 +1,7 @@
 package com.linfengda.sb.support.redis.config.selector;
 
-import com.linfengda.sb.support.redis.config.annotation.EnableRedis;
 import com.linfengda.sb.support.redis.config.AnnotationAttributeHolder;
+import com.linfengda.sb.support.redis.config.annotation.EnableRedis;
 import org.springframework.context.annotation.ImportSelector;
 import org.springframework.core.annotation.AnnotationAttributes;
 import org.springframework.core.type.AnnotationMetadata;

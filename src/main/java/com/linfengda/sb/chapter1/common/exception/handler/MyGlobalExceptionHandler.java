@@ -1,8 +1,8 @@
 package com.linfengda.sb.chapter1.common.exception.handler;
 
 import com.linfengda.sb.chapter1.common.bean.Result;
-import com.linfengda.sb.support.exception.BusinessException;
 import com.linfengda.sb.chapter1.common.exception.entity.ErrorCode;
+import com.linfengda.sb.chapter1.common.exception.BusinessException;
 import com.linfengda.sb.support.orm.exception.DataAccessException;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -40,13 +40,13 @@ public class MyGlobalExceptionHandler {
             }
         }else if (e instanceof MethodArgumentNotValidException) {
             MethodArgumentNotValidException argumentNotValidException = (MethodArgumentNotValidException) e;
-            result = new Result(ErrorCode.COMMON_PARAM_ERROR_CODE, argumentNotValidException.getMessage());
+            result = new Result(ErrorCode.PARAM_ERROR_CODE, argumentNotValidException.getMessage());
         }else if (e instanceof HttpRequestMethodNotSupportedException) {
             log.warn("404找不到URL:未知请求与方法", e);
             return RESULT_404;
         }else {
             log.error("error info:", e);
-            result = new Result(ErrorCode.SYSTEM_ERROR_CODE, "系统故障，请稍后再试！");
+            result = new Result(ErrorCode.UNKNOWN_ERROR_CODE, "系统故障，请稍后再试！");
         }
         return result;
     }

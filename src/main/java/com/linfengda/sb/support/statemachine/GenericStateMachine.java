@@ -1,6 +1,6 @@
 package com.linfengda.sb.support.statemachine;
 
-import com.linfengda.sb.support.exception.BusinessException;
+import com.linfengda.sb.chapter1.common.exception.BusinessException;
 
 import java.util.ArrayList;
 import java.util.List;

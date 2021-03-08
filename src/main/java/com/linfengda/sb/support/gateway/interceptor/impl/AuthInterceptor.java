@@ -1,6 +1,6 @@
 package com.linfengda.sb.support.gateway.interceptor.impl;
 
-import com.linfengda.sb.support.exception.BusinessException;
+import com.linfengda.sb.chapter1.common.exception.BusinessException;
 import com.linfengda.sb.support.gateway.acl.AuthWhiteUrlList;
 import com.linfengda.sb.support.gateway.entity.UserSessionBO;
 import com.linfengda.sb.support.gateway.router.RequestRouter;

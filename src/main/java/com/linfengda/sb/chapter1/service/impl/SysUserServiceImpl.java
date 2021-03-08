@@ -1,8 +1,7 @@
 package com.linfengda.sb.chapter1.service.impl;
 
-import com.linfengda.sb.chapter1.entity.dto.UserUpdateDTO;
-import com.linfengda.sb.chapter1.entity.po.SysUserIncrementEntity;
-import com.linfengda.sb.chapter1.entity.vo.UserVO;
+import com.linfengda.sb.chapter1.bean.dto.UserUpdateDTO;
+import com.linfengda.sb.chapter1.bean.vo.UserVO;
 import com.linfengda.sb.chapter1.service.SysUserService;
 import com.linfengda.sb.support.orm.AbstractBaseService;
 import com.linfengda.sb.support.orm.entity.ConditionParam;
@@ -58,7 +57,7 @@ public class SysUserServiceImpl extends AbstractBaseService implements SysUserSe
     }
 
     private List<UserVO> getUserVOS(ConditionParam conditionParam) throws Exception {
-        List<SysUserIncrementEntity> sysUserPOList = query(conditionParam, SysUserIncrementEntity.class);
+        /*List<SysUserIncrementEntity> sysUserPOList = query(conditionParam, SysUserIncrementEntity.class);
         if (CollectionUtils.isEmpty(sysUserPOList)) {
             return null;
         }
@@ -71,13 +70,14 @@ public class SysUserServiceImpl extends AbstractBaseService implements SysUserSe
             userVO.setStatus(sysUserPO.getStatus());
             userVOList.add(userVO);
         }
-        return userVOList;
+        return userVOList;*/
+        return null;
     }
 
     @QueryCache(type = DataType.HASH, prefix = "sys:user", timeOut = 30, timeUnit = TimeUnit.MINUTES, preCacheSnowSlide = true, preCacheSnowSlideTime = 1000, preCacheHotKeyMultiLoad = true, maxSize = 5, maxSizeStrategy = CacheMaxSizeStrategy.MAX_SIZE_STRATEGY_LRU)
     @Override
     public UserVO getUserInfo(@CacheKey Integer userId) throws Exception {
-        SysUserIncrementEntity sysUserPO = getByPrimaryKey(userId, SysUserIncrementEntity.class);
+        /*SysUserIncrementEntity sysUserPO = getByPrimaryKey(userId, SysUserIncrementEntity.class);
         if (null == sysUserPO) {
             return null;
         }
@@ -86,7 +86,8 @@ public class SysUserServiceImpl extends AbstractBaseService implements SysUserSe
         userVO.setUserName(sysUserPO.getUserName());
         userVO.setPhone(sysUserPO.getPhone());
         userVO.setStatus(sysUserPO.getStatus());
-        return userVO;
+        return userVO;*/
+        return null;
     }
 
 
@@ -94,12 +95,13 @@ public class SysUserServiceImpl extends AbstractBaseService implements SysUserSe
     @Transactional(rollbackFor=Exception.class, propagation = Propagation.REQUIRED)
     @Override
     public UserVO updateUserInfo(@CacheKey Integer userId, UserUpdateDTO userUpdateDTO) throws Exception {
-        SetValue setValue = new SetValue();
+        /*SetValue setValue = new SetValue();
         setValue.add("userName", userUpdateDTO.getUserName());
         updateByPrimaryKey(SysUserIncrementEntity.class, setValue, userId);
         UserVO userVO = new UserVO();
         SysUserIncrementEntity sysUserPO = getByPrimaryKey(userId, SysUserIncrementEntity.class);
         BeanUtils.copyProperties(sysUserPO, userVO);
-        return userVO;
+        return userVO;*/
+        return null;
     }
 }

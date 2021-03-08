@@ -24,7 +24,7 @@ public class DataAccessException extends RuntimeException {
         this.msg = msg;
     }
 
-    private int code = ErrorCode.COMMON_DAO_ERROR_CODE;
+    private int code = ErrorCode.DAO_ERROR_CODE;
 
     private String msg;
 }

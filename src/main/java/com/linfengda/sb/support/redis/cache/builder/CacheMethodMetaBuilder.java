@@ -1,6 +1,6 @@
 package com.linfengda.sb.support.redis.cache.builder;
 
-import com.linfengda.sb.support.exception.BusinessException;
+import com.linfengda.sb.chapter1.common.exception.BusinessException;
 import com.linfengda.sb.support.redis.Constant;
 import com.linfengda.sb.support.redis.cache.annotation.*;
 import com.linfengda.sb.support.redis.cache.entity.meta.CacheKeyMeta;

@@ -1,8 +1,8 @@
 package com.linfengda.sb.chapter1.cache.impl;
 
-import com.linfengda.sb.support.exception.BusinessException;
 import com.linfengda.sb.chapter1.cache.SystemCachePrefix;
 import com.linfengda.sb.chapter1.cache.dto.UserInfo;
+import com.linfengda.sb.chapter1.common.exception.BusinessException;
 import com.linfengda.sb.support.redis.GenericRedisTemplate;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;

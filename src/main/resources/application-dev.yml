@@ -3,15 +3,37 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/spring_boot_db?useSSL=false&useUnicode=yes&characterEncoding=UTF-8&autoReconnect=true
     username: root
     password: 123456
-
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      pool-name: HikariCP
+      idle-timeout: 30000
+      max-lifetime: 60000
+      connection-timeout: 30000
+      minimum-idle: 10
+      maximum-pool-size: 100
+      connection-test-query: SELECT 1
   redis:
     host: 127.0.0.1
     port: 6379
     database: 0
-
+    timeout: 5000
+    jedis:
+      pool:
+        max-active: 8
+        min-idle: 0
+        max-idle: 8
+        max-wait: -1
   rabbitmq:
     host: 115.28.49.96
     port: 5672
     username: backend
     password: stylewe
     virtual-host: mrp
+
+mybatis-plus:
+  global-config:
+    db-config:
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+  mapper-locations: classpath:/mybatis/*.xml

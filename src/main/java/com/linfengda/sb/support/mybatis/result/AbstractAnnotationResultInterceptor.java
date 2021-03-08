@@ -1,6 +1,6 @@
 package com.linfengda.sb.support.mybatis.result;
 
-import com.linfengda.sb.support.entity.type.BaseType;
+import com.linfengda.sb.support.type.BaseType;
 import com.linfengda.sb.support.mybatis.entity.InterceptorClass;
 import com.linfengda.sb.support.mybatis.entity.InterceptorField;
 import org.springframework.util.CollectionUtils;

@@ -1,7 +1,7 @@
 package com.linfengda.sb.chapter1.remote;
 
 import com.alibaba.fastjson.JSONObject;
-import com.linfengda.sb.chapter1.entity.dto.BigBomMaterialQueryDTO;
+import com.linfengda.sb.chapter1.bean.req.BomMaterialQueryReq;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,11 +18,11 @@ public interface PlmRemote {
 
     /**
      * 请求plm订单大货物料信息
-     * @param bigBomMaterialQueryDTO
+     * @param bomMaterialQueryReq
      * @return
      */
     @PostMapping("/pc/plm/outer/getOrderBigBomMaterials")
-    JSONObject getOrderBigBomMaterials(@RequestBody BigBomMaterialQueryDTO bigBomMaterialQueryDTO);
+    JSONObject getOrderBigBomMaterials(@RequestBody BomMaterialQueryReq bomMaterialQueryReq);
 
     /**
      * 请求plm物料单价

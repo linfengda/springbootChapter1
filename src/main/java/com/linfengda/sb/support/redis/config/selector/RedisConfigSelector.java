@@ -1,8 +1,8 @@
 package com.linfengda.sb.support.redis.config.selector;
 
+import com.linfengda.sb.support.redis.config.BusinessLockAnnotationConfig;
 import com.linfengda.sb.support.redis.config.RedisCacheAnnotationConfig;
 import com.linfengda.sb.support.redis.config.RedisConfig;
-import com.linfengda.sb.support.redis.config.BusinessLockAnnotationConfig;
 import com.linfengda.sb.support.redis.config.annotation.EnableRedis;
 
 import java.util.ArrayList;

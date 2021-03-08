@@ -5,9 +5,7 @@ import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.linfengda.sb.support.redis.GenericRedisTemplate;
 import com.linfengda.sb.support.redis.lock.RedisDistributedLock;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
-import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
@@ -19,27 +17,6 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
  * @create 2018-09-10 17:00
  */
 public class RedisConfig {
-    @Value("${spring.redis.host}")
-    private String host;
-    @Value("${spring.redis.port}")
-    private int port;
-    @Value("${spring.redis.database}")
-    private int database;
-
-
-    /**
-     * 配置jedisConnectionFactory
-     * @return
-     */
-    private JedisConnectionFactory jedisConnectionFactory() {
-        RedisStandaloneConfiguration standaloneConfiguration = new RedisStandaloneConfiguration();
-        standaloneConfiguration.setHostName(host);
-        standaloneConfiguration.setPort(port);
-        standaloneConfiguration.setDatabase(database);
-        // 获取连接管理工厂
-        JedisConnectionFactory jedisConnectionFactory = new JedisConnectionFactory(standaloneConfiguration);
-        return jedisConnectionFactory;
-    }
 
     /**
      * 配置Jackson2JsonRedisSerializer
@@ -59,10 +36,10 @@ public class RedisConfig {
      * @return
      */
     @Bean
-    public GenericRedisTemplate genericRedisTemplate() {
+    public GenericRedisTemplate genericRedisTemplate(JedisConnectionFactory jedisConnectionFactory) {
         Jackson2JsonRedisSerializer<Object> jackson2JsonRedisSerializer = jackson2JsonRedisSerializer();
         GenericRedisTemplate genericRedisTemplate = new GenericRedisTemplate();
-        genericRedisTemplate.setConnectionFactory(jedisConnectionFactory());
+        genericRedisTemplate.setConnectionFactory(jedisConnectionFactory);
         genericRedisTemplate.setKeySerializer(new StringRedisSerializer());
         genericRedisTemplate.setHashKeySerializer(new StringRedisSerializer());
         genericRedisTemplate.setValueSerializer(jackson2JsonRedisSerializer);

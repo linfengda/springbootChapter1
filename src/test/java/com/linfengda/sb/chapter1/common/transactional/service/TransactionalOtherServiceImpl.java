@@ -1,7 +1,6 @@
 package com.linfengda.sb.chapter1.common.transactional.service;
 
-import com.linfengda.sb.support.exception.BusinessException;
-import com.linfengda.sb.chapter1.entity.po.SysUserIncrementEntity;
+import com.linfengda.sb.chapter1.common.exception.BusinessException;
 import com.linfengda.sb.support.orm.AbstractBaseService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

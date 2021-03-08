@@ -1,8 +1,8 @@
 package com.linfengda.sb.chapter1.demo;
 
 import com.linfengda.sb.chapter1.Chapter1Application;
-import com.linfengda.sb.chapter1.entity.type.SysUserStatus;
-import com.linfengda.sb.chapter1.entity.vo.UserVO;
+import com.linfengda.sb.chapter1.bean.type.SysUserStatusType;
+import com.linfengda.sb.chapter1.bean.vo.UserVO;
 import com.linfengda.sb.chapter1.service.SysUserService;
 import lombok.extern.slf4j.Slf4j;
 import org.hamcrest.CoreMatchers;
@@ -52,7 +52,7 @@ public class CompleteApiSpringBootTest extends BaseMockMvcSpringBootTest {
         userVO.setUserId(1);
         userVO.setUserName("模拟数据");
         userVO.setPhone("13632109840");
-        userVO.setStatus(SysUserStatus.YES.getCode());
+        userVO.setStatus(SysUserStatusType.YES.getCode());
         // 模拟service方法调用
         Mockito.doReturn(userVO).when(sysUserService).getUserInfo(1);
         // 执行请求

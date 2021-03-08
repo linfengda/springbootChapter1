@@ -1,8 +1,8 @@
 package com.linfengda.sb.chapter1.service;
 
-import com.linfengda.sb.chapter1.entity.dto.SysDepartmentCacheDTO;
-import com.linfengda.sb.chapter1.entity.dto.SysTeamCacheDTO;
-import com.linfengda.sb.chapter1.entity.dto.SysUserCacheDTO;
+import com.linfengda.sb.chapter1.bean.dto.SysDepartmentCacheDTO;
+import com.linfengda.sb.chapter1.bean.dto.SysTeamCacheDTO;
+import com.linfengda.sb.chapter1.bean.dto.SysUserCacheDTO;
 
 import java.util.Set;
 

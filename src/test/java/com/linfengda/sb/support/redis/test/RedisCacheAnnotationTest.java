@@ -3,8 +3,8 @@ package com.linfengda.sb.support.redis.test;
 import com.alibaba.fastjson.JSON;
 import com.linfengda.sb.chapter1.Chapter1Application;
 import com.linfengda.sb.chapter1.common.util.ThreadPoolUtil;
-import com.linfengda.sb.chapter1.entity.dto.UserUpdateDTO;
-import com.linfengda.sb.chapter1.entity.vo.UserVO;
+import com.linfengda.sb.chapter1.bean.dto.UserUpdateDTO;
+import com.linfengda.sb.chapter1.bean.vo.UserVO;
 import com.linfengda.sb.chapter1.service.SysUserService;
 import com.linfengda.sb.support.redis.GenericRedisTemplate;
 import lombok.extern.slf4j.Slf4j;
@@ -19,6 +19,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import javax.annotation.Resource;
 import java.util.Set;
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ThreadPoolExecutor;
 
 /**
  * @description redis缓存注解测试
@@ -42,7 +43,7 @@ public class RedisCacheAnnotationTest {
      */
     @Test
     public void testMultiQueryCache() throws Exception {
-        ThreadPoolTaskExecutor executor = ThreadPoolUtil.initThreadPool(10, 20, "test-thread");
+        ThreadPoolTaskExecutor executor = ThreadPoolUtil.initThreadPool(10, 20, 30, 30, "test-thread", new ThreadPoolExecutor.DiscardPolicy());
         CountDownLatch startCount = new CountDownLatch(10);
         for (int i = 0; i < 10; i++) {
             executor.submit(() -> {

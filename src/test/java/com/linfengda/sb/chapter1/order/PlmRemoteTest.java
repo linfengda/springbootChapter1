@@ -1,7 +1,7 @@
 package com.linfengda.sb.chapter1.order;
 
 import com.linfengda.sb.chapter1.Chapter1Application;
-import com.linfengda.sb.chapter1.entity.dto.BigBomMaterialQueryDTO;
+import com.linfengda.sb.chapter1.bean.req.BomMaterialQueryReq;
 import com.linfengda.sb.chapter1.remote.PlmRemote;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.FixMethodOrder;
@@ -31,10 +31,10 @@ public class PlmRemoteTest {
      */
     @Test
     public void testGetOrderBigBomMaterials() {
-        BigBomMaterialQueryDTO bigBomMaterialQueryDTO = new BigBomMaterialQueryDTO();
-        bigBomMaterialQueryDTO.setSku("DK1234");
-        bigBomMaterialQueryDTO.setVersion(1);
-        log.info("请求plm订单大货物料信息，返回：{}", plmRemote.getOrderBigBomMaterials(bigBomMaterialQueryDTO));
+        BomMaterialQueryReq bomMaterialQueryReq = new BomMaterialQueryReq();
+        bomMaterialQueryReq.setSku("DK1234");
+        bomMaterialQueryReq.setVersion(1);
+        log.info("请求plm订单大货物料信息，返回：{}", plmRemote.getOrderBigBomMaterials(bomMaterialQueryReq));
     }
 
     /**

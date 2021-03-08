@@ -4,24 +4,5 @@ server:
 spring:
   application:
     name: springBootChapter1
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    type: com.zaxxer.hikari.HikariDataSource
-    hikari:
-      pool-name: HikariCP
-      idle-timeout: 30000
-      max-lifetime: 60000
-      connection-timeout: 30000
-      minimum-idle: 10
-      maximum-pool-size: 100
-      connection-test-query: SELECT 1
-  redis:
-    timeout: 5000
-    jedis:
-      pool:
-        max-active: 200
-        min-idle: 0
-        max-idle: 5
-        max-wait: -1
 logging:
   config: classpath:logback.xml

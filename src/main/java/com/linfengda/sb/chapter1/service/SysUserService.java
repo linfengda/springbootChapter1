@@ -1,7 +1,7 @@
 package com.linfengda.sb.chapter1.service;
 
-import com.linfengda.sb.chapter1.entity.dto.UserUpdateDTO;
-import com.linfengda.sb.chapter1.entity.vo.UserVO;
+import com.linfengda.sb.chapter1.bean.dto.UserUpdateDTO;
+import com.linfengda.sb.chapter1.bean.vo.UserVO;
 
 import java.util.List;
 import java.util.Set;

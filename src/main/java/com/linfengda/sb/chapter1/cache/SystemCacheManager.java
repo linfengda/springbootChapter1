@@ -1,9 +1,9 @@
 package com.linfengda.sb.chapter1.cache;
 
-import com.linfengda.sb.support.exception.BusinessException;
+import com.linfengda.sb.chapter1.cache.impl.UserTokenCache;
 import com.linfengda.sb.chapter1.common.exception.entity.ErrorCode;
 import com.linfengda.sb.chapter1.common.util.SpringUtil;
-import com.linfengda.sb.chapter1.cache.impl.UserTokenCache;
+import com.linfengda.sb.chapter1.common.exception.BusinessException;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
@@ -74,7 +74,7 @@ public enum SystemCacheManager {
             log.info("初始化应用程序缓存成功!");
         } catch (Exception e) {
             log.error("初始化应用程序缓存失败:", e);
-            throw new BusinessException(ErrorCode.SYSTEM_ERROR_CODE, "初始化应用程序缓存失败！");
+            throw new BusinessException(ErrorCode.UNKNOWN_ERROR_CODE, "初始化应用程序缓存失败！");
         }
     }
 }

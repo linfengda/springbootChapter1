@@ -1,26 +1,17 @@
 package com.linfengda.sb.chapter1.service.impl;
 
-import com.linfengda.sb.chapter1.common.bean.po.BaseIncrementEntity;
+import com.linfengda.sb.chapter1.bean.dto.SysDepartmentCacheDTO;
+import com.linfengda.sb.chapter1.bean.dto.SysTeamCacheDTO;
+import com.linfengda.sb.chapter1.bean.dto.SysUserCacheDTO;
 import com.linfengda.sb.chapter1.cache.SystemCachePrefix;
-import com.linfengda.sb.chapter1.entity.dto.SysDepartmentCacheDTO;
-import com.linfengda.sb.chapter1.entity.dto.SysTeamCacheDTO;
-import com.linfengda.sb.chapter1.entity.dto.SysUserCacheDTO;
-import com.linfengda.sb.chapter1.entity.po.SysDepartmentIncrementEntity;
-import com.linfengda.sb.chapter1.entity.po.SysTeamIncrementEntity;
-import com.linfengda.sb.chapter1.entity.po.SysUserIncrementEntity;
 import com.linfengda.sb.chapter1.service.SysOrganizeCacheService;
 import com.linfengda.sb.support.orm.AbstractBaseService;
-import com.linfengda.sb.support.orm.entity.ConditionParam;
-import com.linfengda.sb.support.orm.entity.SetValue;
 import com.linfengda.sb.support.redis.cache.annotation.*;
 import com.linfengda.sb.support.redis.cache.entity.type.DataType;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
@@ -37,13 +28,14 @@ public class SysOrganizeCacheServiceImpl extends AbstractBaseService implements 
     @QueryCache(type = DataType.HASH, prefix = SystemCachePrefix.SYS_ORG_PRODUCTION_TEAM_CACHE, timeOut = 1, timeUnit = TimeUnit.DAYS)
     @Override
     public SysDepartmentCacheDTO queryDepartment(@CacheKey Integer departmentId) throws Exception {
-        SysDepartmentIncrementEntity sysDepartmentPO = getByPrimaryKey(departmentId, SysDepartmentIncrementEntity.class);
+        /*SysDepartmentIncrementEntity sysDepartmentPO = getByPrimaryKey(departmentId, SysDepartmentIncrementEntity.class);
         if (null == sysDepartmentPO) {
             return null;
         }
         SysDepartmentCacheDTO sysDepartmentCacheDTO = new SysDepartmentCacheDTO();
         BeanUtils.copyProperties(sysDepartmentPO, sysDepartmentCacheDTO);
-        return sysDepartmentCacheDTO;
+        return sysDepartmentCacheDTO;*/
+        return null;
     }
 
     @DeleteCache(caches = {@Cache(type = DataType.SET, prefix = SystemCachePrefix.SYS_ORG_PRODUCTION_TEAM_SET_CACHE, allEntries = true)})
@@ -51,7 +43,7 @@ public class SysOrganizeCacheServiceImpl extends AbstractBaseService implements 
     @Transactional(rollbackFor = Exception.class)
     @Override
     public SysDepartmentCacheDTO updateDepartment(@CacheKey Integer departmentId, String departmentName, Integer status) throws Exception {
-        SetValue setValue = new SetValue();
+        /*SetValue setValue = new SetValue();
         setValue.add("departmentName", departmentName);
         setValue.add("status", status);
         updateByPrimaryKey(SysDepartmentIncrementEntity.class, setValue, departmentId);
@@ -61,7 +53,8 @@ public class SysOrganizeCacheServiceImpl extends AbstractBaseService implements 
         }
         SysDepartmentCacheDTO sysDepartmentCacheDTO = new SysDepartmentCacheDTO();
         BeanUtils.copyProperties(sysDepartmentPO, sysDepartmentCacheDTO);
-        return sysDepartmentCacheDTO;
+        return sysDepartmentCacheDTO;*/
+        return null;
     }
 
     @DeleteCache(
@@ -71,15 +64,15 @@ public class SysOrganizeCacheServiceImpl extends AbstractBaseService implements 
     @Transactional(rollbackFor = Exception.class)
     @Override
     public void delDepartment(@CacheKey Integer departmentId) throws Exception {
-        SetValue setValue = new SetValue();
+        /*SetValue setValue = new SetValue();
         setValue.add("deleted", BaseIncrementEntity.Deleted.DELETED.getCode());
-        updateByPrimaryKey(SysDepartmentIncrementEntity.class, setValue, departmentId);
+        updateByPrimaryKey(SysDepartmentIncrementEntity.class, setValue, departmentId);*/
     }
 
     @QueryCache(type = DataType.SET, prefix = SystemCachePrefix.SYS_ORG_PRODUCTION_TEAM_SET_CACHE, timeOut = 1, timeUnit = TimeUnit.DAYS)
     @Override
     public Set<SysDepartmentCacheDTO> queryDepartments() throws Exception {
-        ConditionParam conditionParam = new ConditionParam();
+        /*ConditionParam conditionParam = new ConditionParam();
         List<SysDepartmentIncrementEntity> sysDepartmentPOList = query(conditionParam, SysDepartmentIncrementEntity.class);
         Set<SysDepartmentCacheDTO> sysDepartmentCacheDTOSet = new HashSet<>();
         for (SysDepartmentIncrementEntity sysDepartmentPO : sysDepartmentPOList) {
@@ -87,13 +80,14 @@ public class SysOrganizeCacheServiceImpl extends AbstractBaseService implements 
             BeanUtils.copyProperties(sysDepartmentPO, sysDepartmentCacheDTO);
             sysDepartmentCacheDTOSet.add(sysDepartmentCacheDTO);
         }
-        return sysDepartmentCacheDTOSet;
+        return sysDepartmentCacheDTOSet;*/
+        return null;
     }
 
     @QueryCache(type = DataType.SET, prefix = SystemCachePrefix.SYS_ORG_TEAM_SET_CACHE, timeOut = 1, timeUnit = TimeUnit.DAYS)
     @Override
     public Set<SysTeamCacheDTO> queryTeamByDepartmentId(@CacheKey Integer departmentId) throws Exception {
-        ConditionParam conditionParam = new ConditionParam();
+        /*ConditionParam conditionParam = new ConditionParam();
         conditionParam.add("departmentId", departmentId);
         List<SysTeamIncrementEntity> sysTeamPOList = query(conditionParam, SysTeamIncrementEntity.class);
         Set<SysTeamCacheDTO> sysTeamCacheDTOSet = new HashSet<>();
@@ -102,13 +96,14 @@ public class SysOrganizeCacheServiceImpl extends AbstractBaseService implements 
             BeanUtils.copyProperties(sysTeamPO, sysTeamCacheDTO);
             sysTeamCacheDTOSet.add(sysTeamCacheDTO);
         }
-        return sysTeamCacheDTOSet;
+        return sysTeamCacheDTOSet;*/
+        return null;
     }
 
     @QueryCache(type = DataType.SET, prefix = SystemCachePrefix.SYS_ORG_USER_SET_CACHE, timeOut = 1, timeUnit = TimeUnit.DAYS)
     @Override
     public Set<SysUserCacheDTO> queryUserByTeamId(@CacheKey Integer teamId) throws Exception {
-        ConditionParam conditionParam = new ConditionParam();
+        /*ConditionParam conditionParam = new ConditionParam();
         conditionParam.add("teamId", teamId);
         List<SysUserIncrementEntity> sysUserPOList = query(conditionParam, SysUserIncrementEntity.class);
         Set<SysUserCacheDTO> sysUserCacheDTOSet = new HashSet<>();
@@ -117,6 +112,7 @@ public class SysOrganizeCacheServiceImpl extends AbstractBaseService implements 
             BeanUtils.copyProperties(sysUserPO, sysUserCacheDTO);
             sysUserCacheDTOSet.add(sysUserCacheDTO);
         }
-        return sysUserCacheDTOSet;
+        return sysUserCacheDTOSet;*/
+        return null;
     }
 }

@@ -1,6 +1,6 @@
 package com.linfengda.sb.support.rabbitmq;
 
-import com.linfengda.sb.support.exception.BusinessException;
+import com.linfengda.sb.chapter1.common.exception.BusinessException;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
 import lombok.extern.slf4j.Slf4j;

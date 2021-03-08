@@ -1,7 +1,7 @@
 package com.linfengda.sb.support.rabbitmq;
 
-import com.linfengda.sb.support.exception.BusinessException;
 import com.linfengda.sb.chapter1.common.util.ThreadPoolUtil;
+import com.linfengda.sb.chapter1.common.exception.BusinessException;
 import com.linfengda.sb.support.rabbitmq.service.MqConsumerService;
 import com.linfengda.sb.support.rabbitmq.service.MqProducerService;
 import com.rabbitmq.client.*;
@@ -14,6 +14,7 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ThreadPoolExecutor;
 
 /**
  * 描述: rabbitmq测试
@@ -24,7 +25,7 @@ import java.util.concurrent.CountDownLatch;
 @Slf4j
 @RunWith(JUnit4.class)
 public class RabbitmqTest {
-    private static ThreadPoolTaskExecutor executor = ThreadPoolUtil.initThreadPool(10, 50, "test-thread");
+    private static ThreadPoolTaskExecutor executor = ThreadPoolUtil.initThreadPool(10, 20, 30, 30, "test-thread", new ThreadPoolExecutor.DiscardPolicy());
 
 
     /**

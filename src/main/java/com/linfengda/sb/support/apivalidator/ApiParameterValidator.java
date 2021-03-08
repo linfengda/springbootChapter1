@@ -2,7 +2,7 @@ package com.linfengda.sb.support.apivalidator;
 
 import com.linfengda.sb.support.apivalidator.type.BeanValidateAnnotationType;
 import com.linfengda.sb.support.apivalidator.type.FieldValidateAnnotationType;
-import com.linfengda.sb.support.exception.BusinessException;
+import com.linfengda.sb.chapter1.common.exception.BusinessException;
 import com.linfengda.sb.support.validator.MyValidateUtils;
 import org.aopalliance.intercept.MethodInvocation;
 
