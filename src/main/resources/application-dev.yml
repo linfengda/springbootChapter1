@@ -36,4 +36,4 @@ mybatis-plus:
     db-config:
       logic-delete-value: 1
       logic-not-delete-value: 0
-  mapper-locations: classpath:/mybatis/*.xml
+  mapper-locations: classpath:/com/linfengda/sb/chapter1/mapper/xml/*.xml

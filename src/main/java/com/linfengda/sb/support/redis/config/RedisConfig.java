@@ -6,7 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.linfengda.sb.support.redis.GenericRedisTemplate;
 import com.linfengda.sb.support.redis.lock.RedisDistributedLock;
 import org.springframework.context.annotation.Bean;
-import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
+import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
@@ -33,13 +33,14 @@ public class RedisConfig {
 
     /**
      * 配置默认GenericRedisTemplate
+     * @param redisConnectionFactory    默认LettuceConnectionFactory
      * @return
      */
     @Bean
-    public GenericRedisTemplate genericRedisTemplate(JedisConnectionFactory jedisConnectionFactory) {
+    public GenericRedisTemplate genericRedisTemplate(RedisConnectionFactory redisConnectionFactory) {
         Jackson2JsonRedisSerializer<Object> jackson2JsonRedisSerializer = jackson2JsonRedisSerializer();
         GenericRedisTemplate genericRedisTemplate = new GenericRedisTemplate();
-        genericRedisTemplate.setConnectionFactory(jedisConnectionFactory);
+        genericRedisTemplate.setConnectionFactory(redisConnectionFactory);
         genericRedisTemplate.setKeySerializer(new StringRedisSerializer());
         genericRedisTemplate.setHashKeySerializer(new StringRedisSerializer());
         genericRedisTemplate.setValueSerializer(jackson2JsonRedisSerializer);

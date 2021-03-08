@@ -25,5 +25,5 @@ public class UserVO {
     /**
      * 用户状态
      */
-    private Integer status;
+    private String status;
 }

@@ -1,18 +1,22 @@
 package com.linfengda.sb.chapter1.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.linfengda.sb.chapter1.bean.dto.UserUpdateDTO;
+import com.linfengda.sb.chapter1.bean.entity.SysUser;
 import com.linfengda.sb.chapter1.bean.vo.UserVO;
 
 import java.util.List;
 import java.util.Set;
 
 /**
- * 描述: 系统用户服务
+ * <p>
+ * 用户表 服务类
+ * </p>
  *
  * @author linfengda
- * @create 2019-07-28 15:07
+ * @since 2021-03-08
  */
-public interface SysUserService {
+public interface SysUserService extends IService<SysUser> {
 
     /**
      * 查询部门下的所有用户
@@ -20,7 +24,7 @@ public interface SysUserService {
      * @return
      * @throws Exception
      */
-    Set<UserVO> getDepartmentUserList(Integer departmentId) throws Exception;
+    Set<UserVO> getDepartmentUserList(Integer departmentId);
 
     /**
      * 查询团队下的所有用户
@@ -28,7 +32,7 @@ public interface SysUserService {
      * @return
      * @throws Exception
      */
-    List<UserVO> getTeamUserList(Integer teamId) throws Exception;
+    List<UserVO> getTeamUserList(Integer teamId);
 
     /**
      * 查询用户信息
@@ -36,7 +40,7 @@ public interface SysUserService {
      * @return
      * @throws Exception
      */
-    UserVO getUserInfo(Integer userId) throws Exception;
+    UserVO getUserInfo(Integer userId);
 
     /**
      * 更新用户信息
@@ -45,5 +49,5 @@ public interface SysUserService {
      * @return
      * @throws Exception
      */
-    UserVO updateUserInfo(Integer userId, UserUpdateDTO userUpdateDTO) throws Exception;
+    UserVO updateUserInfo(Integer userId, UserUpdateDTO userUpdateDTO);
 }

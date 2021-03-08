@@ -114,7 +114,7 @@ public class TransactionalOtherServiceImpl extends AbstractBaseService implement
 
 
     void insert() throws Exception {
-        SysUserIncrementEntity sysUserPO = new SysUserIncrementEntity();
+        SysUserEntity sysUserPO = new SysUserEntity();
         sysUserPO.setId(456);
         sysUserPO.setUserName("用户456");
         sysUserPO.setPhone("456");
@@ -123,7 +123,7 @@ public class TransactionalOtherServiceImpl extends AbstractBaseService implement
     }
 
     void insertAndThrow() throws Exception {
-        SysUserIncrementEntity sysUserPO = new SysUserIncrementEntity();
+        SysUserEntity sysUserPO = new SysUserEntity();
         sysUserPO.setId(456);
         sysUserPO.setUserName("用户456");
         sysUserPO.setPhone("456");

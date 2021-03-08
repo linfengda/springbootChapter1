@@ -186,7 +186,7 @@ public class TransactionalServiceImpl extends AbstractBaseService implements Tra
 
 
     private void insert() throws Exception {
-        SysUserIncrementEntity sysUserPO = new SysUserIncrementEntity();
+        SysUserEntity sysUserPO = new SysUserEntity();
         sysUserPO.setId(123);
         sysUserPO.setUserName("用户123");
         sysUserPO.setPhone("123");

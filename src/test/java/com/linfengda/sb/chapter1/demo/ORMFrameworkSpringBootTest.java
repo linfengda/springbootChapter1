@@ -51,7 +51,7 @@ public class ORMFrameworkSpringBootTest {
     public void testExist() throws Exception {
         ConditionParam conditionParam = new ConditionParam();
         conditionParam.add("phone", "13632109840");
-        boolean exist = ormTemplate.isExist(conditionParam, SysUserIncrementEntity.class);
+        boolean exist = ormTemplate.isExist(conditionParam, SysUserEntity.class);
         log.info("测试根据条件查询是否存在记录，exist={}", exist);
     }
 
@@ -59,18 +59,18 @@ public class ORMFrameworkSpringBootTest {
     public void testCount() throws Exception {
         ConditionParam conditionParam = new ConditionParam();
         conditionParam.add("phone", "13632109840");
-        long count = ormTemplate.countByParam(conditionParam, SysUserIncrementEntity.class);
+        long count = ormTemplate.countByParam(conditionParam, SysUserEntity.class);
         log.info("测试根据条件查询符合条件的总记录数，count={}", count);
     }
 
     @Test
     public void testGet() throws Exception {
-        SysUserIncrementEntity sysUserPO = ormTemplate.getByPrimaryKey(1, SysUserIncrementEntity.class);
+        SysUserEntity sysUserPO = ormTemplate.getByPrimaryKey(1, SysUserEntity.class);
         log.info("测试根据主键查询用户信息={}", JSON.toJSONString(sysUserPO));
 
         ConditionParam conditionParam = new ConditionParam();
         conditionParam.add("phone", "13632109840");
-        SysUserIncrementEntity sysUserPO2 = ormTemplate.get(conditionParam, SysUserIncrementEntity.class);
+        SysUserEntity sysUserPO2 = ormTemplate.get(conditionParam, SysUserEntity.class);
         log.info("测试根据条件查询用户信息={}", JSON.toJSONString(sysUserPO2));
     }
 
@@ -78,14 +78,14 @@ public class ORMFrameworkSpringBootTest {
     public void testQuery() throws Exception {
         ConditionParam conditionParam = new ConditionParam();
         conditionParam.add("departmentId", "1");
-        List<SysUserIncrementEntity> sysUserPOList = ormTemplate.query(conditionParam, SysUserIncrementEntity.class);
+        List<SysUserEntity> sysUserPOList = ormTemplate.query(conditionParam, SysUserEntity.class);
         log.info("测试根据条件查询所有用户信息={}", JSON.toJSONString(sysUserPOList));
 
         ConditionParam pageParam = new ConditionParam();
         pageParam.add("departmentId", "1");
         pageParam.setPageNo(1);
         pageParam.setPageSize(2);
-        PageResult<SysUserIncrementEntity> pageUserList = ormTemplate.page(pageParam, SysUserIncrementEntity.class);
+        PageResult<SysUserEntity> pageUserList = ormTemplate.page(pageParam, SysUserEntity.class);
         log.info("测试根据条件分页查询用户信息={}", JSON.toJSONString(pageUserList));
     }
 
@@ -93,7 +93,7 @@ public class ORMFrameworkSpringBootTest {
     @Rollback(false)
     @Transactional(rollbackFor = Exception.class)
     public void testInsert() throws Exception {
-        ProduceOrderIncrementEntity produceOrderPO = new ProduceOrderIncrementEntity();
+        ProduceOrderEntity produceOrderPO = new ProduceOrderEntity();
         produceOrderPO.setOrderNumber("000001");
         produceOrderPO.setState(OrderState.WAITING_ACCEPT.getCode());
         produceOrderPO.setSku("xxx");
@@ -116,7 +116,7 @@ public class ORMFrameworkSpringBootTest {
     @Rollback(false)
     @Transactional(rollbackFor = Exception.class)
     public void testUpdate() throws Exception {
-        ProduceOrderIncrementEntity produceOrderPO = new ProduceOrderIncrementEntity();
+        ProduceOrderEntity produceOrderPO = new ProduceOrderEntity();
         produceOrderPO.setId(1);
         produceOrderPO.setState(OrderState.PRODUCING.getCode());
         ormTemplate.save(produceOrderPO);
@@ -125,7 +125,7 @@ public class ORMFrameworkSpringBootTest {
         Integer id = 1;
         SetValue setValue = new SetValue();
         setValue.add("referenceImage", "www.sldflasflsajkl");
-        ormTemplate.updateByPrimaryKey(ProduceOrderIncrementEntity.class, setValue, id);
+        ormTemplate.updateByPrimaryKey(ProduceOrderEntity.class, setValue, id);
         log.info("测试根据id更新订单信息，id={}", id);
     }
 }

@@ -1,99 +1,65 @@
 package com.linfengda.sb.chapter1.common.bean.po;
 
-import com.linfengda.sb.support.orm.entity.BaseEntityAware;
-import com.linfengda.sb.support.orm.utils.UserUtil;
-import lombok.AllArgsConstructor;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableLogic;
+import com.baomidou.mybatisplus.annotation.Version;
+import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.Data;
-import lombok.Getter;
+import lombok.EqualsAndHashCode;
 
-import java.sql.Timestamp;
+import java.util.Date;
 
 /**
- * 表实体基础类
  * @author linfengda
- *
+ * @date 2021-03-08 18:06
  */
+@EqualsAndHashCode(callSuper = true)
 @Data
-public abstract class BaseIncrementEntity implements BaseEntityAware {
-	/**
-	 * 创建人id
-	 */
-	private Integer createUser;
-	/**
-	 * 创建人
-	 */
-	private String createUserName;
-	/**
-	 * 创建时间
-	 */
-	private Timestamp createTime;
-	/**
-	 * 修改人id
-	 */
-	private Integer updateUser;
-	/**
-	 * 修改人
-	 */
-	private Integer updateUserName;
-	/**
-	 * 修改时间
-	 */
-	private Timestamp updateTime;
-	/**
-	 * 是否删除 {@link Deleted}
-	 */
-	private Integer deleted;
-	/**
-	 * 版本号
-	 */
-	private Integer version;
+public abstract class BaseIncrementEntity<T> extends Model<BaseIncrementEntity<T>> {
 
+    @TableId(value = "id", type = IdType.AUTO)
+    private Integer id;
 
-	@Override
-	public void onCreate() {
-		createUser = UserUtil.getCurrentUserId();
-		createTime = new Timestamp(System.currentTimeMillis());
-		updateUser = UserUtil.getCurrentUserId();
-		updateTime = new Timestamp(System.currentTimeMillis());
-		version = 1;
-	}
+    /**
+     * 更新时间
+     */
+    private Date updateTime;
 
-	@Override
-	public void onUpdate() {
-		updateUser = UserUtil.getCurrentUserId();
-		updateTime = new Timestamp(System.currentTimeMillis());
-		if (version == null){
-			version = 1;
-		}else {
-			version = version+1;
-		}
-	}
+    /**
+     * 创建时间
+     */
+    private Date createTime;
 
-	/**
-	 * 删除字段枚举
-	 */
-	@AllArgsConstructor
-	@Getter
-	public enum Deleted {
-		/**
-		 * 0：正常
-		 */
-		NORMAL(0, "正常"),
-		/**
-		 * 1：删除
-		 */
-		DELETED(1, "删除");
-		private final Integer code;
-		private final String name;
+    /**
+     * 创建人UID
+     */
+    private String createUid;
 
-		public static Deleted getType(Integer state) {
-			for (Deleted deleted : values()) {
-				if (deleted.getCode().equals(state)) {
-					return deleted;
-				}
-			}
-			return null;
-		}
-	}
+    /**
+     * 创建人名称(中文)
+     */
+    private String createUser;
 
+    /**
+     * 更新人UID
+     */
+    private String updateUid;
+
+    /**
+     * 更新人名称(中文)
+     */
+    private String updateUser;
+
+    /**
+     * 软删除标记
+     */
+    @TableLogic
+    private Boolean deleteTag;
+
+    /**
+     * 乐观锁
+     */
+    @Version
+    private Integer version;
 }

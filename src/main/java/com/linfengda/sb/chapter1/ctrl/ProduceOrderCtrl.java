@@ -1,21 +1,25 @@
 package com.linfengda.sb.chapter1.ctrl;
 
-import com.linfengda.sb.chapter1.common.bean.Result;
+
 import com.linfengda.sb.chapter1.bean.req.AcceptOrderReq;
+import com.linfengda.sb.chapter1.common.bean.Result;
 import com.linfengda.sb.support.redis.lock.annotation.BusinessLock;
 import com.linfengda.sb.support.redis.lock.annotation.BusinessLockKey;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
+import org.springframework.stereotype.Controller;
+
 /**
- * @description 订单控制器
+ * <p>
+ * 生产大货订单表 前端控制器
+ * </p>
+ *
  * @author linfengda
- * @date 2020-09-22 15:01
+ * @since 2021-03-08
  */
-@Slf4j
-@RestController()
-@RequestMapping("/pc/order")
-public class OrderController {
+@RestController
+@RequestMapping("/produceOrder")
+public class ProduceOrderCtrl {
 
     @BusinessLock(prefix = "order", desc = "测试业务锁")
     @GetMapping("/test1")

@@ -1,25 +1,31 @@
 package com.linfengda.sb.chapter1.ctrl;
 
-import com.linfengda.sb.chapter1.common.bean.Result;
+
 import com.linfengda.sb.chapter1.bean.dto.UserUpdateDTO;
+import com.linfengda.sb.chapter1.common.bean.Result;
 import com.linfengda.sb.chapter1.service.SysUserService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import javax.validation.constraints.NotNull;
 
 /**
- * 描述: 系统管理controller
+ * <p>
+ * 用户表 前端控制器
+ * </p>
  *
  * @author linfengda
- * @create 2018-08-16 10:29
+ * @since 2021-03-08
  */
-@RestController()
-@RequestMapping("/pc/sys")
-public class SystemController {
+@RestController
+@RequestMapping("/sysUser")
+public class SysUserCtrl {
+
     @Resource
     private SysUserService sysUserService;
 
