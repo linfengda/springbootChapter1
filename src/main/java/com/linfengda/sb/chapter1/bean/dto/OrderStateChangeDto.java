@@ -9,6 +9,6 @@ import lombok.Data;
  * @date 2020-11-09 00:19
  */
 @Data
-public class OrderStateChangeDTO {
+public class OrderStateChangeDto {
     private OrderEvent event;
 }

@@ -1,7 +1,8 @@
 package com.linfengda.sb.chapter1.service;
 
-import com.linfengda.sb.chapter1.bean.entity.ProduceOrder;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.linfengda.sb.chapter1.bean.dto.OrderStateChangeDto;
+import com.linfengda.sb.chapter1.bean.entity.ProduceOrder;
 
 /**
  * <p>
@@ -13,4 +14,9 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface ProduceOrderService extends IService<ProduceOrder> {
 
+    /**
+     * 更新订单状态
+     * @param orderStateChangeDTO  订单状态更新dto
+     */
+    void changeOrderStatus(OrderStateChangeDto orderStateChangeDTO);
 }
