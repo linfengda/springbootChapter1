@@ -19,7 +19,7 @@ import javax.validation.constraints.NotBlank;
  */
 @Slf4j
 @RestController()
-@RequestMapping("/pc/plm/outer")
+@RequestMapping("/plm/outer")
 public class PlmOuterController {
 
     @PostMapping("/getOrderBigBomMaterials")

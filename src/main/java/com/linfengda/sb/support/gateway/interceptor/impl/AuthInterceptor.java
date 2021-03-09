@@ -4,8 +4,8 @@ import com.linfengda.sb.chapter1.common.exception.BusinessException;
 import com.linfengda.sb.support.gateway.acl.AuthWhiteUrlList;
 import com.linfengda.sb.support.gateway.entity.UserSessionBO;
 import com.linfengda.sb.support.gateway.router.RequestRouter;
-import com.linfengda.sb.support.gateway.session.RequestSessionHelper;
-import com.linfengda.sb.support.gateway.session.UserSessionHelper;
+import com.linfengda.sb.support.gateway.session.RequestSession;
+import com.linfengda.sb.support.gateway.session.UserSession;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
@@ -35,9 +35,9 @@ public class AuthInterceptor implements HandlerInterceptor {
         if (null == userSessionBO) {
             throw new BusinessException("当前用户未登陆！");
         }
-        UserSessionHelper.put(userSessionBO);
+        UserSession.put(userSessionBO);
         // 模块权限校验
-        RequestRouter.INSTANCE.doRouter(RequestSessionHelper.get(), (HandlerMethod) handler);
+        RequestRouter.INSTANCE.doRouter(RequestSession.get(), (HandlerMethod) handler);
         return true;
     }
 

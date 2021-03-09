@@ -13,7 +13,7 @@ import java.sql.Timestamp;
  * @create 2018-08-13 22:06
  */
 @Data
-public class UserListVO {
+public class UserListVo {
     /**
      * 用户ID
      */

@@ -5,8 +5,7 @@ import com.linfengda.sb.chapter1.bean.type.SysTeamType;
 import com.linfengda.sb.chapter1.common.bean.po.BaseIncrementEntity;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.*;
 import lombok.experimental.Accessors;
 
 import java.io.Serializable;
@@ -20,6 +19,9 @@ import java.time.LocalDateTime;
  * @author linfengda
  * @since 2021-03-08
  */
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)

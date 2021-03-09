@@ -1,6 +1,6 @@
-package com.linfengda.sb.chapter1.cache;
+package com.linfengda.sb.chapter1.cache.type;
 
-import com.linfengda.sb.chapter1.cache.impl.UserTokenCache;
+import com.linfengda.sb.chapter1.cache.UserTokenCache;
 import com.linfengda.sb.chapter1.common.exception.entity.ErrorCode;
 import com.linfengda.sb.chapter1.common.util.SpringUtil;
 import com.linfengda.sb.chapter1.common.exception.BusinessException;

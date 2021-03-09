@@ -3,10 +3,10 @@ package com.linfengda.sb.support.gateway.router.impl;
 import com.alibaba.fastjson.JSON;
 import com.linfengda.sb.chapter1.common.exception.BusinessException;
 import com.linfengda.sb.support.gateway.annotation.Permission;
-import com.linfengda.sb.support.gateway.entity.RequestInfoBO;
+import com.linfengda.sb.support.gateway.entity.RequestSessionBO;
 import com.linfengda.sb.support.gateway.enums.ModuleType;
 import com.linfengda.sb.support.gateway.router.AbstractRequestHandler;
-import com.linfengda.sb.support.gateway.session.UserSessionHelper;
+import com.linfengda.sb.support.gateway.session.UserSession;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.method.HandlerMethod;
 
@@ -23,8 +23,8 @@ import java.util.List;
 @Slf4j
 public class PcRequestHandler extends AbstractRequestHandler {
 
-    public PcRequestHandler(RequestInfoBO requestInfoBO, HandlerMethod handlerMethod) {
-        super(requestInfoBO, handlerMethod);
+    public PcRequestHandler(RequestSessionBO requestSessionBO, HandlerMethod handlerMethod) {
+        super(requestSessionBO, handlerMethod);
     }
 
     @Override
@@ -39,9 +39,9 @@ public class PcRequestHandler extends AbstractRequestHandler {
             return;
         }
         long startTime = System.currentTimeMillis();
-        log.info("PC端接口鉴权开始，url：{}，开始时间: {}", requestInfoBO.getUrl(), startTime);
+        log.info("PC端接口鉴权开始，url：{}，开始时间: {}", requestSessionBO.getUrl(), startTime);
         checkSupplier();
-        log.info("PC端接口鉴权结束，url：{}，结束时间: {}，总耗时: {}ms", requestInfoBO.getUrl(), System.currentTimeMillis(), System.currentTimeMillis()-startTime);
+        log.info("PC端接口鉴权结束，url：{}，结束时间: {}，总耗时: {}ms", requestSessionBO.getUrl(), System.currentTimeMillis(), System.currentTimeMillis()-startTime);
     }
 
     /**
@@ -54,7 +54,7 @@ public class PcRequestHandler extends AbstractRequestHandler {
         log.info("权限信息：{}", JSON.toJSONString(accessCodeList));
         boolean hasPermission = checkSupplierPermission(accessCodeList);
         if(!hasPermission){
-            throw new BusinessException("没有[" + requestInfoBO.getUrl() + "]接口权限！");
+            throw new BusinessException("没有[" + requestSessionBO.getUrl() + "]接口权限！");
         }
     }
 
@@ -63,9 +63,7 @@ public class PcRequestHandler extends AbstractRequestHandler {
      * @return  用户权限列表
      */
     private List<String> getPermission() {
-        String userId = UserSessionHelper.getUserId();
-        // 查询用户权限
-        return new ArrayList<>();
+        return null;
     }
 
     /**

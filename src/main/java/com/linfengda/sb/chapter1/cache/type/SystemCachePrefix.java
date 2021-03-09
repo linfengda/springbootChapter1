@@ -1,4 +1,4 @@
-package com.linfengda.sb.chapter1.cache;
+package com.linfengda.sb.chapter1.cache.type;
 
 /**
  * @description 系统用户缓存命名空间

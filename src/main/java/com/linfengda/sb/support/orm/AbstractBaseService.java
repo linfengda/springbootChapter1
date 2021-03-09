@@ -1,5 +1,6 @@
 package com.linfengda.sb.support.orm;
 
+import com.linfengda.sb.support.orm.auto.BaseEntity;
 import com.linfengda.sb.support.orm.entity.*;
 import com.linfengda.sb.support.orm.exception.DataAccessException;
 import com.linfengda.sb.support.orm.sql.builder.PreStatementSql;
@@ -40,14 +41,14 @@ public abstract class AbstractBaseService {
             PreStatementSql preSql;
             if (idValue.getValue() == null) {
                 //simple save
-                if (po instanceof BaseEntityAware) {
-                    ((BaseEntityAware) po).onCreate();
+                if (po instanceof BaseEntity) {
+                    ((BaseEntity) po).onCreate();
                 }
                 preSql = PreStatementSqlBuilder.INSTANCE.buildInsertSql(po);
             } else {
                 //simple update
-                if (po instanceof BaseEntityAware) {
-                    ((BaseEntityAware) po).onUpdate();
+                if (po instanceof BaseEntity) {
+                    ((BaseEntity) po).onUpdate();
                 }
                 preSql = PreStatementSqlBuilder.INSTANCE.buildUpdateSql(idValue, po);
             }
@@ -65,8 +66,8 @@ public abstract class AbstractBaseService {
             return;
         }
         for (Object po : poList) {
-            if (po instanceof BaseEntityAware) {
-                ((BaseEntityAware) po).onCreate();
+            if (po instanceof BaseEntity) {
+                ((BaseEntity) po).onCreate();
             }
         }
         PreStatementSqlHandler statement = null;

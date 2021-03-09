@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.annotation.Version;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
+import com.linfengda.sb.support.orm.annontation.Id;
+import io.swagger.models.auth.In;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -55,7 +57,7 @@ public abstract class BaseIncrementEntity<T> extends Model<BaseIncrementEntity<T
      * 软删除标记
      */
     @TableLogic
-    private Boolean deleteTag;
+    private Integer deleteTag;
 
     /**
      * 乐观锁

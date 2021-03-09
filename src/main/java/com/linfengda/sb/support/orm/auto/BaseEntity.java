@@ -1,6 +1,8 @@
-package com.linfengda.sb.support.orm.entity;
+package com.linfengda.sb.support.orm.auto;
 
-import com.linfengda.sb.support.orm.utils.UserUtil;
+import com.baomidou.mybatisplus.annotation.TableLogic;
+import com.baomidou.mybatisplus.annotation.Version;
+import com.linfengda.sb.support.orm.annontation.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -14,53 +16,63 @@ import java.util.Date;
  *
  */
 @Data
-public abstract class BaseEntity implements BaseEntityAware {
+public abstract class BaseEntity {
+	@Id
+	private Integer id;
+
 	/**
-	 * 创建人uid
+	 * 更新时间
 	 */
-	private Integer createUid;
-	/**
-	 * 创建人
-	 */
-	private String createUserName;
+	private Date updateTime;
+
 	/**
 	 * 创建时间
 	 */
 	private Date createTime;
+
 	/**
-	 * 修改人uid
+	 * 创建人UID
 	 */
-	private Integer updateUid;
+	private String createUid;
+
 	/**
-	 * 修改人
+	 * 创建人名称(中文)
 	 */
-	private String updateUserName;
+	private String createUser;
+
 	/**
-	 * 修改时间
+	 * 更新人UID
 	 */
-	private Date updateTime;
+	private String updateUid;
+
 	/**
-	 * 是否删除 {@link DeleteTag}
+	 * 更新人名称(中文)
 	 */
+	private String updateUser;
+
+	/**
+	 * 软删除标记
+	 */
+	@TableLogic
 	private Integer deleteTag;
+
 	/**
-	 * 版本号
+	 * 乐观锁
 	 */
+	@Version
 	private Integer version;
 
 
-	@Override
 	public void onCreate() {
-		createUid = UserUtil.getCurrentUid();
-		createUserName = UserUtil.getCurrentUName();
+		createUid = UserHolder.getCurrentUid();
+		createUser = UserHolder.getCurrentUName();
 		createTime = new Timestamp(System.currentTimeMillis());
 		version = 1;
 	}
 
-	@Override
 	public void onUpdate() {
-		updateUid = UserUtil.getCurrentUid();
-		updateUserName = UserUtil.getCurrentUName();
+		updateUid = UserHolder.getCurrentUid();
+		updateUser = UserHolder.getCurrentUName();
 		updateTime = new Timestamp(System.currentTimeMillis());
 		if (version == null){
 			version = 1;

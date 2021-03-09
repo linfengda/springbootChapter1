@@ -1,6 +1,6 @@
-package com.linfengda.sb.support.orm.utils;
+package com.linfengda.sb.support.orm.auto;
 
-import com.linfengda.sb.support.orm.aware.UserAware;
+import com.linfengda.sb.chapter1.common.exception.BusinessException;
 
 /**
  * 描述: 获取当前操作人
@@ -8,22 +8,25 @@ import com.linfengda.sb.support.orm.aware.UserAware;
  * @author linfengda
  * @create 2019-04-12 13:25
  */
-public final class UserUtil {
+public final class UserHolder {
     private static UserAware userAware;
 
     /**
      * 需要调用这个方法初始化Session获取途径
-     * @param userAware 用户Session
+     * @param userAware aware user info
      */
     public static void init(UserAware userAware) {
-        UserUtil.userAware = userAware;
+        if (null == userAware) {
+            throw new BusinessException("没有UserAware的实例！");
+        }
+        UserHolder.userAware = userAware;
     }
 
     /**
      * 获取当前uid
      * @return  当前uid
      */
-    public static Integer getCurrentUid(){
+    public static String getCurrentUid(){
         return userAware.getCurrentUid();
     }
 

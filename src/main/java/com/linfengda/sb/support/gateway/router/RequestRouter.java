@@ -1,6 +1,6 @@
 package com.linfengda.sb.support.gateway.router;
 
-import com.linfengda.sb.support.gateway.entity.RequestInfoBO;
+import com.linfengda.sb.support.gateway.entity.RequestSessionBO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.method.HandlerMethod;
 
@@ -17,8 +17,8 @@ public enum RequestRouter {
      */
     INSTANCE;
 
-    public void doRouter(RequestInfoBO requestInfoBO, HandlerMethod handlerMethod) throws Exception {
-        RequestHandler requestHandler = BizModuleHandlerProvider.provide(requestInfoBO, handlerMethod);
+    public void doRouter(RequestSessionBO requestSessionBO, HandlerMethod handlerMethod) throws Exception {
+        RequestHandler requestHandler = BizModuleHandlerProvider.provide(requestSessionBO, handlerMethod);
         requestHandler.doHandler();
     }
 }

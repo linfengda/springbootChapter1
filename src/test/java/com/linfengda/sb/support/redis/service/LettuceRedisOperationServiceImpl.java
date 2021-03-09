@@ -1,7 +1,7 @@
 package com.linfengda.sb.support.redis.service;
 
 import com.alibaba.fastjson.JSONObject;
-import com.linfengda.sb.chapter1.bean.vo.UserListVO;
+import com.linfengda.sb.chapter1.bean.vo.UserListVo;
 import com.linfengda.sb.support.redis.helper.LettuceTemplateHelper;
 import com.linfengda.sb.support.redis.lettuce.LettuceTemplate;
 import lombok.extern.slf4j.Slf4j;
@@ -36,12 +36,12 @@ public class LettuceRedisOperationServiceImpl implements RedisOperationService {
         log.info("delete affect row: {}", row);
 
 
-        UserListVO userListVO = new UserListVO();
+        UserListVo userListVO = new UserListVo();
         userListVO.setUserId(1);
         userListVO.setUserName("流浪地球");
         row = lettuceTemplate.leftPush("myList", userListVO);
         log.info("row length after leftPush: {}", row);
-        userListVO = (UserListVO) lettuceTemplate.rightPop("myList");
+        userListVO = (UserListVo) lettuceTemplate.rightPop("myList");
         log.info("rightPop object: ", JSONObject.toJSONString(userListVO));
     }
 

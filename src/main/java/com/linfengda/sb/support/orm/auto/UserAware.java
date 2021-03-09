@@ -1,4 +1,4 @@
-package com.linfengda.sb.support.orm.aware;
+package com.linfengda.sb.support.orm.auto;
 
 /**
  * 描述: 获取当前操作人
@@ -12,7 +12,7 @@ public interface UserAware {
      * 获取当前uid
      * @return  当前uid
      */
-    Integer getCurrentUid();
+    String getCurrentUid();
 
     /**
      * 获取当前uName

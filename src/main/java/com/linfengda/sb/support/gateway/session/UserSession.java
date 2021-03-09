@@ -12,7 +12,7 @@ import org.springframework.util.StringUtils;
  * @date 2020-12-20 20:12
  */
 @Slf4j
-public class UserSessionHelper {
+public class UserSession {
     private final static ThreadLocal<UserSessionBO> USER_SESSION_INFO_THREAD_LOCAL = new TransmittableThreadLocal<>();
 
     public static void put(UserSessionBO session){
@@ -46,28 +46,12 @@ public class UserSessionHelper {
     public static String getUserName() {
         UserSessionBO userSessionBO = USER_SESSION_INFO_THREAD_LOCAL.get();
         if (null == userSessionBO) {
-            return "system";
+            return "";
         }
         String userName = userSessionBO.getUserName();
         if (userName == null) {
-            return "system";
+            return "";
         }
         return userName;
-    }
-
-    /**
-     * 获取当前请求的Authorization字符
-     * @return
-     */
-    public static String getAuthorization() {
-        UserSessionBO userSessionBO = USER_SESSION_INFO_THREAD_LOCAL.get();
-        if (null == userSessionBO) {
-            return "";
-        }
-        String authorization = userSessionBO.getAuthorization();
-        if (authorization == null) {
-            return "";
-        }
-        return authorization;
     }
 }

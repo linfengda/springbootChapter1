@@ -1,33 +1,28 @@
 package com.linfengda.sb.chapter1.bean.entity;
 
-import com.linfengda.sb.chapter1.bean.type.SysUserStatusType;
-import com.linfengda.sb.chapter1.common.bean.po.BaseIncrementEntity;
-import io.swagger.annotations.ApiModel;
+import com.linfengda.sb.support.orm.annontation.Table;
+import com.linfengda.sb.support.orm.auto.BaseEntity;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.*;
-import lombok.experimental.Accessors;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
- * <p>
- * 用户表
- * </p>
+ * 用户PO
  *
  * @author linfengda
- * @since 2021-03-08
+ * @date 2021-03-09 11:49
  */
+@Table(name = "sys_user")
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Data
-@EqualsAndHashCode(callSuper = true)
-@Accessors(chain = true)
-@ApiModel(value="SysUser对象", description="用户表")
-public class SysUser extends BaseIncrementEntity<SysUser> {
-
-    private static final long serialVersionUID = 1L;
+public class SysUserPO extends BaseEntity {
 
     @ApiModelProperty(value = "用户名称")
     private String userName;
@@ -39,7 +34,7 @@ public class SysUser extends BaseIncrementEntity<SysUser> {
     private String password;
 
     @ApiModelProperty(value = "状态，0：启用，1:停用")
-    private SysUserStatusType status;
+    private String status;
 
     @ApiModelProperty(value = "所属部门id")
     private Integer departmentId;
@@ -48,12 +43,5 @@ public class SysUser extends BaseIncrementEntity<SysUser> {
     private Integer teamId;
 
     @ApiModelProperty(value = "最后更新时间")
-    private LocalDateTime lastUpdateTime;
-
-
-    @Override
-    protected Serializable pkVal() {
-        return null;
-    }
-
+    private Date lastUpdateTime;
 }

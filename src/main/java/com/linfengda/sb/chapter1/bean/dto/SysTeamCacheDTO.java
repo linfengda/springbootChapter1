@@ -1,6 +1,6 @@
 package com.linfengda.sb.chapter1.bean.dto;
 
-import com.linfengda.sb.support.orm.entity.BaseEntity;
+import com.linfengda.sb.support.orm.auto.BaseEntity;
 import com.linfengda.sb.chapter1.bean.type.SysTeamType;
 import lombok.Data;
 

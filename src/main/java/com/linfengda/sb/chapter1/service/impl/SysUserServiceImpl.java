@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.linfengda.sb.chapter1.bean.dto.UserUpdateDTO;
 import com.linfengda.sb.chapter1.bean.entity.SysUser;
-import com.linfengda.sb.chapter1.bean.vo.UserVO;
+import com.linfengda.sb.chapter1.bean.vo.UserVo;
 import com.linfengda.sb.chapter1.mapper.SysUserMapper;
 import com.linfengda.sb.chapter1.service.SysUserService;
 import com.linfengda.sb.support.redis.cache.annotation.CacheKey;
@@ -37,48 +37,48 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
 
     @QueryCache(type = DataType.SET, prefix = "sys:dUser", timeOut = 30, timeUnit = TimeUnit.MINUTES, preCacheSnowSlide = true, preCacheSnowSlideTime = 1000, preCacheHotKeyMultiLoad = true)
     @Override
-    public Set<UserVO> getDepartmentUserList(@CacheKey Integer departmentId) {
+    public Set<UserVo> getDepartmentUserList(@CacheKey Integer departmentId) {
         LambdaQueryWrapper<SysUser> lambdaQueryWrapper = new LambdaQueryWrapper<>();
         lambdaQueryWrapper.eq(SysUser::getDepartmentId, departmentId);
-        List<UserVO> userVOList = getUserVOS(super.list(lambdaQueryWrapper));
-        if (CollectionUtils.isEmpty(userVOList)) {
+        List<UserVo> userVoList = initVo(super.list(lambdaQueryWrapper));
+        if (CollectionUtils.isEmpty(userVoList)) {
             return null;
         }
-        return new HashSet<>(userVOList);
+        return new HashSet<>(userVoList);
     }
 
     @QueryCache(type = DataType.LIST, prefix = "sys:tUser", timeOut = 30, timeUnit = TimeUnit.MINUTES, preCacheSnowSlide = true, preCacheSnowSlideTime = 1000, preCacheHotKeyMultiLoad = true)
     @Override
-    public List<UserVO> getTeamUserList(@CacheKey Integer teamId) {
+    public List<UserVo> getTeamUserList(@CacheKey Integer teamId) {
         LambdaQueryWrapper<SysUser> lambdaQueryWrapper = new LambdaQueryWrapper<>();
         lambdaQueryWrapper.eq(SysUser::getTeamId, teamId);
-        return getUserVOS(super.list(lambdaQueryWrapper));
+        return initVo(super.list(lambdaQueryWrapper));
     }
 
-    private List<UserVO> getUserVOS(List<SysUser> sysUserList) {
-        List<UserVO> userVOList = new ArrayList<>();
+    private List<UserVo> initVo(List<SysUser> sysUserList) {
+        List<UserVo> userVoList = new ArrayList<>();
         if (CollectionUtils.isEmpty(sysUserList)) {
-            return userVOList;
+            return userVoList;
         }
         for (SysUser sysUser : sysUserList) {
-            UserVO userVO = new UserVO();
+            UserVo userVO = new UserVo();
             userVO.setUserId(sysUser.getId());
             userVO.setUserName(sysUser.getUserName());
             userVO.setPhone(sysUser.getPhone());
             userVO.setStatus(sysUser.getStatus().getName());
-            userVOList.add(userVO);
+            userVoList.add(userVO);
         }
-        return userVOList;
+        return userVoList;
     }
 
     @QueryCache(type = DataType.HASH, prefix = "sys:user", timeOut = 30, timeUnit = TimeUnit.MINUTES, preCacheSnowSlide = true, preCacheSnowSlideTime = 1000, preCacheHotKeyMultiLoad = true, maxSize = 5, maxSizeStrategy = CacheMaxSizeStrategy.MAX_SIZE_STRATEGY_LRU)
     @Override
-    public UserVO getUserInfo(@CacheKey Integer userId) {
+    public UserVo getUserInfo(@CacheKey Integer userId) {
         SysUser sysUser = getById(userId);
         if (null == sysUser) {
             return null;
         }
-        UserVO userVO = new UserVO();
+        UserVo userVO = new UserVo();
         userVO.setUserId(sysUser.getId());
         userVO.setUserName(sysUser.getUserName());
         userVO.setPhone(sysUser.getPhone());
@@ -90,13 +90,13 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
     @UpdateCache(type = DataType.HASH, prefix = "sys:user", timeOut = 30, timeUnit = TimeUnit.MINUTES, preCacheSnowSlide = true)
     @Transactional(rollbackFor=Exception.class, propagation = Propagation.REQUIRED)
     @Override
-    public UserVO updateUserInfo(@CacheKey Integer userId, UserUpdateDTO userUpdateDTO) {
+    public UserVo updateUserInfo(@CacheKey Integer userId, UserUpdateDTO userUpdateDTO) {
         LambdaUpdateWrapper<SysUser> updateWrapper = new LambdaUpdateWrapper<>();
         updateWrapper.eq(SysUser::getId, userUpdateDTO.getUserId());
         updateWrapper.set(SysUser::getUserName, userUpdateDTO.getUserName());
         super.update(updateWrapper);
         SysUser sysUser = super.getById(userUpdateDTO.getUserId());
-        UserVO userVO = new UserVO();
+        UserVo userVO = new UserVo();
         userVO.setUserId(sysUser.getId());
         userVO.setUserName(sysUser.getUserName());
         userVO.setPhone(sysUser.getPhone());

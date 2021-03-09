@@ -1,10 +1,10 @@
-package com.linfengda.sb.support.redis.test;
+package com.linfengda.sb.chapter1.system;
 
 import com.alibaba.fastjson.JSON;
 import com.linfengda.sb.chapter1.Chapter1Application;
 import com.linfengda.sb.chapter1.common.util.ThreadPoolUtil;
 import com.linfengda.sb.chapter1.bean.dto.UserUpdateDTO;
-import com.linfengda.sb.chapter1.bean.vo.UserVO;
+import com.linfengda.sb.chapter1.bean.vo.UserVo;
 import com.linfengda.sb.chapter1.service.SysUserService;
 import com.linfengda.sb.support.redis.GenericRedisTemplate;
 import lombok.extern.slf4j.Slf4j;
@@ -14,6 +14,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
@@ -26,11 +27,12 @@ import java.util.concurrent.ThreadPoolExecutor;
  * @author linfengda
  * @date 2020-09-17 15:54
  */
+@ActiveProfiles("dev")
 @Slf4j
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Chapter1Application.class, webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class RedisCacheAnnotationTest {
+public class SysUserTest {
     @Resource
     private SysUserService sysUserService;
     @Resource
@@ -49,7 +51,7 @@ public class RedisCacheAnnotationTest {
             executor.submit(() -> {
                 try{
                     startCount.await();
-                    UserVO userVO = sysUserService.getUserInfo(1);
+                    UserVo userVO = sysUserService.getUserInfo(1);
                     log.info("userVO={}", JSON.toJSONString(userVO));
                 }catch (Exception e) {
                     e.printStackTrace();
@@ -81,7 +83,7 @@ public class RedisCacheAnnotationTest {
     public void testLruCache() throws Exception {
         log.info("测试lru缓存开始");
         for (int i = 1; i < 10; i++) {
-            UserVO userVO = sysUserService.getUserInfo(i);
+            UserVo userVO = sysUserService.getUserInfo(i);
             log.info("用户查询：{}", JSON.toJSONString(userVO));
             Set<String> userKeySet = genericRedisTemplate.hashKeys("sys:user");
             log.info("当前lru缓存：{}", JSON.toJSONString(userKeySet));

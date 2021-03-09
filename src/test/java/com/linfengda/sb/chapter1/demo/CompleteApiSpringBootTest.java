@@ -2,7 +2,7 @@ package com.linfengda.sb.chapter1.demo;
 
 import com.linfengda.sb.chapter1.Chapter1Application;
 import com.linfengda.sb.chapter1.bean.type.SysUserStatusType;
-import com.linfengda.sb.chapter1.bean.vo.UserVO;
+import com.linfengda.sb.chapter1.bean.vo.UserVo;
 import com.linfengda.sb.chapter1.service.SysUserService;
 import lombok.extern.slf4j.Slf4j;
 import org.hamcrest.CoreMatchers;
@@ -15,6 +15,7 @@ import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.mock.web.MockHttpServletResponse;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,6 +27,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
  * @author linfengda
  * @create 2020-01-14 10:15
  */
+@ActiveProfiles("dev")
 @Slf4j
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Chapter1Application.class, webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
@@ -48,11 +50,11 @@ public class CompleteApiSpringBootTest extends BaseMockMvcSpringBootTest {
     @Transactional(rollbackFor = Exception.class)
     public void test1() throws Exception {
         // 模拟方法返回数据
-        UserVO userVO = new UserVO();
+        UserVo userVO = new UserVo();
         userVO.setUserId(1);
         userVO.setUserName("模拟数据");
         userVO.setPhone("13632109840");
-        userVO.setStatus(SysUserStatusType.YES.getCode());
+        userVO.setStatus(SysUserStatusType.YES.getName());
         // 模拟service方法调用
         Mockito.doReturn(userVO).when(sysUserService).getUserInfo(1);
         // 执行请求

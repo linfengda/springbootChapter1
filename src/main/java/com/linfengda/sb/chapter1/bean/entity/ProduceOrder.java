@@ -1,15 +1,14 @@
 package com.linfengda.sb.chapter1.bean.entity;
 
 import com.linfengda.sb.chapter1.common.bean.po.BaseIncrementEntity;
-import java.math.BigDecimal;
-import com.baomidou.mybatisplus.extension.activerecord.Model;
-import java.time.LocalDateTime;
-import java.io.Serializable;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.*;
 import lombok.experimental.Accessors;
+
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 /**
  * <p>
@@ -19,6 +18,9 @@ import lombok.experimental.Accessors;
  * @author linfengda
  * @since 2021-03-08
  */
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
@@ -52,7 +54,7 @@ public class ProduceOrder extends BaseIncrementEntity<ProduceOrder> {
     private Integer threeCategoryId;
 
     @ApiModelProperty(value = "0：无特殊工艺，1：特殊工艺，")
-    private Boolean specialTechnologyTag;
+    private Integer specialTechnologyTag;
 
     @ApiModelProperty(value = "特殊工艺描述")
     private String specialTechnologyText;

@@ -1,7 +1,7 @@
 package com.linfengda.sb.chapter1.demo;
 
 import com.linfengda.sb.chapter1.Chapter1Application;
-import com.linfengda.sb.chapter1.cache.impl.UserTokenCache;
+import com.linfengda.sb.chapter1.cache.UserTokenCache;
 import com.linfengda.sb.chapter1.service.SysUserService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;
@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.annotation.Rollback;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,6 +24,7 @@ import org.springframework.transaction.annotation.Transactional;
  * @author linfengda
  * @create 2020-01-13 18:04
  */
+@ActiveProfiles("dev")
 @Slf4j
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Chapter1Application.class, webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)

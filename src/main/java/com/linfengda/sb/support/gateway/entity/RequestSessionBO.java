@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 @Data
 @Builder
-public class RequestInfoBO {
+public class RequestSessionBO {
     /**
      * traceId
      */

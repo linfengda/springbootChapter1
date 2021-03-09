@@ -1,5 +1,6 @@
 package com.linfengda.sb.chapter1.common.transactional.service;
 
+import com.linfengda.sb.chapter1.bean.entity.SysUser;
 import com.linfengda.sb.chapter1.common.exception.BusinessException;
 import com.linfengda.sb.support.orm.AbstractBaseService;
 import lombok.extern.slf4j.Slf4j;
@@ -186,11 +187,6 @@ public class TransactionalServiceImpl extends AbstractBaseService implements Tra
 
 
     private void insert() throws Exception {
-        SysUserEntity sysUserPO = new SysUserEntity();
-        sysUserPO.setId(123);
-        sysUserPO.setUserName("用户123");
-        sysUserPO.setPhone("123");
-        sysUserPO.setPassword("123");
-        save(sysUserPO);
+        SysUser.builder().userName("林丰达").build().insert();
     }
 }

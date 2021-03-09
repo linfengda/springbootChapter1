@@ -2,8 +2,8 @@ package com.linfengda.sb.support.gateway.interceptor;
 
 import com.linfengda.sb.chapter1.Constant;
 import com.linfengda.sb.support.gateway.acl.InterceptorWhiteUrl;
-import com.linfengda.sb.support.gateway.session.RequestSessionHelper;
-import com.linfengda.sb.support.gateway.session.UserSessionHelper;
+import com.linfengda.sb.support.gateway.session.RequestSession;
+import com.linfengda.sb.support.gateway.session.UserSession;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.MDC;
 import org.springframework.stereotype.Component;
@@ -76,8 +76,8 @@ public class RequestInterceptor implements HandlerInterceptor {
      * 统一清除会话
      */
     private void clearSession() {
-        RequestSessionHelper.remove();
-        UserSessionHelper.remove();
+        RequestSession.remove();
+        UserSession.remove();
         MDC.remove(Constant.TRACE_ID);
     }
 

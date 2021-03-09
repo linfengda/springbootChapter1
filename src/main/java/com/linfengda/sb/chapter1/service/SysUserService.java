@@ -3,7 +3,7 @@ package com.linfengda.sb.chapter1.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.linfengda.sb.chapter1.bean.dto.UserUpdateDTO;
 import com.linfengda.sb.chapter1.bean.entity.SysUser;
-import com.linfengda.sb.chapter1.bean.vo.UserVO;
+import com.linfengda.sb.chapter1.bean.vo.UserVo;
 
 import java.util.List;
 import java.util.Set;
@@ -24,7 +24,7 @@ public interface SysUserService extends IService<SysUser> {
      * @return
      * @throws Exception
      */
-    Set<UserVO> getDepartmentUserList(Integer departmentId);
+    Set<UserVo> getDepartmentUserList(Integer departmentId);
 
     /**
      * 查询团队下的所有用户
@@ -32,7 +32,7 @@ public interface SysUserService extends IService<SysUser> {
      * @return
      * @throws Exception
      */
-    List<UserVO> getTeamUserList(Integer teamId);
+    List<UserVo> getTeamUserList(Integer teamId);
 
     /**
      * 查询用户信息
@@ -40,7 +40,7 @@ public interface SysUserService extends IService<SysUser> {
      * @return
      * @throws Exception
      */
-    UserVO getUserInfo(Integer userId);
+    UserVo getUserInfo(Integer userId);
 
     /**
      * 更新用户信息
@@ -49,5 +49,5 @@ public interface SysUserService extends IService<SysUser> {
      * @return
      * @throws Exception
      */
-    UserVO updateUserInfo(Integer userId, UserUpdateDTO userUpdateDTO);
+    UserVo updateUserInfo(Integer userId, UserUpdateDTO userUpdateDTO);
 }

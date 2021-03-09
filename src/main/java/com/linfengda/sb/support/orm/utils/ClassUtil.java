@@ -10,6 +10,7 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -29,9 +30,7 @@ public class ClassUtil {
 		List<Field> fieldList = new ArrayList<>();
         while(true) {
         	Field[] fields = clazz.getDeclaredFields();;
-        	for (Field field : fields) {
-        		fieldList.add(field);
-			}
+			fieldList.addAll(Arrays.asList(fields));
         	Class<?> supperClazz = clazz.getSuperclass();
 		 	if(supperClazz != null) {
 		 		clazz = supperClazz;

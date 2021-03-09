@@ -1,7 +1,7 @@
 package com.linfengda.sb.support.gateway.router;
 
 import com.linfengda.sb.chapter1.common.exception.BusinessException;
-import com.linfengda.sb.support.gateway.entity.RequestInfoBO;
+import com.linfengda.sb.support.gateway.entity.RequestSessionBO;
 import com.linfengda.sb.support.gateway.router.impl.PcRequestHandler;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,8 +21,8 @@ public enum BizModuleHandlerProvider {
      */
     PC("pc", "pc端业务") {
         @Override
-        public RequestHandler getHandler(RequestInfoBO requestInfoBO, HandlerMethod handlerMethod) {
-            return new PcRequestHandler(requestInfoBO, handlerMethod);
+        public RequestHandler getHandler(RequestSessionBO requestSessionBO, HandlerMethod handlerMethod) {
+            return new PcRequestHandler(requestSessionBO, handlerMethod);
         }
     },
     ;
@@ -30,19 +30,19 @@ public enum BizModuleHandlerProvider {
     private String prefix;
     private String name;
 
-    public abstract RequestHandler getHandler(RequestInfoBO requestInfoBO, HandlerMethod handlerMethod);
+    public abstract RequestHandler getHandler(RequestSessionBO requestSessionBO, HandlerMethod handlerMethod);
 
     /**
      * 获取请求处理器
-     * @param requestInfoBO         请求信息BO
+     * @param requestSessionBO         请求信息BO
      * @param handlerMethod         请求handlerMethod
      * @return                      对应业务模块请求处理器
      */
-    public static RequestHandler provide(RequestInfoBO requestInfoBO, HandlerMethod handlerMethod) {
-        String uriHeader = requestInfoBO.getUriHead();
+    public static RequestHandler provide(RequestSessionBO requestSessionBO, HandlerMethod handlerMethod) {
+        String uriHeader = requestSessionBO.getUriHead();
         for (BizModuleHandlerProvider value : values()) {
             if (value.getPrefix().equals(uriHeader)) {
-                return value.getHandler(requestInfoBO, handlerMethod);
+                return value.getHandler(requestSessionBO, handlerMethod);
             }
         }
         throw new BusinessException("获取不到请求处理器！uriHeader："+uriHeader);

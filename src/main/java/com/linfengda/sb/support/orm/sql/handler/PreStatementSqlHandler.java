@@ -44,7 +44,6 @@ public class PreStatementSqlHandler extends BaseSqlHandler {
 		}
 		this.preStatement = getPreparedStatement(conn,preStatementSql.getSql(),preStatementSql.getParams());
 	    int count = this.preStatement.executeUpdate();
-	    //ResultSet generateKeysResultSet = this.preStatement.getGeneratedKeys();
 
 		long end = System.currentTimeMillis();
 		log.info("sql:{},use time:{}ms,affected record:{}",this.preStatementSql.getSql(),(end-start),count);

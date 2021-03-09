@@ -1,5 +1,6 @@
 package com.linfengda.sb.chapter1.common.transactional.service;
 
+import com.linfengda.sb.chapter1.bean.entity.SysUser;
 import com.linfengda.sb.chapter1.common.exception.BusinessException;
 import com.linfengda.sb.support.orm.AbstractBaseService;
 import lombok.extern.slf4j.Slf4j;
@@ -113,22 +114,12 @@ public class TransactionalOtherServiceImpl extends AbstractBaseService implement
 
 
 
-    void insert() throws Exception {
-        SysUserEntity sysUserPO = new SysUserEntity();
-        sysUserPO.setId(456);
-        sysUserPO.setUserName("用户456");
-        sysUserPO.setPhone("456");
-        sysUserPO.setPassword("456");
-        save(sysUserPO);
+    void insert() {
+        SysUser.builder().userName("林丰达").build().insert();
     }
 
     void insertAndThrow() throws Exception {
-        SysUserEntity sysUserPO = new SysUserEntity();
-        sysUserPO.setId(456);
-        sysUserPO.setUserName("用户456");
-        sysUserPO.setPhone("456");
-        sysUserPO.setPassword("456");
-        save(sysUserPO);
+        insert();
         throw new BusinessException("子事务抛出异常！");
     }
 }

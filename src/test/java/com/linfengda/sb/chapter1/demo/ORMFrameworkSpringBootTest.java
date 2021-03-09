@@ -2,13 +2,15 @@ package com.linfengda.sb.chapter1.demo;
 
 import com.alibaba.fastjson.JSON;
 import com.linfengda.sb.chapter1.Chapter1Application;
-import com.linfengda.sb.chapter1.bean.type.OrderState;
+import com.linfengda.sb.chapter1.bean.entity.SysUserPO;
+import com.linfengda.sb.chapter1.bean.type.SysUserStatusType;
+import com.linfengda.sb.support.gateway.entity.UserSessionBO;
+import com.linfengda.sb.support.gateway.session.UserSession;
 import com.linfengda.sb.support.orm.OrmTemplate;
 import com.linfengda.sb.support.orm.entity.ConditionParam;
 import com.linfengda.sb.support.orm.entity.PageResult;
 import com.linfengda.sb.support.orm.entity.SetValue;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.Before;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,12 +18,12 @@ import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 
 import javax.annotation.Resource;
-import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -30,6 +32,7 @@ import java.util.List;
  * @author linfengda
  * @create 2020-01-13 15:10
  */
+@ActiveProfiles("dev")
 @Slf4j
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Chapter1Application.class, webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
@@ -40,18 +43,12 @@ public class ORMFrameworkSpringBootTest {
     @Resource
     OrmTemplate ormTemplate;
 
-    @Before
-    public void setup() throws Exception {
-        log.info("注意：若不需要程序初始化，去掉@EnableApplicationStartup注解！");
-    }
-
-
 
     @Test
     public void testExist() throws Exception {
         ConditionParam conditionParam = new ConditionParam();
         conditionParam.add("phone", "13632109840");
-        boolean exist = ormTemplate.isExist(conditionParam, SysUserEntity.class);
+        boolean exist = ormTemplate.isExist(conditionParam, SysUserPO.class);
         log.info("测试根据条件查询是否存在记录，exist={}", exist);
     }
 
@@ -59,18 +56,18 @@ public class ORMFrameworkSpringBootTest {
     public void testCount() throws Exception {
         ConditionParam conditionParam = new ConditionParam();
         conditionParam.add("phone", "13632109840");
-        long count = ormTemplate.countByParam(conditionParam, SysUserEntity.class);
+        long count = ormTemplate.countByParam(conditionParam, SysUserPO.class);
         log.info("测试根据条件查询符合条件的总记录数，count={}", count);
     }
 
     @Test
     public void testGet() throws Exception {
-        SysUserEntity sysUserPO = ormTemplate.getByPrimaryKey(1, SysUserEntity.class);
+        SysUserPO sysUserPO = ormTemplate.getByPrimaryKey(1, SysUserPO.class);
         log.info("测试根据主键查询用户信息={}", JSON.toJSONString(sysUserPO));
 
         ConditionParam conditionParam = new ConditionParam();
         conditionParam.add("phone", "13632109840");
-        SysUserEntity sysUserPO2 = ormTemplate.get(conditionParam, SysUserEntity.class);
+        SysUserPO sysUserPO2 = ormTemplate.get(conditionParam, SysUserPO.class);
         log.info("测试根据条件查询用户信息={}", JSON.toJSONString(sysUserPO2));
     }
 
@@ -78,14 +75,14 @@ public class ORMFrameworkSpringBootTest {
     public void testQuery() throws Exception {
         ConditionParam conditionParam = new ConditionParam();
         conditionParam.add("departmentId", "1");
-        List<SysUserEntity> sysUserPOList = ormTemplate.query(conditionParam, SysUserEntity.class);
+        List<SysUserPO> sysUserPOList = ormTemplate.query(conditionParam, SysUserPO.class);
         log.info("测试根据条件查询所有用户信息={}", JSON.toJSONString(sysUserPOList));
 
         ConditionParam pageParam = new ConditionParam();
         pageParam.add("departmentId", "1");
         pageParam.setPageNo(1);
-        pageParam.setPageSize(2);
-        PageResult<SysUserEntity> pageUserList = ormTemplate.page(pageParam, SysUserEntity.class);
+        pageParam.setPageSize(10);
+        PageResult<SysUserPO> pageUserList = ormTemplate.page(pageParam, SysUserPO.class);
         log.info("测试根据条件分页查询用户信息={}", JSON.toJSONString(pageUserList));
     }
 
@@ -93,39 +90,29 @@ public class ORMFrameworkSpringBootTest {
     @Rollback(false)
     @Transactional(rollbackFor = Exception.class)
     public void testInsert() throws Exception {
-        ProduceOrderEntity produceOrderPO = new ProduceOrderEntity();
-        produceOrderPO.setOrderNumber("000001");
-        produceOrderPO.setState(OrderState.WAITING_ACCEPT.getCode());
-        produceOrderPO.setSku("xxx");
-        produceOrderPO.setReferenceSku("xxx");
-        produceOrderPO.setPurchasePrice(new BigDecimal(9.99));
-        produceOrderPO.setMaterialTypeEnum(1);
-        produceOrderPO.setThreeCategoryId("1001");
-        produceOrderPO.setSpecialTechnologyTag(1);
-        produceOrderPO.setSpecialTechnologyText("印花");
-        produceOrderPO.setFirstOrder(1);
-        produceOrderPO.setUrgent(1);
-        produceOrderPO.setMerchandiser("林大大");
-        produceOrderPO.setGroupName("中东站");
-        produceOrderPO.setGroupId(1);
-        ormTemplate.save(produceOrderPO);
-        log.info("测试保存订单信息={}", JSON.toJSONString(produceOrderPO));
+        UserSession.put(UserSessionBO.builder().userId("123").userName("林丰达").build());
+        SysUserPO sysUser = SysUserPO.builder().userName("林大大").status(SysUserStatusType.YES.toString()).phone("13632109840").password("123456").build();
+        ormTemplate.save(sysUser);
+        log.info("测试保存用户信息={}", JSON.toJSONString(sysUser));
+        UserSession.remove();
     }
 
     @Test
     @Rollback(false)
     @Transactional(rollbackFor = Exception.class)
     public void testUpdate() throws Exception {
-        ProduceOrderEntity produceOrderPO = new ProduceOrderEntity();
-        produceOrderPO.setId(1);
-        produceOrderPO.setState(OrderState.PRODUCING.getCode());
-        ormTemplate.save(produceOrderPO);
-        log.info("测试更新订单信息={}", JSON.toJSONString(produceOrderPO));
+        UserSession.put(UserSessionBO.builder().userId("123").userName("林丰达").build());
+        SysUserPO sysUser = new SysUserPO();
+        sysUser.setId(1);
+        sysUser.setPassword("6789");
+        ormTemplate.save(sysUser);
+        log.info("测试更新用户信息={}", JSON.toJSONString(sysUser));
 
         Integer id = 1;
         SetValue setValue = new SetValue();
-        setValue.add("referenceImage", "www.sldflasflsajkl");
-        ormTemplate.updateByPrimaryKey(ProduceOrderEntity.class, setValue, id);
-        log.info("测试根据id更新订单信息，id={}", id);
+        setValue.add("password", "123456a");
+        ormTemplate.updateByPrimaryKey(SysUserPO.class, setValue, id);
+        log.info("测试根据id更新用户信息，id={}", id);
+        UserSession.remove();
     }
 }

@@ -1,12 +1,14 @@
 package com.linfengda.sb.chapter1.common.bean;
 
+import java.io.Serializable;
+
 /**
  * 分页req
  *
  * @author linfengda
  * @date 2019-12-18 10:06
  */
-public interface IBasePageParamReq {
+public interface IBasePageParamReq extends Serializable {
     /**
      * 默认分页大小
      */

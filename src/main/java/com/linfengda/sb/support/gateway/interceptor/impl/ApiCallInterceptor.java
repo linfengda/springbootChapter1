@@ -1,11 +1,11 @@
 package com.linfengda.sb.support.gateway.interceptor.impl;
 
-import com.alibaba.fastjson.JSON;
 import com.linfengda.sb.chapter1.Constant;
+import com.linfengda.sb.chapter1.common.util.JsonUtil;
 import com.linfengda.sb.chapter1.common.util.TimeUtil;
-import com.linfengda.sb.support.gateway.entity.RequestInfoBO;
-import com.linfengda.sb.support.gateway.session.RequestSessionHelper;
-import com.linfengda.sb.support.gateway.session.UserSessionHelper;
+import com.linfengda.sb.support.gateway.entity.RequestSessionBO;
+import com.linfengda.sb.support.gateway.session.RequestSession;
+import com.linfengda.sb.support.gateway.session.UserSession;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.MDC;
 import org.springframework.stereotype.Component;
@@ -30,23 +30,23 @@ public class ApiCallInterceptor implements HandlerInterceptor {
 		Long beginTime = System.currentTimeMillis();
 		String traceId = UUID.randomUUID().toString();
 		MDC.put(Constant.TRACE_ID, traceId);
-		RequestInfoBO requestInfoBO = RequestInfoBO.builder()
+		RequestSessionBO requestSessionBO = RequestSessionBO.builder()
 				.traceId(traceId)
 				.url(request.getRequestURI())
 				.method(request.getMethod())
-				.requestParams("")
-				.request(request)
 				.requestTime(beginTime)
 				.build();
-		RequestSessionHelper.put(requestInfoBO);
-		log.info("请求路径: {}, 请求方式: {}, 请求参数: {}, 请求开始时间: {}，traceId: {}", requestInfoBO.getUrl(), requestInfoBO.getMethod(), JSON.toJSONString(requestInfoBO.getRequestParams()), TimeUtil.format(requestInfoBO.getRequestTime(), "yyyy-MM-dd HH:mm:ss"), requestInfoBO.getTraceId());
+		RequestSession.put(requestSessionBO);
+		log.info("请求路径: {}, 请求方式: {}, 请求开始时间: {}，traceId: {}", requestSessionBO.getUrl(), requestSessionBO.getMethod(), TimeUtil.format(requestSessionBO.getRequestTime(), "yyyy-MM-dd HH:mm:ss"), requestSessionBO.getTraceId());
 		return true;
     }
 
 	@Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
-		RequestInfoBO requestInfoBO = RequestSessionHelper.get();
+		RequestSessionBO requestSessionBO = RequestSession.get();
 		Long endTime = System.currentTimeMillis();
-		log.info("请求路径: {}, 请求方式: {}, 请求人: {}, 请求结束时间: {}，请求耗时：{}ms，traceId: {}", requestInfoBO.getUrl(), requestInfoBO.getMethod(), UserSessionHelper.getUserName(), TimeUtil.format(endTime, "yyyy-MM-dd HH:mm:ss"), endTime- requestInfoBO.getRequestTime(), requestInfoBO.getTraceId());
-    }
+		log.info("请求路径: {}, 请求方式: {}, 请求参数: {}, 请求人: {}, 请求结束时间: {}，请求耗时：{}ms，traceId: {}", requestSessionBO.getUrl(), requestSessionBO.getMethod(), JsonUtil.toJson(requestSessionBO.getRequestParams()), UserSession.getUserName(), TimeUtil.format(endTime, "yyyy-MM-dd HH:mm:ss"), endTime- requestSessionBO.getRequestTime(), requestSessionBO.getTraceId());
+		RequestSession.remove();
+		MDC.remove(Constant.TRACE_ID);
+	}
 }
