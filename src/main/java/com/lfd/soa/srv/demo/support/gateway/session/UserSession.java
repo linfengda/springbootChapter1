@@ -7,7 +7,7 @@ import org.springframework.util.StringUtils;
 
 
 /**
- * @description 访问api接口用户缓存，通过com.lfd.srv.demo.support.gateway.interceptor.impl.AuthInterceptor拦截器后初始化
+ * @description 访问api接口用户缓存，通过com.lfd.soa.srv.demo.support.gateway.interceptor.impl.AuthInterceptor拦截器后初始化
  * @author linfengda
  * @date 2020-12-20 20:12
  */

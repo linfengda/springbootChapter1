@@ -6,7 +6,7 @@ import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
 
 /**
- * @description 拦截{@link com.lfd.srv.demo.support.redis.cache.annotation.UpdateCache}注解
+ * @description 拦截{@link com.lfd.soa.srv.demo.support.redis.cache.annotation.UpdateCache}注解
  * @author linfengda
  * @date 2020-06-27 11:52
  */
