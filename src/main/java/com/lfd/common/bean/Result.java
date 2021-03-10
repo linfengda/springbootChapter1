@@ -1,6 +1,6 @@
 package com.lfd.common.bean;
 
-import com.lfd.common.exception.entity.ErrorCode;
+import com.lfd.common.constants.ErrorCode;
 import lombok.Data;
 
 /**

@@ -1,7 +1,7 @@
 package com.lfd.srv.demo.support.orm.exception;
 
 
-import com.lfd.common.exception.entity.ErrorCode;
+import com.lfd.common.constants.ErrorCode;
 import lombok.Getter;
 
 /**

@@ -1,7 +1,7 @@
 package com.lfd.common.exception.handler;
 
 import com.lfd.common.exception.BusinessException;
-import com.lfd.common.exception.entity.ErrorCode;
+import com.lfd.common.constants.ErrorCode;
 import com.lfd.common.bean.Result;
 import com.lfd.srv.demo.support.orm.exception.DataAccessException;
 import lombok.extern.slf4j.Slf4j;

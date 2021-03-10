@@ -1,4 +1,4 @@
-package com.lfd.common.exception.entity;
+package com.lfd.common.constants;
 
 /**
  * 描述: 业务异常码
