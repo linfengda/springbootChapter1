@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  */
 @EnableTransactionManagement
 @Configuration
-@MapperScan({"com.linfengda.sb.chapter1.mapper"})
+@MapperScan({"com.lfd.srv.demo.mapper"})
 public class MybatisPlusConfig {
 
     /**

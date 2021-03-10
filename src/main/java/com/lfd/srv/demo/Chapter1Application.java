@@ -16,7 +16,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableRedis(enableCacheAnnotation = true, enableBusinessLockAnnotation = true)
 @EnableApiValidator()
 @EnableTransactionManagement(order = Ordered.LOWEST_PRECEDENCE-1)
-@SpringBootApplication(scanBasePackages = {"com.linfengda.sb.chapter1", "com.linfengda.sb.support"})
+@SpringBootApplication()
 public class Chapter1Application {
 
 	public static void main(String[] args) {

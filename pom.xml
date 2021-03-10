@@ -260,36 +260,6 @@
 
 	</dependencies>
 
-
-    <!-- 声明属性信息 -->
-    <profiles>
-        <!-- 本地开发环境 -->
-        <profile>
-            <id>dev</id>
-            <properties>
-                <myActivateFile>dev</myActivateFile>
-            </properties>
-            <activation>
-                <!-- 默认开启本地开发环境 -->
-                <activeByDefault>true</activeByDefault>
-            </activation>
-        </profile>
-        <!-- 测试环境 -->
-        <profile>
-            <id>test</id>
-            <properties>
-                <myActivateFile>test</myActivateFile>
-            </properties>
-        </profile>
-        <!-- 生产环境 -->
-        <profile>
-            <id>pro</id>
-            <properties>
-                <myActivateFile>prod</myActivateFile>
-            </properties>
-        </profile>
-    </profiles>
-
     <!-- build标签：声明构建行为 -->
     <build>
         <!-- 默认打包行为 -->

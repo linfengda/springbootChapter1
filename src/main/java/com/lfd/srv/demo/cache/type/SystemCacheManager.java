@@ -2,7 +2,7 @@ package com.lfd.srv.demo.cache.type;
 
 import com.lfd.srv.demo.cache.UserTokenCache;
 import com.lfd.common.exception.entity.ErrorCode;
-import com.lfd.common.util.SpringUtil;
+import com.lfd.srv.demo.util.SpringUtil;
 import com.lfd.common.exception.BusinessException;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

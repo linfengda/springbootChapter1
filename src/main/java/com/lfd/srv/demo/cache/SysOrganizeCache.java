@@ -2,8 +2,6 @@ package com.lfd.srv.demo.cache;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
-import com.lfd.srv.demo.service.SysUserService;
-import com.lfd.srv.demo.support.redis.cache.annotation.*;
 import com.lfd.srv.demo.bean.dto.SysDepartmentCacheDto;
 import com.lfd.srv.demo.bean.dto.SysTeamCacheDto;
 import com.lfd.srv.demo.bean.dto.SysUserCacheDto;
@@ -13,7 +11,8 @@ import com.lfd.srv.demo.bean.entity.SysUser;
 import com.lfd.srv.demo.cache.type.SystemCachePrefix;
 import com.lfd.srv.demo.service.SysDepartmentService;
 import com.lfd.srv.demo.service.SysTeamService;
-import com.linfengda.sb.chapter1.support.redis.cache.annotation.*;
+import com.lfd.srv.demo.service.SysUserService;
+import com.lfd.srv.demo.support.redis.cache.annotation.*;
 import com.lfd.srv.demo.support.redis.cache.entity.type.DataType;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;

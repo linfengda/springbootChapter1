@@ -10,7 +10,7 @@ import com.lfd.srv.demo.support.orm.utils.ClassUtil;
 import com.lfd.srv.demo.support.orm.utils.PageUtil;
 import com.lfd.srv.demo.support.orm.utils.ResultSetUtil;
 import com.lfd.srv.demo.support.orm.entity.PageResult;
-import com.linfengda.sb.support.orm.entity.*;
+import com.lfd.srv.demo.support.orm.entity.*;
 import com.lfd.srv.demo.support.orm.exception.DataAccessException;
 import com.lfd.srv.demo.support.orm.sql.builder.PreStatementSql;
 import lombok.Setter;

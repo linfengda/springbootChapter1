@@ -1,6 +1,6 @@
 package com.lfd.srv.demo.support.schedule.task;
 
-import com.lfd.common.util.SpringUtil;
+import com.lfd.srv.demo.util.SpringUtil;
 import com.lfd.srv.demo.support.redis.lock.RedisDistributedLock;
 import com.lfd.srv.demo.support.schedule.scanner.JobMappingScanner;
 import com.lfd.srv.demo.support.schedule.task.bean.JobCell;

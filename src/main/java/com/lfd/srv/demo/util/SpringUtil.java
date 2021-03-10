@@ -1,4 +1,4 @@
-package com.lfd.common.util;
+package com.lfd.srv.demo.util;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;

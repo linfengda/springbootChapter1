@@ -1,10 +1,8 @@
 package com.lfd.srv.demo.support.redis.cache.builder;
 
-import com.lfd.srv.demo.support.redis.cache.annotation.*;
 import com.lfd.common.exception.BusinessException;
-import com.linfengda.sb.chapter1.support.redis.cache.annotation.*;
 import com.lfd.srv.demo.support.redis.Constant;
-import com.linfengda.sb.support.redis.cache.annotation.*;
+import com.lfd.srv.demo.support.redis.cache.annotation.*;
 import com.lfd.srv.demo.support.redis.cache.entity.meta.CacheKeyMeta;
 import com.lfd.srv.demo.support.redis.cache.entity.meta.CacheMethodMeta;
 import com.lfd.srv.demo.support.redis.cache.entity.type.CacheAnnotationType;

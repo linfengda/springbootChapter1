@@ -1,7 +1,7 @@
 package com.lfd.srv.demo.support.gateway.interceptor;
 
 import com.lfd.srv.demo.support.gateway.interceptor.impl.AuthInterceptor;
-import com.lfd.common.util.SpringUtil;
+import com.lfd.srv.demo.util.SpringUtil;
 import com.lfd.srv.demo.support.gateway.interceptor.impl.ApiCallInterceptor;
 import lombok.Getter;
 import org.springframework.web.servlet.HandlerInterceptor;

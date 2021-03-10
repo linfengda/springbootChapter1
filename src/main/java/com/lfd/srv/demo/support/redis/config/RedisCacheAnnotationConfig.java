@@ -2,8 +2,6 @@ package com.lfd.srv.demo.support.redis.config;
 
 import com.lfd.srv.demo.support.redis.cache.interceptor.*;
 import com.lfd.srv.demo.support.redis.config.initailizer.RedisCacheAnnotationInitializer;
-import com.linfengda.sb.chapter1.support.redis.cache.interceptor.*;
-import com.linfengda.sb.support.redis.cache.interceptor.*;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Role;

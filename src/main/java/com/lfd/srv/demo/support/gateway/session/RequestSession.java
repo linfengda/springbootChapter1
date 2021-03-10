@@ -5,7 +5,7 @@ import com.lfd.srv.demo.support.gateway.entity.RequestSessionBO;
 import org.springframework.stereotype.Component;
 
 /**
- * @description 访问api接口缓存，通过com.linfengda.sb.support.gateway.interceptor.impl.ApiCallInterceptor后初始化
+ * @description 访问api接口缓存，通过com.lfd.srv.demo.support.gateway.interceptor.impl.ApiCallInterceptor后初始化
  * @author linfengda
  * @date 2020-12-20 20:12
  */
