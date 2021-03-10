@@ -1,63 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.linfengda.sb</groupId>
-	<artifactId>chapter1</artifactId>
-	<version>0.0.1-${myActivateFile}</version>
-	<packaging>jar</packaging>
-	<name>chapter1</name>
-	<description>Demo project for Spring Boot</description>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.18.RELEASE</version>
-        <relativePath/>
-    </parent>
+    <groupId>com.lfd.soa</groupId>
+    <artifactId>demo-module</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>demo-api</module>
+        <module>demo-srv</module>
+        <module>demo-gateway</module>
+    </modules>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <java.version>1.8</java.version>
+    </properties>
 
     <dependencies>
-
         <dependency>
             <groupId>com.lfd.soa</groupId>
             <artifactId>spring-boot-starter</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
-
         <dependency>
             <groupId>com.lfd.soa</groupId>
             <artifactId>common</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
-
     </dependencies>
-
-    <build>
-        <!-- 默认打包行为 -->
-        <defaultGoal>package</defaultGoal>
-        <!-- 打包结果所在的路径 -->
-        <directory>${basedir}/target</directory>
-        <!-- 打包结果的名字 -->
-        <finalName>${artifactId}-${version}</finalName>
-        <!-- resources标签：声明资源文件 -->
-        <resources>
-            <resource>
-                <!-- 打包资源文件的路径 -->
-                <directory>${basedir}/src/main/resources</directory>
-            </resource>
-        </resources>
-
-        <plugins>
-            <!-- 打包跳过测试用例 -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <configuration>
-                    <skip>true</skip>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-
 
 </project>
