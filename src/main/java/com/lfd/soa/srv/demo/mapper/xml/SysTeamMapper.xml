@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lfd.soa.srv.demo.mapper.SysTeamMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.lfd.soa.srv.demo.bean.entity.SysTeam">
+    <result column="id" property="id" />
+    <result column="create_uid" property="createUid" />
+    <result column="create_user" property="createUser" />
+    <result column="create_time" property="createTime" />
+    <result column="update_uid" property="updateUid" />
+    <result column="update_user" property="updateUser" />
+    <result column="update_time" property="updateTime" />
+    <result column="delete_tag" property="deleteTag" />
+    <result column="version" property="version" />
+        <result column="team_name" property="teamName" />
+        <result column="team_alias_name" property="teamAliasName" />
+        <result column="type" property="type" />
+        <result column="status" property="status" />
+        <result column="department_id" property="departmentId" />
+        <result column="last_update_time" property="lastUpdateTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        create_uid,
+        create_user,
+        create_time,
+        update_uid,
+        update_user,
+        update_time,
+        delete_tag,
+        version,
+        team_name, team_alias_name, type, status, department_id, last_update_time
+    </sql>
+
+</mapper>

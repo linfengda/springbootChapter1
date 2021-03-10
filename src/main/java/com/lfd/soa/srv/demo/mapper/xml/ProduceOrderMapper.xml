@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lfd.soa.srv.demo.mapper.ProduceOrderMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.lfd.soa.srv.demo.bean.entity.ProduceOrder">
+    <result column="id" property="id" />
+    <result column="create_uid" property="createUid" />
+    <result column="create_user" property="createUser" />
+    <result column="create_time" property="createTime" />
+    <result column="update_uid" property="updateUid" />
+    <result column="update_user" property="updateUser" />
+    <result column="update_time" property="updateTime" />
+    <result column="delete_tag" property="deleteTag" />
+    <result column="version" property="version" />
+        <result column="state" property="state" />
+        <result column="order_number" property="orderNumber" />
+        <result column="sku" property="sku" />
+        <result column="reference_sku" property="referenceSku" />
+        <result column="purchase_price" property="purchasePrice" />
+        <result column="reference_image_url" property="referenceImageUrl" />
+        <result column="material_type_enum" property="materialTypeEnum" />
+        <result column="three_category_id" property="threeCategoryId" />
+        <result column="special_technology_tag" property="specialTechnologyTag" />
+        <result column="special_technology_text" property="specialTechnologyText" />
+        <result column="first_order" property="firstOrder" />
+        <result column="urgent" property="urgent" />
+        <result column="supplier" property="supplier" />
+        <result column="supplier_id" property="supplierId" />
+        <result column="merchandiser" property="merchandiser" />
+        <result column="accept_time" property="acceptTime" />
+        <result column="cut_time" property="cutTime" />
+        <result column="sew_time" property="sewTime" />
+        <result column="sort_time" property="sortTime" />
+        <result column="last_update_time" property="lastUpdateTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        create_uid,
+        create_user,
+        create_time,
+        update_uid,
+        update_user,
+        update_time,
+        delete_tag,
+        version,
+        state, order_number, sku, reference_sku, purchase_price, reference_image_url, material_type_enum, three_category_id, special_technology_tag, special_technology_text, first_order, urgent, supplier, supplier_id, merchandiser, accept_time, cut_time, sew_time, sort_time, last_update_time
+    </sql>
+
+</mapper>
