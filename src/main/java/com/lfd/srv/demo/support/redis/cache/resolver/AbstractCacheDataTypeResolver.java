@@ -1,9 +1,9 @@
 package com.lfd.srv.demo.support.redis.cache.resolver;
 
-import com.alibaba.fastjson.JSON;
-import com.lfd.srv.demo.support.redis.cache.annotation.QueryCache;
+import com.lfd.common.util.JsonUtil;
 import com.lfd.srv.demo.support.redis.Constant;
 import com.lfd.srv.demo.support.redis.GenericRedisTemplate;
+import com.lfd.srv.demo.support.redis.cache.annotation.QueryCache;
 import com.lfd.srv.demo.support.redis.cache.entity.bo.CacheResultBO;
 import com.lfd.srv.demo.support.redis.cache.entity.dto.CacheParamDTO;
 import com.lfd.srv.demo.support.redis.cache.entity.dto.HashKey;
@@ -104,7 +104,7 @@ public abstract class AbstractCacheDataTypeResolver implements CacheDataTypeReso
         }
         // 删除LRU记录
         genericRedisTemplate.opsForZSet().removeRange(param.getLruKey(), 0, num);
-        log.debug("当前缓存：{}超过最大缓存限制：{}，采取LRU算法淘汰{}条数据，lurKey={}，delKeys={}", param.getPrefix(), param.getMaxSize(), Constant.DEFAULT_LRU_CACHE_BG_REMOVE_BATCH_NUM, param.getLruKey(), JSON.toJSONString(delKeys));
+        log.debug("当前缓存：{}超过最大缓存限制：{}，采取LRU算法淘汰{}条数据，lurKey={}，delKeys={}", param.getPrefix(), param.getMaxSize(), Constant.DEFAULT_LRU_CACHE_BG_REMOVE_BATCH_NUM, param.getLruKey(), JsonUtil.toJson(delKeys));
     }
 
     /**

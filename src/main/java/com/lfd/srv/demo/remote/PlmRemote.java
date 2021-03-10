@@ -1,6 +1,5 @@
 package com.lfd.srv.demo.remote;
 
-import com.alibaba.fastjson.JSONObject;
 import com.lfd.srv.demo.bean.req.BomMaterialQueryReq;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,7 +21,7 @@ public interface PlmRemote {
      * @return
      */
     @PostMapping("/pc/plm/outer/getOrderBigBomMaterials")
-    JSONObject getOrderBigBomMaterials(@RequestBody BomMaterialQueryReq bomMaterialQueryReq);
+    String getOrderBigBomMaterials(@RequestBody BomMaterialQueryReq bomMaterialQueryReq);
 
     /**
      * 请求plm物料单价
@@ -30,5 +29,5 @@ public interface PlmRemote {
      * @return
      */
     @GetMapping("/pc/plm/outer/getMaterialPrice")
-    JSONObject getMaterialPrice(@RequestParam String sku);
+    String getMaterialPrice(@RequestParam String sku);
 }

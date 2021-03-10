@@ -1,14 +1,14 @@
 package com.lfd.srv.demo.support.orm;
 
-import com.alibaba.fastjson.JSON;
+import com.lfd.common.util.JsonUtil;
+import com.lfd.srv.demo.Chapter1Application;
 import com.lfd.srv.demo.bean.type.SysUserStatusType;
 import com.lfd.srv.demo.support.gateway.entity.UserSessionBO;
 import com.lfd.srv.demo.support.gateway.session.UserSession;
-import com.lfd.srv.demo.support.orm.entity.SysUserPO;
-import com.lfd.srv.demo.Chapter1Application;
 import com.lfd.srv.demo.support.orm.entity.ConditionParam;
 import com.lfd.srv.demo.support.orm.entity.PageResult;
 import com.lfd.srv.demo.support.orm.entity.SetValue;
+import com.lfd.srv.demo.support.orm.entity.SysUserPO;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -62,12 +62,12 @@ public class OrmFrameworkTest {
     @Test
     public void testGet() throws Exception {
         SysUserPO sysUserPO = ormTemplate.getByPrimaryKey(1, SysUserPO.class);
-        log.info("测试根据主键查询用户信息={}", JSON.toJSONString(sysUserPO));
+        log.info("测试根据主键查询用户信息={}", JsonUtil.toJson(sysUserPO));
 
         ConditionParam conditionParam = new ConditionParam();
         conditionParam.add("phone", "13632109840");
         SysUserPO sysUserPO2 = ormTemplate.get(conditionParam, SysUserPO.class);
-        log.info("测试根据条件查询用户信息={}", JSON.toJSONString(sysUserPO2));
+        log.info("测试根据条件查询用户信息={}", JsonUtil.toJson(sysUserPO2));
     }
 
     @Test
@@ -75,14 +75,14 @@ public class OrmFrameworkTest {
         ConditionParam conditionParam = new ConditionParam();
         conditionParam.add("departmentId", "1");
         List<SysUserPO> sysUserPOList = ormTemplate.query(conditionParam, SysUserPO.class);
-        log.info("测试根据条件查询所有用户信息={}", JSON.toJSONString(sysUserPOList));
+        log.info("测试根据条件查询所有用户信息={}", JsonUtil.toJson(sysUserPOList));
 
         ConditionParam pageParam = new ConditionParam();
         pageParam.add("departmentId", "1");
         pageParam.setPageNo(1);
         pageParam.setPageSize(10);
         PageResult<SysUserPO> pageUserList = ormTemplate.page(pageParam, SysUserPO.class);
-        log.info("测试根据条件分页查询用户信息={}", JSON.toJSONString(pageUserList));
+        log.info("测试根据条件分页查询用户信息={}", JsonUtil.toJson(pageUserList));
     }
 
     @Test
@@ -92,7 +92,7 @@ public class OrmFrameworkTest {
         UserSession.put(UserSessionBO.builder().userId("123").userName("林丰达").build());
         SysUserPO sysUser = SysUserPO.builder().userName("林大大").status(SysUserStatusType.YES.toString()).phone("13632109840").password("123456").build();
         ormTemplate.save(sysUser);
-        log.info("测试保存用户信息={}", JSON.toJSONString(sysUser));
+        log.info("测试保存用户信息={}", JsonUtil.toJson(sysUser));
         UserSession.remove();
     }
 
@@ -105,7 +105,7 @@ public class OrmFrameworkTest {
         sysUser.setId(1);
         sysUser.setPassword("6789");
         ormTemplate.save(sysUser);
-        log.info("测试更新用户信息={}", JSON.toJSONString(sysUser));
+        log.info("测试更新用户信息={}", JsonUtil.toJson(sysUser));
 
         Integer id = 1;
         SetValue setValue = new SetValue();

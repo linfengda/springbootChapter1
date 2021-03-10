@@ -1,6 +1,6 @@
 package com.lfd.srv.demo.support.redis.service;
 
-import com.alibaba.fastjson.JSONObject;
+import com.lfd.common.util.JsonUtil;
 import com.lfd.srv.demo.bean.vo.UserListVo;
 import com.lfd.srv.demo.support.redis.helper.LettuceTemplateHelper;
 import com.lfd.srv.demo.support.redis.lettuce.LettuceTemplate;
@@ -42,7 +42,7 @@ public class LettuceRedisOperationServiceImpl implements RedisOperationService {
         row = lettuceTemplate.leftPush("myList", userListVO);
         log.info("row length after leftPush: {}", row);
         userListVO = (UserListVo) lettuceTemplate.rightPop("myList");
-        log.info("rightPop object: ", JSONObject.toJSONString(userListVO));
+        log.info("rightPop object: ", JsonUtil.toJson(userListVO));
     }
 
     public static void main(String[] args) {

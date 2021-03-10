@@ -1,7 +1,7 @@
 package com.lfd.srv.demo.support.gateway.router.impl;
 
-import com.alibaba.fastjson.JSON;
 import com.lfd.common.exception.BusinessException;
+import com.lfd.common.util.JsonUtil;
 import com.lfd.srv.demo.support.gateway.annotation.Permission;
 import com.lfd.srv.demo.support.gateway.entity.RequestSessionBO;
 import com.lfd.srv.demo.support.gateway.enums.ModuleType;
@@ -49,7 +49,7 @@ public class PcRequestHandler extends AbstractRequestHandler {
     private void checkSupplier() {
         // 从缓存中获取权限信息
         List<String> accessCodeList = getPermission();
-        log.info("权限信息：{}", JSON.toJSONString(accessCodeList));
+        log.info("权限信息：{}", JsonUtil.toJson(accessCodeList));
         boolean hasPermission = checkSupplierPermission(accessCodeList);
         if(!hasPermission){
             throw new BusinessException("没有[" + requestSessionBO.getUrl() + "]接口权限！");

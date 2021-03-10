@@ -1,11 +1,11 @@
 package com.lfd.srv.demo.support.redis;
 
-import com.alibaba.fastjson.JSON;
+import com.lfd.common.util.JsonUtil;
 import com.lfd.common.util.ThreadPoolUtil;
-import com.lfd.srv.demo.service.SysUserService;
 import com.lfd.srv.demo.Chapter1Application;
 import com.lfd.srv.demo.bean.dto.UserUpdateDto;
 import com.lfd.srv.demo.bean.vo.UserVo;
+import com.lfd.srv.demo.service.SysUserService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -51,7 +51,7 @@ public class RedisCacheAnnotationTest {
                 try{
                     startCount.await();
                     UserVo userVO = sysUserService.getUserInfo(1);
-                    log.info("userVO={}", JSON.toJSONString(userVO));
+                    log.info("userVO={}", JsonUtil.toJson(userVO));
                 }catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -69,9 +69,9 @@ public class RedisCacheAnnotationTest {
      */
     @Test
     public void testNullKeyCache() throws Exception {
-        log.info("{}", JSON.toJSONString(sysUserService.getDepartmentUserList(-1)));
-        log.info("{}", JSON.toJSONString(sysUserService.getTeamUserList(-1)));
-        log.info("{}", JSON.toJSONString(sysUserService.getUserInfo(-1)));
+        log.info("{}", JsonUtil.toJson(sysUserService.getDepartmentUserList(-1)));
+        log.info("{}", JsonUtil.toJson(sysUserService.getTeamUserList(-1)));
+        log.info("{}", JsonUtil.toJson(sysUserService.getUserInfo(-1)));
     }
 
     /**
@@ -83,9 +83,9 @@ public class RedisCacheAnnotationTest {
         log.info("测试lru缓存开始");
         for (int i = 1; i < 10; i++) {
             UserVo userVO = sysUserService.getUserInfo(i);
-            log.info("用户查询：{}", JSON.toJSONString(userVO));
+            log.info("用户查询：{}", JsonUtil.toJson(userVO));
             Set<String> userKeySet = genericRedisTemplate.hashKeys("sys:user");
-            log.info("当前lru缓存：{}", JSON.toJSONString(userKeySet));
+            log.info("当前lru缓存：{}", JsonUtil.toJson(userKeySet));
         }
         log.info("测试lru缓存结束");
     }
@@ -96,11 +96,11 @@ public class RedisCacheAnnotationTest {
      */
     @Test
     public void testUpdateCache() throws Exception {
-        log.info("更新用户信息前：{}", JSON.toJSONString(sysUserService.getUserInfo(9)));
+        log.info("更新用户信息前：{}", JsonUtil.toJson(sysUserService.getUserInfo(9)));
         UserUpdateDto updateDTO = new UserUpdateDto();
         updateDTO.setUserId(9);
         updateDTO.setUserName("新的开始林天天");
         sysUserService.updateUserInfo(9, updateDTO);
-        log.info("更新用户信息后：{}", JSON.toJSONString(sysUserService.getUserInfo(9)));
+        log.info("更新用户信息后：{}", JsonUtil.toJson(sysUserService.getUserInfo(9)));
     }
 }

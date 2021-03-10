@@ -1,9 +1,9 @@
 package com.lfd.srv.demo.ctrl;
 
-import com.alibaba.fastjson.JSON;
-import com.lfd.srv.demo.support.apivalidator.annotation.ApiValidator;
 import com.lfd.common.bean.Result;
+import com.lfd.common.util.JsonUtil;
 import com.lfd.srv.demo.bean.req.BomMaterialQueryReq;
+import com.lfd.srv.demo.support.apivalidator.annotation.ApiValidator;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,7 +24,7 @@ public class PlmOuterController {
 
     @PostMapping("/getOrderBigBomMaterials")
     public Result getOrderBigBomMaterials(@ApiValidator BomMaterialQueryReq bomMaterialQueryReq) {
-        log.info("查询plm系统订单大货物料信息，bigBomMaterialQueryDTO={}", JSON.toJSONString(bomMaterialQueryReq));
+        log.info("查询plm系统订单大货物料信息，bigBomMaterialQueryDTO={}", JsonUtil.toJson(bomMaterialQueryReq));
         return new Result("请求成功");
     }
 
